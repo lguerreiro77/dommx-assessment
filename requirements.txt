@@ -5,3 +5,4 @@ deep-translator
 python-dotenv
 PyYAML
 bcrypt
+cryptography
