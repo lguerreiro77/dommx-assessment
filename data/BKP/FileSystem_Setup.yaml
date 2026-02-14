@@ -1,0 +1,18 @@
+# DOMMx - File System and Directory Structure Setup
+# This file maps the internal directory structure and the master orchestration entry point.
+
+project_root:
+  name: "DOMMx_Framework_v1_1"
+  version: "1.1"
+
+# Master Orchestration Entry Point
+# The application must load this file first to understand the execution sequence.
+orchestrator_config:
+  main_flow: "Data/General/Flow.yaml"  
+  main_orchestration: "Data/general/Default_Execution.yaml"  
+  main_domain: "Data/Domains Setup/Language/"
+  base_directory_logic: "Root-Relative"
+
+# Technical Note:
+# 1. Acronyms must match precisely between directory names and YAML 'acronym' keys.
+# 2. The engine should use the naming_convention to dynamically load files based on the Flow.yaml sequence.

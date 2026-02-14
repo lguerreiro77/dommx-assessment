@@ -1,0 +1,117 @@
+domain:
+  id: 8
+  name: "Reference and Master Data (RMD)"
+  description: >
+    This domain evaluates how master data domains are defined, governed, and maintained through stewardship structures, golden-record rules, matching and merging controls, and cross-domain alignment mechanisms. It examines the consistency, traceability, and authority of master data across the organization. Master data is identified as a foundational capability for ensuring enterprise-wide coherence, reducing duplication, and enabling reliable integration and analytics (DAMA-DMBOK2, Chapter 10).
+
+maturity_scale:
+
+  0:
+    maturity_level: "Non-existent"
+    meaning: "No governance practices and no defined responsibilities or processes."
+    interpretation_for_assessment: "Indicates a complete absence of structure and an immediate need for foundational action."
+
+  1:
+    maturity_level: "Initial"
+    meaning: "Activities occur informally and reactively with little or no documentation."
+    interpretation_for_assessment: "Reflects awareness, but also high variability and operational risk."
+
+  2:
+    maturity_level: "Emerging"
+    meaning: "Some practices exist but remain inconsistent, undocumented, or not adopted across teams."
+    interpretation_for_assessment: "Shows early development. Standardization and documentation are necessary to progress."
+
+  3:
+    maturity_level: "Established"
+    meaning: "Processes, roles, and policies are defined, documented, and applied with stability."
+    interpretation_for_assessment: "Demonstrates operational consistency and readiness for more structured improvements."
+
+  4:
+    maturity_level: "Managed"
+    meaning: "Governance is integrated into workflows and supported by tools, monitoring, and oversight."
+    interpretation_for_assessment: "Represents mature adoption with reliable execution across teams."
+
+  5:
+    maturity_level: "Optimized"
+    meaning: "Governance is fully embedded, continuously improved, and aligned with compliance and ethical expectations."
+    interpretation_for_assessment: "Represents advanced maturity with proactive governance, optimization, and institutionalized continuous improvement."
+
+questions:
+
+  Q1:
+    text: "Are master data domains, boundaries, and ownership formally defined and approved?"
+    explanation: "Evaluates domain scope, ownership, and decision authority."
+    objective: "Establish accountable governance for RMD."
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – Master & Reference Data; DCAM, Data Domain Governance; IDGC, Structural Principles)"
+    score_action_mapping:
+      0: { action_code: "RMD-01", description: "Define master data domains, scope, and ownership rules" }
+      1: { action_code: "RMD-02", description: "Assign domain owners, stewards, and accountability roles" }
+      2: { action_code: "RMD-03", description: "Approve domain definitions and governance structure" }
+      3: { action_code: "RMD-04", description: "Embed domain governance in operational and stewardship routines" }
+      4: { action_code: "RMD-06", description: "Automate enforcement of master data domain rules" }
+      5: { action_code: "RMD-09", description: "Continuously improve domain governance using metrics" }
+
+  Q2:
+    text: "Are Golden Record rules, survivorship logic, and standard attributes governed?"
+    explanation: "Assesses the governance of core master data definitions."
+    objective: "Ensure consistency and traceability across domains."
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – Standards & Definitions; DCAM, Data Definition; IDGC, Rule Definition)"
+    score_action_mapping:
+      0: { action_code: "RMD-01", description: "Define golden record and attribute standardization requirements" }
+      1: { action_code: "RMD-02", description: "Assign responsibility for attribute and survivorship governance" }
+      2: { action_code: "RMD-03", description: "Approve golden-record and standard-attribute rules" }
+      3: { action_code: "RMD-05", description: "Embed golden-record rules into governed RMD routines" }
+      4: { action_code: "RMD-06", description: "Automate survivorship, validation, and attribute standardization" }
+      5: { action_code: "RMD-09", description: "Continuously improve golden-record governance using evidence" }
+
+  Q3:
+    text: "Are matching, merging, and identity-resolution rules governed and applied consistently?"
+    explanation: "Evaluates deduplication and entity-resolution governance."
+    objective: "Improve trust, uniqueness, and semantic precision."
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – Stewardship; Chapter 11 – Data Stewardship; DCAM, Ownership Model; IDGC, Accountability)"
+    score_action_mapping:
+      0: { action_code: "RMD-01", description: "Define matching, merging, and identity-resolution rules" }
+      1: { action_code: "RMD-02", description: "Assign entity-resolution stewardship responsibilities" }
+      2: { action_code: "RMD-03", description: "Approve matching and merging governance standards" }
+      3: { action_code: "RMD-04", description: "Embed identity-resolution rules into RMD operational routines" }
+      4: { action_code: "RMD-06", description: "Automate matching, merging, and identity-resolution processes" }
+      5: { action_code: "RMD-09", description: "Continuously improve entity-resolution governance via metrics" }
+
+  Q4:
+    text: "Is the master data lifecycle governed across the creation, update, distribution, and archival stages?"
+    explanation: "Examines lifecycle controls and governed operational processes."
+    objective: "Maintain authoritative and reliable master data."
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – Master Data Lifecycle; Chapter 12 – Data Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0: { action_code: "RMD-01", description: "Define lifecycle rules for master data creation and updates" }
+      1: { action_code: "RMD-02", description: "Assign stewardship for lifecycle activities" }
+      2: { action_code: "RMD-03", description: "Approve lifecycle governance rules" }
+      3: { action_code: "RMD-05", description: "Implement governed lifecycle routines in operational domains" }
+      4: { action_code: "RMD-06", description: "Automate lifecycle governance controls" }
+      5: { action_code: "RMD-09", description: "Continuously improve lifecycle governance using evidence" }
+
+  Q5:
+    text: "Are RMD quality indicators measured and reviewed systematically?"
+    explanation: "Assesses metrics for accuracy, completeness, uniqueness, and consistency."
+    objective: "Sustain high-quality, validated master data."
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – KPIs & Controls; DCAM, Data Controls; IDGC, Monitoring)"
+    score_action_mapping:
+      0: { action_code: "RMD-01", description: "Define indicators and monitoring requirements for RMD quality" }
+      1: { action_code: "RMD-02", description: "Assign responsibilities for RMD quality monitoring" }
+      2: { action_code: "RMD-03", description: "Approve quality KPIs and review cycles" }
+      3: { action_code: "RMD-05", description: "Implement dashboards and structured RMD quality reviews" }
+      4: { action_code: "RMD-06", description: "Automate quality validation and monitoring" }
+      5: { action_code: "RMD-09", description: "Continuously improve RMD quality through metrics" }
+
+  Q6:
+    text: "Are ethical, privacy, and responsible-use safeguards applied to RMD processes and attributes?"
+    explanation: "Ensures compliance with privacy, minimization, and fairness."
+    objective: "Govern the responsible and lawful use of core master data."
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – Ethical Harmonization; DCAM, Responsible Data Use; IDGC, Ethical Practices)"
+    score_action_mapping:
+      0: { action_code: "RMD-01", description: "Define ethical, privacy, and minimization rules for master data" }
+      1: { action_code: "RMD-02", description: "Assign oversight for ethical and privacy governance" }
+      2: { action_code: "RMD-03", description: "Approve ethical and privacy requirements for RMD" }
+      3: { action_code: "RMD-05", description: "Embed ethical and privacy safeguards into RMD routines" }
+      4: { action_code: "RMD-06", description: "Automate privacy, minimization, and fairness controls" }
+      5: { action_code: "RMD-09", description: "Continuously improve ethical governance using audits" }

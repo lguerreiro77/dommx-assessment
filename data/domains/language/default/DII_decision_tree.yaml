@@ -1,0 +1,117 @@
+domain:
+  id: 6
+  name: "Data Integration and Interoperability (DII)"
+  description: >
+    This domain evaluates the formalization of data movement, the existence of governed integration patterns, and the stability of interoperability standards across the organization. Data Integration and Interoperability focus on ensuring that data flows between systems are reliable, consistent, and governed, supporting seamless data sharing and architectural alignment (DAMA-DMBOK2, Chapter 8).
+
+maturity_scale:
+
+  0:
+    maturity_level: "Non-existent"
+    meaning: "No governance practices and no defined responsibilities or processes."
+    interpretation_for_assessment: "Indicates a complete absence of structure and an immediate need for foundational action."
+
+  1:
+    maturity_level: "Initial"
+    meaning: "Activities occur informally and reactively with little or no documentation."
+    interpretation_for_assessment: "Reflects awareness, but also high variability and operational risk."
+
+  2:
+    maturity_level: "Emerging"
+    meaning: "Some practices exist but remain inconsistent, undocumented, or not adopted across teams."
+    interpretation_for_assessment: "Shows early development. Standardization and documentation are necessary to progress."
+
+  3:
+    maturity_level: "Established"
+    meaning: "Processes, roles, and policies are defined, documented, and applied with stability."
+    interpretation_for_assessment: "Demonstrates operational consistency and readiness for more structured improvements."
+
+  4:
+    maturity_level: "Managed"
+    meaning: "Governance is integrated into workflows and supported by tools, monitoring, and oversight."
+    interpretation_for_assessment: "Represents mature adoption with reliable execution across teams."
+
+  5:
+    maturity_level: "Optimized"
+    meaning: "Governance is fully embedded, continuously improved, and aligned with compliance and ethical expectations."
+    interpretation_for_assessment: "Represents advanced maturity with proactive governance, optimization, and institutionalized continuous improvement."
+
+questions:
+
+  Q1:
+    text: "Are integration standards and governed exchange rules formally defined and approved?"
+    explanation: "Evaluates the clarity of shared integration principles and mandatory standards."
+    objective: "Ensure consistent and governed data exchange."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Data Integration; DCAM, Data Sharing; IDGC, Coordination Mechanisms)"
+    score_action_mapping:
+      0: { action_code: "DII-01", description: "Define integration standards and governed exchange rules" }
+      1: { action_code: "DII-02", description: "Assign integration of governance roles and responsibilities" }
+      2: { action_code: "DII-03", description: "Approve integration standards and exchange rules" }
+      3: { action_code: "DII-04", description: "Embed integration standards into domain and lifecycle routines" }
+      4: { action_code: "DII-06", description: "Automate integration conformance and validation checks" }
+      5: { action_code: "DII-09", description: "Continuously refine integration standards using metrics" }
+
+  Q2:
+    text: "Are Metadata-driven integration rules and structures maintained under governance authority?"
+    explanation: "Assesses metadata alignment supporting integration flows."
+    objective: "Strengthen transparency and lineage."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – APIs & Exchange Standards; DCAM, Interoperability; IDGC, Process Standardization)"
+    score_action_mapping:
+      0: { action_code: "DII-01", description: "Define metadata-driven integration rules" }
+      1: { action_code: "DII-02", description: "Assign stewardship for metadata supporting integration" }
+      2: { action_code: "DII-03", description: "Approve metadata structures and integration rules" }
+      3: { action_code: "DII-05", description: "Embed metadata-driven integration rules into operational routines" }
+      4: { action_code: "DII-06", description: "Automate metadata integration, alignment, and lineage capture" }
+      5: { action_code: "DII-09", description: "Continuously improve metadata-driven integration using evidence" }
+
+  Q3:
+    text: "Are cross-domain data exchanges reviewed, approved, and traceable?"
+    explanation: "Verifies governed movement of data between domains."
+    objective: "Support trust, accountability, and consistency."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Cross-Domain Integration; DCAM, Federated Governance; IDGC, Relational Mechanisms)"
+    score_action_mapping:
+      0: { action_code: "DII-01", description: "Define rules for cross-domain data exchanges and approvals" }
+      1: { action_code: "DII-02", description: "Assign cross-domain integration governance roles" }
+      2: { action_code: "DII-03", description: "Approve exchange rules, review cycles, and traceability structures" }
+      3: { action_code: "DII-05", description: "Implement governed cross-domain exchange processes" }
+      4: { action_code: "DII-06", description: "Automate traceability, lineage, and exchange monitoring" }
+      5: { action_code: "DII-09", description: "Continuously improve cross-domain exchange governance" }
+
+  Q4:
+    text: "Are integration mechanisms (APIs, governed interfaces, ingestion rules) standardized and enforced?"
+    explanation: "Evaluates governed mechanisms for structured data movement."
+    objective: "Ensure structural and semantic coherence."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Integration Lifecycle; Chapter 12 – Data Lifecycle; DCAM, Lifecycle Execution; IDGC, Process Integration)"
+    score_action_mapping:
+      0: { action_code: "DII-01", description: "Define standards for integration mechanisms and governed interfaces" }
+      1: { action_code: "DII-02", description: "Assign responsibility for interface and ingestion governance" }
+      2: { action_code: "DII-03", description: "Approve interface and ingestion standards" }
+      3: { action_code: "DII-05", description: "Embed standard integration mechanisms into daily governance routines" }
+      4: { action_code: "DII-06", description: "Automate validation of integration mechanism conformity" }
+      5: { action_code: "DII-09", description: "Optimize integration mechanisms using performance metrics" }
+
+  Q5:
+    text: "Is integration performance (consistency, latency, reliability) measured and reviewed?"
+    explanation: "Assesses the integration, quality, and stability metrics."
+    objective: "Maintain operational confidence and alignment."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Integration Metrics; DCAM, Performance & Controls; IDGC, Monitoring)"
+    score_action_mapping:
+      0: { action_code: "DII-01", description: "Define integration performance metrics and monitoring rules" }
+      1: { action_code: "DII-02", description: "Assign responsibilities for performance monitoring" }
+      2: { action_code: "DII-03", description: "Approve KPIs and governance review cycles" }
+      3: { action_code: "DII-04", description: "Implement dashboards and governed reporting for integration" }
+      4: { action_code: "DII-06", description: "Automate performance monitoring" }
+      5: { action_code: "DII-09", description: "Continuously improve integration performance based on metrics" }
+
+  Q6:
+    text: "Are ethical, privacy, and responsible-use constraints embedded into integration governance?"
+    explanation: "Checks privacy-by-design and ethical safeguards in data exchanges."
+    objective: "Support compliant and responsible data movement."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Responsible Interoperability; DCAM, Responsible Data Use; IDGC, Ethical Exchange)"
+    score_action_mapping:
+      0: { action_code: "DII-01", description: "Define ethical and privacy constraints for integration governance" }
+      1: { action_code: "DII-02", description: "Assign ethical and privacy oversight roles for integration" }
+      2: { action_code: "DII-03", description: "Approve ethical and privacy integration rules" }
+      3: { action_code: "DII-05", description: "Embed ethical and privacy safeguards into integration routines" }
+      4: { action_code: "DII-06", description: "Automate ethical, privacy, and responsible-use validation" }
+      5: { action_code: "DII-09", description: "Continuously improve ethical integration governance" }

@@ -1,0 +1,382 @@
+domain:
+  id: 4
+  name: "Data Operations (DSO)"
+
+action_catalog:
+
+  DSO-01:
+    title: "Establish operational data handling principles and scope"
+    procedures:
+      - number: 1
+        name: "Define operational data handling principles"
+        prerequisite: "Requires identification of operational domains"
+        deliverable: "Operational principles document"
+        recommendations:
+          - "Define operational principles following DAMA guidance for data handling, process oversight, and operational stability (Chapter 1, p. 19–22)."
+          - "Ensure alignment with DAMA’s expectations for stewardship and custodial responsibilities across operational stages (Chapter 4, p. 86–89)."
+          - "Validate that principles reflect DAMA requirements for metadata, lineage, and quality control in operational activities (Chapters 9 to 11)."
+          - "Document principles using DAMA artefact guidelines for governance clarity (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use DCAM capability criteria to ensure principles cover required operational data handling areas."
+
+      - number: 2
+        name: "Draft initial operational workflows"
+        prerequisite: "Requires principles defined"
+        deliverable: "Operational workflow v0.1"
+        recommendations:
+          - "Draft workflows according to DAMA lifecycle guidance for controlled creation, modification, and usage activities (Chapter 4.3, p. 92)."
+          - "Ensure workflows reflect DAMA metadata expectations, including definitions, formats, and key identifiers (Chapter 9, p. 236)."
+          - "Validate workflow structure using DAMA quality checkpoints such as accuracy, completeness, and consistency (Chapter 11, p. 308–311)."
+          - "Confirm that stewardship responsibilities are applied to each workflow stage in alignment with DAMA governance principles (Chapter 3.2, p. 55)."
+        notes:
+          - "Use CMMI process management discipline to maintain workflow stability."
+
+      - number: 3
+        name: "Identify preliminary operational data elements"
+        prerequisite: "Requires stakeholder mapping"
+        deliverable: "Operational data element list"
+        recommendations:
+          - "Identify elements using DAMA metadata definitions for operational data attributes (Chapter 9, p. 236)."
+          - "Validate operational relevance based on DAMA’s lifecycle and quality expectations (Chapter 4.3, p. 92)."
+          - "Confirm elements follow DAMA’s semantic and structural coherence guidance (Chapter 3.3, p. 58)."
+          - "Document elements using DAMA artefact structures (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use DCAM criticality analysis to prioritize core operational data elements."
+
+      - number: 4
+        name: "Assign provisional operational data ownership"
+        prerequisite: "Requires operational element inventory"
+        deliverable: "Operational ownership matrix"
+        recommendations:
+          - "Assign ownership following DAMA stewardship and custodial role descriptions (Chapter 4, p. 86–89)."
+          - "Ensure that owners can support lifecycle checkpoints across ingestion, transformation, and usage (Chapter 4.3, p. 92)."
+          - "Validate clarity of authority using DAMA decision and escalation guidance (Chapter 3.4, p. 60)."
+          - "Confirm documentation using DAMA artefact standards (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use IDGC behavioral readiness indicators for operational roles."
+
+      - number: 5
+        name: "Publish initial operational guidelines"
+        prerequisite: "Requires workflow and ownership"
+        deliverable: "Operational onboarding brief"
+        recommendations:
+          - "Publish guidelines aligned with DAMA governance communication expectations (Chapter 3.6, p. 64)."
+          - "Ensure guidelines clearly express responsibilities derived from DAMA stewardship expectations (Chapter 4, p. 86)."
+          - "Include operational quality and metadata controls extracted from DAMA (Chapters 10 and 11)."
+          - "Validate structure following DAMA documentation standards (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use CMMI communication logic to improve user understanding."
+
+  DSO-02:
+    title: "Formalize operational stewardship and standards"
+    procedures:
+      - number: 1
+        name: "Consolidate operational requirements"
+        prerequisite: "Requires DSO-01 to be complete"
+        deliverable: "Operational requirement registers"
+        recommendations:
+          - "Consolidate requirements following DAMA operational guidance for data handling roles and processes (Chapter 1)."
+          - "Validate alignment with DAMA lifecycle expectations for creation, quality, and usage (Chapter 4.3, p. 92)."
+          - "Confirm requirements reflect DAMA metadata and lineage expectations (Chapter 9, p. 236)."
+          - "Ensure stewardship roles are defined following DAMA role model descriptions (Chapter 3.2, p. 55–57)."
+        notes:
+          - "Use DCAM requirement prioritization methods."
+
+      - number: 2
+        name: "Produce formal operational workflows"
+        prerequisite: "Requires validated requirements"
+        deliverable: "Operational workflows v1.0"
+        recommendations:
+          - "Produce workflows reflecting DAMA lifecycle checkpoints, including creation, transformation, and retirement (Chapter 4.3, p. 92)."
+          - "Ensure inclusion of DAMA metadata quality controls (Chapter 9, p. 236)."
+          - "Validate consistency with DAMA quality dimensions such as accuracy and integrity (Chapter 11, p. 308–311)."
+          - "Document workflows using DAMA artefact guidelines (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use CMMI process verification guidance."
+
+      - number: 3
+        name: "Define operational data standards"
+        prerequisite: "Requires v1.0 workflows"
+        deliverable: "Operational Data Standards Manual"
+        recommendations:
+          - "Define standards using DAMA operational rules for data handling, access, update, and archival (Chapter 1, p. 19–22)."
+          - "Validate standards using DAMA metadata and semantic criteria (Chapters 9 and 10)."
+          - "Ensure lifecycle alignment using DAMA’s definition of checkpoints and transitions (Chapter 4.3, p. 92)."
+          - "Confirm stewardship oversight based on DAMA governance roles (Chapter 3.2, p. 55–57)."
+        notes:
+          - "Use GDPR data handling expectations to reinforce operational standards."
+
+      - number: 4
+        name: "Validate operational standards with business stakeholders"
+        prerequisite: "Requires standards draft"
+        deliverable: "Alignment record"
+        recommendations:
+          - "Validate standards using DAMA relational and operational alignment expectations (Chapter 3.6, p. 64)."
+          - "Ensure semantic and metadata alignment using DAMA definitions (Chapter 9, p. 236)."
+          - "Confirm lifecycle expectations for operational controls follow DAMA’s checkpoints (Chapter 4.3, p. 92)."
+          - "Validate transparency following DAMA governance communication principles (Chapter 3.4, p. 60)."
+        notes:
+          - "Use DCAM stakeholder mapping to ensure operational buy-in."
+
+      - number: 5
+        name: "Approve and publish operational standards"
+        prerequisite: "Requires governance authority approval"
+        deliverable: "Operational standards approval pack"
+        recommendations:
+          - "Approve standards using DAMA authority and escalation guidance (Chapter 3.4, p. 60–61)."
+          - "Ensure publication adheres to DAMA artefact documentation rules (Chapter 3 Appendix, p. 69–70)."
+          - "Confirm standards support DAMA lifecycle and quality expectations (Chapters 10 and 11)."
+          - "Ensure stewardship responsibilities are reflected following DAMA‘s governance model (Chapter 3.2, p. 55–57)."
+        notes:
+          - "Use CMMI governance preparation logic."
+
+  DSO-03:
+    title: "Approve operational rules, workflows, and responsibilities"
+    procedures:
+      - number: 1
+        name: "Establish Data Operations Council charter"
+        prerequisite: "Requires DSO-02 deliverables"
+        deliverable: "Approved charter"
+        recommendations:
+          - "Establish the charter using DAMA governance authority guidance for operational decision bodies (Chapter 3.4, p. 60)."
+          - "Ensure roles reflect DAMA stewardship and operational governance responsibilities (Chapter 3.2, p. 55–57)."
+          - "Validate structural alignment with DAMA governance functional architecture (Figure 3-2, p. 53)."
+          - "Document the charter following DAMA artefact formatting rules (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use DCAM governance authority criteria."
+
+      - number: 2
+        name: "Assign operational governance roles"
+        prerequisite: "Requires role descriptions"
+        deliverable: "Role assignment record"
+        recommendations:
+          - "Assign roles using DAMA’s competency maps for stewards, custodians, and operational owners (Chapter 4, p. 86–89)."
+          - "Ensure decision rights follow DAMA governance escalation guidance (Chapter 3.4, p. 60)."
+          - "Validate role clarity across lifecycle phases using DAMA checkpoints (Chapter 4.3, p. 92)."
+          - "Document the assignments using DAMA artefact structure (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use IDGC behavioral readiness indicators for operational roles."
+
+      - number: 3
+        name: "Implement operational decision forums"
+        prerequisite: "Requires charter approval"
+        deliverable: "Operations governance calendar and templates"
+        recommendations:
+          - "Implement forums following DAMA guidance for operational governance decision processes (Chapter 3.3, p. 58–59)."
+          - "Ensure transparency and accountability as defined by DAMA governance principles (Chapter 3, p. 51)."
+          - "Validate semantic and metadata impacts using DAMA guidance (Chapters 9 and 10)."
+          - "Document forums using DAMA artefact conventions (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use CMMI meeting discipline."
+
+      - number: 4
+        name: "Launch operational review cycles"
+        prerequisite: "Requires defined forums"
+        deliverable: "First review minutes"
+        recommendations:
+          - "Launch reviews using DAMA operational oversight guidance (Chapter 3.3, p. 58)."
+          - "Validate lifecycle alignment based on DAMA checkpoints for operational data transitions (Chapter 4.3, p. 92)."
+          - "Confirm metadata integrity and lineage clarity using DAMA rules (Chapter 9, p. 236)."
+          - "Document minutes using DAMA documentation standards (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use DCAM review assurance practices."
+
+      - number: 5
+        name: "Maintain operational governance operation"
+        prerequisite: "Requires meeting cadence"
+        deliverable: "Operations activity log"
+        recommendations:
+          - "Maintain operation following DAMA guidance for governance continuity (Chapter 3.6, p. 64)."
+          - "Validate that activities respect DAMA operational and metadata standards (Chapters 1, 9, 10)."
+          - "Ensure lifecycle alignment using DAMA’s operational checkpoints (Chapter 4.3, p. 92)."
+          - "Confirm documentation compliance with DAMA artefact structure (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use CMMI monitoring practices."
+
+  DSO-04:
+    title: "Embed operational governance into organizational and domain routines"
+    procedures:
+      - number: 1
+        name: "Embed operational checkpoints into domain workflows"
+        prerequisite: "Requires DSO-03 roles and standards"
+        deliverable: "Updated workflow templates"
+        recommendations:
+          - "Embed checkpoints following DAMA guidance for controlled operational data handling (Chapter 1, p. 19)."
+          - "Ensure controls reflect DAMA lifecycle oversight for operational stages (Chapter 4.3, p. 92)."
+          - "Integrate metadata and quality checks following DAMA rules for operational data (Chapters 9 and 11)."
+          - "Confirm that stewards perform operational oversight consistent with DAMA stewardship roles (Chapter 4, p. 86)."
+        notes:
+          - "Use DCAM workflow alignment methods."
+
+      - number: 2
+        name: "Integrate operational criteria into system and business design"
+        prerequisite: "Requires standards"
+        deliverable: "Governed operational templates"
+        recommendations:
+          - "Integrate criteria using DAMA lifecycle and operational guidance (Chapter 4.3, p. 92)."
+          - "Ensure design decisions reflect DAMA metadata and semantic rules (Chapters 9 and 10)."
+          - "Validate alignment with DAMA quality dimensions (Chapter 11, p. 308)."
+          - "Document integrated templates using DAMA artefact guidance (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use CMMI design verification."
+
+      - number: 3
+        name: "Update lifecycle documentation with operational requirements"
+        prerequisite: "Requires workflow redesign"
+        deliverable: "Updated operational documentation"
+        recommendations:
+          - "Document lifecycle using DAMA guidance for operational data transitions and structured oversight (Chapter 4.3, p. 92)."
+          - "Ensure alignment with DAMA metadata and semantic rules (Chapters 9 and 10)."
+          - "Confirm stewardship responsibilities are clearly assigned (Chapter 3.2, p. 55)."
+          - "Validate completeness based on DAMA quality dimensions (Chapter 11)."
+        notes:
+          - "Use DCAM lifecycle capability criteria."
+
+      - number: 4
+        name: "Apply operational checks at business decision points"
+        prerequisite: "Requires governed workflows"
+        deliverable: "Evidence of operational controls"
+        recommendations:
+          - "Apply checks following DAMA operational and quality expectations (Chapters 1 and 11)."
+          - "Confirm alignment with lifecycle checkpoints for operational data handling (Chapter 4.3, p. 92)."
+          - "Ensure decision points enforce DAMA metadata rules and steward oversight (Chapters 3 and 9)."
+          - "Document check results for audit and compliance (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use CMMI verification logic."
+
+      - number: 5
+        name: "Track operational adherence across domains"
+        prerequisite: "Requires monitoring routines"
+        deliverable: "Operational compliance register"
+        recommendations:
+          - "Track adherence using DAMA governance monitoring guidance (Chapter 3.6, p. 64)."
+          - "Ensure tracking covers operational metadata, lineage, and quality (Chapters 9 to 11)."
+          - "Validate that deviations follow DAMA escalation rules (Chapter 3.4, p. 60)."
+          - "Confirm involvement of stewards and owners (Chapter 4, p. 86)."
+        notes:
+          - "Use DCAM operational capability diagnostics."
+
+  DSO-06:
+    title: "Automate operational validation and monitoring"
+    procedures:
+      - number: 1
+        name: "Define operational validation indicators"
+        prerequisite: "Requires DSO-04 workflows"
+        deliverable: "Operational KPI set"
+        recommendations:
+          - "Define KPIs following DAMA guidance for operational efficiency, metadata completeness, and quality (Chapters 1, 9, 11)."
+          - "Ensure indicators reflect DAMA lifecycle expectations for stable operational transitions (Chapter 4.3, p. 92)."
+          - "Validate alignment with DAMA stewardship and ownership roles (Chapter 3.2, p. 55)."
+          - "Document KPIs using DAMA artefact patterns (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use DCAM performance indicators."
+
+      - number: 2
+        name: "Establish automated operational validation rules"
+        prerequisite: "Requires operational criteria"
+        deliverable: "Automated operational rule set"
+        recommendations:
+          - "Establish rules following DAMA operational and metadata rules (Chapters 1 and 9)."
+          - "Ensure automation covers lifecycle checkpoints and quality dimensions (Chapters 4.3 and 11)."
+          - "Document rules for automated execution and audit (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use CMMI automation readiness."
+
+      - number: 3
+        name: "Implement operational monitoring dashboards"
+        prerequisite: "Requires validation rules"
+        deliverable: "Operational monitoring dashboard"
+        recommendations:
+          - "Implement dashboards following DAMA governance monitoring principles (Chapter 3.6, p. 64)."
+          - "Include operational, quality, and metadata indicators (Chapters 1, 9, 11)."
+          - "Ensure lifecycle alignment following DAMA’s operational checkpoints (Chapter 4.3, p. 92)."
+          - "Map indicators to steward and owner roles (Chapter 4, p. 86)."
+        notes:
+          - "Use DCAM visualization practices."
+
+      - number: 4
+        name: "Enable automated operational alerts"
+        prerequisite: "Requires dashboards active"
+        deliverable: "Operational alert feed"
+        recommendations:
+          - "Enable alerts following DAMA escalation and oversight practices (Chapter 3.4, p. 60)."
+          - "Ensure alerts reflect metadata gaps or quality issues (Chapters 9 and 11)."
+          - "Validate alert triggers against lifecycle checkpoints (Chapter 4.3, p. 92)."
+          - "Confirm steward triage responsibilities (Chapter 4, p. 86)."
+        notes:
+          - "Use CMMI corrective action logic."
+
+      - number: 5
+        name: "Maintain automated operational governance"
+        prerequisite: "Requires operational maturity"
+        deliverable: "Operations operational log"
+        recommendations:
+          - "Maintain automation following DAMA guidance for governance continuity (Chapter 3.6, p. 64)."
+          - "Ensure alignment with DAMA operational and metadata rules (Chapters 1 and 9)."
+          - "Validate lifecycle oversight using DAMA checkpoints (Chapter 4.3, p. 92)."
+          - "Confirm documentation follows DAMA artefact structure (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use DCAM operational assessments."
+
+  DSO-09:
+    title: "Continuously improve operational maturity using evidence"
+    procedures:
+      - number: 1
+        name: "Review operational performance trends"
+        prerequisite: "Requires DSO-06 baseline"
+        deliverable: "Operational trend analysis"
+        recommendations:
+          - "Review trends following DAMA guidance for operational performance evaluation (Chapter 3.6, p. 64)."
+          - "Validate trends using DAMA quality and metadata indicators (Chapters 9 and 11)."
+          - "Confirm lifecycle implications using DAMA operational checkpoints (Chapter 4.3, p. 92)."
+          - "Document trends using DAMA artefact standards (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use DCAM maturity scoring."
+
+      - number: 2
+        name: "Improve operational workflows using performance insights"
+        prerequisite: "Requires trend analysis"
+        deliverable: "Updated operational workflows"
+        recommendations:
+          - "Improve workflows following DAMA operational refinement guidance (Chapter 1)."
+          - "Validate improvements using DAMA quality and metadata rules (Chapters 9 and 11)."
+          - "Ensure lifecycle alignment following DAMA’s operational checkpoints (Chapter 4.3, p. 92)."
+          - "Confirm ownership aligment with DAMA governance model (Chapter 3.2, p. 55)."
+        notes:
+          - "Use CMMI improvement techniques."
+
+      - number: 3
+        name: "Benchmark operational practices against external standards"
+        prerequisite: "Requires maturity profile"
+        deliverable: "Operational benchmark evidence"
+        recommendations:
+          - "Benchmark using DAMA expectations for external comparability (Chapter 3.6, p. 64)."
+          - "Include operational, quality, and metadata components (Chapters 1, 9, 11)."
+          - "Validate lifecycle impacts using DAMA checkpoints (Chapter 4.3, p. 92)."
+          - "Document results following DAMA artefact standards (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use DCAM benchmarking."
+
+      - number: 4
+        name: "Enhance operational automation logic"
+        prerequisite: "Requires DSO-06 automation"
+        deliverable: "Updated operational automation set"
+        recommendations:
+          - "Enhance automation logic following DAMA metadata and quality rules (Chapters 9 and 11)."
+          - "Validate changes using DAMA lifecycle oversight (Chapter 4.3, p. 92)."
+          - "Ensure steward approval for logic changes (Chapter 3.4, p. 60)."
+          - "Confirm documentation follows DAMA artefact patterns (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use CMMI automation maturity."
+
+      - number: 5
+        name: "Maintain a continuous operational improvement cycle"
+        prerequisite: "Requires optimization cycle"
+        deliverable: "Operational improvement plan"
+        recommendations:
+          - "Maintain cycles following DAMA guidance for ongoing operational refinement (Chapter 3.6, p. 64)."
+          - "Ensure feedback loops incorporate metadata and quality lessons (Chapters 9 to 11)."
+          - "Validate lifecycle alignment using DAMA operational checkpoints (Chapter 4.3, p. 92)."
+          - "Confirm documentation follows DAMA artefact formatting (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use DCAM capability evolution mapping."

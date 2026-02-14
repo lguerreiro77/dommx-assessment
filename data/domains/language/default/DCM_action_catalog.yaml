@@ -1,0 +1,122 @@
+domain:
+  id: 7
+  name: "Document And Content Management (DCM)"
+
+action_catalog:
+
+  DCM-01:
+    title: "Define foundational content governance, classification, and lifecycle requirements"
+    procedures:
+      - number: 1
+        name: "Define document and content principles and scope boundaries"
+        prerequisite: "Requires identification of organizational content categories"
+        deliverable: "Document and content principles document"
+        recommendations:
+          - "Define principles using DAMA guidance for content governance, including authenticity, accessibility, retention, legal value, and evidential integrity (“Chapter 12, p. 330–338”)."
+          - "Ensure principles align with DAMA governance expectations for stewardship and domain oversight (“Chapter 3.2, p. 55–57”)."
+          - "Validate lifecycle alignment with DAMA checkpoints for creation, maintenance, and archival (“Chapter 4.3, p. 92”)."
+          - "Document the principles using DAMA artefact structure for clarity and auditability (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM information asset scoping to prioritize the most sensitive or high-impact content classes."
+
+      - number: 2
+        name: "Draft initial content taxonomy and classification scheme"
+        prerequisite: "Requires principles defined"
+        deliverable: "Draft content taxonomy v0.1"
+        recommendations:
+          - "Draft taxonomy using DAMA metadata and classification guidance for documents and content artefacts (“Chapter 9, p. 236–239”; “Chapter 12, p. 332–334”)."
+          - "Validate classes with lifecycle stages for creation, collaboration, publication, and archival (“Chapter 4.3, p. 92”)."
+          - "Ensure semantic clarity by applying DAMA conceptual modelling principles (“Chapter 10, p. 282–284”)."
+          - "Confirm stewardship review following DAMA governance roles (“Chapter 4, p. 86–89”)."
+        notes:
+          - "Use CMMI taxonomy refinement guidelines to stabilize early classification schemes."
+
+  DCM-02:
+    title: "Assign stewardship roles for classification, lifecycle, and metadata governance"
+    procedures:
+      - number: 1
+        name: "Consolidate document and content requirements"
+        prerequisite: "Requires DCM-01 to be complete"
+        deliverable: "Content requirement registers"
+        recommendations:
+          - "Consolidate requirements using DAMA guidance for document authenticity, classification, access control, and retention (“Chapter 12, p. 330–338”)."
+          - "Validate metadata requirements using DAMA standard metadata fields for documents (“Chapter 9, p. 236–239”)."
+          - "Ensure semantic clarity using DAMA modelling guidance where textual definitions must support classification (“Chapter 10, p. 282–284”)."
+          - "Confirm stewardship and compliance roles according to DAMA governance (“Chapter 4, p. 86–89”)."
+        notes:
+          - "Use DCAM requirement scoring to prioritize high-risk content classes."
+
+  DCM-03:
+    title: "Approve classification, retention, metadata, and repository standards"
+    procedures:
+      - number: 3
+        name: "Define document and content standards and rules"
+        prerequisite: "Requires v1.0 framework"
+        deliverable: "Content Standards Manual"
+        recommendations:
+          - "Define standards for naming, versioning, metadata, classification, retention, and disposal using DAMA content guidelines (“Chapter 12, p. 330–338”)."
+          - "Validate alignment with semantic expectations using DAMA conceptual modelling (“Chapter 10, p. 282–284”)."
+          - "Ensure lifecycle alignment with controlled transitions (“Chapter 4.3, p. 92”)."
+          - "Confirm stewardship acceptance using DAMA governance roles (“Chapter 3.2, p. 55–57”)."
+        notes:
+          - "Align retention standards with GDPR minimization and legal purpose requirements when applicable."
+
+  DCM-04:
+    title: "Embed classification, metadata, and quality reviews into content handling routines"
+    procedures:
+      - number: 1
+        name: "Embed content governance checkpoints into workflows"
+        prerequisite: "Requires DCM-03 approved standards"
+        deliverable: "Updated workflow templates"
+        recommendations:
+          - "Embed checkpoints for creation, review, approval, and archival following DAMA lifecycle (“Chapter 12, p. 330–338”)."
+          - "Validate metadata fields such as version, owner, retention, and classification (“Chapter 9, p. 236–239”)."
+          - "Ensure quality requirements for document accuracy and completeness (“Chapter 11, p. 308–311”)."
+          - "Confirm stewardship involvement (“Chapter 4, p. 86–89”)."
+        notes:
+          - "Use DCAM workflow mapping to ensure governance consistency across teams."
+
+  DCM-05:
+    title: "Embed lifecycle rules, ethical safeguards, and repository routines into routines"
+    procedures:
+      - number: 5
+        name: "Track content governance adherence"
+        prerequisite: "Requires monitoring routines"
+        deliverable: "Content compliance register"
+        recommendations:
+          - "Track adherence to classification, versioning, retention, and quality rules following DAMA (“Chapter 12, p. 330–338”)."
+          - "Validate lifecycle transitions to detect premature deletions or missing archival (“Chapter 4.3, p. 92”)."
+          - "Confirm metadata accuracy and semantic integrity (“Chapters 9 and 10”)."
+          - "Record findings as governed artefacts (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM diagnostic indicators to prioritize remediation actions."
+
+  DCM-06:
+    title: "Automate classification, lifecycle, metadata, and quality validation"
+    procedures:
+      - number: 2
+        name: "Establish automated content validation rules"
+        prerequisite: "Requires validation criteria"
+        deliverable: "Automated content rule set"
+        recommendations:
+          - "Define rules for required metadata, version checks, retention clocks, and approval completeness based on DAMA (“Chapter 12, p. 330–338”)."
+          - "Capture rules in metadata using DAMA structure (“Chapter 9, p. 236–239”)."
+          - "Validate lifecycle appropriateness (“Chapter 4.3, p. 92”)."
+          - "Document the rule set following DAMA artefact guidance (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use CMMI automation readiness checks before enabling enforcement."
+
+  DCM-09:
+    title: "Continuously refine content governance and lifecycle using evidence"
+    procedures:
+      - number: 2
+        name: "Improve content standards based on insights"
+        prerequisite: "Requires trend analysis"
+        deliverable: "Updated content standards"
+        recommendations:
+          - "Adjust standards for classification depth, semantic rules, metadata completeness, or retention windows based on insights (“Chapter 12, p. 330–338”)."
+          - "Validate improvements against DAMA metadata definitions (“Chapter 9, p. 236–239”)."
+          - "Ensure alignment with lifecycle expectations (“Chapter 4.3, p. 92”)."
+          - "Confirm stewardship revalidation following DAMA (“Chapter 3.2, p. 55–57”)."
+        notes:
+          - "Use CMMI continuous improvement principles to structure refinement cycles."

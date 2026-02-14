@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.streamlit/
+data/results/
+data/users/
+git_tkn.txt
+*.sqlite

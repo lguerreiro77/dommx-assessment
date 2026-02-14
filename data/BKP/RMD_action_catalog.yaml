@@ -1,0 +1,384 @@
+domain:
+  id: 8
+  name: "Reference and Master Data (RMD)"
+
+action_catalog:
+
+  RMD-01:
+    title: "Define foundational master and reference data principles and scope"
+    procedures:
+      - number: 1
+        name: "Define master and reference data principles and scope boundaries"
+        prerequisite: "Requires identification of the enterprise master and reference domains"
+        deliverable: "Master and reference data principles document"
+        recommendations:
+          - "Define principles using DAMA guidance for authoritative and shared master entities “Chapter 6, p. 180–182”."
+          - "Clarify the distinction between master and reference data defined by DAMA “Chapter 6, p. 186–188”."
+          - "Align principles with governance expectations for stewardship, ownership, and custodianship “Chapter 3.2, p. 55–57”."
+          - "Validate lifecycle coverage, including creation, approval, distribution, and retirement “Chapter 4.3, p. 92”."
+          - "Document principles using DAMA artefact standards “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM capability scoping to identify master domains with the highest enterprise impact."
+
+      - number: 2
+        name: "Draft initial master and reference domain catalogue"
+        prerequisite: "Requires defined principles"
+        deliverable: "Draft domain catalogue v0.1"
+        recommendations:
+          - "Identify candidate master domains such as customer, supplier, product, and organization “Chapter 6, p. 182–186”."
+          - "Identify reference lists such as classifications, controlled vocabularies, and status values “Chapter 6, p. 186–188”."
+          - "Document metadata including owner, steward, system of record, and purpose “Chapter 9, p. 236–239”."
+          - "Validate catalogue entries across business domains."
+        notes:
+          - "Apply CMMI scoping to structure delivery waves."
+
+      - number: 3
+        name: "Identify preliminary master and reference data control points"
+        prerequisite: "Requires workflow mapping"
+        deliverable: "Initial control point list"
+        recommendations:
+          - "Identify lifecycle control points for creation, validation, enrichment, and publication “Chapter 6, p. 184–188”."
+          - "Attach quality checks following DAMA quality dimensions “Chapter 11, p. 308–311”."
+          - "Capture metadata such as lineage, version, and approval status “Chapter 9, p. 236–239”."
+          - "Confirm stewardship responsibilities for each control point “Chapter 4, p. 86–89”."
+        notes:
+          - "Use DCAM criticality mapping to prioritize high-impact points."
+
+      - number: 4
+        name: "Assign provisional master and reference data ownership"
+        prerequisite: "Requires a catalogue and a control list"
+        deliverable: "Ownership matrix"
+        recommendations:
+          - "Assign owners, stewards, and custodians according to DAMA governance roles “Chapter 4, p. 86–89”."
+          - "Clarify decision rights based on DAMA escalation guidance “Chapter 3.4, p. 60–61”."
+          - "Ensure lifecycle responsibilities include onboarding, updates, conflict resolution, and retirement “Chapter 4.3, p. 92”."
+          - "Record assignments following DAMA artefact documentation “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use IDGC behavioral suitability to select owners who can mediate between domains."
+
+      - number: 5
+        name: "Publish initial master and reference governance guidelines"
+        prerequisite: "Requires principles, catalogue, and ownership"
+        deliverable: "Master and reference governance onboarding brief"
+        recommendations:
+          - "Explain the purpose and enterprise relevance of master and reference data “Chapter 6, p. 180–188”."
+          - "Clarify responsibilities of owners, stewards, and custodians “Chapter 3.2, p. 55–57”."
+          - "Describe lifecycle checkpoints for creation, validation, publication, and archival “Chapter 4.3, p. 92”."
+          - "Publish guidelines using DAMA artefact structure “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use CMMI communication practices to support adoption across the business and technology domains."
+
+  RMD-02:
+    title: "Formalize master and reference stewardship and standards"
+    procedures:
+      - number: 1
+        name: "Consolidate master and reference data requirements"
+        prerequisite: "Requires RMD-01 to be complete"
+        deliverable: "Master and reference requirement register"
+        recommendations:
+          - "Consolidate requirements for accuracy, completeness, consistency, and uniqueness using DAMA quality dimensions “Chapter 11, p. 308–311”."
+          - "Capture business rules for sourcing, validation, and conflict resolution of master entities “Chapter 6, p. 184–186”."
+          - "Identify reference list requirements, including structure, stability, and approval conditions “Chapter 6, p. 186–188”."
+          - "Assign requirement ownership following governance roles “Chapter 3.2, p. 55–57”."
+        notes:
+          - "Use DCAM prioritization to rank requirements by enterprise impact."
+
+      - number: 2
+        name: "Produce a formal master and reference data management framework"
+        prerequisite: "Requires validated requirements"
+        deliverable: "Master and Reference Data Framework v1.0"
+        recommendations:
+          - "Structure lifecycle processes such as identification, modelling, sourcing, maintenance, and retirement following DAMA “Chapter 6, p. 180–188”."
+          - "Include governance roles, artefacts, decision rights, and escalation rules “Chapter 3.4, p. 60–61”."
+          - "Integrate data quality control activities “Chapter 11, p. 308–311”."
+          - "Document the framework using DAMA artefact formatting “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use CMMI framework verification practices to ensure complete coverage of lifecycle activities."
+
+      - number: 3
+        name: "Define master and reference standards and rules"
+        prerequisite: "Requires framework v1.0"
+        deliverable: "Master and Reference Standards Manual"
+        recommendations:
+          - "Define naming conventions, identifiers, keys, survivorship logic, and versioning rules consistent with DAMA “Chapter 6, p. 184–186”."
+          - "Define reference list structures, approval steps, and versioning requirements “Chapter 6, p. 186–188”."
+          - "Ensure metadata definitions are captured for every attribute “Chapter 9, p. 236–239”."
+          - "Include quality thresholds and validation conditions aligned with DAMA quality dimensions “Chapter 11, p. 308–311”."
+        notes:
+          - "Consider GDPR minimization principles when defining personal master attributes."
+
+      - number: 4
+        name: "Validate master and reference standards with business stakeholders"
+        prerequisite: "Requires standards draft"
+        deliverable: "Alignment record"
+        recommendations:
+          - "Confirm semantic alignment with business terminology following DAMA modelling guidance “Chapter 10, p. 282–284”."
+          - "Validate survivorship and sourcing rules against operational feasibility."
+          - "Ensure reference list structures reflect real business classification needs."
+          - "Capture feedback and version changes using DAMA artefact structure “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM alignment practices to balance global consistency and local flexibility."
+
+      - number: 5
+        name: "Approve and publish master and reference standards"
+        prerequisite: "Requires governance authority approval"
+        deliverable: "Master and reference standards approval pack"
+        recommendations:
+          - "Submit standards through formal decision bodies “Chapter 3.4, p. 60–61”."
+          - "Validate coverage for priority domains such as customer, product, or location “Chapter 6, p. 182–186”."
+          - "Publish to a governed repository with metadata for version, status, and applicability “Chapter 9, p. 236–239”."
+          - "Communicate standards using DAMA governance communication practices “Chapter 3.6, p. 64–66”."
+        notes:
+          - "Use CMMI readiness assessments before enforcing adoption."
+
+  RMD-03:
+    title: "Approve master and reference rules, controls, and responsibilities"
+    procedures:
+      - number: 1
+        name: "Establish the Master and Reference Data Council charter"
+        prerequisite: "Requires RMD-02 deliverables"
+        deliverable: "Approved charter"
+        recommendations:
+          - "Define authority, scope, and responsibilities of the council following DAMA governance principles “Chapter 3.4, p. 60–61”."
+          - "Align charter structure with enterprise governance layers “Figure 3.2, p. 53”."
+          - "Include responsibilities for approval of standards, escalations, and prioritization."
+          - "Document charter using DAMA artefact structure “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM governance mapping to integrate data quality, architecture, and compliance bodies."
+
+      - number: 2
+        name: "Assign master and reference governance roles"
+        prerequisite: "Requires role descriptions"
+        deliverable: "Governance role assignment"
+        recommendations:
+          - "Assign accountable owners, stewards, and custodians following DAMA definitions “Chapter 4, p. 86–89”."
+          - "Clarify who may request changes and who approves them “Chapter 3.4, p. 60–61”."
+          - "Ensure each master domain has a dedicated accountable owner."
+          - "Record assignments using DAMA artefact documentation “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use IDGC behavioral criteria to appoint stewards capable of cross-domain mediation."
+
+      - number: 3
+        name: "Implement master and reference decision forums"
+        prerequisite: "Requires charter approval"
+        deliverable: "Governance calendar and decision templates"
+        recommendations:
+          - "Include agenda items such as new domains, standard updates, and exception approvals."
+          - "Apply structured decision templates aligned with DAMA governance practices “Chapter 3.6, p. 64–66”."
+          - "Evaluate impacts across architecture, quality, security, and lifecycle."
+          - "Store decisions using DAMA artefact patterns “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use CMMI meeting discipline to ensure structured and auditable governance."
+
+      - number: 4
+        name: "Launch master and reference review cycles"
+        prerequisite: "Requires defined forums"
+        deliverable: "First review minutes"
+        recommendations:
+          - "Prioritize domains with the highest data quality and integration issues."
+          - "Review unresolved duplicates, conflicting classifications, and inconsistent identifiers “Chapter 11, p. 308–311”."
+          - "Decide on remediation paths through formal governance “Chapter 3.4, p. 60–61”."
+          - "Record review outcomes using DAMA artefact templates “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM assurance practices to link reviews to enterprise outcomes."
+
+      - number: 5
+        name: "Maintain master and reference governance operation"
+        prerequisite: "Requires a stable meeting cadence"
+        deliverable: "Governance activity log"
+        recommendations:
+          - "Maintain records of decisions, waivers, escalations, and open actions “Chapter 3.6, p. 64–66”."
+          - "Link log entries to affected domains and quality indicators."
+          - "Review patterns of recurring issues to refine standards."
+          - "Store logs following DAMA artefact structure “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use CMMI monitoring techniques to detect governance capacity issues."
+
+  RMD-04:
+    title: "Embed master and reference governance into workflows"
+    procedures:
+      - number: 1
+        name: "Embed governance checkpoints into workflows"
+        prerequisite: "Requires RMD-03 approved standards"
+        deliverable: "Updated workflow templates"
+        recommendations:
+          - "Position checkpoints where master or reference data are created or changed “Chapter 6, p. 184–188”."
+          - "Ensure workflow steps enforce naming, coding, and validation rules."
+          - "Escalate exceptions through formal governance channels “Chapter 3.4, p. 60–61”."
+          - "Document workflows using DAMA artefact conventions “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM workflow governance mapping to ensure consistent enforcement."
+
+      - number: 2
+        name: "Integrate master and reference criteria into system and pipeline design"
+        prerequisite: "Requires design standards"
+        deliverable: "Governed design templates"
+        recommendations:
+          - "Require systems to source master data exclusively from approved repositories “Chapter 6, p. 184–186”."
+          - "Reject or flag values that are inconsistent with reference lists."
+          - "Align with integration governance for ingestion and distribution “Chapter 8, p. 252–260”."
+          - "Document rules and templates using DAMA artefact guidance “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use CMMI design verification to require evidence of compliance."
+
+      - number: 3
+        name: "Update lifecycle documentation with master and reference integration"
+        prerequisite: "Requires workflow redesign"
+        deliverable: "Updated lifecycle documentation"
+        recommendations:
+          - "Represent lifecycle stages where master or reference values are used or changed to “Chapter 4.3, p. 92”."
+          - "Link lifecycle changes to updates in master and reference lists."
+          - "Align retention rules with business process lifecycle."
+          - "Publish documentation using DAMA artefact structure “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM lifecycle mapping to visualize dependencies."
+
+      - number: 4
+        name: "Apply master and reference checks at decision points"
+        prerequisite: "Requires governed workflows"
+        deliverable: "Evidence of governance controls"
+        recommendations:
+          - "Validate requests for new systems, flows, or models against master and reference standards."
+          - "Identify cases of duplicate local lists or nonstandard identifiers."
+          - "Ensure decisions follow DAMA escalation logic “Chapter 3.4, p. 60–61”."
+          - "Record outcomes using DAMA documentation practices “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use CMMI verification templates to embed compliance checks."
+
+      - number: 5
+        name: "Track adherence to master and reference governance"
+        prerequisite: "Requires monitoring routines"
+        deliverable: "Compliance register"
+        recommendations:
+          - "Track adherence to naming, coding, sourcing, and reference list usage."
+          - "Log exceptions and waivers with justification."
+          - "Validate remediation plans through governance bodies."
+          - "Store compliance records using DAMA artefact guidelines."
+        notes:
+          - "Use DCAM diagnostic indicators to prioritize remediation."
+
+  RMD-06:
+    title: "Automate master and reference validation and distribution"
+    procedures:
+      - number: 1
+        name: "Define master and reference monitoring indicators"
+        prerequisite: "Requires RMD-04 workflows"
+        deliverable: "Master and reference KPI set"
+        recommendations:
+          - "Define KPIs such as duplicate rate, missing mandatory values, and adoption coverage “Chapter 11, p. 308–311”."
+          - "Align indicators with metadata definitions “Chapter 9, p. 236–239”."
+          - "Include distribution performance and timeliness."
+          - "Assign KPI responsibility following DAMA governance roles “Chapter 4, p. 86–89”."
+        notes:
+          - "Use DCAM capability indicators to construct a maturity dashboard."
+
+      - number: 2
+        name: "Establish automated master and reference validation rules"
+        prerequisite: "Requires validation criteria"
+        deliverable: "Automated rule set"
+        recommendations:
+          - "Implement rules for uniqueness, valid codes, referential integrity, and survivorship “Chapter 11, p. 308–311”."
+          - "Map rules to metadata attributes “Chapter 9, p. 236–239”."
+          - "Route exceptions to stewards for review."
+          - "Document rules following DAMA artefact structure “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use CMMI automation readiness checks before rollout."
+
+      - number: 3
+        name: "Implement master and reference distribution and synchronization"
+        prerequisite: "Requires integration architecture"
+        deliverable: "Distribution design"
+        recommendations:
+          - "Use hub, publish–subscribe or controlled API distribution models “Chapter 8, p. 252–260”."
+          - "Ensure version and timestamp metadata accompany distributed values “Chapter 9, p. 236–239”."
+          - "Implement feedback channels for consumers to report inconsistencies."
+          - "Document distribution architecture using DAMA artefact formats “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM architectural capability guidance to select optimal distribution mechanisms."
+
+      - number: 4
+        name: "Enable automated alerts for master and reference issues"
+        prerequisite: "Requires monitoring and distribution"
+        deliverable: "Alert feed"
+        recommendations:
+          - "Create alerts for duplicates, invalid values, synchronization failures, and misuse of reference lists."
+          - "Route alerts to owners and stewards based on domain responsibility “Chapter 4, p. 86–89”."
+          - "Include contextual metadata for triage."
+          - "Record alert outcomes using DAMA documentation guidelines “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use CMMI incident-handling logic to define structured response paths."
+
+      - number: 5
+        name: "Maintain automated master and reference governance"
+        prerequisite: "Requires operational maturity"
+        deliverable: "Automation log"
+        recommendations:
+          - "Capture changes in rule logic, thresholds, and distribution mechanisms."
+          - "Validate ongoing alignment with standards and definitions “Chapter 6, p. 184–188”."
+          - "Extend automation to new domains progressively."
+          - "Store logs using DAMA artefact formats “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM capability evolution analysis to plan future automation improvements."
+
+  RMD-09:
+    title: "Optimize master and reference governance and institutionalize best practices"
+    procedures:
+      - number: 1
+        name: "Review master and reference performance trends"
+        prerequisite: "Requires RMD-06 KPI baseline"
+        deliverable: "Trend analysis"
+        recommendations:
+          - "Analyze data quality trends, including duplicates, conflicting classifications, and invalid references “Chapter 11, p. 308–311”."
+          - "Compare performance across domains to detect structural issues."
+          - "Review distribution and synchronization delays “Chapter 6, p. 184–188”."
+          - "Document analysis using DAMA artefact structure “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM capability scoring to benchmark maturity."
+
+      - number: 2
+        name: "Improve master and reference standards using insights"
+        prerequisite: "Requires trend analysis"
+        deliverable: "Updated standards"
+        recommendations:
+          - "Adjust definitions, survivorship rules, naming conventions, and code structures “Chapter 6, p. 186–188”."
+          - "Update metadata definitions to improve clarity “Chapter 9, p. 236–239”."
+          - "Amend domain boundaries where overlap or ambiguity exists."
+          - "Validate updates through governance forums “Chapter 3.4, p. 60–61”."
+        notes:
+          - "Use CMMI continuous improvement logic to release updates in controlled increments."
+
+      - number: 3
+        name: "Benchmark master and reference practices against external frameworks"
+        prerequisite: "Requires a maturity profile"
+        deliverable: "Benchmark evidence"
+        recommendations:
+          - "Compare practices with industry or regulatory models for shared data management."
+          - "Map external benchmarks to DAMA expectations for master and reference governance “Chapter 6, p. 180–188”."
+          - "Identify governance, quality, and architecture gaps."
+          - "Document findings using DAMA artefact patterns “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM benchmarking techniques to translate comparisons into capability targets."
+
+      - number: 4
+        name: "Enhance master and reference automation logic"
+        prerequisite: "Requires RMD-06 automation"
+        deliverable: "Updated automation set"
+        recommendations:
+          - "Extend validation and distribution logic to cover new failure modes and inconsistencies."
+          - "Ensure metadata and documentation updates accompany automation changes “Chapter 9, p. 236–239”."
+          - "Validate logic in controlled environments before deployment."
+          - "Seek approval for major updates through governance forums “Chapter 3.4, p. 60–61”."
+        notes:
+          - "Use CMMI automation maturity indicators to guide investment."
+
+      - number: 5
+        name: "Maintain a continuous master and reference improvement cycle"
+        prerequisite: "Requires an optimization cycle"
+        deliverable: "Master and reference improvement plan"
+        recommendations:
+          - "Maintain a backlog of improvements tied to KPI trends, issue logs, and business needs “Chapter 3.6, p. 64–66”."
+          - "Group improvements into short, medium, and long-term initiatives."
+          - "Align improvements with enterprise data governance roadmap “Chapter 3, p. 51–53”."
+          - "Track progress using DAMA artefact documentation “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM capability evolution mapping to steer long-term maturity gains."

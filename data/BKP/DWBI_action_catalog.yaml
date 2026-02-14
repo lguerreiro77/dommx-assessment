@@ -1,0 +1,122 @@
+domain:
+  id: 9
+  name: "Data Warehousing and Business Intelligence (DWBI)"
+
+action_catalog:
+
+  DWBI-01:
+    title: "Define business intelligence and warehousing vision, scope, and rules"
+    procedures:
+      - number: 1
+        name: "Define enterprise BI and analytics vision"
+        prerequisite: "Requires an enterprise data strategy"
+        deliverable: "BI and analytics vision statement"
+        recommendations:
+          - "Establish the purpose and role of BI within the enterprise following DAMA architecture alignment principles “Chapter 8, p. 252–260”."
+          - "Identify high-level analytics outcomes and decision needs across domains."
+          - "Align BI objectives with stewardship, quality, and metadata governance “Chapter 3.2, p. 55–57”."
+          - "Document the vision using DAMA artefact structure “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM value mapping to express BI vision in measurable capability terms."
+
+      - number: 2
+        name: "Define BI and warehousing business scope"
+        prerequisite: "Requires BI vision"
+        deliverable: "BI business scope map"
+        recommendations:
+          - "Identify primary analytical subjects such as sales, finance, operations, and customer data."
+          - "Map business questions to master and reference domains “Chapter 6, p. 182–188”."
+          - "Include quality thresholds needed for analytical reliability “Chapter 11, p. 308–311”."
+          - "Capture business scope using DAMA documentation practices “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use CMMI scoping practices to ensure feasible delivery increments."
+
+  DWBI-02:
+    title: "Assign stewardship roles for analytical governance and oversight"
+    procedures:
+      - number: 1
+        name: "Document BI architectural principles"
+        prerequisite: "Requires DW/BI scope"
+        deliverable: "BI architecture principles set"
+        recommendations:
+          - "Align with DAMA architecture principles for integration, reuse, and standardization “Chapter 8, p. 252–260”."
+          - "Define principles for sourcing, transformations, consolidation, and consumption layers."
+          - "Address stewardship and metadata alignment “Chapter 9, p. 236–239”."
+          - "Document principles using DAMA artefact formatting “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM architecture capability mapping to identify architectural gaps."
+
+  DWBI-03:
+    title: "Approve analytical, semantic, and metric governance standards"
+    procedures:
+      - number: 3
+        name: "Approve BI requirements and define analytical controls"
+        prerequisite: "Requires stakeholder review"
+        deliverable: "Approved requirement pack"
+        recommendations:
+          - "Approve quality and lineage controls aligned with DAMA best practices “Chapter 11, p. 308–311”."
+          - "Validate business rules and metric definitions."
+          - "Define responsibility allocation between owners, stewards, and custodians “Chapter 4, p. 86–89”."
+          - "Document approval outcomes using DAMA governance artefacts “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM control effectiveness criteria to classify control strength."
+
+  DWBI-04:
+    title: "Embed analytical governance and semantic logic into BI workflows"
+    procedures:
+      - number: 1
+        name: "Integrate BI governance checkpoints into the analytical lifecycle"
+        prerequisite: "Requires approved BI requirements"
+        deliverable: "Updated analytical lifecycle documentation"
+        recommendations:
+          - "Map ingestion, preparation, modelling, and reporting stages to governance checkpoints."
+          - "Ensure lineage capture at each stage following DAMA metadata practices “Chapter 9, p. 236–239”."
+          - "Define responsibilities for validation, approval, and exception management “Chapter 4, p. 86–89”."
+          - "Document lifecycle diagrams using DAMA artefact principles “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use CMMI lifecycle integration practices to ensure consistency across teams."
+
+  DWBI-05:
+    title: "Implement governed cataloguing, versioning, and consumption monitoring"
+    procedures:
+      - number: 5
+        name: "Maintain BI operational governance"
+        prerequisite: "Requires BI operation in steady state"
+        deliverable: "BI operational governance log"
+        recommendations:
+          - "Monitor BI usage, quality issues, and metadata gaps."
+          - "Validate adherence to publication and certification processes."
+          - "Track recurrent failures to update standards or processes."
+          - "Store logs using DAMA artefact structure “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use DCAM operating model diagnostics to identify weak governance areas."
+
+  DWBI-06:
+    title: "Automate semantic validation, lineage tracking, and quality monitoring"
+    procedures:
+      - number: 2
+        name: "Establish automated BI validation rules"
+        prerequisite: "Requires a KPI set"
+        deliverable: "Automated BI rule set"
+        recommendations:
+          - "Implement automated checks for conformance to master data, reference lists, and dimensional structures “Chapter 6, p. 182–188”."
+          - "Validate metric definitions against governed logic."
+          - "Include lineage validation checkpoints."
+          - "Document rules using DAMA artefact practices “Chapter 3 Appendix, p. 69–70”."
+        notes:
+          - "Use the CMMI automation readiness assessment before deployment."
+
+  DWBI-09:
+    title: "Continuously improve analytical and semantic governance using evidence"
+    procedures:
+      - number: 2
+        name: "Improve BI standards and lifecycle guidance"
+        prerequisite: "Requires governance insights"
+        deliverable: "Updated BI standards"
+        recommendations:
+          - "Update modelling rules, metric definitions, and metadata requirements “Chapter 10, p. 282–289”."
+          - "Clarify source-of-truth and lineage documentation expectations “Chapter 9, p. 236–239”."
+          - "Ensure consistency across dimensions and conformed attributes."
+          - "Validate updates through governance forums “Chapter 3.4, p. 60–61”."
+        notes:
+          - "Use CMMI continuous improvement to manage standard updates."
