@@ -1,87 +1,66 @@
 import streamlit as st
-from storage.project_storage import (
-    get_projects,
-    create_project,
-    update_project,
-    delete_project
-)
+from storage.project_storage import get_projects, create_project
 
 
-@st.dialog("Manage Projects", width="medium")
-def render_project_selection():
-    user = st.session_state._temp_user
-    user_id = user["email_hash"]
+def render_projects_modal():
 
-    all_projects = get_all_projects()
-    user_projects = get_projects_for_user(user_id) or []
-    active_projects = [p for p in all_projects if p.get("is_active", True)]
-    project_map = {p["project_id"]: p["name"] for p in active_projects}
+    if "_flash" in st.session_state:
+        level = st.session_state._flash.get("level", "info")
+        msg = st.session_state._flash.get("msg", "")
+        if level == "success":
+            st.success(msg)
+        elif level == "error":
+            st.error(msg)
+        else:
+            st.info(msg)
+        del st.session_state._flash
 
-    left, center, right = st.columns([1, 3, 1])
+    projects = get_projects()
 
-    with center:
-        st.markdown(
-            f"""
-            <h3 style='text-align:center; margin-bottom:10px;'>
-                {APP_TITLE}
-            </h3>
-            """,
-            unsafe_allow_html=True,
-        )
+    # ---------------- CREATE ----------------
+    st.markdown("### Create New Project")
 
-        st.subheader("Select Project")
+    new_name = st.text_input("Project Name", key="new_project_name")
+    open_flag = st.checkbox(
+        "Allow open access (users can login without association)",
+        key="new_project_open"
+    )
 
-        if not active_projects:
-            st.warning("No active projects available.")
-            if st.button("Back to Login", use_container_width=True):
-                st.session_state.app_mode = "login"
-                st.session_state.pop("_temp_user", None)
-                st.rerun()
-            return
+    if st.button("Create", key="create_project_btn"):
+        if new_name:
+            existing = [p["name"].strip().lower() for p in projects]
 
-        selected_project = st.selectbox(
-            "Project",
-            options=list(project_map.keys()),
-            format_func=lambda x: project_map.get(x, x),
-            key="select_project_id",
-        )
+            if new_name.strip().lower() in existing:
+                st.session_state._flash = {
+                    "msg": "Project name already exists.",
+                    "level": "error"
+                }
+            else:
+                create_project(
+                    new_name.strip(),
+                    st.session_state.user_id,
+                    open_flag
+                )
+                st.session_state._flash = {
+                    "msg": "Project created successfully.",
+                    "level": "success"
+                }
 
-        selected_project_obj = next(
-            (p for p in active_projects if p["project_id"] == selected_project),
-            {}
-        )
+            st.session_state.open_dialog = "projects"
+            st.rerun()
 
-        allow_open = selected_project_obj.get("allow_open_access", False)
-        has_access = selected_project in user_projects
+    st.divider()
 
-        col_enter, col_request = st.columns(2)
+    if st.button("👥 Associate Users", use_container_width=True, key="btn_associate_users"):
+        st.session_state.open_dialog = "associate"
+        st.rerun()
 
-        with col_enter:
-            if st.button(
-                "Enter",
-                use_container_width=True,
-                disabled=not (has_access or allow_open),
-            ):
-                st.session_state.user_id = user_id
-                st.session_state.active_project = selected_project
-                st.session_state.is_admin = (user.get("email") in ADMINS)
-                st.session_state.app_mode = "app"
-                st.session_state.pop("_temp_user", None)
-                st.rerun()
+    # ---------------- LIST ----------------
+    st.markdown("### Existing Projects")
 
-        with col_request:
-            if not has_access and not allow_open:
-                if st.button("Request Access", use_container_width=True):
-                    admin_email = get_env("SMTP_USER")
-                    if admin_email:
-                        send_email(
-                            to=admin_email,
-                            subject="Project Access Request",
-                            body=f"""User: {user.get('email', '')}
-Requested Project: {project_map.get(selected_project, selected_project)}
-""",
-                        )
-                        st.session_state.app_mode = "login"
-                        st.session_state.pop("_temp_user", None)
-                        st.rerun()
-            
+    if not projects:
+        st.info("No projects available.")
+        return
+
+    for p in projects:
+        st.markdown(f"• {p.get('name')}")

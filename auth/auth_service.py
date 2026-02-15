@@ -299,12 +299,22 @@ def render_project_selection():
             key="select_project_id",
         )
 
+        selected_project_obj = next(
+            (p for p in active_projects if p["project_id"] == selected_project),
+            {}
+        )
+
+        allow_open = selected_project_obj.get("allow_open_access", False)
         has_access = selected_project in user_projects
 
         col_enter, col_request = st.columns(2)
 
         with col_enter:
-            if st.button("Enter", use_container_width=True, disabled=not has_access):
+            if st.button(
+                "Enter",
+                use_container_width=True,
+                disabled=not (has_access or allow_open),
+            ):
                 st.session_state.user_id = user_id
                 st.session_state.active_project = selected_project
                 st.session_state.is_admin = (user.get("email") in ADMINS)
@@ -313,7 +323,7 @@ def render_project_selection():
                 st.rerun()
 
         with col_request:
-            if not has_access:
+            if not has_access and not allow_open:
                 if st.button("Request Access", use_container_width=True):
                     admin_email = get_env("SMTP_USER")
                     if admin_email:
