@@ -275,16 +275,30 @@ def render_project_selection():
     all_projects = get_all_projects()
     user_projects = get_projects_for_user(user_id) or []
 
-    active_projects = [
-        p for p in all_projects
-        if p.get("is_active", True)
-    ]
+    # ---- tratar is_active corretamente ----
+    active_projects = []
+    for p in all_projects:
+        raw_active = p.get("is_active", True)
 
+        if isinstance(raw_active, bool):
+            active_value = raw_active
+        else:
+            active_value = str(raw_active).strip().lower() == "true"
+
+        if active_value:
+            active_projects.append(p)
+
+    # ---- filtrar associação / open access ----
     filtered_projects = []
 
     for p in active_projects:
         is_associated = p["project_id"] in user_projects
-        allow_open = str(p.get("allow_open_access", "")).lower() == "true"
+
+        raw_open = p.get("allow_open_access", False)
+        if isinstance(raw_open, bool):
+            allow_open = raw_open
+        else:
+            allow_open = str(raw_open).strip().lower() == "true"
 
         if is_associated or allow_open:
             filtered_projects.append(p)
@@ -328,7 +342,12 @@ def render_project_selection():
             {}
         )
 
-        allow_open = str(selected_project_obj.get("allow_open_access", "")).lower() == "true"
+        raw_open = selected_project_obj.get("allow_open_access", False)
+        if isinstance(raw_open, bool):
+            allow_open = raw_open
+        else:
+            allow_open = str(raw_open).strip().lower() == "true"
+
         has_access = selected_project in user_projects
 
         col_enter, col_request = st.columns(2)
@@ -361,3 +380,4 @@ Requested Project: {project_map.get(selected_project, selected_project)}
                     st.session_state.app_mode = "login"
                     st.session_state.pop("_temp_user", None)
                     st.rerun()
+

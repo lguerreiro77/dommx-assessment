@@ -35,16 +35,23 @@ def get_projects_for_user(user_id):
 def associate_users_projects(user_ids, project_ids, created_by):
 
     sheet = get_sheet("usersprojects")
+    existing = sheet.get_all_records()
+
+    existing_pairs = {
+        (row["user_id"], row["project_id"])
+        for row in existing
+    }
+
     timestamp = datetime.utcnow().isoformat()
+    rows_to_add = []
 
-    rows = [
-        [u, p, timestamp, created_by]
-        for u in user_ids
-        for p in project_ids
-    ]
+    for u in user_ids:
+        for p in project_ids:
+            if (u, p) not in existing_pairs:
+                rows_to_add.append([u, p, timestamp, created_by])
 
-    if rows:
-        sheet.append_rows(rows)
+    if rows_to_add:
+        sheet.append_rows(rows_to_add)
 
 
 

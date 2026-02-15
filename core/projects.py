@@ -51,8 +51,11 @@ def render_projects_modal():
                     "level": "success"
                 }
 
-            st.session_state.open_dialog = "projects"
-            st.rerun()
+            st.success(st.session_state._flash["msg"])
+            del st.session_state._flash
+            
+            projects = get_projects()
+
 
     st.divider()
 
@@ -102,7 +105,9 @@ def render_projects_modal():
                         "msg": "Project updated successfully.",
                         "level": "success"
                     }
-                    st.rerun()
+                    st.success("Project updated successfully.")
+                    projects = get_projects()
+
 
             with col2:
                 if st.button("Delete", key=f"delete_{p.get('project_id')}"):
@@ -111,4 +116,5 @@ def render_projects_modal():
                         "msg": "Project deleted.",
                         "level": "success"
                     }                    
-                    st.rerun()
+                    st.success("Project deleted.")
+                    projects = get_projects()
