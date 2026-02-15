@@ -6,3 +6,7 @@ python-dotenv
 PyYAML
 bcrypt
 cryptography
+gspread
+google-auth
+pycountry
+phonenumbers

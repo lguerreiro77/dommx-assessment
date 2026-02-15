@@ -15,3 +15,6 @@ def init_session():
     for k, v in defaults.items():
         if k not in st.session_state:
             st.session_state[k] = v
+            
+    if "app_mode" not in st.session_state:
+        st.session_state.app_mode = "login"

@@ -1,18 +1,17 @@
 import streamlit as st
 from core.state import init_session
-from auth.auth_service import require_login
+from auth.auth_service import render_auth
 from core.renderer import render_app
 from core.config import APP_TITLE
-from core.welcome import render_welcome
 
-st.set_page_config(page_title=APP_TITLE, layout="wide")
-st.title(APP_TITLE)
+st.set_page_config(page_title=APP_TITLE, layout="centered")
 
 init_session()
-require_login()
 
-if not st.session_state.get("intro_seen", False):
-    render_welcome()
-    st.stop()
-
-render_app()
+# Se estiver em modo autenticação, NÃO mostrar título grande
+if st.session_state.app_mode in ["login", "register", "select_project"]:
+    render_auth()
+else:
+    # Só mostra título grande após login
+    st.title(APP_TITLE)
+    render_app()

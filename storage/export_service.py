@@ -1,41 +1,127 @@
+import io
 import os
 import json
+import yaml
 import pandas as pd
-from core.config import BASE_DIR
-from storage.user_storage import load_user
 
-RESULTS_DIR = os.path.join(BASE_DIR, "data", "results")
-EXPORT_FILE = os.path.join(BASE_DIR, "data", "results_final.xlsx")
+from core.config import BASE_DIR
+from storage.google_sheets import get_sheet
+from auth.crypto_service import decrypt_text
+
+
+FILESYSTEM_SETUP_PATH = os.path.join(BASE_DIR, "filesystem_setup.yaml")
+
+
+def _ci_pick_child(dir_path: str, target_name: str) -> str:
+    if not os.path.isdir(dir_path):
+        return os.path.join(dir_path, target_name)
+    for name in os.listdir(dir_path):
+        if name.lower() == target_name.lower():
+            return os.path.join(dir_path, name)
+    return os.path.join(dir_path, target_name)
+
+
+def _load_yaml(path: str) -> dict:
+    with open(path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f) or {}
+
+
+def _load_context():
+    fs = _load_yaml(FILESYSTEM_SETUP_PATH)
+    flow_path = os.path.join(BASE_DIR, fs["orchestrator_config"]["main_flow"])
+    orch_path = os.path.join(BASE_DIR, fs["orchestrator_config"]["main_orchestration"])
+
+    flow = _load_yaml(flow_path)
+    orch = _load_yaml(orch_path)
+
+    lang = orch.get("language", "Default")
+
+    domains_root = os.path.join(BASE_DIR, "data", "domains")
+    language_root = _ci_pick_child(domains_root, "Language")
+    lang_folder = _ci_pick_child(language_root, lang)
+
+    domain_names = {}
+    domain_questions = {}
+
+    for d in flow.get("Domain_flow", []):
+        domain_id = d.get("domain_id")
+        domain_name = d.get("name", "")
+        decision_file = d.get("files", {}).get("decision_tree", "")
+
+        if not domain_id or not decision_file:
+            continue
+
+        domain_names[str(domain_id)] = domain_name
+
+        tree_path = _ci_pick_child(lang_folder, decision_file)
+        tree = _load_yaml(tree_path)
+        domain_questions[str(domain_id)] = tree.get("questions", {}) or {}
+
+    # deixa questions case-insensitive como o renderer
+    for dom_id in list(domain_questions.keys()):
+        q = domain_questions[dom_id]
+        domain_questions[dom_id] = {str(k).lower(): v for k, v in q.items()}
+
+    return domain_names, domain_questions
 
 
 def export_all_to_excel():
+    domain_names, domain_questions = _load_context()
 
-    rows = []
+    results_ws = get_sheet("results")
+    rows = results_ws.get_all_records()
 
-    for file in os.listdir(RESULTS_DIR):
+    export_rows = []
 
-        if not file.endswith(".json"):
+    for r in rows:
+        user_id = r.get("user_id", "")
+        enc = r.get("answers_json_encrypted") or ""
+        if not enc:
             continue
 
-        user_id = file.replace(".json", "")
-        path = os.path.join(RESULTS_DIR, file)
+        payload = json.loads(decrypt_text(enc))
+        answers = payload.get("answers", {}) if isinstance(payload, dict) else {}
 
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        for q_id, score in answers.items():
+            # q_id vem como "Q1" no seu renderer atual
+            q_key = str(q_id).lower()
 
-        user = load_user(user_id)
-        email = user.get("email") if user else ""
+            # tenta achar domínio pelo prefixo no question plan não existe, então exporta com domínio corrente vazio
+            # melhor: colocar domain no key no futuro, mas aqui vamos mapear pelo arquivo carregado (procura em todos)
+            found_dom = None
+            found_q = None
 
-        row = {
-            "user_id": user_id,
-            "email": email,
-            **data.get("answers", {})
-        }
+            for dom_id, qdict in domain_questions.items():
+                if q_key in qdict:
+                    found_dom = dom_id
+                    found_q = qdict[q_key]
+                    break
 
-        rows.append(row)
+            domain_name = domain_names.get(found_dom, "") if found_dom else ""
+            question_text = found_q.get("text", "") if found_q else ""
 
-    if rows:
-        df = pd.DataFrame(rows)
-        df.to_excel(EXPORT_FILE, index=False)
+            MATURITY_LABELS = {
+                    0: "Initial",
+                    1: "Ad-hoc",
+                    2: "Developing",
+                    3: "Defined",
+                    4: "Managed",
+                    5: "Optimized"
+                }
 
-    return EXPORT_FILE
+            label = MATURITY_LABELS.get(int(score), "")
+
+            export_rows.append({
+                "Id_User": user_id,
+                "Domain": domain_name,
+                "Question": f"{q_id}: {question_text}" if question_text else str(q_id),
+                "Answer": score,
+                "Result": label
+            })
+
+    df = pd.DataFrame(export_rows, columns=["Id_User", "Domain", "Question", "Answer", "Result"])
+
+    output = io.BytesIO()
+    df.to_excel(output, index=False)
+    output.seek(0)
+    return output

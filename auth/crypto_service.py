@@ -1,21 +1,54 @@
 import os
 from cryptography.fernet import Fernet
-from core.config import BASE_DIR
+from dotenv import load_dotenv
 
-KEY_PATH = os.path.join(BASE_DIR, "data/general/secret.key")
+# Carrega .env no ambiente local
+load_dotenv()
 
-if not os.path.exists(KEY_PATH):
-    os.makedirs(os.path.dirname(KEY_PATH), exist_ok=True)
-    with open(KEY_PATH, "wb") as f:
-        f.write(Fernet.generate_key())
+try:
+    import streamlit as st
+except Exception:
+    st = None
 
-with open(KEY_PATH, "rb") as f:
-    SECRET_KEY = f.read()
 
-cipher = Fernet(SECRET_KEY)
+def _get_fernet_key() -> bytes:
+    """
+    Priority:
+      1) Streamlit Cloud Secrets
+      2) .env (local)
+    """
+    key = None
 
-def encrypt(data: str) -> bytes:
-    return cipher.encrypt(data.encode())
+    # Streamlit Cloud
+    if st is not None:
+        try:
+            key = st.secrets.get("FERNET_KEY", None)
+        except Exception:
+            key = None
 
-def decrypt(blob: bytes) -> str:
-    return cipher.decrypt(blob).decode()
+    # Local .env
+    if not key:
+        key = os.getenv("FERNET_KEY")
+
+    if not key:
+        raise RuntimeError("FERNET_KEY not found in Streamlit Secrets or environment variables.")
+
+    if isinstance(key, bytes):
+        return key
+
+    return key.encode("utf-8")
+
+
+_cipher = Fernet(_get_fernet_key())
+
+
+def encrypt_text(data: str) -> str:
+    if data is None:
+        data = ""
+    return _cipher.encrypt(str(data).encode()).decode()
+
+
+def decrypt_text(token: str) -> str:
+    if not token:
+        return ""
+    return _cipher.decrypt(token.encode()).decode()

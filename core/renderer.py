@@ -6,7 +6,9 @@ from core.welcome import render_welcome
 import yaml
 import os
 import json
-
+from storage.result_storage import load_results
+from core.projects import render_projects_modal
+from core.user_project_modal import render_user_project_modal
 
 def safe_load(path):
     try:
@@ -20,8 +22,42 @@ def render_app():
 
     try:
         
+        if not st.session_state.get("user_id"):
+            st.stop()
+        
+        # -------------------------
+        # MODAL CONTROLLER
+        # -------------------------
+        
+        dialog = st.session_state.pop("open_dialog", None)
+
+        if dialog == "projects":            
+            render_projects_modal()
+
+        elif dialog == "associate":            
+            render_user_project_modal()
+
+
+        # -------------------------
+        # LOAD SAVED SESSION (APENAS UMA VEZ)
+        # -------------------------
+        if not st.session_state.get("loaded_from_storage", False):
+            saved = load_results(st.session_state.user_id)
+            if saved:
+                st.session_state.answers = saved.get("answers", {})
+                st.session_state.dom_idx = saved.get("dom_idx", 0)
+                st.session_state.q_idx = saved.get("q_idx", 0)
+                st.session_state.last_saved_snapshot = dict(st.session_state.answers)
+
+            st.session_state.loaded_from_storage = True
+
+
+        # -------------------------
+        # INTRO SCREEN
+        # -------------------------
         if not st.session_state.get("intro_seen", False):
-           render_welcome()
+            render_welcome()
+            return
 
         # -------------------------------------------------
         # LOAD CORE FILES
@@ -87,13 +123,66 @@ def render_app():
         with col_title:
             st.header(dom_meta["name"])
 
+        from storage.google_sheets import get_sheet
+
         with col_menu:
-            if st.session_state.get("is_admin"):
-                with st.popover("⋮"):
+
+            with st.popover("⋮"):
+
+                st.markdown("### Menu")
+
+                # ---------------------
+                # LOG OFF (todos)
+                # ---------------------
+                if st.button("🚪 Log off", key="menu_logoff", use_container_width=True):
+                    keys_to_clear = [
+                        "user_id",
+                        "is_admin",
+                        "answers",
+                        "last_saved_snapshot",
+                        "dom_idx",
+                        "q_idx",
+                        "intro_seen",
+                        "loaded_from_storage",
+                        "show_projects"
+                    ]
+                    for k in keys_to_clear:
+                        if k in st.session_state:
+                            del st.session_state[k]
+                    st.rerun()
+
+                # ---------------------
+                # ADMIN
+                # ---------------------
+                if st.session_state.get("is_admin"):
+
+                    st.markdown("---")
                     st.markdown("### Admin")
-                    if st.button("📊 Export All Results", use_container_width=True):
-                        file_path = export_all_to_excel()
-                        st.success("Export completed.")
+                    
+                    if st.button("🗂 Manage Projects"):
+                        render_projects_modal()
+                    
+                    #if st.button("🗂 Manage Projects", key="menu_projects"):
+                    #    st.session_state.active_modal = "projects"
+                    #    st.rerun()
+
+                    can_export = bool(st.session_state.get("last_saved_snapshot"))
+
+                    if can_export:
+                        excel_data = export_all_to_excel()
+                    else:
+                        excel_data = b""
+
+                    st.download_button(
+                        label="📊 Export All Results",
+                        data=excel_data,
+                        file_name="DOMMx_Results.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                        use_container_width=True,
+                        disabled=not can_export,
+                        key="menu_export"
+                    )
+
 
         st.markdown("<br>", unsafe_allow_html=True)
 
@@ -127,7 +216,26 @@ def render_app():
 
         current_answer = st.session_state.answers.get(q_id)
 
-        cols = st.columns(6)
+        # CSS fixo para todos os botões
+        st.markdown("""
+        <style>
+        div[data-testid="stButton"] > button {
+            height: 60px !important;
+            width: 100% !important;
+            padding: 8px 6px !important;
+
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+
+            line-height: 1.1 !important;
+            white-space: normal !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        cols = st.columns(6, gap="small")
 
         for i, col in enumerate(cols):
             emoji, label, color = LIKERT[i]
@@ -135,32 +243,30 @@ def render_app():
 
             with col:
 
+                # Estilo do selecionado (SEM usar primary)
                 if selected:
-                    st.markdown(
-                        f"""
-                        <style>
-                        div[data-testid="stButton"] > button[kind="secondary"][key="{q_id}_{i}"] {{
-                            background: {color} !important;
-                            color: white !important;
-                            border: 1px solid {color} !important;
-                        }}
-                        </style>
-                        """,
-                        unsafe_allow_html=True,
-                    )
+                    st.markdown(f"""
+                    <style>
+                    button[key="likert_{q_id}_{i}"] {{
+                        background: {color} !important;
+                        color: white !important;
+                        border: 1px solid {color} !important;
+                        transform: translateY(2px) !important;
+                        box-shadow: inset 0 2px 6px rgba(0,0,0,0.25) !important;
+                    }}
+                    </style>
+                    """, unsafe_allow_html=True)
 
-                clicked = st.button(
+                if st.button(
                     f"{emoji}\n{label}",
-                    key=f"{q_id}_{i}",
+                    key=f"likert_{q_id}_{i}",
                     use_container_width=True,
-                    type="secondary",
-                )
-
-                if clicked:
+                    type="secondary",   # SEMPRE secondary
+                ):
                     st.session_state.answers[q_id] = i
                     st.rerun()
 
-        st.markdown("<br>", unsafe_allow_html=True)
+
 
         # -------------------------------------------------
         # ACTION BLOCK (EXATAMENTE COMO ORIGINAL)
@@ -289,7 +395,8 @@ def render_app():
             ):
                 st.session_state.q_idx += 1
                 st.rerun()
-
+                
+                            
     except Exception as e:
         st.error(f"Erro no renderer: {e}")
         st.exception(e)
