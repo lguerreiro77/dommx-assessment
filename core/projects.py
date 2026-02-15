@@ -1,5 +1,10 @@
 import streamlit as st
-from storage.project_storage import get_projects, create_project
+from storage.project_storage import (
+    get_projects,
+    create_project,
+    update_project,
+    delete_project,
+)
 
 
 def render_projects_modal():
@@ -63,4 +68,49 @@ def render_projects_modal():
         return
 
     for p in projects:
-        st.markdown(f"• {p.get('name')}")
+        with st.expander(f"{p.get('name')}"):
+
+            new_project_name = st.text_input(
+                "Edit Name",
+                value=p.get("name"),
+                key=f"edit_name_{p.get('project_id')}"
+            )
+
+            is_active = st.checkbox(
+                "Active",
+                value=p.get("is_active", True),
+                key=f"active_{p.get('project_id')}"
+            )
+
+            allow_open = st.checkbox(
+                "Allow open access",
+                value=p.get("allow_open_access", False),
+                key=f"open_{p.get('project_id')}"
+            )
+
+            col1, col2 = st.columns(2)
+
+            with col1:
+                if st.button("Update", key=f"update_{p.get('project_id')}"):
+                    update_project(
+                        p.get("project_id"),
+                        new_project_name.strip(),
+                        is_active,
+                        allow_open
+                    )
+                    st.session_state._flash = {
+                        "msg": "Project updated successfully.",
+                        "level": "success"
+                    }
+                    st.session_state.open_dialog = "projects"
+                    st.rerun()
+
+            with col2:
+                if st.button("Delete", key=f"delete_{p.get('project_id')}"):
+                    delete_project(p.get("project_id"))
+                    st.session_state._flash = {
+                        "msg": "Project deleted.",
+                        "level": "success"
+                    }
+                    st.session_state.open_dialog = "projects"
+                    st.rerun()

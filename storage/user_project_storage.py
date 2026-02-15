@@ -6,7 +6,7 @@ from storage.google_sheets import get_sheet
 # -------------------------
 # GET ALL PROJECTS
 # -------------------------
-@st.cache_data(ttl=60)
+@st.cache_data(ttl=60, show_spinner=False)
 def get_all_projects():
     sheet = get_sheet("projects")
     return sheet.get_all_records()
@@ -15,7 +15,7 @@ def get_all_projects():
 # -------------------------
 # GET PROJECTS FOR USER
 # -------------------------
-@st.cache_data(ttl=30)
+@st.cache_data(ttl=30, show_spinner=False)
 def get_projects_for_user(user_id):
     sheet = get_sheet("usersprojects")
     rows = sheet.get_all_records()

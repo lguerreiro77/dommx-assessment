@@ -243,6 +243,13 @@ def render_register():
                         city=city.strip(),
                         consent=True,
                     )
+                    admin_email = get_env("SMTP_USER")
+                    if admin_email:
+                        send_email(
+                            to=admin_email,
+                            subject="New User Registration",
+                            body=f"New user created: {email.strip()}"
+                        )
 
                     if not created:
                         error_box.error("User already exists.")
@@ -268,7 +275,13 @@ def render_project_selection():
     all_projects = get_all_projects()
     user_projects = get_projects_for_user(user_id) or []
     active_projects = [p for p in all_projects if p.get("is_active", True)]
-    project_map = {p["project_id"]: p["name"] for p in active_projects}
+
+    filtered_projects = [
+        p for p in active_projects
+        if p["project_id"] in user_projects or p.get("allow_open_access", False)
+    ]
+
+    project_map = {p["project_id"]: p["name"] for p in filtered_projects}
 
     left, center, right = st.columns([1, 3, 1])
 
