@@ -267,7 +267,6 @@ def render_project_selection():
 
     all_projects = get_all_projects()
     user_projects = get_projects_for_user(user_id) or []
-
     active_projects = [p for p in all_projects if p.get("is_active", True)]
     project_map = {p["project_id"]: p["name"] for p in active_projects}
 
@@ -282,6 +281,7 @@ def render_project_selection():
             """,
             unsafe_allow_html=True,
         )
+
         st.subheader("Select Project")
 
         if not active_projects:
@@ -299,29 +299,6 @@ def render_project_selection():
             key="select_project_id",
         )
 
-        # If user has NO project associations, they must request access (per spec)
-        if len(user_projects) == 0:
-            st.info("You don't have a project assigned yet. Request access from the admin.")
-
-            if st.button("Request Access", use_container_width=True):
-                admin_email = get_env("SMTP_USER")
-                if not admin_email:
-                    st.error("SMTP_USER is not configured.")
-                else:
-                    send_email(
-                        to=admin_email,
-                        subject="Project Access Request",
-                        body=f"""User: {user.get('email', '')}
-Requested Project: {project_map.get(selected_project, selected_project)}
-""",
-                    )
-                    _flash_set("Access request sent.", "success")
-                    st.session_state.app_mode = "login"
-                    st.session_state.pop("_temp_user", None)
-                    st.rerun()
-            return
-
-        # User has at least one association
         has_access = selected_project in user_projects
 
         col_enter, col_request = st.columns(2)
@@ -331,7 +308,6 @@ Requested Project: {project_map.get(selected_project, selected_project)}
                 st.session_state.user_id = user_id
                 st.session_state.active_project = selected_project
                 st.session_state.is_admin = (user.get("email") in ADMINS)
-
                 st.session_state.app_mode = "app"
                 st.session_state.pop("_temp_user", None)
                 st.rerun()
@@ -340,9 +316,7 @@ Requested Project: {project_map.get(selected_project, selected_project)}
             if not has_access:
                 if st.button("Request Access", use_container_width=True):
                     admin_email = get_env("SMTP_USER")
-                    if not admin_email:
-                        st.error("SMTP_USER is not configured.")
-                    else:
+                    if admin_email:
                         send_email(
                             to=admin_email,
                             subject="Project Access Request",
@@ -350,7 +324,6 @@ Requested Project: {project_map.get(selected_project, selected_project)}
 Requested Project: {project_map.get(selected_project, selected_project)}
 """,
                         )
-                        _flash_set("Access request sent.", "success")
                         st.session_state.app_mode = "login"
                         st.session_state.pop("_temp_user", None)
                         st.rerun()

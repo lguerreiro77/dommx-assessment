@@ -8,65 +8,80 @@ from storage.project_storage import (
 
 
 @st.dialog("Manage Projects", width="medium")
-def render_projects_modal():
+def render_project_selection():
+    user = st.session_state._temp_user
+    user_id = user["email_hash"]
 
-    projects = get_projects()
+    all_projects = get_all_projects()
+    user_projects = get_projects_for_user(user_id) or []
+    active_projects = [p for p in all_projects if p.get("is_active", True)]
+    project_map = {p["project_id"]: p["name"] for p in active_projects}
 
-    # ---------------- CREATE ----------------
-    st.markdown("### Create New Project")
+    left, center, right = st.columns([1, 3, 1])
 
-    new_name = st.text_input("Project Name", key="new_project_name")
+    with center:
+        st.markdown(
+            f"""
+            <h3 style='text-align:center; margin-bottom:10px;'>
+                {APP_TITLE}
+            </h3>
+            """,
+            unsafe_allow_html=True,
+        )
 
-    if st.button("Create", key="create_project_btn"):
-        if new_name:
-            create_project(new_name, st.session_state.user_id)
-            st.success("Project created successfully.")
-            st.rerun()
+        st.subheader("Select Project")
 
-    st.divider()
+        if not active_projects:
+            st.warning("No active projects available.")
+            if st.button("Back to Login", use_container_width=True):
+                st.session_state.app_mode = "login"
+                st.session_state.pop("_temp_user", None)
+                st.rerun()
+            return
 
-    if st.button("👥 Associate Users", use_container_width=True, key="btn_associate_users"):
-        st.session_state.open_dialog = "associate"
-        st.rerun()
+        selected_project = st.selectbox(
+            "Project",
+            options=list(project_map.keys()),
+            format_func=lambda x: project_map.get(x, x),
+            key="select_project_id",
+        )
 
+        selected_project_obj = next(
+            (p for p in active_projects if p["project_id"] == selected_project),
+            {}
+        )
 
-    # ---------------- LIST ----------------
-    st.markdown("### Existing Projects")
+        allow_open = selected_project_obj.get("allow_open_access", False)
+        has_access = selected_project in user_projects
 
-    for p in projects:
+        col_enter, col_request = st.columns(2)
 
-        with st.expander(p["name"]):
+        with col_enter:
+            if st.button(
+                "Enter",
+                use_container_width=True,
+                disabled=not (has_access or allow_open),
+            ):
+                st.session_state.user_id = user_id
+                st.session_state.active_project = selected_project
+                st.session_state.is_admin = (user.get("email") in ADMINS)
+                st.session_state.app_mode = "app"
+                st.session_state.pop("_temp_user", None)
+                st.rerun()
 
-            name_edit = st.text_input(
-                "Name",
-                value=p["name"],
-                key=f"name_{p['project_id']}"
-            )
-
-            active_edit = st.checkbox(
-                "Active",
-                value=p["is_active"],
-                key=f"active_{p['project_id']}"
-            )
-
-            col1, col2 = st.columns(2)
-
-            with col1:
-                if st.button("Update", key=f"update_{p['project_id']}"):
-                    update_project(
-                        p["project_id"],
-                        name_edit,
-                        active_edit
-                    )
-                    st.success("Project updated.")
-                    st.rerun()
-
-            with col2:
-                if st.button("Delete", key=f"delete_{p['project_id']}"):
-                    delete_project(p["project_id"])
-                    st.warning("Project deleted.")
-                    st.rerun()
-                    
-    if st.button("Close", use_container_width=True):
-        st.rerun()
+        with col_request:
+            if not has_access and not allow_open:
+                if st.button("Request Access", use_container_width=True):
+                    admin_email = get_env("SMTP_USER")
+                    if admin_email:
+                        send_email(
+                            to=admin_email,
+                            subject="Project Access Request",
+                            body=f"""User: {user.get('email', '')}
+Requested Project: {project_map.get(selected_project, selected_project)}
+""",
+                        )
+                        st.session_state.app_mode = "login"
+                        st.session_state.pop("_temp_user", None)
+                        st.rerun()
             

@@ -10,6 +10,16 @@ from storage.result_storage import load_results
 from core.projects import render_projects_modal
 from core.user_project_modal import render_user_project_modal
 
+
+
+def logout():
+    for key in list(st.session_state.keys()):
+        del st.session_state[key]
+
+    st.session_state.app_mode = "login"
+    st.rerun()
+
+
 def safe_load(path):
     try:
         with open(path, "r", encoding="utf-8") as f:
@@ -135,20 +145,10 @@ def render_app():
                 # LOG OFF (todos)
                 # ---------------------
                 if st.button("🚪 Log off", key="menu_logoff", use_container_width=True):
-                    keys_to_clear = [
-                        "user_id",
-                        "is_admin",
-                        "answers",
-                        "last_saved_snapshot",
-                        "dom_idx",
-                        "q_idx",
-                        "intro_seen",
-                        "loaded_from_storage",
-                        "show_projects"
-                    ]
-                    for k in keys_to_clear:
-                        if k in st.session_state:
-                            del st.session_state[k]
+                    for key in list(st.session_state.keys()):
+                        del st.session_state[key]
+
+                    st.session_state.app_mode = "login"
                     st.rerun()
 
                 # ---------------------
@@ -158,45 +158,31 @@ def render_app():
 
                     st.markdown("---")
                     st.markdown("### Admin")
-                    
-                    if st.button("🗂 Manage Projects"):
-                        render_projects_modal()
-                    
-                    #if st.button("🗂 Manage Projects", key="menu_projects"):
-                    #    st.session_state.active_modal = "projects"
-                    #    st.rerun()
 
-                    can_export = bool(st.session_state.get("last_saved_snapshot"))
+                    col1, col2 = st.columns(2)
 
-                    if can_export:
-                        excel_data = export_all_to_excel()
-                    else:
-                        excel_data = b""
+                    with col1:
+                        if st.button("🗂 Manage Projects", use_container_width=True, key="menu_projects"):
+                            st.session_state.open_dialog = "projects"
+                            st.rerun()
 
-                    st.download_button(
-                        label="📊 Export All Results",
-                        data=excel_data,
-                        file_name="DOMMx_Results.xlsx",
-                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                        use_container_width=True,
-                        disabled=not can_export,
-                        key="menu_export"
-                    )
+                    with col2:
+                        can_export = bool(st.session_state.get("last_saved_snapshot"))
 
+                        if can_export:
+                            excel_data = export_all_to_excel()
+                        else:
+                            excel_data = b""
 
-        st.markdown("<br>", unsafe_allow_html=True)
-
-        st.subheader(f"{q_id}: {q_content.get('text','')}")
-
-        if q_content.get("explanation"):
-            st.markdown(
-                f"<div style='font-size:14px;color:gray;font-style:italic;'>"
-                f"{q_content['explanation']}"
-                f"</div>",
-                unsafe_allow_html=True
-            )
-
-        st.markdown("<br>", unsafe_allow_html=True)
+                        st.download_button(
+                            label="📊 Export All Results",
+                            data=excel_data,
+                            file_name="DOMMx_Results.xlsx",
+                            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                            use_container_width=True,
+                            disabled=not can_export,
+                            key="menu_export"
+                        )
 
 
         # -------------------------------------------------

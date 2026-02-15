@@ -13,15 +13,15 @@ def get_projects():
 
 
 
-def create_project(name, created_by):
-    sheet = get_sheet("projects")
-
+def create_project(name, created_by, allow_open_access=False):
+    sheet = get_spreadsheet().worksheet("projects")
     sheet.append_row([
-        str(uuid.uuid4()),
+        generate_project_id(),
         name,
+        current_timestamp(),
         created_by,
-        datetime.utcnow().isoformat(),
-        True
+        True,
+        allow_open_access
     ])
 
 
@@ -53,5 +53,6 @@ def delete_project(project_id):
             break
             
 def get_all_projects():
-    sheet = get_sheet("projects")
-    return sheet.get_all_records()            
+    sheet = get_spreadsheet().worksheet("projects")
+    rows = sheet.get_all_records()
+    return rows 
