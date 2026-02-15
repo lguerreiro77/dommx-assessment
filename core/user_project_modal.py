@@ -8,13 +8,14 @@ from storage.project_storage import get_projects
 from storage.user_storage import get_all_users
 from storage.project_storage import get_all_projects
 from storage.user_project_storage import associate_users_projects
+from storage.google_sheets import get_spreadsheet
 
 
 if "project_msg" in st.session_state:
     st.success(st.session_state.project_msg)
     del st.session_state["project_msg"]
 
-@st.dialog("Associate Users to Projects", width="large")
+@st.dialog("Associate Users to Projects", width="Medium")
 def render_user_project_modal():
     
     st.session_state["_dialog_open"] = True
@@ -89,27 +90,21 @@ def render_user_project_modal():
 
         if not selected_users:
             st.warning("Select at least one user.")
-            st.session_state["_dialog_open"] = False            
             return
 
         if not selected_projects:
             st.warning("Select at least one project.")
-            st.session_state["_dialog_open"] = False
             return
 
         associate_users_projects(
-                selected_users,
-                selected_projects,
-                st.session_state.user_id
+            selected_users,
+            selected_projects,
+            st.session_state.user_id
         )
 
+        st.session_state._flash = {
+            "msg": "Users successfully associated.",
+            "level": "success"
+        }
 
-        #st.success("Users successfully associated with selected projects.")
-        st.session_state.project_msg = "Project updated."
-
-        st.session_state.active_modal = None
         st.rerun()
-        
-        st.session_state["_dialog_open"] = False
-        
-        

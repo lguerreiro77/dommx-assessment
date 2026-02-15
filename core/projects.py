@@ -6,7 +6,7 @@ from storage.project_storage import (
     delete_project,
 )
 
-
+@st.dialog("Manage Projects", width="Medium")
 def render_projects_modal():
 
     if "_flash" in st.session_state:
@@ -102,7 +102,6 @@ def render_projects_modal():
                         "msg": "Project updated successfully.",
                         "level": "success"
                     }
-                    st.session_state.open_dialog = "projects"
                     st.rerun()
 
             with col2:
@@ -111,6 +110,5 @@ def render_projects_modal():
                     st.session_state._flash = {
                         "msg": "Project deleted.",
                         "level": "success"
-                    }
-                    st.session_state.open_dialog = "projects"
+                    }                    
                     st.rerun()

@@ -1,6 +1,7 @@
 import streamlit as st
 from datetime import datetime
 from storage.google_sheets import get_sheet
+from storage.google_sheets import get_spreadsheet
 
 
 # -------------------------
@@ -30,13 +31,14 @@ def get_projects_for_user(user_id):
 # -------------------------
 # ASSOCIATE USERS PROJECTS
 # -------------------------
-def associate_users_projects(user_ids, project_ids):
+
+def associate_users_projects(user_ids, project_ids, created_by):
 
     sheet = get_sheet("usersprojects")
     timestamp = datetime.utcnow().isoformat()
 
     rows = [
-        [u, p, timestamp]
+        [u, p, timestamp, created_by]
         for u in user_ids
         for p in project_ids
     ]
@@ -45,7 +47,6 @@ def associate_users_projects(user_ids, project_ids):
         sheet.append_rows(rows)
 
 
-from storage.google_sheets import get_sheet
 
 
 def get_all_user_projects():

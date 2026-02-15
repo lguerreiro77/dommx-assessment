@@ -246,11 +246,11 @@ def render_register():
                     admin_email = get_env("SMTP_USER")
                     if admin_email:
                         send_email(
-                            to=admin_email,
-                            subject="New User Registration",
-                            body=f"New user created: {email.strip()}"
-                        )
-
+                        admin_email,
+                        "New User Registration",
+                        f"New user created: {email.strip()}"
+                    )
+                    
                     if not created:
                         error_box.error("User already exists.")
                     else:
@@ -274,14 +274,20 @@ def render_project_selection():
 
     all_projects = get_all_projects()
     user_projects = get_projects_for_user(user_id) or []
-    active_projects = [p for p in all_projects if p.get("is_active", True)]
 
-    filtered_projects = [
-        p for p in active_projects
-        if p["project_id"] in user_projects or p.get("allow_open_access", False)
+    active_projects = [
+        p for p in all_projects
+        if p.get("is_active", True)
     ]
 
-    project_map = {p["project_id"]: p["name"] for p in filtered_projects}
+    filtered_projects = []
+
+    for p in active_projects:
+        is_associated = p["project_id"] in user_projects
+        allow_open = str(p.get("allow_open_access", "")).lower() == "true"
+
+        if is_associated or allow_open:
+            filtered_projects.append(p)
 
     left, center, right = st.columns([1, 3, 1])
 
@@ -297,13 +303,18 @@ def render_project_selection():
 
         st.subheader("Select Project")
 
-        if not active_projects:
-            st.warning("No active projects available.")
+        if not filtered_projects:
+            st.warning("No available projects for your user.")
             if st.button("Back to Login", use_container_width=True):
                 st.session_state.app_mode = "login"
                 st.session_state.pop("_temp_user", None)
                 st.rerun()
             return
+
+        project_map = {
+            p["project_id"]: p["name"]
+            for p in filtered_projects
+        }
 
         selected_project = st.selectbox(
             "Project",
@@ -313,11 +324,11 @@ def render_project_selection():
         )
 
         selected_project_obj = next(
-            (p for p in active_projects if p["project_id"] == selected_project),
+            (p for p in filtered_projects if p["project_id"] == selected_project),
             {}
         )
 
-        allow_open = selected_project_obj.get("allow_open_access", False)
+        allow_open = str(selected_project_obj.get("allow_open_access", "")).lower() == "true"
         has_access = selected_project in user_projects
 
         col_enter, col_request = st.columns(2)
@@ -341,12 +352,12 @@ def render_project_selection():
                     admin_email = get_env("SMTP_USER")
                     if admin_email:
                         send_email(
-                            to=admin_email,
-                            subject="Project Access Request",
-                            body=f"""User: {user.get('email', '')}
+                            admin_email,
+                            "Project Access Request",
+                            f"""User: {user.get('email', '')}
 Requested Project: {project_map.get(selected_project, selected_project)}
 """,
                         )
-                        st.session_state.app_mode = "login"
-                        st.session_state.pop("_temp_user", None)
-                        st.rerun()
+                    st.session_state.app_mode = "login"
+                    st.session_state.pop("_temp_user", None)
+                    st.rerun()
