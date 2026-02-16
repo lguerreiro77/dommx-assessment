@@ -1,32 +1,32 @@
 import os
 import re
 import time
-
 import pycountry
 import streamlit as st
 
 from auth.email_service import send_email
 from core.config import APP_TITLE
-from storage.user_project_storage import get_all_projects, get_projects_for_user
+from storage.project_storage import get_all_projects
+from storage.user_project_storage import get_projects_for_user
 from storage.user_storage import load_user, save_user, verify_password
 
 
 # =========================================================
-# Countries combobox
+# Countries
 # =========================================================
 def get_countries():
     countries = []
     for country in pycountry.countries:
         code = country.alpha_2
         name = country.name
-        flag = "".join(chr(127397 + ord(c)) for c in code)  # emoji flag
+        flag = "".join(chr(127397 + ord(c)) for c in code)
         countries.append(f"{flag} {name} ({code})")
     countries.sort()
     return countries
 
 
 # =========================================================
-# ENV SAFE
+# ENV
 # =========================================================
 def get_env(name: str):
     try:
@@ -45,7 +45,7 @@ else:
 
 
 # =========================================================
-# FLASH (UI messages that survive rerun)
+# FLASH
 # =========================================================
 def _flash_set(msg: str, level: str = "info"):
     st.session_state._flash = {"msg": msg, "level": level, "ts": time.time()}
@@ -55,6 +55,7 @@ def _flash_render(ttl_seconds: int = 3):
     data = st.session_state.get("_flash")
     if not data:
         return
+
     if time.time() - data.get("ts", 0) > ttl_seconds:
         st.session_state.pop("_flash", None)
         return
@@ -95,59 +96,36 @@ def render_login():
 
     with center:
         st.markdown(
-            f"""
-            <h3 style='text-align:center; margin-bottom:20px;'>
-                {APP_TITLE}
-            </h3>
-            """,
+            f"<h3 style='text-align:center;'>{APP_TITLE}</h3>",
             unsafe_allow_html=True,
         )
-
-        st.markdown(
-            """
-            <h3 style='text-align:center; margin-bottom:15px;'>
-                Login
-            </h3>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.markdown("<h3 style='text-align:center;'>Login</h3>", unsafe_allow_html=True)
 
         _flash_render()
 
-        email = st.text_input("Email", key="login_email")
-        password = st.text_input("Password", type="password", key="login_password")
-
-        error_placeholder = st.empty()
-        if "login_error" in st.session_state:
-            error_placeholder.error(st.session_state.login_error)
-            if time.time() - st.session_state.login_error_time > 2:
-                st.session_state.pop("login_error", None)
-                st.session_state.pop("login_error_time", None)
-                st.rerun()
+        email = st.text_input("Email")
+        password = st.text_input("Password", type="password")
 
         if st.button("Login", use_container_width=True):
+
             user = load_user(email)
 
             if not user or not verify_password(password, user["password_hash"]):
-                st.session_state.login_error = "User does not exist or password is incorrect."
-                st.session_state.login_error_time = time.time()
+                _flash_set("User does not exist or password is incorrect.", "error")
                 st.rerun()
 
             st.session_state._temp_user = user
             st.session_state.app_mode = "select_project"
             st.rerun()
 
-        # Create Account (email-first)
         if st.button("Create Account", use_container_width=True):
+
             if not email or not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-                st.session_state.login_error = "Enter a valid email first."
-                st.session_state.login_error_time = time.time()
+                _flash_set("Enter a valid email first.", "error")
                 st.rerun()
 
-            existing = load_user(email)
-            if existing:
-                st.session_state.login_error = "This email already exists. Please login."
-                st.session_state.login_error_time = time.time()
+            if load_user(email):
+                _flash_set("This email already exists. Please login.", "error")
                 st.rerun()
 
             st.session_state.register_prefill_email = email.strip()
@@ -163,50 +141,38 @@ def render_register():
 
     with center:
         st.markdown(
-            f"""
-            <h3 style='text-align:center; margin-bottom:10px;'>
-                {APP_TITLE}
-            </h3>
-            """,
+            f"<h3 style='text-align:center;'>{APP_TITLE}</h3>",
             unsafe_allow_html=True,
         )
-
         st.markdown("<h4 style='text-align:center;'>Create Account</h4>", unsafe_allow_html=True)
         st.caption("* Required fields")
 
         error_box = st.empty()
-
         prefill_email = st.session_state.get("register_prefill_email", "")
 
-        full_name = st.text_input("Full Name *", key="reg_full_name")
-        email = st.text_input("Email *", value=prefill_email, key="reg_email")
-        password = st.text_input("Password *", type="password", key="reg_pw")
-        confirm_password = st.text_input("Confirm Password *", type="password", key="reg_pw2")
+        full_name = st.text_input("Full Name *")
+        email = st.text_input("Email *", value=prefill_email)
+        password = st.text_input("Password *", type="password")
+        confirm_password = st.text_input("Confirm Password *", type="password")
 
-        company = st.text_input("Company", key="reg_company")
-        department = st.text_input("Department", key="reg_department")
-        job_title = st.text_input("Job Title", key="reg_job_title")
-        phone = st.text_input("Phone", key="reg_phone")
+        company = st.text_input("Company")
+        department = st.text_input("Department")
+        job_title = st.text_input("Job Title")
+        phone = st.text_input("Phone")
 
         countries = get_countries()
-        selected_country = st.selectbox(
-            "Country *",
-            countries,
-            index=None,
-            placeholder="Choose your country",
-            key="register_country",
-        )
+        selected_country = st.selectbox("Country *", countries, index=None)
 
-        state_province = st.text_input("State/Province", key="reg_state")
-        city = st.text_input("City", key="reg_city")
+        state_province = st.text_input("State/Province")
+        city = st.text_input("City")
 
-        consent = st.checkbox("I consent to the use of my personal data for DOMMx *", key="reg_consent")
+        consent = st.checkbox("I consent to the use of my personal data for DOMMx *")
 
         col_save, col_back = st.columns(2)
 
         with col_save:
             if st.button("Save", use_container_width=True):
-                # VALIDATION (no early return that hides Back)
+
                 errors = []
 
                 if not full_name.strip():
@@ -223,8 +189,7 @@ def render_register():
                     errors.append("Password must be at least 8 characters.")
                 if password != confirm_password:
                     errors.append("Passwords do not match.")
-
-                if email.strip() and load_user(email.strip()):
+                if load_user(email.strip()):
                     errors.append("User already exists.")
 
                 if errors:
@@ -243,21 +208,22 @@ def render_register():
                         city=city.strip(),
                         consent=True,
                     )
+
                     admin_email = get_env("SMTP_USER")
                     if admin_email:
                         send_email(
-                        admin_email,
-                        "New User Registration",
-                        f"New user created: {email.strip()}"
-                    )
-                    
-                    if not created:
-                        error_box.error("User already exists.")
-                    else:
+                            admin_email,
+                            "New User Registration",
+                            f"New user created: {email.strip()}"
+                        )
+
+                    if created:
                         st.session_state.pop("register_prefill_email", None)
                         _flash_set("User created successfully. Please login.", "success")
                         st.session_state.app_mode = "login"
                         st.rerun()
+                    else:
+                        error_box.error("User already exists.")
 
         with col_back:
             if st.button("Back", use_container_width=True):
@@ -269,13 +235,13 @@ def render_register():
 # PROJECT SELECTION
 # =========================================================
 def render_project_selection():
+
     user = st.session_state._temp_user
     user_id = user["email_hash"]
 
     all_projects = get_all_projects()
     user_projects = get_projects_for_user(user_id) or []
-
-    # ---- tratar is_active corretamente ----
+   
     active_projects = []
     for p in all_projects:
         raw_active = p.get("is_active", True)
@@ -288,10 +254,10 @@ def render_project_selection():
         if active_value:
             active_projects.append(p)
 
-    # ---- filtrar associação / open access ----
     filtered_projects = []
 
     for p in active_projects:
+
         is_associated = p["project_id"] in user_projects
 
         raw_open = p.get("allow_open_access", False)
@@ -307,11 +273,7 @@ def render_project_selection():
 
     with center:
         st.markdown(
-            f"""
-            <h3 style='text-align:center; margin-bottom:10px;'>
-                {APP_TITLE}
-            </h3>
-            """,
+            f"<h3 style='text-align:center;'>{APP_TITLE}</h3>",
             unsafe_allow_html=True,
         )
 
@@ -334,7 +296,6 @@ def render_project_selection():
             "Project",
             options=list(project_map.keys()),
             format_func=lambda x: project_map.get(x, x),
-            key="select_project_id",
         )
 
         selected_project_obj = next(
@@ -373,11 +334,8 @@ def render_project_selection():
                         send_email(
                             admin_email,
                             "Project Access Request",
-                            f"""User: {user.get('email', '')}
-Requested Project: {project_map.get(selected_project, selected_project)}
-""",
+                            f"User: {user.get('email','')}\nRequested Project: {project_map.get(selected_project)}"
                         )
                     st.session_state.app_mode = "login"
                     st.session_state.pop("_temp_user", None)
                     st.rerun()
-

@@ -6,21 +6,29 @@ from storage.project_storage import (
     delete_project,
 )
 
-@st.dialog("Manage Projects", width="Medium")
-def render_projects_modal():
 
-    if "_flash" in st.session_state:
-        level = st.session_state._flash.get("level", "info")
-        msg = st.session_state._flash.get("msg", "")
+@st.dialog("Manage Projects", width="medium")
+def render_projects_modal():
+    # -------------------------
+    # FLASH
+    # -------------------------
+    flash = st.session_state.pop("_flash", None)
+    if flash:
+        level = flash.get("level", "info")
+        msg = flash.get("msg", "")
         if level == "success":
             st.success(msg)
         elif level == "error":
             st.error(msg)
+        elif level == "warning":
+            st.warning(msg)
         else:
             st.info(msg)
-        del st.session_state._flash
 
-    projects = get_projects()
+    projects = get_projects() or []
+
+    # colapsar expanders após operação
+    collapse_all = bool(st.session_state.pop("_collapse_projects", False))
 
     # ---------------- CREATE ----------------
     st.markdown("### Create New Project")
@@ -28,38 +36,33 @@ def render_projects_modal():
     new_name = st.text_input("Project Name", key="new_project_name")
     open_flag = st.checkbox(
         "Allow open access (users can login without association)",
-        key="new_project_open"
+        key="new_project_open",
     )
 
     if st.button("Create", key="create_project_btn"):
-        if new_name:
-            existing = [p["name"].strip().lower() for p in projects]
+        name = (new_name or "").strip()
 
-            if new_name.strip().lower() in existing:
-                st.session_state._flash = {
-                    "msg": "Project name already exists.",
-                    "level": "error"
-                }
-            else:
-                create_project(
-                    new_name.strip(),
-                    st.session_state.user_id,
-                    open_flag
-                )
-                st.session_state._flash = {
-                    "msg": "Project created successfully.",
-                    "level": "success"
-                }
+        if not name:
+            st.session_state["_flash"] = {"msg": "Project name is required.", "level": "error"}
+            st.session_state.open_dialog = "projects"
+            st.rerun()
 
-            st.success(st.session_state._flash["msg"])
-            del st.session_state._flash
-            
-            projects = get_projects()
+        existing = {(p.get("name", "").strip().lower()) for p in projects}
+        if name.lower() in existing:
+            st.session_state["_flash"] = {"msg": "Project name already exists.", "level": "error"}
+            st.session_state.open_dialog = "projects"
+            st.rerun()
 
+        create_project(name, st.session_state.user_id, open_flag)
+        st.session_state["_flash"] = {"msg": "Project created successfully.", "level": "success"}
+        st.session_state["_collapse_projects"] = True
+        st.session_state.open_dialog = "projects"
+        st.rerun()
 
     st.divider()
 
     if st.button("👥 Associate Users", use_container_width=True, key="btn_associate_users"):
+        st.session_state.dialog_return_to = "projects"
         st.session_state.open_dialog = "associate"
         st.rerun()
 
@@ -71,50 +74,50 @@ def render_projects_modal():
         return
 
     for p in projects:
-        with st.expander(f"{p.get('name')}"):
+        project_id = p.get("project_id")
+        project_name = p.get("name", "")
 
-            new_project_name = st.text_input(
+        expanded_state = False if collapse_all else False
+
+        with st.expander(project_name, expanded=expanded_state):
+            edited_name = st.text_input(
                 "Edit Name",
-                value=p.get("name"),
-                key=f"edit_name_{p.get('project_id')}"
+                value=project_name,
+                key=f"edit_name_{project_id}",
             )
+
+            raw_active = p.get("is_active", True)
+            active_value = raw_active if isinstance(raw_active, bool) else str(raw_active).strip().lower() == "true"
 
             is_active = st.checkbox(
                 "Active",
-                value=p.get("is_active", True),
-                key=f"active_{p.get('project_id')}"
+                value=active_value,
+                key=f"active_{project_id}",
             )
+
+            raw_open = p.get("allow_open_access", False)
+            open_value = raw_open if isinstance(raw_open, bool) else str(raw_open).strip().lower() == "true"
 
             allow_open = st.checkbox(
                 "Allow open access",
-                value=p.get("allow_open_access", False),
-                key=f"open_{p.get('project_id')}"
+                value=open_value,
+                key=f"open_{project_id}",
             )
 
             col1, col2 = st.columns(2)
 
             with col1:
-                if st.button("Update", key=f"update_{p.get('project_id')}"):
-                    update_project(
-                        p.get("project_id"),
-                        new_project_name.strip(),
-                        is_active,
-                        allow_open
-                    )
-                    st.session_state._flash = {
-                        "msg": "Project updated successfully.",
-                        "level": "success"
-                    }
-                    st.success("Project updated successfully.")
-                    projects = get_projects()
-
+                if st.button("Update", key=f"update_{project_id}"):
+                    update_project(project_id, (edited_name or "").strip(), is_active, allow_open)
+                    st.session_state["_flash"] = {"msg": "Project updated successfully.", "level": "success"}
+                    st.session_state["_collapse_projects"] = True
+                    st.session_state.open_dialog = "projects"
+                    st.rerun()
 
             with col2:
-                if st.button("Delete", key=f"delete_{p.get('project_id')}"):
-                    delete_project(p.get("project_id"))
-                    st.session_state._flash = {
-                        "msg": "Project deleted.",
-                        "level": "success"
-                    }                    
-                    st.success("Project deleted.")
-                    projects = get_projects()
+                if st.button("Delete", key=f"delete_{project_id}"):
+                    delete_project(project_id)
+                    st.session_state["_flash"] = {"msg": "Project deleted successfully.", "level": "success"}
+                    st.session_state["_collapse_projects"] = True
+                    st.session_state.open_dialog = "projects"
+                    st.rerun()
