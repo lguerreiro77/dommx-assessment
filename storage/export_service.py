@@ -79,7 +79,15 @@ def export_all_to_excel():
         if not enc:
             continue
 
-        payload = json.loads(decrypt_text(enc))
+        from core.flow_engine import add_message
+
+        try:
+            decrypted = decrypt_text(enc)
+            payload = json.loads(decrypted)
+        except Exception:
+            add_message("Warning: Invalid encrypted payload found during export.", "warning")
+            continue
+            
         answers = payload.get("answers", {}) if isinstance(payload, dict) else {}
 
         for q_id, score in answers.items():
