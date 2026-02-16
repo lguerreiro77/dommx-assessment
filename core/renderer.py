@@ -1,21 +1,22 @@
-# core/renderer_v2.py
 import streamlit as st
 
-from core.ui.state_manager import init_session_state
-from core.ui.layout import render_layout
-from core.ui.navigation import render_navigation
-from core.ui.dialogs import render_dialog_if_any
+from core.renderer_init import initialize_renderer
+from core.renderer_controller import handle_page_and_dialogs
+from core.renderer_assessment import render_assessment
 
 
-def render():
-    """
-    Renderer V2 (seguro): não altera renderer.py atual.
-    Para usar: no seu main.py (ou app.py) troque:
-        from core.renderer import render
-    por:
-        from core.renderer_v2 import render
-    """
-    init_session_state()
-    render_layout()
-    render_dialog_if_any()
-    render_navigation()
+def render_app():
+    try:
+        initialize_renderer()
+
+        # controla account + modais
+        if handle_page_and_dialogs():
+            return
+
+        # roda assessment principal
+        render_assessment()
+
+    except Exception as e:
+        from core.flow_engine import add_message
+        add_message(f"Renderer error: {e}", "error")
+        st.exception(e)
