@@ -8,7 +8,7 @@ from auth.email_service import send_email
 from core.config import APP_TITLE
 from storage.project_storage import get_all_projects
 from storage.user_project_storage import get_projects_for_user
-from storage.user_storage import load_user, save_user, verify_password
+from storage.user_storage import load_user, save_user, verify_password, get_all_users
 
 
 # =========================================================
@@ -216,6 +216,12 @@ def render_register():
                             "New User Registration",
                             f"New user created: {email.strip()}"
                         )
+                        
+                    try:
+                        get_all_users.clear()
+                        load_user.clear()
+                    except:
+                        pass
 
                     if created:
                         st.session_state.pop("register_prefill_email", None)

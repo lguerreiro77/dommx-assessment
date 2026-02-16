@@ -10,16 +10,34 @@ from core.welcome import render_welcome
 from storage.result_storage import load_results
 from core.projects import render_projects_modal
 from core.user_project_modal import render_user_project_modal, render_remove_association_modal
+from core.account import render_account_page
 
+from storage.user_storage import get_all_users, load_user, load_user_by_hash
+from storage.project_storage import get_all_projects
+from storage.user_project_storage import get_projects_for_user
 
+from storage.google_sheets import get_sheet
 
 
 def logout():
-    for key in list(st.session_state.keys()):
-        del st.session_state[key]
+
+    from storage.result_storage import load_results
+
+    try:
+        get_all_users.clear()
+        load_user.clear()
+        load_user_by_hash.clear()
+        get_all_projects.clear()
+        get_projects_for_user.clear()
+        load_results.clear()   # <-- ADICIONE ESTA LINHA
+    except:
+        pass
+
+    st.session_state.clear()
 
     st.session_state.app_mode = "login"
     st.rerun()
+
 
 
 def safe_load(path):
@@ -36,11 +54,42 @@ def render_app():
         
         if not st.session_state.get("user_id"):
             st.stop()
-        
+
+        # Garantir estado limpo ao entrar
+        if "answers" not in st.session_state:
+            st.session_state.answers = {}
+
+        if "dom_idx" not in st.session_state:
+            st.session_state.dom_idx = 0
+
+        if "q_idx" not in st.session_state:
+            st.session_state.q_idx = 0
+
+        if "loaded_from_storage" not in st.session_state:
+            st.session_state.loaded_from_storage = False
+
+        if "intro_seen" not in st.session_state:
+            st.session_state.intro_seen = False
+
+        # ===============================
+        # PAGE CONTROLLER
+        # ===============================
+        page = st.session_state.get("page", "main")
+
+        if page == "account":
+            col_a, col_b = st.columns([2, 10])
+            with col_a:
+                if st.button("⬅ Back", use_container_width=True):
+                    st.session_state.page = "main"
+                    st.rerun()
+
+            render_account_page(st.session_state)
+            return
+
         # -------------------------
         # MODAL CONTROLLER
         # -------------------------
-        
+
         dialog = st.session_state.pop("open_dialog", None)
 
         if dialog == "projects":
@@ -50,7 +99,6 @@ def render_app():
         elif dialog == "remove_association":
             render_remove_association_modal()
 
-
         # -------------------------
         # LOAD SAVED SESSION (APENAS UMA VEZ)
         # -------------------------
@@ -58,12 +106,15 @@ def render_app():
             saved = load_results(st.session_state.user_id)
             if saved:
                 st.session_state.answers = saved.get("answers", {})
-                st.session_state.dom_idx = saved.get("dom_idx", 0)
-                st.session_state.q_idx = saved.get("q_idx", 0)
+                
+                last_session = saved.get("last_session", {})
+
+                st.session_state.dom_idx = last_session.get("dom_idx", 0)
+                st.session_state.q_idx = last_session.get("q_idx", 0)
+                
                 st.session_state.last_saved_snapshot = dict(st.session_state.answers)
 
             st.session_state.loaded_from_storage = True
-
 
         # -------------------------
         # INTRO SCREEN
@@ -126,7 +177,7 @@ def render_app():
             st.stop()
 
         q_content = question_block[q_key]
-
+        
         # -------------------------------------------------
         # QUESTION HEADER
         # -------------------------------------------------
@@ -135,9 +186,25 @@ def render_app():
 
         with col_title:
             st.header(dom_meta["name"])
+            
+        # =========================
+        # QUESTION TEXT (compatível com YAML atual e antigo)
+        # =========================
+        q_text = (q_content.get("question") or q_content.get("text") or "").strip()
+        q_desc = (q_content.get("description") or q_content.get("explanation") or "").strip()
+        q_obj  = (q_content.get("objective") or "").strip()
 
-        from storage.google_sheets import get_sheet
+        if q_text:
+            st.subheader(f"{q_id}. {q_text}")
+        else:
+            st.subheader(f"{q_id}")
 
+        if q_desc:
+            st.markdown(q_desc)
+
+        if q_obj:
+            st.caption(f"Objective: {q_obj}")
+        
         with col_menu:
 
             with st.popover("⋮"):
@@ -145,14 +212,17 @@ def render_app():
                 st.markdown("### Menu")
 
                 # ---------------------
+                # ACCOUNT (NOVO)
+                # ---------------------
+                if st.button("👤 User / Account", use_container_width=True):
+                    st.session_state.page = "account"
+                    st.rerun()
+
+                # ---------------------
                 # LOG OFF (todos)
                 # ---------------------
                 if st.button("🚪 Log off", key="menu_logoff", use_container_width=True):
-                    for key in list(st.session_state.keys()):
-                        del st.session_state[key]
-
-                    st.session_state.app_mode = "login"
-                    st.rerun()
+                    logout()
 
                 # ---------------------
                 # ADMIN
@@ -186,7 +256,6 @@ def render_app():
                             disabled=not can_export,
                             key="menu_export"
                         )
-
 
         # -------------------------------------------------
         # LIKERT SCALE (ORIGINAL)
@@ -254,8 +323,6 @@ def render_app():
                 ):
                     st.session_state.answers[q_id] = i
                     st.rerun()
-
-
 
         # -------------------------------------------------
         # ACTION BLOCK (EXATAMENTE COMO ORIGINAL)
@@ -384,8 +451,7 @@ def render_app():
             ):
                 st.session_state.q_idx += 1
                 st.rerun()
-                
-                            
+
     except Exception as e:
         st.error(f"Erro no renderer: {e}")
         st.exception(e)
