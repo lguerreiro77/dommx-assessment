@@ -1,14 +1,16 @@
 import streamlit as st
+import yaml
+import os
+import json
+
 from core.config import BASE_DIR, resolve_path
 from storage.result_storage import save_results
 from storage.export_service import export_all_to_excel
 from core.welcome import render_welcome
-import yaml
-import os
-import json
 from storage.result_storage import load_results
 from core.projects import render_projects_modal
-from core.user_project_modal import render_user_project_modal
+from core.user_project_modal import render_user_project_modal, render_remove_association_modal
+
 
 
 
@@ -41,11 +43,12 @@ def render_app():
         
         dialog = st.session_state.pop("open_dialog", None)
 
-        if dialog == "projects":            
+        if dialog == "projects":
             render_projects_modal()
-
-        elif dialog == "associate":            
+        elif dialog == "associate":
             render_user_project_modal()
+        elif dialog == "remove_association":
+            render_remove_association_modal()
 
 
         # -------------------------

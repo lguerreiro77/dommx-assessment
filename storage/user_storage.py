@@ -1,34 +1,29 @@
 import hashlib
 import bcrypt
 from datetime import datetime
+import streamlit as st
 from storage.google_sheets import get_sheet
 from auth.crypto_service import encrypt_text, decrypt_text
 
 
-# -------------------------------------------------
-# HASH EMAIL (INDEX ONLY)
-# -------------------------------------------------
 def hash_email(email: str) -> str:
     return hashlib.sha256(email.lower().strip().encode("utf-8")).hexdigest()
 
 
-# -------------------------------------------------
-# HASH PASSWORD (ONLY)
-# -------------------------------------------------
 def hash_password(password: str) -> str:
     return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
 
 
-# -------------------------------------------------
-# VERIFY PASSWORD
-# -------------------------------------------------
 def verify_password(password: str, password_hash: str) -> bool:
     return bcrypt.checkpw(password.encode("utf-8"), password_hash.encode("utf-8"))
 
 
-# -------------------------------------------------
-# SAVE USER (ENCRYPT EVERYTHING EXCEPT email_hash + password_hash)
-# -------------------------------------------------
+@st.cache_data(ttl=60, show_spinner=False)
+def _read_users_records():
+    sheet = get_sheet("users")
+    return sheet.get_all_records()
+
+
 def save_user(
     email: str,
     password: str,
@@ -48,9 +43,8 @@ def save_user(
     email_hash = hash_email(email_norm)
     password_hash = hash_password(password or "")
 
-    rows = sheet.get_all_records()
+    rows = _read_users_records()
 
-    # Check if user exists
     for row in rows:
         if str(row.get("email_hash", "")).strip() == email_hash:
             return False
@@ -73,18 +67,16 @@ def save_user(
         encrypt_text(now),
     ])
 
+    _read_users_records.clear()
     return True
 
 
-# -------------------------------------------------
-# LOAD USER BY EMAIL (LOGIN PATH)
-# -------------------------------------------------
+@st.cache_data(ttl=60, show_spinner=False)
 def load_user(email: str):
-    sheet = get_sheet("users")
     email_norm = (email or "").strip().lower()
     email_hash = hash_email(email_norm)
 
-    rows = sheet.get_all_records()
+    rows = _read_users_records()
 
     for row in rows:
         if str(row.get("email_hash", "")).strip() == email_hash:
@@ -93,14 +85,10 @@ def load_user(email: str):
     return None
 
 
-# -------------------------------------------------
-# LOAD USER BY HASH (ADMIN/EXPORT PATH)
-# -------------------------------------------------
+@st.cache_data(ttl=60, show_spinner=False)
 def load_user_by_hash(email_hash: str):
-    sheet = get_sheet("users")
     target = (email_hash or "").strip()
-
-    rows = sheet.get_all_records()
+    rows = _read_users_records()
 
     for row in rows:
         if str(row.get("email_hash", "")).strip() == target:
@@ -110,17 +98,12 @@ def load_user_by_hash(email_hash: str):
 
 
 def _decrypt_user_row(row: dict) -> dict:
-    """
-    Returns a decrypted, clean dict for app use.
-    Keeps email_hash + password_hash as-is (password_hash is hashed).
-    """
     out = dict(row)
 
     def d(key: str) -> str:
         val = out.get(key, "")
         return decrypt_text(val) if val not in (None, "") else ""
 
-    # Expected encrypted columns
     if "email_encrypted" in out:
         out["email"] = d("email_encrypted")
     if "full_name_encrypted" in out:
@@ -128,9 +111,9 @@ def _decrypt_user_row(row: dict) -> dict:
     if "company_encrypted" in out:
         out["company"] = d("company_encrypted")
     if "department_encrypted" in out:
-        out["department"] = d("department_encrypted")        
+        out["department"] = d("department_encrypted")
     if "job_title_department" in out:
-        out["job_title"] = d("job_title_encrypted")                
+        out["job_title"] = d("job_title_encrypted")
     if "phone_encrypted" in out:
         out["phone"] = d("phone_encrypted")
     if "country_encrypted" in out:
@@ -144,22 +127,19 @@ def _decrypt_user_row(row: dict) -> dict:
     if "created_at_encrypted" in out:
         out["created_at"] = d("created_at_encrypted")
 
-    # Normalize password column name
     if "password_hash_encrypted" in out and "password_hash" not in out:
         out["password_hash"] = out["password_hash_encrypted"]
 
     return out
 
 
+@st.cache_data(ttl=60, show_spinner=False)
 def get_all_users():
-    sheet = get_sheet("users")
-    rows = sheet.get_all_records()
+    rows = _read_users_records()
 
     users = []
-
     for row in rows:
         user = _decrypt_user_row(row)
-
         users.append({
             "email_hash": row.get("email_hash"),
             "email": user.get("email"),
