@@ -86,7 +86,7 @@ questions:
       0: { action_code: "DS-01", description: "Define rules for protection mechanisms and data minimization" }
       1: { action_code: "DS-02", description: "Assign responsibilities for protection governance" }
       2: { action_code: "DS-03", description: "Approve protection and minimization rules" }
-      3: { action_code: "DS-05", description: "Embed protection mechanisms into data handling routines" }
+      3: { action_code: "DS-04", description: "Embed protection mechanisms into data handling routines" }
       4: { action_code: "DS-06", description: "Automate protection and confidentiality controls" }
       5: { action_code: "DS-09", description: "Continuously improve protection governance through metrics" }
 
@@ -112,6 +112,6 @@ questions:
       0: { action_code: "DS-01", description: "Define ethical, privacy, and responsible-use security requirements" }
       1: { action_code: "DS-02", description: "Assign roles for ethical and privacy security oversight" }
       2: { action_code: "DS-03", description: "Approve ethical and privacy-by-design security rules" }
-      3: { action_code: "DS-05", description: "Embed ethical and privacy controls into security routines" }
+      3: { action_code: "DS-04", description: "Embed ethical and privacy controls into security routines" }
       4: { action_code: "DS-06", description: "Automate ethical and privacy validation in security" }
       5: { action_code: "DS-09", description: "Continuously improve ethical security using reviews" }
