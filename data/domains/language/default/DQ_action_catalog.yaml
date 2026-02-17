@@ -64,7 +64,7 @@ action_catalog:
         notes:
           - "Use DCAM control mapping techniques to reinforce compliance."
 
-  DQ-05:
+  DQ-04:
     title: "Embed governed remediation routines and ethical controls into operations"
     procedures:
       - number: 5

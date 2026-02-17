@@ -90,25 +90,21 @@ def export_all_to_excel():
             
         answers = payload.get("answers", {}) if isinstance(payload, dict) else {}
 
-        for q_id, score in answers.items():
-            # q_id vem como "Q1" no seu renderer atual
-            q_key = str(q_id).lower()
+        for domain_id, questions in answers.items():
 
-            # tenta achar domínio pelo prefixo no question plan não existe, então exporta com domínio corrente vazio
-            # melhor: colocar domain no key no futuro, mas aqui vamos mapear pelo arquivo carregado (procura em todos)
-            found_dom = None
-            found_q = None
+            if not isinstance(questions, dict):
+                continue
 
-            for dom_id, qdict in domain_questions.items():
-                if q_key in qdict:
-                    found_dom = dom_id
-                    found_q = qdict[q_key]
-                    break
+            for q_id, score in questions.items():
 
-            domain_name = domain_names.get(found_dom, "") if found_dom else ""
-            question_text = found_q.get("text", "") if found_q else ""
+                q_key = str(q_id).lower()
 
-            MATURITY_LABELS = {
+                domain_name = domain_names.get(str(domain_id), "")
+                found_q = domain_questions.get(str(domain_id), {}).get(q_key)
+
+                question_text = found_q.get("text", "") if found_q else ""
+
+                MATURITY_LABELS = {
                     0: "Initial",
                     1: "Ad-hoc",
                     2: "Developing",
@@ -117,15 +113,15 @@ def export_all_to_excel():
                     5: "Optimized"
                 }
 
-            label = MATURITY_LABELS.get(int(score), "")
+                label = MATURITY_LABELS.get(int(score), "")
 
-            export_rows.append({
-                "Id_User": user_id,
-                "Domain": domain_name,
-                "Question": f"{q_id}: {question_text}" if question_text else str(q_id),
-                "Answer": score,
-                "Result": label
-            })
+                export_rows.append({
+                    "Id_User": user_id,
+                    "Domain": domain_name,
+                    "Question": f"{q_id}: {question_text}" if question_text else str(q_id),
+                    "Answer": score,
+                    "Result": label
+                })
 
     df = pd.DataFrame(export_rows, columns=["Id_User", "Domain", "Question", "Answer", "Result"])
 

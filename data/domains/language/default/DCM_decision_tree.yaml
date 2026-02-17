@@ -60,7 +60,7 @@ questions:
       0: { action_code: "DCM-01", description: "Define retention, archival, and disposal requirements" }
       1: { action_code: "DCM-02", description: "Assign lifecycle stewardship for retention and archival" }
       2: { action_code: "DCM-03", description: "Approve governed retention and archival rules" }
-      3: { action_code: "DCM-05", description: "Embed lifecycle rules into content handling routines" }
+      3: { action_code: "DCM-04", description: "Embed lifecycle rules into content handling routines" }
       4: { action_code: "DCM-06", description: "Automate retention, archival, and disposal execution" }
       5: { action_code: "DCM-09", description: "Continuously improve lifecycle governance using evidence" }
 
@@ -86,7 +86,7 @@ questions:
       0: { action_code: "DCM-01", description: "Define governance requirements for repositories and shared spaces" }
       1: { action_code: "DCM-02", description: "Assign repository governance roles" }
       2: { action_code: "DCM-03", description: "Approve repository governance rules" }
-      3: { action_code: "DCM-05", description: "Operate governed repository routines and controlled access" }
+      3: { action_code: "DCM-04", description: "Operate governed repository routines and controlled access" }
       4: { action_code: "DCM-06", description: "Automate repository monitoring and compliance validation" }
       5: { action_code: "DCM-09", description: "Continuously improve repository governance using evidence" }
 
@@ -112,6 +112,6 @@ questions:
       0: { action_code: "DCM-01", description: "Define ethical, privacy, and minimization rules for content" }
       1: { action_code: "DCM-02", description: "Assign roles for ethical and privacy oversight" }
       2: { action_code: "DCM-03", description: "Approve ethical and privacy content rules" }
-      3: { action_code: "DCM-05", description: "Embed ethical and privacy safeguards into content management routines" }
+      3: { action_code: "DCM-04", description: "Embed ethical and privacy safeguards into content management routines" }
       4: { action_code: "DCM-06", description: "Automate privacy, ethical, and minimization validation" }
       5: { action_code: "DCM-09", description: "Continuously improve ethical and privacy governance using audits" }

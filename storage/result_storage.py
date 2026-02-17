@@ -47,7 +47,6 @@ def _row_to_dict(row_values: list) -> dict:
         out[h] = row_values[i] if i < len(row_values) else ""
     return out
 
-
 # =========================================================
 # SAVE
 # =========================================================
@@ -76,23 +75,20 @@ def save_results(user_id: str, project_id: str, answers_dict: dict):
     row_num = idx.get((user_id, project_id))
 
     if row_num:
+        # Atualiza exatamente 4 colunas
         sheet.update(
-            f"A{row_num}:C{row_num}",
-            [[user_id, project_id, enc]]
+            f"A{row_num}:D{row_num}",
+            [[user_id, project_id, enc, ts]]
         )
-        sheet.update(f"F{row_num}", [[ts]])
     else:
-        sheet.append_row([
-            user_id,
-            project_id,
-            enc,
-            "",  # dom_idx inutilizado
-            "",  # q_idx inutilizado
-            ts
-        ])
+        # Insere exatamente 4 colunas
+        sheet.append_row(
+            [user_id, project_id, enc, ts],
+            value_input_option="RAW"
+        )
 
     _results_index.clear()
-    
+
     return True
 
 

@@ -60,7 +60,7 @@ questions:
       0: { action_code: "DMD-01", description: "Define semantic alignment rules and glossary governance structure" }
       1: { action_code: "DMD-02", description: "Assign data stewards responsible for semantic governance" }
       2: { action_code: "DMD-03", description: "Approve glossary structure and semantic harmonization rules" }
-      3: { action_code: "DMD-05", description: "Embed glossary usage into modelling and domain routines" }
+      3: { action_code: "DMD-04", description: "Embed glossary usage into modelling and domain routines" }
       4: { action_code: "DMD-06", description: "Automate semantic validation and term consistency checks" }
       5: { action_code: "DMD-09", description: "Continuously refine semantics using usage and quality metrics" }
 
@@ -86,7 +86,7 @@ questions:
       0: { action_code: "DMD-01", description: "Integration rules between models, metadata, and domain boundaries" }
       1: { action_code: "DMD-02", description: "Assign stewardship roles for structural alignment" }
       2: { action_code: "DMD-03", description: "Approve metadata–model alignment and integration rules" }
-      3: { action_code: "DMD-05", description: "Embed model–metadata–domain alignment into modelling routines" }
+      3: { action_code: "DMD-04", description: "Embed model–metadata–domain alignment into modelling routines" }
       4: { action_code: "DMD-06", description: "Automate metadata–model alignment and structural validation" }
       5: { action_code: "DMD-09", description: "Optimize integration using metrics and structural performance evidence" }
 
@@ -112,6 +112,6 @@ questions:
       0: { action_code: "DMD-01", description: "Define privacy, minimization, and ethical requirements for modelling" }
       1: { action_code: "DMD-02", description: "Assign responsibilities for ethical and privacy modelling constraints" }
       2: { action_code: "DMD-03", description: "Approve privacy-by-design and ethical modelling rules" }
-      3: { action_code: "DMD-05", description: "Embed ethical and privacy controls into modelling routines" }
+      3: { action_code: "DMD-04", description: "Embed ethical and privacy controls into modelling routines" }
       4: { action_code: "DMD-06", description: "Automate privacy and ethical validation within modelling artefacts" }
       5: { action_code: "DMD-09", description: "Continuously improve ethical modelling using reviews and evidence" }

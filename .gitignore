@@ -9,4 +9,12 @@ git_tkn.txt
 *.sqlite
 service_account.json
 /data/general/secret.key
+/data/BKP
 
+# Service accounts
+*.json
+!package.json
+!tsconfig.json
+
+# Env
+.env*

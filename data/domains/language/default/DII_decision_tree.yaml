@@ -60,7 +60,7 @@ questions:
       0: { action_code: "DII-01", description: "Define metadata-driven integration rules" }
       1: { action_code: "DII-02", description: "Assign stewardship for metadata supporting integration" }
       2: { action_code: "DII-03", description: "Approve metadata structures and integration rules" }
-      3: { action_code: "DII-05", description: "Embed metadata-driven integration rules into operational routines" }
+      3: { action_code: "DII-04", description: "Embed metadata-driven integration rules into operational routines" }
       4: { action_code: "DII-06", description: "Automate metadata integration, alignment, and lineage capture" }
       5: { action_code: "DII-09", description: "Continuously improve metadata-driven integration using evidence" }
 
@@ -73,7 +73,7 @@ questions:
       0: { action_code: "DII-01", description: "Define rules for cross-domain data exchanges and approvals" }
       1: { action_code: "DII-02", description: "Assign cross-domain integration governance roles" }
       2: { action_code: "DII-03", description: "Approve exchange rules, review cycles, and traceability structures" }
-      3: { action_code: "DII-05", description: "Implement governed cross-domain exchange processes" }
+      3: { action_code: "DII-04", description: "Implement governed cross-domain exchange processes" }
       4: { action_code: "DII-06", description: "Automate traceability, lineage, and exchange monitoring" }
       5: { action_code: "DII-09", description: "Continuously improve cross-domain exchange governance" }
 
@@ -86,7 +86,7 @@ questions:
       0: { action_code: "DII-01", description: "Define standards for integration mechanisms and governed interfaces" }
       1: { action_code: "DII-02", description: "Assign responsibility for interface and ingestion governance" }
       2: { action_code: "DII-03", description: "Approve interface and ingestion standards" }
-      3: { action_code: "DII-05", description: "Embed standard integration mechanisms into daily governance routines" }
+      3: { action_code: "DII-04", description: "Embed standard integration mechanisms into daily governance routines" }
       4: { action_code: "DII-06", description: "Automate validation of integration mechanism conformity" }
       5: { action_code: "DII-09", description: "Optimize integration mechanisms using performance metrics" }
 
@@ -112,6 +112,6 @@ questions:
       0: { action_code: "DII-01", description: "Define ethical and privacy constraints for integration governance" }
       1: { action_code: "DII-02", description: "Assign ethical and privacy oversight roles for integration" }
       2: { action_code: "DII-03", description: "Approve ethical and privacy integration rules" }
-      3: { action_code: "DII-05", description: "Embed ethical and privacy safeguards into integration routines" }
+      3: { action_code: "DII-04", description: "Embed ethical and privacy safeguards into integration routines" }
       4: { action_code: "DII-06", description: "Automate ethical, privacy, and responsible-use validation" }
       5: { action_code: "DII-09", description: "Continuously improve ethical integration governance" }

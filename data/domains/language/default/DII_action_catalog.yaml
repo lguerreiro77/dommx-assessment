@@ -256,7 +256,7 @@ action_catalog:
         notes:
           - "Use DCAM diagnostic indicators to focus remediation on the most critical deviations."
 
-  DII-05:
+  DII-04:
     title: "Embed integration mechanisms and ethical safeguards into routines"
     procedures:
       - number: 1

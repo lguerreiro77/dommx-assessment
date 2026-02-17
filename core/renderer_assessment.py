@@ -439,53 +439,59 @@ def render_assessment():
                         st.session_state.answers[domain_key] = {}
                     st.session_state.answers[domain_key][q_id] = score_value
                     st.rerun()
-
+               
         # -------------------------------------------------
         # ACTION BLOCK
         # -------------------------------------------------
-        if q_id in st.session_state.answers.get(domain_key, {}):
-            score = st.session_state.answers[domain_key][q_id]
+        
+        current_answer = (
+            st.session_state.answers
+            .get(domain_key, {})
+            .get(q_id)
+        )
 
-            mapping = q_content.get("score_action_mapping") or {}
-            if score not in mapping:
-                add_message(f"Missing score_action_mapping for score {score} in question {q_id}.", "error")
-            else:
-                action_code = mapping[score].get("action_code")
-                action = (catalog_data.get("action_catalog", {}) or {}).get(action_code)
+        if current_answer is not None:        
+            
+                score = current_answer
 
-                header_color = LIKERT.get(score, ("", "", "#666"))[2]
+                mapping = q_content.get("score_action_mapping") or {}
+                
+                if score not in mapping:
+                    add_message(f"Missing score_action_mapping for score {score} in question {q_id}.", "error")
+                else:
+                    action_code = mapping[score].get("action_code")
+                    action = (catalog_data.get("action_catalog", {}) or {}).get(action_code)
 
-                st.divider()
+                    header_color = LIKERT.get(score, ("", "", "#666"))[2]
 
-                st.markdown("""
-                    <style>
-                    /* Apenas botões cujo texto contém quebra de linha (caso do Likert) */
-                    div[data-testid="stButton"] > button {
-                        height: 60px !important;
-                        width: 100% !important;
-                        padding: 8px 6px !important;
-                        display: flex !important;
-                        flex-direction: column !important;
-                        justify-content: center !important;
-                        align-items: center !important;
-                        line-height: 1.1 !important;
-                        white-space: normal !important;
-                    }
+                    st.divider()
 
-                    /* Reduz somente o texto interno */
-                    div[data-testid="stButton"] > button p {
-                        font-size: 11px !important;
-                    }
-                    </style>
-                    """, unsafe_allow_html=True)
+                    # st.markdown("""
+                        # <style>
+                        # /* Apenas botões cujo texto contém quebra de linha (caso do Likert) */
+                        # div[data-testid="stButton"] > button {
+                            # height: 60px !important;
+                            # width: 100% !important;
+                            # padding: 8px 6px !important;
+                            # display: flex !important;
+                            # flex-direction: column !important;
+                            # justify-content: center !important;
+                            # align-items: center !important;
+                            # line-height: 1.1 !important;
+                            # white-space: normal !important;
+                        # }
 
-                if action:
-                    st.markdown(f"**{action.get('title','')}**")
+                        # /* Reduz somente o texto interno */
+                        # div[data-testid="stButton"] > button p {
+                            # font-size: 11px !important;
+                        # }
+                        # </style>
+                        # """, unsafe_allow_html=True)
 
-                    allowed_procs = q_plan.get("procedures", []) or []
+                    if action:
+                        st.markdown(f"**{action.get('title','')}**")
 
-                    for proc in action.get("procedures", []):
-                        if proc.get("number") in allowed_procs:
+                        for proc in action.get("procedures", []):
                             with st.expander(f"Proc {proc['number']}: {proc['name']}"):
                                 if proc.get("prerequisite"):
                                     st.markdown("**Prerequisite**")
@@ -577,46 +583,99 @@ def render_assessment():
             answered = (current_answer is not None)
             next_disabled = (not answered) if is_mandatory else False
 
-            if st.button(
-                "➡ Next",
-                use_container_width=True,
-                disabled=next_disabled
-            ):
+            at_last_q = (st.session_state.q_idx >= (total_q_current_domain - 1))
+            at_last_domain = (st.session_state.dom_idx >= (total_domains - 1))
+            is_last_step = at_last_q and at_last_domain
 
-                if is_mandatory and current_answer is None:
-                    add_message(f"Mandatory question not answered: {dom_meta.get('acronym','')} / {q_id}.", "error")
-                    st.rerun()
+            if not is_last_step:
 
-                at_last_q = (st.session_state.q_idx >= (total_q_current_domain - 1))
-                at_last_domain = (st.session_state.dom_idx >= (total_domains - 1))
+                if st.button(
+                    "➡ Next",
+                    use_container_width=True,
+                    disabled=next_disabled
+                ):
 
-                if at_last_q and at_last_domain:
-                    missing = []
-
-                    for d_index, req in enumerate(req_list):
-                        dom_id_i = req.get("domain")
-                        meta_i = next((d for d in domain_flow if str(d.get("domain_id")) == str(dom_id_i)), {}) or {}
-                        dom_label = (meta_i.get("acronym") or meta_i.get("name") or f"Domain {dom_id_i}").strip()
-
-                        sq = req.get("selected_questions", []) or []
-                        if sort_order == "id":
-                            sq = sorted(sq, key=lambda q: _id_natural_key(q.get("id")))
-
-                        dk = f"domain_{d_index}"
-                        ans_d = st.session_state.answers.get(dk, {}) or {}
-
-                        for q in sq:
-                            qid = q.get("id")
-                            if not qid:
-                                continue
-                            mand = _normalize_bool_yesno(q.get("mandatory", None), True)
-                            if mand and qid not in ans_d:
-                                missing.append((dom_label, qid))
-
-                    if missing:
-                        add_message("Assessment cannot be completed. Missing mandatory answers:", "error")
-                        for dom_label, qid in missing:
-                            add_message(f"{dom_label}: {qid}", "error")
+                    if is_mandatory and current_answer is None:
+                        add_message(
+                            f"Mandatory question not answered: {dom_meta.get('acronym','')} / {q_id}.",
+                            "error"
+                        )
                         st.rerun()
 
-                advance_flow(total_q_current_domain, total_domains)
+                    advance_flow(total_q_current_domain, total_domains)
+
+            else:
+
+                # Next desabilitado
+                st.button(
+                    "➡ Next",
+                    use_container_width=True,
+                    disabled=True
+                )
+
+                # Verificar mandatory pendente
+                mandatory_missing = False
+
+                for dom_index, req in enumerate(req_list):
+
+                    domain_key_check = f"domain_{dom_index}"
+                    sq = req.get("selected_questions", []) or []
+
+                    domain_answers = st.session_state.answers.get(domain_key_check, {})
+
+                    for q in sq:
+
+                        is_mandatory_q = str(q.get("mandatory", False)).strip().lower() in ["true", "yes", "1"]
+
+                        if is_mandatory_q:
+                            qid = q.get("id")
+                            if qid not in domain_answers:
+                                mandatory_missing = True
+                                break
+
+                    if mandatory_missing:
+                        break
+
+
+                # Botão Submit
+                if st.button(
+                    "✅ Submit All",
+                    use_container_width=True,
+                    type="primary",
+                    disabled=mandatory_missing
+                ):
+                    if mandatory_missing:
+                        add_message(
+                            "There are mandatory questions not answered. Please complete them before submitting.",
+                            "error"
+                        )
+                    else:
+                        st.session_state.open_submit_dialog = True
+
+        # =========================
+        # MODAL FORA DAS COLUNAS
+        # =========================
+        if st.session_state.get("open_submit_dialog"):
+
+            if st.session_state.get("open_submit_dialog"):
+
+                st.warning(
+                    "This action is final. You will not be able to modify the results after submission."
+                )
+
+                st.markdown("Do you want to proceed?")
+
+                col1, col2 = st.columns(2)
+
+                with col1:
+                    if st.button("Confirm", use_container_width=True):
+                        st.session_state.assessment_completed = True
+                        add_message("Assessment successfully submitted.", "success")
+                        st.session_state.open_submit_dialog = False
+                        st.rerun()
+
+                with col2:
+                    if st.button("Cancel", use_container_width=True):
+                        st.session_state.open_submit_dialog = False
+                        st.rerun()
+
