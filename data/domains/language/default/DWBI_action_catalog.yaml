@@ -76,7 +76,7 @@ action_catalog:
         notes:
           - "Use CMMI lifecycle integration practices to ensure consistency across teams."
 
-  DWBI-05:
+  DWBI-04:
     title: "Implement governed cataloguing, versioning, and consumption monitoring"
     procedures:
       - number: 5

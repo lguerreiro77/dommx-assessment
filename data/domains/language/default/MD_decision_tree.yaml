@@ -60,7 +60,7 @@ questions:
       0: { action_code: "MD-01", description: "Define cataloguing and metadata maintenance requirements" }
       1: { action_code: "MD-02", description: "Assign responsibilities for metadata capture and updates" }
       2: { action_code: "MD-03", description: "Approve cataloguing structures and maintenance processes" }
-      3: { action_code: "MD-05", description: "Implement governed cataloguing and update routines" }
+      3: { action_code: "MD-04", description: "Implement governed cataloguing and update routines" }
       4: { action_code: "MD-06", description: "Automate metadata capture, cataloguing, and update controls" }
       5: { action_code: "MD-09", description: "Continuously improve metadata cataloguing governance" }
 
@@ -86,7 +86,7 @@ questions:
       0: { action_code: "MD-01", description: "Define cross-domain semantic and metadata alignment rules" }
       1: { action_code: "MD-02", description: "Assign responsibilities for semantic alignment" }
       2: { action_code: "MD-03", description: "Approve semantic and metadata integration standards" }
-      3: { action_code: "MD-05", description: "Embed cross-domain metadata alignment routines" }
+      3: { action_code: "MD-04", description: "Embed cross-domain metadata alignment routines" }
       4: { action_code: "MD-06", description: "Automate metadata harmonization and semantic matching" }
       5: { action_code: "MD-09", description: "Continuously improve metadata interoperability governance" }
 
@@ -112,6 +112,6 @@ questions:
       0: { action_code: "MD-01", description: "Define ethical, privacy, and minimization rules for metadata" }
       1: { action_code: "MD-02", description: "Assign stewardship for ethical and privacy compliance" }
       2: { action_code: "MD-03", description: "Approve ethical and privacy safeguards" }
-      3: { action_code: "MD-05", description: "Embed ethical and privacy controls in metadata routines" }
+      3: { action_code: "MD-04", description: "Embed ethical and privacy controls in metadata routines" }
       4: { action_code: "MD-06", description: "Automate privacy, minimization, and fairness validation" }
       5: { action_code: "MD-09", description: "Continuously improve ethical metadata governance" }

@@ -60,7 +60,7 @@ questions:
       0: { action_code: "DQ-01", description: "Define quality validation rules and threshold requirements" }
       1: { action_code: "DQ-02", description: "Assign responsibilities for validation governance" }
       2: { action_code: "DQ-03", description: "Approve validation rules and threshold definitions" }
-      3: { action_code: "DQ-05", description: "Implement governed validation routines in operations" }
+      3: { action_code: "DQ-04", description: "Implement governed validation routines in operations" }
       4: { action_code: "DQ-06", description: "Automate validation rule execution and defect detection" }
       5: { action_code: "DQ-09", description: "Continuously improve validation governance using metrics" }
 
@@ -86,7 +86,7 @@ questions:
       0: { action_code: "DQ-01", description: "Define governed remediation and escalation rules" }
       1: { action_code: "DQ-02", description: "Assign remediation and escalation responsibilities" }
       2: { action_code: "DQ-03", description: "Approve remediation workflows and governance structure" }
-      3: { action_code: "DQ-05", description: "Embed governed remediation routines into operations" }
+      3: { action_code: "DQ-04", description: "Embed governed remediation routines into operations" }
       4: { action_code: "DQ-06", description: "Automate remediation tracking and governance validation" }
       5: { action_code: "DQ-09", description: "Continuously improve remediation governance using metrics" }
 
@@ -112,6 +112,6 @@ questions:
       0: { action_code: "DQ-01", description: "Define ethical, privacy, and minimization rules for quality processes" }
       1: { action_code: "DQ-02", description: "Assign oversight for ethical and privacy governance" }
       2: { action_code: "DQ-03", description: "Approve ethical and privacy safeguards" }
-      3: { action_code: "DQ-05", description: "Embed ethical and privacy controls in quality routines" }
+      3: { action_code: "DQ-04", description: "Embed ethical and privacy controls in quality routines" }
       4: { action_code: "DQ-06", description: "Automate privacy and ethical validation for quality workflows" }
       5: { action_code: "DQ-09", description: "Continuously improve ethical quality governance using audits" }
