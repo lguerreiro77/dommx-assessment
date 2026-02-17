@@ -8,3 +8,5 @@ data/users/
 git_tkn.txt
 *.sqlite
 service_account.json
+/data/general/secret.key
+

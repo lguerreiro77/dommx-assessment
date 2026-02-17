@@ -51,27 +51,34 @@ def _row_to_dict(row_values: list) -> dict:
 # =========================================================
 # SAVE
 # =========================================================
-def save_results(user_id: str, payload: dict):
+def save_results(user_id: str, project_id: str, answers_dict: dict):
 
     sheet = get_sheet("results")
 
     user_id = str(user_id).strip()
-    project_id = str(st.session_state.get("active_project", "")).strip()
+    project_id = str(project_id).strip()
+
+    ts = datetime.utcnow().isoformat()
+
+    payload = {
+        "version": 2,
+        "meta": {
+            "completed": False,
+            "last_update": ts
+        },
+        "answers": answers_dict or {}
+    }
 
     answers_json = json.dumps(payload, ensure_ascii=False)
     enc = encrypt_text(answers_json)
-
-    dom_idx = int(payload.get("last_session", {}).get("dom_idx", 0))
-    q_idx = int(payload.get("last_session", {}).get("q_idx", 0))
-    ts = datetime.utcnow().isoformat()
 
     idx = _results_index()
     row_num = idx.get((user_id, project_id))
 
     if row_num:
         sheet.update(
-            f"A{row_num}:E{row_num}",
-            [[user_id, project_id, enc, dom_idx, q_idx]]
+            f"A{row_num}:C{row_num}",
+            [[user_id, project_id, enc]]
         )
         sheet.update(f"F{row_num}", [[ts]])
     else:
@@ -79,25 +86,28 @@ def save_results(user_id: str, payload: dict):
             user_id,
             project_id,
             enc,
-            dom_idx,
-            q_idx,
+            "",  # dom_idx inutilizado
+            "",  # q_idx inutilizado
             ts
         ])
 
     _results_index.clear()
+    
     return True
+
+
 
 
 # =========================================================
 # LOAD
 # =========================================================
 @st.cache_data(ttl=60, show_spinner=False)
-def load_results(user_id: str):
+def load_results(user_id: str, project_id: str):
 
     sheet = get_sheet("results")
 
     user_id = str(user_id).strip()
-    project_id = str(st.session_state.get("active_project", "")).strip()
+    project_id = str(project_id).strip()
 
     idx = _results_index()
     row_num = idx.get((user_id, project_id))
@@ -108,17 +118,21 @@ def load_results(user_id: str):
     row_values = sheet.row_values(row_num)
     row = _row_to_dict(row_values)
 
-    enc = row.get("answers_json_encrypted") or row.get("answers_json") or ""
+    enc = row.get("answers_json_encrypted") or ""
     if not enc:
         return None
 
-    data = json.loads(decrypt_text(enc))
+    try:
+        data = json.loads(decrypt_text(enc))
+    except Exception:
+        return None
 
-    answers = data.get("answers", {}) if isinstance(data, dict) else {}
-    last_session = data.get("last_session", {}) if isinstance(data, dict) else {}
+    if not isinstance(data, dict):
+        return None
 
     return {
-        "answers": answers,
-        "dom_idx": int(last_session.get("dom_idx", 0)),
-        "q_idx": int(last_session.get("q_idx", 0)),
+        "answers": data.get("answers", {}),
+        "meta": data.get("meta", {}),
+        "completed": data.get("meta", {}).get("completed", False)
     }
+

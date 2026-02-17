@@ -534,13 +534,8 @@ def render_assessment():
 
                     save_results(
                         st.session_state.user_id,
-                        {
-                            "answers": st.session_state.answers,
-                            "last_session": {
-                                "dom_idx": st.session_state.dom_idx,
-                                "q_idx": st.session_state.q_idx
-                            }
-                        }
+                        st.session_state.active_project,
+                        st.session_state.answers
                     )
 
                     st.session_state.last_saved_snapshot = json.loads(json.dumps(st.session_state.answers))
