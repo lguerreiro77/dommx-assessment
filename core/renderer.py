@@ -8,7 +8,9 @@ from core.config import BASE_DIR, resolve_path
 
 
 def render_app():
+       
     try:
+        
         # 🔹 Carregar orchestration exatamente igual ao assessment
         fs_path = resolve_path(BASE_DIR, "FileSystem_Setup.yaml")
         with open(fs_path, "r", encoding="utf-8") as f:

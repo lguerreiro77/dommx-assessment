@@ -63,7 +63,7 @@ def save_results(user_id: str, project_id: str, answers_dict: dict):
 # =========================================================
 # LOAD
 # =========================================================
-@st.cache_data(ttl=60, show_spinner=False, show_spinner=False)
+@st.cache_data(ttl=60, show_spinner=False)
 def load_results(user_id: str, project_id: str):
 
     user_id = str(user_id).strip()

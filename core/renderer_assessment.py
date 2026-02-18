@@ -2,13 +2,22 @@ import streamlit as st
 import yaml
 import json
 import re
+import time
+from datetime import datetime
 
-from core.config import BASE_DIR, resolve_path
+from core.config import BASE_DIR, resolve_path, APP_TITLE
 from storage.result_storage import save_results
 from storage.export_service import export_all_to_excel
 from core.flow_engine import advance_flow, add_message, get_messages
 from core.session_utils import logout
+from auth.crypto_service import decrypt_text
+from storage.log_storage import save_log_snapshot
 
+
+from data.repository_factory import get_repository
+repo = get_repository()
+
+ 
 
 # =========================================================
 # HELPERS
@@ -80,6 +89,18 @@ def _id_natural_key(qid: str):
     return (int(nums[0]), s.lower())
 
 
+def mark_assessment_finished(user_id, project_id):
+    repo.insert(
+        "finished_assessments",
+        {
+            "user_id": str(user_id).strip(),
+            "project_id": str(project_id).strip(),
+            "is_finished": True,
+            "timestamp": datetime.utcnow().isoformat()
+        }
+    )
+
+
 def safe_load(path):
     try:
         with open(path, "r", encoding="utf-8") as f:
@@ -88,12 +109,60 @@ def safe_load(path):
         return None
 
 
+def render_final_screen():
+
+
+    st.title(APP_TITLE)
+    st.success("Assessment completed successfully.")
+
+    logout_at = st.session_state.get("logout_at")
+
+    if logout_at:
+        remaining = int(logout_at - time.time())
+
+        if remaining > 0:
+            st.info(f"You will be logged out automatically in {remaining} seconds...")
+            time.sleep(1)
+            st.rerun()
+        else:
+            logout()
+            st.rerun()
+
+    st.stop()
+
+
+
 # =========================================================
 # MAIN ASSESSMENT RENDER
 # =========================================================
 
 def render_assessment():
+    
+    # -------------------------------------------------
+    # FINAL SCREEN (fora do dialog)
+    # -------------------------------------------------
 
+    if st.session_state.get("final_screen"):
+        
+        st.success("Assessment completed successfully.")
+
+        start = st.session_state.get("final_start", time.time())
+        duration = 5
+
+        elapsed = time.time() - start
+        remaining = int(duration - elapsed)
+
+        if remaining > 0:
+            st.info(f"You will be logged out automatically in {remaining} seconds...")
+            time.sleep(1)
+            st.rerun()
+        else:
+            logout()
+            st.rerun()
+
+        st.stop()
+
+ 
     fs_path = resolve_path(BASE_DIR, "FileSystem_Setup.yaml")
     fs_setup = safe_load(fs_path) or {}
     config = (fs_setup.get("orchestrator_config") or {})
@@ -179,6 +248,10 @@ def render_assessment():
     is_mandatory = _normalize_bool_yesno(q_plan.get("mandatory", None), True)
 
     domain_key = f"domain_{st.session_state.dom_idx}"
+    
+    if "last_save_ts" not in st.session_state:
+        st.session_state.last_save_ts = time.time()
+        
     if domain_key not in st.session_state.answers:
         st.session_state.answers[domain_key] = {}
 
@@ -235,6 +308,26 @@ def render_assessment():
 
 
     col_left, col_main = st.columns([2, 6], gap="small")
+    
+    # -------------------------------------------------
+    # LAST ANSWERED POSITION (must be before navigation panel)
+    # -------------------------------------------------
+
+    last_dom = 0
+    last_q = -1
+
+    for d_index, req in enumerate(req_list):
+
+        domain_key_check = f"domain_{d_index}"
+        sq = req.get("selected_questions", []) or []
+
+        domain_answers = st.session_state.answers.get(domain_key_check, {})
+
+        for q_index, q in enumerate(sq):
+            qid = q.get("id")
+            if qid in domain_answers:
+                last_dom = d_index
+                last_q = q_index
 
     # ===============================
     # LEFT PANEL
@@ -264,9 +357,18 @@ def render_assessment():
                         for qi, qx in enumerate(qids):
                             prefix = "▸ " if (i == st.session_state.dom_idx and qi == st.session_state.q_idx) else "  "
                             if st.button(f"{prefix}{qx}", key=f"tree_q_{i}_{qi}", use_container_width=True):
-                                st.session_state.dom_idx = i
-                                st.session_state.q_idx = qi
-                                st.rerun()
+
+                                # BLOQUEIO DE NAVEGAÇÃO FUTURA
+                                if i > last_dom or (i == last_dom and qi > last_q + 1):
+                                    add_message(
+                                        "You cannot navigate to unanswered future questions.",
+                                        "warning"
+                                    )
+                                else:
+                                    st.session_state.dom_idx = i
+                                    st.session_state.q_idx = qi
+                                    st.rerun()
+
 
         msg_box = st.container(border=True)
         with msg_box:
@@ -333,8 +435,16 @@ def render_assessment():
                         st.session_state.open_dialog = "projects"
                         st.rerun()
 
-                    can_export = bool(st.session_state.get("last_saved_snapshot"))
-                    excel_data = export_all_to_excel() if can_export else b""
+                    #can_export = bool(st.session_state.get("last_saved_snapshot"))
+                    #excel_data = export_all_to_excel() if can_export else b""
+                    
+                    try:
+                        excel_data = export_all_to_excel()
+                        can_export = True
+                    except Exception as e:
+                        st.write("EXPORT ERROR:", e)
+                        excel_data = b""
+                        can_export = False
 
                     st.download_button(
                         label="📊 Export All Results",
@@ -489,7 +599,22 @@ def render_assessment():
                         # """, unsafe_allow_html=True)
 
                     if action:
-                        st.markdown(f"**{action.get('title','')}**")
+                        action_title = action.get("title", "")
+                        action_code_clean = action_code.replace("-", "")
+
+                        st.markdown(f"""
+                            <div style="
+                                background-color: {header_color};
+                                padding: 8px 12px;
+                                border-radius: 6px;
+                                color: white;
+                                font-weight: 600;
+                                margin-bottom: 8px;
+                            ">
+                                {action_code_clean} - {action_title}
+                            </div>
+                        """, unsafe_allow_html=True)
+
 
                         for proc in action.get("procedures", []):
                             with st.expander(f"Proc {proc['number']}: {proc['name']}"):
@@ -515,8 +640,35 @@ def render_assessment():
                                     else:
                                         st.write(note_value)
 
+
         # pula espaço entre botoes salvar, proximo, etc.
-        st.markdown("<div style='margin-top:35px;'></div>", unsafe_allow_html=True)
+        st.markdown("<div style='margin-top:35px;'></div>", unsafe_allow_html=True)              
+        
+        # -------------------------------------------------
+        # NO SAVES WARNING  → MESSAGE PANEL - 3 minutes
+        # -------------------------------------------------
+
+        if "last_saved_snapshot" in st.session_state:
+
+            changed = st.session_state.answers != st.session_state.last_saved_snapshot
+
+            if changed:
+                elapsed = int(time.time() - st.session_state.last_save_ts)
+
+                if elapsed > 180:
+
+                    warning_text = f"Last saved {elapsed} seconds ago. You have unsaved changes."
+
+                    existing_msgs = get_messages()
+
+                    already_exists = any(
+                        (m.get("text") or "").startswith("Last saved")
+                        for m in existing_msgs
+                    )
+
+                    if not already_exists:
+                        add_message(warning_text, "warning")
+               
         
         # -------------------------------------------------
         # SAVE + NAVIGATION
@@ -528,25 +680,43 @@ def render_assessment():
         # SAVE
         with col_save:
 
-            has_answers = len(st.session_state.answers) > 0
+            if "last_saved_snapshot" not in st.session_state:
+                st.session_state.last_saved_snapshot = json.loads(json.dumps(st.session_state.answers))
+
             changed = st.session_state.answers != st.session_state.last_saved_snapshot
 
-            if has_answers:
-                if st.button(
-                    "💾 Save Progress",
-                    use_container_width=True,
-                    disabled=not changed
-                ):
+            if st.button(
+                "💾 Save Progress",
+                use_container_width=True,
+                disabled=not changed
+            ):
 
-                    save_results(
-                        st.session_state.user_id,
-                        st.session_state.active_project,
-                        st.session_state.answers
-                    )
+                save_results(
+                    st.session_state.user_id,
+                    st.session_state.active_project,
+                    st.session_state.answers
+                )
 
-                    st.session_state.last_saved_snapshot = json.loads(json.dumps(st.session_state.answers))
-                    add_message("Progress saved successfully.", "success")
-                    st.rerun()
+                st.session_state.last_saved_snapshot = json.loads(json.dumps(st.session_state.answers))
+                st.session_state.last_save_ts = time.time()
+
+                # Remove warnings antigos
+                msgs = get_messages()
+                filtered = [m for m in msgs if not (m.get("text") or "").startswith("Last saved")]
+                st.session_state.messages = filtered
+
+                # Adiciona mensagem de sucesso no painel esquerdo
+                add_message("Progress saved successfully.", "success")
+                
+                # Logs
+                save_log_snapshot(
+                    st.session_state.user_id,
+                    st.session_state.active_project,
+                    get_messages()
+                )
+
+                st.rerun()
+
 
         # PREVIOUS
         with col_prev:
@@ -669,11 +839,24 @@ def render_assessment():
 
                 with col1:
                     if st.button("Confirm", use_container_width=True):
-                        st.session_state.assessment_completed = True
-                        add_message("Assessment successfully submitted.", "success")
-                        st.session_state.open_submit_dialog = False
-                        st.rerun()
+                        
+                        mark_assessment_finished(
+                            st.session_state.user_id,
+                            st.session_state.active_project
+                        )                        
+                        
+                        save_log_snapshot(
+                            st.session_state.user_id,
+                            st.session_state.active_project,
+                            get_messages()
+                        )
+                        
+                        st.session_state.final_screen = True
+                        st.session_state.final_start = time.time()
 
+                        st.session_state.open_submit_dialog = False
+                        st.rerun()                      
+                        
                 with col2:
                     if st.button("Cancel", use_container_width=True):
                         st.session_state.open_submit_dialog = False

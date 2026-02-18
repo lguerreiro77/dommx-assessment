@@ -194,10 +194,26 @@ def _delete_account(user_hash):
 
     user_hash = str(user_hash).strip()
 
-    repo.delete("users", {"email_hash": user_hash})
-    repo.delete("results", {"user_id": user_hash})
-    repo.delete("usersprojects", {"user_id": user_hash})
+    # Tabelas que possuem user_id
+    tables_with_user_id = [
+        "results",
+        "usersprojects",
+        "finished_assessments",
+        "logs",
+    ]
 
+    # Delete em todas as tabelas dependentes
+    for table in tables_with_user_id:
+        try:
+            repo.delete(table, {"user_id": user_hash})
+        except Exception:
+            pass
+
+    # Delete do próprio user (usa email_hash como chave)
+    repo.delete("users", {"email_hash": user_hash})
+
+    # Limpa caches
     _read_users_records.clear()
     load_user_by_hash.clear()
     get_all_users.clear()
+

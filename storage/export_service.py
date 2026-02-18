@@ -1,131 +1,308 @@
 import io
-import os
 import json
 import yaml
 import pandas as pd
 
-from core.config import BASE_DIR
+from core.config import BASE_DIR, resolve_path
 from data.repository_factory import get_repository
 from auth.crypto_service import decrypt_text
 
 repo = get_repository()
 
-FILESYSTEM_SETUP_PATH = os.path.join(BASE_DIR, "filesystem_setup.yaml")
+
+def _safe_load_yaml(path: str):
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return yaml.safe_load(f)
+    except Exception:
+        return None
 
 
-def _ci_pick_child(dir_path: str, target_name: str) -> str:
-    if not os.path.isdir(dir_path):
-        return os.path.join(dir_path, target_name)
-    for name in os.listdir(dir_path):
-        if name.lower() == target_name.lower():
-            return os.path.join(dir_path, name)
-    return os.path.join(dir_path, target_name)
+def _build_domain_maps():
+    """
+    Mapeia domain_{idx} -> metadata do domínio (acronym, name, question_text_map)
+    usando:
+      - filesystem_setup.yaml -> flow.yaml + orchestration yaml
+      - flow.yaml -> arquivos por domínio
+      - orchestration -> execution_request + language
+      - decision_tree por domínio -> texto das perguntas
+    """
+    fs_path = resolve_path(BASE_DIR, "FileSystem_Setup.yaml")
+    fs_setup = _safe_load_yaml(fs_path) or {}
+    orch_cfg = (fs_setup.get("orchestrator_config") or {})
 
+    flow_path = resolve_path(BASE_DIR, orch_cfg.get("main_flow", "flow.yaml"))
+    orch_path = resolve_path(BASE_DIR, orch_cfg.get("main_orchestration", "default_execution.yaml"))
 
-def _load_yaml(path: str) -> dict:
-    with open(path, "r", encoding="utf-8") as f:
-        return yaml.safe_load(f) or {}
+    flow = _safe_load_yaml(flow_path) or {}
+    orch = _safe_load_yaml(orch_path) or {}
 
+    req_list = orch.get("execution_request", []) or []
+    domain_flow = flow.get("Domain_flow", []) or []
 
-def _load_context():
-    fs = _load_yaml(FILESYSTEM_SETUP_PATH)
-    flow_path = os.path.join(BASE_DIR, fs["orchestrator_config"]["main_flow"])
-    orch_path = os.path.join(BASE_DIR, fs["orchestrator_config"]["main_orchestration"])
+    lang_raw = orch.get("language", "Default")
+    lang = str(lang_raw or "Default").strip() or "Default"
+    if lang.lower() == "default":
+        lang = "Default"
 
-    flow = _load_yaml(flow_path)
-    orch = _load_yaml(orch_path)
+    # domain_{idx} -> (acronym, name, decision_tree_path)
+    idx_to_meta = {}
 
-    lang = orch.get("language", "Default")
+    for idx, req in enumerate(req_list):
+        dom_id = req.get("domain")
+        dom_meta = next((d for d in domain_flow if str(d.get("domain_id")) == str(dom_id)), None) or {}
 
-    domains_root = os.path.join(BASE_DIR, "data", "domains")
-    language_root = _ci_pick_child(domains_root, "Language")
-    lang_folder = _ci_pick_child(language_root, lang)
+        acronym = (dom_meta.get("acronym") or str(dom_id) or f"domain_{idx}").strip()
+        name = (dom_meta.get("name") or "").strip()
 
-    domain_names = {}
-    domain_questions = {}
+        files = dom_meta.get("files") or {}
+        decision_tree = files.get("decision_tree")
 
-    for d in flow.get("Domain_flow", []):
-        domain_id = d.get("domain_id")
-        domain_name = d.get("name", "")
-        decision_file = d.get("files", {}).get("decision_tree", "")
+        if decision_tree:
+            tree_path = resolve_path(BASE_DIR, f"data/domains/Language/{lang}/{decision_tree}")
+        else:
+            tree_path = None
 
-        if not domain_id or not decision_file:
+        idx_to_meta[f"domain_{idx}"] = {
+            "acronym": acronym,
+            "name": name,
+            "tree_path": tree_path,
+            "qtext": {}
+        }
+
+    # carregar textos das perguntas por domínio
+    for dkey, meta in idx_to_meta.items():
+        tree_path = meta.get("tree_path")
+        if not tree_path:
             continue
 
-        domain_names[str(domain_id)] = domain_name
+        tree_data = _safe_load_yaml(tree_path) or {}
+        questions = tree_data.get("questions", {}) or {}
 
-        tree_path = _ci_pick_child(lang_folder, decision_file)
-        tree = _load_yaml(tree_path)
-        domain_questions[str(domain_id)] = tree.get("questions", {}) or {}
+        # normaliza chaves para comparar (Q1, q1 etc.)
+        qtext = {}
+        for qid, qinfo in questions.items():
+            qid_str = str(qid).strip()
+            text = (qinfo.get("question") or qinfo.get("text") or "").strip()
+            qtext[qid_str.lower()] = text
 
-    for dom_id in list(domain_questions.keys()):
-        q = domain_questions[dom_id]
-        domain_questions[dom_id] = {str(k).lower(): v for k, v in q.items()}
+        meta["qtext"] = qtext
 
-    return domain_names, domain_questions
+    return idx_to_meta
 
 
 def export_all_to_excel():
-    domain_names, domain_questions = _load_context()
 
-    rows = repo.fetch_all("results")
+    import io
+    import json
+    import yaml
+    import pandas as pd
 
-    export_rows = []
+    from core.config import BASE_DIR, resolve_path
+    from auth.crypto_service import decrypt_text
 
-    for r in rows:
-        user_id = r.get("user_id", "")
-        enc = r.get("answers_json_encrypted") or ""
-        if not enc:
+    # -----------------------------
+    # LIKERT MAP
+    # -----------------------------
+    LIKERT = {
+        0: "Initial",
+        1: "Ad-hoc",
+        2: "Emerging",
+        3: "Defined",
+        4: "Managed",
+        5: "Optimized",
+    }
+
+    users = repo.fetch_all("users") or []
+    projects = repo.fetch_all("projects") or []
+    results = repo.fetch_all("results") or []
+
+    if not results:
+        return b""
+
+    # -----------------------------
+    # USERS LOOKUP
+    # -----------------------------
+    user_lookup = {}
+
+    for u in users:
+        email_hash = (u.get("email_hash") or "").strip()
+        if not email_hash:
             continue
 
-        from core.flow_engine import add_message
+        try:
+            full_name = decrypt_text(u.get("full_name_encrypted"))
+        except Exception:
+            full_name = ""
+
+        try:
+            email = decrypt_text(u.get("email_encrypted"))
+        except Exception:
+            email = ""
+
+        user_lookup[email_hash] = {
+            "full_name": full_name,
+            "email": email
+        }
+
+    # -----------------------------
+    # PROJECT LOOKUP
+    # -----------------------------
+    project_lookup = {
+        p.get("project_id"): p.get("name")
+        for p in projects
+    }
+
+    valid_project_ids = set(project_lookup.keys())
+
+    # -----------------------------
+    # LOAD FLOW + ORCHESTRATION
+    # -----------------------------
+    def safe_load(path):
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                return yaml.safe_load(f)
+        except Exception:
+            return None
+
+    fs_path = resolve_path(BASE_DIR, "FileSystem_Setup.yaml")
+    fs_setup = safe_load(fs_path) or {}
+    config = (fs_setup.get("orchestrator_config") or {})
+
+    flow_path = resolve_path(BASE_DIR, config.get("main_flow", "flow.yaml"))
+    orch_path = resolve_path(BASE_DIR, config.get("main_orchestration", "default_execution.yaml"))
+
+    flow = safe_load(flow_path) or {}
+    orch = safe_load(orch_path) or {}
+
+    req_list = orch.get("execution_request", []) or []
+    domain_flow = flow.get("Domain_flow", []) or []
+
+    lang_raw = orch.get("language", "Default")
+    lang = str(lang_raw or "Default").strip() or "Default"
+    if lang.lower() == "default":
+        lang = "Default"
+
+    # -----------------------------
+    # DOMAIN MAP (domain_0 → metadata)
+    # -----------------------------
+    domain_maps = {}
+
+    for idx, req in enumerate(req_list):
+        dom_id = req.get("domain")
+
+        dom_meta = next(
+            (d for d in domain_flow if str(d.get("domain_id")) == str(dom_id)),
+            None
+        ) or {}
+
+        acronym = (dom_meta.get("acronym") or f"domain_{idx}").strip()
+        name = (dom_meta.get("name") or "").strip()
+
+        decision_tree = (dom_meta.get("files") or {}).get("decision_tree")
+
+        qtext_map = {}
+
+        if decision_tree:
+            tree_path = resolve_path(
+                BASE_DIR,
+                f"data/domains/Language/{lang}/{decision_tree}"
+            )
+
+            tree_data = safe_load(tree_path) or {}
+            questions = tree_data.get("questions", {}) or {}
+
+            for qid, qinfo in questions.items():
+                qid_str = str(qid).strip().lower()
+                qtext = (
+                    qinfo.get("question")
+                    or qinfo.get("text")
+                    or ""
+                ).strip()
+
+                qtext_map[qid_str] = qtext
+
+        domain_maps[f"domain_{idx}"] = {
+            "acronym": acronym,
+            "name": name,
+            "qtext": qtext_map
+        }
+
+    # -----------------------------
+    # BUILD ROWS
+    # -----------------------------
+    rows = []
+
+    for r in results:
+
+        user_id = r.get("user_id")
+        project_id = r.get("project_id")
+
+        # ✅ Apenas projetos existentes
+        if project_id not in valid_project_ids:
+            continue
+
+        full_name = user_lookup.get(user_id, {}).get("full_name", "")
+        email = user_lookup.get(user_id, {}).get("email", "")
+        project_name = project_lookup.get(project_id, "")
+
+        enc = r.get("answers_json_encrypted")
+        if not enc:
+            continue
 
         try:
             decrypted = decrypt_text(enc)
             payload = json.loads(decrypted)
         except Exception:
-            add_message("Warning: Invalid encrypted payload found during export.", "warning")
             continue
 
-        answers = payload.get("answers", {}) if isinstance(payload, dict) else {}
+        # suporta dois formatos
+        answers = payload.get("answers") if isinstance(payload, dict) else None
+        if answers is None and isinstance(payload, dict):
+            answers = payload
 
-        for domain_id, questions in answers.items():
+        if not isinstance(answers, dict):
+            continue
 
-            if not isinstance(questions, dict):
+        for domain_key, qmap in answers.items():
+
+            if not isinstance(qmap, dict):
                 continue
 
-            for q_id, score in questions.items():
+            dom_meta = domain_maps.get(domain_key, {})
+            domain_acr = dom_meta.get("acronym") or domain_key
+            domain_name = dom_meta.get("name") or ""
+            qtext_map = dom_meta.get("qtext") or {}
 
-                q_key = str(q_id).lower()
+            for qid, score in qmap.items():
 
-                domain_name = domain_names.get(str(domain_id), "")
-                found_q = domain_questions.get(str(domain_id), {}).get(q_key)
+                qid_str = str(qid).strip()
+                qtext = qtext_map.get(qid_str.lower(), "")
+                maturity_label = LIKERT.get(score, "")
 
-                question_text = found_q.get("text", "") if found_q else ""
-
-                MATURITY_LABELS = {
-                    0: "Initial",
-                    1: "Ad-hoc",
-                    2: "Developing",
-                    3: "Defined",
-                    4: "Managed",
-                    5: "Optimized"
-                }
-
-                label = MATURITY_LABELS.get(int(score), "")
-
-                export_rows.append({
-                    "Id_User": user_id,
-                    "Domain": domain_name,
-                    "Question": f"{q_id}: {question_text}" if question_text else str(q_id),
-                    "Answer": score,
-                    "Result": label
+                rows.append({
+                    "Full Name": full_name,
+                    "Email": email,
+                    "Project": project_name,
+                    "Domain": domain_acr,
+                    "Domain Name": domain_name,
+                    "Question ID": qid_str,
+                    "Question": qtext,
+                    "Answer (Score)": score,
+                    "Maturity Level": maturity_label
                 })
 
-    df = pd.DataFrame(export_rows, columns=["Id_User", "Domain", "Question", "Answer", "Result"])
+    if not rows:
+        return b""
+
+    df = pd.DataFrame(rows)
+
+    # ordenação elegante
+    df = df.sort_values(
+        by=["Project", "Full Name", "Domain", "Question ID"]
+    )
 
     output = io.BytesIO()
     df.to_excel(output, index=False)
-    output.seek(0)
 
-    return output
+    return output.getvalue()

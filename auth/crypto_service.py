@@ -52,3 +52,7 @@ def decrypt_text(token: str) -> str:
     if not token:
         return ""
     return _cipher.decrypt(token.encode()).decode()
+
+
+# Backward compatibility alias
+decrypt_value = decrypt_text

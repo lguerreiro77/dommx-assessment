@@ -1,4 +1,7 @@
 import streamlit as st
+import time
+
+from core.session_utils import logout
 from core.projects import render_projects_modal
 from core.user_project_modal import render_user_project_modal, render_remove_association_modal
 from core.account import render_account_page
@@ -6,7 +9,7 @@ from core.welcome import render_welcome
 
 
 def handle_page_and_dialogs():
-
+   
     # PAGE CONTROLLER
     page = st.session_state.get("page", "main")
 

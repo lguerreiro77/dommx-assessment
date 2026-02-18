@@ -47,9 +47,24 @@ def update_project(project_id, name, is_active, allow_open_access):
 
 
 def delete_project(project_id):
-    repo.delete(
-        "projects",
-        {"project_id": project_id}
-    )
+
+    project_id = str(project_id).strip()
+
+    tables_with_project_id = [
+        "results",
+        "usersprojects",
+        "finished_assessments",
+        "logs",
+    ]
+
+    for table in tables_with_project_id:
+        try:
+            repo.delete(table, {"project_id": project_id})
+        except Exception:
+            pass
+
+    repo.delete("projects", {"project_id": project_id})
 
     get_projects.clear()
+
+

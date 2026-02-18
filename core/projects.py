@@ -9,6 +9,7 @@ from storage.project_storage import (
 
 @st.dialog("Manage Projects", width="medium")
 def render_projects_modal():
+
     # -------------------------
     # FLASH
     # -------------------------
@@ -27,8 +28,13 @@ def render_projects_modal():
 
     projects = get_projects() or []
 
-    # colapsar expanders após operação
     collapse_all = bool(st.session_state.pop("_collapse_projects", False))
+
+    # Se houve operação, limpa confirmações antigas
+    if collapse_all:
+        for key in list(st.session_state.keys()):
+            if key.startswith("confirm_delete_checkbox_"):
+                del st.session_state[key]
 
     # ---------------- CREATE ----------------
     st.markdown("### Create New Project")
@@ -43,18 +49,28 @@ def render_projects_modal():
         name = (new_name or "").strip()
 
         if not name:
-            st.session_state["_flash"] = {"msg": "Project name is required.", "level": "error"}
+            st.session_state["_flash"] = {
+                "msg": "Project name is required.",
+                "level": "error"
+            }
             st.session_state.open_dialog = "projects"
             st.rerun()
 
         existing = {(p.get("name", "").strip().lower()) for p in projects}
         if name.lower() in existing:
-            st.session_state["_flash"] = {"msg": "Project name already exists.", "level": "error"}
+            st.session_state["_flash"] = {
+                "msg": "Project name already exists.",
+                "level": "error"
+            }
             st.session_state.open_dialog = "projects"
             st.rerun()
 
         create_project(name, st.session_state.user_id, open_flag)
-        st.session_state["_flash"] = {"msg": "Project created successfully.", "level": "success"}
+
+        st.session_state["_flash"] = {
+            "msg": "Project created successfully.",
+            "level": "success"
+        }
         st.session_state["_collapse_projects"] = True
         st.session_state.open_dialog = "projects"
         st.rerun()
@@ -74,12 +90,12 @@ def render_projects_modal():
         return
 
     for p in projects:
+
         project_id = p.get("project_id")
         project_name = p.get("name", "")
 
-        expanded_state = False if collapse_all else False
+        with st.expander(project_name):
 
-        with st.expander(project_name, expanded=expanded_state):
             edited_name = st.text_input(
                 "Edit Name",
                 value=project_name,
@@ -106,18 +122,62 @@ def render_projects_modal():
 
             col1, col2 = st.columns(2)
 
+            # -------- UPDATE --------
             with col1:
                 if st.button("Update", key=f"update_{project_id}"):
-                    update_project(project_id, (edited_name or "").strip(), is_active, allow_open)
-                    st.session_state["_flash"] = {"msg": "Project updated successfully.", "level": "success"}
+                    update_project(
+                        project_id,
+                        (edited_name or "").strip(),
+                        is_active,
+                        allow_open
+                    )
+
+                    st.session_state["_flash"] = {
+                        "msg": "Project updated successfully.",
+                        "level": "success"
+                    }
                     st.session_state["_collapse_projects"] = True
                     st.session_state.open_dialog = "projects"
                     st.rerun()
 
+            # -------- DELETE --------
             with col2:
-                if st.button("Delete", key=f"delete_{project_id}"):
-                    delete_project(project_id)
-                    st.session_state["_flash"] = {"msg": "Project deleted successfully.", "level": "success"}
-                    st.session_state["_collapse_projects"] = True
-                    st.session_state.open_dialog = "projects"
-                    st.rerun()
+
+                confirm_key = f"confirm_delete_checkbox_{project_id}"
+
+                confirm = st.checkbox(
+                    "Confirm permanent deletion",
+                    key=confirm_key
+                )
+
+                if confirm:
+
+                    st.warning(
+                        "This will permanently delete ALL data related to this project.\n\n"
+                        "- All assessment results\n"
+                        "- All user-project associations\n"
+                        "- All logs\n"
+                        "- All finalized records\n\n"
+                        "Users will immediately lose access."
+                    )
+
+                    if st.button(
+                        "Delete permanently",
+                        type="primary",
+                        key=f"delete_confirmed_{project_id}"
+                    ):
+
+                        delete_project(project_id)
+
+                        # limpa confirmação
+                        if confirm_key in st.session_state:
+                            del st.session_state[confirm_key]
+
+                        st.session_state["_flash"] = {
+                            "msg": "Project deleted successfully.",
+                            "level": "success"
+                        }
+
+                        st.session_state["_collapse_projects"] = True
+                        st.session_state.open_dialog = "projects"
+                        st.rerun()
