@@ -319,14 +319,14 @@ def render_assessment():
             with st.popover("⋮"):
 
                 st.markdown("### Menu")
+                
+                if st.button("🚪 Log off", use_container_width=True):
+                    logout()
 
                 if st.button("👤 User / Account", use_container_width=True):
                     st.session_state.page = "account"
                     st.rerun()
-
-                if st.button("🚪 Log off", use_container_width=True):
-                    logout()
-
+                
                 if st.session_state.get("is_admin"):
 
                     if st.button("🗂 Manage Projects", use_container_width=True):

@@ -8,9 +8,9 @@ project_root:
 # Master Orchestration Entry Point
 # The application must load this file first to understand the execution sequence.
 orchestrator_config:
-  main_flow: "Data/General/Flow.yaml"  
-  main_orchestration: "Data/general/Default_Execution.yaml"  
-  main_domain: "Data/Domains Setup/Language/"
+  main_flow: "data/general/flow.yaml"  
+  main_orchestration: "data/general/default_execution.yaml"  
+  main_domain: "data/domains/language/"
   base_directory_logic: "Root-Relative"
 
 # Technical Note:

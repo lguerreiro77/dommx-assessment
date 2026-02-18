@@ -1,0 +1,258 @@
+# DOMMx – Data Layer Architecture
+
+## Overview
+
+The DOMMx data layer has been refactored to achieve full backend abstraction, eliminate direct dependencies on Google Sheets across the system, and prepare the architecture for gradual, scalable evolution toward relational databases, Delta Lake, or any other storage engine.
+
+All business logic interacts exclusively with a repository abstraction. No UI, core, or storage module communicates directly with Google Sheets or any physical data engine.
+
+---
+
+# Architectural Layers
+
+The architecture is organized as follows:
+
+UI  
+→ Storage Layer  
+→ DataRepository  
+→ Adapter (engine-specific)  
+→ Client (engine-specific connection)  
+→ Physical Backend  
+
+Each layer has a single responsibility and is fully isolated from infrastructure details.
+
+---
+
+# 1️⃣ Storage Layer
+
+The storage modules (user_storage, project_storage, result_storage, user_project_storage, etc.) contain business-oriented persistence logic.
+
+They only call:
+
+- repo.fetch_all()
+- repo.insert()
+- repo.update()
+- repo.delete()
+- repo.upsert() (available)
+- repo.begin() / repo.commit() / repo.rollback() (optional)
+
+They have no knowledge of:
+
+- Google Sheets
+- SQL engines
+- Row indexes
+- Header rows
+- Connection strings
+- Physical storage details
+
+This guarantees complete backend independence.
+
+---
+
+# 2️⃣ DataRepository
+
+data_repository.py acts as a thin abstraction layer.
+
+It exposes a neutral interface:
+
+- fetch_all
+- insert
+- update
+- delete
+- upsert
+- begin / commit / rollback
+
+It delegates execution to the selected Adapter.
+
+This ensures that no business logic layer depends on a specific storage engine.
+
+---
+
+# 3️⃣ Repository Factory
+
+repository_factory.py selects the active backend using an environment variable:
+
+DATA_BACKEND=sheets
+
+Future examples:
+
+DATA_BACKEND=postgres  
+DATA_BACKEND=delta  
+
+The factory returns the appropriate Adapter implementation. No other module needs modification when changing backend.
+
+---
+
+# 4️⃣ Sheets Adapter
+
+sheets_adapter.py implements CRUD behavior specific to Google Sheets.
+
+It handles:
+
+- Header resolution (row 1)
+- Physical row indexing (starting at row 2)
+- Logical filter matching
+- Update returning boolean status
+- Delete returning boolean status
+- Upsert behavior
+- Cache invalidation
+- No-op transaction interface
+
+All physical index handling remains encapsulated inside this adapter. No layer above it is aware that Sheets has a header row.
+
+---
+
+# 5️⃣ Sheets Client (Infrastructure Layer)
+
+sheets_client.py is responsible exclusively for infrastructure concerns:
+
+- Creating the Google client
+- Authenticating using service account credentials
+- Opening the spreadsheet
+- Returning worksheet references
+
+It contains:
+
+- No business logic
+- No CRUD rules
+- No filtering logic
+
+It manages only connection and access.
+
+This separation ensures:
+
+- No duplication of connection logic
+- Clean separation between infrastructure and behavior
+- Easy migration to other engines
+
+---
+
+# 6️⃣ Future Backends
+
+The architecture is prepared for additional engines.
+
+For each new data engine, two files should be created:
+
+Example:
+
+postgres_client.py  
+postgres_adapter.py  
+
+or
+
+delta_client.py  
+delta_adapter.py  
+
+Each backend must define:
+
+Client → connection management  
+Adapter → CRUD implementation  
+
+The rest of the system remains unchanged.
+
+---
+
+# 7️⃣ Base Repository (Future Contract)
+
+base_repository.py exists as a structural example for future implementations.
+
+It may define abstract methods such as:
+
+- fetch_all
+- insert
+- update
+- delete
+- upsert
+- begin
+- commit
+- rollback
+
+Future adapters (Postgres, SQL Server, Delta Lake) may inherit from this base class to enforce implementation consistency and prevent incomplete adapter behavior.
+
+Currently optional, but architecturally relevant for enterprise evolution.
+
+---
+
+# 8️⃣ Client Pattern for Data Engines
+
+The pattern established with sheets_client.py must be replicated for any new engine:
+
+EngineClient → Infrastructure only  
+EngineAdapter → Behavior only  
+
+Clients manage:
+
+- Connection strings
+- Credentials
+- Driver configuration
+- Session lifecycle
+
+Adapters manage:
+
+- CRUD logic
+- Filter matching
+- Data transformations
+- Engine-specific operations
+
+Clients must never contain CRUD logic.
+
+---
+
+# 9️⃣ Transaction Support
+
+The repository interface exposes:
+
+- begin()
+- commit()
+- rollback()
+
+For Google Sheets, these are no-ops.
+
+For relational databases, real transactions should be implemented inside the corresponding Adapter.
+
+This design allows enterprise-grade transaction handling without modifying business logic.
+
+---
+
+# 🔟 Upsert Strategy
+
+The adapter layer implements upsert().
+
+In Sheets:
+- Attempt update
+- If not found → insert
+
+In relational databases:
+- INSERT ... ON CONFLICT
+- MERGE
+- or equivalent engine-native strategy
+
+Storage modules remain clean and engine-neutral.
+
+---
+
+# Concurrency and Cache Strategy
+
+- Read operations are cached via Streamlit.
+- Writes invalidate cache at adapter level.
+- Suitable for low to moderate concurrency (current usage profile).
+
+For high concurrency or enterprise scale, caching can be externalized to a dedicated layer.
+
+---
+
+# Final Architecture Status
+
+The current data layer is:
+
+✔ Fully backend-agnostic  
+✔ Cleanly layered  
+✔ Free of direct Google Sheets calls outside adapter  
+✔ Ready for SQL migration  
+✔ Ready for Delta Lake  
+✔ Prepared for transaction support  
+✔ Structured for gradual evolution  
+
+No UI or business logic layer is aware of the underlying data engine.
+
+This ensures long-term maintainability, scalability, and architectural consistency of the DOMMx platform.

@@ -73,7 +73,7 @@ questions:
       0: { action_code: "DSO-01", description: "Define governed requirements for access and protection controls" }
       1: { action_code: "DSO-02", description: "Assign oversight responsibilities for access and protection" }
       2: { action_code: "DSO-03", description: "Approve governed access-control structures" }
-      3: { action_code: "DSO-05", description: "Embed access and protection controls into daily operational routines" }
+      3: { action_code: "DSO-04", description: "Embed access and protection controls into daily operational routines" }
       4: { action_code: "DSO-06", description: "Automate monitoring of access governance and protection" }
       5: { action_code: "DSO-09", description: "Continuously improve access and protection governance using audits" }
 
@@ -86,7 +86,7 @@ questions:
       0: { action_code: "DSO-01", description: "Define DataOps governance requirements for reliability and observability" }
       1: { action_code: "DSO-02", description: "Assign DataOps and operational stewardship roles" }
       2: { action_code: "DSO-03", description: "Approve DataOps integration rules" }
-      3: { action_code: "DSO-05", description: "Embed DataOps routines into governed operational workflows" }
+      3: { action_code: "DSO-04", description: "Embed DataOps routines into governed operational workflows" }
       4: { action_code: "DSO-06", description: "Automate observability, monitoring, and operational validation" }
       5: { action_code: "DSO-09", description: "Continuously improve DataOps governance using performance evidence" }
 
@@ -112,6 +112,6 @@ questions:
       0: { action_code: "DSO-01", description: "Define ethical, privacy, and responsible-use requirements for operations" }
       1: { action_code: "DSO-02", description: "Assign privacy and ethical oversight responsibilities" }
       2: { action_code: "DSO-03", description: "Approve ethical and privacy operational rules" }
-      3: { action_code: "DSO-05", description: "Embed ethical and privacy safeguards into operational routines" }
+      3: { action_code: "DSO-04", description: "Embed ethical and privacy safeguards into operational routines" }
       4: { action_code: "DSO-06", description: "Automate ethical, privacy, and responsible-use validation" }
       5: { action_code: "DSO-09", description: "Continuously improve ethical and privacy governance using audits" }

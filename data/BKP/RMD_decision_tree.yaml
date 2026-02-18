@@ -60,7 +60,7 @@ questions:
       0: { action_code: "RMD-01", description: "Define golden record and attribute standardization requirements" }
       1: { action_code: "RMD-02", description: "Assign responsibility for attribute and survivorship governance" }
       2: { action_code: "RMD-03", description: "Approve golden-record and standard-attribute rules" }
-      3: { action_code: "RMD-05", description: "Embed golden-record rules into governed RMD routines" }
+      3: { action_code: "RMD-04", description: "Embed golden-record rules into governed RMD routines" }
       4: { action_code: "RMD-06", description: "Automate survivorship, validation, and attribute standardization" }
       5: { action_code: "RMD-09", description: "Continuously improve golden-record governance using evidence" }
 
@@ -86,7 +86,7 @@ questions:
       0: { action_code: "RMD-01", description: "Define lifecycle rules for master data creation and updates" }
       1: { action_code: "RMD-02", description: "Assign stewardship for lifecycle activities" }
       2: { action_code: "RMD-03", description: "Approve lifecycle governance rules" }
-      3: { action_code: "RMD-05", description: "Implement governed lifecycle routines in operational domains" }
+      3: { action_code: "RMD-04", description: "Implement governed lifecycle routines in operational domains" }
       4: { action_code: "RMD-06", description: "Automate lifecycle governance controls" }
       5: { action_code: "RMD-09", description: "Continuously improve lifecycle governance using evidence" }
 
@@ -99,7 +99,7 @@ questions:
       0: { action_code: "RMD-01", description: "Define indicators and monitoring requirements for RMD quality" }
       1: { action_code: "RMD-02", description: "Assign responsibilities for RMD quality monitoring" }
       2: { action_code: "RMD-03", description: "Approve quality KPIs and review cycles" }
-      3: { action_code: "RMD-05", description: "Implement dashboards and structured RMD quality reviews" }
+      3: { action_code: "RMD-04", description: "Implement dashboards and structured RMD quality reviews" }
       4: { action_code: "RMD-06", description: "Automate quality validation and monitoring" }
       5: { action_code: "RMD-09", description: "Continuously improve RMD quality through metrics" }
 
@@ -112,6 +112,6 @@ questions:
       0: { action_code: "RMD-01", description: "Define ethical, privacy, and minimization rules for master data" }
       1: { action_code: "RMD-02", description: "Assign oversight for ethical and privacy governance" }
       2: { action_code: "RMD-03", description: "Approve ethical and privacy requirements for RMD" }
-      3: { action_code: "RMD-05", description: "Embed ethical and privacy safeguards into RMD routines" }
+      3: { action_code: "RMD-04", description: "Embed ethical and privacy safeguards into RMD routines" }
       4: { action_code: "RMD-06", description: "Automate privacy, minimization, and fairness controls" }
       5: { action_code: "RMD-09", description: "Continuously improve ethical governance using audits" }

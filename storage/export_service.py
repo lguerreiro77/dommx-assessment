@@ -5,9 +5,10 @@ import yaml
 import pandas as pd
 
 from core.config import BASE_DIR
-from storage.google_sheets import get_sheet
+from data.repository_factory import get_repository
 from auth.crypto_service import decrypt_text
 
+repo = get_repository()
 
 FILESYSTEM_SETUP_PATH = os.path.join(BASE_DIR, "filesystem_setup.yaml")
 
@@ -57,7 +58,6 @@ def _load_context():
         tree = _load_yaml(tree_path)
         domain_questions[str(domain_id)] = tree.get("questions", {}) or {}
 
-    # deixa questions case-insensitive como o renderer
     for dom_id in list(domain_questions.keys()):
         q = domain_questions[dom_id]
         domain_questions[dom_id] = {str(k).lower(): v for k, v in q.items()}
@@ -68,8 +68,7 @@ def _load_context():
 def export_all_to_excel():
     domain_names, domain_questions = _load_context()
 
-    results_ws = get_sheet("results")
-    rows = results_ws.get_all_records()
+    rows = repo.fetch_all("results")
 
     export_rows = []
 
@@ -87,7 +86,7 @@ def export_all_to_excel():
         except Exception:
             add_message("Warning: Invalid encrypted payload found during export.", "warning")
             continue
-            
+
         answers = payload.get("answers", {}) if isinstance(payload, dict) else {}
 
         for domain_id, questions in answers.items():
@@ -128,4 +127,5 @@ def export_all_to_excel():
     output = io.BytesIO()
     df.to_excel(output, index=False)
     output.seek(0)
+
     return output

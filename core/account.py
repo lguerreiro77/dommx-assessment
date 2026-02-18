@@ -1,18 +1,18 @@
 import streamlit as st
 import os
 
-from storage.user_storage import get_all_users, load_user_by_hash, hash_password,get_all_users
+from storage.user_storage import (
+    get_all_users,
+    load_user_by_hash,
+    hash_password,
+    _read_users_records  # 🔥 necessário para limpar cache raiz
+)
 
-from storage.google_sheets import get_sheet
+from data.repository_factory import get_repository
 from auth.crypto_service import encrypt_text
 from auth.email_service import send_email
 
-
-@st.cache_data(ttl=120)
-def _users_index():
-    sheet = get_sheet("users")
-    col = sheet.col_values(1)
-    return {str(v).strip(): i + 2 for i, v in enumerate(col[1:]) if v}
+repo = get_repository()
 
 
 def _get_env(name: str):
@@ -22,8 +22,8 @@ def _get_env(name: str):
     except Exception:
         pass
     return os.getenv(name)
-    
-    
+
+
 def _get_admin_email():
     try:
         return st.secrets.get("ADMIN_EMAIL")
@@ -72,16 +72,16 @@ def render_account_page(session_state):
     # ========================
     # PERSONAL DATA
     # ========================
-    with st.expander("Dados pessoais", expanded=True):
+    with st.expander("Personal Data", expanded=True):
 
-        full_name = st.text_input("Nome completo *", value=user_data.get("full_name") or "")
-        company = st.text_input("Empresa", value=user_data.get("company") or "")
-        department = st.text_input("Departamento", value=user_data.get("department") or "")
-        job_title = st.text_input("Cargo", value=user_data.get("job_title") or "")
-        phone = st.text_input("Telefone", value=user_data.get("phone") or "")
-        country = st.text_input("País *", value=user_data.get("country") or "")
-        state = st.text_input("Estado/Província", value=user_data.get("state_province") or "")
-        city = st.text_input("Cidade", value=user_data.get("city") or "")
+        full_name = st.text_input("Full Name *", value=user_data.get("full_name") or "")
+        company = st.text_input("Company", value=user_data.get("company") or "")
+        department = st.text_input("Department", value=user_data.get("department") or "")
+        job_title = st.text_input("Job Title", value=user_data.get("job_title") or "")
+        phone = st.text_input("Phone", value=user_data.get("phone") or "")
+        country = st.text_input("Country *", value=user_data.get("country") or "")
+        state = st.text_input("State", value=user_data.get("state_province") or "")
+        city = st.text_input("City", value=user_data.get("city") or "")
 
         if st.button("Update"):
 
@@ -93,42 +93,30 @@ def render_account_page(session_state):
                 st.error("Country is required.")
                 return
 
-            sheet = get_sheet("users")
-            col = sheet.col_values(1)  # email_hash
-
-            row_number = None
-            target = str(user_hash).strip()
-
-            for i, value in enumerate(col[1:], start=2):
-                if str(value).strip() == target:
-                    row_number = i
-                    break
-
-            if row_number is None:
-                st.error("User not found.")
-                return
-
-            sheet.update(
-                f"D{row_number}:K{row_number}",
-                [[
-                    encrypt_text(full_name),
-                    encrypt_text(company),
-                    encrypt_text(department),
-                    encrypt_text(job_title),
-                    encrypt_text(phone),
-                    encrypt_text(country),
-                    encrypt_text(state),
-                    encrypt_text(city),
-                ]]
+            repo.update(
+                "users",
+                {"email_hash": user_hash},
+                {
+                    "full_name_encrypted": encrypt_text(full_name),
+                    "company_encrypted": encrypt_text(company),
+                    "department_encrypted": encrypt_text(department),
+                    "job_title_encrypted": encrypt_text(job_title),
+                    "phone_encrypted": encrypt_text(phone),
+                    "country_encrypted": encrypt_text(country),
+                    "state_province_encrypted": encrypt_text(state),
+                    "city_encrypted": encrypt_text(city),
+                }
             )
 
+            # 🔥 LIMPA TODOS OS CACHES
+            _read_users_records.clear()
             load_user_by_hash.clear()
-            
-            try:
-                get_all_users.clear()
-            except:
-                pass
-                
+            get_all_users.clear()
+
+            # 🔥 RECARREGA DADOS ATUALIZADOS
+            updated_user = load_user_by_hash(user_hash)
+            st.session_state.user = updated_user
+
             st.session_state.account_updated = True
             st.rerun()
 
@@ -148,13 +136,15 @@ def render_account_page(session_state):
             st.error("Passwords do not match.")
             return
 
-        idx = _users_index().get(user_hash)
-        if not idx:
-            st.error("User index not found.")
-            return
+        repo.update(
+            "users",
+            {"email_hash": user_hash},
+            {"password_hash": hash_password(new_password)}
+        )
 
-        sheet = get_sheet("users")
-        sheet.update(f"C{idx}", [[hash_password(new_password)]])
+        _read_users_records.clear()
+        load_user_by_hash.clear()
+        get_all_users.clear()
 
         st.success("Password updated successfully.")
 
@@ -176,7 +166,6 @@ def render_account_page(session_state):
 
             _delete_account(user_hash)
 
-            # Envio de email
             admin_email = _get_env("SMTP_USER")
             if admin_email:
                 try:
@@ -188,31 +177,27 @@ def render_account_page(session_state):
                 except Exception:
                     pass
 
-            # Se o usuário deletou a própria conta → logout
-            if str(session_state.get("user_id")).strip() == str(user_hash).strip():
+            if str(session_state.get("user_id")).strip() == user_hash:
 
                 for key in list(st.session_state.keys()):
                     del st.session_state[key]
 
                 st.session_state.app_mode = "login"
                 st.rerun()
-
-            # Se foi admin deletando outro usuário → NÃO deslogar
             else:
                 st.session_state.account_deleted = True
                 st.session_state.confirm_delete = False
                 st.rerun()
 
+
 def _delete_account(user_hash):
 
     user_hash = str(user_hash).strip()
 
-    users = get_sheet("users")
-    results = get_sheet("results")
-    up = get_sheet("usersprojects")
+    repo.delete("users", {"email_hash": user_hash})
+    repo.delete("results", {"user_id": user_hash})
+    repo.delete("usersprojects", {"user_id": user_hash})
 
-    for sheet, col in [(users, "email_hash"), (results, "user_id"), (up, "user_id")]:
-        rows = sheet.get_all_records()
-        for i in reversed(range(len(rows))):
-            if str(rows[i].get(col, "")).strip() == user_hash:
-                sheet.delete_rows(i + 2)
+    _read_users_records.clear()
+    load_user_by_hash.clear()
+    get_all_users.clear()

@@ -2,8 +2,11 @@ import hashlib
 import bcrypt
 from datetime import datetime
 import streamlit as st
-from storage.google_sheets import get_sheet
 from auth.crypto_service import encrypt_text, decrypt_text
+
+# Data source call
+from data.repository_factory import get_repository
+repo = get_repository()
 
 
 def hash_email(email: str) -> str:
@@ -20,8 +23,7 @@ def verify_password(password: str, password_hash: str) -> bool:
 
 @st.cache_data(ttl=60, show_spinner=False)
 def _read_users_records():
-    sheet = get_sheet("users")
-    return sheet.get_all_records()
+    return repo.fetch_all("users")
 
 
 def save_user(
@@ -37,8 +39,6 @@ def save_user(
     city: str,
     consent: bool
 ):
-    sheet = get_sheet("users")
-
     email_norm = (email or "").strip().lower()
     email_hash = hash_email(email_norm)
     password_hash = hash_password(password or "")
@@ -51,21 +51,21 @@ def save_user(
 
     now = datetime.utcnow().isoformat()
 
-    sheet.append_row([
-        email_hash,
-        encrypt_text(email_norm),
-        password_hash,
-        encrypt_text(full_name or ""),
-        encrypt_text(company or ""),
-        encrypt_text(department or ""),
-        encrypt_text(job_title or ""),
-        encrypt_text(phone or ""),
-        encrypt_text(country or ""),
-        encrypt_text(state_province or ""),
-        encrypt_text(city or ""),
-        encrypt_text("true" if bool(consent) else "false"),
-        encrypt_text(now),
-    ])
+    repo.insert("users", {
+        "email_hash": email_hash,
+        "email_encrypted": encrypt_text(email_norm),
+        "password_hash": password_hash,
+        "full_name_encrypted": encrypt_text(full_name or ""),
+        "company_encrypted": encrypt_text(company or ""),
+        "department_encrypted": encrypt_text(department or ""),
+        "job_title_encrypted": encrypt_text(job_title or ""),
+        "phone_encrypted": encrypt_text(phone or ""),
+        "country_encrypted": encrypt_text(country or ""),
+        "state_province_encrypted": encrypt_text(state_province or ""),
+        "city_encrypted": encrypt_text(city or ""),
+        "consent_encrypted": encrypt_text("true" if bool(consent) else "false"),
+        "created_at_encrypted": encrypt_text(now),
+    })
 
     _read_users_records.clear()
     return True
@@ -112,7 +112,7 @@ def _decrypt_user_row(row: dict) -> dict:
         out["company"] = d("company_encrypted")
     if "department_encrypted" in out:
         out["department"] = d("department_encrypted")
-    if "job_title_department" in out:
+    if "job_title_encrypted" in out:
         out["job_title"] = d("job_title_encrypted")
     if "phone_encrypted" in out:
         out["phone"] = d("phone_encrypted")
@@ -127,8 +127,9 @@ def _decrypt_user_row(row: dict) -> dict:
     if "created_at_encrypted" in out:
         out["created_at"] = d("created_at_encrypted")
 
-    if "password_hash_encrypted" in out and "password_hash" not in out:
-        out["password_hash"] = out["password_hash_encrypted"]
+    if "password_hash" in out:
+        out["password_hash"] = out.get("password_hash") or ""
+
 
     return out
 

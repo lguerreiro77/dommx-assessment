@@ -60,7 +60,7 @@ questions:
       0: { action_code: "DWBI-01", description: "Define cataloguing, versioning, and lifecycle rules for analytical assets" }
       1: { action_code: "DWBI-02", description: "Assign ownership for analytical artefacts" }
       2: { action_code: "DWBI-03", description: "Approve structured lifecycle governance for analytical assets" }
-      3: { action_code: "DWBI-05", description: "Implement governed cataloguing and versioning routines" }
+      3: { action_code: "DWBI-04", description: "Implement governed cataloguing and versioning routines" }
       4: { action_code: "DWBI-06", description: "Automate cataloguing, versioning, and lineage tracking" }
       5: { action_code: "DWBI-09", description: "Continuously improve artefact lifecycle governance" }
 
@@ -86,7 +86,7 @@ questions:
       0: { action_code: "DWBI-01", description: "Define rules for responsible analytical consumption" }
       1: { action_code: "DWBI-02", description: "Assign oversight roles for consumption governance" }
       2: { action_code: "DWBI-03", description: "Approve governed consumption processes" }
-      3: { action_code: "DWBI-05", description: "Implement governed consumption monitoring routines" }
+      3: { action_code: "DWBI-04", description: "Implement governed consumption monitoring routines" }
       4: { action_code: "DWBI-06", description: "Automate consumption monitoring and behavioral alerts" }
       5: { action_code: "DWBI-09", description: "Continuously improve consumption governance using metrics" }
 
@@ -112,6 +112,6 @@ questions:
       0: { action_code: "DWBI-01", description: "Define ethical, privacy, and responsible-use rules for analytics" }
       1: { action_code: "DWBI-02", description: "Assign oversight for ethical and privacy controls" }
       2: { action_code: "DWBI-03", description: "Approve ethical and privacy safeguards for analytics" }
-      3: { action_code: "DWBI-05", description: "Embed ethical and privacy safeguards into analytical workflows" }
+      3: { action_code: "DWBI-04", description: "Embed ethical and privacy safeguards into analytical workflows" }
       4: { action_code: "DWBI-06", description: "Automate privacy, minimization, and fairness validation" }
       5: { action_code: "DWBI-09", description: "Continuously improve ethical governance using audits" }

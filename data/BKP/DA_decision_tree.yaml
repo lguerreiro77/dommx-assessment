@@ -112,6 +112,6 @@ questions:
       0: { action_code: "DA-01", description: "Define privacy-by-design, ethical and risk control requirements" }
       1: { action_code: "DA-02", description: "Assign ethical, privacy, and risk governance roles" }
       2: { action_code: "DA-03", description: "Approve privacy and ethics design rules" }
-      3: { action_code: "DA-05", description: "Integrate ethical and privacy controls into architecture governance" }
+      3: { action_code: "DA-04", description: "Integrate ethical and privacy controls into architecture governance" }
       4: { action_code: "DA-06", description: "Automate ethical and privacy compliance validation" }
       5: { action_code: "DA-09", description: "Continuously improve ethical design using evidence and audits" }

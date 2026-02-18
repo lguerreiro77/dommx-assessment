@@ -10,6 +10,38 @@ from storage.project_storage import get_all_projects
 from storage.user_project_storage import get_projects_for_user
 from storage.user_storage import load_user, save_user, verify_password, get_all_users
 
+from data.repository_factory import get_repository
+
+repo = get_repository()
+
+# =========================================================
+# Finished project
+# =========================================================
+def has_finished_project(user_id, project_id):
+
+    rows = repo.fetch_all("finished_assessments")
+
+    for r in rows:
+
+        same_user = str(r.get("user_id", "")).strip() == str(user_id).strip()
+        same_project = str(r.get("project_id", "")).strip() == str(project_id).strip()
+
+        finished_raw = r.get("is_finished")
+
+        if isinstance(finished_raw, bool):
+            is_finished = finished_raw
+        elif isinstance(finished_raw, (int, float)):
+            is_finished = finished_raw == 1
+        elif isinstance(finished_raw, str):
+            is_finished = finished_raw.strip().lower() in ["true", "1", "yes"]
+        else:
+            is_finished = False
+
+        if same_user and same_project and is_finished:
+            return True
+
+    return False
+
 
 # =========================================================
 # Countries
@@ -325,6 +357,17 @@ def render_project_selection():
                 use_container_width=True,
                 disabled=not (has_access or allow_open),
             ):
+
+                # 🔥 CHECK FIRST
+                if has_finished_project(user_id, selected_project):
+                    st.success("You have already completed all actions for this project.")
+                    import time
+                    time.sleep(4)
+                    st.session_state.app_mode = "login"
+                    st.session_state.pop("_temp_user", None)
+                    st.rerun()
+
+                # 🔥 NORMAL FLOW (only if not finished)
                 st.session_state.user_id = user_id
                 st.session_state.active_project = selected_project
                 st.session_state.is_admin = (user.get("email") in ADMINS)

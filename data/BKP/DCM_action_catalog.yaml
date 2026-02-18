@@ -76,7 +76,7 @@ action_catalog:
         notes:
           - "Use DCAM workflow mapping to ensure governance consistency across teams."
 
-  DCM-05:
+  DCM-04:
     title: "Embed lifecycle rules, ethical safeguards, and repository routines into routines"
     procedures:
       - number: 5

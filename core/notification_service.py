@@ -2,8 +2,11 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 from datetime import datetime
-from storage.google_sheets import get_sheet
+
+from data.repository_factory import get_repository
 from auth.crypto_service import decrypt_text
+
+repo = get_repository()
 
 
 def send_assessment_completed_email(user_hash, project_id):
@@ -14,14 +17,13 @@ def send_assessment_completed_email(user_hash, project_id):
     # -------------------------------------------------
     # USERS
     # -------------------------------------------------
-    user_sheet = get_sheet("users")
-    user_rows = user_sheet.get_all_records()
+    user_rows = repo.fetch_all("users")
 
     user_name = None
     user_email = None
 
     for row in user_rows:
-        if str(row.get("email_hash")).strip() == str(user_hash).strip():
+        if str(row.get("email_hash", "")).strip() == str(user_hash).strip():
 
             try:
                 user_name = decrypt_text(row.get("full_name_encrypted"))
@@ -35,13 +37,12 @@ def send_assessment_completed_email(user_hash, project_id):
     # -------------------------------------------------
     # PROJECTS
     # -------------------------------------------------
-    project_sheet = get_sheet("projects")
-    project_rows = project_sheet.get_all_records()
+    project_rows = repo.fetch_all("projects")
 
     project_name = None
 
     for row in project_rows:
-        if str(row.get("project_id")).strip() == str(project_id).strip():
+        if str(row.get("project_id", "")).strip() == str(project_id).strip():
             project_name = row.get("name")
             break
 
