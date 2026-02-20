@@ -1,0 +1,398 @@
+domain:
+  id: 6
+  name: "Data Integration and Interoperability (DII)"
+
+action_catalog:
+
+  DII-01:
+    title: "Define foundational data integration principles and scope"
+    procedures:
+      - number: 1
+        name: "Define data integration principles and scope boundaries"
+        prerequisite: "Requires identification of core source and target systems"
+        deliverable: "Data integration principles document"
+        recommendations:
+          - "Define principles using DAMA guidance for integration and interoperability, with a focus on semantic consistency, transparency, and change control (DAMA DMBOK2, Chapter 8, p. 252–260)."
+          - "Ensure principles align with governance expectations for accountability, stewardship, and ownership (“Chapter 3, p. 51–57”)."
+          - "Validate that principles incorporate lifecycle checkpoints for ingestion, transformation, and publication of integrated data (“Chapter 4.3, p. 92”)."
+          - "Document principles according to DAMA artefact structure for clarity and auditability (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM integration capability scoping to ensure that the principles align with enterprise-wide integration needs."
+
+      - number: 2
+        name: "Draft initial integration architecture overview"
+        prerequisite: "Requires defined principles"
+        deliverable: "Integration architecture overview v0.1"
+        recommendations:
+          - "Draft the overview based on DAMA guidance for logical integration patterns, including consolidation, propagation, and federation (“Chapter 8, p. 252–258”)."
+          - "Ensure alignment with metadata structures that describe interfaces, lineage, and transformation rules (“Chapter 9, p. 236–239”)."
+          - "Validate support for data quality controls in line with DAMA quality dimensions (“Chapter 11, p. 308–311”)."
+          - "Confirm that the overview reflects responsibilities of stewards and owners defined by DAMA governance (“Chapter 4, p. 86–89”)."
+        notes:
+          - "Use CMMI architecture elaboration practices to stabilize the first integration blueprint."
+
+      - number: 3
+        name: "Identify preliminary integration domains and flows"
+        prerequisite: "Requires stakeholder mapping"
+        deliverable: "Initial integration domain and flow catalogue"
+        recommendations:
+          - "Identify domains and flows following DAMA descriptions of integration scenarios and subject area alignment (“Chapter 8, p. 252–260”)."
+          - "Ensure that flows are documented with metadata for sources, targets, frequency, and transformation logic (“Chapter 9, p. 236–239”)."
+          - "Validate lifecycle alignment so that each flow has defined creation, update, and retirement conditions (“Chapter 4.3, p. 92”)."
+          - "Confirm stewardship responsibilities for each flow according to DAMA role definitions (“Chapter 3.2, p. 55–57”)."
+        notes:
+          - "Use DCAM value chain mapping to prioritize the most critical integration flows."
+
+      - number: 4
+        name: "Assign provisional integration ownership"
+        prerequisite: "Requires an integration domain and a flow catalogue"
+        deliverable: "Integration ownership matrix"
+        recommendations:
+          - "Assign ownership using DAMA guidance for stewardship of shared data and integration assets (“Chapter 4, p. 86–89”)."
+          - "Ensure ownership covers both business meaning and technical pipeline responsibility (“Chapter 8, p. 252–258”)."
+          - "Validate escalation paths using DAMA governance decision and issue management rules (“Chapter 3.4, p. 60–61”)."
+          - "Document ownership using DAMA artefact patterns for role and responsibility records (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use IDGC behavioral criteria to select owners able to coordinate across domains."
+
+      - number: 5
+        name: "Publish initial integration guidelines"
+        prerequisite: "Requires principles, architecture overview, and ownership"
+        deliverable: "Integration onboarding brief"
+        recommendations:
+          - "Publish guidelines according to DAMA governance communication practices (“Chapter 3.6, p. 64–66”)."
+          - "Ensure guidance covers principles, patterns, data quality expectations, and stewardship roles (“Chapter 8, p. 252–260”; “Chapter 11, p. 308–311”)."
+          - "Validate that lifecycle impacts of integration, including retention and downstream use, are explicit (“Chapter 4.3, p. 92”)."
+          - "Confirm that documentation structure follows DAMA artefact recommendations (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use CMMI communication practices to make integration guidance accessible to both business and technical teams."
+
+  DII-02:
+    title: "Formalize integration stewardship and standards"
+    procedures:
+      - number: 1
+        name: "Consolidate integration requirements"
+        prerequisite: "Requires DII-01 to be complete"
+        deliverable: "Integration requirement registers"
+        recommendations:
+          - "Consolidate functional and nonfunctional requirements using DAMA integration categories such as latency, data freshness, and synchronization needs (“Chapter 8, p. 252–260”)."
+          - "Validate requirements with metadata expectations for interface specifications and lineage (“Chapter 9, p. 236–239”)."
+          - "Ensure lifecycle requirements describe how integrated data will be governed from ingestion to disposal (“Chapter 4.3, p. 92”)."
+          - "Confirm ownership and stewardship responsibilities for each requirement following DAMA governance roles (“Chapter 3.2, p. 55–57”)."
+        notes:
+          - "Use DCAM capability mapping to weigh business value against technical complexity."
+
+      - number: 2
+        name: "Produce a formal integration reference architecture"
+        prerequisite: "Requires validated requirements"
+        deliverable: "Integration reference architecture v1.0"
+        recommendations:
+          - "Produce the architecture using DAMA descriptions of integration patterns such as consolidation, data propagation, and virtual access (“Chapter 8, p. 252–258”)."
+          - "Ensure that metadata captures key elements such as canonical models, interface contracts, and pipeline lineage (“Chapter 9, p. 236–239”)."
+          - "Validate that quality controls are embedded at appropriate stages in alignment with DAMA quality dimensions (“Chapter 11, p. 308–311”)."
+          - "Document the architecture according to DAMA artefact structure for diagrams and narrative (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use CMMI architecture baseline practices to secure stakeholder agreement on v1.0."
+
+      - number: 3
+        name: "Define integration standards, patterns, and rules"
+        prerequisite: "Requires v1.0 reference architecture"
+        deliverable: "Integration Standards Manual"
+        recommendations:
+          - "Define standards for ETL and ELT pipelines, orchestration, and DataOps based on DAMA integration guidance and lifecycle governance (“Chapter 8, p. 252–260”)."
+          - "Ensure that naming, interface contracts, and semantic structures comply with DAMA metadata and modelling rules (“Chapter 9, p. 236–239”; “Chapter 10, p. 282–284”)."
+          - "Validate lifecycle coverage with rules for onboarding new sources, changing transformations, and decommissioning flows (“Chapter 4.3, p. 92”)."
+          - "Confirm that stewardship acceptance is recorded according to DAMA governance roles (“Chapter 3.2, p. 55–57”)."
+        notes:
+          - "Apply the GDPR principles of minimization and purpose limitation when defining rules for the integration of personal data."
+
+      - number: 4
+        name: "Validate integration standards with business stakeholders"
+        prerequisite: "Requires standards draft"
+        deliverable: "Alignment record"
+        recommendations:
+          - "Validate standards using DAMA governance communication guidance to ensure business stakeholders understand integration behavior (“Chapter 3.6, p. 64–66”)."
+          - "Confirm that the semantic meaning of integrated attributes is consistent with enterprise terminology (“Chapter 10, p. 282–284”)."
+          - "Validate that lifecycle and quality implications are acceptable for downstream analytics and operations (“Chapter 4.3, p. 92”; “Chapter 11, p. 308–311”)."
+          - "Ensure that feedback is documented following DAMA artefact patterns for comments and decisions (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM stakeholder alignment techniques to negotiate trade-offs between speed and governance."
+
+      - number: 5
+        name: "Approve and publish integration standards"
+        prerequisite: "Requires governance authority approval"
+        deliverable: "Integration standards approval pack"
+        recommendations:
+          - "Approve standards using DAMA authority and escalation model for data governance decisions (“Chapter 3.4, p. 60–61”)."
+          - "Validate that standards consolidate requirements for quality, lineage, access, and lifecycle across all relevant domains (“Chapter 8, p. 252–260”; “Chapter 11, p. 308–311”)."
+          - "Ensure that published standards are stored as governed artefacts according to DAMA documentation practices (“Chapter 3 Appendix, p. 69–70”)."
+          - "Confirm that stewardship and ownership responsibilities are explicit and understood (“Chapter 4, p. 86–89”)."
+        notes:
+          - "Use CMMI readiness checks to ensure teams and platforms are prepared to adopt the standards."
+
+  DII-03:
+    title: "Approve integration rules, interfaces, and responsibilities"
+    procedures:
+      - number: 1
+        name: "Establish Data Integration Council charter"
+        prerequisite: "Requires DII-02 deliverables"
+        deliverable: "Approved charter"
+        recommendations:
+          - "Establish the charter based on DAMA governance authority definitions for decision bodies and escalation (“Chapter 3.4, p. 60–61”)."
+          - "Ensure the council scope covers integration standards, critical pipelines, interface changes, and shared data assets (“Chapter 8, p. 252–260”)."
+          - "Validate mapping to functional levels of governance according to the DAMA enterprise model (“Figure 3.2, p. 53”)."
+          - "Document the charter following DAMA artefact guidelines (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM governance structure patterns to connect the council with architecture, security, and quality forums."
+
+      - number: 2
+        name: "Assign integration governance roles"
+        prerequisite: "Requires role descriptions"
+        deliverable: "Integration role assignment record"
+        recommendations:
+          - "Assign roles using DAMA stewardship, custodial, and ownership definitions for shared data and pipelines (“Chapter 4, p. 86–89”)."
+          - "Ensure authority boundaries for approving changes, waivers, and exceptions follow DAMA decision rules (“Chapter 3.4, p. 60–61”)."
+          - "Validate lifecycle coverage so that roles are responsible for onboarding, change, and retirement of integration flows (“Chapter 4.3, p. 92”)."
+          - "Record assignments using DAMA artefact structure for RACI and role catalogues (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use IDGC behavioral profiles to ensure role holders can mediate conflicts between domains."
+
+      - number: 3
+        name: "Implement integration decision forums"
+        prerequisite: "Requires charter approval"
+        deliverable: "Integration governance calendar and templates"
+        recommendations:
+          - "Implement regular forums to review new flows, changes to pipelines, and structural impacts as recommended by DAMA (“Chapter 3.3, p. 58–59”; “Chapter 8, p. 252–260”)."
+          - "Ensure agendas include quality, metadata, security, and lifecycle perspectives (“Chapters 9, 10, 11”)."
+          - "Validate that decision criteria are transparent and traceable in line with DAMA governance principles (“Chapter 3, p. 51–53”)."
+          - "Document decisions using standard templates recommended by DAMA for governance artefacts (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use CMMI meeting practice to keep forums focused on evidence and outcomes."
+
+      - number: 4
+        name: "Launch integration review cycles"
+        prerequisite: "Requires defined forums"
+        deliverable: "First review minutes"
+        recommendations:
+          - "Launch cycles to review integration standards, critical flows, and interface breaks as recommended by DAMA for oversight (“Chapter 3.3, p. 58–59”)."
+          - "Validate that decisions consider upstream and downstream impacts, including semantic consistency and quality (“Chapter 8, p. 252–260”; “Chapter 11, p. 308–311”)."
+          - "Ensure lifecycle implications are recorded for each decision, including decommissioning where relevant (“Chapter 4.3, p. 92”)."
+          - "File minutes and decisions as governed artefacts following DAMA structure (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM assurance practices to confirm that review cycles cover the most critical integration risks."
+
+      - number: 5
+        name: "Maintain integration governance operation"
+        prerequisite: "Requires meeting cadence"
+        deliverable: "Integration activity log"
+        recommendations:
+          - "Maintain a consolidated activity log for decisions, waivers, and outstanding actions in line with DAMA monitoring guidance (“Chapter 3.6, p. 64–66”)."
+          - "Ensure the log links each decision to affected flows, data domains, and responsible roles (“Chapter 3.2, p. 55–57”; “Chapter 8, p. 252–260”)."
+          - "Validate that lifecycle and quality impacts of key decisions are recorded for audit (“Chapter 4.3, p. 92”; “Chapter 11, p. 308–311”)."
+          - "Store the log in a governed repository structured using DAMA artefact guidelines (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use CMMI monitoring practices to review the activity log for patterns that indicate governance improvements are needed."
+
+  DII-04:
+    title: "Embed integration governance into workflows"
+    procedures:
+      - number: 1
+        name: "Embed integration checkpoints into domain workflows"
+        prerequisite: "Requires DII-03 approved standards"
+        deliverable: "Updated workflow templates"
+        recommendations:
+          - "Embed checkpoints at ingestion, transformation, and publishing steps in line with DAMA integration lifecycle guidance (“Chapter 8, p. 252–260”; “Chapter 4.3, p. 92”)."
+          - "Ensure that each checkpoint involves validation of metadata, lineage, and quality controls (“Chapter 9, p. 236–239”; “Chapter 11, p. 308–311”)."
+          - "Validate that stewardship and ownership roles are explicitly linked to checkpoint decisions (“Chapter 3.2, p. 55–57”)."
+          - "Document checkpoint definitions in workflow templates following DAMA artefact structure (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM workflow capability mapping to make sure every critical flow has a defined integration checkpoint."
+
+      - number: 2
+        name: "Integrate integration criteria into pipeline and orchestration design"
+        prerequisite: "Requires integration standards"
+        deliverable: "Governed pipeline design templates"
+        recommendations:
+          - "Integrate criteria for lineage capture, schema validation, and data quality rules into ETL and ELT pipeline templates as recommended by DAMA (“Chapter 8, p. 252–260”; “Chapter 11, p. 308–311”)."
+          - "Ensure metadata for each pipeline, including source, target, and transformation logic, is defined according to DAMA (“Chapter 9, p. 236–239”)."
+          - "Validate that design templates specify lifecycle triggers for reprocessing, backfill, and retirement (“Chapter 4.3, p. 92”)."
+          - "Confirm that role responsibilities for approving pipeline design are clear and governed (“Chapter 3.2, p. 55–57”)."
+        notes:
+          - "Apply CMMI design verification practices to validate integration criteria prior to deployment."
+
+      - number: 3
+        name: "Update lifecycle documentation with integration viewpoints"
+        prerequisite: "Requires workflow redesign"
+        deliverable: "Updated lifecycle documentation"
+        recommendations:
+          - "Update lifecycle descriptions so that integration events, such as first load, incremental updates, and cutover, are explicit (“Chapter 4.3, p. 92”; “Chapter 8, p. 252–260”)."
+          - "Ensure metadata models include attributes for integration status, batch identifiers, and versioning (“Chapter 9, p. 236–239”)."
+          - "Validate that documentation shows where quality controls are applied along the integration chain (“Chapter 11, p. 308–311”)."
+          - "Structure documents using DAMA artefact guidance for process and lifecycle descriptions (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM lifecycle capability mapping to join integration events with the broader data lifecycle."
+
+      - number: 4
+        name: "Apply integration checks at domain decision points"
+        prerequisite: "Requires governed workflows"
+        deliverable: "Evidence of integration controls"
+        recommendations:
+          - "Apply checks when requesting new sources, changing interfaces, or altering transformation logic, following DAMA governance rules (“Chapter 3.4, p. 60–61”; “Chapter 8, p. 252–260”)."
+          - "Validate that integrated data respects semantic definitions and business meaning (“Chapter 10, p. 282–284”)."
+          - "Ensure that quality thresholds and exception handling criteria are documented for each decision (“Chapter 11, p. 308–311”)."
+          - "Maintain evidence of approvals and rejections as governed artefacts (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use CMMI verification activities to ensure that integration decisions are consistent and evidence-based."
+
+      - number: 5
+        name: "Track integration governance adherence across domains"
+        prerequisite: "Requires monitoring routines"
+        deliverable: "Integration compliance register"
+        recommendations:
+          - "Track adherence to integration standards and patterns using monitoring criteria consistent with DAMA (“Chapter 3.6, p. 64–66”; “Chapter 8, p. 252–260”)."
+          - "Record cases where flows deviate from canonical patterns or where waivers have been granted (“Chapter 3.4, p. 60–61”)."
+          - "Validate that registration of deviations includes lifecycle and quality impact analysis (“Chapter 4.3, p. 92”; “Chapter 11, p. 308–311”)."
+          - "Store the register in a governed repository structured according to DAMA artefact principles (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM diagnostic indicators to focus remediation on the most critical deviations."
+
+  DII-04:
+    title: "Embed integration mechanisms and ethical safeguards into routines"
+    procedures:
+      - number: 1
+        name: "Embed ethical and privacy safeguards into integration routines"
+        prerequisite: "Requires ethical and privacy rules approved"
+        deliverable: "Ethical integration log"
+        recommendations:
+          - "Embed safeguards following DAMA guidance for responsible interoperability and privacy-by-design in exchanges (“Chapter 6, p. 195–200”)."
+          - "Ensure that each integration point validates compliance with ethical use and minimization constraints (“Chapter 3, p. 51–53”; “Chapter 12, p. 345–350”)."
+          - "Validate that stewardship roles are active in monitoring responsible data movement (“Chapter 3.2, p. 55–57”)."
+          - "Document safeguard execution following DAMA artefact patterns for ethical oversight (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM responsible data use criteria to ensure that integration routines uphold fairness and transparency."
+
+  DII-06:
+    title: "Automate integration validation and monitoring"
+    procedures:
+      - number: 1
+        name: "Define integration monitoring indicators"
+        prerequisite: "Requires DII-04 workflows"
+        deliverable: "Integration KPI (Key Performance Indicator) set"
+        recommendations:
+          - "Define KPIs such as successful load rate, data freshness, rejection rate, and lineage completeness in line with DAMA quality and integration guidance (“Chapter 8, p. 252–260”; “Chapter 11, p. 308–311”)."
+          - "Ensure indicators link to metadata attributes and pipeline events captured in integration logs (“Chapter 9, p. 236–239”)."
+          - "Validate that KPIs support lifecycle oversight for early detection of integration issues (“Chapter 4.3, p. 92”)."
+          - "Assign KPI ownership to stewards and operational roles following DAMA governance model (“Chapter 3.2, p. 55–57”; “Chapter 4, p. 86–89”)."
+        notes:
+          - "Use DCAM capability indicators to build an integration scorecard."
+
+      - number: 2
+        name: "Establish automated integration validation rules"
+        prerequisite: "Requires integration criteria"
+        deliverable: "Automated integration rule set"
+        recommendations:
+          - "Define rules for schema conformity, mandatory fields, referential consistency, and duplication following DAMA quality guidance (“Chapter 11, p. 308–311”; “Chapter 8, p. 252–260”)."
+          - "Ensure each rule is described in metadata, including its purpose, threshold, and exception process (“Chapter 9, p. 236–239”)."
+          - "Validate that rules align with lifecycle requirements for retry, quarantine, and rollback (“Chapter 4.3, p. 92”)."
+          - "Document the rule set as a controlled artefact following DAMA structure (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use CMMI automation readiness practices to ensure rules are deployed and maintained consistently."
+
+      - number: 3
+        name: "Implement integration monitoring dashboards"
+        prerequisite: "Requires a rule set"
+        deliverable: "Integration monitoring dashboard"
+        recommendations:
+          - "Implement dashboards combining pipeline status, KPI values, and quality indicators in line with DAMA monitoring practices (“Chapter 3.6, p. 64–66”; “Chapter 11, p. 308–311”)."
+          - "Ensure dashboards expose lineage views and highlight flows that breach thresholds (“Chapter 9, p. 236–239”; “Chapter 8, p. 252–260”)."
+          - "Validate that lifecycle events such as reprocessing, backfills, and decommissioning are visible (“Chapter 4.3, p. 92”)."
+          - "Provide access to the dashboards for stewards, owners, and operational teams as defined by DAMA roles (“Chapter 4, p. 86–89”)."
+        notes:
+          - "Use DCAM visualization recommendations to keep dashboards focused on the most critical integration indicators."
+
+      - number: 4
+        name: "Enable automated integration alerts"
+        prerequisite: "Requires dashboards to be active"
+        deliverable: "Integration alert feed"
+        recommendations:
+          - "Configure alerts for failed loads, threshold breaches, schema changes, and lineage gaps, following DAMA escalation guidance (“Chapter 3.4, p. 60–61”; “Chapter 8, p. 252–260”)."
+          - "Ensure alert messages reference affected flows, domains, and owners using metadata (“Chapter 9, p. 236–239”)."
+          - "Validate that alert rules consider lifecycle impacts on downstream consumers (“Chapter 4.3, p. 92”)."
+          - "Route alerts to stewards and owners documented in the integration ownership matrix (“Chapter 3.2, p. 55–57”; “Chapter 4, p. 86–89”)."
+        notes:
+          - "Apply CMMI incident management logic to ensure that each alert has a straightforward response path and closure criteria."
+
+      - number: 5
+        name: "Maintain automated integration governance"
+        prerequisite: "Requires operational maturity"
+        deliverable: "Integration automation log"
+        recommendations:
+          - "Maintain records of rule changes, new automated checks, and alert configuration updates following DAMA documentation practices (“Chapter 3 Appendix, p. 69–70”)."
+          - "Validate that automation remains aligned with integration standards and patterns (“Chapter 8, p. 252–260”)."
+          - "Ensure lifecycle oversight by periodically reviewing whether automation still supports current flows and consumers (“Chapter 4.3, p. 92”)."
+          - "Involve stewards and owners in reviewing the automation log as part of governance cycles (“Chapter 3.6, p. 64–66”; “Chapter 4, p. 86–89”)."
+        notes:
+          - "Use DCAM capability evolution assessments to plan where additional automation can reduce risk or manual effort."
+
+  DII-09:
+    title: "Optimize integration governance and institutionalize best practices"
+    procedures:
+      - number: 1
+        name: "Review integration performance trends"
+        prerequisite: "Requires DII-06 KPI baseline"
+        deliverable: "Integration trend analysis"
+        recommendations:
+          - "Analyze trends for success rates, delays, data rejections, and lineage gaps in line with DAMA monitoring guidance (“Chapter 3.6, p. 64–66”; “Chapter 11, p. 308–311”)."
+          - "Compare patterns across domains to identify where integration design or standards are insufficient (“Chapter 8, p. 252–260”)."
+          - "Validate lifecycle implications such as repeated backfills or extended retention of staging data (“Chapter 4.3, p. 92”)."
+          - "Document the analysis in a governed report following DAMA artefact structure (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM maturity scoring to benchmark integration performance against target capability levels."
+
+      - number: 2
+        name: "Optimize integration standards and patterns based on insights"
+        prerequisite: "Requires trend analysis"
+        deliverable: "Updated integration standards and patterns"
+        recommendations:
+          - "Refine standards to address repeated issues such as schema drift, ambiguous semantics, or excess duplication, in line with DAMA (“Chapter 8, p. 252–260”; “Chapter 10, p. 282–284”)."
+          - "Ensure that changes to standards also update metadata models and pipeline templates (“Chapter 9, p. 236–239”)."
+          - "Validate that revised standards remain consistent with lifecycle, quality, and security expectations (“Chapter 4.3, p. 92”; “Chapter 11, p. 308–311”)."
+          - "Record approvals and versioning of updated standards according to DAMA documentation rules (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use CMMI continuous improvement approaches to plan incremental but measurable enhancements."
+
+      - number: 3
+        name: "Benchmark integration practices against external frameworks"
+        prerequisite: "Requires integration maturity profile"
+        deliverable: "Integration benchmark evidence"
+        recommendations:
+          - "Benchmark practices against industry references and best practices, relating results to DAMA integration and governance principles (“Chapter 8, p. 252–260”; “Chapter 3.6, p. 64–66”)."
+          - "Include comparison of integration patterns, lineage depth, and quality management (“Chapter 9, p. 236–239”; “Chapter 11, p. 308–311”)."
+          - "Validate that benchmark outcomes inform lifecycle and risk decisions (“Chapter 4.3, p. 92”)."
+          - "Document findings as governed artefacts in line with DAMA (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM benchmarking guidance to translate external results into concrete capability goals."
+
+      - number: 4
+        name: "Enhance integration automation logic"
+        prerequisite: "Requires DII-06 automation"
+        deliverable: "Updated integration automation set"
+        recommendations:
+          - "Enhance automation by adding new validation rules, lineage checks, or orchestration safeguards based on DAMA and observed issues (“Chapter 8, p. 252–260”; “Chapter 11, p. 308–311”)."
+          - "Ensure that automation changes update metadata definitions and documentation (“Chapter 9, p. 236–239”; “Chapter 3 Appendix, p. 69–70”)."
+          - "Validate that new automation respects lifecycle rules and does not create hidden technical debt (“Chapter 4.3, p. 92”)."
+          - "Obtain approval from governance bodies according to DAMA decision rules (“Chapter 3.4, p. 60–61”)."
+        notes:
+          - "Use CMMI automation maturity indicators to identify which new controls deliver the most significant benefit."
+
+      - number: 5
+        name: "Maintain a continuous integration improvement cycle"
+        prerequisite: "Requires an optimization cycle"
+        deliverable: "Integration improvement plan"
+        recommendations:
+          - "Maintain an improvement backlog that links integration issues, root causes, and proposed actions in line with DAMA governance evolution guidance (“Chapter 3.6, p. 64–66”)."
+          - "Ensure that items include updates to standards, metadata, automation, and training where required (“Chapters 8, 9, 11”)."
+          - "Validate that lifecycle impacts and risk reductions are considered for each action (“Chapter 4.3, p. 92”)."
+          - "Document the plan and its status using DAMA artefact structure for governance roadmaps (“Chapter 3 Appendix, p. 69–70”)."
+        notes:
+          - "Use DCAM capability evolution mapping to align integration improvements with overall data governance maturity."

@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import yaml
 import json
 import re
@@ -6,6 +7,8 @@ import time
 from datetime import datetime
 
 from core.config import BASE_DIR, resolve_path, APP_TITLE
+from core.config import get_filesystem_setup_path, get_general_dir, get_project_root
+
 from storage.result_storage import save_results
 from storage.export_service import export_all_to_excel
 from core.flow_engine import advance_flow, add_message, get_messages
@@ -136,8 +139,8 @@ def render_final_screen():
 # MAIN ASSESSMENT RENDER
 # =========================================================
 
-def render_assessment():
-    
+def render_assessment():    
+        
     # -------------------------------------------------
     # FINAL SCREEN (fora do dialog)
     # -------------------------------------------------
@@ -163,12 +166,14 @@ def render_assessment():
         st.stop()
 
  
-    fs_path = resolve_path(BASE_DIR, "FileSystem_Setup.yaml")
+    fs_path = get_filesystem_setup_path()
     fs_setup = safe_load(fs_path) or {}
     config = (fs_setup.get("orchestrator_config") or {})
 
-    flow_path = resolve_path(BASE_DIR, config.get("main_flow", "flow.yaml"))
-    orch_path = resolve_path(BASE_DIR, config.get("main_orchestration", "default_execution.yaml"))
+    general_dir = get_general_dir()
+
+    flow_path = resolve_path(general_dir, config.get("main_flow", "flow.yaml"))
+    orch_path = resolve_path(general_dir, config.get("main_orchestration", "default_execution.yaml"))
 
     flow = safe_load(flow_path) or {}
     orch = safe_load(orch_path) or {}
@@ -207,15 +212,22 @@ def render_assessment():
         add_message(f"Domain metadata not found in flow.yaml for domain_id={dom_id}.", "error")
         st.stop()
 
-    tree_path = resolve_path(
-        BASE_DIR,
-        f"data/domains/Language/{lang}/{dom_meta['files']['decision_tree']}"
-    )
+    project_root = get_project_root()
 
-    catalog_path = resolve_path(
-        BASE_DIR,
-        f"data/domains/Language/{lang}/{dom_meta['files']['action_catalog']}"
-    )
+    if project_root:
+        domains_dir = os.path.join(project_root, "Domains")
+        tree_path = resolve_path(domains_dir, dom_meta["files"]["decision_tree"])
+        catalog_path = resolve_path(domains_dir, dom_meta["files"]["action_catalog"])
+    else:
+        tree_path = resolve_path(
+            BASE_DIR,
+            f"data/domains/Language/{lang}/{dom_meta['files']['decision_tree']}"
+        )
+        catalog_path = resolve_path(
+            BASE_DIR,
+            f"data/domains/Language/{lang}/{dom_meta['files']['action_catalog']}"
+        )
+
 
     tree_data = safe_load(tree_path) or {}
     catalog_data = safe_load(catalog_path) or {}

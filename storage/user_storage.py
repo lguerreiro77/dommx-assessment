@@ -27,48 +27,95 @@ def _read_users_records():
 
 
 def save_user(
-    email: str,
-    password: str,
-    full_name: str,
-    company: str,
-    department: str,
-    job_title: str,
-    phone: str,
-    country: str,
-    state_province: str,
-    city: str,
-    consent: bool
+    email,
+    password,
+    full_name,
+    company="",
+    department="",
+    job_title="",
+    phone="",
+    country="",
+    state_province="",
+    city="",
+    consent=False,
 ):
+    """
+    Upsert idempotente por email_hash.
+    Nunca cria duplicado mesmo com concorrência.
+    """
+
+    import hashlib
+    from data.repository_factory import get_repository
+    from auth.crypto_service import encrypt_text
+    from storage.user_storage import hash_password
+    from data.sheets_client import get_table
+
+    repo = get_repository()
+
     email_norm = (email or "").strip().lower()
-    email_hash = hash_email(email_norm)
-    password_hash = hash_password(password or "")
+    if not email_norm:
+        return False
 
-    rows = _read_users_records()
+    email_hash = hashlib.sha256(email_norm.encode()).hexdigest()
 
-    for row in rows:
-        if str(row.get("email_hash", "")).strip() == email_hash:
-            return False
-
-    now = datetime.utcnow().isoformat()
-
-    repo.insert("users", {
+    user_payload = {
         "email_hash": email_hash,
-        "email_encrypted": encrypt_text(email_norm),
-        "password_hash": password_hash,
-        "full_name_encrypted": encrypt_text(full_name or ""),
-        "company_encrypted": encrypt_text(company or ""),
-        "department_encrypted": encrypt_text(department or ""),
-        "job_title_encrypted": encrypt_text(job_title or ""),
-        "phone_encrypted": encrypt_text(phone or ""),
-        "country_encrypted": encrypt_text(country or ""),
-        "state_province_encrypted": encrypt_text(state_province or ""),
-        "city_encrypted": encrypt_text(city or ""),
-        "consent_encrypted": encrypt_text("true" if bool(consent) else "false"),
-        "created_at_encrypted": encrypt_text(now),
-    })
+        "email": email_norm,
+        "password_hash": hash_password(password),
+        "full_name_encrypted": encrypt_text(full_name),
+        "company_encrypted": encrypt_text(company),
+        "department_encrypted": encrypt_text(department),
+        "job_title_encrypted": encrypt_text(job_title),
+        "phone_encrypted": encrypt_text(phone),
+        "country_encrypted": encrypt_text(country),
+        "state_province_encrypted": encrypt_text(state_province),
+        "city_encrypted": encrypt_text(city),
+        "consent": bool(consent),
+    }
 
-    _read_users_records.clear()
+    # ---------------------------------------------------------
+    # UPsert seguro (sem confiar em cache)
+    # ---------------------------------------------------------
+
+    ws = get_table("users")
+    headers = ws.row_values(1)
+    rows = ws.get_all_records()
+
+    existing_row_indexes = []
+
+    for idx, row in enumerate(rows, start=2):
+        if str(row.get("email_hash", "")).strip() == email_hash:
+            existing_row_indexes.append(idx)
+
+    if existing_row_indexes:
+        # Atualiza a PRIMEIRA ocorrência
+        row_index = existing_row_indexes[0]
+
+        for col, val in user_payload.items():
+            if col in headers:
+                col_index = headers.index(col) + 1
+                ws.update_cell(row_index, col_index, val)
+
+        # Remove duplicados defensivamente
+        if len(existing_row_indexes) > 1:
+            for dup_idx in sorted(existing_row_indexes[1:], reverse=True):
+                ws.delete_rows(dup_idx)
+
+    else:
+        # Insert controlado
+        ordered = [user_payload.get(col, "") for col in headers]
+        ws.append_row(ordered)
+
+    # Limpa cache do adapter
+    try:
+        from data.sheets_adapter import _fetch_cached_table
+        _fetch_cached_table.clear("users")
+    except Exception:
+        pass
+
     return True
+
+
 
 
 @st.cache_data(ttl=60, show_spinner=False)
@@ -99,10 +146,14 @@ def load_user_by_hash(email_hash: str):
 
 def _decrypt_user_row(row: dict) -> dict:
     out = dict(row)
-
+    
     def d(key: str) -> str:
         val = out.get(key, "")
         return decrypt_text(val) if val not in (None, "") else ""
+        
+    # 🔥 Garantir que email sempre exista
+    if not out.get("email") and out.get("email_hash"):
+        out["email"] = row.get("email", "")
 
     if "email_encrypted" in out:
         out["email"] = d("email_encrypted")
@@ -143,7 +194,7 @@ def get_all_users():
         user = _decrypt_user_row(row)
         users.append({
             "email_hash": row.get("email_hash"),
-            "email": user.get("email"),
+            "email": row.get("email"),  # não usar decrypt aqui
             "full_name": user.get("full_name"),
         })
 

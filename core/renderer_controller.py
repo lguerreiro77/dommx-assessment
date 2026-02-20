@@ -24,7 +24,7 @@ def handle_page_and_dialogs():
         return True
 
     # MODAL CONTROLLER
-    dialog = st.session_state.pop("open_dialog", None)
+    dialog = st.session_state.get("open_dialog")
 
     if dialog == "projects":
         render_projects_modal()

@@ -1,0 +1,388 @@
+domain:
+  id: 3
+  name: "Data Modelling and Design (DMD)"
+
+action_catalog:
+
+  DMD-01:
+    title: "Define foundational modelling principles and scope"
+    procedures:
+      - number: 1
+        name: "Define modelling principles and the scope of the structure"
+        prerequisite: "Requires identification of business concepts"
+        deliverable: "Modelling principles document"
+        recommendations:
+          - "Define modelling principles following DAMA guidance for conceptual, logical, and physical structures and their governance alignment (Chapter 3.3, p. 58–59)."
+          - "Ensure the scope covers DMBOK required domains of model stewardship, terminology, and semantic consistency (Chapter 10, p. 282–284)."
+          - "Validate boundary definitions using DAMA expectations for cross-functional model integration (Figure 3-2, p. 53)."
+          - "Structure the document following DAMA artefact formatting guidance for clarity and traceability (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use DCAM modelling capability scoping to ensure modelling principles support enterprise data meaning and structure."
+
+      - number: 2
+        name: "Draft initial conceptual model"
+        prerequisite: "Requires principles defined"
+        deliverable: "Conceptual model v0.1"
+        recommendations:
+          - "Draft the conceptual model using DAMA guidance for representing business meaning, relationships, and core concepts (Chapter 10, p. 282)."
+          - "Ensure representation of required entities follows DAMA semantics and metadata expectations (Chapter 9, p. 236)."
+          - "Validate that stewardship responsibilities for model ownership follow DAMA’s governance role model (Chapter 3.2, p. 55–57)."
+          - "Confirm that the model aligns with DAMA lifecycle checkpoints for data definition and publication (Chapter 4.3, p. 92)."
+        notes:
+          - "Use CMMI modelling iteration discipline to maintain conceptual integrity during early drafts."
+
+      - number: 3
+        name: "Identify preliminary entities and attributes"
+        prerequisite: "Requires stakeholder mapping"
+        deliverable: "Initial entity list"
+        recommendations:
+          - "Identify entities following DAMA guidance for separating business objects, reference structures, and shared meaning (Chapter 10, p. 282–284)."
+          - "Validate attribute identification using DAMA metadata requirements, including definitions, formats, and permissible values (Chapter 9, p. 236)."
+          - "Ensure alignment of entities with DAMA semantic coherence principles (Chapter 3.3, p. 58)."
+          - "Confirm that identified elements reflect lifecycle checkpoints for creation and transformation defined by DAMA (Chapter 4.3, p. 92)."
+        notes:
+          - "Use DCAM attribute criticality analysis to prioritize core entities early."
+
+      - number: 4
+        name: "Assign provisional modelling ownership"
+        prerequisite: "Requires entity inventory"
+        deliverable: "Modelling ownership matrix"
+        recommendations:
+          - "Assign model ownership following DAMA stewardship and data definition responsibilities (Chapter 4, p. 86–89)."
+          - "Validate ownership for conceptual, logical, and physical layers based on DAMA governance roles (Chapter 3.2, p. 55–57)."
+          - "Ensure lifecycle ownership is consistent with DAMA checkpoints (Chapter 4.3, p. 92)."
+          - "Document ownership using DAMA artefact guidelines (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use IDGC behavioral readiness guidance to ensure modelling owners can sustain governance obligations."
+
+      - number: 5
+        name: "Publish initial modelling guidelines"
+        prerequisite: "Requires a conceptual model and ownership"
+        deliverable: "Modelling onboarding brief"
+        recommendations:
+          - "Publish guidelines using DAMA’s communication expectations for governance artefacts (Chapter 3.6, p. 64)."
+          - "Ensure clarity of modelling rules, including naming, relationships, and semantic conventions based on DAMA recommendations (Chapter 10, p. 282–284)."
+          - "Validate the brief using DAMA artefact structure to ensure consistency and auditability (Chapter 3 Appendix, p. 69–70)."
+          - "Reinforce steward and owner responsibilities for modelling activities following DAMA definitions (Chapter 4, p. 86–87)."
+        notes:
+          - "Use CMMI communication strategies to improve user understanding of modelling expectations."
+
+
+  DMD-02:
+    title: "Formalize modelling stewardship and standards"
+    procedures:
+      - number: 1
+        name: "Consolidate modelling requirements"
+        prerequisite: "Requires DMD-01 to be complete"
+        deliverable: "Modelling requirement register"
+        recommendations:
+          - "Consolidate requirements using DAMA modelling and metadata guidelines for structural consistency (Chapter 10, p. 282)."
+          - "Ensure requirements reflect DAMA semantic, lineage, and business meaning expectations (Chapter 3.3, p. 58)."
+          - "Validate that requirements support lifecycle checkpoints, including data definition and publication (Chapter 4.3, p. 92)."
+          - "Confirm coverage of ownership and stewardship expectations defined by DAMA (Chapter 3.2, p. 55–57)."
+        notes:
+          - "Apply DCAM requirement prioritization techniques to identify high-value modelling needs."
+
+      - number: 2
+        name: "Produce formal conceptual and logical models"
+        prerequisite: "Requires validated requirements"
+        deliverable: "Conceptual and logical models v1.0"
+        recommendations:
+          - "Produce models following DAMA expectations for conceptual clarity and logical normalization (Chapter 10, p. 282–284)."
+          - "Confirm attribute and relationship definitions using DAMA metadata rules (Chapter 9, p. 236)."
+          - "Validate alignment with DAMA lifecycle governance requirements for structural changes (Chapter 4.3, p. 92)."
+          - "Structure documentation according to DAMA artefact recommendations (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use CMMI model verification guidance to ensure consistency across modelling layers."
+
+      - number: 3
+        name: "Define modelling standards and rules"
+        prerequisite: "Requires v1.0 model set"
+        deliverable: "Modelling Standards Manual"
+        recommendations:
+          - "Define standards based on DAMA modelling rules for naming, relationships, attribute definitions, and semantic coherence (Chapter 10, p. 282–284)."
+          - "Validate rules using DAMA metadata and data quality dimensions (Chapter 11, p. 308–311)."
+          - "Ensure stewardship responsibilities for standards approval follow DAMA governance guidance (Chapter 3.2, p. 55–57)."
+          - "Confirm alignment with lifecycle checkpoints described by DAMA (Chapter 4.3, p. 92)."
+        notes:
+          - "Use GDPR data minimization principles when defining rules that affect personal data modelling."
+
+      - number: 4
+        name: "Validate modelling standards with business stakeholders"
+        prerequisite: "Requires standards draft"
+        deliverable: "Alignment record"
+        recommendations:
+          - "Validate standards using DAMA relational and semantic consistency expectations (Chapter 10, p. 282)."
+          - "Ensure alignment with business terminology according to DAMA stewardship and glossary guidance (Chapter 9, p. 236)."
+          - "Confirm stakeholder expectations match DAMA governance transparency principles (Chapter 3.4, p. 60)."
+          - "Validate that standards support lifecycle checkpoints (Chapter 4.3, p. 92)."
+        notes:
+          - "Use DCAM stakeholder mapping practices to ensure semantic acceptance."
+
+      - number: 5
+        name: "Approve and publish modelling standards"
+        prerequisite: "Requires governance authority approval"
+        deliverable: "Modelling standards approval pack"
+        recommendations:
+          - "Approve standards using DAMA governance authority guidance for rule approval (Chapter 3.4, p. 60–61)."
+          - "Ensure publication follows DAMA artefact documentation guidance (Chapter 3 Appendix, p. 69–70)."
+          - "Validate consistency across domains using DAMA functional governance architecture (Figure 3-2, p. 53)."
+          - "Confirm that standards support metadata and quality expectations across DAMA chapters (Chapters 10 and 11)."
+        notes:
+          - "Use CMMI governance preparation logic to institutionalize standards more effectively."
+
+
+  DMD-03:
+    title: "Approve modelling rules, structures, and semantic definitions"
+    procedures:
+      - number: 1
+        name: "Establish Data Modelling Council charter"
+        prerequisite: "Requires DMD-02 deliverables"
+        deliverable: "Approved charter"
+        recommendations:
+          - "Establish the charter following DAMA guidance for modelling and structural decision authority (Chapter 3.4, p. 60)."
+          - "Ensure roles and responsibilities reflect DAMA stewardship and ownership expectations (Chapter 3.2, p. 55–57)."
+          - "Validate alignment with DAMA functional governance layers (Figure 3-2, p. 53)."
+          - "Document the charter using DAMA artefact conventions (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use DCAM governance authority criteria to reinforce semantic governance."
+
+      - number: 2
+        name: "Assign modelling council roles"
+        prerequisite: "Requires role descriptions"
+        deliverable: "Role assignment record"
+        recommendations:
+          - "Assign roles following DAMA modelling and stewardship competency profiles (Chapter 4, p. 86–89)."
+          - "Ensure decision boundaries align with DAMA escalation and authority pathways (Chapter 3.4, p. 60)."
+          - "Validate role coverage against DAMA modelling requirements for conceptual, logical, and physical layers (Chapter 10, p. 282)."
+          - "Confirm documentation clarity using DAMA artefact structure (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use the IDGC behavioral evaluation to ensure role holders can uphold modelling governance."
+
+      - number: 3
+        name: "Implement modelling decision forums"
+        prerequisite: "Requires charter approval"
+        deliverable: "Modelling governance calendar and templates"
+        recommendations:
+          - "Implement decision forums using DAMA guidance for governance decision processes and modelling oversight (Chapter 3.3, p. 58–59)."
+          - "Ensure transparency and accountability as defined by DAMA governance principles (Chapter 3, p. 51)."
+          - "Validate lifecycle and semantic decisions using DAMA checkpoints and metadata structures (Chapters 9 and 10)."
+          - "Document forum outputs using DAMA artefact guidance (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Apply CMMI meeting discipline logic to preserve modelling quality."
+
+      - number: 4
+        name: "Launch modelling review cycles"
+        prerequisite: "Requires defined forums"
+        deliverable: "First review minutes"
+        recommendations:
+          - "Launch review cycles following DAMA guidance for modelling and structural oversight (Chapter 3.3, p. 58)."
+          - "Validate semantic and metadata correctness using DAMA modelling guidelines (Chapter 10, p. 282–284)."
+          - "Confirm lifecycle alignment based on DAMA checkpoints (Chapter 4.3, p. 92)."
+          - "Ensure documentation accuracy using DAMA artefact guidelines (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use DCAM review assurance practices to strengthen semantic governance decisions."
+
+      - number: 5
+        name: "Maintain modelling governance operation"
+        prerequisite: "Requires meeting cadence"
+        deliverable: "Modelling activity log"
+        recommendations:
+          - "Maintain governance operation using DAMA guidance for governance continuity (Chapter 3.6, p. 64)."
+          - "Validate that activities follow DAMA modelling and metadata standards (Chapter 10, p. 282)."
+          - "Ensure alignment with lifecycle stewardship expectations (Chapter 4.3, p. 92)."
+          - "Confirm documentation compliance with DAMA artefact structure (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use CMMI monitoring practices to reinforce the stability of governance routines."
+
+
+  DMD-04:
+    title: "Embed modelling governance into organizational and domain routines"
+    procedures:
+      - number: 1
+        name: "Embed modelling checkpoints into domain workflows"
+        prerequisite: "Requires DMD-03 roles and standards"
+        deliverable: "Updated workflow templates"
+        recommendations:
+          - "Embed modelling checkpoints using DAMA guidance for integrating modelling rules into data creation, transformation, and validation activities (Chapter 3.3, p. 58–59)."
+          - "Ensure checkpoints reflect DAMA lifecycle expectations for definition, approval, publication, and retirement (Chapter 4.3, p. 92)."
+          - "Validate that checkpoints incorporate semantic and metadata rules described by DAMA for modelling functions (Chapter 10, p. 282–284)."
+          - "Confirm that assigned stewards perform modelling oversight according to DAMA stewardship guidelines (Chapter 4, p. 86–89)."
+        notes:
+          - "Use DCAM workflow alignment guidance to ensure semantic controls are applied consistently across processes."
+
+      - number: 2
+        name: "Integrate modelling criteria into system design and integration workflows"
+        prerequisite: "Requires standards"
+        deliverable: "Governed design templates"
+        recommendations:
+          - "Integrate criteria using DAMA’s modelling and structural expectations that define conceptual and logical alignment across systems (Chapter 10, p. 282)."
+          - "Ensure integration decisions reflect DAMA metadata rules for naming, definition, and lineage (Chapter 9, p. 236)."
+          - "Validate lifecycle alignment following DAMA stewardship checkpoints such as definition, approval, and publication (Chapter 4.3, p. 92)."
+          - "Confirm that business meaning is preserved according to DAMA semantic coherence principles (Chapter 3.3, p. 58)."
+        notes:
+          - "Apply CMMI design verification methods to strengthen semantic consistency across system components."
+
+      - number: 3
+        name: "Update lifecycle documentation with modelling requirements"
+        prerequisite: "Requires workflow redesign"
+        deliverable: "Updated lifecycle documentation"
+        recommendations:
+          - "Update documentation using DAMA lifecycle guidance for modelling and data definition governance (Chapter 4.3, p. 92)."
+          - "Ensure alignment with DAMA metadata structures and semantic rules (Chapter 10, p. 282–284)."
+          - "Confirm ownership and stewardship responsibilities are clearly expressed according to DAMA governance roles (Chapter 3.2, p. 55–57)."
+          - "Validate lifecycle stages based on DAMA requirements for creation, transformation, and retirement of data structures (Chapters 9 to 11)."
+        notes:
+          - "Use DCAM lifecycle capability criteria to improve modelling integration across lifecycle phases."
+
+      - number: 4
+        name: "Apply modelling checks at domain decision points"
+        prerequisite: "Requires governed workflows"
+        deliverable: "Evidence of modelling controls"
+        recommendations:
+          - "Apply checks according to DAMA modelling and governance expectations, which require validation of structure, relationships, and meaning prior to approval (Chapter 10, p. 282)."
+          - "Validate against DAMA metadata and semantic consistency expectations (Chapter 9, p. 236)."
+          - "Ensure decision points enforce stewardship oversight and escalation when needed as defined by DAMA (Chapter 3.4, p. 60)."
+          - "Confirm lifecycle controls are respected following DAMA modelling checkpoints (Chapter 4.3, p. 92)."
+        notes:
+          - "Use CMMI verification logic to improve repeatability of modelling decision validation."
+
+      - number: 5
+        name: "Track modelling adherence across domains"
+        prerequisite: "Requires monitoring routines"
+        deliverable: "Modelling compliance register"
+        recommendations:
+          - "Track adherence using DAMA guidance for governance monitoring across modelling processes (Chapter 3.6, p. 64)."
+          - "Ensure tracking includes metadata and semantic alignment checks (Chapter 10, p. 282–284)."
+          - "Validate that deviations are recorded and escalated following DAMA governance escalation rules (Chapter 3.4, p. 60)."
+          - "Confirm involvement of stewards and owners consistent with DAMA stewardship obligations (Chapter 4, p. 86–87)."
+        notes:
+          - "Apply DCAM modelling assurance indicators to identify modelling weaknesses and areas for improvement."
+
+
+  DMD-06:
+    title: "Automate modelling validation and semantic quality"
+    procedures:
+      - number: 1
+        name: "Define modelling validation indicators"
+        prerequisite: "Requires DMD-04 workflows"
+        deliverable: "Modelling KPI set"
+        recommendations:
+          - "Define KPIs following DAMA guidance for modelling completeness, semantic coherence, and lineage consistency (Chapter 10, p. 282–284)."
+          - "Ensure KPIs reflect DAMA lifecycle expectations for stable data definitions and approved semantic relationships (Chapter 4.3, p. 92)."
+          - "Validate alignment with DAMA quality dimensions, including accuracy, consistency, and integrity (Chapter 11, p. 308–311)."
+          - "Confirm stewardship and ownership roles are represented according to DAMA governance principles (Chapter 3.2, p. 55–57)."
+        notes:
+          - "Use DCAM capability indicators to create measurement scales for modelling maturity."
+
+      - number: 2
+        name: "Establish automated semantic and structural validation rules"
+        prerequisite: "Requires modelling criteria"
+        deliverable: "Automated validation rule set"
+        recommendations:
+          - "Establish rules following DAMA semantic and metadata requirements (Chapter 9, p. 236)."
+          - "Ensure automation checks relationships, definitions, and lineage paths as described in DAMA modelling guidance (Chapter 10, p. 282–284)."
+          - "Validate lifecycle alignment using DAMA control checkpoints (Chapter 4.3, p. 92)."
+          - "Document automated rules using DAMA artefact patterns (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use CMMI automation readiness criteria to confirm stability before scaling automated checks."
+
+      - number: 3
+        name: "Implement modelling monitoring dashboards"
+        prerequisite: "Requires validation rules"
+        deliverable: "Modelling monitoring dashboard"
+        recommendations:
+          - "Implement dashboards using DAMA governance monitoring principles (Chapter 3.6, p. 64)."
+          - "Include semantic, quality, and metadata indicators aligned with DAMA expectations (Chapters 9 to 11)."
+          - "Validate lifecycle alignment using DAMA checkpoints (Chapter 4.3, p. 92)."
+          - "Ensure dashboard indicators map to ownership and stewardship responsibilities described by DAMA (Chapter 3.2, p. 55–57)."
+        notes:
+          - "Use DCAM data-quality visualization practices to improve the clarity of modelling performance."
+
+      - number: 4
+        name: "Enable automated semantic compliance alerts"
+        prerequisite: "Requires dashboards to be active"
+        deliverable: "Semantic alert feed"
+        recommendations:
+          - "Enable alerts following DAMA escalation and oversight practices (Chapter 3.4, p. 60)."
+          - "Ensure alerts reflect semantic breakpoints, missing metadata, or inconsistent definitions aligned with DAMA guidance (Chapter 10, p. 282–284)."
+          - "Validate lifecycle impact using DAMA checkpoints (Chapter 4.3, p. 92)."
+          - "Confirm that stewardship responsibilities for alert triage follow DAMA role expectations (Chapter 4, p. 86–87)."
+        notes:
+          - "Use CMMI corrective action logic to streamline semantic incident handling."
+
+      - number: 5
+        name: "Maintain automated modelling governance"
+        prerequisite: "Requires operational maturity"
+        deliverable: "Modelling operational log"
+        recommendations:
+          - "Maintain automation based on DAMA guidelines for governance continuity (Chapter 3.6, p. 64)."
+          - "Ensure alignment with DAMA modelling and metadata expectations (Chapters 9 and 10)."
+          - "Validate lifecycle responsibilities using DAMA checkpoints (Chapter 4.3, p. 92)."
+          - "Confirm documentation follows DAMA artefact structure (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use DCAM operational capability assessments to identify areas where modelling automation can expand."
+
+
+  DMD-09:
+    title: "Optimize modelling structures and institutionalize semantic governance"
+    procedures:
+      - number: 1
+        name: "Review of modelling performance trends"
+        prerequisite: "Requires DMD-06 KPI baseline"
+        deliverable: "Trend analysis"
+        recommendations:
+          - "Review trends following DAMA guidance for semantic and structural performance evaluation (Chapter 3.6, p. 64)."
+          - "Validate trends using DAMA modelling consistency and metadata indicators (Chapters 9 and 10)."
+          - "Ensure interpretation incorporates lifecycle expectations for modelling stability (Chapter 4.3, p. 92)."
+          - "Confirm documentation reflects DAMA artefact standards (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use DCAM capability maturity scoring to compare modelling maturity across domains."
+
+      - number: 2
+        name: "Improve modelling structures using performance insights"
+        prerequisite: "Requires trend analysis"
+        deliverable: "Updated models and patterns"
+        recommendations:
+          - "Improve structures using DAMA modelling refinement guidance, which emphasizes clarity, consistency, and semantic precision (Chapter 10, p. 282–284)."
+          - "Validate improvements using DAMA metadata and quality rules (Chapters 9 and 11)."
+          - "Ensure lifecycle responsibilities remain aligned with DAMA stewardship checkpoints (Chapter 4.3, p. 92)."
+          - "Confirm that updates maintain domain and enterprise meaning as defined by DAMA governance (Chapter 3.3, p. 58)."
+        notes:
+          - "Use CMMI quantitative improvement techniques to prioritize high-impact refinements."
+
+      - number: 3
+        name: "Benchmark modelling practices against external standards"
+        prerequisite: "Requires a maturity profile"
+        deliverable: "Benchmark evidence"
+        recommendations:
+          - "Benchmark using DAMA expectations for external comparability and governance alignment (Chapter 3.6, p. 64)."
+          - "Include metadata, structural, and semantic components in the benchmark assessment based on DAMA modelling guidance (Chapters 9 and 10)."
+          - "Validate that benchmark insights support lifecycle responsibilities (Chapter 4.3, p. 92)."
+          - "Document results using DAMA artefact standards (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use DCAM benchmarking practices to align modelling maturity with industry expectations."
+
+      - number: 4
+        name: "Enhance modelling automation logic"
+        prerequisite: "Requires DMD-06 automation"
+        deliverable: "Updated modelling automation set"
+        recommendations:
+          - "Enhance automation using DAMA semantics to be and metadata rules (Chapter 10, p. 282–284)."
+          - "Validate automation updates using DAMA lifecycle checkpoints (Chapter 4.3, p. 92)."
+          - "Ensure that owners and stewards approve logic changes according to DAMA governance authority (Chapter 3.4, p. 60)."
+          - "Confirm updated logic aligns with DAMA artefact documentation patterns (Chapter 3 Appendix, p. 69)."
+        notes:
+          - "Use CMMI automation maturity criteria to improve automation reliability."
+
+      - number: 5
+        name: "Maintain a continuous modelling improvement cycle"
+        prerequisite: "Requires an optimization cycle"
+        deliverable: "Modelling improvement plan"
+        recommendations:
+          - "Maintain improvement cycles following DAMA guidance for ongoing modelling and semantic refinement (Chapter 3.6, p. 64)."
+          - "Ensure feedback loops incorporate semantic, quality, and metadata lessons from DAMA (Chapters 9 to 11)."
+          - "Validate lifecycle responsibilities with DAMA checkpoints (Chapter 4.3, p. 92)."
+          - "Confirm documentation follows DAMA artefact formatting (Chapter 3 Appendix, p. 69–70)."
+        notes:
+          - "Use DCAM capability evolution mapping to plan long-term growth in modelling maturity."

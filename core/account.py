@@ -50,8 +50,17 @@ def render_account_page(session_state):
     if is_admin:
         emails = [u["email"] for u in users if u.get("email")]
         selected_email = st.selectbox("Select user", emails)
-        selected = next(u for u in users if u["email"] == selected_email)
-        user_hash = str(selected["email_hash"]).strip()
+        
+        selected = next(
+            (u for u in users if u.get("email") == selected_email),
+            None
+        )
+
+        if not selected:
+            st.warning("Selected user not found.")
+            return
+        
+        user_hash = str(selected["email_hash"]).strip()        
     else:
         user_hash = str(session_state.get("user_id")).strip()
 
@@ -69,6 +78,16 @@ def render_account_page(session_state):
 
     st.divider()
 
+    if "_account_update_pending" not in st.session_state:
+        st.session_state._account_update_pending = False
+    if "_account_update_payload" not in st.session_state:
+        st.session_state._account_update_payload = None
+
+    if "_pwd_update_pending" not in st.session_state:
+        st.session_state._pwd_update_pending = False
+    if "_pwd_update_payload" not in st.session_state:
+        st.session_state._pwd_update_payload = None
+
     # ========================
     # PERSONAL DATA
     # ========================
@@ -83,7 +102,44 @@ def render_account_page(session_state):
         state = st.text_input("State", value=user_data.get("state_province") or "")
         city = st.text_input("City", value=user_data.get("city") or "")
 
-        if st.button("Update"):
+        if st.session_state._account_update_pending and st.session_state._account_update_payload:
+            with st.spinner("Updating..."):
+                try:
+                    payload = st.session_state._account_update_payload
+
+                    repo.update(
+                        "users",
+                        {"email_hash": user_hash},
+                        {
+                            "full_name_encrypted": encrypt_text(payload["full_name"]),
+                            "company_encrypted": encrypt_text(payload["company"]),
+                            "department_encrypted": encrypt_text(payload["department"]),
+                            "job_title_encrypted": encrypt_text(payload["job_title"]),
+                            "phone_encrypted": encrypt_text(payload["phone"]),
+                            "country_encrypted": encrypt_text(payload["country"]),
+                            "state_province_encrypted": encrypt_text(payload["state"]),
+                            "city_encrypted": encrypt_text(payload["city"]),
+                        }
+                    )
+
+                    _read_users_records.clear()
+                    load_user_by_hash.clear()
+                    get_all_users.clear()
+
+                    updated_user = load_user_by_hash(user_hash)
+                    st.session_state.user = updated_user
+
+                    st.session_state.account_updated = True
+
+                except Exception as e:
+                    st.error(str(e))
+
+                finally:
+                    st.session_state._account_update_pending = False
+                    st.session_state._account_update_payload = None
+                    st.rerun()
+
+        if st.button("Update", disabled=st.session_state._account_update_pending):
 
             if not full_name.strip():
                 st.error("Full name is required.")
@@ -93,31 +149,17 @@ def render_account_page(session_state):
                 st.error("Country is required.")
                 return
 
-            repo.update(
-                "users",
-                {"email_hash": user_hash},
-                {
-                    "full_name_encrypted": encrypt_text(full_name),
-                    "company_encrypted": encrypt_text(company),
-                    "department_encrypted": encrypt_text(department),
-                    "job_title_encrypted": encrypt_text(job_title),
-                    "phone_encrypted": encrypt_text(phone),
-                    "country_encrypted": encrypt_text(country),
-                    "state_province_encrypted": encrypt_text(state),
-                    "city_encrypted": encrypt_text(city),
-                }
-            )
-
-            # 🔥 LIMPA TODOS OS CACHES
-            _read_users_records.clear()
-            load_user_by_hash.clear()
-            get_all_users.clear()
-
-            # 🔥 RECARREGA DADOS ATUALIZADOS
-            updated_user = load_user_by_hash(user_hash)
-            st.session_state.user = updated_user
-
-            st.session_state.account_updated = True
+            st.session_state._account_update_pending = True
+            st.session_state._account_update_payload = {
+                "full_name": full_name,
+                "company": company,
+                "department": department,
+                "job_title": job_title,
+                "phone": phone,
+                "country": country,
+                "state": state,
+                "city": city,
+            }
             st.rerun()
 
     st.divider()
@@ -130,23 +172,42 @@ def render_account_page(session_state):
     new_password = st.text_input("New password", type="password")
     confirm_password = st.text_input("Confirm password", type="password")
 
-    if st.button("Update Password"):
+    if st.session_state._pwd_update_pending and st.session_state._pwd_update_payload:
+        with st.spinner("Updating password..."):
+            try:
+                payload = st.session_state._pwd_update_payload
+
+                repo.update(
+                    "users",
+                    {"email_hash": user_hash},
+                    {"password_hash": hash_password(payload["new_password"])}
+                )
+
+                _read_users_records.clear()
+                load_user_by_hash.clear()
+                get_all_users.clear()
+
+                st.success("Password updated successfully.")
+
+            except Exception as e:
+                st.error(str(e))
+
+            finally:
+                st.session_state._pwd_update_pending = False
+                st.session_state._pwd_update_payload = None
+                st.rerun()
+
+    if st.button("Update Password", disabled=st.session_state._pwd_update_pending):
 
         if new_password != confirm_password:
             st.error("Passwords do not match.")
             return
 
-        repo.update(
-            "users",
-            {"email_hash": user_hash},
-            {"password_hash": hash_password(new_password)}
-        )
-
-        _read_users_records.clear()
-        load_user_by_hash.clear()
-        get_all_users.clear()
-
-        st.success("Password updated successfully.")
+        st.session_state._pwd_update_pending = True
+        st.session_state._pwd_update_payload = {
+            "new_password": new_password
+        }
+        st.rerun()
 
     st.divider()
 
@@ -216,4 +277,3 @@ def _delete_account(user_hash):
     _read_users_records.clear()
     load_user_by_hash.clear()
     get_all_users.clear()
-

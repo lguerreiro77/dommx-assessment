@@ -1,0 +1,117 @@
+domain:
+  id: 4
+  name: "Data Operations (DSO)"
+  description: >
+    This domain evaluates the formalization of operational data handling, the stability of data lifecycle processes (creation, transformation, and usage), and the integration of governance controls into daily operational routines. Data Operations focus on ensuring that data management principles are translated into repeatable, efficient, and governed activities that support organizational continuity (DAMA-DMBOK2, Chapter 6).
+
+maturity_scale:
+
+  0:
+    maturity_level: "Non-existent"
+    meaning: "No governance practices and no defined responsibilities or processes."
+    interpretation_for_assessment: "Indicates a complete absence of structure and an immediate need for foundational action."
+
+  1:
+    maturity_level: "Initial"
+    meaning: "Activities occur informally and reactively with little or no documentation."
+    interpretation_for_assessment: "Reflects awareness, but also high variability and operational risk."
+
+  2:
+    maturity_level: "Emerging"
+    meaning: "Some practices exist but remain inconsistent, undocumented, or not adopted across teams."
+    interpretation_for_assessment: "Shows early development. Standardization and documentation are necessary to progress."
+
+  3:
+    maturity_level: "Established"
+    meaning: "Processes, roles, and policies are defined, documented, and applied with stability."
+    interpretation_for_assessment: "Demonstrates operational consistency and readiness for more structured improvements."
+
+  4:
+    maturity_level: "Managed"
+    meaning: "Governance is integrated into workflows and supported by tools, monitoring, and oversight."
+    interpretation_for_assessment: "Represents mature adoption with reliable execution across teams."
+
+  5:
+    maturity_level: "Optimized"
+    meaning: "Governance is fully embedded, continuously improved, and aligned with compliance and ethical expectations."
+    interpretation_for_assessment: "Represents advanced maturity with proactive governance, optimization, and institutionalized continuous improvement."
+
+questions:
+
+  Q1:
+    text: "Are data storage rules, classification, and retention standards formally defined and approved?"
+    explanation: "Evaluates structured rules for storing, retaining, and classifying data."
+    objective: "Ensure controlled and compliant storage practices."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Data Storage & Operations; DCAM, Platform & Operations; IDGC, Operational Processes)"
+    score_action_mapping:
+      0: { action_code: "DSO-01", description: "Define governed rules for data storage, classification, and retention" }
+      1: { action_code: "DSO-02", description: "Assign responsibilities for storage and retention governance" }
+      2: { action_code: "DSO-03", description: "Approve storage and retention standards" }
+      3: { action_code: "DSO-04", description: "Embed storage and retention rules into operational routines" }
+      4: { action_code: "DSO-06", description: "Automate retention execution and storage compliance checks" }
+      5: { action_code: "DSO-09", description: "Continuously improve storage and retention governance using evidence" }
+
+  Q2:
+    text: "Are operational routines for data handling governed, documented, and repeatable?"
+    explanation: "Checks whether operational processes comply with defined governance rules."
+    objective: "Increase consistency and traceability."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operational Roles; DCAM, Ownership Structure; IDGC, Operational Responsibility)"
+    score_action_mapping:
+      0: { action_code: "DSO-01", description: "Define governance requirements for operational data handling" }
+      1: { action_code: "DSO-02", description: "Assign stewardship responsibilities for operational routines" }
+      2: { action_code: "DSO-03", description: "Approve governed operational processes" }
+      3: { action_code: "DSO-04", description: "Implement governed and repeatable operational routines" }
+      4: { action_code: "DSO-06", description: "Automate conformity checks and operational consistency" }
+      5: { action_code: "DSO-09", description: "Continuously optimize operational governance based on metrics" }
+
+  Q3:
+    text: "Are data access and protection controls monitored and maintained under governance authority?"
+    explanation: "Assesses oversight of access, controls, and protection mechanisms."
+    objective: "Support secure and responsible data use."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Monitoring & Observability; DCAM, Control Environment; IDGC, Monitoring & Auditability)"
+    score_action_mapping:
+      0: { action_code: "DSO-01", description: "Define governed requirements for access and protection controls" }
+      1: { action_code: "DSO-02", description: "Assign oversight responsibilities for access and protection" }
+      2: { action_code: "DSO-03", description: "Approve governed access-control structures" }
+      3: { action_code: "DSO-04", description: "Embed access and protection controls into daily operational routines" }
+      4: { action_code: "DSO-06", description: "Automate monitoring of access governance and protection" }
+      5: { action_code: "DSO-09", description: "Continuously improve access and protection governance using audits" }
+
+  Q4:
+    text: "Are DataOps practices integrated into operational governance?"
+    explanation: "Evaluates transparency, observability, monitoring, and operational reliability."
+    objective: "Strengthen operational quality and lifecycle management."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operations Lifecycle; Chapter 12 – Data Lifecycle; DCAM, Lifecycle Execution; IDGC, Process Integration)"
+    score_action_mapping:
+      0: { action_code: "DSO-01", description: "Define DataOps governance requirements for reliability and observability" }
+      1: { action_code: "DSO-02", description: "Assign DataOps and operational stewardship roles" }
+      2: { action_code: "DSO-03", description: "Approve DataOps integration rules" }
+      3: { action_code: "DSO-04", description: "Embed DataOps routines into governed operational workflows" }
+      4: { action_code: "DSO-06", description: "Automate observability, monitoring, and operational validation" }
+      5: { action_code: "DSO-09", description: "Continuously improve DataOps governance using performance evidence" }
+
+  Q5:
+    text: "Is operational performance (availability, reliability, observability) measured and reviewed?"
+    explanation: "Assesses performance monitoring and governance indicators."
+    objective: "Ensure operational excellence and controlled evolution."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operations Metrics; DCAM, Measurement; IDGC, Performance Controls)"
+    score_action_mapping:
+      0: { action_code: "DSO-01", description: "Define operational performance indicators and monitoring rules" }
+      1: { action_code: "DSO-02", description: "Assign responsibilities for operational performance governance" }
+      2: { action_code: "DSO-03", description: "Approve KPIs, thresholds, and governance review cycles" }
+      3: { action_code: "DSO-04", description: "Implement dashboards, performance reviews, and governed reporting" }
+      4: { action_code: "DSO-06", description: "Automate performance monitoring and operational validation" }
+      5: { action_code: "DSO-09", description: "Continuously improve operational performance using metrics" }
+
+  Q6:
+    text: "Are ethical, privacy, and responsible-use safeguards embedded in operational routines?"
+    explanation: "Evaluates privacy-by-design and ethical safeguards in daily operations."
+    objective: "Ensure compliant and responsible operations."
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operational Risk & Security; Chapter 9 – Data Security; DCAM, Risk & Controls; IDGC, Risk Governance)"
+    score_action_mapping:
+      0: { action_code: "DSO-01", description: "Define ethical, privacy, and responsible-use requirements for operations" }
+      1: { action_code: "DSO-02", description: "Assign privacy and ethical oversight responsibilities" }
+      2: { action_code: "DSO-03", description: "Approve ethical and privacy operational rules" }
+      3: { action_code: "DSO-04", description: "Embed ethical and privacy safeguards into operational routines" }
+      4: { action_code: "DSO-06", description: "Automate ethical, privacy, and responsible-use validation" }
+      5: { action_code: "DSO-09", description: "Continuously improve ethical and privacy governance using audits" }

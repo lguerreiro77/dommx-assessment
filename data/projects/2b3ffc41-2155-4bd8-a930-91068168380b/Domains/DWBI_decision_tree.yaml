@@ -1,0 +1,117 @@
+domain:
+  id: 9
+  name: "Data Warehousing and Business Intelligence (DWBI)"
+  description: >
+    This domain evaluates the governance of analytical assets, semantic layers, consumption standards, and decision-support structures. It examines how analytical outputs are validated, monitored, and aligned with organizational meaning, ensuring that insights are consistent, traceable, and used ethically. Governance must extend beyond data sources to analytical interpretation, reinforcing reliability, accountability, and transparency (DAMA-DMBOK2, Chapter 11).
+
+maturity_scale:
+
+  0:
+    maturity_level: "Non-existent"
+    meaning: "No governance practices and no defined responsibilities or processes."
+    interpretation_for_assessment: "Indicates a complete absence of structure and an immediate need for foundational action."
+
+  1:
+    maturity_level: "Initial"
+    meaning: "Activities occur informally and reactively with little or no documentation."
+    interpretation_for_assessment: "Reflects awareness, but also high variability and operational risk."
+
+  2:
+    maturity_level: "Emerging"
+    meaning: "Some practices exist but remain inconsistent, undocumented, or not adopted across teams."
+    interpretation_for_assessment: "Shows early development. Standardization and documentation are necessary to progress."
+
+  3:
+    maturity_level: "Established"
+    meaning: "Processes, roles, and policies are defined, documented, and applied with stability."
+    interpretation_for_assessment: "Demonstrates operational consistency and readiness for more structured improvements."
+
+  4:
+    maturity_level: "Managed"
+    meaning: "Governance is integrated into workflows and supported by tools, monitoring, and oversight."
+    interpretation_for_assessment: "Represents mature adoption with reliable execution across teams."
+
+  5:
+    maturity_level: "Optimized"
+    meaning: "Governance is fully embedded, continuously improved, and aligned with compliance and ethical expectations."
+    interpretation_for_assessment: "Represents advanced maturity with proactive governance, optimization, and institutionalized continuous improvement."
+
+questions:
+
+  Q1:
+    text: "Are analytical governance rules, semantic definitions, and consumption standards formally defined?"
+    explanation: "Evaluates governed definitions of analytical meaning and usage."
+    objective: "Ensure consistency and traceability of insights."
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – DW & BI; DCAM, Analytical Architecture; IDGC, Structural Mechanisms)"
+    score_action_mapping:
+      0: { action_code: "DWBI-01", description: "Define analytical governance rules, semantic standards, and usage principles" }
+      1: { action_code: "DWBI-02", description: "Assign stewardship roles for analytical governance" }
+      2: { action_code: "DWBI-03", description: "Approve analytical and semantic governance standards" }
+      3: { action_code: "DWBI-04", description: "Embed analytical governance rules into BI workflows" }
+      4: { action_code: "DWBI-06", description: "Automate semantic validation and governed usage checks" }
+      5: { action_code: "DWBI-09", description: "Continuously refine analytical governance using evidence" }
+
+  Q2:
+    text: "Are analytical assets (dashboards, KPIs, reports) catalogued, versioned, and maintained under governance?"
+    explanation: "Assesses management of analytical artefacts."
+    objective: "Improve reliability and lifecycle consistency."
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – ETL / ELT Processes; DCAM, Data Processing; IDGC, Process Controls)"
+    score_action_mapping:
+      0: { action_code: "DWBI-01", description: "Define cataloguing, versioning, and lifecycle rules for analytical assets" }
+      1: { action_code: "DWBI-02", description: "Assign ownership for analytical artefacts" }
+      2: { action_code: "DWBI-03", description: "Approve structured lifecycle governance for analytical assets" }
+      3: { action_code: "DWBI-04", description: "Implement governed cataloguing and versioning routines" }
+      4: { action_code: "DWBI-06", description: "Automate cataloguing, versioning, and lineage tracking" }
+      5: { action_code: "DWBI-09", description: "Continuously improve artefact lifecycle governance" }
+
+  Q3:
+    text: "Are data transformations, semantic logic, and metric calculations governed and transparent?"
+    explanation: "Evaluates governed semantic layers and metric lineage."
+    objective: "Ensure trustworthy and reproducible analytics."
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – Metrics Governance; DCAM, Analytics Quality; IDGC, Semantic Controls)"
+    score_action_mapping:
+      0: { action_code: "DWBI-01", description: "Define rules for metric standardization and semantic logic" }
+      1: { action_code: "DWBI-02", description: "Assign responsibilities for metric governance and transparency" }
+      2: { action_code: "DWBI-03", description: "Approve metric catalogues and semantic definitions" }
+      3: { action_code: "DWBI-04", description: "Embed governed semantic logic into BI processes" }
+      4: { action_code: "DWBI-06", description: "Automate metric validation and semantic drift monitoring" }
+      5: { action_code: "DWBI-09", description: "Continuously refine metric and semantic governance" }
+
+  Q4:
+    text: "Are analytical consumption processes monitored for accuracy, consistency, and responsible use?"
+    explanation: "Assesses governance of consumption behavior and decision support."
+    objective: "Strengthen accountability and decision integrity."
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – DW Lifecycle; Chapter 12 – Data Lifecycle; DCAM, Lifecycle Execution; IDGC, Process Integration)"
+    score_action_mapping:
+      0: { action_code: "DWBI-01", description: "Define rules for responsible analytical consumption" }
+      1: { action_code: "DWBI-02", description: "Assign oversight roles for consumption governance" }
+      2: { action_code: "DWBI-03", description: "Approve governed consumption processes" }
+      3: { action_code: "DWBI-04", description: "Implement governed consumption monitoring routines" }
+      4: { action_code: "DWBI-06", description: "Automate consumption monitoring and behavioral alerts" }
+      5: { action_code: "DWBI-09", description: "Continuously improve consumption governance using metrics" }
+
+  Q5:
+    text: "Are analytical quality indicators (accuracy, timeliness, completeness) measured and reviewed?"
+    explanation: "Evaluates the reliability of analytical outputs."
+    objective: "Maintain trustworthy analytical environments."
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – BI Monitoring & Quality; DCAM, Measurement; IDGC, Monitoring & Validation)"
+    score_action_mapping:
+      0: { action_code: "DWBI-01", description: "Define analytical quality metrics and monitoring rules" }
+      1: { action_code: "DWBI-02", description: "Assign responsibilities for analytical quality monitoring" }
+      2: { action_code: "DWBI-03", description: "Approve quality review cycles and KPIs" }
+      3: { action_code: "DWBI-04", description: "Implement dashboards and quality review routines" }
+      4: { action_code: "DWBI-06", description: "Automate analytical quality validation" }
+      5: { action_code: "DWBI-09", description: "Continuously improve analytical quality using evidence" }
+
+  Q6:
+    text: "Are ethical, privacy, and responsible-use safeguards applied to analytics and insight generation?"
+    explanation: "Ensures compliance and ethical application of analytical insights."
+    objective: "Promote responsible and lawful analytical use."
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – Ethical Analytics; DCAM, Responsible Use; IDGC, Ethical Reporting)"
+    score_action_mapping:
+      0: { action_code: "DWBI-01", description: "Define ethical, privacy, and responsible-use rules for analytics" }
+      1: { action_code: "DWBI-02", description: "Assign oversight for ethical and privacy controls" }
+      2: { action_code: "DWBI-03", description: "Approve ethical and privacy safeguards for analytics" }
+      3: { action_code: "DWBI-04", description: "Embed ethical and privacy safeguards into analytical workflows" }
+      4: { action_code: "DWBI-06", description: "Automate privacy, minimization, and fairness validation" }
+      5: { action_code: "DWBI-09", description: "Continuously improve ethical governance using audits" }
