@@ -42,14 +42,16 @@ def render_account_page(session_state):
     if st.session_state.get("account_deleted"):
         st.success("Account deleted successfully.")
         del st.session_state["account_deleted"]
-
-    is_admin = str(session_state.get("is_admin", "")).lower() == "true"
+    
+    is_admin = bool(session_state.get("is_admin"))
 
     users = get_all_users()
 
     if is_admin:
-        emails = [u["email"] for u in users if u.get("email")]
-        selected_email = st.selectbox("Select user", emails)
+        emails = [u.get("email") or "" for u in users]
+        emails = [e for e in emails if e]
+        
+        selected_email = st.selectbox("Select user", emails, disabled=not is_admin)
         
         selected = next(
             (u for u in users if u.get("email") == selected_email),

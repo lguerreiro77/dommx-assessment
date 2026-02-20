@@ -10,7 +10,8 @@ from auth.email_service import send_email
 from core.config import APP_TITLE, refresh_runtime_config, BASE_DIR
 from storage.project_storage import get_all_projects, get_projects
 from storage.user_project_storage import get_projects_for_user
-from storage.user_storage import load_user, save_user, verify_password, get_all_users
+from storage.user_storage import load_user, save_user, verify_password, get_all_users, load_user_by_hash
+
 
 from data.repository_factory import get_repository
 
@@ -582,6 +583,9 @@ def render_project_selection():
                 # recarrega app_config do projeto
                 refresh_runtime_config()
 
+                current_user = load_user_by_hash(st.session_state.get("user_id"))
+                user_email = current_user.get("email") if current_user else None
+                
                 # bootstrap admin: ao entrar, abre modal de projetos (setup inicial)
                 if st.session_state.get("bootstrap_admin") and st.session_state.get("bootstrap_admin_email") == user_email:
                     st.session_state.open_dialog = "projects"

@@ -60,7 +60,7 @@ def save_user(
 
     user_payload = {
         "email_hash": email_hash,
-        "email": email_norm,
+        "email_encrypted": encrypt_text(email_norm),
         "password_hash": hash_password(password),
         "full_name_encrypted": encrypt_text(full_name),
         "company_encrypted": encrypt_text(company),
@@ -70,7 +70,7 @@ def save_user(
         "country_encrypted": encrypt_text(country),
         "state_province_encrypted": encrypt_text(state_province),
         "city_encrypted": encrypt_text(city),
-        "consent": bool(consent),
+        "consent_encrypted": encrypt_text(str(bool(consent)).lower()),
     }
 
     # ---------------------------------------------------------
@@ -151,9 +151,9 @@ def _decrypt_user_row(row: dict) -> dict:
         val = out.get(key, "")
         return decrypt_text(val) if val not in (None, "") else ""
         
-    # 🔥 Garantir que email sempre exista
-    if not out.get("email") and out.get("email_hash"):
-        out["email"] = row.get("email", "")
+    ## 🔥 Garantir que email sempre exista
+    #if not out.get("email") and out.get("email_hash"):
+    #    out["email"] = row.get("email", "")
 
     if "email_encrypted" in out:
         out["email"] = d("email_encrypted")
@@ -192,9 +192,10 @@ def get_all_users():
     users = []
     for row in rows:
         user = _decrypt_user_row(row)
+
         users.append({
             "email_hash": row.get("email_hash"),
-            "email": row.get("email"),  # não usar decrypt aqui
+            "email": user.get("email"),
             "full_name": user.get("full_name"),
         })
 
