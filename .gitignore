@@ -9,7 +9,8 @@ git_tkn.txt
 *.sqlite
 service_account.json
 /data/general/secret.key
-/data/BKP
+/data/BKP/
+data/projects/
 
 # Service accounts
 *.json
