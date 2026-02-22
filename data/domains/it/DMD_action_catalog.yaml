@@ -1,0 +1,546 @@
+domain:
+  id: 3
+  name: Data Modelling and Design (DMD)
+action_catalog:
+  DMD-01:
+    title: Definire principi fondamentali di modellazione e ambito
+    procedures:
+    - number: 1
+      name: Definire principi di modellazione e ambito della struttura
+      prerequisite: Richiede l'identificazione dei concetti di business
+      deliverable: Documento dei principi di modellazione
+      recommendations:
+      - Definisci principi di modellazione seguendo le linee guida DAMA per 
+        strutture concettuali, logiche e fisiche e il loro allineamento di 
+        governance (Capitolo 3.3, p. 58–59).
+      - Garantire che l'ambito copra i domini richiesti da DMBOK per la gestione
+        del modello, la terminologia e la coerenza semantica (Capitolo 10, p. 
+        282–284).
+      - Validare le definizioni di confine utilizzando le aspettative DAMA per 
+        l’integrazione di modelli cross-funzionali (Figura 3-2, p. 53).
+      - Struttura il documento seguendo le linee guida di formattazione degli 
+        artefatti DAMA per chiarezza e tracciabilità (Capitolo 3 Appendice, p. 
+        69–70).
+      notes:
+      - Utilizzare la definizione dell'ambito di capacità di modellazione DCAM 
+        per garantire che i principi di modellazione supportino il significato e
+        la struttura dei dati aziendali.
+    - number: 2
+      name: Redigere il modello concettuale iniziale
+      prerequisite: Richiede principi definiti
+      deliverable: Modello concettuale v0.1
+      recommendations:
+      - Redigere il modello concettuale utilizzando le linee guida DAMA per 
+        rappresentare significato aziendale, relazioni e concetti chiave 
+        (Capitolo 10, p. 282).
+      - Garantire che la rappresentazione delle entità richieste segua le 
+        aspettative semantiche e di metadata DAMA (Capitolo 9, p. 236).
+      - Validare che le responsabilità di stewardship per la proprietà del 
+        modello seguano il modello di ruolo di governance DAMA (Capitolo 3.2, p.
+        55–57).
+      - Conferma che il modello si allinea ai checkpoint del ciclo di vita DAMA 
+        per la definizione e pubblicazione dei dati (Capitolo 4.3, p. 92).
+      notes:
+      - Utilizzare la disciplina di iterazione di modellazione di CMMI per 
+        mantenere l'integrità concettuale durante le prime bozze.
+    - number: 3
+      name: Identifica entità e attributi preliminari
+      prerequisite: Richiede mappatura degli stakeholder
+      deliverable: Elenco iniziale delle entità
+      recommendations:
+      - Identificare entità seguendo le linee guida di DAMA per separare oggetti
+        di business, strutture di riferimento e significato condiviso (Capitolo 
+        10, p. 282–284).
+      - Valida l'identificazione degli attributi utilizzando i requisiti di 
+        metadati DAMA, incluse definizioni, formati e valori ammissibili 
+        (Capitolo 9, p. 236).
+      - Garantire l’allineamento delle entità con i principi di coerenza 
+        semantica DAMA (Capitolo 3.3, p. 58).
+      - Confermare che gli elementi identificati riflettano i checkpoint del 
+        ciclo di vita per creazione e trasformazione definiti da DAMA (Capitolo 
+        4.3, p. 92).
+      notes:
+      - Utilizzare l'analisi di criticità degli attributi di DCAM per 
+        prioritizzare entità core precocemente.
+    - number: 4
+      name: Assegnare ownership provvisoria della modellazione
+      prerequisite: Richiede inventario delle entità
+      deliverable: Matrice di proprietà della modellazione
+      recommendations:
+      - Assegna la proprietà del modello seguendo le responsabilità di 
+        stewardship e definizione dati DAMA (Capitolo 4, p. 86–89).
+      - Validare l’ownership per i livelli concettuale, logico e fisico basata 
+        sui ruoli di governance DAMA (Capitolo 3.2, p. 55–57).
+      - Assicurare che l'ownership del ciclo di vita sia coerente con i 
+        checkpoint DAMA (Capitolo 4.3, p. 92).
+      - Documentare la proprietà utilizzando le linee guida degli artefatti DAMA
+        (Capitolo 3 Appendice, p. 69).
+      notes:
+      - Usa le linee guida di prontezza comportamentale IDGC per garantire che i
+        proprietari della modellazione possano sostenere gli obblighi di 
+        governance.
+    - number: 5
+      name: Pubblicare linee guida iniziali di modellazione
+      prerequisite: Richiede un modello concettuale e proprietà
+      deliverable: Brief di onboarding alla modellazione
+      recommendations:
+      - Pubblicare linee guida utilizzando le aspettative di comunicazione DAMA 
+        per artefatti di governance (Capitolo 3.6, p. 64).
+      - Assicura chiarezza delle regole di modellazione, inclusi nomi, relazioni
+        e convenzioni semantiche basate sulle raccomandazioni DAMA (Capitolo 10,
+        p. 282–284).
+      - Valida il brief utilizzando la struttura degli artefatti DAMA per 
+        garantire coerenza e auditabilità (Capitolo 3 Appendice, p. 69–70).
+      - Rafforzare le responsabilità di steward e proprietario per le attività 
+        di modellazione seguendo le definizioni DAMA (Capitolo 4, p. 86–87).
+      notes:
+      - Utilizzare strategie di comunicazione CMMI per migliorare la 
+        comprensione degli utenti sulle aspettative di modellazione.
+  DMD-02:
+    title: Formalizzare stewardship e standard di modellazione
+    procedures:
+    - number: 1
+      name: Consolida i requisiti di modellazione
+      prerequisite: Richiede completamento DMD-01
+      deliverable: Registro dei requisiti di modellazione
+      recommendations:
+      - Consolidare i requisiti utilizzando le linee guida di modellazione e 
+        metadata di DAMA per la coerenza strutturale (Capitolo 10, p. 282).
+      - Garantire che i requisiti riflettano le aspettative semantiche, di 
+        lineage e di significato aziendale di DAMA (Capitolo 3.3, p. 58).
+      - Validare che i requisiti supportino i checkpoint del ciclo di vita, 
+        inclusa la definizione e la pubblicazione dei dati (Capitolo 4.3, p. 
+        92).
+      - Conferma la copertura delle aspettative di proprietà e stewardship 
+        definite da DAMA (Capitolo 3.2, p. 55–57).
+      notes:
+      - Applicare tecniche di prioritizzazione dei requisiti DCAM per 
+        identificare le esigenze di modellazione ad alto valore.
+    - number: 2
+      name: Produrre modelli concettuali e logici formali
+      prerequisite: Richiede requisiti validati
+      deliverable: Modelli concettuali e logici v1.0
+      recommendations:
+      - Produrre modelli seguendo le aspettative DAMA per chiarezza concettuale 
+        e normalizzazione logica (Capitolo 10, p. 282–284).
+      - Confermare definizioni di attributi e relazioni utilizzando le regole 
+        metadata DAMA (Capitolo 9, p. 236).
+      - Valida l'allineamento con i requisiti di governance del ciclo di vita 
+        DAMA per i cambiamenti strutturali (Capitolo 4.3, p. 92).
+      - Strutturare la documentazione secondo le raccomandazioni degli artefatti
+        DAMA (Capitolo 3 Appendice, p. 69–70).
+      notes:
+      - Utilizzare le linee guida di verifica del modello CMMI per garantire 
+        coerenza tra i livelli di modellazione.
+    - number: 3
+      name: Definire standard e regole di modellazione
+      prerequisite: Richiede set di modelli v1.0
+      deliverable: Manuale degli Standard di Modellazione
+      recommendations:
+      - Definisce standard basati sulle regole di modellazione DAMA per 
+        denominazioni, relazioni, definizioni di attributi e coerenza semantica 
+        (Capitolo 10, p. 282–284).
+      - Validare le regole utilizzando metadata e dimensioni di qualità dei dati
+        DAMA (Capitolo 11, p. 308–311).
+      - Garantire che le responsabilità di stewardship per l’approvazione degli 
+        standard seguano le linee guida di governance DAMA (Capitolo 3.2, p. 
+        55–57).
+      - Confermare l'allineamento con i checkpoint del ciclo di vita descritti 
+        da DAMA (Capitolo 4.3, p. 92).
+      notes:
+      - Utilizzare i principi di minimizzazione dei dati GDPR quando si 
+        definiscono regole che influenzano la modellazione dei dati personali.
+    - number: 4
+      name: Validare gli standard di modellazione con gli stakeholder aziendali
+      prerequisite: Richiede bozza di standard
+      deliverable: Registro di allineamento
+      recommendations:
+      - Validare gli standard utilizzando le aspettative di coerenza relazionale
+        e semantica DAMA (Capitolo 10, p. 282).
+      - Garantire l'allineamento con la terminologia di business secondo la 
+        stewardship e le linee guida del glossario di DAMA (Capitolo 9, p. 236).
+      - Confermare che le aspettative degli stakeholder corrispondano ai 
+        principi di trasparenza della governance DAMA (Capitolo 3.4, p. 60).
+      - Valida che gli standard supportino i checkpoint del ciclo di vita 
+        (Capitolo 4.3, p. 92).
+      notes:
+      - Usa le pratiche di mappatura degli stakeholder DCAM per garantire 
+        l'accettazione semantica.
+    - number: 5
+      name: Approvare e pubblicare gli standard di modellazione
+      prerequisite: Richiede approvazione dell’autorità di governance
+      deliverable: Pacchetto di approvazione degli standard di modellazione
+      recommendations:
+      - Approvare standard utilizzando le linee guida di autorità di governance 
+        DAMA per l'approvazione delle regole (Capitolo 3.4, p. 60–61).
+      - Assicurare che la pubblicazione segua le linee guida di documentazione 
+        degli artefatti DAMA (Capitolo 3 Appendice, p. 69–70).
+      - Validare la coerenza tra domini utilizzando l’architettura funzionale di
+        governance DAMA (Figura 3-2, p. 53).
+      - Confermare che gli standard supportino le aspettative di metadati e 
+        qualità nei capitoli DAMA (Capitoli 10 e 11).
+      notes:
+      - Utilizzare la logica di preparazione alla governance CMMI per 
+        istituzionalizzare gli standard in modo più efficace.
+  DMD-03:
+    title: Approvare regole di modellazione, strutture e definizioni semantiche
+    procedures:
+    - number: 1
+      name: Stabilire la carta del Data Modelling Council
+      prerequisite: Richiede deliverable DMD-02
+      deliverable: Statuto approvato
+      recommendations:
+      - Stabilire il charter seguendo le linee guida DAMA per l'autorità 
+        decisionale modellistica e strutturale (Capitolo 3.4, p. 60).
+      - Garantire che ruoli e responsabilità riflettano le aspettative di 
+        stewardship e proprietà DAMA (Capitolo 3.2, p. 55–57).
+      - Convalidare l'allineamento con i livelli funzionali di governance DAMA 
+        (Figura 3-2, p. 53).
+      - Documenta la carta utilizzando le convenzioni degli artefatti DAMA 
+        (Appendice Capitolo 3, p. 69).
+      notes:
+      - Usa i criteri di autorità di governance DCAM per rafforzare la 
+        governance semantica.
+    - number: 2
+      name: Assegnare ruoli al consiglio di modellazione
+      prerequisite: Richiede descrizioni di ruolo
+      deliverable: Registro di assegnazione dei ruoli
+      recommendations:
+      - Assegnare ruoli seguendo i profili di competenza di modellazione e 
+        stewardship DAMA (Capitolo 4, p. 86–89).
+      - Garantisci che i confini decisionali siano allineati con le vie di 
+        escalation e autorità di DAMA (Capitolo 3.4, p. 60).
+      - Validare la copertura dei ruoli rispetto ai requisiti di modellazione di
+        DAMA per i livelli concettuale, logico e fisico (Capitolo 10, p. 282).
+      - Confermare la chiarezza della documentazione utilizzando la struttura 
+        degli artefatti DAMA (Capitolo 3 Appendice, p. 69–70).
+      notes:
+      - Utilizzare la valutazione comportamentale IDGC per garantire che i 
+        titolari dei ruoli possano sostenere la governance della modellazione.
+    - number: 3
+      name: Implementare forum decisionali di modellazione
+      prerequisite: Richiede approvazione del charter
+      deliverable: Calendario e modelli di governance della modellazione
+      recommendations:
+      - Implementare forum decisionali utilizzando le linee guida DAMA per i 
+        processi decisionali di governance e la supervisione della modellazione 
+        (Capitolo 3.3, p. 58–59).
+      - Garantire trasparenza e responsabilità come definito dai principi di 
+        governance DAMA (Capitolo 3, p. 51).
+      - Validare decisioni di ciclo di vita e semantiche utilizzando checkpoint 
+        e strutture di metadata DAMA (Capitoli 9 e 10).
+      - Documentare i risultati del forum utilizzando le linee guida degli 
+        artefatti DAMA (Capitolo 3 Appendice, p. 69).
+      notes:
+      - Applicare la logica di disciplina delle riunioni CMMI per preservare la 
+        qualità della modellazione.
+    - number: 4
+      name: Avvia cicli di revisione della modellazione
+      prerequisite: Richiede forum definiti
+      deliverable: Verbale della prima revisione
+      recommendations:
+      - Avviare cicli di revisione seguendo le linee guida di DAMA per la 
+        supervisione della modellazione e strutturale (Capitolo 3.3, p. 58).
+      - Valida correttezza semantica e dei metadati utilizzando le linee guida 
+        di modellazione DAMA (Capitolo 10, p. 282–284).
+      - Confermare l'allineamento del ciclo di vita basato sui checkpoint DAMA 
+        (Capitolo 4.3, p. 92).
+      - Garantire l’accuratezza della documentazione utilizzando le linee guida 
+        degli artefatti DAMA (Capitolo 3 Appendice, p. 69–70).
+      notes:
+      - Utilizza le pratiche di assicurazione della revisione DCAM per 
+        rafforzare le decisioni di governance semantica.
+    - number: 5
+      name: Mantenere l'operatività della governance della modellazione
+      prerequisite: Richiede cadenza di meeting
+      deliverable: Registro attività di modellazione
+      recommendations:
+      - Mantiene l'operatività della governance utilizzando le linee guida DAMA 
+        per la continuità della governance (Capitolo 3.6, p. 64).
+      - Verificare che le attività seguano gli standard di modellazione e 
+        metadati DAMA (Capitolo 10, p. 282).
+      - Garantire l'allineamento con le aspettative di stewardship del ciclo di 
+        vita (Capitolo 4.3, p. 92).
+      - Conferma la conformità della documentazione con la struttura degli 
+        artefatti di DAMA (Capitolo 3 Appendice, p. 69).
+      notes:
+      - Utilizza le pratiche di monitoraggio CMMI per rafforzare la stabilità 
+        delle routine di governance.
+  DMD-04:
+    title: Incorporare la governance della modellazione nelle routine 
+      organizzative e di dominio
+    procedures:
+    - number: 1
+      name: Incorporare checkpoint di modellazione nei flussi di lavoro di 
+        dominio
+      prerequisite: Richiede ruoli e standard DMD-03
+      deliverable: Modelli di workflow aggiornati
+      recommendations:
+      - Integrare checkpoint di modellazione utilizzando le linee guida DAMA per
+        integrare regole di modellazione nelle attività di creazione, 
+        trasformazione e validazione dei dati (Capitolo 3.3, p. 58–59).
+      - Garantisci che i checkpoint riflettano le aspettative del ciclo di vita 
+        di DAMA per definizione, approvazione, pubblicazione e dismissione 
+        (Capitolo 4.3, p. 92).
+      - Validare che i checkpoint incorporino regole semantiche e di metadata 
+        descritte da DAMA per le funzioni di modellazione (Capitolo 10, p. 
+        282–284).
+      - Conferma che gli steward assegnati eseguano la supervisione della 
+        modellazione secondo le linee guida di stewardship DAMA (Capitolo 4, p. 
+        86–89).
+      notes:
+      - Utilizzare le linee guida di allineamento del workflow DCAM per 
+        garantire che i controlli semantici siano applicati coerentemente nei 
+        processi.
+    - number: 2
+      name: Integrare criteri di modellazione nel design di sistema e nei 
+        workflow di integrazione
+      prerequisite: Richiede standard
+      deliverable: Template di design governati
+      recommendations:
+      - Integrare criteri utilizzando le aspettative di modellazione e struttura
+        DAMA che definiscono allineamento concettuale e logico tra sistemi 
+        (Capitolo 10, p. 282).
+      - Garantire che le decisioni di integrazione riflettano le regole di 
+        metadati DAMA per denominazione, definizione e lineage (Capitolo 9, p. 
+        236).
+      - Validare l'allineamento del ciclo di vita seguendo i checkpoint di 
+        stewardship DAMA come definizione, approvazione e pubblicazione 
+        (Capitolo 4.3, p. 92).
+      - Confermare che il significato aziendale sia preservato secondo i 
+        principi di coerenza semantica DAMA (Capitolo 3.3, p. 58).
+      notes:
+      - Applica metodi di verifica del design CMMI per rafforzare la coerenza 
+        semantica tra i componenti di sistema.
+    - number: 3
+      name: Aggiorna la documentazione del ciclo di vita con i requisiti di 
+        modellazione
+      prerequisite: Richiede la riprogettazione del workflow
+      deliverable: Documentazione del ciclo di vita aggiornata
+      recommendations:
+      - Aggiorna la documentazione utilizzando le linee guida del ciclo di vita 
+        DAMA per la governance della modellazione e della definizione dei dati 
+        (Capitolo 4.3, p. 92).
+      - Garantire l'allineamento con le strutture di metadata e le regole 
+        semantiche di DAMA (Capitolo 10, p. 282–284).
+      - Confermare che le responsabilità di proprietà e stewardship siano 
+        chiaramente espresse secondo i ruoli di governance di DAMA (Capitolo 
+        3.2, p. 55–57).
+      - Validare le fasi del ciclo di vita basate sui requisiti DAMA per 
+        creazione, trasformazione e dismissione delle strutture dati (Capitoli 9
+        a 11).
+      notes:
+      - Utilizzare criteri di capacità del ciclo di vita DCAM per migliorare 
+        l'integrazione della modellazione attraverso le fasi del ciclo di vita.
+    - number: 4
+      name: Applicare controlli di modellazione nei punti decisionali di dominio
+      prerequisite: Richiede flussi di lavoro governati
+      deliverable: Evidenza dei controlli di modellazione
+      recommendations:
+      - Applicare controlli secondo le aspettative di modellazione e governance 
+        DAMA, che richiedono la validazione di struttura, relazioni e 
+        significato prima dell’approvazione (Capitolo 10, p. 282).
+      - Validare rispetto alle aspettative di coerenza metadata e semantica di 
+        DAMA (Capitolo 9, p. 236).
+      - Garantire che i punti decisionali impongano la supervisione della 
+        stewardship e l'escalation quando necessario come definito da DAMA 
+        (Capitolo 3.4, p. 60).
+      - Confermare che i controlli del ciclo di vita siano rispettati seguendo i
+        checkpoint di modellazione DAMA (Capitolo 4.3, p. 92).
+      notes:
+      - Utilizza la logica di verifica CMMI per migliorare la ripetibilità della
+        validazione delle decisioni di modellazione.
+    - number: 5
+      name: Monitorare l'aderenza alla modellazione tra i domini
+      prerequisite: Richiede routine di monitoraggio
+      deliverable: Registro di conformità alla modellazione
+      recommendations:
+      - Monitorare l'aderenza utilizzando le linee guida DAMA per il 
+        monitoraggio della governance nei processi di modellazione (Capitolo 
+        3.6, p. 64).
+      - Garantire che il tracciamento includa controlli di allineamento di 
+        metadati e semantica (Capitolo 10, p. 282–284).
+      - Verificare che le deviazioni siano registrate ed escelate secondo le 
+        regole di escalation di governance DAMA (Capitolo 3.4, p. 60).
+      - Conferma il coinvolgimento di steward e proprietari coerente con gli 
+        obblighi di stewardship DAMA (Capitolo 4, p. 86–87).
+      notes:
+      - Applicare indicatori di assurance di modellazione DCAM per identificare 
+        debolezze e aree di miglioramento della modellazione.
+  DMD-06:
+    title: Automatizzare la convalida della modellazione e la qualità semantica
+    procedures:
+    - number: 1
+      name: Definire indicatori di validazione della modellazione
+      prerequisite: Richiede flussi di lavoro DMD-04
+      deliverable: Set di modellazione KPI
+      recommendations:
+      - Definisci KPI seguendo le linee guida DAMA per la completezza della 
+        modellazione, la coerenza semantica e la consistenza della lineage 
+        (Capitolo 10, p. 282–284).
+      - Garantire che i KPI riflettano le aspettative del ciclo di vita DAMA per
+        definizioni dati stabili e relazioni semantiche approvate (Capitolo 4.3,
+        p. 92).
+      - Validare l'allineamento con le dimensioni di qualità DAMA, inclusi 
+        accuratezza, coerenza e integrità (Capitolo 11, p. 308–311).
+      - Confermare che i ruoli di stewardship e proprietà sono rappresentati 
+        secondo i principi di governance DAMA (Capitolo 3.2, p. 55–57).
+      notes:
+      - Utilizzare gli indicatori di capacità DCAM per creare scale di misura 
+        per la maturità della modellazione.
+    - number: 2
+      name: Stabilisci regole automatizzate di validazione semantica e 
+        strutturale
+      prerequisite: Richiede criteri di modellazione
+      deliverable: Set di regole di convalida automatizzate
+      recommendations:
+      - Stabilire regole seguendo i requisiti semantici e metadata DAMA 
+        (Capitolo 9, p. 236).
+      - Garantire che l’automazione controlli relazioni, definizioni e percorsi 
+        di lineage come descritto nelle linee guida di modellazione DAMA 
+        (Capitolo 10, p. 282–284).
+      - Validare l'allineamento del ciclo di vita utilizzando i checkpoint di 
+        controllo di DAMA (Capitolo 4.3, p. 92).
+      - Documentare regole automatizzate utilizzando i modelli di artefatti DAMA
+        (Capitolo 3 Appendice, p. 69–70).
+      notes:
+      - Usa i criteri di prontezza all'automazione CMMI per confermare la 
+        stabilità prima di scalare i controlli automatizzati.
+    - number: 3
+      name: Implementare dashboard di monitoraggio della modellazione
+      prerequisite: Richiede regole di validazione
+      deliverable: Dashboard di monitoraggio della modellazione
+      recommendations:
+      - Implementare dashboard utilizzando i principi di monitoraggio della 
+        governance DAMA (Capitolo 3.6, p. 64).
+      - Includere indicatori semantici, di qualità e metadata allineati con le 
+        aspettative DAMA (Capitoli 9 a 11).
+      - Validare l'allineamento del ciclo di vita utilizzando checkpoint DAMA 
+        (Capitolo 4.3, p. 92).
+      - Garantire che gli indicatori della dashboard siano mappati alle 
+        responsabilità di proprietà e stewardship descritte da DAMA (Capitolo 
+        3.2, p. 55–57).
+      notes:
+      - Utilizzare le pratiche di visualizzazione della qualità dei dati di DCAM
+        per migliorare la chiarezza delle prestazioni di modellazione.
+    - number: 4
+      name: Abilitare avvisi automatici di conformità semantica
+      prerequisite: Richiede dashboard attivi
+      deliverable: Feed di allerta semantica
+      recommendations:
+      - Abilita gli avvisi seguendo le pratiche di escalation e supervisione di 
+        DAMA (Capitolo 3.4, p. 60).
+      - Assicurare che gli avvisi riflettano punti di rottura semantici, 
+        metadata mancanti o definizioni incoerenti allineate con le linee guida 
+        DAMA (Capitolo 10, p. 282–284).
+      - Validare l'impatto sul ciclo di vita utilizzando i checkpoint DAMA 
+        (Capitolo 4.3, p. 92).
+      - Confermare che le responsabilità di stewardship per il triage degli 
+        avvisi seguano le aspettative di ruolo DAMA (Capitolo 4, p. 86–87).
+      notes:
+      - Usa la logica di azione correttiva CMMI per semplificare la gestione 
+        degli incidenti semantici.
+    - number: 5
+      name: Mantiene la governance automatizzata della modellazione
+      prerequisite: Richiede maturità operativa
+      deliverable: Registro operativo di modellazione
+      recommendations:
+      - Mantenere l'automazione basata sulle linee guida di DAMA per la 
+        continuità della governance (Capitolo 3.6, p. 64).
+      - Garantire l’allineamento con le aspettative di modellazione e metadata 
+        DAMA (Capitoli 9 e 10).
+      - Validare le responsabilità del ciclo di vita utilizzando checkpoint DAMA
+        (Capitolo 4.3, p. 92).
+      - Confermare che la documentazione segue la struttura degli artefatti DAMA
+        (Capitolo 3 Appendice, p. 69).
+      notes:
+      - Utilizzare le valutazioni di capacità operativa DCAM per identificare 
+        aree in cui l'automazione della modellazione può espandersi.
+  DMD-09:
+    title: Ottimizzare le strutture di modellazione e istituzionalizzare la 
+      governance semantica
+    procedures:
+    - number: 1
+      name: Revisione delle tendenze di performance della modellazione
+      prerequisite: Richiede baseline DMD-06 KPI
+      deliverable: Analisi delle tendenze
+      recommendations:
+      - Revisionare le tendenze seguendo le linee guida DAMA per la valutazione 
+        delle prestazioni semantiche e strutturali (Capitolo 3.6, p. 64).
+      - Validare le tendenze utilizzando la coerenza di modellazione e gli 
+        indicatori di metadata di DAMA (Capitoli 9 e 10).
+      - Garantire che l’interpretazione incorpori le aspettative del ciclo di 
+        vita per la stabilità della modellazione (Capitolo 4.3, p. 92).
+      - Conferma che la documentazione rifletta gli standard degli artefatti 
+        DAMA (Capitolo 3 Appendice, p. 69–70).
+      notes:
+      - Utilizzare il punteggio di maturità delle capacità di DCAM per 
+        confrontare la maturità della modellazione tra i domini.
+    - number: 2
+      name: Migliorare le strutture di modellazione utilizzando insight sulle 
+        prestazioni
+      prerequisite: Richiede analisi delle tendenze
+      deliverable: Modelli e modelli aggiornati
+      recommendations:
+      - Migliorare le strutture utilizzando le linee guida di raffinamento della
+        modellazione DAMA, che enfatizzano chiarezza, coerenza e precisione 
+        semantica (Capitolo 10, p. 282–284).
+      - Validare i miglioramenti utilizzando le regole di metadata e qualità 
+        DAMA (Capitoli 9 e 11).
+      - Garantire che le responsabilità del ciclo di vita rimangano allineate ai
+        checkpoint di stewardship DAMA (Capitolo 4.3, p. 92).
+      - Confermare che gli aggiornamenti mantengano il significato di dominio e 
+        aziendale come definito dalla governance DAMA (Capitolo 3.3, p. 58).
+      notes:
+      - Utilizzare tecniche quantitative di miglioramento CMMI per prioritizzare
+        affinamenti ad alto impatto.
+    - number: 3
+      name: Confrontare le pratiche di modellazione con standard esterni
+      prerequisite: Richiede un profilo di maturità
+      deliverable: Evidenza di benchmark
+      recommendations:
+      - Confrontare utilizzando le aspettative DAMA per comparabilità esterna e 
+        allineamento di governance (Capitolo 3.6, p. 64).
+      - Includi componenti di metadati, strutturali e semantici nella 
+        valutazione benchmark basata sulle linee guida di modellazione DAMA 
+        (Capitoli 9 e 10).
+      - Valida che le intuizioni di benchmark supportino le responsabilità del 
+        ciclo di vita (Capitolo 4.3, p. 92).
+      - Documentare i risultati utilizzando gli standard degli artefatti DAMA 
+        (Capitolo 3 Appendice, p. 69–70).
+      notes:
+      - Usa le pratiche di benchmarking DCAM per allineare la maturità della 
+        modellazione con le aspettative del settore.
+    - number: 4
+      name: Migliorare la logica di automazione della modellazione
+      prerequisite: Richiede automazione DMD-06
+      deliverable: Set di automazione di modellazione aggiornato
+      recommendations:
+      - Migliorare l'automazione utilizzando la semantica DAMA e le regole di 
+        metadata (Capitolo 10, p. 282–284).
+      - Valida gli aggiornamenti di automazione utilizzando i checkpoint del 
+        ciclo di vita DAMA (Capitolo 4.3, p. 92).
+      - Assicura che proprietari e steward approvino le modifiche logiche 
+        secondo l'autorità di governance DAMA (Capitolo 3.4, p. 60).
+      - Confermare che la logica aggiornata sia allineata ai modelli di 
+        documentazione degli artefatti DAMA (Capitolo 3 Appendice, p. 69).
+      notes:
+      - Utilizzare i criteri di maturità dell'automazione CMMI per migliorare 
+        l'affidabilità dell'automazione.
+    - number: 5
+      name: Mantenere un ciclo continuo di miglioramento della modellazione
+      prerequisite: Richiede un ciclo di ottimizzazione
+      deliverable: Piano di miglioramento della modellazione
+      recommendations:
+      - Mantenere cicli di miglioramento seguendo le linee guida DAMA per il 
+        perfezionamento continuo della modellazione e della semantica (Capitolo 
+        3.6, p. 64).
+      - Garantisce che i cicli di feedback incorporino lezioni semantiche, di 
+        qualità e di metadati da DAMA (Capitoli 9 a 11).
+      - Validare responsabilità del ciclo di vita con checkpoint DAMA (Capitolo 
+        4.3, p. 92).
+      - Confermare che la documentazione segue il formato degli artefatti DAMA 
+        (Capitolo 3 Appendice, p. 69–70).
+      notes:
+      - Usa la mappatura dell'evoluzione delle capacità DCAM per pianificare la 
+        crescita a lungo termine della maturità della modellazione.

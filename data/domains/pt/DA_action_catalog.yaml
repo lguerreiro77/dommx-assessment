@@ -1,0 +1,540 @@
+domain:
+  id: 2
+  name: Arquitetura de Dados (DA)
+action_catalog:
+  DA-01:
+    title: Definir princípios e escopo fundamentais de arquitetura
+    procedures:
+    - number: 1
+      name: Definir princípios de arquitetura e escopo estrutural
+      prerequisite: Requer identificação de domínios de dados centrais
+      deliverable: Documento de princípios de arquitetura
+      recommendations:
+      - Definir princípios seguindo orientação DAMA para fundamentos de 
+        arquitetura, que incluem clareza estrutural, estabilidade e alinhamento 
+        de integração conforme descrito em DMBOK2 (Capítulo 3.3, p. 58–59).
+      - Garantir que os princípios reflitam as expectativas DAMA para 
+        responsabilidade e governança em decisões estruturais (Capítulo 3, p. 
+        51).
+      - Validar coerência com responsabilidades relacionadas à arquitetura do 
+        DAMA cobrindo padrões de dados, definição e mudança controlada (Capítulo
+        4, p. 86–89).
+      - Estruture o documento de princípios usando recomendações de formatação 
+        de artefatos DAMA para garantir clareza e auditabilidade (Capítulo 3 
+        Apêndice, p. 69–70).
+      notes:
+      - Usar escopo de capacidade arquitetural DCAM para garantir que os 
+        princípios suportem estruturas de dados corporativas.
+    - number: 2
+      name: Elaborar arquitetura de referência inicial
+      prerequisite: Requer princípios definidos
+      deliverable: Arquitetura de referência v0.1
+      recommendations:
+      - Elaborar a arquitetura inicial com base na orientação DAMA para criação 
+        de blueprints estruturais e relacionamentos estruturais em nível de 
+        domínio (Capítulo 3.5, p. 62–63).
+      - Garantir alinhamento com expectativas de metadados e estrutura do ciclo 
+        de vida dos capítulos relacionados à arquitetura DAMA (Capítulo 10, p. 
+        282).
+      - Validar se componentes de referência estão alinhados com 
+        responsabilidades de steward e propriedade definidas por DAMA (Capítulo 
+        4, p. 86–87).
+      - Confirmar que a arquitetura preliminar reflete regras de qualidade e 
+        semântica DAMA relacionadas à consistência e clareza (Capítulo 11, p. 
+        308–311).
+      notes:
+      - Usar práticas de definição arquitetural em estágio inicial CMMI para 
+        manter consistência durante refinamentos iterativos.
+    - number: 3
+      name: Identifique padrões estruturais preliminares
+      prerequisite: Requer mapeamento de domínio
+      deliverable: Lista inicial de padrões estruturais
+      recommendations:
+      - Identifique padrões usando orientações DAMA para modelagem estrutural, 
+        incluindo entidades de referência, estruturas reutilizáveis e pontos de 
+        integração (Capítulo 3.3, p. 58).
+      - Confirmar expressão de conceitos de negócio usando expectativas de DAMA 
+        para alinhamento semântico estrutural (Capítulo 10, p. 282–284).
+      - Valide completude com base em checkpoints do ciclo de vida DAMA cobrindo
+        criação, transformação e aposentadoria (Capítulo 4.3, p. 92).
+      - Garanta que os padrões estejam alinhados com as responsabilidades de 
+        governança DAMA para manter a propriedade das regras estruturais 
+        (Capítulo 4, p. 86–87).
+      notes:
+      - Usar práticas de catalogação de padrões DCAM para suportar evolução 
+        escalável da arquitetura.
+    - number: 4
+      name: Atribuir propriedade provisória da arquitetura
+      prerequisite: Requer domínios estruturais identificados
+      deliverable: Matriz de propriedade da arquitetura
+      recommendations:
+      - Atribuir propriedade usando definições DAMA para autoridade decisória 
+        estrutural e responsabilidade na arquitetura de dados (Capítulo 3.2, p. 
+        55–57).
+      - Validar que proprietários provisórios cobrem responsabilidades de 
+        integração, modelagem e estrutura de referência definidas em DAMA 
+        (Capítulo 3.3, p. 58–59).
+      - Confirmar que a propriedade promove responsabilidades baseadas no ciclo 
+        de vida alinhadas com pontos de verificação de governança DAMA (Capítulo
+        4.3, p. 92).
+      - Garantir que a documentação siga os formatos de artefatos DAMA para 
+        clareza e continuidade da governança (Apêndice do Capítulo 3, p. 69).
+      notes:
+      - Utilizar critérios de alinhamento organizacional DCAM para garantir que 
+        os proprietários possam suportar o crescimento da capacidade de 
+        arquitetura.
+    - number: 5
+      name: Publicar diretrizes iniciais de arquitetura
+      prerequisite: Requer rascunho e propriedade
+      deliverable: Briefing de onboarding de arquitetura
+      recommendations:
+      - Publicar diretrizes baseadas nas expectativas DAMA para comunicação de 
+        arquitetura e orientação de stakeholders (Capítulo 3.6, p. 64).
+      - Assegure que as diretrizes reflitam o escopo estrutural, princípios e 
+        limites de propriedade usando fundamentos de governança DAMA (Capítulo 
+        3, p. 51).
+      - Valide clareza e rastreabilidade com padrões de artefatos DAMA (Apêndice
+        do Capítulo 3, p. 69–70).
+      - Reforce responsabilidades de governança referenciando descrições de 
+        stewardship DAMA (Capítulo 4, p. 86–87).
+      notes:
+      - Usar práticas de comunicação do CMMI para melhorar entendimento dos 
+        stakeholders sobre governança arquitetural.
+  DA-02:
+    title: Atribua governança e propriedade de arquitetura
+    procedures:
+    - number: 1
+      name: Consolidar requisitos estruturais e arquitetônicos
+      prerequisite: Requer DA-01 completos
+      deliverable: Registro de requisitos
+      recommendations:
+      - Consolidar requisitos usando orientação DAMA para regras relacionadas à 
+        arquitetura e limites de decisão (Capítulo 3.5, p. 62–63).
+      - Garantir que requisitos reflitam expectativas de estrutura semântica e 
+        de metadados DAMA (Capítulo 10, p. 282–284).
+      - Validar cobertura de responsabilidades do ciclo de vida seguindo o 
+        modelo de gestão DAMA (Capítulo 4.3, p. 92).
+      - Confirmar que os requisitos suportam consistência estrutural entre 
+        domínios usando princípios de alinhamento interdomínios DAMA (Capítulo 
+        3.3, p. 58–59).
+      notes:
+      - Usar mapeamento de requisitos de capacidade DCAM para priorizar 
+        requisitos estruturais alinhados ao valor de negócio.
+    - number: 2
+      name: Produzir arquitetura de referência formal
+      prerequisite: Requer requisitos validados
+      deliverable: Arquitetura de referência v1.0
+      recommendations:
+      - Produzir a arquitetura oficial seguindo orientações DAMA para modelagem 
+        formal e definição estrutural (Capítulo 3.3, p. 58).
+      - Validar a arquitetura contra controles de qualidade e metadados DAMA 
+        (Capítulos 10 e 11).
+      - Garantir alinhamento estrutural com deveres de stewardship descritos 
+        pelo DAMA (Capítulo 4, p. 86–89).
+      - Documentar a arquitetura usando a estrutura de artefatos DAMA para 
+        rastreabilidade (Apêndice do Capítulo 3, p. 69–70).
+      notes:
+      - Utilizar alinhamento de práticas de engenharia CMMI para aumentar 
+        formalidade e controle de versão da arquitetura.
+    - number: 3
+      name: Definir padrões de arquitetura e regras estruturais
+      prerequisite: Requer arquitetura v1.0
+      deliverable: Manual de Padrões de Arquitetura
+      recommendations:
+      - Definir padrões usando a orientação DAMA para regras estruturais, 
+        incluindo nomenclatura, modelagem e regras de ciclo de vida (Capítulo 
+        3.5, p. 62–63).
+      - Confirme alinhamento com definições de metadados e estruturas semânticas
+        exigidas por DAMA (Capítulo 10, p. 282).
+      - Validar propriedade e stewardship para cada regra seguindo 
+        responsabilidades de governança do DAMA (Capítulo 3.2, p. 55–57).
+      - Garantir que os padrões cubram pontos de controle do ciclo de vida 
+        descritos em DAMA (Capítulo 4.3, p. 92).
+      notes:
+      - Aplicar princípios GDPR ao definir regras que afetam estruturas de dados
+        pessoais.
+    - number: 4
+      name: Valide padrões estruturais com stakeholders de negócios
+      prerequisite: Requer rascunho de padrões
+      deliverable: Registro de alinhamento
+      recommendations:
+      - Validar padrões usando expectativas relacionais de governança DAMA que 
+        enfatizam colaboração e clareza estrutural (Capítulo 3.6, p. 64).
+      - Confirmar alinhamento de negócios com convenções semânticas e de 
+        metadados DAMA (Capítulo 10, p. 282–284).
+      - Validar que os padrões suportam pontos de verificação de governança do 
+        ciclo de vida (Capítulo 4.3, p. 92).
+      - Garantir que as expectativas das partes interessadas correspondam ao 
+        modelo DAMA para transparência de governança (Capítulo 3.4, p. 60).
+      notes:
+      - Use técnicas de alinhamento de stakeholders DCAM para reforçar o 
+        engajamento durante a validação estrutural.
+    - number: 5
+      name: Aprovar e publicar padrões arquiteturais
+      prerequisite: Requer aprovação da autoridade de governança
+      deliverable: Pacote de aprovação arquitetural
+      recommendations:
+      - Aprovar padrões seguindo orientação de autoridade decisória DAMA para 
+        regras estruturais e governança de arquitetura (Capítulo 3.4, p. 60–61).
+      - Garantir que a publicação reflita convenções de artefatos DAMA para 
+        clareza e auditabilidade (Capítulo 3 Apêndice, p. 69).
+      - Validar consistência com responsabilidades de stewardship e propriedade 
+        DAMA (Capítulo 4, p. 86–87).
+      - Confirmar que os padrões permanecem alinhados com princípios de ciclo de
+        vida e metadados definidos por DAMA (Capítulos 10 e 11).
+      notes:
+      - Usar verificações de prontidão de governança CMMI para garantir que os 
+        padrões estejam efetivamente institucionalizados.
+  DA-03:
+    title: Aprovar padrões de arquitetura e regras estruturais
+    procedures:
+    - number: 1
+      name: Estabelecer o estatuto do Conselho de Governança de Arquitetura
+      prerequisite: Entregáveis DA-02
+      deliverable: Estatuto aprovado
+      recommendations:
+      - Estabelecer o estatuto baseado em orientações DAMA para órgãos 
+        decisórios de governança e funções de supervisão estrutural (Capítulo 
+        3.4, p. 60).
+      - Garantir que papéis e responsabilidades na carta reflitam o modelo de 
+        autoridade de decisão arquitetural do DAMA (Capítulo 3.2, p. 55–57).
+      - Valide alinhamento com arquitetura funcional de governança DAMA cobrindo
+        camadas estratégica, tática e operacional (Figura 3-2, p. 53).
+      - Confirmar que a documentação segue padrões de artefatos DAMA (Capítulo 3
+        Apêndice, p. 69–70).
+      notes:
+      - Aplique práticas de alinhamento da estrutura de governança DCAM para 
+        fortalecer a coordenação arquitetural entre domínios.
+    - number: 2
+      name: Atribuir papéis definitivos de arquitetura
+      prerequisite: Requer estrutura de papéis definida
+      deliverable: Registro de atribuição de papéis
+      recommendations:
+      - Atribuir papéis usando perfis de competência DAMA para governança 
+        estrutural e stewardship arquitetural (Capítulo 4, p. 86–89).
+      - Garantir que a clareza de papéis esteja alinhada com as expectativas 
+        DAMA para autoridade de decisão, escalonamento e supervisão do ciclo de 
+        vida (Capítulo 3.4, p. 60).
+      - Validar que os papéis suportam semântica DAMA e responsabilidades de 
+        metadados (Capítulo 10, p. 282).
+      - Confirmar que documentação está conforme estrutura de artefatos do DAMA 
+        (Apêndice do Capítulo 3, p. 69).
+      notes:
+      - Usar indicadores de prontidão comportamental do IDGC para garantir que 
+        detentores de papéis tenham suporte organizacional.
+    - number: 3
+      name: Implementar fóruns de decisão de arquitetura
+      prerequisite: Requer aprovação da carta
+      deliverable: Calendário e templates de governança arquitetural
+      recommendations:
+      - Implementar fóruns usando as diretrizes de DAMA para processos 
+        decisórios estruturais e atividades de revisão arquitetural (Capítulo 
+        3.3, p. 58).
+      - Validar que fóruns promovem transparência e responsabilidade seguindo 
+        princípios DAMA (Capítulo 3, p. 51).
+      - Garantir que fóruns abordem mudanças estruturais, impactos de integração
+        e pontos de verificação do ciclo de vida baseados em DAMA (Capítulo 4.3,
+        p. 92).
+      - Aplicar padrões DAMA para documentação de atividades de governança 
+        (Apêndice do Capítulo 3, p. 69–70).
+      notes:
+      - Utilize práticas de disciplina em reuniões CMMI para garantir que os 
+        fóruns permaneçam consistentes e adequados.
+    - number: 4
+      name: Iniciar ciclos de revisão de arquitetura
+      prerequisite: Requer fóruns definidos
+      deliverable: Atas da primeira revisão
+      recommendations:
+      - Iniciar revisões seguindo orientações DAMA para supervisão arquitetural 
+        e mecanismos coordenados de revisão (Capítulo 3.3, p. 58).
+      - Validar impacto no ciclo de vida usando pontos de verificação DAMA em 
+        criação, transformação e aposentadoria (Capítulo 4.3, p. 92).
+      - Assegure que as revisões verifiquem a consistência semântica e de 
+        metadados com base nas expectativas DAMA (Capítulo 10, p. 282–284).
+      - Confirmar que a documentação de decisão segue convenções de artefatos 
+        DAMA (Capítulo 3 Apêndice, p. 69).
+      notes:
+      - Aplicar práticas de garantia de arquitetura DCAM para fortalecer a 
+        qualidade dos resultados de revisão.
+    - number: 5
+      name: Manter operação da governança de arquitetura
+      prerequisite: Requer cadência de reuniões
+      deliverable: Registro de atividades arquiteturais
+      recommendations:
+      - Manter operação usando orientação DAMA para continuidade e supervisão de
+        governança (Capítulo 3.6, p. 64).
+      - Garantir documentação consistente usando templates de artefatos DAMA 
+        (Apêndice do Capítulo 3, p. 69–70).
+      - Validar logs de atividade contra responsabilidades do ciclo de vida DAMA
+        (Capítulo 4.3, p. 92).
+      - Confirmar aderência às expectativas de governança estrutural cobrindo 
+        metadados, qualidade e regras semânticas (Capítulos 10 e 11).
+      notes:
+      - Usar práticas de monitoramento operacional CMMI para manter atividades 
+        de governança previsíveis e auditáveis.
+  DA-04:
+    title: Incorporar governança arquitetural em fluxos de trabalho
+    procedures:
+    - number: 1
+      name: Incorporar checkpoints de arquitetura em fluxos de trabalho de 
+        domínio
+      prerequisite: Requer papéis e padrões DA-03
+      deliverable: Modelos de fluxo de trabalho atualizados
+      recommendations:
+      - Incorpore checkpoints usando orientações DAMA para integrar controles 
+        estruturais em processos operacionais e analíticos de dados conforme 
+        descrito em DMBOK2 (Capítulo 3.3, p. 58–59).
+      - Garantir que pontos de controle reflitam expectativas de controle do 
+        ciclo de vida DAMA para criação, transformação e publicação (Capítulo 
+        4.3, p. 92).
+      - Validar que cada ponto de verificação aborda as regras DAMA para 
+        metadados, linhagem e consistência estrutural (Capítulos 10 e 11).
+      - Confirmar alinhamento com responsabilidades de stewardship DAMA para 
+        aplicar limites de decisão em etapas de fluxo de trabalho (Capítulo 4, 
+        p. 86–87).
+      notes:
+      - Usar mapeamento de capacidade de workflow DCAM para garantir que pontos 
+        de controle reforcem objetivos de arquitetura corporativa.
+    - number: 2
+      name: Integrar critérios de arquitetura nas decisões de modelagem e 
+        integração
+      prerequisite: Requer padrões
+      deliverable: Templates de design governados
+      recommendations:
+      - Integrar critérios baseados em modelagem e expectativas estruturais DAMA
+        que definem como a arquitetura deve guiar o design conceitual, lógico e 
+        físico (Capítulo 10, p. 282–284).
+      - Garantir que dependências estruturais estejam alinhadas com a governança
+        da arquitetura funcional DAMA, cobrindo clareza semântica e significado 
+        de negócio (Capítulo 3.3, p. 58).
+      - Validar decisões de integração usando regras de qualidade e metadados do
+        DAMA (Capítulo 11, p. 308–311).
+      - Confirmar alinhamento com responsabilidades de stewardship DAMA para 
+        definição e aprovação de padrões de modelagem (Capítulo 4, p. 86–89).
+      notes:
+      - Usar lógica de verificação de design do CMMI para reforçar 
+        rastreabilidade e correção estrutural.
+    - number: 3
+      name: Atualizar documentação do ciclo de vida com requisitos arquiteturais
+      prerequisite: Requer redesenho de fluxo de trabalho
+      deliverable: Documentação do ciclo de vida atualizada
+      recommendations:
+      - Atualizar documentação conforme o modelo de ciclo de vida DAMA, que 
+        define pontos de verificação para governança da evolução estrutural 
+        (Capítulo 4.3, p. 92).
+      - Assegure que os requisitos de arquitetura permaneçam alinhados com as 
+        expectativas DAMA para estrutura de metadata e documentação de lineage 
+        (Capítulo 10, p. 282).
+      - Validar que descrições do ciclo de vida refletem responsabilidades DAMA 
+        para owners e stewards (Capítulo 4, p. 86–87).
+      - Confirmar que dependências estruturais e pontos de mudança seguem regras
+        de governança DAMA (Capítulo 3.5, p. 62–63).
+      notes:
+      - Usar indicadores de capacidade do ciclo de vida DCAM para melhorar a 
+        consistência entre fases do ciclo de vida.
+    - number: 4
+      name: Aplicar verificações estruturais em pontos decisórios do domínio
+      prerequisite: Requer workflows governados
+      deliverable: Evidência de controles arquiteturais
+      recommendations:
+      - Aplicar verificações seguindo expectativas de governança estrutural DAMA
+        que requerem validação de modelos, relacionamentos e semântica antes das
+        aprovações (Capítulo 3.3, p. 58).
+      - Garantir que as verificações incorporem indicadores de qualidade de 
+        metadados, linhagem e semântica de DAMA (Capítulos 10 e 11).
+      - Valide que pontos de decisão reforcem responsabilidades de governança, 
+        incluindo aprovação, escalonamento e ação corretiva (Capítulo 4, p. 
+        86–89).
+      - Confirmar que verificações estruturais permanecem alinhadas com pontos 
+        de verificação do ciclo de vida DAMA (Capítulo 4.3, p. 92).
+      notes:
+      - Use atividades de verificação CMMI para fortalecer a repetibilidade da 
+        aplicação do controle arquitetural.
+    - number: 5
+      name: Acompanhar aderência arquitetural entre domínios
+      prerequisite: Requer rotinas de monitoramento
+      deliverable: Registro de conformidade arquitetural
+      recommendations:
+      - Rastrear aderência usando as expectativas de monitoramento de governança
+        DAMA que enfatizam consistência estrutural e alinhamento entre domínios 
+        (Capítulo 3.6, p. 64).
+      - Garantir que as verificações de aderência incluam controles de metadados
+        e semânticos definidos por DAMA (Capítulo 10, p. 282–284).
+      - Valide desvios em relação às expectativas dos papéis do ciclo de vida 
+        DAMA (Capítulo 4.3, p. 92).
+      - Confirmar que a captura de evidências segue práticas de documentação de 
+        artefatos DAMA (Capítulo 3 Apêndice, p. 69).
+      notes:
+      - Usar indicadores de garantia DCAM para identificar pontos críticos 
+        estruturais e áreas para melhoria.
+  DA-06:
+    title: Automatizar validação e conformidade de arquitetura
+    procedures:
+    - number: 1
+      name: Definir indicadores de validação arquitetural
+      prerequisite: Requer workflows DA-04
+      deliverable: Conjunto de arquitetura KPI
+      recommendations:
+      - Definir KPIs usando orientações DAMA para medição da governança 
+        estrutural, incluindo consistência arquitetural, alinhamento semântico e
+        eficácia do controle de mudanças (Capítulo 3.6, p. 64).
+      - Valide KPIs contra medidas de qualidade DAMA relacionadas à precisão, 
+        completude e linhagem (Capítulo 11, p. 308–311).
+      - Assegure que os KPIs reflitam as expectativas do ciclo de vida DAMA em 
+        criação, integração e aposentadoria (Capítulo 4.3, p. 92).
+      - Confirmar que responsabilidades de governança e propriedade estão 
+        representadas na atribuição KPI seguindo papéis de governança DAMA 
+        (Capítulo 3.2, p. 55–57).
+      notes:
+      - Usar indicadores de maturidade de capacidade DCAM para construir 
+        conjuntos escaláveis KPI.
+    - number: 2
+      name: Estabelecer regras automatizadas de validação estrutural
+      prerequisite: Requer critérios estruturais
+      deliverable: Conjunto automatizado de regras de validação
+      recommendations:
+      - Estabelecer regras usando expectativas estruturais DAMA para modelagem, 
+        metadados e verificações de qualidade (Capítulos 10 e 11).
+      - Confirmar que automação suporta autoridade decisória de governança DAMA 
+        ao aplicar conformidade às regras (Capítulo 3.4, p. 60).
+      - Validar que a lógica automatizada cobre pontos de controle do ciclo de 
+        vida descritos em DAMA (Capítulo 4.3, p. 92).
+      - Garantir que a documentação das regras siga os padrões de artefatos DAMA
+        (Apêndice do Capítulo 3, p. 69–70).
+      notes:
+      - Usar práticas de prontidão para automação CMMI para garantir 
+        estabilidade antes de escalar automação.
+    - number: 3
+      name: Implementar painéis de monitoramento de arquitetura
+      prerequisite: Requer regras de validação
+      deliverable: Painel de monitoramento de arquitetura
+      recommendations:
+      - Implemente dashboards seguindo as expectativas de DAMA para 
+        monitoramento de desempenho da governança e aderência estrutural 
+        (Capítulo 3.6, p. 64).
+      - Garantir que dashboards incluam indicadores de linhagem, metadados e 
+        qualidade semântica referenciados por DAMA (Capítulos 10 e 11).
+      - Validar que painéis permitem supervisão do ciclo de vida para evolução 
+        arquitetural (Capítulo 4.3, p. 92).
+      - Confirmar que dashboards reforçam a responsabilidade mapeando resultados
+        para papéis de stewardship e propriedade (Capítulo 4, p. 86–89).
+      notes:
+      - Usar orientação de visualização de desempenho DCAM para melhorar a 
+        clareza dos dashboards.
+    - number: 4
+      name: Habilitar alertas automatizados de conformidade estrutural
+      prerequisite: Requer dashboards ativos
+      deliverable: Feed de alertas de conformidade
+      recommendations:
+      - Habilitar alertas usando orientação DAMA para escalonamento de 
+        governança e identificação de problemas (Capítulo 3.4, p. 60).
+      - Garanta que regras de alerta incluam inconsistências de metadados, 
+        pontos de quebra de linhagem e desvios estruturais alinhados com DAMA 
+        (Capítulos 10 e 11).
+      - Validar gatilhos de alerta contra pontos de verificação do ciclo de vida
+        (Capítulo 4.3, p. 92).
+      - Confirme que os papéis de governança estão integrados ao processo de 
+        resposta a alertas (Capítulo 4, p. 86–87).
+      notes:
+      - Usar lógica de resposta a incidentes CMMI para suportar escalonamento 
+        estruturado.
+    - number: 5
+      name: Manter governança automatizada da arquitetura
+      prerequisite: Requer maturidade operacional
+      deliverable: Registro operacional de arquitetura
+      recommendations:
+      - Manter automação seguindo orientações DAMA para continuidade operacional
+        de governança e garantia de qualidade (Capítulo 3.6, p. 64).
+      - Confirmar que regras automatizadas permanecem alinhadas com definições 
+        de metadados e semântica DAMA (Capítulo 10, p. 282).
+      - Validar supervisão do ciclo de vida usando pontos de verificação DAMA 
+        para garantir consistência estrutural (Capítulo 4.3, p. 92).
+      - Assegure que a documentação permaneça alinhada com expectativas de 
+        artefatos DAMA (Capítulo 3 Apêndice, p. 69).
+      notes:
+      - Usar a avaliação de capacidade operacional DCAM para refinar 
+        continuamente a cobertura da automação.
+  DA-09:
+    title: Melhorar continuamente maturidade arquitetural
+    procedures:
+    - number: 1
+      name: Revisar tendências de desempenho estrutural
+      prerequisite: Requer baseline DA-06 KPI
+      deliverable: Análise de tendências
+      recommendations:
+      - Revisar tendências seguindo a orientação DAMA para monitoramento de 
+        governança e avaliação de maturidade estrutural (Capítulo 3.6, p. 64).
+      - Validar interpretação de tendências usando indicadores de metadados, 
+        linhagem e semântica de DAMA (Capítulos 10 e 11).
+      - Confirmar alinhamento com responsabilidades de stewardship DAMA para 
+        interpretar tendências no contexto do ciclo de vida (Capítulo 4, p. 
+        86–89).
+      - Assegure que a documentação reflita os princípios de completude de 
+        artefatos DAMA (Capítulo 3 Apêndice, p. 69–70).
+      notes:
+      - Usar pontuação de maturidade de capacidade DCAM para avaliar a evolução 
+        da maturidade estrutural.
+    - number: 2
+      name: Otimizar estruturas arquiteturais usando métricas
+      prerequisite: Requer análise de tendências
+      deliverable: Padrões arquiteturais atualizados
+      recommendations:
+      - Otimizar estruturas usando diretrizes DAMA para refinamento contínuo da 
+        arquitetura e alinhamento estrutural (Capítulo 3.3, p. 58).
+      - Validar melhorias usando controles de qualidade semântica e de metadados
+        DAMA (Capítulo 10, p. 282–284).
+      - Garantir que otimizações mantenham pontos de verificação do ciclo de 
+        vida DAMA para gestão de impacto de mudanças (Capítulo 4.3, p. 92).
+      - Confirmar que os papéis de steward e proprietário validam refinamentos 
+        propostos (Capítulo 4, p. 86–87).
+      notes:
+      - Use técnicas quantitativas de melhoria CMMI para priorizar ações de 
+        refinamento.
+    - number: 3
+      name: Avaliar arquitetura em relação a modelos de referência externos
+      prerequisite: Requer perfil de maturidade
+      deliverable: Evidência de benchmark
+      recommendations:
+      - Benchmarking usando expectativas DAMA para comparabilidade externa e 
+        alinhamento de governança (Capítulo 3.6, p. 64).
+      - Garantir que benchmarks incluam componentes de metadados, linhagem e 
+        modelagem estrutural (Capítulos 10 e 11).
+      - Validar que resultados de benchmark suportam responsabilidades de 
+        governança do ciclo de vida (Capítulo 4.3, p. 92).
+      - Confirmar que documentação segue padrões de artefatos do DAMA para 
+        avaliações externas (Apêndice do Capítulo 3, p. 69–70).
+      notes:
+      - Usar critérios de benchmarking DCAM para melhorar o alinhamento entre 
+        frameworks.
+    - number: 4
+      name: Aprimorar lógica de automação arquitetural
+      prerequisite: Requer automação DA-06
+      deliverable: Conjunto de automação arquitetural atualizado
+      recommendations:
+      - Aprimorar lógica usando modelos de regras estruturais e semânticas DAMA 
+        (Capítulos 10 e 11).
+      - Validar impacto da automação contra checkpoints do ciclo de vida 
+        descritos em DAMA (Capítulo 4.3, p. 92).
+      - Garantir que papéis de steward aprovem mudanças em lógica automatizada 
+        conforme autoridade decisória DAMA (Capítulo 3.4, p. 60).
+      - Confirme alinhamento com orientações de documentação de artefatos DAMA 
+        (Capítulo 3 Apêndice, p. 69).
+      notes:
+      - Utilizar indicadores de maturidade de automação CMMI para fortalecer 
+        confiabilidade.
+    - number: 5
+      name: Manter um ciclo contínuo de melhoria
+      prerequisite: Requer ciclo de otimização
+      deliverable: Plano de melhoria arquitetural
+      recommendations:
+      - Manter ciclos de melhoria usando orientações DAMA para evolução da 
+        governança e refinamento arquitetural (Capítulo 3.6, p. 64).
+      - Garantir que ciclos de feedback incorporem insights de metadados, 
+        qualidade e semântica de DAMA (Capítulos 10 e 11).
+      - Validar ações de melhoria contra papéis e checkpoints do ciclo de vida 
+        (Capítulo 4.3, p. 92).
+      - Confirmar que a documentação segue a estrutura de artefatos DAMA 
+        (Apêndice do Capítulo 3, p. 69–70).
+      notes:
+      - Use o mapeamento de evolução de capacidade DCAM para priorizar ganhos de
+        longo prazo na maturidade arquitetural.

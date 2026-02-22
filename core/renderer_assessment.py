@@ -105,13 +105,31 @@ def mark_assessment_finished(user_id, project_id):
 
 
 def safe_load(path):
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return yaml.safe_load(f)
-    except:
+
+    if not path:
+        st.error("YAML load error: path is None or empty.")
         return None
 
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f)
 
+        if not isinstance(data, dict):
+            return data
+
+        p = (path or "").lower()
+        is_domain_yaml = ("decision" in p and "tree" in p) or ("action" in p and "catalog" in p)
+
+        if is_domain_yaml and hasattr(st, "translate_yaml_domain"):
+            return st.translate_yaml_domain(data)
+
+        return data
+
+    except Exception as e:
+        st.error(f"YAML load error: {path} | {e}")
+        return None
+        
+        
 def render_final_screen():
 
 
@@ -139,8 +157,8 @@ def render_final_screen():
 # MAIN ASSESSMENT RENDER
 # =========================================================
 
-def render_assessment():    
-        
+def render_assessment():       
+
     # -------------------------------------------------
     # FINAL SCREEN (fora do dialog)
     # -------------------------------------------------
@@ -163,20 +181,36 @@ def render_assessment():
             logout()
             st.rerun()
 
-        st.stop()
-
- 
+        st.stop()   
+       
+    
     fs_path = get_filesystem_setup_path()
     fs_setup = safe_load(fs_path) or {}
-    config = (fs_setup.get("orchestrator_config") or {})
+    config = (fs_setup.get("orchestrator_config") or {})    
+        
+    
+    active_project = st.session_state.get("active_project")
 
-    general_dir = get_general_dir()
+    data_root = os.path.join(BASE_DIR, "data")
 
-    flow_path = resolve_path(general_dir, config.get("main_flow", "flow.yaml"))
-    orch_path = resolve_path(general_dir, config.get("main_orchestration", "default_execution.yaml"))
+    if active_project:
+        root = os.path.join(data_root, "projects", active_project)
+    else:
+        root = data_root
+
+    flow_path = os.path.join(root, config.get("main_flow"))
+    orch_path = os.path.join(root, config.get("main_orchestration"))
+        
+    if not flow_path:
+        st.error("Flow path is None.")
+        st.stop()
+
+    if not orch_path:
+        st.error("Orchestration path is None.")
+        st.stop()
 
     flow = safe_load(flow_path) or {}
-    orch = safe_load(orch_path) or {}
+    orch = safe_load(orch_path) or {}       
 
     req_list = orch.get("execution_request", []) or []
     total_domains = len(req_list)
@@ -185,13 +219,8 @@ def render_assessment():
         add_message("No execution_request found in orchestration file.", "error")
         st.stop()
 
-    domain_flow = flow.get("Domain_flow", []) or []
-
-    lang_raw = orch.get("language", "Default")
-    lang = str(lang_raw or "Default").strip() or "Default"
-    if lang.lower() == "default":
-        lang = "Default"
-
+    domain_flow = flow.get("Domain_flow", []) or []    
+    
     nav_mode = _parse_navigation_mode(orch.get("navigation_mode", "free"))
     sort_order = _parse_sort_order(orch.get("sort_order", "natural"))
 
@@ -207,30 +236,39 @@ def render_assessment():
         (d for d in domain_flow if str(d.get("domain_id")) == str(dom_id)),
         None
     )
-
+    
+    
     if not dom_meta:
         add_message(f"Domain metadata not found in flow.yaml for domain_id={dom_id}.", "error")
         st.stop()
-
+    
     project_root = get_project_root()
 
-    if project_root:
-        domains_dir = os.path.join(project_root, "Domains")
-        tree_path = resolve_path(domains_dir, dom_meta["files"]["decision_tree"])
-        catalog_path = resolve_path(domains_dir, dom_meta["files"]["action_catalog"])
-    else:
-        tree_path = resolve_path(
-            BASE_DIR,
-            f"data/domains/Language/{lang}/{dom_meta['files']['decision_tree']}"
-        )
-        catalog_path = resolve_path(
-            BASE_DIR,
-            f"data/domains/Language/{lang}/{dom_meta['files']['action_catalog']}"
-        )
+    if not project_root:
+        add_message("Project root not found.", "error")
+        st.stop()
 
+    domains_dir = os.path.join(project_root, "Domains")   
+    
+    current_locale = st.session_state.get("locale", "us")
+
+    domains_dir = os.path.join(project_root, "Domains")
+
+    tree_path = os.path.join(
+        domains_dir,
+        current_locale,
+        dom_meta["files"]["decision_tree"]
+    )
+
+    catalog_path = os.path.join(
+        domains_dir,
+        current_locale,
+        dom_meta["files"]["action_catalog"]
+    )
 
     tree_data = safe_load(tree_path) or {}
     catalog_data = safe_load(catalog_path) or {}
+        
 
     question_block = tree_data.get("questions", {}) or {}
     question_block = {str(k).lower(): v for k, v in question_block.items()}

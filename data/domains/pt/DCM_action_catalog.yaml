@@ -1,0 +1,147 @@
+domain:
+  id: 7
+  name: Gestão de Documentos e Conteúdo (DCM)
+action_catalog:
+  DCM-01:
+    title: Definir governança fundamental de conteúdo, classificação e 
+      requisitos do ciclo de vida
+    procedures:
+    - number: 1
+      name: Definir princípios de documentos e conteúdo e limites de escopo
+      prerequisite: Requer identificação de categorias organizacionais de 
+        conteúdo
+      deliverable: Documento de princípios de documentação e conteúdo
+      recommendations:
+      - Definir princípios usando a orientação DAMA para governança de conteúdo,
+        incluindo autenticidade, acessibilidade, retenção, valor legal e 
+        integridade probatória (“Capítulo 12, p. 330–338”).
+      - Garantir que os princípios estejam alinhados com as expectativas de 
+        governança DAMA para governança e supervisão de domínio (“Capítulo 3.2, 
+        p. 55–57”).
+      - Validar alinhamento do ciclo de vida com pontos de verificação DAMA para
+        criação, manutenção e arquivamento (“Capítulo 4.3, p. 92”).
+      - Documentar princípios usando estrutura de artefatos DAMA para clareza e 
+        auditabilidade (“Apêndice do Capítulo 3, p. 69–70”).
+      notes:
+      - Use o escopo de ativos de informação DCAM para priorizar as classes de 
+        conteúdo mais sensíveis ou de alto impacto.
+    - number: 2
+      name: Elaborar taxonomia inicial de conteúdo e esquema de classificação
+      prerequisite: Requer princípios definidos
+      deliverable: Rascunho de taxonomia de conteúdo v0.1
+      recommendations:
+      - Elaborar taxonomia usando orientação de metadados e classificação DAMA 
+        para documentos e artefatos de conteúdo (“Capítulo 9, p. 236–239”; 
+        “Capítulo 12, p. 332–334”).
+      - Validar classes com estágios do ciclo de vida para criação, colaboração,
+        publicação e arquivamento (“Capítulo 4.3, p. 92”).
+      - Garanta clareza semântica aplicando princípios de modelagem conceitual 
+        DAMA (“Capítulo 10, p. 282–284”).
+      - Confirmar revisão de stewardship seguindo papéis de governança DAMA 
+        (“Capítulo 4, p. 86–89”).
+      notes:
+      - Usar diretrizes de refinamento de taxonomia CMMI para estabilizar 
+        esquemas iniciais de classificação.
+  DCM-02:
+    title: Atribuir papéis de gestão para governança de classificação, ciclo de 
+      vida e metadados
+    procedures:
+    - number: 1
+      name: Consolidar requisitos de documentos e conteúdos
+      prerequisite: Requer DCM-01 completo
+      deliverable: Registros de requisitos de conteúdo
+      recommendations:
+      - Consolidar requisitos usando as diretrizes DAMA para autenticidade de 
+        documentos, classificação, controle de acesso e retenção (“Capítulo 12, 
+        p. 330–338”).
+      - Valide requisitos de metadados usando campos padrão DAMA para documentos
+        (“Capítulo 9, p. 236–239”).
+      - Assegure clareza semântica usando orientações de modelagem DAMA onde 
+        definições textuais devem suportar classificação (“Capítulo 10, p. 
+        282–284”).
+      - Confirmar papéis de stewardship e conformidade conforme governança DAMA 
+        (“Capítulo 4, p. 86–89”).
+      notes:
+      - Usar pontuação de requisitos DCAM para priorizar classes de conteúdo de 
+        alto risco.
+  DCM-03:
+    title: Aprovar padrões de classificação, retenção, metadados e repositório
+    procedures:
+    - number: 3
+      name: Definir padrões e regras para documentos e conteúdos
+      prerequisite: Requer framework v1.0
+      deliverable: Manual de Padrões de Conteúdo
+      recommendations:
+      - Definir padrões para nomenclatura, versionamento, metadados, 
+        classificação, retenção e descarte usando as diretrizes de conteúdo DAMA
+        (“Capítulo 12, p. 330–338”).
+      - Valide alinhamento com expectativas semânticas usando modelagem 
+        conceitual DAMA (“Capítulo 10, p. 282–284”).
+      - Garantir alinhamento de ciclo de vida com transições controladas 
+        (“Capítulo 4.3, p. 92”).
+      - Confirme aceitação da governança usando papéis DAMA (“Capítulo 3.2, p. 
+        55–57”).
+      notes:
+      - Alinhar padrões de retenção com minimização GDPR e requisitos legais de 
+        propósito quando aplicável.
+  DCM-04:
+    title: Incorporar revisões de classificação, metadados e qualidade nas 
+      rotinas de manuseio de conteúdo
+    procedures:
+    - number: 1
+      name: Incorporar pontos de verificação de governança de conteúdo nos 
+        fluxos de trabalho
+      prerequisite: Requer padrões aprovados DCM-03
+      deliverable: Modelos de fluxo de trabalho atualizados
+      recommendations:
+      - Incorporar checkpoints para criação, revisão, aprovação e arquivamento 
+        seguindo ciclo de vida DAMA (“Capítulo 12, p. 330–338”).
+      - Validar campos de metadados como versão, proprietário, retenção e 
+        classificação (“Capítulo 9, p. 236–239”).
+      - Garanta requisitos de qualidade para precisão e completude dos 
+        documentos (“Capítulo 11, p. 308–311”).
+      - Confirmar envolvimento da gestão (“Capítulo 4, p. 86–89”).
+      notes:
+      - Usar mapeamento de fluxo de trabalho DCAM para garantir consistência de 
+        governança entre equipes.
+  DCM-06:
+    title: Automatizar classificação, ciclo de vida, metadados e validação de 
+      qualidade
+    procedures:
+    - number: 2
+      name: Estabeleça regras automatizadas de validação de conteúdo
+      prerequisite: Requer critérios de validação
+      deliverable: Conjunto automatizado de regras de conteúdo
+      recommendations:
+      - Definir regras para metadados obrigatórios, verificações de versão, 
+        relógios de retenção e completude de aprovação com base em DAMA 
+        (“Capítulo 12, p. 330–338”).
+      - Capturar regras em metadados usando estrutura DAMA (“Capítulo 9, p. 
+        236–239”).
+      - Validar adequação do ciclo de vida (“Capítulo 4.3, p. 92”).
+      - Documentar o conjunto de regras seguindo orientação de artefatos DAMA 
+        (“Capítulo 3 Apêndice, p. 69–70”).
+      notes:
+      - Utilizar verificações de prontidão para automação CMMI antes de 
+        habilitar a aplicação.
+  DCM-09:
+    title: Refinar continuamente a governança de conteúdo e ciclo de vida usando
+      evidências
+    procedures:
+    - number: 2
+      name: Aprimorar padrões de conteúdo com base em insights
+      prerequisite: Requer análise de tendências
+      deliverable: Padrões de conteúdo atualizados
+      recommendations:
+      - Ajustar padrões para profundidade de classificação, regras semânticas, 
+        completude de metadata ou janelas de retenção com base em insights 
+        (“Capítulo 12, p. 330–338”).
+      - Validar melhorias contra definições de metadados DAMA (“Capítulo 9, p. 
+        236–239”).
+      - Garantir alinhamento com expectativas de ciclo de vida (“Capítulo 4.3, 
+        p. 92”).
+      - Confirmar revalidação de stewardship seguindo DAMA (“Capítulo 3.2, p. 
+        55–57”).
+      notes:
+      - Utilizar os princípios de melhoria contínua CMMI para estruturar ciclos 
+        de refinamento.

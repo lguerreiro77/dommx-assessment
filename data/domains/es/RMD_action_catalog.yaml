@@ -1,0 +1,502 @@
+domain:
+  id: 8
+  name: Datos de Referencia y Maestros (RMD)
+action_catalog:
+  RMD-01:
+    title: Definir principios y alcance fundamentales para datos maestros y de 
+      referencia
+    procedures:
+    - number: 1
+      name: Definir principios y límites de alcance para datos maestros y de 
+        referencia
+      prerequisite: Requiere identificación de dominios maestros y de referencia
+        empresariales
+      deliverable: Documento de principios de datos maestros y de referencia
+      recommendations:
+      - Definir principios usando guía DAMA para entidades maestras 
+        autoritativas y compartidas “Capítulo 6, p. 180–182”.
+      - Aclare la distinción entre datos maestros y de referencia definidos por 
+        DAMA “Capítulo 6, p. 186–188”.
+      - Alinear principios con expectativas de gobernanza para stewardship, 
+        propiedad y custodia “Capítulo 3.2, p. 55–57”.
+      - Validar cobertura del ciclo de vida, incluyendo creación, aprobación, 
+        distribución y retiro “Capítulo 4.3, p. 92”.
+      - Documentar principios usando estándares de artefactos DAMA “Capítulo 3 
+        Apéndice, p. 69–70”.
+      notes:
+      - Usar alcance de capacidad de DCAM para identificar dominios maestros con
+        mayor impacto empresarial.
+    - number: 2
+      name: Redactar catálogo inicial de dominios maestros y de referencia
+      prerequisite: Requiere principios definidos
+      deliverable: Redactar catálogo de dominio v0.1
+      recommendations:
+      - Identificar dominios maestros candidatos como cliente, proveedor, 
+        producto y organización “Capítulo 6, p. 182–186”.
+      - Identificar listas de referencia como clasificaciones, vocabularios 
+        controlados y valores de estado “Capítulo 6, p. 186–188”.
+      - Documentar metadatos incluyendo propietario, administrador, sistema de 
+        registro y propósito “Capítulo 9, p. 236–239”.
+      - Validar entradas de catálogo a través de dominios de negocio.
+      notes:
+      - Aplicar alcance CMMI para estructurar olas de entrega.
+    - number: 3
+      name: Identificar puntos preliminares de control de datos maestros y de 
+        referencia
+      prerequisite: Requiere mapeo de flujos de trabajo
+      deliverable: Lista inicial de puntos de control
+      recommendations:
+      - Identificar puntos de control del ciclo de vida para creación, 
+        validación, enriquecimiento y publicación “Capítulo 6, p. 184–188”.
+      - Adjuntar verificaciones de calidad siguiendo dimensiones de calidad DAMA
+        “Capítulo 11, p. 308–311”.
+      - Capturar metadatos como linaje, versión y estado de aprobación “Capítulo
+        9, p. 236–239”.
+      - Confirmar responsabilidades de stewardship para cada punto de control 
+        “Capítulo 4, p. 86–89”.
+      notes:
+      - Usar mapeo de criticidad DCAM para priorizar puntos de alto impacto.
+    - number: 4
+      name: Asignar propiedad provisional de datos maestros y de referencia
+      prerequisite: Requiere catálogo y lista de control
+      deliverable: Matriz de propiedad.
+      recommendations:
+      - Asignar propietarios, stewards y custodios según roles de gobernanza 
+        DAMA “Capítulo 4, p. 86–89”.
+      - Aclarar derechos de decisión basados en guía de escalamiento DAMA 
+        “Capítulo 3.4, p. 60–61”.
+      - Asegurar que las responsabilidades del ciclo de vida incluyen 
+        incorporación, actualizaciones, resolución de conflictos y retiro 
+        “Capítulo 4.3, p. 92”.
+      - Registrar asignaciones siguiendo documentación de artefactos DAMA 
+        “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Utilice la idoneidad conductual IDGC para seleccionar propietarios que 
+        puedan mediar entre dominios.
+    - number: 5
+      name: Publicar directrices iniciales de gobernanza maestro y de referencia
+      prerequisite: Requiere principios, catálogo y propiedad
+      deliverable: Resumen de incorporación de gobernanza de datos maestros y de
+        referencia
+      recommendations:
+      - Explicar el propósito y relevancia empresarial de los datos maestros y 
+        de referencia “Capítulo 6, p. 180–188”.
+      - Aclarar responsabilidades de propietarios, administradores y custodios 
+        “Capítulo 3.2, p. 55–57”.
+      - Describa puntos de control del ciclo de vida para creación, validación, 
+        publicación y archivo “Capítulo 4.3, p. 92”.
+      - Publique directrices usando la estructura de artefactos DAMA “Capítulo 3
+        Apéndice, p. 69–70”.
+      notes:
+      - Usar prácticas de comunicación CMMI para apoyar adopción en dominios de 
+        negocio y tecnología.
+  RMD-02:
+    title: Formalizar stewardship y estándares de datos maestros y de referencia
+    procedures:
+    - number: 1
+      name: Consolidar los requisitos de datos maestros y de referencia
+      prerequisite: Requiere que RMD-01 esté completo
+      deliverable: Registro de requisitos de datos maestros y de referencia
+      recommendations:
+      - Consolidar requisitos de exactitud, integridad, consistencia y unicidad 
+        usando dimensiones de calidad DAMA “Capítulo 11, p. 308–311”.
+      - Capturar reglas de negocio para abastecimiento, validación y resolución 
+        de conflictos de entidades maestras “Capítulo 6, p. 184–186”.
+      - Identifique requisitos de listas de referencia, incluyendo estructura, 
+        estabilidad y condiciones de aprobación “Capítulo 6, p. 186–188”.
+      - Asignar propiedad de requisitos siguiendo roles de gobernanza “Capítulo 
+        3.2, p. 55–57”.
+      notes:
+      - Usar la priorización de DCAM para clasificar requisitos por impacto 
+        empresarial.
+    - number: 2
+      name: Producir un marco formal de gestión de datos maestros y de 
+        referencia
+      prerequisite: Requiere requisitos validados
+      deliverable: Marco de Datos Maestros y de Referencia v1.0.
+      recommendations:
+      - Estructurar procesos del ciclo de vida como identificación, modelado, 
+        abastecimiento, mantenimiento y retiro siguiendo DAMA “Capítulo 6, p. 
+        180–188”.
+      - Incluir roles de gobernanza, artefactos, derechos de decisión y reglas 
+        de escalamiento “Capítulo 3.4, p. 60–61”.
+      - Integrar actividades de control de calidad de datos “Capítulo 11, p. 
+        308–311”.
+      - Documentar el marco usando formato de artefactos DAMA “Apéndice del 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Usar prácticas de verificación del marco CMMI para asegurar cobertura 
+        completa de actividades del ciclo de vida.
+    - number: 3
+      name: Definir estándares y reglas maestras y de referencia
+      prerequisite: Requiere marco v1.0
+      deliverable: Manual de Estándares Maestros y de Referencia
+      recommendations:
+      - Defina convenciones de nombres, identificadores, claves, lógica de 
+        supervivencia y reglas de versionado consistentes con DAMA “Capítulo 6, 
+        p. 184–186”.
+      - Definir estructuras de listas de referencia, pasos de aprobación y 
+        requisitos de versionado “Capítulo 6, p. 186–188”.
+      - Asegure que las definiciones de metadatos se capturen para cada atributo
+        “Capítulo 9, p. 236–239”.
+      - Incluir umbrales de calidad y condiciones de validación alineadas con 
+        las dimensiones de calidad de DAMA “Capítulo 11, p. 308–311”.
+      notes:
+      - Considerar principios de minimización GDPR al definir atributos maestros
+        personales.
+    - number: 4
+      name: Validar estándares maestros y de referencia con las partes 
+        interesadas del negocio
+      prerequisite: Requiere borrador de estándares
+      deliverable: Registro de alineación.
+      recommendations:
+      - Confirme la alineación semántica con terminología de negocio siguiendo 
+        la guía de modelado DAMA “Capítulo 10, p. 282–284”.
+      - Validar reglas de supervivencia y origen contra factibilidad operativa.
+      - Asegurar que las estructuras de listas de referencia reflejen 
+        necesidades reales de clasificación empresarial.
+      - Capture retroalimentación y cambios de versión usando la estructura de 
+        artefactos DAMA “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar prácticas de alineación de DCAM para equilibrar consistencia global
+        y flexibilidad local.
+    - number: 5
+      name: Aprobar y publicar estándares maestros y de referencia
+      prerequisite: Requiere aprobación de autoridad de gobernanza
+      deliverable: Paquete de aprobación de estándares maestro y de referencia
+      recommendations:
+      - Presentar estándares a través de órganos formales de decisión “Capítulo 
+        3.4, p. 60–61”.
+      - Validar cobertura para dominios prioritarios como cliente, producto o 
+        ubicación “Capítulo 6, p. 182–186”.
+      - Publicar en un repositorio gobernado con metadatos para versión, estado 
+        y aplicabilidad “Capítulo 9, p. 236–239”.
+      - Comunicar estándares usando prácticas de comunicación de gobernanza DAMA
+        “Capítulo 3.6, p. 64–66”
+      notes:
+      - Utilice evaluaciones de preparación CMMI antes de imponer la adopción.
+  RMD-03:
+    title: Aprobar reglas maestras y de referencia, controles y 
+      responsabilidades
+    procedures:
+    - number: 1
+      name: Establecer el estatuto del Consejo de Datos Maestros y de Referencia
+      prerequisite: Requiere entregables RMD-02
+      deliverable: Estatuto aprobado
+      recommendations:
+      - Definir autoridad, alcance y responsabilidades del consejo siguiendo 
+        principios de gobernanza DAMA “Capítulo 3.4, p. 60–61”.
+      - Alinear estructura del estatuto con capas de gobernanza empresarial 
+        “Figura 3.2, p. 53”.
+      - Incluir responsabilidades para aprobación de estándares, escalamientos y
+        priorización.
+      - Documentar estatuto usando la estructura de artefactos DAMA “Apéndice 
+        del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar mapeo de gobernanza DCAM para integrar calidad de datos, 
+        arquitectura y cuerpos de cumplimiento.
+    - number: 2
+      name: Asignar roles de gobernanza para datos maestros y de referencia
+      prerequisite: Requiere descripciones de roles
+      deliverable: Asignación de roles de gobernanza
+      recommendations:
+      - Asignar propietarios responsables, administradores y custodios siguiendo
+        definiciones de DAMA “Capítulo 4, p. 86–89”.
+      - Aclara quién puede solicitar cambios y quién los aprueba “Capítulo 3.4, 
+        p. 60–61”.
+      - Asegurar que cada dominio maestro tenga un propietario responsable 
+        dedicado.
+      - Registrar asignaciones usando documentación de artefactos DAMA “Apéndice
+        del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar criterios de comportamiento IDGC para nombrar stewards capaces de 
+        mediación interdominios.
+    - number: 3
+      name: Implementar foros de decisión maestro y de referencia
+      prerequisite: Requiere aprobación de estatutos.
+      deliverable: Calendario de gobernanza y plantillas de decisión
+      recommendations:
+      - Incluir puntos de agenda como nuevos dominios, actualizaciones de 
+        estándares y aprobaciones de excepciones.
+      - Aplique plantillas de decisión estructuradas alineadas con prácticas de 
+        gobernanza DAMA “Capítulo 3.6, p. 64–66”.
+      - Evaluar impactos en arquitectura, calidad, seguridad y ciclo de vida.
+      - Almacenar decisiones usando patrones de artefactos DAMA “Apéndice 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Utilice la disciplina de reuniones CMMI para asegurar una gobernanza 
+        estructurada y auditable.
+    - number: 4
+      name: Lanzar ciclos de revisión maestros y de referencia
+      prerequisite: Requiere foros definidos
+      deliverable: Minutas de primera revisión
+      recommendations:
+      - Priorizar dominios con los mayores problemas de calidad de datos e 
+        integración.
+      - Revisar duplicados no resueltos, clasificaciones conflictivas e 
+        identificadores inconsistentes “Capítulo 11, p. 308–311”.
+      - Decidir rutas de remediación mediante gobernanza formal “Capítulo 3.4, 
+        p. 60–61”.
+      - Registre los resultados de revisión utilizando plantillas de artefactos 
+        DAMA “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar prácticas de aseguramiento DCAM para vincular revisiones con 
+        resultados empresariales.
+    - number: 5
+      name: Mantener operación de gobernanza maestra y de referencia
+      prerequisite: Requiere una cadencia estable de reuniones
+      deliverable: Registro de actividad de gobernanza
+      recommendations:
+      - Mantenga registros de decisiones, exenciones, escalaciones y acciones 
+        abiertas “Capítulo 3.6, p. 64–66”.
+      - Vincular entradas de registro a dominios afectados e indicadores de 
+        calidad.
+      - Revisar patrones de problemas recurrentes para refinar estándares.
+      - Almacenar registros siguiendo la estructura de artefactos DAMA “Apéndice
+        del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar técnicas de monitoreo CMMI para detectar problemas de capacidad de 
+        gobernanza.
+  RMD-04:
+    title: Incorporar gobernanza maestra y de referencia en los flujos de 
+      trabajo
+    procedures:
+    - number: 1
+      name: Incorporar puntos de control de gobernanza en flujos de trabajo
+      prerequisite: Requiere estándares aprobados RMD-03
+      deliverable: Plantillas de flujo de trabajo actualizadas
+      recommendations:
+      - Posicionar puntos de control donde se creen o modifiquen datos maestros 
+        o de referencia “Capítulo 6, p. 184–188”.
+      - Asegurar que los pasos del flujo de trabajo apliquen reglas de 
+        nomenclatura, codificación y validación.
+      - Escalar excepciones a través de canales formales de gobernanza “Capítulo
+        3.4, p. 60–61”.
+      - Documentar flujos de trabajo usando convenciones de artefactos DAMA 
+        “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar mapeo de gobernanza de flujo de trabajo DCAM para asegurar 
+        aplicación consistente.
+    - number: 2
+      name: Integrar criterios maestro y referencia en diseño de sistemas y 
+        pipelines
+      prerequisite: Requiere estándares de diseño
+      deliverable: Plantillas de diseño gobernadas
+      recommendations:
+      - Requerir que los sistemas obtengan datos maestros exclusivamente de 
+        repositorios aprobados “Capítulo 6, p. 184–186”.
+      - Rechazar o marcar valores inconsistentes con listas de referencia.
+      - Alinear con gobernanza de integración para ingestión y distribución 
+        “Capítulo 8, p. 252–260”.
+      - Documentar reglas y plantillas usando guía de artefactos DAMA “Apéndice 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Usar verificación de diseño de CMMI para requerir evidencia de 
+        cumplimiento.
+    - number: 3
+      name: Actualizar documentación del ciclo de vida con integración de 
+        maestro y referencia
+      prerequisite: Requiere rediseño de flujos de trabajo
+      deliverable: Documentación actualizada del ciclo de vida
+      recommendations:
+      - Representar etapas del ciclo de vida donde se usan o cambian valores 
+        maestros o de referencia a “Capítulo 4.3, p. 92”.
+      - Vincular los cambios del ciclo de vida con las actualizaciones en listas
+        maestras y de referencia.
+      - Alinear reglas de retención con el ciclo de vida de procesos de negocio.
+      - Publicar documentación usando estructura de artefactos DAMA “Apéndice 
+        del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar mapeo de ciclo de vida de DCAM para visualizar dependencias.
+    - number: 4
+      name: Aplicar verificaciones maestras y de referencia en puntos de 
+        decisión
+      prerequisite: Requiere flujos de trabajo gobernados
+      deliverable: Evidencia de controles de gobernanza
+      recommendations:
+      - Validar solicitudes para nuevos sistemas, flujos o modelos contra 
+        estándares maestros y de referencia.
+      - Identificar casos de listas locales duplicadas o identificadores no 
+        estándar.
+      - Asegurar que las decisiones sigan la lógica de escalamiento DAMA 
+        “Capítulo 3.4, p. 60–61”.
+      - Registrar resultados usando prácticas de documentación DAMA “Apéndice 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Utilice plantillas de verificación CMMI para incorporar controles de 
+        cumplimiento.
+    - number: 5
+      name: Rastrear adherencia a gobernanza de maestros y referencias
+      prerequisite: Requiere rutinas de monitoreo
+      deliverable: Registro de cumplimiento
+      recommendations:
+      - Rastrear adherencia a la nomenclatura, codificación, origen y uso de 
+        listas de referencia.
+      - Registrar excepciones y exenciones con justificación.
+      - Validar planes de remediación a través de órganos de gobernanza.
+      - Almacenar registros de cumplimiento utilizando las directrices de 
+        artefactos DAMA.
+      notes:
+      - Usar indicadores diagnósticos DCAM para priorizar remediación.
+  RMD-06:
+    title: Automatizar validación y distribución de datos maestros y de 
+      referencia
+    procedures:
+    - number: 1
+      name: Definir indicadores de monitoreo maestro y de referencia
+      prerequisite: Requiere flujos de trabajo RMD-04
+      deliverable: Conjunto maestro y de referencia KPI
+      recommendations:
+      - Definir KPIs como tasa de duplicados, valores obligatorios faltantes y 
+        cobertura de adopción “Capítulo 11, p. 308–311”.
+      - Alinear indicadores con definiciones de metadatos “Capítulo 9, p. 
+        236–239”.
+      - Incluir desempeño y puntualidad de distribución.
+      - Asignar responsabilidad KPI siguiendo roles de gobernanza DAMA “Capítulo
+        4, p. 86–89”.
+      notes:
+      - Usar indicadores de capacidad DCAM para construir un tablero de madurez.
+    - number: 2
+      name: Establecer reglas automatizadas de validación para maestros y 
+        referencias
+      prerequisite: Requiere criterios de validación
+      deliverable: Conjunto de reglas automatizadas
+      recommendations:
+      - Implementar reglas para unicidad, códigos válidos, integridad 
+        referencial y supervivencia “Capítulo 11, p. 308–311”.
+      - Mapear reglas a atributos de metadatos “Capítulo 9, p. 236–239”.
+      - Dirigir excepciones a administradores para revisión.
+      - Documentar reglas siguiendo estructura de artefactos DAMA “Apéndice del 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Usar verificaciones de preparación para automatización CMMI antes del 
+        despliegue.
+    - number: 3
+      name: Implementar distribución y sincronización de datos maestros y de 
+        referencia
+      prerequisite: Requiere arquitectura de integración
+      deliverable: Diseño de distribución
+      recommendations:
+      - Usar modelos de distribución hub, publish–subscribe o controlados API 
+        “Capítulo 8, p. 252–260”.
+      - Asegurar que los metadatos de versión y marca temporal acompañen los 
+        valores distribuidos “Capítulo 9, p. 236–239”.
+      - Implementar canales de retroalimentación para que los consumidores 
+        reporten inconsistencias.
+      - Documentar arquitectura de distribución usando formatos de artefactos de
+        DAMA “Apéndice Capítulo 3, p. 69–70”.
+      notes:
+      - Usar guía de capacidad arquitectónica DCAM para seleccionar mecanismos 
+        óptimos de distribución.
+    - number: 4
+      name: Habilitar alertas automáticas para problemas maestros y de 
+        referencia
+      prerequisite: Requiere monitoreo y distribución
+      deliverable: Fuente de alertas
+      recommendations:
+      - Crear alertas para duplicados, valores inválidos, fallas de 
+        sincronización y uso indebido de listas de referencia.
+      - Dirija alertas a propietarios y administradores basándose en la 
+        responsabilidad del dominio “Capítulo 4, p. 86–89”.
+      - Incluir metadatos contextuales para triaje.
+      - Registrar resultados de alertas usando guía de documentación DAMA 
+        “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Utilice la lógica de manejo de incidentes CMMI para definir rutas de 
+        respuesta estructuradas.
+    - number: 5
+      name: Mantener gobernanza automatizada de datos maestros y de referencia
+      prerequisite: Requiere madurez operativa
+      deliverable: Registro de automatización
+      recommendations:
+      - Capture cambios en la lógica de reglas, umbrales y mecanismos de 
+        distribución.
+      - Validar alineación continua con estándares y definiciones “Capítulo 6, 
+        p. 184–188”.
+      - Extender automatización a nuevos dominios progresivamente.
+      - Almacene registros utilizando formatos de artefactos DAMA “Apéndice del 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Usar análisis de evolución de capacidad DCAM para planificar mejoras 
+        futuras en automatización.
+  RMD-09:
+    title: Optimizar la gobernanza de datos maestros y de referencia e 
+      institucionalizar mejores prácticas
+    procedures:
+    - number: 1
+      name: Revisar tendencias de desempeño maestro y de referencia
+      prerequisite: Requiere línea base RMD-06 KPI
+      deliverable: Análisis de tendencias
+      recommendations:
+      - Analizar tendencias de calidad de datos, incluyendo duplicados, 
+        clasificaciones conflictivas y referencias inválidas “Capítulo 11, p. 
+        308–311”.
+      - Comparar desempeño entre dominios para detectar problemas estructurales.
+      - Revisar retrasos en distribución y sincronización “Capítulo 6, p. 
+        184–188”.
+      - Documentar análisis usando estructura de artefactos de DAMA “Capítulo 3 
+        Apéndice, p. 69–70”.
+      notes:
+      - Usar puntuación de capacidad DCAM para evaluar madurez.
+    - number: 2
+      name: Mejorar estándares maestros y de referencia usando conocimientos
+      prerequisite: Requiere análisis de tendencias
+      deliverable: Estándares actualizados
+      recommendations:
+      - Ajustar definiciones, reglas de supervivencia, convenciones de 
+        nomenclatura y estructuras de código “Capítulo 6, p. 186–188”.
+      - Actualizar definiciones de metadatos para mejorar claridad “Capítulo 9, 
+        p. 236–239”.
+      - Modificar límites de dominio donde exista superposición o ambigüedad.
+      - Validar actualizaciones a través de foros de gobernanza “Capítulo 3.4, 
+        p. 60–61”.
+      notes:
+      - Usar la lógica de mejora continua CMMI para liberar actualizaciones en 
+        incrementos controlados.
+    - number: 3
+      name: Comparar prácticas de datos maestros y de referencia contra marcos 
+        externos
+      prerequisite: Requiere un perfil de madurez.
+      deliverable: Evidencia de benchmarking
+      recommendations:
+      - Comparar prácticas con modelos industriales o regulatorios para la 
+        gestión compartida de datos.
+      - Mapear benchmarks externos a expectativas de gobernanza de maestros y 
+        referencias de DAMA “Capítulo 6, p. 180–188”.
+      - Identifique brechas en gobernanza, calidad y arquitectura.
+      - Documentar hallazgos usando patrones de artefactos de DAMA “Capítulo 3 
+        Apéndice, p. 69–70”.
+      notes:
+      - Utilice técnicas de benchmarking DCAM para traducir comparaciones en 
+        objetivos de capacidad.
+    - number: 4
+      name: Mejorar lógica de automatización de datos maestros y de referencia
+      prerequisite: Requiere automatización RMD-06
+      deliverable: Conjunto actualizado de automatización
+      recommendations:
+      - Extender lógica de validación y distribución para cubrir nuevos modos de
+        falla e inconsistencias.
+      - Asegurar que actualizaciones de metadatos y documentación acompañen 
+        cambios de automatización “Capítulo 9, p. 236–239”.
+      - Validar lógica en entornos controlados antes del despliegue.
+      - Buscar aprobación para actualizaciones mayores a través de foros de 
+        gobernanza “Capítulo 3.4, p. 60–61”.
+      notes:
+      - Usar indicadores de madurez de automatización CMMI para guiar 
+        inversiones.
+    - number: 5
+      name: Mantener un ciclo continuo de mejora de datos maestros y de 
+        referencia
+      prerequisite: Requiere un ciclo de optimización
+      deliverable: Plan de mejora de maestros y referencias
+      recommendations:
+      - Mantener un backlog de mejoras vinculadas a tendencias KPI, registros de
+        incidencias y necesidades del negocio “Capítulo 3.6, p. 64–66”.
+      - Agrupar mejoras en iniciativas a corto, mediano y largo plazo.
+      - Alinear mejoras con la hoja de ruta de gobernanza de datos empresarial 
+        “Capítulo 3, p. 51–53”.
+      - Rastrear progreso usando documentación de artefactos DAMA “Apéndice del 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Usar mapeo de evolución de capacidad DCAM para dirigir ganancias de 
+        madurez a largo plazo.

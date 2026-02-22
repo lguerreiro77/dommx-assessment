@@ -1,0 +1,138 @@
+domain:
+  id: 9
+  name: Data Warehousing und Business Intelligence (DWBI)
+action_catalog:
+  DWBI-01:
+    title: Definition von Business Intelligence- und Data-Warehousing-Vision, 
+      Umfang und Regeln
+    procedures:
+    - number: 1
+      name: Definieren Sie Unternehmens-BI- und Analytics-Vision
+      prerequisite: Erfordert eine Unternehmensdatenstrategie
+      deliverable: BI und Analytics-Visionserklärung
+      recommendations:
+      - Etablieren Sie Zweck und Rolle von BI im Unternehmen gemäß den DAMA 
+        Architektur-Ausrichtungsprinzipien „Kapitel 8, S. 252–260“.
+      - Identifizieren Sie hochrangige Analyseergebnisse und 
+        Entscheidungsbedarfe über Domänen hinweg.
+      - Richten Sie BI Ziele mit Stewardship-, Qualitäts- und 
+        Metadaten-Governance aus „Kapitel 3.2, S. 55–57“.
+      - Dokumentation der Vision unter Verwendung der DAMA-Artefaktstruktur 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - DCAM Wertzuordnung verwenden, um BI Vision in messbare 
+        Fähigkeitsbegriffe auszudrücken.
+    - number: 2
+      name: Definition des Geschäftsbereichs von BI und Data Warehousing
+      prerequisite: Erfordert BI Vision
+      deliverable: BI Geschäftsbereichskarte
+      recommendations:
+      - Identifizieren Sie primäre analytische Themen wie Vertrieb, Finanzen, 
+        Betrieb und Kundendaten.
+      - Ordnen Sie Geschäftsfragen Master- und Referenzdomänen zu „Kapitel 6, S.
+        182–188“.
+      - Beziehen Sie Qualitätsgrenzwerte ein, die für analytische 
+        Zuverlässigkeit erforderlich sind „Kapitel 11, S. 308–311“.
+      - Erfassen Sie den Geschäftsumfang mit DAMA Dokumentationspraktiken 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwendung von CMMI-Scoping-Praktiken zur Sicherstellung machbarer 
+        Lieferinkremente.
+  DWBI-02:
+    title: Stewardship-Rollen für analytische Governance und Überwachung 
+      zuweisen
+    procedures:
+    - number: 1
+      name: Dokumentieren Sie BI-Architekturprinzipien
+      prerequisite: Erfordert DW/BI Umfang
+      deliverable: BI-Architekturprinzipien-Set
+      recommendations:
+      - Richten Sie sich nach den DAMA Architekturprinzipien für Integration, 
+        Wiederverwendung und Standardisierung „Kapitel 8, S. 252–260“.
+      - Definieren Sie Prinzipien für Beschaffungs-, Transformations-, 
+        Konsolidierungs- und Konsumschichten.
+      - Adressierung von Stewardship und Metadaten-Ausrichtung „Kapitel 9, S. 
+        236–239“.
+      - Dokumentieren Sie Prinzipien mit DAMA Artefaktformatierung „Kapitel 3 
+        Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Architektur-Fähigkeitszuordnung, um architektonische 
+        Lücken zu identifizieren.
+  DWBI-03:
+    title: Genehmigen Sie analytische, semantische und metrische 
+      Governance-Standards
+    procedures:
+    - number: 3
+      name: Genehmigen Sie BI Anforderungen und definieren Sie analytische 
+        Kontrollen
+      prerequisite: Erfordert Stakeholder-Review
+      deliverable: Genehmigtes Anforderungspaket
+      recommendations:
+      - Genehmigen Sie Qualitäts- und Herkunftskontrollen, die mit den DAMA-Best
+        Practices übereinstimmen „Kapitel 11, S. 308–311“.
+      - Validierung von Geschäftsregeln und Metrikdefinitionen.
+      - Verantwortlichkeitszuweisung zwischen Eigentümern, Stewards und 
+        Custodians definieren „Kapitel 4, S. 86–89“.
+      - Dokumentieren Sie Genehmigungsergebnisse mit DAMA-Governance-Artefakten 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM-Kriterien zur Wirksamkeit von Kontrollen zur 
+        Klassifizierung der Kontrollstärke.
+  DWBI-04:
+    title: Analytische Governance und semantische Logik in BI Workflows 
+      einbetten
+    procedures:
+    - number: 1
+      name: Integrieren Sie BI Governance-Checkpoints in den analytischen 
+        Lebenszyklus
+      prerequisite: Erfordert genehmigte BI Anforderungen
+      deliverable: Aktualisierte analytische Lebenszyklusdokumentation
+      recommendations:
+      - Ordnen Sie Aufnahme-, Vorbereitungs-, Modellierungs- und Berichtsphasen 
+        Governance-Kontrollpunkten zu.
+      - Lineage-Erfassung in jeder Phase gemäß DAMA Metadatenpraktiken 
+        sicherstellen „Kapitel 9, S. 236–239“.
+      - Verantwortlichkeiten für Validierung, Genehmigung und Ausnahmeverwaltung
+        definieren „Kapitel 4, S. 86–89“.
+      - Dokumentieren Sie Lebenszyklusdiagramme unter Verwendung der DAMA 
+        Artefaktprinzipien „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie CMMI Lebenszyklus-Integrationspraktiken, um Konsistenz 
+        über Teams hinweg sicherzustellen.
+  DWBI-06:
+    title: Automatisieren Sie semantische Validierung, Herkunftsverfolgung und 
+      Qualitätsüberwachung
+    procedures:
+    - number: 2
+      name: Automatisierte BI Validierungsregeln etablieren
+      prerequisite: Erfordert ein KPI Set
+      deliverable: Automatisiertes BI Regelwerk
+      recommendations:
+      - Automatisierte Prüfungen zur Konformität mit Stammdaten, Referenzlisten 
+        und Dimensionsstrukturen implementieren („Kapitel 6, S. 182–188“).
+      - Validieren Sie Metrikdefinitionen anhand gesteuerter Logik.
+      - Einbeziehung von Herkunftsvalidierungs-Checkpoints.
+      - Dokumentieren Sie Regeln unter Verwendung von DAMA Artefakt-Praktiken 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwendung der CMMI-Automatisierungsbereitschaftsbewertung vor der 
+        Bereitstellung.
+  DWBI-09:
+    title: Kontinuierliche Verbesserung der analytischen und semantischen 
+      Governance anhand von Evidenz.
+    procedures:
+    - number: 2
+      name: Verbesserung von BI-Standards und Lifecycle-Leitlinien
+      prerequisite: Erfordert Governance-Einblicke
+      deliverable: Aktualisierte BI Standards
+      recommendations:
+      - Aktualisieren Sie Modellierungsregeln, Metrikdefinitionen und 
+        Metadatenanforderungen „Kapitel 10, S. 282–289“.
+      - Klären Sie Erwartungen an Source-of-Truth- und Lineage-Dokumentation 
+        „Kapitel 9, S. 236–239“.
+      - Stellen Sie Konsistenz über Dimensionen und konforme Attribute sicher.
+      - Validieren Sie Aktualisierungen über Governance-Foren „Kapitel 3.4, S. 
+        60–61“.
+      notes:
+      - Verwenden Sie CMMI kontinuierliche Verbesserung zur Verwaltung von 
+        Standardaktualisierungen.

@@ -1,0 +1,502 @@
+domain:
+  id: 4
+  name: Opérations de données (DSO)
+action_catalog:
+  DSO-01:
+    title: Établissez les principes et le périmètre de gestion opérationnelle 
+      des données
+    procedures:
+    - number: 1
+      name: Définir les principes opérationnels de gestion des données
+      prerequisite: Nécessite l'identification des domaines opérationnels
+      deliverable: Document des principes opérationnels
+      recommendations:
+      - Définir les principes opérationnels conformément aux directives DAMA 
+        pour la gestion des données, la supervision des processus et la 
+        stabilité opérationnelle (Chapitre 1, p. 19–22).
+      - Assurer l'alignement avec les attentes DAMA pour les responsabilités de 
+        gestion et de garde à travers les étapes opérationnelles (Chapitre 4, p.
+        86–89).
+      - Validez que les principes reflètent les exigences DAMA pour les 
+        métadonnées, la traçabilité et le contrôle qualité dans les activités 
+        opérationnelles (Chapitres 9 à 11).
+      - Documenter les principes en utilisant les directives d'artefact DAMA 
+        pour la clarté de gouvernance (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les critères de capacité DCAM pour garantir que les principes 
+        couvrent les domaines requis de gestion opérationnelle des données.
+    - number: 2
+      name: Rédigez les flux de travail opérationnels initiaux.
+      prerequisite: Nécessite des principes définis
+      deliverable: Flux de travail opérationnel v0.1
+      recommendations:
+      - Rédiger les flux de travail selon les directives du cycle de vie DAMA 
+        pour les activités de création, modification et utilisation contrôlées 
+        (Chapitre 4.3, p. 92).
+      - Assurez-vous que les flux de travail reflètent les attentes métadonnées 
+        DAMA, incluant définitions, formats et identifiants clés (Chapitre 9, p.
+        236).
+      - Validez la structure du flux de travail en utilisant les points de 
+        contrôle qualité DAMA tels que l'exactitude, l'exhaustivité et la 
+        cohérence (Chapitre 11, p. 308–311).
+      - Confirmez que les responsabilités de stewardship sont appliquées à 
+        chaque étape du flux de travail en alignement avec les principes de 
+        gouvernance DAMA (Chapitre 3.2, p. 55).
+      notes:
+      - Utiliser la discipline de gestion des processus CMMI pour maintenir la 
+        stabilité des flux de travail.
+    - number: 3
+      name: Identifier les éléments de données opérationnels préliminaires
+      prerequisite: Nécessite la cartographie des parties prenantes
+      deliverable: Liste des éléments de données opérationnels.
+      recommendations:
+      - Identifier les éléments en utilisant les définitions de métadonnées DAMA
+        pour les attributs de données opérationnelles (Chapitre 9, p. 236).
+      - Validez la pertinence opérationnelle en fonction du cycle de vie et des 
+        attentes de qualité de DAMA (Chapitre 4.3, p. 92).
+      - Confirmez que les éléments suivent les directives de cohérence 
+        sémantique et structurelle de DAMA (Chapitre 3.3, p. 58).
+      - Documentez les éléments en utilisant les structures d'artefact DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser l'analyse de criticité DCAM pour prioriser les éléments de 
+        données opérationnelles essentiels.
+    - number: 4
+      name: Attribuer la propriété opérationnelle provisoire des données
+      prerequisite: Nécessite un inventaire des éléments opérationnels
+      deliverable: Matrice de propriété opérationnelle
+      recommendations:
+      - Attribuer la propriété conformément aux descriptions des rôles de 
+        gouvernance et de gestion DAMA (Chapitre 4, p. 86–89).
+      - Assurez-vous que les propriétaires peuvent soutenir les points de 
+        contrôle du cycle de vie à travers l'ingestion, la transformation et 
+        l'utilisation (Chapitre 4.3, p. 92).
+      - Valider la clarté de l'autorité en utilisant les directives de décision 
+        et d'escalade DAMA (Chapitre 3.4, p. 60).
+      - Confirmez la documentation en utilisant les normes d'artefacts DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les indicateurs de préparation comportementale IDGC pour les 
+        rôles opérationnels.
+    - number: 5
+      name: Publiez les directives opérationnelles initiales.
+      prerequisite: Nécessite flux de travail et propriété
+      deliverable: Briefing d'intégration opérationnelle
+      recommendations:
+      - Publier des directives alignées avec les attentes de communication de 
+        gouvernance DAMA (Chapitre 3.6, p. 64).
+      - S'assurer que les directives expriment clairement les responsabilités 
+        dérivées des attentes de gestion DAMA (Chapitre 4, p. 86).
+      - Inclure les contrôles opérationnels de qualité et de métadonnées 
+        extraits de DAMA (Chapitres 10 et 11).
+      - Valider la structure selon les normes de documentation DAMA (Chapitre 3 
+        Annexe, p. 69–70).
+      notes:
+      - Utiliser la logique de communication CMMI pour améliorer la 
+        compréhension des utilisateurs.
+  DSO-02:
+    title: Formaliser le stewardship opérationnel et les normes
+    procedures:
+    - number: 1
+      name: Consolidez les exigences opérationnelles
+      prerequisite: Nécessite que DSO-01 soit complet
+      deliverable: Registres des exigences opérationnelles
+      recommendations:
+      - Consolider les exigences suivant les directives opérationnelles DAMA 
+        pour les rôles et processus de gestion des données (Chapitre 1).
+      - Valider l'alignement avec les attentes du cycle de vie DAMA pour la 
+        création, la qualité et l'utilisation (Chapitre 4.3, p. 92).
+      - Confirmer que les exigences reflètent les attentes de métadonnées et de 
+        traçabilité DAMA (Chapitre 9, p. 236).
+      - Assurez-vous que les rôles de stewardship sont définis selon les 
+        descriptions du modèle de rôle DAMA (Chapitre 3.2, p. 55–57).
+      notes:
+      - Utilisez les méthodes de priorisation des exigences DCAM.
+    - number: 2
+      name: Produisez des flux de travail opérationnels formels
+      prerequisite: Nécessite des exigences validées
+      deliverable: Flux de travail opérationnels v1.0
+      recommendations:
+      - Produisez des flux de travail reflétant les points de contrôle du cycle 
+        de vie DAMA, incluant création, transformation et retrait (Chapitre 4.3,
+        p. 92).
+      - Assurez l'inclusion des contrôles de qualité des métadonnées DAMA 
+        (Chapitre 9, p. 236).
+      - Validez la cohérence avec les dimensions de qualité DAMA telles que 
+        l'exactitude et l'intégrité (Chapitre 11, p. 308–311).
+      - Documenter les workflows en utilisant les directives d'artefact DAMA 
+        (Chapitre 3 Annexe, p. 69–70).
+      notes:
+      - Utiliser les directives de vérification des processus CMMI.
+    - number: 3
+      name: Définir les normes de données opérationnelles
+      prerequisite: Nécessite des workflows v1.0
+      deliverable: Manuel des normes opérationnelles de données
+      recommendations:
+      - Définissez les normes en utilisant les règles opérationnelles DAMA pour 
+        la gestion, l'accès, la mise à jour et l'archivage des données (Chapitre
+        1, p. 19–22).
+      - Valider les normes en utilisant les critères de métadonnées et 
+        sémantiques DAMA (Chapitres 9 et 10).
+      - Assurer l'alignement du cycle de vie en utilisant la définition des 
+        points de contrôle et transitions DAMA (Chapitre 4.3, p. 92).
+      - Confirmer la supervision du stewardship basée sur les rôles de 
+        gouvernance DAMA (Chapitre 3.2, p. 55–57).
+      notes:
+      - Utilisez les attentes de gestion des données GDPR pour renforcer les 
+        normes opérationnelles.
+    - number: 4
+      name: Valider les normes opérationnelles avec les parties prenantes métier
+      prerequisite: Nécessite un projet de normes
+      deliverable: Enregistrement d'alignement
+      recommendations:
+      - Valider les normes en utilisant les attentes d'alignement relationnel et
+        opérationnel DAMA (Chapitre 3.6, p. 64).
+      - Assurez l'alignement sémantique et des métadonnées en utilisant les 
+        définitions DAMA (Chapitre 9, p. 236).
+      - Confirmer que les attentes du cycle de vie pour les contrôles 
+        opérationnels suivent les points de contrôle DAMA (Chapitre 4.3, p. 92).
+      - Valider la transparence selon les principes de communication de 
+        gouvernance DAMA (Chapitre 3.4, p. 60).
+      notes:
+      - Utilisez la cartographie des parties prenantes DCAM pour assurer 
+        l'adhésion opérationnelle.
+    - number: 5
+      name: Approuver et publier les normes opérationnelles
+      prerequisite: Nécessite l'approbation de l'autorité de gouvernance
+      deliverable: Pack d'approbation des normes opérationnelles
+      recommendations:
+      - Approuver les standards en utilisant les directives d'autorité et 
+        d'escalade DAMA (Chapitre 3.4, p. 60–61).
+      - S'assurer que la publication respecte les règles de documentation 
+        d'artefact DAMA (Annexe du Chapitre 3, p. 69–70).
+      - Confirmez que les normes soutiennent les attentes du cycle de vie et de 
+        qualité DAMA (Chapitres 10 et 11).
+      - S'assurer que les responsabilités de gestion sont reflétées conformément
+        au modèle de gouvernance DAMA (Chapitre 3.2, p. 55–57).
+      notes:
+      - Utiliser la logique de préparation à la gouvernance CMMI.
+  DSO-03:
+    title: Approuvez les règles opérationnelles, les flux de travail et les 
+      responsabilités
+    procedures:
+    - number: 1
+      name: Établir la charte du Conseil des Opérations de Données
+      prerequisite: Nécessite des livrables DSO-02
+      deliverable: Charte approuvée
+      recommendations:
+      - Établissez la charte en utilisant les directives d'autorité de 
+        gouvernance DAMA pour les instances décisionnelles opérationnelles 
+        (Chapitre 3.4, p. 60).
+      - Assurez-vous que les rôles reflètent les responsabilités de stewardship 
+        et de gouvernance opérationnelle DAMA (Chapitre 3.2, p. 55–57).
+      - Valider l'alignement structurel avec l'architecture fonctionnelle de 
+        gouvernance DAMA (Figure 3-2, p. 53).
+      - Documenter la charte selon les règles de formatage d'artefact DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les critères d’autorité de gouvernance DCAM.
+    - number: 2
+      name: Attribuer les rôles de gouvernance opérationnelle
+      prerequisite: Nécessite des descriptions de rôles
+      deliverable: Enregistrement d'affectation des rôles
+      recommendations:
+      - Attribuer les rôles en utilisant les cartes de compétences DAMA pour 
+        stewards, custodians et propriétaires opérationnels (Chapitre 4, p. 
+        86–89).
+      - S'assurer que les droits de décision suivent les directives d'escalade 
+        de gouvernance DAMA (Chapitre 3.4, p. 60).
+      - Validez la clarté des rôles à travers les phases du cycle de vie en 
+        utilisant les points de contrôle DAMA (Chapitre 4.3, p. 92).
+      - Documenter les affectations en utilisant la structure d'artefact DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les indicateurs de préparation comportementale IDGC pour les 
+        rôles opérationnels.
+    - number: 3
+      name: Mettre en place des forums décisionnels opérationnels
+      prerequisite: Nécessite l'approbation de la charte
+      deliverable: Calendrier de gouvernance des opérations et modèles
+      recommendations:
+      - Mettez en œuvre des forums suivant les directives DAMA pour les 
+        processus décisionnels opérationnels de gouvernance (Chapitre 3.3, p. 
+        58–59).
+      - Assurez la transparence et la responsabilité telles que définies par les
+        principes de gouvernance DAMA (Chapitre 3, p. 51).
+      - Valider les impacts sémantiques et métadonnées en utilisant les 
+        directives DAMA (Chapitres 9 et 10).
+      - Documentez les forums en utilisant les conventions d'artefact DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utilisez la discipline de réunion CMMI.
+    - number: 4
+      name: Lancer les cycles de revue opérationnelle
+      prerequisite: Nécessite des forums définis
+      deliverable: Procès-verbal de la première revue
+      recommendations:
+      - Lancer les revues en utilisant les directives de supervision 
+        opérationnelle DAMA (Chapitre 3.3, p. 58).
+      - Validez l'alignement du cycle de vie basé sur les points de contrôle 
+        DAMA pour les transitions de données opérationnelles (Chapitre 4.3, p. 
+        92).
+      - Confirmer l’intégrité des métadonnées et la clarté de la traçabilité en 
+        utilisant les règles DAMA (Chapitre 9, p. 236).
+      - Documenter les procès-verbaux en utilisant les normes de documentation 
+        DAMA (Annexe du Chapitre 3, p. 69–70).
+      notes:
+      - Utiliser les pratiques d'assurance de revue DCAM.
+    - number: 5
+      name: Maintenir l'opération de gouvernance opérationnelle
+      prerequisite: Nécessite un rythme de réunions
+      deliverable: Journal d'activité des opérations
+      recommendations:
+      - Maintenir l'opération conformément aux directives DAMA pour la 
+        continuité de la gouvernance (Chapitre 3.6, p. 64).
+      - Valider que les activités respectent les normes opérationnelles et 
+        métadonnées DAMA (Chapitres 1, 9, 10).
+      - Assurer l'alignement du cycle de vie en utilisant les points de contrôle
+        opérationnels de DAMA (Chapitre 4.3, p. 92).
+      - Confirmer la conformité de la documentation avec la structure d'artefact
+        DAMA (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les pratiques de surveillance CMMI.
+  DSO-04:
+    title: Intégrez la gouvernance opérationnelle dans les routines 
+      organisationnelles et de domaine
+    procedures:
+    - number: 1
+      name: Intégrer les points de contrôle opérationnels dans les flux de 
+        travail des domaines
+      prerequisite: Nécessite des rôles et normes DSO-03
+      deliverable: Modèles de workflow mis à jour
+      recommendations:
+      - Intégrer des points de contrôle selon les directives DAMA pour la 
+        gestion opérationnelle contrôlée des données (Chapitre 1, p. 19).
+      - S'assurer que les contrôles reflètent la supervision du cycle de vie 
+        DAMA pour les étapes opérationnelles (Chapitre 4.3, p. 92).
+      - Intégrer les contrôles de métadonnées et de qualité suivant les règles 
+        DAMA pour les données opérationnelles (Chapitres 9 et 11).
+      - Confirmer que les responsables assurent une supervision opérationnelle 
+        conforme aux rôles de stewardship DAMA (Chapitre 4, p. 86).
+      notes:
+      - Utilisez les méthodes d'alignement des flux de travail DCAM.
+    - number: 2
+      name: Intégrer les critères opérationnels dans la conception des systèmes 
+        et des activités commerciales
+      prerequisite: Nécessite des standards
+      deliverable: Modèles opérationnels gouvernés
+      recommendations:
+      - Intégrez les critères en utilisant les directives du cycle de vie et 
+        opérationnelles DAMA (Chapitre 4.3, p. 92).
+      - Assurez-vous que les décisions de conception reflètent les règles de 
+        métadonnées et sémantiques DAMA (Chapitres 9 et 10).
+      - Valider l'alignement avec les dimensions qualité DAMA (Chapitre 11, p. 
+        308).
+      - Documenter les modèles intégrés en utilisant les directives d'artefacts 
+        DAMA (Annexe Chapitre 3, p. 69).
+      notes:
+      - Utiliser la vérification de conception CMMI.
+    - number: 3
+      name: Mettre à jour la documentation du cycle de vie avec les exigences 
+        opérationnelles
+      prerequisite: Nécessite une refonte des flux de travail
+      deliverable: Documentation opérationnelle mise à jour
+      recommendations:
+      - Documentez le cycle de vie en utilisant les directives DAMA pour les 
+        transitions opérationnelles de données et la supervision structurée 
+        (Chapitre 4.3, p. 92).
+      - Assurer l'alignement avec les règles de métadonnées et sémantiques DAMA 
+        (Chapitres 9 et 10).
+      - Confirmer que les responsabilités de gestion sont clairement attribuées 
+        (Chapitre 3.2, p. 55).
+      - Valider l'exhaustivité basée sur les dimensions qualité DAMA (Chapitre 
+        11).
+      notes:
+      - Utiliser les critères de capacité du cycle de vie DCAM.
+    - number: 4
+      name: Appliquer des contrôles opérationnels aux points de décision métier
+      prerequisite: Nécessite des flux de travail gouvernés
+      deliverable: Preuves des contrôles opérationnels
+      recommendations:
+      - Appliquer les contrôles conformément aux attentes opérationnelles et 
+        qualité DAMA (Chapitres 1 et 11).
+      - Confirmer l'alignement avec les points de contrôle du cycle de vie pour 
+        la gestion opérationnelle des données (Chapitre 4.3, p. 92).
+      - Assurez-vous que les points de décision appliquent les règles de 
+        métadonnées DAMA et la supervision des gestionnaires (Chapitres 3 et 9).
+      - Documenter les résultats des contrôles pour audit et conformité 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utilisez la logique de vérification CMMI.
+    - number: 5
+      name: Suivre l'adhérence opérationnelle à travers les domaines
+      prerequisite: Nécessite des routines de surveillance
+      deliverable: Registre de conformité opérationnelle
+      recommendations:
+      - Suivre l’adhérence en utilisant les directives de surveillance de 
+        gouvernance DAMA (Chapitre 3.6, p. 64).
+      - Assurez-vous que le suivi couvre les métadonnées opérationnelles, la 
+        traçabilité et la qualité (Chapitres 9 à 11).
+      - Validez que les écarts suivent les règles d'escalade DAMA (Chapitre 3.4,
+        p. 60).
+      - Confirmez l'implication des stewards et propriétaires (Chapitre 4, p. 
+        86).
+      notes:
+      - Utiliser les diagnostics de capacité opérationnelle DCAM.
+  DSO-06:
+    title: Automatiser la validation et la surveillance opérationnelles
+    procedures:
+    - number: 1
+      name: Définir les indicateurs de validation opérationnelle
+      prerequisite: Nécessite des workflows DSO-04
+      deliverable: Ensemble opérationnel KPI
+      recommendations:
+      - Définir les KPI selon les directives DAMA pour l'efficacité 
+        opérationnelle, la complétude des métadonnées et la qualité (Chapitres 
+        1, 9, 11).
+      - Assurer que les indicateurs reflètent les attentes du cycle de vie DAMA 
+        pour des transitions opérationnelles stables (Chapitre 4.3, p. 92).
+      - Valider l'alignement avec les rôles de stewardship et de propriété DAMA 
+        (Chapitre 3.2, p. 55).
+      - Documentez les KPI en utilisant les modèles d'artefacts DAMA (Annexe du 
+        Chapitre 3, p. 69).
+      notes:
+      - Utilisez les indicateurs de performance DCAM.
+    - number: 2
+      name: Établissez des règles automatisées de validation opérationnelle
+      prerequisite: Nécessite des critères opérationnels
+      deliverable: Ensemble de règles opérationnelles automatisées
+      recommendations:
+      - Établir des règles suivant les règles opérationnelles et de métadonnées 
+        DAMA (Chapitres 1 et 9).
+      - Assurer que l'automatisation couvre les points de contrôle du cycle de 
+        vie et les dimensions de qualité (Chapitres 4.3 et 11).
+      - Documenter les règles pour l’exécution automatisée et l’audit (Chapitre 
+        3 Annexe, p. 69).
+      notes:
+      - Utiliser la préparation à l’automatisation CMMI.
+    - number: 3
+      name: Mettre en œuvre des tableaux de bord de surveillance opérationnelle
+      prerequisite: Nécessite des règles de validation
+      deliverable: Tableau de bord de surveillance opérationnelle
+      recommendations:
+      - Mettre en œuvre des tableaux de bord selon les principes de surveillance
+        de gouvernance DAMA (Chapitre 3.6, p. 64).
+      - Inclure les indicateurs opérationnels, de qualité et de métadonnées 
+        (Chapitres 1, 9, 11).
+      - Assurez l'alignement du cycle de vie en suivant les points de contrôle 
+        opérationnels DAMA (Chapitre 4.3, p. 92).
+      - Cartographiez les indicateurs aux rôles de gestionnaire et propriétaire 
+        (Chapitre 4, p. 86).
+      notes:
+      - Utiliser les pratiques de visualisation DCAM.
+    - number: 4
+      name: Activer les alertes opérationnelles automatisées
+      prerequisite: Nécessite des tableaux de bord actifs
+      deliverable: Flux d’alerte opérationnel
+      recommendations:
+      - Activer les alertes suivant les pratiques d'escalade et de supervision 
+        DAMA (Chapitre 3.4, p. 60).
+      - S'assurer que les alertes reflètent les lacunes de métadonnées ou les 
+        problèmes de qualité (Chapitres 9 et 11).
+      - Valider les déclencheurs d'alerte par rapport aux points de contrôle du 
+        cycle de vie (Chapitre 4.3, p. 92).
+      - Confirmer les responsabilités de triage du gestionnaire (Chapitre 4, p. 
+        86).
+      notes:
+      - Utiliser la logique d’action corrective CMMI.
+    - number: 5
+      name: Maintenir la gouvernance opérationnelle automatisée
+      prerequisite: Nécessite une maturité opérationnelle
+      deliverable: Journal opérationnel des opérations
+      recommendations:
+      - Maintenir l'automatisation en suivant les directives DAMA pour la 
+        continuité de la gouvernance (Chapitre 3.6, p. 64).
+      - Assurer l'alignement avec les règles opérationnelles et de métadonnées 
+        DAMA (Chapitres 1 et 9).
+      - Valider la supervision du cycle de vie en utilisant les points de 
+        contrôle DAMA (Chapitre 4.3, p. 92).
+      - Confirmez que la documentation suit la structure d'artefact DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les évaluations opérationnelles DCAM.
+  DSO-09:
+    title: Améliorer continuellement la maturité opérationnelle en utilisant des
+      preuves
+    procedures:
+    - number: 1
+      name: Examinez les tendances de performance opérationnelle
+      prerequisite: Nécessite une base DSO-06
+      deliverable: Analyse des tendances opérationnelles
+      recommendations:
+      - Revoir les tendances suivant les directives DAMA pour l'évaluation de la
+        performance opérationnelle (Chapitre 3.6, p. 64).
+      - Valider les tendances en utilisant les indicateurs de qualité et de 
+        métadonnées DAMA (Chapitres 9 et 11).
+      - Confirmez les implications du cycle de vie en utilisant les points de 
+        contrôle opérationnels DAMA (Chapitre 4.3, p. 92).
+      - Documenter les tendances en utilisant les standards d'artefacts DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser le scoring de maturité DCAM.
+    - number: 2
+      name: Améliorez les flux de travail opérationnels à l'aide d'informations 
+        sur la performance
+      prerequisite: Nécessite une analyse des tendances
+      deliverable: Flux de travail opérationnels mis à jour
+      recommendations:
+      - Améliorez les flux de travail suivant les directives de raffinement 
+        opérationnel DAMA (Chapitre 1).
+      - Valider les améliorations en utilisant les règles de qualité et de 
+        métadonnées DAMA (Chapitres 9 et 11).
+      - Assurez l'alignement du cycle de vie en suivant les points de contrôle 
+        opérationnels DAMA (Chapitre 4.3, p. 92).
+      - Confirmer l'alignement de la propriété avec le modèle de gouvernance 
+        DAMA (Chapitre 3.2, p. 55).
+      notes:
+      - Utiliser les techniques d'amélioration CMMI.
+    - number: 3
+      name: Comparer les pratiques opérationnelles aux standards externes
+      prerequisite: Nécessite un profil de maturité
+      deliverable: Preuve de référence opérationnelle
+      recommendations:
+      - Étalonner en utilisant les attentes DAMA pour la comparabilité externe 
+        (Chapitre 3.6, p. 64).
+      - Inclure des composants opérationnels, qualité et métadonnées (Chapitres 
+        1, 9, 11).
+      - Valider les impacts du cycle de vie en utilisant les points de contrôle 
+        DAMA (Chapitre 4.3, p. 92).
+      - Documentez les résultats en suivant les normes d'artefact DAMA (Chapitre
+        3 Annexe, p. 69).
+      notes:
+      - Utilisez le benchmarking DCAM.
+    - number: 4
+      name: Améliorer la logique d'automatisation opérationnelle
+      prerequisite: Nécessite une automatisation DSO-06
+      deliverable: Ensemble d'automatisation opérationnelle mis à jour
+      recommendations:
+      - Améliorer la logique d'automatisation en suivant les métadonnées et 
+        règles de qualité DAMA (Chapitres 9 et 11).
+      - Validez les changements en utilisant la supervision du cycle de vie DAMA
+        (Chapitre 4.3, p. 92).
+      - Assurer l'approbation du steward pour les modifications logiques 
+        (Chapitre 3.4, p. 60).
+      - Confirmez que la documentation suit les modèles d'artefacts DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser la maturité d'automatisation CMMI.
+    - number: 5
+      name: Maintenez un cycle d'amélioration opérationnelle continue
+      prerequisite: Nécessite un cycle d'optimisation
+      deliverable: Plan d'amélioration opérationnelle
+      recommendations:
+      - Maintenir les cycles suivant les directives DAMA pour le raffinement 
+        opérationnel continu (Chapitre 3.6, p. 64).
+      - Assurer que les boucles de rétroaction intègrent les leçons des 
+        métadonnées et de la qualité (Chapitres 9 à 11).
+      - Valider l'alignement du cycle de vie en utilisant les points de contrôle
+        opérationnels DAMA (Chapitre 4.3, p. 92).
+      - Confirmer que la documentation suit le formatage des artefacts DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utilisez la cartographie de l'évolution des capacités DCAM.

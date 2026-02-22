@@ -1,6 +1,8 @@
 app:
   title: "🛡️ DOMMx Technical Diagnostic"
   show_intro: true
+  language_default: us
+  language_posible: [us,es,pt] 
 
 intro:
   heading: "Welcome to DOMMx Assessment"

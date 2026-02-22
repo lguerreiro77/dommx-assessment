@@ -1,0 +1,484 @@
+domain:
+  id: 4
+  name: Operações de Dados (DSO)
+action_catalog:
+  DSO-01:
+    title: Estabelecer princípios operacionais de manuseio de dados e escopo
+    procedures:
+    - number: 1
+      name: Definir princípios operacionais de manuseio de dados
+      prerequisite: Requer identificação de domínios operacionais
+      deliverable: Documento de princípios operacionais
+      recommendations:
+      - Definir princípios operacionais seguindo a orientação DAMA para manuseio
+        de dados, supervisão de processos e estabilidade operacional (Capítulo 
+        1, p. 19–22).
+      - Garantir alinhamento com as expectativas do DAMA para responsabilidades 
+        de stewardship e custodial em estágios operacionais (Capítulo 4, p. 
+        86–89).
+      - Validar que princípios refletem requisitos DAMA para metadados, linhagem
+        e controle de qualidade em atividades operacionais (Capítulos 9 a 11).
+      - Documentar princípios usando diretrizes de artefatos DAMA para clareza 
+        de governança (Apêndice do Capítulo 3, p. 69).
+      notes:
+      - Usar critérios de capacidade DCAM para garantir que os princípios cubram
+        as áreas necessárias de manuseio operacional de dados.
+    - number: 2
+      name: Rascunhar fluxos de trabalho operacionais iniciais
+      prerequisite: Requer princípios definidos
+      deliverable: Workflow operacional v0.1
+      recommendations:
+      - Rascunhe fluxos de trabalho conforme orientações do ciclo de vida DAMA 
+        para criação, modificação e uso controlados (Capítulo 4.3, p. 92).
+      - Garanta que os fluxos de trabalho reflitam as expectativas de metadados 
+        DAMA, incluindo definições, formatos e identificadores-chave (Capítulo 
+        9, p. 236).
+      - Validar estrutura do fluxo de trabalho usando pontos de verificação de 
+        qualidade DAMA como precisão, completude e consistência (Capítulo 11, p.
+        308–311).
+      - Confirme que as responsabilidades de governança são aplicadas a cada 
+        etapa do fluxo de trabalho em alinhamento com os princípios de 
+        governança DAMA (Capítulo 3.2, p. 55).
+      notes:
+      - Usar disciplina de gestão de processos CMMI para manter estabilidade do 
+        fluxo de trabalho.
+    - number: 3
+      name: Identificar elementos preliminares de dados operacionais
+      prerequisite: Requer mapeamento de stakeholders
+      deliverable: Lista operacional de elementos de dados
+      recommendations:
+      - Identificar elementos usando definições de metadados DAMA para atributos
+        de dados operacionais (Capítulo 9, p. 236).
+      - Validar relevância operacional com base nas expectativas de ciclo de 
+        vida e qualidade do DAMA (Capítulo 4.3, p. 92).
+      - Confirmar que os elementos seguem as orientações de coerência semântica 
+        e estrutural do DAMA (Capítulo 3.3, p. 58).
+      - Documentar elementos usando estruturas de artefatos DAMA (Apêndice do 
+        Capítulo 3, p. 69).
+      notes:
+      - Utilize análise de criticidade DCAM para priorizar elementos de dados 
+        operacionais essenciais.
+    - number: 4
+      name: Atribuir propriedade operacional provisória de dados
+      prerequisite: Requer inventário de elementos operacionais
+      deliverable: Matriz de propriedade operacional
+      recommendations:
+      - Atribuir propriedade seguindo descrições de papéis de stewardship e 
+        custodial DAMA (Capítulo 4, p. 86–89).
+      - Garantir que os proprietários possam suportar pontos de verificação do 
+        ciclo de vida em ingestão, transformação e uso (Capítulo 4.3, p. 92).
+      - Validar clareza da autoridade usando orientações de decisão e 
+        escalonamento DAMA (Capítulo 3.4, p. 60).
+      - Confirmar documentação usando padrões de artefatos DAMA (Apêndice do 
+        Capítulo 3, p. 69).
+      notes:
+      - Usar indicadores de prontidão comportamental IDGC para papéis 
+        operacionais.
+    - number: 5
+      name: Publique diretrizes operacionais iniciais
+      prerequisite: Requer fluxo de trabalho e propriedade
+      deliverable: Briefing operacional de onboarding
+      recommendations:
+      - Publicar diretrizes alinhadas às expectativas de comunicação de 
+        governança DAMA (Capítulo 3.6, p. 64).
+      - Garantir que diretrizes expressem claramente responsabilidades derivadas
+        das expectativas de stewardship DAMA (Capítulo 4, p. 86).
+      - Incluir controles operacionais de qualidade e metadados extraídos de 
+        DAMA (Capítulos 10 e 11).
+      - Valide estrutura seguindo padrões de documentação DAMA (Apêndice do 
+        Capítulo 3, p. 69–70).
+      notes:
+      - Utilize lógica de comunicação CMMI para melhorar o entendimento do 
+        usuário.
+  DSO-02:
+    title: Formalizar stewardship operacional e padrões
+    procedures:
+    - number: 1
+      name: Consolidar requisitos operacionais
+      prerequisite: Requer DSO-01 completos
+      deliverable: Registros de requisitos operacionais
+      recommendations:
+      - Consolidar requisitos seguindo orientações operacionais do DAMA para 
+        papéis e processos de manipulação de dados (Capítulo 1).
+      - Validar alinhamento com expectativas de ciclo de vida DAMA para criação,
+        qualidade e uso (Capítulo 4.3, p. 92).
+      - Confirme que os requisitos refletem expectativas de metadata e lineage 
+        DAMA (Capítulo 9, p. 236).
+      - Garantir que os papéis de gestão sejam definidos seguindo as descrições 
+        do modelo de papéis DAMA (Capítulo 3.2, p. 55–57).
+      notes:
+      - Use métodos de priorização de requisitos DCAM.
+    - number: 2
+      name: Produzir fluxos operacionais formais
+      prerequisite: Requer requisitos validados
+      deliverable: Workflows operacionais v1.0
+      recommendations:
+      - Produzir fluxos de trabalho refletindo checkpoints do ciclo de vida do 
+        DAMA, incluindo criação, transformação e aposentadoria (Capítulo 4.3, p.
+        92).
+      - Garantir inclusão de controles de qualidade de metadados DAMA (Capítulo 
+        9, p. 236).
+      - Validar consistência com dimensões de qualidade DAMA como precisão e 
+        integridade (Capítulo 11, p. 308–311).
+      - Documentar fluxos de trabalho usando diretrizes de artefatos DAMA 
+        (Capítulo 3 Apêndice, p. 69–70).
+      notes:
+      - Use orientações de verificação de processo CMMI.
+    - number: 3
+      name: Defina padrões operacionais de dados
+      prerequisite: Requer fluxos de trabalho v1.0
+      deliverable: Manual de Padrões de Dados Operacionais
+      recommendations:
+      - Definir padrões usando regras operacionais DAMA para manuseio, acesso, 
+        atualização e arquivamento de dados (Capítulo 1, p. 19–22).
+      - Validar padrões usando critérios de metadados e semânticos DAMA 
+        (Capítulos 9 e 10).
+      - Garantir alinhamento do ciclo de vida usando definição de checkpoints e 
+        transições DAMA (Capítulo 4.3, p. 92).
+      - Confirmar supervisão de stewardship baseada em papéis de governança DAMA
+        (Capítulo 3.2, p. 55–57).
+      notes:
+      - Usar expectativas de manuseio de dados GDPR para reforçar padrões 
+        operacionais.
+    - number: 4
+      name: Validar padrões operacionais com stakeholders de negócio
+      prerequisite: Requer rascunho de padrões
+      deliverable: Registro de alinhamento
+      recommendations:
+      - Validar padrões usando expectativas DAMA de alinhamento relacional e 
+        operacional (Capítulo 3.6, p. 64).
+      - Garanta alinhamento semântico e de metadados usando definições DAMA 
+        (Capítulo 9, p. 236).
+      - Confirmar que expectativas do ciclo de vida para controles operacionais 
+        seguem os pontos de verificação DAMA (Capítulo 4.3, p. 92).
+      - Validar transparência conforme princípios de comunicação de governança 
+        do DAMA (Capítulo 3.4, p. 60).
+      notes:
+      - Usar mapeamento de stakeholders do DCAM para garantir engajamento 
+        operacional.
+    - number: 5
+      name: Aprove e publique padrões operacionais
+      prerequisite: Requer aprovação da autoridade de governança
+      deliverable: Pacote de aprovação de padrões operacionais
+      recommendations:
+      - Aprovar padrões usando autoridade e orientações de escalonamento DAMA 
+        (Capítulo 3.4, p. 60–61).
+      - Garantir que publicação siga regras de documentação de artefatos do DAMA
+        (Apêndice do Capítulo 3, p. 69–70).
+      - Confirmar que padrões suportam expectativas de ciclo de vida e qualidade
+        DAMA (Capítulos 10 e 11).
+      - Assegure que as responsabilidades de governança estejam refletidas 
+        conforme o modelo de governança DAMA (Capítulo 3.2, p. 55–57).
+      notes:
+      - Usar lógica de preparação de governança CMMI.
+  DSO-03:
+    title: Aprovar regras operacionais, fluxos de trabalho e responsabilidades
+    procedures:
+    - number: 1
+      name: Estabelecer estatuto do Conselho de Operações de Dados
+      prerequisite: Requer entregáveis DSO-02
+      deliverable: Estatuto aprovado
+      recommendations:
+      - Estabelecer o estatuto usando a orientação de autoridade de governança 
+        DAMA para órgãos decisórios operacionais (Capítulo 3.4, p. 60).
+      - Garantir que papéis reflitam responsabilidades de stewardship e 
+        governança operacional DAMA (Capítulo 3.2, p. 55–57).
+      - Validar alinhamento estrutural com arquitetura funcional de governança 
+        do DAMA (Figura 3-2, p. 53).
+      - Documentar a carta seguindo regras de formatação de artefatos DAMA 
+        (Capítulo 3 Apêndice, p. 69).
+      notes:
+      - Usar critérios de autoridade de governança DCAM.
+    - number: 2
+      name: Atribuir papéis de governança operacional
+      prerequisite: Requer descrições de papéis
+      deliverable: Registro de atribuição de papéis
+      recommendations:
+      - Atribuir papéis usando mapas de competência DAMA para stewards, 
+        custodians e proprietários operacionais (Capítulo 4, p. 86–89).
+      - Garantir que direitos de decisão sigam orientação de escalonamento de 
+        governança DAMA (Capítulo 3.4, p. 60).
+      - Validar clareza de papéis nas fases do ciclo de vida usando checkpoints 
+        DAMA (Capítulo 4.3, p. 92).
+      - Documentar as atribuições usando estrutura de artefatos DAMA (Capítulo 3
+        Apêndice, p. 69).
+      notes:
+      - Usar indicadores de prontidão comportamental IDGC para papéis 
+        operacionais.
+    - number: 3
+      name: Implemente fóruns de decisão operacional
+      prerequisite: Requer aprovação da carta
+      deliverable: Calendário e templates de governança operacional
+      recommendations:
+      - Implementar fóruns seguindo orientação DAMA para processos decisórios de
+        governança operacional (Capítulo 3.3, p. 58–59).
+      - Assegure transparência e responsabilidade conforme definido pelos 
+        princípios de governança DAMA (Capítulo 3, p. 51).
+      - Validar impactos semânticos e de metadados usando orientações DAMA 
+        (Capítulos 9 e 10).
+      - Documentar fóruns usando convenções de artefatos DAMA (Capítulo 3 
+        Apêndice, p. 69).
+      notes:
+      - Use disciplina de reuniões CMMI.
+    - number: 4
+      name: Iniciar ciclos operacionais de revisão
+      prerequisite: Requer fóruns definidos
+      deliverable: Atas da primeira revisão
+      recommendations:
+      - Iniciar revisões usando orientação de supervisão operacional DAMA 
+        (Capítulo 3.3, p. 58).
+      - Validar alinhamento do ciclo de vida com base em checkpoints DAMA para 
+        transições de dados operacionais (Capítulo 4.3, p. 92).
+      - Confirmar integridade de metadados e clareza de linhagem usando regras 
+        DAMA (Capítulo 9, p. 236).
+      - Documentar atas usando padrões de documentação DAMA (Capítulo 3 
+        Apêndice, p. 69–70).
+      notes:
+      - Usar práticas de garantia de revisão DCAM.
+    - number: 5
+      name: Mantenha operação de governança operacional
+      prerequisite: Requer cadência de reuniões
+      deliverable: Log de atividade operacional
+      recommendations:
+      - Manter operação conforme orientação DAMA para continuidade da governança
+        (Capítulo 3.6, p. 64).
+      - Validar que atividades respeitam padrões operacionais e de metadados 
+        DAMA (Capítulos 1, 9, 10).
+      - Garantir alinhamento do ciclo de vida usando checkpoints operacionais 
+        DAMA (Capítulo 4.3, p. 92).
+      - Confirmar conformidade da documentação com estrutura de artefatos DAMA 
+        (Capítulo 3 Apêndice, p. 69).
+      notes:
+      - Utilizar práticas de monitoramento CMMI.
+  DSO-04:
+    title: Incorporar governança operacional nas rotinas organizacionais e de 
+      domínio
+    procedures:
+    - number: 1
+      name: Incorporar pontos de controle operacionais em fluxos de trabalho de 
+        domínio
+      prerequisite: Requer papéis e padrões DSO-03
+      deliverable: Modelos de fluxo de trabalho atualizados
+      recommendations:
+      - Incorporar checkpoints seguindo orientações do DAMA para manipulação 
+        operacional controlada de dados (Capítulo 1, p. 19).
+      - Garantir que controles reflitam supervisão do ciclo de vida do DAMA para
+        estágios operacionais (Capítulo 4.3, p. 92).
+      - Integre metadados e verificações de qualidade seguindo as regras DAMA 
+        para dados operacionais (Capítulos 9 e 11).
+      - Confirmar que stewards realizam supervisão operacional consistente com 
+        papéis de stewardship DAMA (Capítulo 4, p. 86).
+      notes:
+      - Usar métodos de alinhamento de fluxo de trabalho DCAM.
+    - number: 2
+      name: Integrar critérios operacionais no design de sistemas e negócios
+      prerequisite: Requer padrões
+      deliverable: Modelos operacionais governados
+      recommendations:
+      - Integrar critérios usando o ciclo de vida e orientações operacionais 
+        DAMA (Capítulo 4.3, p. 92).
+      - Garantir que decisões de design reflitam regras de metadados e semântica
+        DAMA (Capítulos 9 e 10).
+      - Validar alinhamento com dimensões de qualidade DAMA (Capítulo 11, p. 
+        308).
+      - Documentar templates integrados usando orientação de artefatos DAMA 
+        (Capítulo 3 Apêndice, p. 69).
+      notes:
+      - Use verificação de design CMMI.
+    - number: 3
+      name: Atualizar documentação do ciclo de vida com requisitos operacionais
+      prerequisite: Requer redesenho de fluxo de trabalho
+      deliverable: Documentação operacional atualizada
+      recommendations:
+      - Documentar ciclo de vida usando orientação DAMA para transições 
+        operacionais de dados e supervisão estruturada (Capítulo 4.3, p. 92).
+      - Garantir alinhamento com regras de metadados e semântica DAMA (Capítulos
+        9 e 10).
+      - Confirmar que responsabilidades de gestão estão claramente atribuídas 
+        (Capítulo 3.2, p. 55).
+      - Validar completude com base nas dimensões de qualidade do DAMA (Capítulo
+        11).
+      notes:
+      - Usar critérios de capacidade do ciclo de vida DCAM.
+    - number: 4
+      name: Aplicar verificações operacionais em pontos de decisão de negócio
+      prerequisite: Requer workflows governados
+      deliverable: Evidência de controles operacionais
+      recommendations:
+      - Aplicar verificações seguindo expectativas operacionais e de qualidade 
+        DAMA (Capítulos 1 e 11).
+      - Confirmar alinhamento com pontos de controle do ciclo de vida para 
+        manipulação operacional de dados (Capítulo 4.3, p. 92).
+      - Garantir que pontos de decisão apliquem regras de metadados DAMA e 
+        supervisão de stewardship (Capítulos 3 e 9).
+      - Documentar resultados de checagem para auditoria e conformidade 
+        (Apêndice do Capítulo 3, p. 69).
+      notes:
+      - Utilize lógica de verificação CMMI.
+    - number: 5
+      name: Acompanhar aderência operacional entre domínios
+      prerequisite: Requer rotinas de monitoramento
+      deliverable: Registro de conformidade operacional
+      recommendations:
+      - Rastrear aderência usando orientações de monitoramento de governança 
+        DAMA (Capítulo 3.6, p. 64).
+      - Garantir que o acompanhamento cubra metadados operacionais, linhagem e 
+        qualidade (Capítulos 9 a 11).
+      - Validar que desvios seguem regras de escalonamento DAMA (Capítulo 3.4, 
+        p. 60).
+      - Confirmar envolvimento de gestores e proprietários (Capítulo 4, p. 86).
+      notes:
+      - Use diagnósticos de capacidade operacional DCAM.
+  DSO-06:
+    title: Automatizar validação e monitoramento operacional
+    procedures:
+    - number: 1
+      name: Definir indicadores operacionais de validação
+      prerequisite: Requer fluxos de trabalho DSO-04
+      deliverable: Conjunto operacional KPI
+      recommendations:
+      - Definir KPIs seguindo a orientação DAMA para eficiência operacional, 
+        completude e qualidade de metadados (Capítulos 1, 9, 11).
+      - Garantir que indicadores reflitam expectativas de ciclo de vida DAMA 
+        para transições operacionais estáveis (Capítulo 4.3, p. 92).
+      - Validar alinhamento com papéis de stewardship e propriedade DAMA 
+        (Capítulo 3.2, p. 55).
+      - Documentar KPIs usando padrões de artefato DAMA (Capítulo 3 Apêndice, p.
+        69).
+      notes:
+      - Usar indicadores de desempenho DCAM.
+    - number: 2
+      name: Estabelecer regras automatizadas de validação operacional
+      prerequisite: Requer critérios operacionais
+      deliverable: Conjunto automatizado de regras operacionais
+      recommendations:
+      - Estabelecer regras seguindo regras operacionais e de metadados DAMA 
+        (Capítulos 1 e 9).
+      - Assegure que a automação cobre checkpoints do ciclo de vida e dimensões 
+        de qualidade (Capítulos 4.3 e 11).
+      - Documentar regras para execução automatizada e auditoria (Capítulo 3 
+        Apêndice, p. 69).
+      notes:
+      - Usar prontidão para automação CMMI.
+    - number: 3
+      name: Implementar dashboards de monitoramento operacional
+      prerequisite: Requer regras de validação
+      deliverable: Painel de monitoramento operacional
+      recommendations:
+      - Implementar painéis conforme princípios de monitoramento de governança 
+        DAMA (Capítulo 3.6, p. 64).
+      - Incluir indicadores operacionais, de qualidade e de metadados (Capítulos
+        1, 9, 11).
+      - Garantir alinhamento do ciclo de vida seguindo checkpoints operacionais 
+        DAMA (Capítulo 4.3, p. 92).
+      - Mapear indicadores para papéis de gestor e proprietário (Capítulo 4, p. 
+        86).
+      notes:
+      - Use práticas de visualização DCAM.
+    - number: 4
+      name: Habilitar alertas operacionais automatizados
+      prerequisite: Requer dashboards ativos
+      deliverable: Feed operacional de alertas
+      recommendations:
+      - Habilitar alertas conforme práticas de escalonamento e supervisão DAMA 
+        (Capítulo 3.4, p. 60).
+      - Garantir que alertas reflitam lacunas de metadados ou problemas de 
+        qualidade (Capítulos 9 e 11).
+      - Validar gatilhos de alerta contra pontos de verificação do ciclo de vida
+        (Capítulo 4.3, p. 92).
+      - Confirmar responsabilidades de triagem do steward (Capítulo 4, p. 86).
+      notes:
+      - Use lógica de ação corretiva CMMI.
+    - number: 5
+      name: Manter governança operacional automatizada
+      prerequisite: Requer maturidade operacional
+      deliverable: Registro operacional de operações
+      recommendations:
+      - Manter automação seguindo a orientação DAMA para continuidade de 
+        governança (Capítulo 3.6, p. 64).
+      - Garantir alinhamento com regras operacionais e de metadados DAMA 
+        (Capítulos 1 e 9).
+      - Validar supervisão do ciclo de vida usando pontos de controle DAMA 
+        (Capítulo 4.3, p. 92).
+      - Confirme que a documentação segue a estrutura de artefatos DAMA 
+        (Capítulo 3 Apêndice, p. 69).
+      notes:
+      - Use avaliações operacionais DCAM.
+  DSO-09:
+    title: Melhore continuamente a maturidade operacional usando evidências
+    procedures:
+    - number: 1
+      name: Revisar tendências de desempenho operacional
+      prerequisite: Requer baseline DSO-06
+      deliverable: Análise de tendências operacionais
+      recommendations:
+      - Revisar tendências conforme orientação DAMA para avaliação de desempenho
+        operacional (Capítulo 3.6, p. 64).
+      - Validar tendências usando indicadores de qualidade e metadados DAMA 
+        (Capítulos 9 e 11).
+      - Confirmar implicações do ciclo de vida usando pontos de verificação 
+        operacionais DAMA (Capítulo 4.3, p. 92).
+      - Documentar tendências usando padrões de artefatos DAMA (Capítulo 3 
+        Apêndice, p. 69).
+      notes:
+      - Usar pontuação de maturidade DCAM.
+    - number: 2
+      name: Melhorar fluxos operacionais usando insights de desempenho
+      prerequisite: Requer análise de tendências
+      deliverable: Fluxos operacionais atualizados
+      recommendations:
+      - Aprimorar fluxos de trabalho seguindo as orientações de refinamento 
+        operacional DAMA (Capítulo 1).
+      - Validar melhorias usando regras de qualidade e metadados DAMA (Capítulos
+        9 e 11).
+      - Garantir alinhamento do ciclo de vida seguindo checkpoints operacionais 
+        DAMA (Capítulo 4.3, p. 92).
+      - Confirme o alinhamento de propriedade com o modelo de governança DAMA 
+        (Capítulo 3.2, p. 55).
+      notes:
+      - Usar técnicas de melhoria CMMI.
+    - number: 3
+      name: Comparar práticas operacionais com padrões externos
+      prerequisite: Requer perfil de maturidade
+      deliverable: Evidência de benchmark operacional
+      recommendations:
+      - Benchmark usando expectativas DAMA para comparabilidade externa 
+        (Capítulo 3.6, p. 64).
+      - Incluir componentes operacionais, de qualidade e metadados (Capítulos 1,
+        9, 11).
+      - Validar impactos do ciclo de vida usando pontos de verificação DAMA 
+        (Capítulo 4.3, p. 92).
+      - Documentar resultados seguindo padrões de artefatos DAMA (Apêndice do 
+        Capítulo 3, p. 69).
+      notes:
+      - Utilize benchmarking DCAM.
+    - number: 4
+      name: Aprimorar lógica de automação operacional
+      prerequisite: Requer automação DSO-06
+      deliverable: Conjunto atualizado de automação operacional
+      recommendations:
+      - Aprimorar a lógica de automação seguindo metadados e regras de qualidade
+        DAMA (Capítulos 9 e 11).
+      - Validar mudanças usando supervisão do ciclo de vida DAMA (Capítulo 4.3, 
+        p. 92).
+      - Assegure aprovação do gestor para alterações lógicas (Capítulo 3.4, p. 
+        60).
+      - Confirmar que documentação segue padrões de artefatos DAMA (Capítulo 3 
+        Apêndice, p. 69).
+      notes:
+      - Use maturidade de automação CMMI.
+    - number: 5
+      name: Mantenha um ciclo contínuo de melhoria operacional
+      prerequisite: Requer ciclo de otimização
+      deliverable: Plano de melhoria operacional
+      recommendations:
+      - Manter ciclos seguindo a orientação DAMA para refinamento operacional 
+        contínuo (Capítulo 3.6, p. 64).
+      - Garantir que os ciclos de feedback incorporem metadados e lições de 
+        qualidade (Capítulos 9 a 11).
+      - Validar alinhamento do ciclo de vida usando checkpoints operacionais 
+        DAMA (Capítulo 4.3, p. 92).
+      - Confirme que a documentação segue a formatação de artefatos DAMA 
+        (Apêndice do Capítulo 3, p. 69).
+      notes:
+      - Use mapeamento de evolução de capacidade DCAM.

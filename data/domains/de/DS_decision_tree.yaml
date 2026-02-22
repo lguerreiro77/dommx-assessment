@@ -1,0 +1,242 @@
+domain:
+  id: 5
+  name: Datensicherheit (DS)
+  description: "Diese Domäne bewertet die Formalisierung der Data Security Governance,
+    das Vorhandensein gesteuerter Schutzstandards und die Integration von Sicherheitskontrollen
+    über den gesamten Datenlebenszyklus. Data Security konzentriert sich darauf, sicherzustellen,
+    dass Datenbestände vor unbefugtem Zugriff, Verlust oder Missbrauch geschützt sind,
+    unterstützt durch formelles Stewardship, klare Befugnisse und rigorose Überwachungsmechanismen
+    (DAMA-DMBOK2, Kapitel 9).\n"
+maturity_scale:
+  0:
+    maturity_level: Nicht existent
+    meaning: Keine Governance-Praktiken und keine definierten 
+      Verantwortlichkeiten oder Prozesse.
+    interpretation_for_assessment: Zeigt ein vollständiges Fehlen von Struktur 
+      und einen unmittelbaren Bedarf an grundlegenden Maßnahmen an.
+  1:
+    maturity_level: Initial
+    meaning: Aktivitäten erfolgen informell und reaktiv mit wenig oder keiner 
+      Dokumentation.
+    interpretation_for_assessment: Spiegelt Bewusstsein wider, aber auch hohe 
+      Variabilität und operationelles Risiko.
+  2:
+    maturity_level: Im Entstehen
+    meaning: Einige Praktiken existieren, sind jedoch inkonsistent, 
+      undokumentiert oder werden nicht teamübergreifend angewendet.
+    interpretation_for_assessment: Zeigt frühe Entwicklung. Standardisierung und
+      Dokumentation sind notwendig, um Fortschritte zu erzielen.
+  3:
+    maturity_level: Etabliert
+    meaning: Prozesse, Rollen und Richtlinien sind definiert, dokumentiert und 
+      stabil angewendet.
+    interpretation_for_assessment: Demonstriert operationale Konsistenz und 
+      Bereitschaft für strukturiertere Verbesserungen.
+  4:
+    maturity_level: Verwaltet
+    meaning: Governance ist in Arbeitsabläufe integriert und wird durch Tools, 
+      Überwachung und Aufsicht unterstützt.
+    interpretation_for_assessment: Repräsentiert reife Einführung mit 
+      zuverlässiger Ausführung über Teams hinweg.
+  5:
+    maturity_level: Optimiert
+    meaning: Governance ist vollständig eingebettet, wird kontinuierlich 
+      verbessert und entspricht Compliance- und ethischen Erwartungen.
+    interpretation_for_assessment: Repräsentiert fortgeschrittene Reife mit 
+      proaktiver Governance, Optimierung und institutionalisierter 
+      kontinuierlicher Verbesserung.
+questions:
+  Q1:
+    text: Sind Daten-Sicherheitsrichtlinien, Prinzipien und Schutzanforderungen 
+      formell definiert und genehmigt?
+    explanation: Bewertung der Klarheit der Sicherheits-Governance-Grundlagen.
+    objective: Sichere und konforme Datenschutzregeln etablieren.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Data Security; DCAM, Security & Access
+      Control; IDGC, Protection Measures)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Definieren Sie Sicherheitsrichtlinien, Prinzipien und 
+          Schutzanforderungen
+      1:
+        action_code: DS-02
+        description: Verantwortlichkeiten für Sicherheits-Governance und Schutz 
+          zuweisen
+      2:
+        action_code: DS-03
+        description: Sicherheitsrichtlinien und Schutzstandards genehmigen
+      3:
+        action_code: DS-04
+        description: Integrieren Sie Sicherheitsanforderungen in 
+          organisatorische und domänenspezifische Routinen
+      4:
+        action_code: DS-06
+        description: Automatisieren Sie die Validierung von 
+          Sicherheitsrichtlinien und Überwachung des Schutzes
+      5:
+        action_code: DS-09
+        description: Verbessern Sie kontinuierlich Sicherheitspolitiken anhand 
+          von Nachweisen und Audits
+  Q2:
+    text: Werden Identitäts-, Authentifizierungs- und Autorisierungspraxen unter
+      formellen Rollen gesteuert?
+    explanation: Bewertet die Governance von Identität und rollenbasiertem 
+      Zugriff.
+    objective: Stellen Sie kontrollierten, verantwortlichen und prüfbaren 
+      Datenzugang sicher.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Access Roles & Privileges; DCAM, Access
+      Management; IDGC, Accountability)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Governance-Regeln für Identität, Authentifizierung und 
+          Autorisierung definieren
+      1:
+        action_code: DS-02
+        description: Zuweisung formaler Rollen für Zugriffs- und 
+          Identitätsmanagement
+      2:
+        action_code: DS-03
+        description: Genehmigen Sie Identitäts- und Zugriffs-Governance-Prozesse
+      3:
+        action_code: DS-04
+        description: Betreiben Sie gesteuerte Identitäts- und 
+          Zugriffsmanagement-Routinen
+      4:
+        action_code: DS-06
+        description: Automatisierung der Identitätsvalidierung und Überwachung 
+          der Autorisierung
+      5:
+        action_code: DS-09
+        description: Verfeinern Sie Zugriffsrollen kontinuierlich anhand von 
+          Nutzungs- und Risikomessungen
+  Q3:
+    text: Dokumentieren Sie die Satzung gemäß __ACR0__ 
+      Artefaktformatierungsregeln (Kapitel 3 Anhang, S. __ACR1__).
+    explanation: Überprüfung von Aufsicht, Überwachung und 
+      Rezertifizierungsprozessen.
+    objective: Aufrechterhaltung konsistenter Zugriffs-Governance und Sicherheit
+      über alle Systeme hinweg.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Security Controls; DCAM, Control Environment;
+      IDGC, Enforcement Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Definition von Anforderungen für 
+          Zugriffskontrollüberwachung und -prüfung
+      1:
+        action_code: DS-02
+        description: Weisen Sie Verantwortlichkeiten für Zugriffsüberwachung und
+          -prüfung zu
+      2:
+        action_code: DS-03
+        description: Genehmigen Sie Überprüfungszyklen und Regeln für 
+          Zugriffskontrollen
+      3:
+        action_code: DS-04
+        description: Durchführung von Zugriffsüberprüfungen, Überwachung und 
+          Rezertifizierungsroutinen
+      4:
+        action_code: DS-06
+        description: Automatisieren von Zugriffssteuerungsüberwachung und 
+          Alarmierung
+      5:
+        action_code: DS-09
+        description: Verbessern Sie kontinuierlich die Zugriffs-Governance 
+          mithilfe von Leistungskennzahlen
+  Q4:
+    text: Etablieren Sie automatisierte semantische und strukturelle 
+      Validierungsregeln
+    explanation: Bewertet die konsistente Nutzung von Schutzmechanismen.
+    objective: Stärken Sie Vertraulichkeit, Minimierung und ethische 
+      Schutzmaßnahmen.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Security Lifecycle; Chapter 12 – Data
+      Lifecycle; DCAM, Security Controls; IDGC, Secure Processes)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Definieren Sie Regeln für Schutzmechanismen und 
+          Datenminimierung
+      1:
+        action_code: DS-02
+        description: Zuweisung von Verantwortlichkeiten für Schutz-Governance
+      2:
+        action_code: DS-03
+        description: Schutz- und Minimierungsregeln genehmigen
+      3:
+        action_code: DS-04
+        description: Einbettung von Schutzmechanismen in 
+          Datenverarbeitungsroutinen
+      4:
+        action_code: DS-06
+        description: Automatisieren von Schutz- und Vertraulichkeitskontrollen
+      5:
+        action_code: DS-09
+        description: Schutz-Governance kontinuierlich durch Metriken verbessern
+  Q5:
+    text: Wird die Sicherheitsleistung (Vorfälle, Verstöße, anomaler Zugriff) 
+      gemessen und analysiert?
+    explanation: Untersucht, ob Kontrollen messbar und kontinuierlich überwacht 
+      werden.
+    objective: Unterstützung proaktiver und evidenzbasierter 
+      Sicherheits-Governance.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Security KPIs & Compliance; DCAM,
+      Measurement; IDGC, Monitoring & Assurance)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Definieren Sie Sicherheitsleistungsindikatoren und 
+          Überwachungsregeln
+      1:
+        action_code: DS-02
+        description: Verantwortlichkeiten für Sicherheitsleistungs-Governance 
+          zuweisen
+      2:
+        action_code: DS-03
+        description: Genehmigen Sie Sicherheits-KPIs, Schwellenwerte und 
+          Überprüfungszyklen
+      3:
+        action_code: DS-04
+        description: Sicherheits-Dashboards und gesteuerte Berichterstattung 
+          implementieren
+      4:
+        action_code: DS-06
+        description: Automatisieren Sie Sicherheitsüberwachung und 
+          Verletzungserkennung
+      5:
+        action_code: DS-09
+        description: Sicherheitsleistung kontinuierlich anhand von Belegen 
+          verbessern
+  Q6:
+    text: Sind ethische, Datenschutz- und verantwortungsbewusste 
+      Nutzungs-Kontrollen in die Sicherheitsgovernance integriert?
+    explanation: Sicherstellen, dass ethische und rechtliche Beschränkungen Teil
+      der Sicherheitsregeln sind.
+    objective: Unterstützen Sie verantwortungsbewusste und konforme 
+      Datenhandhabungspraktiken.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Privacy & Ethical Use; DCAM, Responsible
+      Data Use; IDGC, Ethical Safeguards)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Ethische, Datenschutz- und verantwortungsbewusste 
+          Sicherheitsanforderungen definieren
+      1:
+        action_code: DS-02
+        description: Zuweisung von Rollen für ethische und Datenschutzaufsicht
+      2:
+        action_code: DS-03
+        description: Genehmigen Sie ethische und Privacy-by-Design 
+          Sicherheitsregeln
+      3:
+        action_code: DS-04
+        description: Integrieren Sie ethische und Datenschutzkontrollen in 
+          Sicherheitsroutinen
+      4:
+        action_code: DS-06
+        description: Automatisieren Sie ethische und Datenschutzvalidierung in 
+          der Sicherheit
+      5:
+        action_code: DS-09
+        description: Verbessern Sie ethische Sicherheit kontinuierlich durch 
+          Reviews

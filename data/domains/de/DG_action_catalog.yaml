@@ -1,0 +1,623 @@
+domain:
+  id: 1
+  name: Data Governance (DG)
+action_catalog:
+  DG-01:
+    title: Grundlegende Governance-Prinzipien und -Umfang definieren
+    procedures:
+    - number: 1
+      name: Governance-Prinzipien und -Umfang definieren
+      prerequisite: Erfordert Identifikation von Governance-Themen
+      deliverable: Governance-Umfangsdokument
+      recommendations:
+      - Verwendung der DAMA-Anleitung zur Definition von Governance-Prinzipien 
+        und Entscheidungsdomänen wie in DMBOK2 beschrieben (Kapitel 3, S. 
+        52–54).
+      - Unternehmens- und Domänenumfang gemäß der strukturellen Segmentierung 
+        von DAMA unterscheiden (Kapitel 3.1, S. 49).
+      - Sicherstellen, dass Umfangsgrenzen das DAMA Modell für 
+        Governance-Verantwortlichkeiten basierend auf Rollenbefugnissen und 
+        Entscheidungstypen widerspiegeln (Kapitel 3.2, S. 55–57).
+      - Bestätigen Sie, dass die Stewardship-Ausrichtung gemäß DAMA-Richtlinien 
+        zur Verantwortungszuweisung während der Umfangsdefinition erfolgt 
+        (Kapitel 4, S. 86).
+      notes:
+      - Verwenden Sie DCAM-Fähigkeitsabgrenzung, um sicherzustellen, dass der 
+        definierte Umfang die erforderlichen Datenmanagement-Fähigkeiten 
+        unterstützt.
+      - Integrieren Sie CMMI kritische Prozessbereiche, um Domänen mit frühem 
+        Governance-Interventionsbedarf zu priorisieren.
+    - number: 2
+      name: Entwerfen Sie eine erste Data Governance-Richtlinie
+      prerequisite: Erfordert einen definierten Umfang
+      deliverable: Richtlinienentwurf v0.1
+      recommendations:
+      - Befolgen Sie die Governance-Richtlinienkomponenten von DAMA, 
+        einschließlich Zweck, Umfang, Befugnis und Eskalation (Kapitel 3.5, S. 
+        62).
+      - Stellen Sie die Übereinstimmung mit DAMA Prinzipien für 
+        Verantwortlichkeit und Entscheidungs-Transparenz sicher (Kapitel 3, S. 
+        51).
+      - Strukturierung der Richtlinie unter Verwendung der Artefaktanleitung von
+        DAMA zur Sicherstellung von Vollständigkeit und Rückverfolgbarkeit 
+        (Kapitel 3 Anhang, S. 69–70).
+      - Einbeziehung von DAMA-Stewardship- und Eigentumsverantwortlichkeiten in 
+        Richtlinienaussagen (Kapitel 4, S. 86–89).
+      notes:
+      - Verwenden Sie CMMI Richtlinienformulierungsmethoden, um Klarheit und 
+        überprüfbare Kontrollen in frühen Richtlinienentwürfen zu stärken.
+    - number: 3
+      name: Identifizieren Sie vorläufige Governance-Rollen
+      prerequisite: Erfordert zugeordnete Stakeholder
+      deliverable: Initiale Governance-Rollenliste
+      recommendations:
+      - Verwenden Sie DAMA Rollen-Definitionen für Eigentümer, Steward, 
+        Custodian und Sponsor zur Klassifizierung von Verantwortlichkeiten 
+        (Kapitel 3.2, S. 55–57).
+      - Kartieren Sie Verantwortlichkeiten anhand der DAMA-Erwartungen zur 
+        Verantwortlichkeit für Entscheidungsbefugnis und Eskalation (Kapitel 
+        3.4, S. 60).
+      - "Validate role coverage using DAMA’s functional governance model that distinguishes
+        strategic, tactical, and operational functions (Figure 3-2, p.53)."
+      - Bestätigen, dass Rollenklarheit Stewardship-Checkpoints unterstützt, die
+        von DAMA detailliert sind (Kapitel 4.3, S. 92).
+      notes:
+      - Verwenden Sie IDGC Verhaltensbereitschaftskriterien, um sicherzustellen,
+        dass Personen in Rollen die kulturelle und organisatorische 
+        Unterstützung zum Erfolg haben.
+    - number: 4
+      name: Weisen Sie vorläufiges Stewardship-Eigentum zu
+      prerequisite: Erfordert identifizierte Daten-Domänen
+      deliverable: Stewardship-Eigentümer-Matrix
+      recommendations:
+      - Weisen Sie Stewardship gemäß dem DAMA-Kompetenzprofil für 
+        Domänen-Stewards und operative Stewards zu (Kapitel 4, S. 86–89).
+      - Bestätigen, dass Zuordnungen DAMA Lebenszyklus-Kontrollpunkte über 
+        Daten-Erstellung, Nutzung und Stilllegung widerspiegeln (Kapitel 4.3, S.
+        92).
+      - Validierung der Ausrichtung am funktionsübergreifenden 
+        Governance-Integrationsmodell von DAMA, das Stewardship mit 
+        Governance-Aktivitäten verknüpft (Kapitel 3.3, S. 58–59).
+      - Zuweisungen unter Verwendung der DAMA Artefaktstandards dokumentieren, 
+        um Klarheit und Wiederholbarkeit sicherzustellen (Kapitel 3 Anhang, S. 
+        69).
+      notes:
+      - Verwenden Sie die DCAM Rollenabstimmungsrichtlinien, um zu überprüfen, 
+        dass jeder vorläufige Steward domänenbezogene Fähigkeiten ausführen 
+        kann.
+    - number: 5
+      name: Veröffentlichung der ersten Governance-Kommunikation
+      prerequisite: Erfordert Richtlinien- und Rollenliste
+      deliverable: Governance-Onboarding-Briefing
+      recommendations:
+      - Wenden Sie DAMA Kommunikationsleitlinien an, um Governance-Erwartungen, 
+        Verantwortlichkeit und operative Auswirkungen zu erklären (Kapitel 3.6, 
+        S. 64).
+      - Stellen Sie Transparenz sicher, indem Sie die von DAMA empfohlenen 
+        Kommunikationselemente für Governance-Prinzipien und 
+        Verantwortlichkeiten verwenden (Kapitel 3.4, S. 60).
+      - Richtlinien- und Rollendefinitionen mit DAMA Artefaktstruktur 
+        präsentieren, um Verständnis und Konsistenz zu verbessern (Kapitel 3 
+        Anhang, S. 69–70).
+      - Stärken Sie Stewardship- und Eigentumsverantwortlichkeiten gemäß den 
+        Rollenbeschreibungen von DAMA (Kapitel 7).
+      notes:
+      - Verwenden Sie die GDPR Transparenz-Prinzipien, um sicherzustellen, dass 
+        Stakeholder verstehen, wie Governance Verantwortlichkeit und konforme 
+        Datennutzung unterstützt.
+  DG-02:
+    title: Zuweisung von Governance-Eigentum und Verantwortlichkeiten
+    procedures:
+    - number: 1
+      name: Konsolidieren Sie Governance-Richtlinienanforderungen
+      prerequisite: Erfordert vollständige DG-01
+      deliverable: Anforderungsregister
+      recommendations:
+      - Konsolidierung von Anforderungen unter Verwendung von DAMA-Leitlinien 
+        für Richtlinienkomponenten, einschließlich Zweck, Umfang, Autorität und 
+        Governance-Regeln wie in DMBOK2 beschrieben (Kapitel 3.5, S. 62).
+      - Validieren, dass Anforderungen DAMA Prinzipien für Verantwortlichkeit 
+        und Entscheidungsbefugnis widerspiegeln, wie in Governance-Grundlagen 
+        beschrieben (Kapitel 3, S. 51).
+      - Sicherstellen, dass jede Anforderung mit Stewardship- und 
+        Eigentumsverantwortlichkeiten übereinstimmt, die von DAMA definiert sind
+        (Kapitel 3.2, S. 55–57).
+      - Bestätigung der Abdeckung von Governance-Rollen und -Prozessen gemäß dem
+        funktionalen Modell der Governance-Aktivitäten von DAMA (Kapitel 3.3, S.
+        58–59).
+      notes:
+      - Verwenden Sie DCAM-Richtlinienfähigkeitskriterien, um sicherzustellen, 
+        dass Anforderungen strukturiert, konsistent und über Governance-Domänen 
+        hinweg nachvollziehbar sind.
+    - number: 2
+      name: Erstellen Sie eine formale Governance-Richtlinie
+      prerequisite: Erfordert validierte Anforderungen
+      deliverable: Unternehmens-Governance-Richtlinie v1.0
+      recommendations:
+      - Erstellung der formalen Richtlinie gemäß der von DAMA empfohlenen 
+        Struktur für Governance-Richtlinien, einschließlich Zweck, Autorität, 
+        Rollen, Eskalation und Compliance-Erwartungen (Kapitel 3.5, S. 62–63).
+      - Sicherstellen, dass die Richtlinie mit den DAMA Prinzipien für 
+        Entscheidungstransparenz und klare Verantwortlichkeit übereinstimmt 
+        (Kapitel 3, S. 51).
+      - Dokument mit DAMA Artefaktkonventionen formatieren, um sicherzustellen, 
+        dass die Richtlinie prüfbar und wiederholbar ist (Kapitel 3 Anhang, S. 
+        69–70).
+      - Integrieren Sie Stewardship-Verantwortlichkeiten aus dem 
+        Stewardship-Modell von DAMA, um sicherzustellen, dass die Richtlinie 
+        Entscheidungsverantwortung definiert (Kapitel 4, S. 86–89).
+      notes:
+      - Verwenden Sie CMMI-Praktiken zur Genehmigung von Richtlinien, um 
+        Qualitätskontrolle und Versionsdisziplin während der 
+        Richtlinienerstellung zu stärken.
+    - number: 3
+      name: Governance-Standards und Regeln definieren
+      prerequisite: Policy v1.0 erforderlich
+      deliverable: Handbuch für Data Governance Standards
+      recommendations:
+      - Definieren Sie Standards mit DAMA Leitlinien für Governance-Regeltypen, 
+        einschließlich Datenregeln, Lebenszyklusregeln und Stewardship-Regeln 
+        (Kapitel 3.5, S. 62–63).
+      - Bestätigen Sie, dass Regeln die semantischen, Metadaten- und 
+        Qualitätsanforderungen von DAMA widerspiegeln, die in DMBOK2 
+        dokumentiert sind (Kapitel 9, 10 und 11).
+      - Sicherstellen, dass jeder Standard mit einer Governance-Rolle gemäß den 
+        Verantwortungsbeschreibungen von DAMA verknüpft ist (Kapitel 3.2, S. 
+        55–57).
+      - Validierung der Vollständigkeit von Regeln anhand der DAMA-Empfehlungen 
+        für Metadaten- und Qualitätsdimensionen (Kapitel 10, S. 282–284).
+      notes:
+      - Wenden Sie die Notwendigkeits- und Verhältnismäßigkeitsprinzipien von 
+        GDPR an, wenn Sie Regeln definieren, die Zugriffsrechte, Nutzung oder 
+        Aufbewahrung personenbezogener Daten betreffen.
+    - number: 4
+      name: Definitives Eigentum und Stewardship zuweisen
+      prerequisite: Erfordert aktualisierte Rollenbeschreibungen.
+      deliverable: Eigentums- und Stewardship-Karte
+      recommendations:
+      - Zuweisung von Eigentümern und Verwaltern unter Verwendung der formalen 
+        Kompetenzen und Verantwortlichkeitsmodelle von DAMA für 
+        Governance-Rollen (Kapitel 4, S. 86–89).
+      - Stellen Sie sicher, dass Eigentumszuweisungen die Eskalations- und 
+        Entscheidungsbefugnisstruktur von DAMA widerspiegeln (Kapitel 3.4, S. 
+        60).
+      - Validieren Sie die Stewardship-Abdeckung über Daten-Domänen hinweg gemäß
+        der funktionalen Governance-Ausrichtung von DAMA (Abbildung 3-2, S. 53).
+      - Bestätigen Sie die Ausrichtung der Verantwortlichkeiten mit den von DAMA
+        beschriebenen Lebenszyklusprüfpunkten (Kapitel 4.3, S. 92).
+      notes:
+      - Verwenden Sie IDGC-Bereitschaftsindikatoren, um zu bestätigen, dass 
+        Eigentümer und Stewards Verhaltenskompetenz und organisatorische 
+        Unterstützung besitzen, um ihre Verantwortlichkeiten effektiv 
+        auszuführen.
+    - number: 5
+      name: Veröffentlichen Sie Governance-Rollen und Verantwortlichkeiten
+      prerequisite: Erfordert Rollenfreigabe und Mapping
+      deliverable: Governance-Rollen-Charta
+      recommendations:
+      - Rollen gemäß DAMA Anleitung zur Governance-Kommunikation und 
+        Stakeholder-Einbindung veröffentlichen (Kapitel 3.6, S. 64).
+      - Verantwortlichkeiten mit DAMA Verantwortlichkeitsstruktur klären, um 
+        Mehrdeutigkeiten in Entscheidungsbefugnissen zu vermeiden (Kapitel 3, 
+        S.51).
+      - Dokumentieren Sie Prinzipien gemäß DAMA Artefaktstruktur für 
+        Nachvollziehbarkeit (Kapitel 3 Anhang, S. 69–__ACR2__).
+      - Stellen Sie sicher, dass Stewardship- und Eigentumsaufgaben klar gemäß 
+        den Stewardship-Prinzipien von DAMA kommuniziert werden (Kapitel 4, S. 
+        86–87).
+      notes:
+      - Wenden Sie DCAM organisatorische Ausrichtungspraktiken an, um 
+        sicherzustellen, dass Rollen konsistent über Geschäfts- und technische 
+        Domänen übernommen werden.
+  DG-03:
+    title: Genehmigen Sie Governance-Regeln, Rollen und Strukturen
+    procedures:
+    - number: 1
+      name: Governance-Richtlinie zur Überprüfung durch den Rat einreichen
+      prerequisite: Erfordert Governance-Richtlinie v1.0
+      deliverable: Überprüfungspaket
+      recommendations:
+      - Reichen Sie die Richtlinie mit DAMA Leitlinien für formale 
+        Governance-Überwachung und Genehmigungsstrukturen ein, wie in DMBOK2 
+        definiert (Kapitel 3.4, S. 60).
+      - Stellen Sie sicher, dass die Einreichung offensichtliche 
+        Rollenbefugnisse und Entscheidungsrechte gemäß dem 
+        Verantwortlichkeitsmodell von DAMA enthält (Kapitel 3, S. 51).
+      - Stewardship- und Eigentümerdokumentation an DAMA 
+        Governance-Rollendefinitionen anpassen (Kapitel 3.2, S. 55–57).
+      - Bestätigen, dass Materialien Governance-Funktionen und Genehmigungspfade
+        widerspiegeln, die von DAMA beschrieben werden (Kapitel 3.3, S. 58–59).
+      notes:
+      - Verwenden Sie CMMI Bewertungskriterien, um sicherzustellen, dass das 
+        Überprüfungspaket objektive Genehmigungsstandards erfüllt.
+    - number: 2
+      name: Genehmigen Sie die Governance-Rats-Charta
+      prerequisite: Erfordert Überprüfung der Charta
+      deliverable: Governance-Rats-Charta v1.0
+      recommendations:
+      - Die Charta gemäß DAMA Richtlinien zur Einrichtung von 
+        Governance-Entscheidungsgremien und formalen Autoritätsstrukturen 
+        genehmigen (Kapitel 3.4, S. 60–61).
+      - Stellen Sie sicher, dass die Charta Entscheidungsrechte definiert, die 
+        mit den DAMA Rollenbeschreibungen für Governance-Aufsicht übereinstimmen
+        (Kapitel 3.2.2, S. 56).
+      - Validieren Sie Befugnisgrenzen anhand des funktionalen 
+        Governance-Modells von DAMA, das strategische und operative 
+        Verantwortlichkeiten klärt (Abbildung 3-2, S. 53).
+      - Bestätigen Sie Eskalationsregeln und Stewardship-Ausrichtung gemäß DAMA 
+        Stewardship-Modell (Kapitel 4, S. 86–89).
+      notes:
+      - Wenden Sie DCAM Prinzipien der organisatorischen Autorität an, um 
+        sicherzustellen, dass die Ratsstruktur unternehmensweite Governance 
+        unterstützt.
+    - number: 3
+      name: Genehmigen Sie Governance-Standards und -Regeln
+      prerequisite: Erfordert Standards-Handbuch
+      deliverable: Genehmigte Data Governance Standards
+      recommendations:
+      - Genehmigung von Standards unter Verwendung der DAMA-Anleitung zu 
+        Governance-Regeln, einschließlich Namensregeln, Datenqualitätsregeln und
+        Lebenszyklusregeln (Kapitel 3.5, S. 62–63).
+      - Bestätigen, dass Regeln DAMA Erwartungen für Metadaten-Stewardship und 
+        semantische Konsistenz integrieren (Kapitel 10, S. 282–284).
+      - Validierung der Ausrichtung an DAMA-Qualitätsprinzipien, einschließlich 
+        Genauigkeit, Vollständigkeit und Integrität (Kapitel 11, S. 308–311).
+      - Sicherstellung, dass Stewardship- und Eigentümerfreigaben der 
+        DAMA-Governance-Verantwortungskette folgen (Kapitel 4, S. 86–87).
+      notes:
+      - Stellen Sie sicher, dass Lebenszykluseigentum mit GDPR Checkpoints 
+        übereinstimmt (Kapitel 4.3, S. __ACR1__).
+    - number: 4
+      name: Genehmigen Sie Governance-Rollenbeschreibungen
+      prerequisite: Erfordert eine Rollenliste und Verantwortlichkeiten
+      deliverable: Genehmigte Governance-Rollenmatrix
+      recommendations:
+      - Validieren Sie Definitionen anhand der DAMA Kompetenzbeschreibungen für 
+        Governance- und Stewardship-Rollen (Kapitel 3.2, S. 55–57).
+      - Bestätigen Sie die Einbeziehung von Entscheidungsbefugnissen und 
+        Eskalationsanforderungen, die von DAMA definiert sind (Kapitel 3.4, S. 
+        60).
+      - Stellen Sie sicher, dass die Rollenmatrix domänenübergreifende Abdeckung
+        gemäß DAMA funktionaler Governance-Architektur widerspiegelt (Abbildung 
+        3-2, S. 53).
+      - Lifecycle-Abdeckung mit DAMA Stewardship-Checkpoints validieren, die 
+        über den Daten-Lifecycle beschrieben sind (Kapitel 4.3, S. 92).
+      notes:
+      - Verwenden Sie IDGC-Praktiken zur Eignung von Verhaltensrollen, um 
+        sicherzustellen, dass Rollen im organisatorischen Kontext umsetzbar 
+        sind.
+    - number: 5
+      name: Governance-Dokumentationssatz genehmigen
+      prerequisite: Erfordert konsolidierte Artefakte
+      deliverable: Governance-Dokumentationspaket v1.0
+      recommendations:
+      - Validieren Sie Dokumentation mit der Vollständigkeitscheckliste von DAMA
+        Artefakten, um Strukturgenauigkeit und Inhaltsintegrität zu bestätigen 
+        (Kapitel 3 Anhang, S. 69–70).
+      - Wenden Sie DAMA Praktiken der kontinuierlichen Verbesserung an, um 
+        sicherzustellen, dass Standards basierend auf messbaren Nachweisen und 
+        organisatorischer Reife weiterentwickelt werden.
+      - Prüfen Sie die Übereinstimmung der Dokumentation mit 
+        Governance-Funktionen, die von DAMA beschrieben werden, einschließlich 
+        Koordination, Stewardship und Qualitätsüberwachung (Kapitel 3.3, S. 
+        58–59).
+      - Bestätigen Sie, dass Metadaten- und qualitätsbezogene Dokumentation den 
+        DAMA-Richtlinien in den Kapiteln 10 und 11 folgt.
+      notes:
+      - Wenden Sie CMMI Verifizierungspraktiken an, um die 
+        Dokumentationsbereitschaft für Audit und Reifegradbewertung 
+        sicherzustellen.
+  DG-04:
+    title: Governance in organisatorische und Domänenroutinen einbetten
+    procedures:
+    - number: 1
+      name: Implementieren Sie Governance-Standards domänenübergreifend
+      prerequisite: Genehmigte Standards erforderlich
+      deliverable: Protokoll zur Umsetzung von Governance-Standards
+      recommendations:
+      - Implementieren Sie Standards gemäß DAMA-Anleitung, wie Governance-Regeln
+        in operative und analytische Prozesse integriert werden sollen, wie in 
+        DMBOK2 beschrieben (Kapitel 3.5, S. 62).
+      - Sicherstellen, dass Integration mit DAMA Beschreibung von 
+        domänenübergreifender Koordination und Governance-Aktivitäten 
+        übereinstimmt (Kapitel 3.3, S. 58–59).
+      - Validierung, dass jede Domäne Standards konsistent gemäß den 
+        Stewardship-Verantwortlichkeiten und Aufsichtserwartungen von DAMA 
+        übernimmt (Kapitel 4, S. 86–89).
+      - Bestätigen Sie, dass die Implementierung DAMA Lifecycle-Checkpoints für 
+        kontrollierte Datendefinition, Nutzung und Ausmusterung widerspiegelt 
+        (Kapitel 4.3, S. 92).
+      notes:
+      - Wenden Sie DCAM Domänenfähigkeitsausrichtung an, um sicherzustellen, 
+        dass Standards einheitlich eingebettet und umsetzbar bleiben.
+    - number: 2
+      name: Integrieren Sie Governance-Regeln in operative Arbeitsabläufe
+      prerequisite: Erfordert operative Workflow-Abbildung
+      deliverable: Governance-Workflow-Integrationsprotokoll
+      recommendations:
+      - Regeln unter Verwendung der DAMA Anleitung zur Einbettung von 
+        Governance-Kontrollen in Datenprozesse integrieren, einschließlich 
+        Validierungs-, Genehmigungs- und Rückverfolgbarkeitsschritten (Kapitel 
+        3.3, S. 58).
+      - Stellen Sie sicher, dass Workflow-Schritte den Erwartungen von DAMA an 
+        Autorität, Stewardship-Interaktion und Eskalation entsprechen (Kapitel 
+        3.4, S. 60).
+      - Validieren Sie die Einhaltung der DAMA Stewardship-Verantwortlichkeiten,
+        die definieren, wer in jeder Workflow-Phase eingreifen muss (Kapitel 4, 
+        S. 86–87).
+      - Bestätigen Sie, dass die Workflow-Integration die von DAMA beschriebenen
+        Metadaten-, Herkunfts- und Qualitätskomponenten abdeckt (Kapitel 9 bis 
+        1).
+      notes:
+      - Verwenden Sie CMMI Institutionalisierungslogik, um die Übernahme von 
+        Governance-Regeln als stabile, wiederholbare Routinen zu stärken.
+    - number: 3
+      name: Governance-Verantwortlichkeiten in Rollenbeschreibungen verankern
+      prerequisite: Erfordert genehmigte Governance-Rollen
+      deliverable: Aktualisierte Rollenbeschreibungen
+      recommendations:
+      - Aktualisieren Sie Rollenbeschreibungen gemäß DAMA’s Rollenmodell, das 
+        Verantwortlichkeiten für Eigentümer, Stewards und Custodians definiert 
+        (Kapitel 3.2, S. 55–57).
+      - Stellen Sie sicher, dass Beschreibungen Autoritätsgrenzen und 
+        Governance-Entscheidungstypen enthalten, die von DAMA definiert sind 
+        (Kapitel 3, S. 51).
+      - Richten Sie Aufgaben gemäß den DAMA 
+        Stewardship-Lifecycle-Kontrollpunkten aus, einschließlich Erstellung, 
+        Genehmigung, Veröffentlichung und Stilllegung (Kapitel 4.3, S. 92).
+      - Validieren Sie, dass Verantwortlichkeiten 
+        Governance-Kommunikationsprinzipien und Stakeholder-Erwartungen gemäß 
+        DAMA unterstützen (Kapitel 3.6, S. 64).
+      notes:
+      - Verwenden Sie IDGC Verhaltensausrichtungsleitlinien, um die Einhaltung 
+        und kulturelle Akzeptanz von Governance-Verantwortlichkeiten zu fördern.
+    - number: 4
+      name: Governance-Checkpoints in den Datenlebenszyklus integrieren
+      prerequisite: Erfordert Datenlebenszyklus-Mapping
+      deliverable: Governance-Lifecycle-Checkpoint-Matrix
+      recommendations:
+      - Checkpoints gemäß der DAMA Lifecycle-Struktur integrieren, die 
+        Qualitäts-, Metadaten- und Governance-Kontrollpunkte definiert (Kapitel 
+        4.3, S. 92).
+      - Stellen Sie die Übereinstimmung mit DAMA Definitionen für kontrollierte 
+        Erstellung, Validierung, Nutzung und Ausmusterung sicher, die in den 
+        Datenmanagement-Kapiteln dargestellt sind (Kapitel 9, 10, 11).
+      - Bestätigen, dass Checkpoint-Verantwortliche mit DAMA 
+        Governance-Autoritäts- und Eskalationsrichtlinien abgestimmt sind 
+        (Kapitel 3.4, S. 60).
+      - Validieren Sie, dass Lifecycle-Checkpoints strategische, taktische und 
+        operative Verantwortlichkeiten umfassen, die in DAMA funktionaler 
+        Governance-Architektur beschrieben sind (Abbildung 3-2, S. 53).
+      notes:
+      - Verwenden Sie DCAM Lebenszyklus-Fähigkeitskriterien, um die Abdeckung 
+        der Lebenszyklus-Governance zu stärken und sicherzustellen, dass 
+        Checkpoints effektiv überwacht werden können.
+    - number: 5
+      name: Wenden Sie Governance-Kontrollen auf Domain-Operationen an
+      prerequisite: Erfordert definierte Stewardship- und Eigentumsstrukturen
+      deliverable: Domain-Governance-Kontrollprotokoll
+      recommendations:
+      - Wenden Sie Kontrollen unter Verwendung der DAMA Definitionen für 
+        Governance-Aufsicht an, einschließlich Überwachung, Genehmigung und 
+        Korrekturmaßnahmen (Kapitel 3.3, S. 58–59).
+      - Stellen Sie sicher, dass Kontrollen mit DAMA Prinzipien für 
+        Entscheidungstransparenz und Qualitätssicherung übereinstimmen (Kapitel 
+        3.4, S. 60).
+      - Bestätigen Sie, dass Domänen-Stewards Kontrollen gemäß den DAMA 
+        Verantwortlichkeiten für Datendefinition, Zugriffsaufsicht und 
+        Lifecycle-Management anwenden (Kapitel 4, S. 86–89).
+      - Validieren, dass die Ausführung von Kontrollen DAMA Qualitäts- und 
+        Metadatenregeln einbezieht, die in relevanten Datenmanagement-Kapiteln 
+        beschrieben sind (Kapitel 9, 10, 11).
+      notes:
+      - Anwenden von CMMI Überwachungspraktiken, um sicherzustellen, dass 
+        Governance-Kontrollen kontinuierlich bewertet und verbessert werden.
+  DG-06:
+    title: Governance-Leistung überwachen und Compliance durchsetzen
+    procedures:
+    - number: 1
+      name: Überwachen Sie die Einhaltung der Governance-Richtlinie
+      prerequisite: Erfordert genehmigte Richtlinie v1.0
+      deliverable: Compliance-Überwachungsbericht
+      recommendations:
+      - Überwachen Sie die Einhaltung gemäß DAMA-Richtlinien für 
+        Governance-Aufsichtsaktivitäten, einschließlich regelmäßiger Überprüfung
+        der Richtlinienakzeptanz und des Stakeholder-Verhaltens wie in DMBOK2 
+        beschrieben (Kapitel 3.3, S. 58–59).
+      - Validieren Sie die Einhaltung von Richtlinienelementen basierend auf den
+        Erwartungen von DAMA an Transparenz und Rechenschaftspflicht in 
+        Governance-Operationen (Kapitel 3.4, S. 60).
+      - Bestätigen, dass Überwachung Stewardship-Verantwortlichkeiten und 
+        Eigentumspflichten gemäß DAMA abdeckt (Kapitel 4, S. 86–89).
+      - Stellen Sie sicher, dass die Bewertung der Richtlinienkonformität 
+        Qualitäts- und Metadatadimensionen aus DAMA Kapiteln zu Datenqualität 
+        und Metadaten umfasst (Kapitel 10 und 11).
+      notes:
+      - Die CMMI Compliance-Verifikationspraktiken verwenden, um die 
+        Überwachungsdisziplin in Governance-Prozessen zu stärken.
+    - number: 2
+      name: Überprüfung der Einhaltung von Governance-Standards
+      prerequisite: Erfordert implementierte Standards
+      deliverable: Bewertung der Einhaltung von Standards
+      recommendations:
+      - Überprüfen Sie die Einhaltung mit DAMA Leitlinien zur Validierung von 
+        Governance-Regeln und Standards, einschließlich Ausrichtung an 
+        Unternehmens-Terminologie, Qualitätskriterien und 
+        Lebenszyklusbeschränkungen (Kapitel 3.5, S. 62–63).
+      - Bestätigen, dass die Einhaltung funktionsübergreifende Standards gemäß 
+        dem Governance-Aktivitätsmodell von DAMA abdeckt (Kapitel 3.3, S. 
+        58–59).
+      - Validieren, dass die Überprüfung Kontrollen der Stewardship-Ausführung 
+        und Rollenleistung gemäß DAMA Verantwortlichkeiten umfasst (Kapitel 3.2,
+        S. 55–57).
+      - Bestätigen Sie, dass Standards in jeder Lebenszyklusphase konsistent 
+        angewendet werden, unter Verwendung der DAMA Lebenszyklus-Kontrollpunkte
+        (Kapitel 4.3, S. 92).
+      notes:
+      - Verwenden Sie DCAM-Fähigkeitssicherungsrichtlinien, um zu bewerten, ob 
+        Standards die unternehmensweiten Datenmanagementfähigkeiten stärken.
+    - number: 3
+      name: Bewerten Sie Stewardship- und Eigentumsleistungen
+      prerequisite: Erfordert abgeschlossene Stewardship- und 
+        Eigentumszuweisungen
+      deliverable: Stewardship- und Eigentümerleistungsbewertungsbericht
+      recommendations:
+      - Bewertung der Leistung basierend auf den Stewardship-Kompetenzen von 
+        DAMA, einschließlich Aktivitäten zur Definition, Genehmigung und 
+        Aufsicht von Datenassets (Kapitel 4, S. 86–89).
+      - Bestätigen Sie die Übereinstimmung mit DAMA 
+        Governance-Entscheidungsbefugnisstruktur, die definiert, wann und wie 
+        Rollen eingreifen sollen (Kapitel 3.4, S. 60).
+      - Validieren, dass Bewertungen DAMA Erwartungen für 
+        Lifecycle-Verantwortlichkeiten, einschließlich Erstellung, Nutzung und 
+        Stilllegung, widerspiegeln (Kapitel 4.3, S. 92).
+      - Stellen Sie sicher, dass Leistungsindikatoren Klarheit der 
+        Verantwortlichkeiten, Entscheidungszeitpunkte und Effektivität der 
+        Überwachung abdecken, wie von DAMA Governance-Funktionen beschrieben 
+        (Kapitel 3.3, S. 58–59).
+      notes:
+      - Verwenden Sie IDGC Verhaltensindikatoren, um die Reife des Stewardship 
+        und die organisatorische Akzeptanz zu bewerten.
+    - number: 4
+      name: Verfolgung der Lösung von Governance-Problemen
+      prerequisite: Erfordert ein Problemberichterstattungsmechanismus
+      deliverable: Register zur Lösung von Governance-Problemen
+      recommendations:
+      - Verfolgen Sie Probleme gemäß DAMA Leitlinien zu 
+        Governance-Überwachungs-Workflows und Eskalationspfaden (Kapitel 3.4, S.
+        60).
+      - Sicherstellen, dass Probleme gemäß DAMA Regeltypen kategorisiert werden,
+        einschließlich Datendefinitionsprobleme, Qualitätsverstöße und 
+        Richtlinienabweichungen (Kapitel 3.5, S. 62–63).
+      - Validieren Sie, dass Stewards und Eigentümer gemäß den DAMA 
+        Lebenszykluskontrollpunkten bei der Problemlösung handeln (Kapitel 4.3, 
+        S. 92).
+      - Bestätigen, dass Problemlösungsprozesse Metadaten- und 
+        Qualitätsprüfungen basierend auf DAMA Richtlinien enthalten (Kapitel 10 
+        und 11).
+      notes:
+      - Verwenden Sie CMMI-Korrekturmaßnahmenpraktiken, um die Problemlösung zu 
+        strukturieren und wiederholbar zu machen.
+    - number: 5
+      name: Berichterstattung über Governance von Leistungsmetriken
+      prerequisite: Erfordert definierte KPIs
+      deliverable: Governance-Leistungsbericht
+      recommendations:
+      - Berichten Sie Metriken gemäß DAMA Leitlinien für Governance-Messung, 
+        einschließlich Indikatoren zu Richtlinienkonformität, 
+        Stewardship-Aktivität und Domänenkoordination (Kapitel 3.6, S. 64).
+      - Stellen Sie sicher, dass Leistungsindikatoren die Qualitäts- und 
+        Lebenszyklusmetriken von DAMA über Datenmanagementdomänen hinweg 
+        widerspiegeln (Kapitel 10 und 11).
+      - Validieren, dass Berichte Governance-Entscheidungen und Transparenz 
+        gemäß den Verantwortlichkeitsprinzipien von DAMA unterstützen (Kapitel 
+        3, S. 51).
+      - Bestätigung, dass Metriken Trends in der Domänenakzeptanz und 
+        Verhaltensreife hervorheben, die mit den Stewardship-Praktiken von DAMA 
+        übereinstimmen (Kapitel 4, S. 86–87).
+      notes:
+      - Verwenden Sie DCAM Datenmanagement-Fähigkeitsindikatoren zur Verstärkung
+        der Leistungsinterpretation und des Benchmarkings.
+  DG-09:
+    title: Governance-Modell optimieren und Best Practices institutionalisieren
+    procedures:
+    - number: 1
+      name: Verbessern Sie Governance-Standards basierend auf 
+        Evaluierungsfeedback
+      prerequisite: Erfordert Leistungsinformationen
+      deliverable: Aktualisierte Governance-Standards v2.0
+      recommendations:
+      - Standards gemäß DAMA Anleitung zur iterativen Verbesserung von 
+        Governance-Regeln und Regelstrukturen verbessern, wie in DMBOK2 
+        dargestellt (Kapitel 3.5, S. 62–63).
+      - Stellen Sie sicher, dass Aktualisierungen die DAMA Prinzipien für 
+        Verantwortlichkeit, Transparenz und Konsistenz in 
+        Governance-Entscheidungen widerspiegeln (Kapitel 3, S.51).
+      - Validieren, dass Verbesserungen auf Lücken in Stewardship- und 
+        Eigentumsverantwortlichkeiten reagieren, wie von DAMA beschrieben 
+        (Kapitel 4, S. 86–89).
+      - Bestätigen Sie, dass überarbeitete Standards Lebenszykluskontrollpunkte 
+        und Metadatenanforderungen enthalten, die in den DAMA 
+        Datenmanagementkapiteln beschrieben sind (Kapitel 9, 10 und 11).
+      notes:
+      - Dokumentieren Sie die Zuweisungen mit CMMI Artefaktstruktur (Kapitel 3 
+        Anhang, S. __ACR1__).
+    - number: 2
+      name: Automatisieren Sie Governance-Kontrollen, wo anwendbar
+      prerequisite: Erfordert stabile Governance-Prozesse
+      deliverable: Automatisierter Governance-Kontrollnachweis
+      recommendations:
+      - Validieren Sie Transparenz gemäß DAMA 
+        Governance-Kommunikationsprinzipien (Kapitel 3.4, S. 58).
+      - Stellen Sie sicher, dass automatisierte Kontrollen DAMA Regeln zu 
+        Qualität, Lineage und Metadaten-Kohärenz verstärken (Kapitel 10 und 11).
+      - Validierung der Ausrichtung an DAMA-Stewardship-Verpflichtungen, die bei
+        Bedarf menschliche Aufsicht über automatisierte Kontrollen erfordern 
+        (Kapitel 4, S. 86–87).
+      - Bestätigen, dass Automatisierung DAMA Transparenzanforderungen 
+        unterstützt, indem Kontrollauslöser, Ergebnisse und Ausnahmen 
+        dokumentiert werden (Kapitel 3.4, S. 60).
+      notes:
+      - Die DCAM Automatisierungskriterien verwenden, um Machbarkeit und 
+        Fähigkeitsreife vor der Implementierung automatisierter 
+        Governance-Kontrollen zu bewerten.
+    - number: 3
+      name: Governance-Schulungen und Kompetenzentwicklung verbessern
+      prerequisite: Erfordert einen abgeschlossenen Leistungsbewertungszyklus
+      deliverable: Aktualisierter Governance-Schulungsplan
+      recommendations:
+      - Entwickeln Sie Schulungen gemäß den DAMA Richtlinien zu 
+        Governance-Ausbildung, Kommunikation und Stewardship-Entwicklung 
+        (Kapitel 3.6, S. 64).
+      - Sicherstellen, dass Lehrpläne DAMA Rollen­definitionen und 
+        Verantwortlichkeitserwartungen für Eigentümer und Stewards widerspiegeln
+        (Kapitel 3.2, S. 55–57).
+      - Validieren Sie die Einbeziehung von DAMA Lebenszyklusaktivitäten zur 
+        Verstärkung der Governance-Verantwortlichkeiten über Datenentstehung, 
+        Nutzung und Ausmusterung hinweg (Kapitel 4.3, S. 92).
+      - Bestätigen Sie, dass Schulungen die Einführung von Governance-Artefakten
+        und Standards gemäß DAMA unterstützen (Kapitel 3 Anhang, S. 69–70).
+      notes:
+      - Anwenden von IDGC Verhaltensreifepraktiken zur Stärkung des 
+        Rollenvertrauens und der kulturellen Ausrichtung während der Schulung.
+    - number: 4
+      name: Institutionalisieren Sie Governance-Praktiken über Domänen hinweg
+      prerequisite: Erfordert stabile Governance-Routinen
+      deliverable: Governance-Institutionalisierungsprotokoll
+      recommendations:
+      - Institutionalisieren Sie Praktiken unter Verwendung der DAMA Leitlinien 
+        zur Einbettung von Governance in Organisationskultur, 
+        Entscheidungsflüsse und Verantwortlichkeitsstrukturen (Kapitel 3.6, S. 
+        64).
+      - Sicherstellen, dass domänenübergreifende Adoption mit der funktionalen 
+        Governance-Architektur von DAMA übereinstimmt, die strategische, 
+        taktische und operative Bereiche integriert (Abbildung 3-2, S. 53).
+      - Validieren Sie, dass Governance-Aktivitäten mit den von DAMA definierten
+        Stewardship-Verantwortlichkeiten und Rechenschaftsmodellen 
+        übereinstimmen (Kapitel 3.2, S. 55–57).
+      - Bestätigen Sie, dass die Institutionalisierung Metadaten-, Qualitäts- 
+        und Lebenszykluskontrollen abdeckt, wie in den DAMA Kapiteln zu 
+        Datenmanagementfunktionen beschrieben (Kapitel 9, 10 und 11).
+      notes:
+      - Anwendung von CMMI-Institutionalisierungsindikatoren zur Stärkung der 
+        langfristigen Konsistenz und Wiederholbarkeit von Governance-Verhalten.
+    - number: 5
+      name: Optimieren Sie kontinuierlich das Governance-Betriebsmodell
+      prerequisite: Erfordert einen Modell-Review-Zyklus
+      deliverable: Governance-Betriebsmodell v3.0
+      recommendations:
+      - Optimierung des Betriebsmodells unter Verwendung von DAMA-Leitlinien zur
+        Verfeinerung von Governance-Strukturen, Entscheidungsbefugnissen und 
+        Rollenverantwortlichkeiten (Kapitel 3.4, S. 60–61).
+      - Sicherstellen, dass Verbesserungen DAMA Prinzipien für Transparenz, 
+        Klarheit und Verantwortlichkeit in der Governance-Ausführung 
+        widerspiegeln (Kapitel 3, S. 51).
+      - Validieren Sie die Übereinstimmung mit den Stewardship- und 
+        Eigentumsrahmenwerken von DAMA, um eine ausgewogene Governance-Teilnahme
+        sicherzustellen (Kapitel 4, S. 86–89).
+      - Bestätigung, dass das aktualisierte Betriebsmodell Metadaten-, 
+        Qualitäts- und semantische Erwartungen aus den Datenmanagement-Kapiteln 
+        von DAMA verstärkt (Kapitel 9, 10 und 11).
+      notes:
+      - DCAM Fähigkeitsreifeindikatoren verwenden, um das Betriebsmodell mit der
+        unternehmensweiten Entwicklung des Datenmanagements abzustimmen.

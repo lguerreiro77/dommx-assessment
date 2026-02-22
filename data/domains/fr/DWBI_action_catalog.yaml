@@ -1,0 +1,139 @@
+domain:
+  id: 9
+  name: Entrepôt de données et Business Intelligence (DWBI)
+action_catalog:
+  DWBI-01:
+    title: Définissez la vision, le périmètre et les règles de l'intelligence 
+      d'affaires et de l'entreposage.
+    procedures:
+    - number: 1
+      name: Définir la vision d'entreprise BI et analytique
+      prerequisite: Nécessite une stratégie de données d'entreprise
+      deliverable: Déclaration de vision BI et analytique
+      recommendations:
+      - Établir le but et le rôle de BI au sein de l’entreprise suivant les 
+        principes d’alignement architecturaux DAMA « Chapitre 8, p. 252–260 ».
+      - Identifier les résultats analytiques de haut niveau et les besoins 
+        décisionnels à travers les domaines.
+      - Aligner les objectifs BI avec la gestion, la qualité et la gouvernance 
+        des métadonnées « Chapitre 3.2, p. 55–57 ».
+      - Documenter la vision en utilisant la structure d’artefact DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser la cartographie de valeur DCAM pour exprimer la vision BI en 
+        termes de capacités mesurables.
+    - number: 2
+      name: Définir le périmètre métier BI et d'entreposage
+      prerequisite: Nécessite une vision BI
+      deliverable: Carte du périmètre métier BI
+      recommendations:
+      - Identifier les sujets analytiques principaux tels que ventes, finances, 
+        opérations et données clients.
+      - Cartographiez les questions métier aux domaines maîtres et de référence 
+        « Chapitre 6, p. 182–188 ».
+      - Inclure les seuils de qualité nécessaires à la fiabilité analytique « 
+        Chapitre 11, p. 308–311 ».
+      - Capturer la portée commerciale en utilisant les pratiques de 
+        documentation DAMA “Chapitre 3 Annexe, p. 69–70”.
+      notes:
+      - Utiliser les pratiques de cadrage CMMI pour assurer des incréments de 
+        livraison réalisables.
+  DWBI-02:
+    title: Assigner les rôles de gestion pour la gouvernance analytique et la 
+      supervision
+    procedures:
+    - number: 1
+      name: Documenter les principes architecturaux BI
+      prerequisite: Nécessite un périmètre DW/BI
+      deliverable: Ensemble de principes d'architecture BI.
+      recommendations:
+      - S'aligner sur les principes d'architecture DAMA pour l'intégration, la 
+        réutilisation et la standardisation “Chapitre 8, p. 252–260”.
+      - Définissez les principes pour les couches d'approvisionnement, de 
+        transformation, de consolidation et de consommation.
+      - Traiter le stewardship et l'alignement des métadonnées « Chapitre 9, p. 
+        236–239 ».
+      - Documenter les principes en utilisant le format d'artefact DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser la cartographie des capacités d'architecture DCAM pour 
+        identifier les lacunes architecturales.
+  DWBI-03:
+    title: Approuver les normes de gouvernance analytique, sémantique et 
+      métrique
+    procedures:
+    - number: 3
+      name: Approuver les exigences BI et définir les contrôles analytiques
+      prerequisite: Nécessite une revue des parties prenantes
+      deliverable: Pack d’exigences approuvé
+      recommendations:
+      - Approuver les contrôles de qualité et de traçabilité alignés avec les 
+        meilleures pratiques DAMA « Chapitre 11, p. 308–311 ».
+      - Valider les règles métier et les définitions métriques.
+      - Définir l'allocation des responsabilités entre propriétaires, 
+        gestionnaires et custodians « Chapitre 4, p. 86–89 ».
+      - Documenter les résultats d'approbation en utilisant les artefacts de 
+        gouvernance DAMA “Chapitre 3 Annexe, p. 69–70”.
+      notes:
+      - Utilisez les critères d'efficacité des contrôles DCAM pour classifier la
+        robustesse des contrôles.
+  DWBI-04:
+    title: Intégrer la gouvernance analytique et la logique sémantique dans les 
+      workflows BI
+    procedures:
+    - number: 1
+      name: Intégrer les points de contrôle de gouvernance BI dans le cycle de 
+        vie analytique
+      prerequisite: Nécessite des exigences BI approuvées
+      deliverable: Documentation analytique du cycle de vie mise à jour
+      recommendations:
+      - Cartographier les étapes d'ingestion, de préparation, de modélisation et
+        de reporting aux points de contrôle de gouvernance.
+      - Assurer la capture de la traçabilité à chaque étape selon les pratiques 
+        de métadonnées DAMA « Chapitre 9, p. 236–239 ».
+      - Définir les responsabilités pour la validation, l’approbation et la 
+        gestion des exceptions « Chapitre 4, p. 86–89 ».
+      - Documenter les diagrammes du cycle de vie en utilisant les principes 
+        d'artefacts DAMA « Annexe Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser les pratiques d'intégration du cycle de vie CMMI pour assurer 
+        la cohérence entre les équipes.
+  DWBI-06:
+    title: Automatisez la validation sémantique, le suivi de traçabilité et la 
+      surveillance de la qualité.
+    procedures:
+    - number: 2
+      name: Établir des règles de validation automatisées BI
+      prerequisite: Nécessite un ensemble KPI
+      deliverable: Jeu de règles automatisé BI
+      recommendations:
+      - Mettre en œuvre des contrôles automatisés pour la conformité aux données
+        master, listes de référence et structures dimensionnelles « Chapitre 6, 
+        p. 182–188 ».
+      - Valider les définitions des métriques par rapport à la logique 
+        gouvernée.
+      - Inclure les points de contrôle de validation de traçabilité.
+      - Documenter les règles en utilisant les pratiques d'artefact DAMA “Annexe
+        du Chapitre 3, p. 69–70”.
+      notes:
+      - Utiliser l'évaluation de préparation à l'automatisation CMMI avant le 
+        déploiement.
+  DWBI-09:
+    title: Améliorer continuellement la gouvernance analytique et sémantique en 
+      utilisant des preuves
+    procedures:
+    - number: 2
+      name: Améliorer les normes et directives du cycle de vie BI
+      prerequisite: Nécessite des insights de gouvernance
+      deliverable: Standards BI mis à jour
+      recommendations:
+      - Mettre à jour les règles de modélisation, définitions métriques et 
+        exigences de métadonnées « Chapitre 10, p. 282–289 ».
+      - Clarifiez les attentes de documentation de source de vérité et de 
+        traçabilité « Chapitre 9, p. 236–239 ».
+      - Assurer la cohérence à travers les dimensions et attributs conformés.
+      - Valider les mises à jour via les forums de gouvernance « Chapitre 3.4, 
+        p. 60–61 ».
+      notes:
+      - Utiliser l'amélioration continue CMMI pour gérer les mises à jour des 
+        normes.

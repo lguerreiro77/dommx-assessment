@@ -1,0 +1,350 @@
+domain:
+  id: 12
+  name: AI & Machine Learning (AIML)
+action_catalog:
+  AIML-01:
+    title: Definieren Sie grundlegende AI- und ML-Governance-Prinzipien und 
+      -Umfang
+    procedures:
+    - number: 1
+      name: AI und ML Governance-Prinzipien und analytischen Umfang definieren
+      prerequisite: Erfordert Identifikation von AI/ML Anwendungsfällen und 
+        analytischen Zielen
+      deliverable: AI/ML Governance-Prinzipien-Dokument
+      recommendations:
+      - Definieren Sie Prinzipien gemäß DAMA Richtlinien für 
+        Analytics-Governance und Lebenszyklusrahmen in DMBOK2 (Kapitel 16).
+      - Stellen Sie sicher, dass Prinzipien Verantwortlichkeit, Transparenz, 
+        Rückverfolgbarkeit und kontrollierte Modellnutzung abdecken, abgestimmt 
+        auf die DAMA Governance-Grundlagen (Kapitel 3).
+      - Unterscheiden Sie experimentelle Analysen von Produktionsmodellen und 
+        regulierten AI Anwendungsfällen.
+      notes:
+      - Verwenden Sie DCAM Fähigkeitsabgrenzung, um zu bestätigen, dass der 
+        definierte Umfang messbare Analytics-Governance-Fähigkeiten unterstützt.
+    - number: 2
+      name: Etablieren Sie AI/ML Lebenszyklusphasen und 
+        Governance-Kontrollpunkte
+      prerequisite: Erfordert definierte Governance-Prinzipien
+      deliverable: AI/ML Lebenszyklus-Governance-Rahmenwerk
+      recommendations:
+      - Lebenszyklusphasen definieren, die Entwicklung, Training, Validierung, 
+        Bereitstellung, Überwachung und Stilllegung abdecken, abgestimmt auf 
+        DAMA Analytics-Lifecycle-Konzepte (Kapitel 16).
+      - Definieren Sie Governance-Checkpoints pro Phase, einschließlich 
+        Genehmigung, Dokumentation, Validierung und Ausmusterungsauslöser.
+      - Stellen Sie sicher, dass Kontrollpunkte explizit Datenbereitschaft, 
+        Feature-Bereitschaft und Überwachungsbereitschaft einschließen.
+      notes:
+      - Verwenden Sie CMMI Institutionalisierungslogik, um sicherzustellen, dass
+        Checkpoints wiederholbare Governance-Routinen werden.
+    - number: 3
+      name: Definition minimaler Dokumentationsanforderungen für AI/ML-Modelle, 
+        Datensätze und Features
+      prerequisite: Erfordert Lebenszyklus-Rahmenwerk
+      deliverable: AI/ML-Dokumentationsstandard
+      recommendations:
+      - Definieren Sie Dokumentation, die Modellzweck, Annahmen, Datensätze, 
+        Merkmale, Bewertungsergebnisse und operative Einschränkungen abdeckt 
+        (Kapitel 16).
+      - Richten Sie Dokumentationsanforderungen an DAMA 
+        Metadaten-Management-Prinzipien aus (Kapitel 10).
+      notes:
+      - Verwenden Sie IBM Analytics-Governance-Artefaktrichtlinien zur 
+        Verbesserung der Prüfbarkeit und Rückverfolgbarkeit.
+    - number: 4
+      name: Werden Datenschutzmechanismen (Verschlüsselung, Minimierung, 
+        Maskierung) geregelt und durchgesetzt?
+      prerequisite: Erfordert Lifecycle-Definition
+      deliverable: Kritisches AI/ML-Asset-Register
+      recommendations:
+      - Klassifizieren Sie Modelle nach Geschäftsauswirkung, operationellem 
+        Risiko und regulatorischer Exposition gemäß den DAMA 
+        Analytics-Risikokonzepten (Kapitel 16).
+      - Stellen Sie die Verknüpfung zwischen kritischen Modellen und kritischen 
+        Datenelementen sicher, wo anwendbar.
+      notes:
+      - DCAM Kritische Daten- und Analyseklassifikationspraktiken verwenden, um 
+        Governance-Kontrollen zu priorisieren.
+    - number: 5
+      name: Veröffentlichen Sie grundlegende AI/ML Governance-Kommunikation
+      prerequisite: Erfordert Prinzipien- und Asset-Register
+      deliverable: AI/ML Governance-Onboarding-Briefing
+      recommendations:
+      - Governance-Erwartungen gemäß DAMA Governance-Kommunikationsrichtlinien 
+        kommunizieren (Kapitel 3.6).
+      - Sicherstellung, dass Stakeholder Lifecycle-Verantwortlichkeiten und 
+        Verantwortlichkeitsgrenzen verstehen.
+      notes:
+      - Verwendung von IDGC-Verhaltensbereitschaftsindikatoren zur Verstärkung 
+        von Adoption und kultureller Ausrichtung.
+  AIML-02:
+    title: Weisen Sie AI und ML Eigentum, Stewardship und Verantwortlichkeit zu
+    procedures:
+    - number: 1
+      name: AI/ML Governance-Rollen und Verantwortlichkeiten definieren
+      prerequisite: Erfordert AIML-01 Abschluss
+      deliverable: AI/ML Rollen-Definitionsliste
+      recommendations:
+      - Eigentümer-, Steward- und Custodian-Rollen an Analytics- und 
+        Modellverantwortlichkeit anpassen (Kapitel 3 und 16).
+      - Unterscheiden Sie Geschäftsverantwortung, Datenverantwortung und 
+        technische Modell-Stewardship.
+      notes:
+      - Verwenden Sie die DCAM Leitlinien zum Betriebsmodell, um die Machbarkeit
+        von Rollen zu validieren.
+    - number: 2
+      name: Weisen Sie Eigentümerschaft für AI/ML Modelle, Datensätze und 
+        Features zu
+      prerequisite: Erfordert definierte Rollen
+      deliverable: AI/ML-Eigentums- und Stewardship-Matrix
+      recommendations:
+      - Weisen Sie Eigentum über Modelllebenszyklusphasen zu (Kapitel 16).
+      - Definieren Sie Eskalationspfade gemäß DAMA 
+        Entscheidungsbefugnisprinzipien (Kapitel 3.4).
+      notes:
+      - Die IBM DGCM Verantwortlichkeitsmechanismen zur Lösung 
+        funktionsübergreifender Eigentumskonflikte verwenden.
+    - number: 3
+      name: Definieren Sie Entscheidungsbefugnisse für AI/ML Genehmigung, 
+        Änderung und Stilllegung
+      prerequisite: Erfordert eine Eigentümer-Matrix
+      deliverable: AI/ML Entscheidungsbefugnis-Rahmenwerk
+      recommendations:
+      - Definieren Sie Genehmigungsbefugnisse für Bereitstellung, Nachschulung, 
+        Rollback und Ausmusterungsentscheidungen.
+      - Ausrichtung der Autorität an DAMA-Governance-Entscheidungsrechtsmodellen
+        (Kapitel 3).
+      notes:
+      - DCAM Entscheidungs-Governance-Praktiken verwenden, um 
+        Genehmigungs-Workflows zu formalisieren.
+    - number: 4
+      name: Validieren Sie Rollen mit Geschäfts-, Analyse-, Rechts- und 
+        Risikostakeholdern
+      prerequisite: Erfordert Rollen- und Befugnisdefinitionen
+      deliverable: Stakeholder-Abstimmungsprotokoll
+      recommendations:
+      - Validieren Sie funktionsübergreifende Abdeckung gemäß den 
+        DAMA-Governance-Integrationsprinzipien (Kapitel 3.3).
+      notes:
+      - Verwenden Sie IDGC Readiness-Checks, um sicherzustellen, dass 
+        zugewiesene Rollen in der Praxis nachhaltig sind.
+    - number: 5
+      name: Veröffentlichen und operationalisieren Sie AI/ML Governance-Rollen
+      prerequisite: Erfordert Stakeholder-Validierung
+      deliverable: Genehmigtes AI/ML Governance-Betriebsmodell
+      recommendations:
+      - Kommunizieren Sie Rollen gemäß der DAMA Governance-Einführungs- und 
+        Kommunikationsleitlinien (Kapitel 3.6).
+      notes:
+      - Verwenden Sie CMMI-Institutionalisierungsindikatoren, um die 
+        Rollenübernahme zu stärken.
+  AIML-03:
+    title: Genehmigen Sie AI- und ML-Standards, Kontrollen und 
+      Akzeptanzkriterien
+    procedures:
+    - number: 1
+      name: Definition von AI/ML-Qualitäts-, Leistungs- und Risikokriterien
+      prerequisite: Erfordert AIML-01 Liefergegenstände
+      deliverable: AI/ML Kontroll- und Kriterienkatalog
+      recommendations:
+      - Kriterien für Genauigkeit, Robustheit, Drift, Bias, Erklärbarkeit und 
+        Risiko unter Verwendung der DAMA Analysequalitätskonzepte definieren 
+        (Kapitel 16).
+      - Sicherstellen, dass Kriterien, wo anwendbar, mit den DAMA 
+        Datenqualitätsdimensionen übereinstimmen (Kapitel 11).
+      notes:
+      - Verwenden Sie NIST AI RMF als ergänzende Leitlinien für die 
+        Risikostrukturierung.
+    - number: 2
+      name: Definition von AI/ML-Akzeptanzschwellen und KPIs
+      prerequisite: Erfordert Kriterienkatalog
+      deliverable: AI/ML KPI- und Schwellenwertrahmen
+      recommendations:
+      - Definition von Schwellenwerten für Bereitstellungs-, Nachtrainierungs- 
+        und Rollback-Entscheidungen.
+      - KPIs mit DAMA Governance-Messpraktiken abstimmen (Kapitel 3.6).
+      notes:
+      - Verwenden Sie DCAM Messfähigkeiten, um sicherzustellen, dass KPIs 
+        umsetzbar sind.
+    - number: 3
+      name: AI/ML Modellgenehmigungs- und Änderungs­kriterien definieren
+      prerequisite: Erfordert KPI Framework
+      deliverable: AI/ML Modellakzeptanzkriterien-Dokument
+      recommendations:
+      - Genehmigungsregeln für Förderung, Nachschulung und Außerdienststellung 
+        von Modellen definieren.
+      notes:
+      - Verwendung von CMMI-Change-Control-Prinzipien zur Verstärkung der 
+        Nachvollziehbarkeit.
+    - number: 4
+      name: Validierung von Standards mit Governance- und Risikogremien
+      prerequisite: Erfordert Entwurfsstandards
+      deliverable: AI/ML Standards Validierungsprotokoll
+      recommendations:
+      - Validieren Sie mithilfe von DAMA Governance-Überwachungsstrukturen 
+        (Kapitel 3.4).
+      notes:
+      - Verwenden Sie IBM DGCM Governance-Räte für formelle Genehmigungen.
+    - number: 5
+      name: Genehmigung und Veröffentlichung von AI/ML-Standards
+      prerequisite: Erfordert Validierung
+      deliverable: Genehmigtes AI/ML Standards-Paket
+      recommendations:
+      - Wenden Sie GDPR Prinzipien der Notwendigkeit und Verhältnismäßigkeit an,
+        wenn Standards die Verarbeitung personenbezogener Daten betreffen.
+      notes:
+      - Verwendung der DCAM-Kontrollfreigabedisziplin zur Unterstützung der 
+        Audit-Bereitschaft.
+  AIML-04:
+    title: Integrieren Sie AI und ML Governance in analytische und operative 
+      Workflows
+    procedures:
+    - number: 1
+      name: Integrieren Sie Governance-Prüfpunkte in 
+        Modellentwicklungs-Workflows
+      prerequisite: Genehmigte AI/ML Standards erforderlich
+      deliverable: Verwaltete AI/ML Entwicklungsvorlagen
+      recommendations:
+      - Checkpoints über Trainings- und Validierungsphasen einbetten, abgestimmt
+        auf DAMA Lifecycle-Governance (Kapitel 16).
+      notes:
+      - Verwendung von CMMI-Prozessintegrationsleitlinien zur Stabilisierung von
+        Workflows.
+    - number: 2
+      name: Integrieren Sie Genehmigungsschritte in Deployment-Pipelines
+      prerequisite: Erfordert Workflow-Mapping
+      deliverable: Geregelte AI/ML Bereitstellungs-Workflows
+      recommendations:
+      - Stellen Sie sicher, dass Genehmigungstore mit DAMA 
+        Lebenszyklus-Kontrollpunkten übereinstimmen (Kapitel 4.3).
+      notes:
+      - Verwenden Sie DCAM Automatisierungsbereitschaftsprüfungen, wo Pipelines 
+        automatisiert sind.
+    - number: 3
+      name: Integrieren Sie Governance-Kontrollen in Überwachungsroutinen
+      prerequisite: Erfordert KPI Framework
+      deliverable: AI/ML operative Überwachungsverfahren
+      recommendations:
+      - Richten Sie Routinen an DAMA-Analytik-Überwachungspraktiken aus (Kapitel
+        16).
+      notes:
+      - Verwenden Sie die NIST AI RMF Measure-Funktion als Referenz.
+    - number: 4
+      name: Lebenszyklusdokumentation aktualisieren, um eingebettete Kontrollen 
+        widerzuspiegeln
+      prerequisite: Erfordert implementierte Workflows
+      deliverable: Aktualisierte AI/ML Lifecycle-Dokumentation
+      recommendations:
+      - Sicherstellung der Nachvollziehbarkeit über Lifecycle-Phasen und 
+        Kontrollen hinweg.
+      notes:
+      - Verwenden Sie DAMA-Artefaktmanagement-Anleitung für 
+        Dokumentationskonsistenz.
+    - number: 5
+      name: Gesteuerte Kontrollen auf aktive AI/ML Modelle anwenden
+      prerequisite: Erfordert gesteuerte Vorlagen
+      deliverable: Nachweis angewandter AI/ML Kontrollen
+      recommendations:
+      - Validieren Sie die Ausführung von Stewardship gemäß dem DAMA 
+        Governance-Ausführungsmodell (Kapitel 3.3).
+      notes:
+      - Verwenden Sie DCAM Kontrollausführungsindikatoren zur 
+        Wirksamkeitsprüfung.
+  AIML-06:
+    title: Überwachen Sie AI und ML Leistung und erzwingen Sie Compliance
+    procedures:
+    - number: 1
+      name: Überwachen Sie AI/ML Leistung, Drift und Verzerrung
+      prerequisite: Erfordert genehmigte KPIs
+      deliverable: AI/ML Überwachungsbericht
+      recommendations:
+      - Überwachen Sie mithilfe der DAMA Analyseleistungsleitlinien (Kapitel 
+        16).
+      notes:
+      - Verwenden Sie NIST AI RMF Measure-Funktion als ergänzende Eingabe.
+    - number: 2
+      name: Compliance mit AI/ML Governance-Standards überprüfen
+      prerequisite: Erfordert implementierte Kontrollen
+      deliverable: AI/ML-Compliance-Bewertung
+      recommendations:
+      - Ausrichtung von Reviews an DAMA-Governance-Überwachungsaktivitäten 
+        (Kapitel 3.3).
+      notes:
+      - Verwenden Sie DCAM Compliance-Fähigkeitskriterien.
+    - number: 3
+      name: Stewardship- und Eigentumsausführung bewerten
+      prerequisite: Erfordert zugewiesene Rollen
+      deliverable: AI/ML-Stewardship-Leistungsbewertung
+      recommendations:
+      - Mit den DAMA Stewardship-Kompetenzerwartungen bewerten (Kapitel 4).
+      notes:
+      - Verwenden Sie IDGC Verhaltensindikatoren für Reifegradbewertungen.
+    - number: 4
+      name: Verfolgen Sie AI/ML Governance-Probleme und deren Behebung
+      prerequisite: Erfordert Problemberichterstattungsmechanismus
+      deliverable: AI/ML Problembehebungsregister
+      recommendations:
+      - Anwendung von DAMA-Eskalations- und Korrekturmaßnahmenanleitungen 
+        (Kapitel 3.4).
+      notes:
+      - Verwendung von CMMI-Korrekturmaßnahmenpraktiken.
+    - number: 5
+      name: Bericht über AI/ML Governance-Leistungskennzahlen
+      prerequisite: Erfordert Überwachungsausgaben
+      deliverable: AI/ML Governance-Leistungsbericht
+      recommendations:
+      - Metriken gemäß DAMA Governance-Messpraktiken berichten (Kapitel 3.6).
+      notes:
+      - Verwenden Sie DCAM Benchmarking-Indikatoren, wo verfügbar.
+  AIML-09:
+    title: Optimieren Sie kontinuierlich die Governance-Reife von AI und ML
+    procedures:
+    - number: 1
+      name: Bewerten Sie die Governance-Reife von AI/ML
+      prerequisite: Erfordert Leistungs- und Compliance-Nachweise
+      deliverable: AI/ML Governance-Reifegradbewertung
+      recommendations:
+      - Verwenden Sie DAMA Reifegradbewertungsprinzipien (Kapitel 15).
+      notes:
+      - Verwenden Sie DCAM Reifegrade für vergleichendes Benchmarking.
+    - number: 2
+      name: AI/ML Governance-Lücken und Verbesserungsmöglichkeiten 
+        identifizieren
+      prerequisite: Erfordert Reifegradbewertung
+      deliverable: AI/ML Verbesserungs-Backlog
+      recommendations:
+      - Lücken nach Risiko, Auswirkung und analytischer Kritikalität 
+        priorisieren (Kapitel 16).
+      notes:
+      - Verwendung von IBM-DGCM-Verbesserungsmechanismen für strukturierte 
+        Remediation.
+    - number: 3
+      name: Definieren Sie AI/ML Governance-Verbesserungsfahrplan
+      prerequisite: Erfordert Verbesserungs-Backlog
+      deliverable: AI/ML-Governance-Verbesserungs-Roadmap
+      recommendations:
+      - Roadmap mit DAMA kontinuierlichen Verbesserungsrichtlinien abstimmen 
+        (Kapitel 3.6).
+      notes:
+      - Verwenden Sie CMMI gestufte Verbesserungslogik zur Sequenzierung von 
+        Initiativen.
+    - number: 4
+      name: Aktualisieren Sie AI/ML Standards und Kontrollen
+      prerequisite: Erfordert Roadmap-Umsetzung
+      deliverable: Aktualisierte AI/ML Governance-Artefakte
+      recommendations:
+      - Stellen Sie sicher, dass Aktualisierungen Verantwortlichkeit und 
+        Konsistenz der Lebenszyklus-Governance stärken.
+      notes:
+      - Die DCAM Anleitung zur Kontrollverfeinerung verwenden.
+    - number: 5
+      name: Verbesserte AI/ML Governance-Praktiken institutionalisieren
+      prerequisite: Erfordert stabilisierte Verbesserungen
+      deliverable: Institutionalisierung des AI/ML Governance-Betriebsmodells
+      recommendations:
+      - Wenden Sie DCAM und CMMI Institutionalisierungslogik an, um 
+        Nachhaltigkeit sicherzustellen.
+      notes:
+      - Verwendung von DAMA-Artefakt-Lebenszykluspraktiken zur Aufrechterhaltung
+        langfristiger Konsistenz.

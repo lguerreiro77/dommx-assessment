@@ -1,0 +1,237 @@
+domain:
+  id: 7
+  name: Dokumenten- und Inhaltsmanagement (DCM)
+  description: "Diese Domäne untersucht die Formalisierung der Dokumenten- und Inhaltsverwaltung,
+    das Vorhandensein gesteuerter Lebenszyklusprozesse (Aufbewahrung, Archivierung
+    und Entsorgung) und die Integration von Governance-Kontrollen in unstrukturierte
+    Datenroutinen. Dokumenten- und Inhaltsmanagement konzentriert sich darauf, sicherzustellen,
+    dass unstrukturierte Daten authentisch, zugänglich und über ihren Lebenszyklus
+    hinweg gesteuert sind (DAMA-DMBOK2, Kapitel 7).\n"
+maturity_scale:
+  0:
+    maturity_level: Nicht existent
+    meaning: Keine Governance-Praktiken und keine definierten 
+      Verantwortlichkeiten oder Prozesse.
+    interpretation_for_assessment: Zeigt ein vollständiges Fehlen von Struktur 
+      und einen unmittelbaren Bedarf an grundlegenden Maßnahmen an.
+  1:
+    maturity_level: Initial
+    meaning: Aktivitäten erfolgen informell und reaktiv mit wenig oder keiner 
+      Dokumentation.
+    interpretation_for_assessment: Spiegelt Bewusstsein wider, aber auch hohe 
+      Variabilität und operationelles Risiko.
+  2:
+    maturity_level: Im Entstehen
+    meaning: Einige Praktiken existieren, sind jedoch inkonsistent, 
+      undokumentiert oder werden nicht teamübergreifend angewendet.
+    interpretation_for_assessment: Zeigt frühe Entwicklung. Standardisierung und
+      Dokumentation sind notwendig, um Fortschritte zu erzielen.
+  3:
+    maturity_level: Etabliert
+    meaning: Prozesse, Rollen und Richtlinien sind definiert, dokumentiert und 
+      stabil angewendet.
+    interpretation_for_assessment: Demonstriert operationale Konsistenz und 
+      Bereitschaft für strukturiertere Verbesserungen.
+  4:
+    maturity_level: Verwaltet
+    meaning: Governance ist in Arbeitsabläufe integriert und wird durch Tools, 
+      Überwachung und Aufsicht unterstützt.
+    interpretation_for_assessment: Repräsentiert reife Einführung mit 
+      zuverlässiger Ausführung über Teams hinweg.
+  5:
+    maturity_level: Optimiert
+    meaning: Governance ist vollständig eingebettet, wird kontinuierlich 
+      verbessert und entspricht Compliance- und ethischen Erwartungen.
+    interpretation_for_assessment: Repräsentiert fortgeschrittene Reife mit 
+      proaktiver Governance, Optimierung und institutionalisierter 
+      kontinuierlicher Verbesserung.
+questions:
+  Q1:
+    text: Sind Dokumenten- und Inhaltsklassifikationsregeln formell definiert 
+      und genehmigt?
+    explanation: Bewertet Klarheit und Governance von Klassifizierung und 
+      Kennzeichnung.
+    objective: Stellen Sie eine strukturierte und gesteuerte Handhabung von 
+      Inhalten sicher.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Document & Content Management; DCAM,
+      Content Management; IDGC, Structural Controls)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Klassifizierungs- und Kennzeichnungsregeln für Dokumente 
+          und Inhalte definieren
+      1:
+        action_code: DCM-02
+        description: Stewardship-Rollen für Klassifizierungs-Governance zuweisen
+      2:
+        action_code: DCM-03
+        description: Genehmigen Sie Klassifikations- und Kennzeichnungsstandards
+      3:
+        action_code: DCM-04
+        description: Integrieren Sie Klassifikationsstandards in 
+          Inhaltsverarbeitungsroutinen
+      4:
+        action_code: DCM-06
+        description: Automatisieren Sie Klassifikations- und 
+          Kennzeichnungsvalidierung
+      5:
+        action_code: DCM-09
+        description: Verfeinern Sie kontinuierlich die 
+          Klassifikations-Governance anhand von Metriken
+  Q2:
+    text: Werden Aufbewahrungs-, Archivierungs- und Entsorgungsregeln gesteuert 
+      und konsistent angewendet?
+    explanation: Bewertet Lifecycle-Governance von Dokumenten und Inhalten.
+    objective: Unterstützen Sie Compliance, Verantwortlichkeit und 
+      Risikominderung.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Roles & Responsibilities; DCAM, Ownership;
+      IDGC, Accountability)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Aufbewahrungs-, Archivierungs- und Entsorgungsanforderungen
+          definieren
+      1:
+        action_code: DCM-02
+        description: Zuweisung von Lifecycle-Stewardship für Aufbewahrung und 
+          Archivierung
+      2:
+        action_code: DCM-03
+        description: Genehmigung gesteuerter Aufbewahrungs- und 
+          Archivierungsregeln
+      3:
+        action_code: DCM-04
+        description: Integrieren Sie Lebenszyklusregeln in 
+          Inhaltsverarbeitungsroutinen
+      4:
+        action_code: DCM-06
+        description: Automatisieren Sie die Ausführung von Aufbewahrung, 
+          Archivierung und Löschung
+      5:
+        action_code: DCM-09
+        description: Kontinuierliche Verbesserung der Lifecycle-Governance 
+          anhand von Evidenz
+  Q3:
+    text: Sind Metadatenstrukturen und Tagging-Standards gesteuert und gepflegt?
+    explanation: Untersuchen Sie semantische und strukturelle Konsistenz für 
+      unstrukturierte Inhalte.
+    objective: Verbesserung der Nachvollziehbarkeit und Auffindbarkeit.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Document Lifecycle; Chapter 12 – Data
+      Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Definieren Sie Metadaten- und Tagging-Anforderungen für 
+          Inhalte
+      1:
+        action_code: DCM-02
+        description: Zuweisung von Metadaten-Stewardship-Verantwortlichkeiten
+      2:
+        action_code: DCM-03
+        description: Genehmigen Sie Metadaten- und Tagging-Standards
+      3:
+        action_code: DCM-04
+        description: Validieren Sie Rollendeckung mit __ACR0__ funktionalem 
+          Governance-Modell, das strategische, taktische und operative 
+          Funktionen unterscheidet (Abbildung 3-2, S.__ACR1__).
+      4:
+        action_code: DCM-06
+        description: Automatisierung der Validierung und Aktualisierung von 
+          Metadaten-Tags
+      5:
+        action_code: DCM-09
+        description: Metadaten-Governance kontinuierlich anhand von Metriken 
+          verbessern
+  Q4:
+    text: Sind Inhaltsrepositorys gesteuert, überwacht und an Governance-Regeln 
+      ausgerichtet?
+    explanation: Überprüft Governance von Repositorien, gemeinsamen Bereichen 
+      und Inhaltszugriff.
+    objective: Stellen Sie kontrollierten und konsistenten Zugriff auf Inhalte 
+      sicher.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Metadata & Indexing; DCAM, Metadata
+      Integration; IDGC, Process Enablement)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Definieren Sie Governance-Anforderungen für Repositorien 
+          und gemeinsame Bereiche
+      1:
+        action_code: DCM-02
+        description: Weisen Sie Repository-Governance-Rollen zu
+      2:
+        action_code: DCM-03
+        description: Repository-Governance-Regeln genehmigen
+      3:
+        action_code: DCM-04
+        description: Gesteuerte Repository-Routinen und kontrollierten Zugriff 
+          betreiben
+      4:
+        action_code: DCM-06
+        description: Automatisiertes Repository-Monitoring und 
+          Compliance-Validierung
+      5:
+        action_code: DCM-09
+        description: Verbessern Sie die Repository-Governance kontinuierlich 
+          anhand von Nachweisen
+  Q5:
+    text: Wird die Inhaltsqualität (Genauigkeit, Aktualität, Vollständigkeit) 
+      gemessen und überprüft?
+    explanation: Bewertet Mess- und Überprüfungsprozesse für Inhaltsqualität.
+    objective: Aufrechterhaltung zuverlässiger und vertrauenswürdiger 
+      Inhaltspeicher.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Metrics & Monitoring; DCAM, Measurement;
+      IDGC, Monitoring & Audit)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Definieren Sie Inhaltsqualitätsindikatoren und Messregeln
+      1:
+        action_code: DCM-02
+        description: Verantwortlichkeiten für Inhaltsqualitätsüberwachung 
+          zuweisen
+      2:
+        action_code: DCM-03
+        description: Qualitätsprüfzyklen und KPIs genehmigen
+      3:
+        action_code: DCM-04
+        description: Implementieren Sie Dashboards und Qualitätsprüfroutinen
+      4:
+        action_code: DCM-06
+        description: Automatisierte Inhaltsqualitätsvalidierung
+      5:
+        action_code: DCM-09
+        description: Verbessern Sie kontinuierlich die Inhaltsqualität anhand 
+          von Metriken
+  Q6:
+    text: Werden ethische, Datenschutz- und verantwortungsbewusste 
+      Schutzmaßnahmen im Dokumenten- und Inhaltsmanagement angewendet?
+    explanation: Sicherstellen, dass Dokumente Datenschutz-, Ethik- und 
+      Minimierungsregeln einhalten.
+    objective: Unterstützen Sie verantwortungsbewusstes und konformes 
+      Inhaltsmanagement.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Privacy & Security; DCAM, Risk Controls;
+      IDGC, Ethical Handling)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Definieren Sie ethische, Datenschutz- und 
+          Minimierungsregeln für Inhalte
+      1:
+        action_code: DCM-02
+        description: Rollen für ethische und Datenschutzaufsicht zuweisen
+      2:
+        action_code: DCM-03
+        description: Genehmigen Sie ethische und Datenschutz-Inhaltsregeln
+      3:
+        action_code: DCM-04
+        description: Einbettung ethischer und Datenschutz-Schutzmaßnahmen in 
+          Content-Management-Routinen
+      4:
+        action_code: DCM-06
+        description: Automatisieren Sie Datenschutz-, ethische und 
+          Minimierungsvalidierung
+      5:
+        action_code: DCM-09
+        description: Verbessern Sie kontinuierlich ethische und 
+          Datenschutz-Governance mithilfe von Audits

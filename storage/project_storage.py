@@ -1,11 +1,12 @@
 import os
 import shutil
 import uuid
-from datetime import datetime
-import streamlit as st
-
 import stat
 import time
+import streamlit as st
+
+from datetime import datetime
+from pathlib import Path
 
 from core.config import BASE_DIR
 from data.repository_factory import get_repository
@@ -42,7 +43,6 @@ def create_project(name, created_by, allow_open_access=False):
     project_id = str(uuid.uuid4())
     timestamp = datetime.utcnow().isoformat()
 
-    # FIX: tabela projects usa last_update_timestamp (não created_at)
     repo.insert("projects", {
         "project_id": project_id,
         "name": name,
@@ -60,21 +60,27 @@ def create_project(name, created_by, allow_open_access=False):
     general_dest = os.path.join(project_root, "General")
 
     # fontes (baseline)
-    domains_src = os.path.join(BASE_DIR, "data", "domains", "language", "default")
+    domains_root = os.path.join(BASE_DIR, "data", "domains")
     general_src = os.path.join(BASE_DIR, "data", "general")
 
-    # filesystem setup no root do repo
     fs_repo_root_src = os.path.join(BASE_DIR, "filesystem_setup.yaml")
 
     os.makedirs(domains_dest, exist_ok=True)
     os.makedirs(general_dest, exist_ok=True)
 
-    _copy_dir_contents(domains_src, domains_dest)
+    # 🔥 COPIAR TODAS AS LÍNGUAS DIRETAMENTE DE data/domains
+    if os.path.isdir(domains_root):
+        for lang in os.listdir(domains_root):
+            lang_src = os.path.join(domains_root, lang) 
+
+            if os.path.isdir(lang_src):
+                lang_dest = os.path.join(domains_dest, lang)
+                shutil.copytree(lang_src, lang_dest, dirs_exist_ok=True)
+
+    # copiar general
     _copy_dir_contents(general_src, general_dest)
 
-    # copiar filesystem_setup.yaml para:
-    # 1) raiz do projeto
-    # 2) General do projeto (este será o ativo)
+    # copiar filesystem_setup.yaml
     if os.path.isfile(fs_repo_root_src):
         shutil.copy2(fs_repo_root_src, os.path.join(project_root, "FileSystem_Setup.yaml"))
         shutil.copy2(fs_repo_root_src, os.path.join(general_dest, "FileSystem_Setup.yaml"))

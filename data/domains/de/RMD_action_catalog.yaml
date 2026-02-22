@@ -1,0 +1,507 @@
+domain:
+  id: 8
+  name: Reference and Master Data (RMD)
+action_catalog:
+  RMD-01:
+    title: Grundlegende Master- und Referenzdatenprinzipien und -umfang 
+      definieren
+    procedures:
+    - number: 1
+      name: Definieren Sie Prinzipien für Master- und Referenzdaten sowie 
+        Umfangsgrenzen
+      prerequisite: Erfordert die Identifikation der Enterprise-Master- und 
+        Referenzdomänen
+      deliverable: Stammdaten- und Referenzdaten-Prinzipien-Dokument
+      recommendations:
+      - Definieren Sie Prinzipien unter Verwendung der DAMA-Richtlinien für 
+        autoritative und gemeinsame Master-Entitäten „Kapitel 6, S. 180–182“.
+      - Unterscheidung zwischen Master- und Referenzdaten gemäß DAMA klären 
+        „Kapitel 6, S. 186–188“.
+      - Abstimmung der Prinzipien mit Governance-Erwartungen für Stewardship, 
+        Eigentum und Verwahrung „Kapitel 3.2, S. 55–57“.
+      - Validieren Sie die Lifecycle-Abdeckung, einschließlich Erstellung, 
+        Genehmigung, Verteilung und Ausmusterung „Kapitel 4.3, S. 92“.
+      - Prinzipien unter Verwendung der DAMA Artefaktstandards dokumentieren 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Fähigkeitsabgrenzung, um Master-Domänen mit dem 
+        höchsten unternehmerischen Einfluss zu identifizieren.
+    - number: 2
+      name: Entwerfen Sie einen ersten Master- und Referenzdomänenkatalog
+      prerequisite: Erfordert definierte Prinzipien
+      deliverable: Entwurf Domänenkatalog v0.1
+      recommendations:
+      - Identifizieren Sie Kandidaten für Master-Domänen wie Kunde, Lieferant, 
+        Produkt und Organisation „Kapitel 6, S. 182–186“.
+      - Identifizieren Sie Referenzlisten wie Klassifikationen, kontrollierte 
+        Vokabulare und Statuswerte „Kapitel 6, S. 186–188“.
+      - Dokumentieren Sie Metadaten einschließlich Eigentümer, Steward, System 
+        of Record und Zweck „Kapitel 9, S. 236–239“.
+      - Validieren Sie Katalogeinträge über Geschäftsdomänen hinweg.
+      notes:
+      - Wenden Sie CMMI-Scoping an, um Lieferwellen zu strukturieren.
+    - number: 3
+      name: Vorläufige Master- und Referenzdaten-Kontrollpunkte identifizieren
+      prerequisite: Erfordert Workflow-Mapping
+      deliverable: Erste Kontrollpunktliste
+      recommendations:
+      - Lebenszyklus-Kontrollpunkte für Erstellung, Validierung, Anreicherung 
+        und Veröffentlichung identifizieren („Kapitel 6, S. 184–188“).
+      - Fügen Sie Qualitätsprüfungen gemäß den DAMA Qualitätsdimensionen hinzu 
+        „Kapitel 11, S. 308–311“.
+      - Metadaten wie Herkunft, Version und Genehmigungsstatus erfassen „Kapitel
+        9, S. 236–239“.
+      - Stewardship-Verantwortlichkeiten für jeden Kontrollpunkt bestätigen 
+        „Kapitel 4, S. 86–89“.
+      notes:
+      - DCAM Kritikalitätszuordnung verwenden, um hochwirksame Punkte zu 
+        priorisieren.
+    - number: 4
+      name: Zuweisung vorläufigen Master- und Referenzdaten-Eigentums
+      prerequisite: Erfordert ein Katalog und eine Kontrollliste
+      deliverable: Eigentümer-Matrix
+      recommendations:
+      - Weisen Sie Eigentümer, Stewards und Verwahrer gemäß den DAMA 
+        Governance-Rollen zu „Kapitel 4, S. 86–89“.
+      - Klären Sie Entscheidungsrechte basierend auf DAMA-Eskalationsanleitung 
+        „Kapitel 3.4, S. 60–61“.
+      - Sicherstellung, dass Lebenszyklusverantwortlichkeiten Onboarding, 
+        Aktualisierungen, Konfliktlösung und Ausmusterung umfassen „Kapitel 4.3,
+        S. 92“.
+      - Zuweisungen gemäß DAMA Artefaktdokumentation erfassen „Kapitel 3 Anhang,
+        S. 69–70“.
+      notes:
+      - Verwendung von IDGC-Verhaltensangemessenheit zur Auswahl von 
+        Eigentümern, die zwischen Domänen vermitteln können.
+    - number: 5
+      name: Veröffentlichung der ersten Master- und 
+        Referenz-Governance-Richtlinien
+      prerequisite: Erfordert Prinzipien, Katalog und Eigentum
+      deliverable: Master- und Referenz-Governance-Onboarding-Brief
+      recommendations:
+      - Zweck und unternehmerische Relevanz von Master- und Referenzdaten 
+        erläutern „Kapitel 6, S. 180–188“.
+      - Klären Sie Verantwortlichkeiten von Eigentümern, Stewards und Custodians
+        „Kapitel 3.2, S. 55–57“.
+      - Lifecycle-Checkpoints für Erstellung, Validierung, Veröffentlichung und 
+        Archivierung beschreiben „Kapitel 4.3, S. 92“.
+      - Veröffentlichen Sie Richtlinien unter Verwendung der DAMA 
+        Artefaktstruktur „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie CMMI Kommunikationspraktiken zur Unterstützung der 
+        Akzeptanz in Geschäfts- und Technologiebereichen.
+  RMD-02:
+    title: Master- und Referenz-Stewardship sowie Standards formalisieren
+    procedures:
+    - number: 1
+      name: Konsolidieren Sie Master- und Referenzdatenanforderungen
+      prerequisite: Erfordert vollständige RMD-01
+      deliverable: Stammdaten- und Referenzanforderungsregister
+      recommendations:
+      - Fördern Sie verantwortungsvolle Qualitäts-Governance.
+      - Geschäftsregeln für Beschaffung, Validierung und Konfliktlösung von 
+        Master-Entitäten erfassen „Kapitel 6, S. 184–186“.
+      - Anforderungen an Referenzlisten identifizieren, einschließlich Struktur,
+        Stabilität und Genehmigungsbedingungen „Kapitel 6, S. 186–188“.
+      - Weisen Sie die Eigentümerschaft von Anforderungen gemäß 
+        Governance-Rollen zu „Kapitel 3.2, S. 55–57“.
+      notes:
+      - Verwenden Sie DCAM Priorisierung, um Anforderungen nach 
+        Unternehmensauswirkung zu bewerten.
+    - number: 2
+      name: Erstellen Sie ein formelles Master- und 
+        Referenzdaten-Management-Framework
+      prerequisite: Erfordert validierte Anforderungen
+      deliverable: Master- und Referenzdaten-Framework v1.0
+      recommendations:
+      - Lebenszyklusprozesse wie Identifikation, Modellierung, Beschaffung, 
+        Wartung und Ausmusterung gemäß DAMA strukturieren „Kapitel 6, S. 
+        180–188“.
+      - Governance-Rollen, Artefakte, Entscheidungsrechte und Eskalationsregeln 
+        einbeziehen „Kapitel 3.4, S. 60–61“.
+      - Datenqualitätskontrollaktivitäten integrieren „Kapitel 11, S. 308–311“.
+      - Dokumentation des Frameworks unter Verwendung von 
+        DAMA-Artefaktformatierung „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie CMMI Framework-Verifikationspraktiken, um vollständige 
+        Abdeckung der Lifecycle-Aktivitäten sicherzustellen.
+    - number: 3
+      name: Definition von Master- und Referenzstandards und -regeln
+      prerequisite: Framework v1.0 erforderlich
+      deliverable: Handbuch für Stammdaten- und Referenzstandards
+      recommendations:
+      - Definieren Sie Namenskonventionen, Identifikatoren, Schlüssel, 
+        Survivorship-Logik und Versionsregeln in Übereinstimmung mit DAMA 
+        „Kapitel 6, S. 184–186“.
+      - Referenzlistenstrukturen, Genehmigungsschritte und Versionsanforderungen
+        definieren „Kapitel 6, S. 186–188“.
+      - Stellen Sie sicher, dass Metadatendefinitionen für jedes Attribut 
+        erfasst werden „Kapitel 9, S. 236–239“.
+      - Einbeziehung von Qualitätsgrenzwerten und Validierungsbedingungen, die 
+        mit DAMA-Qualitätsdimensionen übereinstimmen „Kapitel 11, S. 308–311“.
+      notes:
+      - Berücksichtigen Sie GDPR Minimierungsprinzipien bei der Definition 
+        persönlicher Master-Attribute.
+    - number: 4
+      name: Validierung von Master- und Referenzstandards mit 
+        Geschäfts-Stakeholdern
+      prerequisite: Erfordert Entwurf von Standards
+      deliverable: Abstimmungsprotokoll
+      recommendations:
+      - Bestätigung der semantischen Ausrichtung mit Geschäftsterminologie gemäß
+        DAMA-Modellierungsanleitung „Kapitel 10, S. 282–284“.
+      - Validieren Sie Überlebens- und Beschaffungsregeln anhand der operativen 
+        Machbarkeit.
+      - Stellen Sie sicher, dass Referenzlistenstrukturen reale geschäftliche 
+        Klassifikationsbedürfnisse widerspiegeln.
+      - Feedback erfassen und Versionsänderungen unter Verwendung der DAMA 
+        Artefaktstruktur dokumentieren („Kapitel 3 Anhang, S. 69–70“).
+      notes:
+      - Verwenden Sie DCAM Ausrichtungspraktiken, um globale Konsistenz und 
+        lokale Flexibilität auszubalancieren.
+    - number: 5
+      name: Genehmigen und veröffentlichen Sie Stammdaten- und Referenzstandards
+      prerequisite: Erfordert Genehmigung durch Governance-Autorität
+      deliverable: Genehmigungspaket für Master- und Referenzstandards
+      recommendations:
+      - Einreichung von Standards über formale Entscheidungsgremien „Kapitel 
+        3.4, S. 60–61“.
+      - Abdeckung für prioritäre Domänen wie Kunde, Produkt oder Standort 
+        validieren „Kapitel 6, S. 182–186“.
+      - In ein gesteuertes Repository mit Metadaten zu Version, Status und 
+        Anwendbarkeit veröffentlichen „Kapitel 9, S. 236–239“.
+      - Kommunizieren Sie Standards unter Verwendung von DAMA 
+        Governance-Kommunikationspraktiken „Kapitel 3.6, S. 64–66“.
+      notes:
+      - Verwenden Sie CMMI Bereitschaftsbewertungen vor der Durchsetzung der 
+        Einführung.
+  RMD-03:
+    title: Genehmigen Sie Master- und Referenzregeln, Kontrollen und 
+      Verantwortlichkeiten
+    procedures:
+    - number: 1
+      name: Etablieren Sie die Satzung des Master- und Referenzdatenrats
+      prerequisite: Erfordert RMD-02 Liefergegenstände
+      deliverable: Genehmigte Charta
+      recommendations:
+      - Definieren Sie Befugnis, Umfang und Verantwortlichkeiten des Gremiums 
+        gemäß den Governance-Prinzipien von DAMA „Kapitel 3.4, S. 60–61“.
+      - Richten Sie die Charta-Struktur an den Unternehmensebenen der Governance
+        aus „Abbildung 3.2, S. 53“.
+      - Beziehen Sie Verantwortlichkeiten für Genehmigung von Standards, 
+        Eskalationen und Priorisierung ein.
+      - Dokumentieren Sie die Charta unter Verwendung der DAMA-Artefaktstruktur 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Governance-Mapping zur Integration von Datenqualität,
+        Architektur und Compliance-Gremien.
+    - number: 2
+      name: Weisen Sie Stammdaten- und Referenz-Governance-Rollen zu
+      prerequisite: Erfordert Rollenbeschreibungen
+      deliverable: Governance-Rollen-Zuweisung
+      recommendations:
+      - Weisen Sie verantwortliche Eigentümer, Stewards und Verwalter gemäß DAMA
+        Definitionen zu „Kapitel 4, S. 86–89“.
+      - Klären Sie, wer Änderungen anfordern und wer diese genehmigen darf 
+        „Kapitel 3.4, S. 60–61“.
+      - Stellen Sie sicher, dass jede Stammdomäne einen dedizierten 
+        verantwortlichen Eigentümer hat.
+      - Dokumentieren Sie Zuweisungen unter Verwendung von DAMA 
+        Artefaktdokumentation „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie IDGC-Verhaltenskriterien, um Stewards zu ernennen, die 
+        domänenübergreifende Vermittlung leisten können.
+    - number: 3
+      name: Implementieren Sie Master- und Referenz-Entscheidungsforen
+      prerequisite: Erfordert Charter-Genehmigung
+      deliverable: Governance-Kalender und Entscheidungs-Templates
+      recommendations:
+      - Beziehen Sie Tagesordnungspunkte wie neue Domänen, 
+        Standardaktualisierungen und Ausnahmegenehmigungen ein.
+      - Strukturierte Entscheidungs-Templates anwenden, die mit DAMA 
+        Governance-Praktiken übereinstimmen („Kapitel 3.6, S. 64–66“).
+      - Bewerten Sie Auswirkungen auf Architektur, Qualität, Sicherheit und 
+        Lebenszyklus
+      - Speichern Sie Entscheidungen mit DAMA-Artefaktmustern „Kapitel 3 Anhang,
+        S. 69–70“.
+      notes:
+      - Verwenden Sie CMMI Meeting-Disziplin, um strukturierte und prüfbare 
+        Governance sicherzustellen.
+    - number: 4
+      name: Start der Master- und Referenz-Review-Zyklen
+      prerequisite: Erfordert definierte Foren
+      deliverable: Protokoll der ersten Überprüfung
+      recommendations:
+      - Priorisieren Sie Domänen mit den größten Datenqualitäts- und 
+        Integrationsproblemen.
+      - Ungeklärte Duplikate, widersprüchliche Klassifikationen und 
+        inkonsistente Bezeichner überprüfen „Kapitel 11, S. 308–311“.
+      - Entscheidungen über Behebungsmaßnahmen durch formale Governance treffen 
+        „Kapitel 3.4, S. 60–61“.
+      - Dokumentieren Sie Überprüfungsergebnisse mit DAMA-Artefaktvorlagen 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Die DCAM Absicherungspraktiken verwenden, um Reviews mit 
+        Unternehmenszielen zu verknüpfen.
+    - number: 5
+      name: Pflegen Sie den Betrieb der Master- und Referenz-Governance
+      prerequisite: Erfordert einen stabilen Meeting-Rhythmus
+      deliverable: Governance-Aktivitätsprotokoll
+      recommendations:
+      - Führen Sie Aufzeichnungen über Entscheidungen, Ausnahmen, Eskalationen 
+        und offene Maßnahmen „Kapitel 3.6, S. 64–66“.
+      - Verknüpfen Sie Protokolleinträge mit betroffenen Domänen und 
+        Qualitätsindikatoren.
+      - Überprüfen Sie Muster wiederkehrender Probleme zur Verfeinerung von 
+        Standards.
+      - Speichern Sie Protokolle gemäß DAMA-Artefaktstruktur „Kapitel 3 Anhang, 
+        S. 69–70“.
+      notes:
+      - Verwendung von CMMI-Überwachungstechniken zur Erkennung von 
+        Governance-Kapazitätsproblemen.
+  RMD-04:
+    title: Einbettung von Master- und Referenz-Governance in Workflows
+    procedures:
+    - number: 1
+      name: Governance-Checkpoints in Workflows einbetten
+      prerequisite: Erfordert genehmigte RMD-03 Standards
+      deliverable: Aktualisierte Workflow-Vorlagen
+      recommendations:
+      - Positionieren Sie Kontrollpunkte dort, wo Master- oder Referenzdaten 
+        erstellt oder geändert werden „Kapitel 6, S. 184–188“.
+      - Sicherstellung, dass Workflow-Schritte Namens-, Codierungs- und 
+        Validierungsregeln durchsetzen.
+      - Eskaliere Ausnahmen über formale Governance-Kanäle „Kapitel 3.4, S. 
+        60–61“.
+      - Dokumentieren Sie Workflows unter Verwendung von DAMA 
+        Artefaktkonventionen „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Die DCAM Workflow-Governance-Zuordnung verwenden, um konsistente 
+        Durchsetzung sicherzustellen.
+    - number: 2
+      name: Master- und Referenzkriterien in System- und Pipeline-Design 
+        integrieren
+      prerequisite: Erfordert Designstandards
+      deliverable: Gesteuerte Designvorlagen
+      recommendations:
+      - Erfordern Sie, dass Systeme Stammdaten ausschließlich aus genehmigten 
+        Repositorien beziehen „Kapitel 6, S. 184–186“.
+      - Ablehnung oder Markierung von Werten, die mit Referenzlisten 
+        inkonsistent sind.
+      - Ausrichtung an Integrations-Governance für Ingestion und Distribution 
+        „Kapitel 8, S. 252–260“.
+      - Dokumentieren Sie Regeln und Vorlagen unter Verwendung der DAMA 
+        Artefaktanleitung „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie CMMI Designverifikation, um Nachweise der Compliance zu 
+        verlangen.
+    - number: 3
+      name: Aktualisieren Sie die Lebenszyklusdokumentation mit Master- und 
+        Referenzintegration
+      prerequisite: Erfordert Workflow-Neugestaltung
+      deliverable: Aktualisierte Lifecycle-Dokumentation
+      recommendations:
+      - Stellen Sie Lebenszyklusphasen dar, in denen Master- oder Referenzwerte 
+        verwendet oder geändert werden, „Kapitel 4.3, S. 92“.
+      - Verknüpfen Sie Lifecycle-Änderungen mit Aktualisierungen in Master- und 
+        Referenzlisten.
+      - Ausrichtung der Aufbewahrungsregeln am Geschäftsprozess-Lifecycle.
+      - Veröffentlichen Sie Dokumentation unter Verwendung der 
+        DAMA-Artefaktstruktur „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Lebenszyklus-Mapping zur Visualisierung von 
+        Abhängigkeiten.
+    - number: 4
+      name: Master- und Referenzprüfungen an Entscheidungspunkten anwenden
+      prerequisite: Erfordert gesteuerte Workflows
+      deliverable: Nachweise für Governance-Kontrollen
+      recommendations:
+      - Validieren Sie Anfragen für neue Systeme, Flüsse oder Modelle anhand von
+        Master- und Referenzstandards.
+      - Identifizieren Sie Fälle von doppelten lokalen Listen oder nicht 
+        standardisierten Identifikatoren.
+      - Sicherstellen, dass Entscheidungen der DAMA Eskalationslogik folgen 
+        („Kapitel 3.4, S. 60–61“).
+      - Dokumentieren Sie Ergebnisse unter Verwendung von DAMA 
+        Dokumentationspraktiken „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - CMMI Verifikationsvorlagen verwenden, um Compliance-Prüfungen 
+        einzubetten.
+    - number: 5
+      name: Verfolgung der Einhaltung von Master- und Referenz-Governance
+      prerequisite: Erfordert Überwachungsroutinen
+      deliverable: Compliance-Register
+      recommendations:
+      - Verfolgen Sie die Einhaltung von Benennung, Codierung, Quellenangabe und
+        Verwendung von Referenzlisten.
+      - Protokollierung von Ausnahmen und Ausnahmen mit Begründung.
+      - Validieren Sie Sanierungspläne durch Governance-Gremien.
+      - Speichern Sie Compliance-Datensätze unter Verwendung der 
+        DAMA-Artefaktrichtlinien.
+      notes:
+      - Verwenden Sie DCAM Diagnoseindikatoren zur Priorisierung von 
+        Remediation.
+  RMD-06:
+    title: Master- und Referenzvalidierung sowie -verteilung automatisieren
+    procedures:
+    - number: 1
+      name: Definieren Sie Master- und Referenzüberwachungsindikatoren
+      prerequisite: Erfordert RMD-04-Workflows
+      deliverable: Master- und Referenz-KPI-Set
+      recommendations:
+      - Definieren Sie KPIs wie Duplikatrate, fehlende Pflichtwerte und 
+        Abdeckungsgrad der Nutzung „Kapitel 11, S. 308–311“.
+      - Richten Sie Indikatoren an Metadatendefinitionen aus „Kapitel 9, S. 
+        236–239“.
+      - Beziehen Sie Verteilungsleistung und Termintreue ein.
+      - KPI Verantwortung gemäß DAMA Governance-Rollen zuweisen „Kapitel 4, S. 
+        86–89“.
+      notes:
+      - Verwenden Sie DCAM Fähigkeitsindikatoren zur Erstellung eines 
+        Reifegrad-Dashboards.
+    - number: 2
+      name: Etablieren Sie automatisierte Master- und Referenzvalidierungsregeln
+      prerequisite: Erfordert Validierungskriterien
+      deliverable: Automatisierter Regel-Satz
+      recommendations:
+      - Regeln für Einzigartigkeit, gültige Codes, referenzielle Integrität und 
+        Überlebensfähigkeit implementieren „Kapitel 11, S. 308–311“.
+      - Ordnen Sie Regeln Metadatenattributen zu „Kapitel 9, S. 236–239“.
+      - Ausnahmen zur Überprüfung an Stewards weiterleiten.
+      - Regeln gemäß DAMA Artefaktstruktur dokumentieren „Kapitel 3 Anhang, S. 
+        69–70“.
+      notes:
+      - Vor dem Rollout CMMI Automatisierungsbereitschaftsprüfungen verwenden.
+    - number: 3
+      name: Master- und Referenzverteilung sowie Synchronisation implementieren
+      prerequisite: Erfordert Integrationsarchitektur
+      deliverable: Verteilungsdesign
+      recommendations:
+      - Verwenden Sie Hub-, Publish-Subscribe- oder kontrollierte API 
+        Verteilungsmodelle „Kapitel 8, S. 252–260“.
+      - Sicherstellen, dass Versions- und Zeitstempelmetadaten verteilte Werte 
+        begleiten („Kapitel 9, S. 236–239“).
+      - Implementieren Sie Feedback-Kanäle, damit Nutzer Inkonsistenzen melden 
+        können.
+      - Dokumentation der Verteilungsarchitektur unter Verwendung von 
+        DAMA-Artefaktformaten „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwendung von DCAM-Architektur-Fähigkeitsleitlinien zur Auswahl 
+        optimaler Verteilungsmechanismen.
+    - number: 4
+      name: Aktivieren Sie automatisierte Warnungen für Master- und 
+        Referenzprobleme
+      prerequisite: Erfordert Überwachung und Verteilung
+      deliverable: "Alert feed"
+      recommendations:
+      - Warnmeldungen für Duplikate, ungültige Werte, Synchronisationsfehler und
+        Missbrauch von Referenzlisten erstellen.
+      - Leiten Sie Warnungen an Eigentümer und Stewards basierend auf der 
+        Domänenverantwortung weiter „Kapitel 4, S. 86–89“.
+      - Beziehen Sie kontextuelle Metadaten für Triage ein.
+      - Alarm-Ergebnisse unter Verwendung der DAMA Dokumentationsrichtlinien 
+        aufzeichnen („Kapitel 3 Anhang, S. 69–70“).
+      notes:
+      - Verwenden Sie CMMI Vorfallbehandlungslogik, um strukturierte 
+        Reaktionspfade zu definieren.
+    - number: 5
+      name: Pflegen Sie automatisierte Master- und Referenz-Governance
+      prerequisite: Betriebliche Reife erforderlich
+      deliverable: Automatisierungsprotokoll
+      recommendations:
+      - Erfassen Sie Änderungen in Regel-Logik, Schwellenwerten und 
+        Verteilungsmechanismen.
+      - Validieren Sie die fortlaufende Übereinstimmung mit Standards und 
+        Definitionen „Kapitel 6, S. 184–188“.
+      - Erweitern Sie die Automatisierung schrittweise auf neue Domänen.
+      - Speichern Sie Protokolle unter Verwendung der DAMA-Artefaktformate 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Fähigkeitsentwicklungsanalyse, um zukünftige 
+        Automatisierungsverbesserungen zu planen.
+  RMD-09:
+    title: Optimieren Sie Stammdaten- und Referenz-Governance und 
+      institutionalisieren Sie Best Practices
+    procedures:
+    - number: 1
+      name: Überprüfung von Master- und Referenzleistungs-Trends
+      prerequisite: Erfordert RMD-06 KPI Basislinie
+      deliverable: Trendanalyse
+      recommendations:
+      - Analysieren Sie Datenqualitätstrends, einschließlich Duplikaten, 
+        widersprüchlichen Klassifikationen und ungültigen Referenzen „Kapitel 
+        11, S. 308–311“.
+      - Vergleichen Sie die Leistung über Domänen hinweg, um strukturelle 
+        Probleme zu erkennen.
+      - Überprüfen Sie Verteilungs- und Synchronisationsverzögerungen „Kapitel 
+        6, S. 184–188“.
+      - Dokumentieren Sie Analysen unter Verwendung der DAMA Artefakt-Struktur 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Fähigkeitsbewertungen, um die Reife zu benchmarken.
+    - number: 2
+      name: Verbessern Sie Stammdaten- und Referenzstandards anhand von 
+        Erkenntnissen
+      prerequisite: Erfordert Trendanalyse
+      deliverable: Aktualisierte Standards
+      recommendations:
+      - Passen Sie Definitionen, Survivorship-Regeln, Namenskonventionen und 
+        Code-Strukturen an „Kapitel 6, S. 186–188“.
+      - Aktualisieren Sie Metadatendefinitionen zur Verbesserung der Klarheit 
+        „Kapitel 9, S. 236–239“.
+      - Domänengrenzen anpassen, wo Überlappungen oder Unklarheiten bestehen.
+      - Validieren Sie Aktualisierungen über Governance-Foren „Kapitel 3.4, S. 
+        60–61“.
+      notes:
+      - Verwenden Sie CMMI-Logik zur kontinuierlichen Verbesserung, um Updates 
+        kontrolliert freizugeben.
+    - number: 3
+      name: Benchmark-Master- und Referenzpraktiken anhand externer Frameworks 
+        bewerten
+      prerequisite: Erfordert ein Reifegradprofil
+      deliverable: Benchmark-Nachweise
+      recommendations:
+      - Vergleichen Sie Praktiken mit Branchen- oder Regulierungsmodellen für 
+        gemeinsames Datenmanagement.
+      - Ordnen Sie externe Benchmarks den DAMA Erwartungen für Master- und 
+        Referenz-Governance zu „Kapitel 6, S. 180–188“.
+      - Governance-, Qualitäts- und Architektur-Lücken identifizieren.
+      - Dokumentation der Erkenntnisse unter Verwendung von DAMA-Artefaktmustern
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - DCAM Benchmarking-Techniken verwenden, um Vergleiche in Fähigkeitsziele 
+        zu übersetzen.
+    - number: 4
+      name: Verbessern Sie die Master- und Referenz-Automatisierungslogik
+      prerequisite: Erfordert RMD-06 Automatisierung
+      deliverable: Aktualisierter Automatisierungssatz
+      recommendations:
+      - Validierungs- und Verteilungslogik erweitern, um neue Fehlerarten und 
+        Inkonsistenzen abzudecken.
+      - Stellen Sie sicher, dass Metadaten- und Dokumentationsaktualisierungen 
+        Automatisierungsänderungen begleiten „Kapitel 9, S. 236–239“.
+      - Validieren Sie Logik in kontrollierten Umgebungen vor der 
+        Bereitstellung.
+      - Genehmigung für wesentliche Aktualisierungen über Governance-Foren 
+        einholen „Kapitel 3.4, S. 60–61“.
+      notes:
+      - CMMI Automatisierungsreifeindikatoren verwenden, um Investitionen zu 
+        steuern.
+    - number: 5
+      name: Pflegen Sie einen kontinuierlichen Verbesserungszyklus für Master 
+        und Referenz
+      prerequisite: Erfordert einen Optimierungszyklus
+      deliverable: Stammdaten- und Referenzverbesserungsplan
+      recommendations:
+      - Pflege eines Backlogs von Verbesserungen, die an KPI-Trends, 
+        Fehlerprotokolle und Geschäftsbedürfnisse gebunden sind „Kapitel 3.6, S.
+        64–66“.
+      - Verbesserungen in kurzfristige, mittelfristige und langfristige 
+        Initiativen gruppieren.
+      - Richten Sie Verbesserungen am unternehmensweiten 
+        Daten-Governance-Fahrplan aus „Kapitel 3, S. 51–53“.
+      - Verfolgen Sie Fortschritte mit DAMA Artefaktdokumentation „Kapitel 3 
+        Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Fähigkeitsentwicklungs-Mapping zur Steuerung 
+        langfristiger Reifegewinne.

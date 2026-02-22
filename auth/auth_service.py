@@ -133,8 +133,8 @@ def render_login():
         st.markdown(
             f"<h3 style='text-align:center;'>{APP_TITLE}</h3>",
             unsafe_allow_html=True,
-        )
-        st.markdown("<h3 style='text-align:center;'>Login</h3>", unsafe_allow_html=True)
+        )        
+        st.markdown(st._html_tr("<h3 style='text-align:center;'>Login</h3>"), unsafe_allow_html=True)
 
         _flash_render()
 
@@ -216,8 +216,10 @@ def render_login():
                         os.makedirs(project_root, exist_ok=True)
 
                         # reutiliza create_project lógica de cópia
-                        # mas sem criar novo registro
-                        domains_src = os.path.join(BASE_DIR, "data", "domains", "language", "default")
+                        # mas sem criar novo registro                        
+                        locale = st.session_state.get("locale", "us")
+                        domains_src = os.path.join(BASE_DIR, "data", "domains", "language", locale)
+                        
                         general_src = os.path.join(BASE_DIR, "data", "general")
 
                         domains_dest = os.path.join(project_root, "Domains")
@@ -292,8 +294,8 @@ def render_register():
         st.markdown(
             f"<h3 style='text-align:center;'>{APP_TITLE}</h3>",
             unsafe_allow_html=True,
-        )
-        st.markdown("<h4 style='text-align:center;'>Create Account</h4>", unsafe_allow_html=True)
+        )        
+        st.markdown(st._html_tr("<h4 style='text-align:center;'>Create Account</h4>"), unsafe_allow_html=True)
         st.caption("* Required fields")
 
         error_box = st.empty()
@@ -478,7 +480,7 @@ def render_project_selection():
 
     with center:
         st.markdown(
-            f"<h3 style='text-align:center;'>{APP_TITLE}</h3>",
+            st._html_tr(f"<h3 style='text-align:center;'>{APP_TITLE}</h3>"),
             unsafe_allow_html=True,
         )
 
@@ -581,7 +583,10 @@ def render_project_selection():
                         del st.session_state[k]
 
                 # recarrega app_config do projeto
-                refresh_runtime_config()
+                refresh_runtime_config()                
+                
+                # força revalidação no próximo ciclo
+                st.session_state.pop("locale", None)
 
                 current_user = load_user_by_hash(st.session_state.get("user_id"))
                 user_email = current_user.get("email") if current_user else None

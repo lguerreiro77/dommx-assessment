@@ -1,0 +1,509 @@
+domain:
+  id: 5
+  name: Segurança de Dados (DS)
+action_catalog:
+  DS-01:
+    title: Definir princípios e escopo fundamentais de segurança de dados
+    procedures:
+    - number: 1
+      name: Definir princípios de segurança de dados e limites de escopo
+      prerequisite: Requer identificação de classes de sensibilidade de dados
+      deliverable: Documento de princípios de segurança
+      recommendations:
+      - Definir princípios conforme a orientação DAMA para governança de 
+        manuseio seguro de dados e acesso controlado (Capítulo 3.3, p. 58–59).
+      - Garantir alinhamento com expectativas de metadados DAMA para 
+        classificação e restrições de manuseio (Capítulo 9, p. 236).
+      - Validar que princípios refletem checkpoints do ciclo de vida para 
+        criação controlada, acesso e aposentadoria (Capítulo 4.3, p. 92).
+      - Documente os princípios usando estrutura de artefatos DAMA para apoiar 
+        clareza e auditabilidade (Apêndice do Capítulo 3, p. 69–70).
+      notes:
+      - Use o escopo de capacidade de segurança DCAM para alinhar princípios com
+        a postura de risco corporativa.
+    - number: 2
+      name: Elaborar esquema inicial de classificação de dados
+      prerequisite: Requer princípios definidos
+      deliverable: Rascunho da matriz de classificação v0.1
+      recommendations:
+      - Elaborar o esquema usando orientações de classificação de metadados DAMA
+        para atributos sensíveis e categorias protegidas (Capítulo 9, p. 236).
+      - Garantir que categorias estejam alinhadas com expectativas DAMA para 
+        significado semântico e regras de manuseio (Capítulo 3.3, p. 58).
+      - Validar níveis de classificação contra pontos de controle do ciclo de 
+        vida para acesso e retenção (Capítulo 4.3, p. 92).
+      - Confirmar que stewards revisam classificações conforme responsabilidades
+        de stewardship do DAMA (Capítulo 4, p. 86–87).
+      notes:
+      - Aplicar princípios de base legal GDPR ao definir categorias de alta 
+        sensibilidade.
+    - number: 3
+      name: Identificar pontos preliminares de controle de segurança
+      prerequisite: Requer mapeamento de fluxo de trabalho
+      deliverable: Lista inicial de controles de segurança
+      recommendations:
+      - Identificar pontos de controle usando mecanismos de ciclo de vida e 
+        supervisão de governança DAMA (Capítulo 3.3, p. 58–59).
+      - Validar pontos de controle usando expectativas de qualidade do DAMA para
+        precisão e integridade (Capítulo 11, p. 308–311).
+      - Garantir que metadados suportem rastreamento de aplicação de controles 
+        seguindo diretrizes DAMA (Capítulo 9, p. 236).
+      - Confirmar participação de governança conforme responsabilidades DAMA 
+        (Capítulo 4, p. 86–87).
+      notes:
+      - Usar avaliações de criticidade de controle DCAM para priorizar controles
+        essenciais.
+    - number: 4
+      name: Atribua propriedade provisória de segurança
+      prerequisite: Requer listas de classificação e controle
+      deliverable: Matriz de propriedade de segurança
+      recommendations:
+      - Atribuir propriedade usando orientação de governança DAMA para 
+        autoridade, escalonamento e responsabilidade de decisão (Capítulo 3.2, 
+        p. 55–57).
+      - Validar alinhamento com checkpoints do ciclo de vida que definem criação
+        segura, acesso e arquivamento (Capítulo 4.3, p. 92).
+      - Confirme que as responsabilidades de metadata e semântica correspondem 
+        às expectativas de DAMA (Capítulo 9, p. 236).
+      - Documentar atribuições usando padrões de artefatos DAMA (Apêndice do 
+        Capítulo 3, p. 69).
+      notes:
+      - Usar avaliação de adequação comportamental do papel IDGC para garantir 
+        que os proprietários possam sustentar decisões sensíveis.
+    - number: 5
+      name: Publicar diretrizes iniciais de segurança
+      prerequisite: Requer princípios, classificação e propriedade
+      deliverable: Resumo de integração de segurança
+      recommendations:
+      - Publicar diretrizes usando regras de comunicação DAMA para artefatos de 
+        governança (Capítulo 3.6, p. 64).
+      - Garantir clareza de restrições de acesso, retenção e uso usando 
+        definições de metadados DAMA (Capítulo 9, p. 236).
+      - Valide alinhamento com checkpoints do ciclo de vida para operações 
+        seguras (Capítulo 4.3, p. 92).
+      - Confirme que as diretrizes apoiam responsabilidades de governança 
+        definidas por DAMA (Capítulo 4, p. 86–87).
+      notes:
+      - Aplicar práticas de comunicação CMMI para garantir que a orientação de 
+        manuseio sensível seja bem compreendida.
+  DS-02:
+    title: Formalizar stewardship e padrões de segurança de dados
+    procedures:
+    - number: 1
+      name: Consolidar requisitos de segurança
+      prerequisite: Requer DS-01 completos
+      deliverable: Registros de requisitos de segurança
+      recommendations:
+      - Consolidar requisitos usando expectativas DAMA para proteção de dados, 
+        uso controlado e supervisão de governança (Capítulo 3.3, p. 58).
+      - Validar requisitos usando critérios de metadados DAMA para classificação
+        e manuseio (Capítulo 9, p. 236).
+      - Garantir que a cobertura do ciclo de vida esteja alinhada com pontos de 
+        verificação DAMA para acesso, transformação e aposentadoria (Capítulo 
+        4.3, p. 92).
+      - Confirmar que obrigações de gestão seguem papéis de governança DAMA 
+        (Capítulo 3.2, p. 55–57).
+      notes:
+      - Usar mapeamento de alinhamento de risco DCAM para priorizar áreas 
+        sensíveis.
+    - number: 2
+      name: Produzir um framework formal de segurança de dados
+      prerequisite: Requer requisitos validados
+      deliverable: Framework de Segurança de Dados v1.0
+      recommendations:
+      - Produza o framework usando orientações de governança e ciclo de vida 
+        DAMA para operações controladas de dados (Capítulo 3.3, p. 58–59).
+      - Garantir que regras de metadados e classificação sigam padrões DAMA 
+        (Capítulo 9, p. 236).
+      - Valide o alinhamento com as expectativas de qualidade e integridade de 
+        DAMA (Capítulo 11, p. 308–311).
+      - Documentar componentes do framework usando estrutura de artefatos DAMA 
+        (Apêndice do Capítulo 3, p. 69–70).
+      notes:
+      - Utilizar técnicas de verificação do framework CMMI para garantir 
+        prontidão para adoção.
+    - number: 3
+      name: Definir padrões de segurança e regras de manuseio
+      prerequisite: Requer framework v1.0
+      deliverable: Manual de Padrões de Segurança
+      recommendations:
+      - Definir padrões conforme orientação DAMA para metadados, classificação e
+        manuseio de dados sensíveis (Capítulo 9, p. 236).
+      - Garantir que controles do ciclo de vida reflitam pontos de controle DAMA
+        para criação, acesso e descarte seguros (Capítulo 4.3, p. 92).
+      - Validar clareza das regras usando princípios de governança DAMA para 
+        transparência e responsabilidade (Capítulo 3, p. 51).
+      - Confirmar que responsabilidades de stewardship são explícitas conforme 
+        expectativas de papéis do DAMA (Capítulo 3.2, p. 55–57).
+      notes:
+      - Aplicar princípios GDPR de limitação e minimização de armazenamento para
+        refinar padrões.
+    - number: 4
+      name: Validar padrões de segurança com stakeholders de negócios
+      prerequisite: Requer rascunho de padrões
+      deliverable: Registro de alinhamento
+      recommendations:
+      - Validar padrões usando expectativas DAMA para transparência e clareza de
+        papéis (Capítulo 3.4, p. 60).
+      - Confirmar alinhamento semântico e de metadados usando definições DAMA 
+        (Capítulo 9, p. 236).
+      - Validar implicações do ciclo de vida usando checkpoints DAMA (Capítulo 
+        4.3, p. 92).
+      - Garantir que interpretação de negócios esteja alinhada com orientação de
+        comunicação de governança DAMA (Capítulo 3.6, p. 64).
+      notes:
+      - Use métodos de comunicação de risco DCAM para facilitar a aceitação das 
+        partes interessadas.
+    - number: 5
+      name: Aprovar e publicar padrões de segurança
+      prerequisite: Requer aprovação da autoridade de governança
+      deliverable: Pacote de aprovação de padrões de segurança
+      recommendations:
+      - Aprove padrões usando orientações de escalonamento e autoridade DAMA 
+        (Capítulo 3.4, p. 60–61).
+      - Garantir que a documentação siga padrões de artefatos DAMA (Apêndice do 
+        Capítulo 3, p. 69–70).
+      - Validar alinhamento do ciclo de vida usando checkpoints operacionais e 
+        de governança DAMA (Capítulo 4.3, p. 92).
+      - Confirmar que os padrões refletem regras de metadados e proteção DAMA 
+        (Capítulo 9, p. 236).
+      notes:
+      - Usar verificações de prontidão CMMI para garantir que a organização 
+        possa adotar os novos padrões.
+  DS-03:
+    title: Aprovar regras de segurança, classificações e responsabilidades de 
+      aplicação
+    procedures:
+    - number: 1
+      name: Estabelecer estatuto do Conselho de Segurança de Dados
+      prerequisite: Requer entregáveis DS-02
+      deliverable: Estatuto aprovado
+      recommendations:
+      - Estabelecer o estatuto conforme orientações de autoridade e supervisão 
+        de governança DAMA (Capítulo 3.4, p. 60).
+      - Garantir que a clareza dos papéis esteja alinhada com responsabilidades 
+        de stewardship e custodial DAMA (Capítulo 3.2, p. 55–57).
+      - Validar que a estrutura está alinhada com as camadas funcionais de 
+        governança DAMA (Figura 3-2, p. 53).
+      - Documentar o estatuto usando as diretrizes de artefatos DAMA (Apêndice 
+        do Capítulo 3, p. 69).
+      notes:
+      - Use técnicas de alinhamento de autoridade DCAM para reforçar a clareza 
+        na tomada de decisões sensíveis.
+    - number: 2
+      name: Atribuir papéis de governança de segurança
+      prerequisite: Requer descrições de papéis
+      deliverable: Registro de atribuição de papéis
+      recommendations:
+      - Atribuir papéis com base em orientação de competência DAMA para 
+        stewardship, custodianship e governança (Capítulo 4, p. 86–89).
+      - Validar limites de autoridade usando regras de escalonamento e decisão 
+        DAMA (Capítulo 3.4, p. 60).
+      - Garantir que responsabilidades do ciclo de vida estejam alinhadas com 
+        checkpoints DAMA (Capítulo 4.3, p. 92).
+      - Documente papéis usando a estrutura de artefatos DAMA (Apêndice do 
+        Capítulo 3, p. 69–70).
+      notes:
+      - Use critérios de adequação de papéis IDGC para responsabilidades 
+        sensíveis de governança.
+    - number: 3
+      name: Implementar fóruns de decisão de segurança
+      prerequisite: Requer aprovação da carta
+      deliverable: Calendário e templates de governança de segurança
+      recommendations:
+      - Implementar fóruns conforme orientações do DAMA para tomada de decisão e
+        supervisão de governança (Capítulo 3.3, p. 58–59).
+      - Validar decisões de segurança usando regras de metadados e classificação
+        DAMA (Capítulo 9, p. 236).
+      - Garantir que considerações do ciclo de vida estejam alinhadas com 
+        checkpoints DAMA (Capítulo 4.3, p. 92).
+      - Documentar decisões usando padrões de artefatos do DAMA (Apêndice do 
+        Capítulo 3, p. 69).
+      notes:
+      - Utilizar práticas de estruturação de reuniões CMMI para manter 
+        consistência.
+    - number: 4
+      name: Inicie ciclos de revisão de segurança
+      prerequisite: Requer fóruns definidos
+      deliverable: Atas da primeira revisão
+      recommendations:
+      - Iniciar revisões usando expectativas de supervisão de governança DAMA 
+        (Capítulo 3.3, p. 58).
+      - Validar tratamento de dados sensíveis usando orientação de metadados 
+        DAMA (Capítulo 9, p. 236).
+      - Confirme alinhamento do controle do ciclo de vida (Capítulo 4.3, p. 92).
+      - Documentar resultados seguindo a estrutura de artefatos DAMA (Capítulo 3
+        Apêndice, p. 69–70).
+      notes:
+      - Usar prática de garantia DCAM para reforçar a qualidade das decisões de 
+        revisão.
+    - number: 5
+      name: Manter a operação de governança de segurança
+      prerequisite: Requer cadência de reuniões
+      deliverable: Registro de atividades de segurança
+      recommendations:
+      - Manter operação baseada em orientações DAMA para continuidade de 
+        governança (Capítulo 3.6, p. 64).
+      - Validar aderência a regras de metadados e classificação (Capítulo 9, p. 
+        236).
+      - Confirmar alinhamento do ciclo de vida com checkpoints operacionais do 
+        DAMA (Capítulo 4.3, p. 92).
+      - Garantir que a documentação siga diretrizes de artefatos DAMA (Capítulo 
+        3 Apêndice, p. 69).
+      notes:
+      - Usar capacidades de monitoramento operacional CMMI para garantir 
+        supervisão sistemática
+  DS-04:
+    title: Incorporar governança de segurança em fluxos organizacionais e de 
+      domínio
+    procedures:
+    - number: 1
+      name: Incorporar controles de segurança nos fluxos de trabalho do domínio
+      prerequisite: Requer padrões aprovados DS-03
+      deliverable: Modelos de fluxo de trabalho atualizados
+      recommendations:
+      - Incorporar controles seguindo expectativas de governança DAMA para 
+        manuseio seguro e supervisão durante processos operacionais (Capítulo 
+        3.3, p. 58–59).
+      - Garantir que os controles reflitam pontos de verificação do ciclo de 
+        vida DAMA para acesso controlado, transformação e aposentadoria 
+        (Capítulo 4.3, p. 92).
+      - Validar consistência de metadados para atributos sensíveis usando 
+        padrões de metadados DAMA (Capítulo 9, p. 236).
+      - Confirmar que stewards e custodians aplicam controles conforme 
+        responsabilidades do DAMA (Capítulo 4, p. 86–87).
+      notes:
+      - Utilizar mapeamento de controle de fluxo de trabalho DCAM para garantir 
+        manuseio seguro em todas as etapas do processo.
+    - number: 2
+      name: Integrar critérios de segurança em workflows de sistema
+      prerequisite: Requer padrões de segurança
+      deliverable: Modelo de fluxo operacional governado
+      recommendations:
+      - Integrar critérios usando expectativas DAMA para governança do ciclo de 
+        vida, incluindo mudança controlada e restrições de acesso (Capítulo 4.3,
+        p. 92).
+      - Validar alinhamento com orientação DAMA para metadados e classificação 
+        de dados sensíveis (Capítulo 9, p. 236).
+      - Assegure que as decisões reflitam as expectativas de qualidade DAMA para
+        precisão e integridade (Capítulo 11, p. 308–311).
+      - Confirmar supervisão de gestão usando definições de papéis de governança
+        DAMA (Capítulo 3.2, p. 55–57).
+      notes:
+      - Aplicar métodos de institucionalização de processos CMMI para garantir 
+        aplicação consistente.
+    - number: 3
+      name: Documentar requisitos do ciclo de vida de segurança
+      prerequisite: Requer redesenho de fluxo de trabalho
+      deliverable: Documentação do ciclo de vida atualizada
+      recommendations:
+      - Documente o ciclo de vida usando as orientações de DAMA para manuseio 
+        seguro, janelas de retenção e descarte controlado (Capítulo 4.3, p. 92).
+      - Validar expectativas de classificação, semântica e metadados usando 
+        orientação DAMA (Capítulo 9, p. 236).
+      - Confirmar que responsabilidades de ciclo de vida são atribuídas conforme
+        expectativas de stewardship DAMA (Capítulo 4, p. 86–89).
+      - Garantir que a documentação siga a estrutura de artefatos DAMA para 
+        clareza e auditabilidade (Capítulo 3 Apêndice, p. 69).
+      notes:
+      - Usar mapeamento de risco de ciclo de vida DCAM para fortalecer 
+        transições seguras.
+    - number: 4
+      name: Aplicar verificações de segurança em pontos de decisão de domínio
+      prerequisite: Requer workflows governados
+      deliverable: Evidência de controles de segurança
+      recommendations:
+      - Aplicar verificações conforme regras de escalonamento e decisão de 
+        governança DAMA (Capítulo 3.4, p. 60).
+      - Validar sensibilidade de dados e restrições de manuseio usando 
+        definições de metadados e classificação DAMA (Capítulo 9, p. 236).
+      - Assegure que os controles do ciclo de vida sejam aplicados conforme 
+        pontos de verificação DAMA (Capítulo 4.3, p. 92).
+      - Confirmar supervisão de stewardship em cada ponto de decisão seguindo 
+        responsabilidades DAMA (Capítulo 4, p. 86–87).
+      notes:
+      - Usar lógica de verificação CMMI para sistematizar a validação de 
+        decisões seguras.
+    - number: 5
+      name: Acompanhe a aderência à governança de segurança
+      prerequisite: Requer rotinas de monitoramento
+      deliverable: Registro de conformidade de segurança
+      recommendations:
+      - Rastrear aderência usando orientação de monitoramento de governança DAMA
+        para operações seguras (Capítulo 3.6, p. 64).
+      - Valide regras de classificação e metadados usando definições DAMA para 
+        atributos sensíveis (Capítulo 9, p. 236).
+      - Confirme que os desvios seguem práticas de escalonamento DAMA (Capítulo 
+        3.4, p. 60).
+      - Assegure alinhamento do ciclo de vida usando checkpoints operacionais 
+        DAMA (Capítulo 4.3, p. 92).
+      notes:
+      - Usar critérios diagnósticos DCAM para identificar vulnerabilidades e 
+        riscos de segurança.
+  DS-06:
+    title: Automatizar controles de segurança e validação de dados sensíveis
+    procedures:
+    - number: 1
+      name: Definir indicadores de monitoramento de segurança
+      prerequisite: Requer workflows DS-04
+      deliverable: Conjunto de segurança KPI
+      recommendations:
+      - Definir KPIs usando orientações de medição de governança DAMA para 
+        supervisão do manuseio seguro de dados (Capítulo 3.6, p. 64).
+      - Validar cobertura KPI para classificação de metadados, qualidade e 
+        expectativas de linhagem (Capítulos 9 a 11).
+      - Confirmar que atribuição KPI está alinhada com responsabilidades de 
+        steward e custodiante DAMA (Capítulo 4, p. 86–87).
+      - Garantir que a lógica KPI esteja conectada aos pontos de verificação do 
+        ciclo de vida definidos por DAMA (Capítulo 4.3, p. 92).
+      notes:
+      - Usar indicadores de capacidade de segurança DCAM para fortalecer a 
+        cobertura KPI.
+    - number: 2
+      name: Estabelecer regras automatizadas de validação de dados sensíveis
+      prerequisite: Requer critérios de validação
+      deliverable: Conjunto automatizado de regras de segurança
+      recommendations:
+      - Estabelecer regras usando requisitos de metadados e classificação DAMA 
+        para dados sensíveis (Capítulo 9, p. 236).
+      - Validar saída de automação usando regras de qualidade DAMA como precisão
+        e integridade (Capítulo 11, p. 308–311).
+      - Garantir alinhamento com checkpoints do ciclo de vida do DAMA para 
+        acesso e transformação (Capítulo 4.3, p. 92).
+      - Documentar lógica usando estruturas de artefatos DAMA (Apêndice do 
+        Capítulo 3, p. 69).
+      notes:
+      - Usar orientação de prontidão para automação CMMI para garantir 
+        estabilidade antes da implantação.
+    - number: 3
+      name: Implementar dashboards de monitoramento de segurança
+      prerequisite: Requer regras de validação
+      deliverable: Dashboard de monitoramento de segurança
+      recommendations:
+      - Implementar dashboards usando práticas de monitoramento de desempenho de
+        governança DAMA (Capítulo 3.6, p. 64).
+      - Incluir indicadores de metadados, linhagem e classificação seguindo 
+        expectativas DAMA (Capítulos 9 a 11).
+      - Validar supervisão usando checkpoints do ciclo de vida DAMA (Capítulo 
+        4.3, p. 92).
+      - Confirmar que a visibilidade do painel está alinhada com as expectativas
+        do papel de steward DAMA (Capítulo 4, p. 86–89).
+      notes:
+      - Utilizar orientações de visualização de monitoramento operacional DCAM 
+        para maximizar clareza.
+    - number: 4
+      name: Habilitar alertas automáticos de segurança
+      prerequisite: Requer dashboards ativos
+      deliverable: Feed de alertas de segurança
+      recommendations:
+      - Habilitar alertas seguindo caminhos de escalonamento do DAMA (Capítulo 
+        3.4, p. 60).
+      - Garantir que alertas capturem anomalias relacionadas a classificação, 
+        acesso, linhagem e regras de manuseio (Capítulos 9 a 11).
+      - Validar impacto do ciclo de vida usando orientações de acesso seguro e 
+        retenção DAMA (Capítulo 4.3, p. 92).
+      - Confirmar roteamento de alertas para stewards e custodians apropriados 
+        conforme papéis de governança DAMA (Capítulo 3.2, p. 55–57).
+      notes:
+      - Usar conceitos de gestão de incidentes CMMI para estruturar respostas.
+    - number: 5
+      name: Manter governança automatizada de segurança
+      prerequisite: Requer maturidade operacional
+      deliverable: Log de automação de segurança
+      recommendations:
+      - Manter automação seguindo os princípios de continuidade de governança 
+        DAMA (Capítulo 3.6, p. 64).
+      - Validar alinhamento com expectativas de metadados e classificação usando
+        a orientação DAMA (Capítulo 9, p. 236).
+      - Garantir aderência ao ciclo de vida usando checkpoints operacionais do 
+        DAMA (Capítulo 4.3, p. 92).
+      - Confirmar documentação usando templates de artefatos DAMA (Capítulo 3 
+        Apêndice, p. 69).
+      notes:
+      - Usar mapeamento de evolução de capacidade de segurança DCAM para 
+        identificar oportunidades de automação.
+  DS-09:
+    title: Otimizar governança de segurança e institucionalizar o manuseio 
+      seguro de dados
+    procedures:
+    - number: 1
+      name: Revisar tendências de desempenho de segurança
+      prerequisite: Requer linha de base DS-06 KPI
+      deliverable: Análise de tendências
+      recommendations:
+      - Revisar tendências usando orientações de monitoramento de governança 
+        DAMA (Capítulo 3.6, p. 64).
+      - Validar eficácia da classificação usando definições de metadados DAMA 
+        (Capítulo 9, p. 236).
+      - Assegure que a interpretação do ciclo de vida siga checkpoints de 
+        segurança DAMA (Capítulo 4.3, p. 92).
+      - Confirme que a documentação segue a estrutura de artefatos DAMA 
+        (Capítulo 3 Apêndice, p. 69).
+      notes:
+      - Utilizar pontuação de maturidade de capacidade DCAM para comparar 
+        desempenho de segurança entre domínios.
+    - number: 2
+      name: Otimizar padrões de segurança usando insights de desempenho
+      prerequisite: Requer análise de tendências
+      deliverable: Padrões de segurança atualizados
+      recommendations:
+      - Otimizar padrões usando as orientações de refinamento DAMA para 
+        classificação, ciclo de vida e regras de manuseio seguro (Capítulo 9, p.
+        236).
+      - Validar melhorias usando expectativas DAMA para controles de qualidade e
+        integridade (Capítulo 11, p. 308–311).
+      - Confirmar alinhamento do ciclo de vida usando checkpoints de manuseio 
+        seguro DAMA (Capítulo 4.3, p. 92).
+      - Assegure supervisão por governadores e custodiante seguindo os papéis de
+        governança DAMA (Capítulo 4, p. 86–87).
+      notes:
+      - Aplicar técnicas quantitativas de melhoria do CMMI para refinamentos 
+        prioritários.
+    - number: 3
+      name: Avaliar práticas de segurança com base em frameworks externos
+      prerequisite: Requer perfil de maturidade
+      deliverable: Evidência de benchmark
+      recommendations:
+      - Benchmark de práticas usando orientação DAMA para comparabilidade de 
+        governança e alinhamento estrutural (Capítulo 3.6, p. 64).
+      - Validar que indicadores de benchmark incluam metadados, classificação, 
+        qualidade e componentes de linhagem (Capítulos 9 a 11).
+      - Confirmar implicações do ciclo de vida usando pontos de verificação de 
+        manuseio seguro DAMA (Capítulo 4.3, p. 92).
+      - Documentar resultados de benchmark usando padrões de artefatos DAMA 
+        (Apêndice do Capítulo 3, p. 69).
+      notes:
+      - Use técnicas de benchmarking DCAM para alinhar maturidade de segurança 
+        com pares do setor.
+    - number: 4
+      name: Aprimorar lógica de automação de segurança
+      prerequisite: Requer automação DS-06
+      deliverable: Conjunto atualizado de automação de segurança
+      recommendations:
+      - Aprimorar lógica usando regras de metadados, classificação e qualidade 
+        DAMA (Capítulos 9 a 11).
+      - Validar alinhamento do ciclo de vida usando pontos de verificação de 
+        manuseio seguro DAMA (Capítulo 4.3, p. 92).
+      - Garantir que a aprovação utilize definições de autoridade de governança 
+        DAMA (Capítulo 3.4, p. 60).
+      - Confirmar que documentação está alinhada com estrutura de artefatos DAMA
+        (Capítulo 3 Apêndice, p. 69–70).
+      notes:
+      - Utilize indicadores de maturidade de automação CMMI para justificar 
+        melhorias.
+    - number: 5
+      name: Manter ciclo contínuo de melhoria de segurança
+      prerequisite: Requer ciclo de otimização
+      deliverable: Plano de melhoria de segurança
+      recommendations:
+      - Manter ciclos de melhoria usando as orientações de refinamento de 
+        governança DAMA (Capítulo 3.6, p. 64).
+      - Integrar lições de controles de metadados, qualidade e classificação 
+        (Capítulos 9 a 11).
+      - Validar responsabilidades do ciclo de vida usando pontos de verificação 
+        de manuseio seguro DAMA (Capítulo 4.3, p. 92).
+      - Garantir que documentação adere à estrutura de artefatos DAMA (Apêndice 
+        do Capítulo 3, p. 69).
+      notes:
+      - Usar mapeamento de evolução de capacidade DCAM para planejar ganhos de 
+        longo prazo em maturidade de segurança.

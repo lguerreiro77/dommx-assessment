@@ -1,0 +1,150 @@
+domain:
+  id: 7
+  name: Dokumenten- und Inhaltsmanagement (DCM)
+action_catalog:
+  DCM-01:
+    title: Definition grundlegender Governance-, Klassifikations- und 
+      Lebenszyklusanforderungen für Inhalte
+    procedures:
+    - number: 1
+      name: Definieren Sie Dokument- und Inhaltsprinzipien sowie Umfangsgrenzen
+      prerequisite: Erfordert Identifikation von organisatorischen 
+        Inhaltskategorien
+      deliverable: Dokument- und Inhaltsprinzipien-Dokument
+      recommendations:
+      - Prinzipien mit DAMA Leitlinien für Inhaltsgovernance definieren, 
+        einschließlich Authentizität, Zugänglichkeit, Aufbewahrung, rechtlichem 
+        Wert und Beweisintegrität („Kapitel 12, S. 330–338“).
+      - Sicherstellen, dass Prinzipien mit den DAMA Governance-Erwartungen für 
+        Stewardship und Domänenaufsicht übereinstimmen („Kapitel 3.2, S. 
+        55–57“).
+      - Validieren Sie die Lebenszyklusausrichtung mit DAMA-Prüfpunkten für 
+        Erstellung, Wartung und Archivierung („Kapitel 4.3, S. 92“).
+      - Dokumentieren Sie die Prinzipien unter Verwendung der 
+        DAMA-Artefaktstruktur für Klarheit und Auditierbarkeit („Kapitel 3 
+        Anhang, S. 69–70“).
+      notes:
+      - Verwenden Sie DCAM Informationsasset-Scoping, um die sensibelsten oder 
+        wirkungsstärksten Inhaltsklassen zu priorisieren.
+    - number: 2
+      name: Entwurf einer ersten Inhalts-Taxonomie und Klassifikationsschema
+      prerequisite: Erfordert definierte Prinzipien
+      deliverable: Entwurf Inhalts-Taxonomie v0.1
+      recommendations:
+      - Taxonomie mit DAMA Metadaten- und Klassifizierungsrichtlinien für 
+        Dokumente und Inhaltsartefakte entwerfen („Kapitel 9, S. 236–239“; 
+        „Kapitel 12, S. 332–334“).
+      - Validierung von Klassen mit Lebenszyklusphasen für Erstellung, 
+        Zusammenarbeit, Veröffentlichung und Archivierung („Kapitel 4.3, S. 
+        92“).
+      - Stellen Sie semantische Klarheit sicher, indem Sie DAMA konzeptionelle 
+        Modellierungsprinzipien anwenden („Kapitel 10, S. 282–284“).
+      - Bestätigung der Stewardship-Prüfung gemäß DAMA-Governance-Rollen 
+        („Kapitel 4, S. 86–89“).
+      notes:
+      - Die CMMI Taxonomie-Verfeinerungsrichtlinien verwenden, um frühe 
+        Klassifikationsschemata zu stabilisieren.
+  DCM-02:
+    title: Stewardship-Rollen für Klassifizierung, Lebenszyklus und 
+      Metadaten-Governance zuweisen
+    procedures:
+    - number: 1
+      name: Konsolidierung von Dokumenten- und Inhaltsanforderungen
+      prerequisite: Erfordert vollständige DCM-01
+      deliverable: Register für Inhaltsanforderungen
+      recommendations:
+      - Konsolidierung von Anforderungen unter Verwendung der DAMA-Anleitung für
+        Dokumenten-Authentizität, Klassifikation, Zugriffskontrolle und 
+        Aufbewahrung („Kapitel 12, S. 330–338“).
+      - Validierung von Metadatenanforderungen unter Verwendung von 
+        DAMA-Standardmetadatenfeldern für Dokumente („Kapitel 9, S. 236–239“).
+      - Semantische Klarheit mit DAMA Modellierungsrichtlinien sicherstellen, 
+        wenn textuelle Definitionen die Klassifikation unterstützen müssen 
+        („Kapitel 10, S. 282–284“).
+      - Bestätigen Sie Stewardship- und Compliance-Rollen gemäß DAMA Governance 
+        („Kapitel 4, S. 86–89“).
+      notes:
+      - Verwenden Sie DCAM-Anforderungsscores, um risikoreiche Inhaltsklassen zu
+        priorisieren.
+  DCM-03:
+    title: Genehmigen Sie Klassifikations-, Aufbewahrungs-, Metadaten- und 
+      Repository-Standards
+    procedures:
+    - number: 3
+      name: Dokumenten- und Inhaltsstandards sowie Regeln definieren
+      prerequisite: Erfordert v1.0 Framework
+      deliverable: Handbuch für Inhaltsstandards
+      recommendations:
+      - Standards für Benennung, Versionierung, Metadaten, Klassifizierung, 
+        Aufbewahrung und Entsorgung mit DAMA Inhaltsrichtlinien definieren 
+        („Kapitel 12, S. 330–338“).
+      - Ausrichtung mit semantischen Erwartungen unter Verwendung der DAMA 
+        konzeptionellen Modellierung validieren („Kapitel 10, S. 282–284“).
+      - Lebenszyklus-Ausrichtung mit kontrollierten Übergängen sicherstellen 
+        („Kapitel 4.3, S. 92“).
+      - Stewardship-Akzeptanz mit DAMA Governance-Rollen bestätigen („Kapitel 
+        3.2, S. 55–57“).
+      notes:
+      - Richten Sie Aufbewahrungsstandards an GDPR Minimierungs- und rechtlichen
+        Zweckanforderungen aus, sofern zutreffend.
+  DCM-04:
+    title: Integrieren Sie Klassifizierungs-, Metadaten- und Qualitätsprüfungen 
+      in Inhaltsverarbeitungsroutinen
+    procedures:
+    - number: 1
+      name: Integrieren Sie Content-Governance-Kontrollpunkte in Arbeitsabläufe
+      prerequisite: Erfordert genehmigte DCM-03 Standards
+      deliverable: Aktualisierte Workflow-Vorlagen
+      recommendations:
+      - Integrieren Sie Prüfpunkt für Erstellung, Überprüfung, Genehmigung und 
+        Archivierung gemäß DAMA-Lebenszyklus („Kapitel 12, S. 330–338“).
+      - Validieren Sie Metadatenfelder wie Version, Eigentümer, Aufbewahrung und
+        Klassifizierung („Kapitel 9, S. 236–239“).
+      - Sicherstellung von Qualitätsanforderungen für Dokumentengenauigkeit und 
+        -vollständigkeit („Kapitel 11, S. 308–311“).
+      - Bestätigen Sie die Beteiligung von Stewardship („Kapitel 4, S. 86–89“).
+      notes:
+      - Verwenden Sie die DCAM Workflow-Abbildung, um Governance-Konsistenz über
+        Teams hinweg sicherzustellen.
+  DCM-06:
+    title: Automatisieren Sie Klassifikation, Lebenszyklus, Metadaten- und 
+      Qualitätsvalidierung
+    procedures:
+    - number: 2
+      name: Einrichtung automatisierter Inhaltsvalidierungsregeln
+      prerequisite: Erfordert Validierungskriterien
+      deliverable: Automatisierter Inhaltsregel-Satz
+      recommendations:
+      - Definieren Sie Regeln für erforderliche Metadaten, Versionsprüfungen, 
+        Aufbewahrungsfristen und Genehmigungsvollständigkeit basierend auf DAMA 
+        („Kapitel 12, S. 330–338“).
+      - Erfassen Sie Regeln in Metadaten unter Verwendung der DAMA Struktur 
+        („Kapitel 9, S. 236–239“).
+      - Validieren Sie die Angemessenheit des Lebenszyklus („Kapitel 4.3, S. 
+        92“).
+      - Dokumentieren Sie das Regelwerk gemäß DAMA Artefaktleitlinien („Kapitel 
+        3 Anhang, S. 69–70“).
+      notes:
+      - Verwenden Sie CMMI Automatisierungsbereitschaftsprüfungen vor der 
+        Aktivierung der Durchsetzung.
+  DCM-09:
+    title: Verfeinern Sie kontinuierlich die Inhalts-Governance und den 
+      Lebenszyklus anhand von Evidenzen
+    procedures:
+    - number: 2
+      name: Inhaltsstandards basierend auf Erkenntnissen verbessern
+      prerequisite: Erfordert Trendanalyse
+      deliverable: Aktualisierte Inhaltsstandards
+      recommendations:
+      - Passen Sie Standards für Klassifizierungstiefe, semantische Regeln, 
+        Metadatenvollständigkeit oder Aufbewahrungsfristen basierend auf 
+        Erkenntnissen an („Kapitel 12, S. 330–338“).
+      - Validierung von Verbesserungen anhand von DAMA-Metadatendefinitionen 
+        („Kapitel 9, S. 236–239“).
+      - Stellen Sie die Ausrichtung an Lifecycle-Erwartungen sicher („Kapitel 
+        4.3, S. 92“).
+      - Bestätigen der Stewardship-Revalidierung gemäß DAMA („Kapitel 3.2, S. 
+        55–57“).
+      notes:
+      - Verwenden Sie CMMI Prinzipien der kontinuierlichen Verbesserung zur 
+        Strukturierung von Verfeinerungszyklen.

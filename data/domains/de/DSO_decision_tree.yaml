@@ -1,0 +1,237 @@
+domain:
+  id: 4
+  name: Data Operations (DSO)
+  description: "Diese Domäne bewertet die Formalisierung der operativen Datenverarbeitung,
+    die Stabilität der Lebenszyklusprozesse (Erstellung, Transformation und Nutzung)
+    und die Integration von Governance-Kontrollen in tägliche operative Routinen.
+    Data Operations konzentrieren sich darauf, sicherzustellen, dass Datenmanagementprinzipien
+    in wiederholbare, effiziente und geregelte Aktivitäten übersetzt werden, die die
+    organisatorische Kontinuität unterstützen (DAMA-DMBOK2, Kapitel 6).\n"
+maturity_scale:
+  0:
+    maturity_level: Nicht existent
+    meaning: Keine Governance-Praktiken und keine definierten 
+      Verantwortlichkeiten oder Prozesse.
+    interpretation_for_assessment: Zeigt ein vollständiges Fehlen von Struktur 
+      und einen unmittelbaren Bedarf an grundlegenden Maßnahmen an.
+  1:
+    maturity_level: Initial
+    meaning: Aktivitäten erfolgen informell und reaktiv mit wenig oder keiner 
+      Dokumentation.
+    interpretation_for_assessment: Spiegelt Bewusstsein wider, aber auch hohe 
+      Variabilität und operationelles Risiko.
+  2:
+    maturity_level: Im Entstehen
+    meaning: Einige Praktiken existieren, sind jedoch inkonsistent, 
+      undokumentiert oder werden nicht teamübergreifend angewendet.
+    interpretation_for_assessment: Zeigt frühe Entwicklung. Standardisierung und
+      Dokumentation sind notwendig, um Fortschritte zu erzielen.
+  3:
+    maturity_level: Etabliert
+    meaning: Prozesse, Rollen und Richtlinien sind definiert, dokumentiert und 
+      stabil angewendet.
+    interpretation_for_assessment: Demonstriert operationale Konsistenz und 
+      Bereitschaft für strukturiertere Verbesserungen.
+  4:
+    maturity_level: Verwaltet
+    meaning: Governance ist in Arbeitsabläufe integriert und wird durch Tools, 
+      Überwachung und Aufsicht unterstützt.
+    interpretation_for_assessment: Repräsentiert reife Einführung mit 
+      zuverlässiger Ausführung über Teams hinweg.
+  5:
+    maturity_level: Optimiert
+    meaning: Governance ist vollständig eingebettet, wird kontinuierlich 
+      verbessert und entspricht Compliance- und ethischen Erwartungen.
+    interpretation_for_assessment: Repräsentiert fortgeschrittene Reife mit 
+      proaktiver Governance, Optimierung und institutionalisierter 
+      kontinuierlicher Verbesserung.
+questions:
+  Q1:
+    text: Sind Datenaufbewahrungsregeln, Klassifizierungs- und 
+      Aufbewahrungsstandards formell definiert und genehmigt?
+    explanation: Bewertet strukturierte Regeln für Speicherung, Aufbewahrung und
+      Klassifizierung von Daten.
+    objective: Stellen Sie kontrollierte und konforme Speicherpraktiken sicher.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Data Storage & Operations; DCAM, Platform
+      & Operations; IDGC, Operational Processes)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Definieren Sie geregelte Regeln für Datenspeicherung, 
+          Klassifizierung und Aufbewahrung
+      1:
+        action_code: DSO-02
+        description: Verantwortlichkeiten für Speicher- und 
+          Aufbewahrungs-Governance zuweisen
+      2:
+        action_code: DSO-03
+        description: Genehmigen Sie Speicher- und Aufbewahrungsstandards
+      3:
+        action_code: DSO-04
+        description: Einbettung von Speicher- und Aufbewahrungsregeln in 
+          operative Routinen
+      4:
+        action_code: DSO-06
+        description: Automatisierte Ausführung von Aufbewahrung und 
+          Compliance-Prüfungen
+      5:
+        action_code: DSO-09
+        description: Speicher- und Aufbewahrungs-Governance kontinuierlich 
+          anhand von Belegen verbessern
+  Q2:
+    text: Sind operative Routinen für die Datenverarbeitung gesteuert, 
+      dokumentiert und wiederholbar?
+    explanation: Prüft, ob operative Prozesse den definierten Governance-Regeln 
+      entsprechen.
+    objective: Erhöhen Sie Konsistenz und Rückverfolgbarkeit.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operational Roles; DCAM, Ownership
+      Structure; IDGC, Operational Responsibility)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Definieren Sie Governance-Anforderungen für den operativen 
+          Datenumgang
+      1:
+        action_code: DSO-02
+        description: Weisen Sie Stewardship-Verantwortlichkeiten für operative 
+          Routinen zu
+      2:
+        action_code: DSO-03
+        description: Genehmigung gesteuerter operativer Prozesse
+      3:
+        action_code: DSO-04
+        description: Gesteuerte und wiederholbare Betriebsroutinen 
+          implementieren
+      4:
+        action_code: DSO-06
+        description: Konformitätsprüfungen und operative Konsistenz 
+          automatisieren
+      5:
+        action_code: DSO-09
+        description: Optimieren Sie die operative Governance kontinuierlich 
+          anhand von Metriken
+  Q3:
+    text: Werden Datenzugriffs- und Schutzkontrollen unter Governance-Autorität 
+      überwacht und gepflegt?
+    explanation: Bewertet Überwachung von Zugriff, Kontrollen und 
+      Schutzmechanismen.
+    objective: Unterstützen Sie sichere und verantwortungsvolle Datennutzung.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Monitoring & Observability; DCAM,
+      Control Environment; IDGC, Monitoring & Auditability)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Definition gesteuerter Anforderungen für Zugriffs- und 
+          Schutzkontrollen
+      1:
+        action_code: DSO-02
+        description: Aufsichtspflichten für Zugriff und Schutz zuweisen
+      2:
+        action_code: DSO-03
+        description: Genehmigen Sie gesteuerte Zugriffssteuerungsstrukturen
+      3:
+        action_code: DSO-04
+        description: Einbettung von Zugriffs- und Schutzkontrollen in tägliche 
+          operative Routinen
+      4:
+        action_code: DSO-06
+        description: Automatisieren der Überwachung von Zugriffs-Governance und 
+          Schutz
+      5:
+        action_code: DSO-09
+        description: Verbessern Sie kontinuierlich Governance für Zugriff und 
+          Schutz mithilfe von Audits
+  Q4:
+    text: Sind DataOps-Praktiken in die operative Governance integriert?
+    explanation: Bewertet Transparenz, Beobachtbarkeit, Überwachung und 
+      operationelle Zuverlässigkeit.
+    objective: Stärken Sie operative Qualität und Lifecycle-Management.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operations Lifecycle; Chapter 12 –
+      Data Lifecycle; DCAM, Lifecycle Execution; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Definieren Sie DataOps-Governance-Anforderungen für 
+          Zuverlässigkeit und Beobachtbarkeit
+      1:
+        action_code: DSO-02
+        description: Zuweisung von DataOps- und operativen Stewardship-Rollen
+      2:
+        action_code: DSO-03
+        description: DataOps-Integrationsregeln genehmigen
+      3:
+        action_code: DSO-04
+        description: Einbettung von DataOps-Routinen in gesteuerte operative 
+          Workflows
+      4:
+        action_code: DSO-06
+        description: Automatisierung von Beobachtbarkeit, Überwachung und 
+          operativer Validierung
+      5:
+        action_code: DSO-09
+        description: DataOps-Governance kontinuierlich anhand von 
+          Leistungsnachweisen verbessern
+  Q5:
+    text: Wird die operative Leistung (Verfügbarkeit, Zuverlässigkeit, 
+      Beobachtbarkeit) gemessen und überprüft?
+    explanation: Bewertet Leistungsüberwachung und Governance-Indikatoren.
+    objective: Operative Exzellenz und kontrollierte Weiterentwicklung 
+      sicherstellen.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operations Metrics; DCAM, Measurement;
+      IDGC, Performance Controls)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Definieren Sie operative Leistungsindikatoren und 
+          Überwachungsregeln
+      1:
+        action_code: DSO-02
+        description: Verantwortlichkeiten für operative Leistungs-Governance 
+          zuweisen
+      2:
+        action_code: DSO-03
+        description: KPIs, Schwellenwerte und Governance-Überprüfungszyklen 
+          genehmigen
+      3:
+        action_code: DSO-04
+        description: Implementieren Sie Dashboards, Leistungsüberprüfungen und 
+          gesteuerte Berichterstattung
+      4:
+        action_code: DSO-06
+        description: Automatisierte Leistungsüberwachung und operative 
+          Validierung
+      5:
+        action_code: DSO-09
+        description: Operative Leistung kontinuierlich mit Metriken verbessern
+  Q6:
+    text: Sind ethische, Datenschutz- und verantwortungsvolle 
+      Nutzungs-Sicherungen in operative Routinen eingebettet?
+    explanation: Bewertet Privacy-by-Design und ethische Schutzmaßnahmen im 
+      Tagesgeschäft.
+    objective: Sicherstellen konformer und verantwortungsvoller Abläufe.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operational Risk & Security; Chapter
+      9 – Data Security; DCAM, Risk & Controls; IDGC, Risk Governance)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Definition ethischer, datenschutzbezogener und 
+          verantwortungsvoller Nutzungsanforderungen für den Betrieb
+      1:
+        action_code: DSO-02
+        description: Weisen Sie Datenschutz- und ethische 
+          Aufsichtsverantwortlichkeiten zu
+      2:
+        action_code: DSO-03
+        description: Genehmigen Sie ethische und Datenschutz-Betriebsregeln
+      3:
+        action_code: DSO-04
+        description: Integrieren Sie ethische und Datenschutzschutzmaßnahmen in 
+          operative Routinen
+      4:
+        action_code: DSO-06
+        description: Automatisierung der Validierung von ethischen, Datenschutz-
+          und verantwortungsbewussten Nutzungsaspekten
+      5:
+        action_code: DSO-09
+        description: Verbessern Sie kontinuierlich ethische und 
+          Datenschutz-Governance mithilfe von Audits

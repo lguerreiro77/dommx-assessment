@@ -1,0 +1,558 @@
+domain:
+  id: 3
+  name: Modélisation et conception des données (DMD)
+action_catalog:
+  DMD-01:
+    title: Définir les principes fondamentaux de modélisation et le périmètre
+    procedures:
+    - number: 1
+      name: Définir les principes de modélisation et le périmètre de la 
+        structure
+      prerequisite: Nécessite l'identification des concepts métier
+      deliverable: Document de principes de modélisation
+      recommendations:
+      - Définir les principes de modélisation selon les directives DAMA pour les
+        structures conceptuelles, logiques et physiques et leur alignement en 
+        gouvernance (Chapitre 3.3, p. 58–59).
+      - Assurer que le périmètre couvre les domaines requis de gouvernance de 
+        modèle, terminologie et cohérence sémantique selon DMBOK (Chapitre 10, 
+        p. 282–284).
+      - Valider les définitions des frontières en utilisant les attentes DAMA 
+        pour l'intégration de modèles transversaux (Figure 3-2, p. 53).
+      - Structurer le document selon les directives de formatage d'artefact DAMA
+        pour la clarté et la traçabilité (Annexe Chapitre 3, p. 69–70).
+      notes:
+      - Utiliser la portée des capacités de modélisation DCAM pour garantir que 
+        les principes de modélisation soutiennent la signification et la 
+        structure des données d'entreprise.
+    - number: 2
+      name: Rédiger le modèle conceptuel initial
+      prerequisite: Nécessite des principes définis
+      deliverable: Modèle conceptuel v0.1
+      recommendations:
+      - Rédiger le modèle conceptuel en utilisant les directives DAMA pour 
+        représenter le sens métier, les relations et les concepts clés (Chapitre
+        10, p. 282).
+      - Assurer que la représentation des entités requises suit la sémantique et
+        les attentes de métadonnées DAMA (Chapitre 9, p. 236).
+      - Valider que les responsabilités de stewardship pour la propriété des 
+        modèles suivent le modèle de rôle de gouvernance DAMA (Chapitre 3.2, p. 
+        55–57).
+      - Confirmez que le modèle est aligné avec les points de contrôle du cycle 
+        de vie DAMA pour la définition et la publication des données (Chapitre 
+        4.3, p. 92).
+      notes:
+      - Utiliser la discipline d’itération de modélisation CMMI pour maintenir 
+        l’intégrité conceptuelle lors des premiers brouillons.
+    - number: 3
+      name: Identifiez les entités et attributs préliminaires
+      prerequisite: Nécessite la cartographie des parties prenantes
+      deliverable: Liste initiale d'entités
+      recommendations:
+      - Identifiez les entités en suivant les directives DAMA pour séparer les 
+        objets métier, les structures de référence et le sens partagé (Chapitre 
+        10, p. 282–284).
+      - Validez l'identification des attributs en utilisant les exigences 
+        métadonnées DAMA, incluant définitions, formats et valeurs permises 
+        (Chapitre 9, p. 236).
+      - Assurer l’alignement des entités avec les principes de cohérence 
+        sémantique DAMA (Chapitre 3.3, p. 58).
+      - Confirmer que les éléments identifiés reflètent les points de contrôle 
+        du cycle de vie pour la création et la transformation définis par DAMA 
+        (Chapitre 4.3, p. 92).
+      notes:
+      - Utilisez l'analyse de criticité des attributs DCAM pour prioriser les 
+        entités principales dès le début.
+    - number: 4
+      name: Attribuer la propriété provisoire de modélisation
+      prerequisite: Nécessite un inventaire des entités
+      deliverable: Matrice de propriété de modélisation.
+      recommendations:
+      - Attribuer la propriété des modèles selon les responsabilités de 
+        gouvernance et de définition des données DAMA (Chapitre 4, p. 86–89).
+      - Valider la propriété pour les couches conceptuelle, logique et physique 
+        basée sur les rôles de gouvernance DAMA (Chapitre 3.2, p. 55–57).
+      - S'assurer que la propriété du cycle de vie est cohérente avec les points
+        de contrôle DAMA (Chapitre 4.3, p. 92).
+      - Documenter la propriété en utilisant les directives d'artefact DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les directives de préparation comportementale IDGC pour assurer
+        que les propriétaires de modélisation peuvent soutenir les obligations 
+        de gouvernance.
+    - number: 5
+      name: Publier les premières directives de modélisation
+      prerequisite: Nécessite un modèle conceptuel et une propriété
+      deliverable: Briefing d'intégration de modélisation
+      recommendations:
+      - Publiez des directives en utilisant les attentes de communication de 
+        DAMA pour les artefacts de gouvernance (Chapitre 3.6, p. 64).
+      - Assurer la clarté des règles de modélisation, y compris la nomination, 
+        les relations et les conventions sémantiques basées sur les 
+        recommandations DAMA (Chapitre 10, p. 282–284).
+      - Valider le cahier des charges en utilisant la structure d'artefact DAMA 
+        pour assurer cohérence et auditabilité (Annexe du Chapitre 3, p. 69–70).
+      - Renforcer les responsabilités des stewards et propriétaires pour les 
+        activités de modélisation selon les définitions DAMA (Chapitre 4, p. 
+        86–87).
+      notes:
+      - Utiliser les stratégies de communication CMMI pour améliorer la 
+        compréhension utilisateur des attentes de modélisation.
+  DMD-02:
+    title: Formalisez le stewardship et les normes de modélisation
+    procedures:
+    - number: 1
+      name: Consolider les exigences de modélisation
+      prerequisite: Nécessite que DMD-01 soit complet
+      deliverable: Registre des exigences de modélisation
+      recommendations:
+      - Consolider les exigences en utilisant les directives de modélisation et 
+        de métadonnées DAMA pour la cohérence structurelle (Chapitre 10, p. 
+        282).
+      - Assurez-vous que les exigences reflètent les attentes sémantiques, de 
+        traçabilité et de signification métier de DAMA (Chapitre 3.3, p. 58).
+      - Valider que les exigences soutiennent les points de contrôle du cycle de
+        vie, incluant la définition et la publication des données (Chapitre 4.3,
+        p. 92).
+      - Confirmer la couverture des attentes de propriété et de gestion définies
+        par DAMA (Chapitre 3.2, p. 55–57).
+      notes:
+      - Appliquer les techniques de priorisation des exigences DCAM pour 
+        identifier les besoins de modélisation à forte valeur.
+    - number: 2
+      name: Produire des modèles conceptuels et logiques formels
+      prerequisite: Nécessite des exigences validées
+      deliverable: Modèles conceptuels et logiques v1.0.
+      recommendations:
+      - Produire des modèles conformément aux attentes DAMA pour la clarté 
+        conceptuelle et la normalisation logique (Chapitre 10, p. 282–284).
+      - Confirmer les définitions d'attributs et de relations en utilisant les 
+        règles de métadonnées DAMA (Chapitre 9, p. 236).
+      - Valider l'alignement avec les exigences de gouvernance du cycle de vie 
+        DAMA pour les changements structurels (Chapitre 4.3, p. 92).
+      - Structurer la documentation selon les recommandations d'artefacts DAMA 
+        (Chapitre 3 Annexe, p. 69–70).
+      notes:
+      - Utiliser les directives de vérification des modèles CMMI pour assurer la
+        cohérence entre les couches de modélisation.
+    - number: 3
+      name: Définir les normes et règles de modélisation
+      prerequisite: Nécessite un ensemble de modèles v1.0
+      deliverable: Manuel des normes de modélisation.
+      recommendations:
+      - Définir les normes basées sur les règles de modélisation DAMA pour la 
+        dénomination, les relations, les définitions d'attributs et la cohérence
+        sémantique (Chapitre 10, p. 282–284).
+      - Validez les règles en utilisant les dimensions de métadonnées et de 
+        qualité des données DAMA (Chapitre 11, p. 308–311).
+      - S'assurer que les responsabilités de stewardship pour l'approbation des 
+        normes suivent les directives de gouvernance DAMA (Chapitre 3.2, p. 
+        55–57).
+      - Confirmer l'alignement avec les points de contrôle du cycle de vie 
+        décrits par DAMA (Chapitre 4.3, p. 92).
+      notes:
+      - Utilisez les principes de minimisation des données GDPR lors de la 
+        définition des règles affectant la modélisation des données 
+        personnelles.
+    - number: 4
+      name: Valider les normes de modélisation avec les parties prenantes métier
+      prerequisite: Nécessite un projet de normes
+      deliverable: Enregistrement d'alignement
+      recommendations:
+      - Valider les normes en utilisant les attentes de cohérence relationnelle 
+        et sémantique DAMA (Chapitre 10, p. 282).
+      - S'assurer de l'alignement avec la terminologie commerciale selon les 
+        directives de stewardship et glossaire DAMA (Chapitre 9, p. 236).
+      - Confirmez que les attentes des parties prenantes correspondent aux 
+        principes de transparence de gouvernance DAMA (Chapitre 3.4, p. 60).
+      - Valider que les normes soutiennent les points de contrôle du cycle de 
+        vie (Chapitre 4.3, p. 92).
+      notes:
+      - Utiliser les pratiques de cartographie des parties prenantes DCAM pour 
+        assurer l'acceptation sémantique.
+    - number: 5
+      name: Approuver et publier les normes de modélisation
+      prerequisite: Nécessite l'approbation de l'autorité de gouvernance
+      deliverable: Pack d'approbation des normes de modélisation
+      recommendations:
+      - Approuvez les normes en utilisant les directives d'autorité de 
+        gouvernance DAMA pour l'approbation des règles (Chapitre 3.4, p. 60–61).
+      - S'assurer que la publication suit les directives de documentation 
+        d'artefact DAMA (Annexe du Chapitre 3, p. 69–70).
+      - Validez la cohérence entre domaines en utilisant l'architecture de 
+        gouvernance fonctionnelle DAMA (Figure 3-2, p. 53).
+      - Confirmer que les normes soutiennent les attentes de métadonnées et de 
+        qualité à travers les chapitres DAMA (Chapitres 10 et 11).
+      notes:
+      - Utiliser la logique de préparation à la gouvernance CMMI pour 
+        institutionnaliser plus efficacement les normes.
+  DMD-03:
+    title: Approuver les règles, structures et définitions sémantiques de 
+      modélisation
+    procedures:
+    - number: 1
+      name: Établir la charte du Conseil de Modélisation des Données
+      prerequisite: Nécessite des livrables DMD-02
+      deliverable: Charte approuvée
+      recommendations:
+      - Établissez la charte en suivant les directives DAMA pour la modélisation
+        et l'autorité décisionnelle structurelle (Chapitre 3.4, p. 60).
+      - S'assurer que les rôles et responsabilités reflètent les attentes de 
+        stewardship et de propriété DAMA (Chapitre 3.2, p. 55–57).
+      - Valider l'alignement avec les couches fonctionnelles de gouvernance DAMA
+        (Figure 3-2, p. 53).
+      - Documenter la charte en utilisant les conventions d'artefacts DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les critères d’autorité de gouvernance DCAM pour renforcer la 
+        gouvernance sémantique.
+    - number: 2
+      name: Attribuer les rôles du conseil de modélisation
+      prerequisite: Nécessite des descriptions de rôles
+      deliverable: Enregistrement d'affectation des rôles
+      recommendations:
+      - Assigner les rôles conformément aux profils de compétence de 
+        modélisation et de stewardship DAMA (Chapitre 4, p. 86–89).
+      - S'assurer que les limites de décision sont alignées avec les voies 
+        d'escalade et d'autorité DAMA (Chapitre 3.4, p. 60).
+      - Valider la couverture des rôles par rapport aux exigences de 
+        modélisation DAMA pour les couches conceptuelle, logique et physique 
+        (Chapitre 10, p. 282).
+      - Confirmer la clarté de la documentation en utilisant la structure 
+        d’artefact DAMA (Chapitre 3 Annexe, p. 69–70).
+      notes:
+      - Utilisez l'évaluation comportementale IDGC pour assurer que les 
+        titulaires de rôle peuvent soutenir la gouvernance de la modélisation.
+    - number: 3
+      name: Mettre en œuvre des forums de décision de modélisation
+      prerequisite: Nécessite l'approbation de la charte
+      deliverable: Modélisation du calendrier de gouvernance et des modèles
+      recommendations:
+      - Mettez en œuvre des forums de décision en utilisant les directives DAMA 
+        pour les processus décisionnels de gouvernance et la supervision de la 
+        modélisation (Chapitre 3.3, p. 58–59).
+      - Assurez la transparence et la responsabilité telles que définies par les
+        principes de gouvernance DAMA (Chapitre 3, p. 51).
+      - Valider les décisions du cycle de vie et sémantiques en utilisant les 
+        points de contrôle et structures de métadonnées DAMA (Chapitres 9 et 
+        10).
+      - Documenter les résultats des forums en utilisant les directives 
+        d'artefact DAMA (Annexe du Chapitre 3, p. 69).
+      notes:
+      - Appliquer la logique de discipline des réunions CMMI pour préserver la 
+        qualité de la modélisation.
+    - number: 4
+      name: Lancer les cycles de revue de modélisation
+      prerequisite: Nécessite des forums définis
+      deliverable: Procès-verbal de la première revue
+      recommendations:
+      - Lancez des cycles de revue en suivant les directives DAMA pour la 
+        modélisation et la supervision structurelle (Chapitre 3.3, p. 58).
+      - Validez la correction sémantique et des métadonnées en utilisant les 
+        directives de modélisation DAMA (Chapitre 10, p. 282–284).
+      - Confirmer l’alignement du cycle de vie basé sur les points de contrôle 
+        DAMA (Chapitre 4.3, p. 92).
+      - Assurer l'exactitude de la documentation en utilisant les directives 
+        d'artefact DAMA (Chapitre 3 Annexe, p. 69–70).
+      notes:
+      - Utiliser les pratiques d'assurance de revue DCAM pour renforcer les 
+        décisions de gouvernance sémantique.
+    - number: 5
+      name: Maintenir l'opération de gouvernance de modélisation
+      prerequisite: Nécessite un rythme de réunions
+      deliverable: Journal d'activité de modélisation
+      recommendations:
+      - Maintenir l'opération de gouvernance en utilisant les directives DAMA 
+        pour la continuité de la gouvernance (Chapitre 3.6, p. 64).
+      - Valider que les activités suivent les normes de modélisation et de 
+        métadonnées DAMA (Chapitre 10, p. 282).
+      - Assurer l'alignement avec les attentes de gestion du cycle de vie 
+        (Chapitre 4.3, p. 92).
+      - Confirmer la conformité de la documentation avec la structure d'artefact
+        DAMA (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les pratiques de surveillance CMMI pour renforcer la stabilité 
+        des routines de gouvernance.
+  DMD-04:
+    title: Intégrez la gouvernance de la modélisation dans les routines 
+      organisationnelles et de domaine
+    procedures:
+    - number: 1
+      name: Intégrez les points de contrôle de modélisation dans les flux de 
+        travail du domaine
+      prerequisite: Nécessite des rôles et standards DMD-03
+      deliverable: Modèles de workflow mis à jour
+      recommendations:
+      - Intégrer les points de contrôle de modélisation en utilisant les 
+        directives DAMA pour intégrer les règles de modélisation dans les 
+        activités de création, transformation et validation des données 
+        (Chapitre 3.3, p. 58–59).
+      - Assurez que les points de contrôle reflètent les attentes du cycle de 
+        vie DAMA pour la définition, l'approbation, la publication et la mise 
+        hors service (Chapitre 4.3, p. 92).
+      - Validez que les points de contrôle intègrent les règles sémantiques et 
+        de métadonnées décrites par DAMA pour les fonctions de modélisation 
+        (Chapitre 10, p. 282–284).
+      - Confirmez que les stewards assignés effectuent la supervision de 
+        modélisation conformément aux directives de stewardship DAMA (Chapitre 
+        4, p. 86–89).
+      notes:
+      - Utiliser les directives d'alignement des workflows DCAM pour assurer que
+        les contrôles sémantiques sont appliqués de manière cohérente à travers 
+        les processus.
+    - number: 2
+      name: Intégrer les critères de modélisation dans la conception des 
+        systèmes et les flux d'intégration
+      prerequisite: Nécessite des standards
+      deliverable: Modèles de conception gouvernés
+      recommendations:
+      - Intégrez les critères en utilisant les attentes de modélisation et 
+        structurelles DAMA qui définissent l'alignement conceptuel et logique 
+        entre systèmes (Chapitre 10, p. 282).
+      - S'assurer que les décisions d'intégration reflètent les règles de 
+        métadonnées de DAMA pour la nomination, la définition et la traçabilité 
+        (Chapitre 9, p. 236).
+      - Validez l'alignement du cycle de vie suivant les points de contrôle de 
+        gestion DAMA tels que définition, approbation et publication (Chapitre 
+        4.3, p. 92).
+      - Confirmer que le sens métier est préservé selon les principes de 
+        cohérence sémantique DAMA (Chapitre 3.3, p. 58).
+      notes:
+      - Appliquer les méthodes de vérification de conception CMMI pour renforcer
+        la cohérence sémantique entre les composants du système.
+    - number: 3
+      name: Mettez à jour la documentation du cycle de vie avec les exigences de
+        modélisation
+      prerequisite: Nécessite une refonte des flux de travail
+      deliverable: Documentation du cycle de vie mise à jour
+      recommendations:
+      - Mettre à jour la documentation en utilisant les directives de cycle de 
+        vie DAMA pour la gouvernance de modélisation et de définition des 
+        données (Chapitre 4.3, p. 92).
+      - Assurer l'alignement avec les structures de métadonnées et les règles 
+        sémantiques DAMA (Chapitre 10, p. 282–284).
+      - Confirmer que les responsabilités de propriété et de gestion sont 
+        clairement exprimées selon les rôles de gouvernance DAMA (Chapitre 3.2, 
+        p. 55–57).
+      - Valider les étapes du cycle de vie basées sur les exigences DAMA pour la
+        création, la transformation et la mise hors service des structures de 
+        données (Chapitres 9 à 11).
+      notes:
+      - Utiliser les critères de capacité du cycle de vie DCAM pour améliorer 
+        l'intégration de la modélisation à travers les phases du cycle de vie.
+    - number: 4
+      name: Appliquez des contrôles de modélisation aux points de décision du 
+        domaine
+      prerequisite: Nécessite des flux de travail gouvernés
+      deliverable: Preuves des contrôles de modélisation
+      recommendations:
+      - Appliquez les contrôles selon les attentes de modélisation et de 
+        gouvernance DAMA, qui requièrent la validation de la structure, des 
+        relations et du sens avant approbation (Chapitre 10, p. 282).
+      - Valider selon les attentes de cohérence métadonnées et sémantique DAMA 
+        (Chapitre 9, p. 236).
+      - Assurer que les points de décision appliquent la supervision de la 
+        gestion et l’escalade lorsque nécessaire, comme défini par DAMA 
+        (Chapitre 3.4, p. 60).
+      - Confirmer que les contrôles du cycle de vie sont respectés suivant les 
+        points de contrôle de modélisation DAMA (Chapitre 4.3, p. 92).
+      notes:
+      - Utiliser la logique de vérification CMMI pour améliorer la répétabilité 
+        de la validation des décisions de modélisation.
+    - number: 5
+      name: Suivre l'adhérence à la modélisation à travers les domaines
+      prerequisite: Nécessite des routines de surveillance
+      deliverable: Registre de conformité de modélisation
+      recommendations:
+      - Suivre l'adhérence en utilisant les directives DAMA pour la surveillance
+        de la gouvernance à travers les processus de modélisation (Chapitre 3.6,
+        p. 64).
+      - Assurer que le suivi inclut les métadonnées et les contrôles 
+        d’alignement sémantique (Chapitre 10, p. 282–284).
+      - Valider que les écarts sont enregistrés et escaladés conformément aux 
+        règles d'escalade de gouvernance DAMA (Chapitre 3.4, p. 60).
+      - Confirmer l’implication des gestionnaires et propriétaires conforme aux 
+        obligations de gestion DAMA (Chapitre 4, p. 86–87).
+      notes:
+      - Appliquer les indicateurs d'assurance de modélisation DCAM pour 
+        identifier les faiblesses de modélisation et les axes d'amélioration.
+  DMD-06:
+    title: Automatiser la validation de modélisation et la qualité sémantique
+    procedures:
+    - number: 1
+      name: Définir les indicateurs de validation de modélisation
+      prerequisite: Nécessite des workflows DMD-04
+      deliverable: Ensemble de modélisation KPI
+      recommendations:
+      - Définir les KPI selon les directives DAMA pour la complétude de la 
+        modélisation, la cohérence sémantique et la cohérence de la traçabilité 
+        (Chapitre 10, p. 282–284).
+      - Assurer que les KPI reflètent les attentes du cycle de vie DAMA pour des
+        définitions de données stables et des relations sémantiques approuvées 
+        (Chapitre 4.3, p. 92).
+      - Valider l'alignement avec les dimensions de qualité DAMA, y compris la 
+        précision, la cohérence et l'intégrité (Chapitre 11, p. 308–311).
+      - Confirmez que les rôles de stewardship et de propriété sont représentés 
+        conformément aux principes de gouvernance DAMA (Chapitre 3.2, p. 55–57).
+      notes:
+      - Utilisez les indicateurs de capacité DCAM pour créer des échelles de 
+        mesure de la maturité de modélisation.
+    - number: 2
+      name: Établir des règles automatisées de validation sémantique et 
+        structurelle
+      prerequisite: Nécessite des critères de modélisation
+      deliverable: Ensemble de règles de validation automatisées
+      recommendations:
+      - Établissez les règles en suivant les exigences sémantiques et 
+        métadonnées DAMA (Chapitre 9, p. 236).
+      - S'assurer que l'automatisation vérifie les relations, définitions et 
+        chemins de traçabilité comme décrit dans les directives de modélisation 
+        DAMA (Chapitre 10, p. 282–284).
+      - Valider l'alignement du cycle de vie en utilisant les points de contrôle
+        de contrôle DAMA (Chapitre 4.3, p. 92).
+      - Documentez les règles automatisées en utilisant les modèles d'artefact 
+        DAMA (Chapitre 3 Annexe, p. 69–70).
+      notes:
+      - Utilisez les critères de préparation à l'automatisation CMMI pour 
+        confirmer la stabilité avant de déployer des contrôles automatisés à 
+        grande échelle.
+    - number: 3
+      name: Mettre en œuvre des tableaux de bord de surveillance de la 
+        modélisation
+      prerequisite: Nécessite des règles de validation
+      deliverable: Tableau de bord de surveillance de modélisation
+      recommendations:
+      - Mettre en œuvre des tableaux de bord en utilisant les principes de 
+        surveillance de gouvernance DAMA (Chapitre 3.6, p. 64).
+      - Incluez des indicateurs sémantiques, de qualité et de métadonnées 
+        alignés avec les attentes DAMA (Chapitres 9 à 11).
+      - Validez l'alignement du cycle de vie en utilisant les points de contrôle
+        DAMA (Chapitre 4.3, p. 92).
+      - S'assurer que les indicateurs des tableaux de bord correspondent aux 
+        responsabilités de propriété et de gestion décrites par DAMA (Chapitre 
+        3.2, p. 55–57).
+      notes:
+      - Utilisez les pratiques de visualisation de la qualité des données DCAM 
+        pour améliorer la clarté de la performance de modélisation.
+    - number: 4
+      name: Activez les alertes automatisées de conformité sémantique
+      prerequisite: Nécessite des tableaux de bord actifs
+      deliverable: Flux d'alerte sémantique
+      recommendations:
+      - Activer les alertes suivant les pratiques d'escalade et de supervision 
+        DAMA (Chapitre 3.4, p. 60).
+      - Assurer que les alertes reflètent les points de rupture sémantiques, les
+        métadonnées manquantes ou les définitions incohérentes alignées avec les
+        directives DAMA (Chapitre 10, p. 282–284).
+      - Valider l'impact sur le cycle de vie en utilisant les points de contrôle
+        DAMA (Chapitre 4.3, p. 92).
+      - Confirmer que les responsabilités de gestion pour le triage des alertes 
+        suivent les attentes de rôle DAMA (Chapitre 4, p. 86–87).
+      notes:
+      - Utilisez la logique d'action corrective CMMI pour rationaliser la 
+        gestion des incidents sémantiques.
+    - number: 5
+      name: Maintenez la gouvernance automatisée de la modélisation.
+      prerequisite: Nécessite une maturité opérationnelle
+      deliverable: Journal opérationnel de modélisation
+      recommendations:
+      - Maintenir l'automatisation selon les directives DAMA pour la continuité 
+        de la gouvernance (Chapitre 3.6, p. 64).
+      - Assurer l’alignement avec les attentes de modélisation et métadonnées 
+        DAMA (Chapitres 9 et 10).
+      - Valider les responsabilités du cycle de vie en utilisant les points de 
+        contrôle DAMA (Chapitre 4.3, p. 92).
+      - Confirmez que la documentation suit la structure d'artefact DAMA 
+        (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les évaluations de capacité opérationnelle DCAM pour identifier
+        les domaines où l'automatisation de la modélisation peut s'étendre.
+  DMD-09:
+    title: Optimiser les structures de modélisation et institutionnaliser la 
+      gouvernance sémantique
+    procedures:
+    - number: 1
+      name: Revue des tendances de performance de modélisation.
+      prerequisite: Nécessite une base DMD-06 KPI
+      deliverable: Analyse des tendances
+      recommendations:
+      - Revoir les tendances selon les directives DAMA pour l'évaluation des 
+        performances sémantiques et structurelles (Chapitre 3.6, p. 64).
+      - Valider les tendances en utilisant la cohérence de modélisation DAMA et 
+        les indicateurs de métadonnées (Chapitres 9 et 10).
+      - S'assurer que l'interprétation intègre les attentes du cycle de vie pour
+        la stabilité de la modélisation (Chapitre 4.3, p. 92).
+      - Confirmer que la documentation reflète les normes d’artefact DAMA 
+        (Chapitre 3 Annexe, p. 69–70).
+      notes:
+      - Utiliser le score de maturité des capacités DCAM pour comparer la 
+        maturité de la modélisation à travers les domaines.
+    - number: 2
+      name: Améliorer les structures de modélisation en utilisant les insights 
+        de performance
+      prerequisite: Nécessite une analyse des tendances
+      deliverable: Modèles et modèles mis à jour
+      recommendations:
+      - Améliorer les structures en utilisant les directives de raffinement de 
+        modélisation DAMA, qui mettent l'accent sur la clarté, la cohérence et 
+        la précision sémantique (Chapitre 10, p. 282–284).
+      - Valider les améliorations en utilisant les règles de métadonnées et de 
+        qualité DAMA (Chapitres 9 et 11).
+      - Assurer que les responsabilités du cycle de vie restent alignées avec 
+        les points de contrôle de gestion DAMA (Chapitre 4.3, p. 92).
+      - Confirmer que les mises à jour maintiennent le sens du domaine et de 
+        l'entreprise tel que défini par la gouvernance DAMA (Chapitre 3.3, p. 
+        58).
+      notes:
+      - Utiliser les techniques d'amélioration quantitative CMMI pour prioriser 
+        les raffinements à fort impact.
+    - number: 3
+      name: Comparer les pratiques de modélisation aux normes externes
+      prerequisite: Nécessite un profil de maturité
+      deliverable: Preuve de référence
+      recommendations:
+      - Étalonner en utilisant les attentes DAMA pour la comparabilité externe 
+        et l'alignement de gouvernance (Chapitre 3.6, p. 64).
+      - Incluez les composants de métadonnées, structurels et sémantiques dans 
+        l'évaluation de référence basée sur les directives de modélisation DAMA 
+        (Chapitres 9 et 10).
+      - Validez que les insights de référence soutiennent les responsabilités du
+        cycle de vie (Chapitre 4.3, p. 92).
+      - Documenter les résultats en utilisant les normes d'artefact DAMA (Annexe
+        du Chapitre 3, p. 69–70).
+      notes:
+      - Utiliser les pratiques de benchmarking DCAM pour aligner la maturité de 
+        modélisation avec les attentes de l'industrie.
+    - number: 4
+      name: Améliorez la logique d'automatisation de la modélisation.
+      prerequisite: Nécessite une automatisation DMD-06
+      deliverable: Ensemble d'automatisation de modélisation mis à jour
+      recommendations:
+      - Améliorer l’automatisation en utilisant la sémantique DAMA et les règles
+        de métadonnées (Chapitre 10, p. 282–284).
+      - Validez les mises à jour automatisées en utilisant les points de 
+        contrôle du cycle de vie DAMA (Chapitre 4.3, p. 92).
+      - Assurer que les propriétaires et stewards approuvent les modifications 
+        logiques selon l'autorité de gouvernance DAMA (Chapitre 3.4, p. 60).
+      - Confirmez que la logique mise à jour est alignée avec les modèles de 
+        documentation des artefacts DAMA (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utiliser les critères de maturité d'automatisation CMMI pour améliorer 
+        la fiabilité de l'automatisation.
+    - number: 5
+      name: Maintenir un cycle d'amélioration continue de la modélisation
+      prerequisite: Nécessite un cycle d'optimisation
+      deliverable: Plan d’amélioration de la modélisation
+      recommendations:
+      - Maintenir les cycles d’amélioration selon les directives DAMA pour la 
+        modélisation continue et le raffinement sémantique (Chapitre 3.6, p. 
+        64).
+      - S'assurer que les boucles de rétroaction intègrent les enseignements 
+        sémantiques, qualité et métadonnées issus de DAMA (Chapitres 9 à 11).
+      - Validez les responsabilités du cycle de vie avec les points de contrôle 
+        DAMA (Chapitre 4.3, p. 92).
+      - Confirmez que la documentation suit le formatage d'artefact DAMA 
+        (Chapitre 3 Annexe, p. 69–70).
+      notes:
+      - Utilisez la cartographie de l'évolution des capacités DCAM pour 
+        planifier la croissance à long terme de la maturité de modélisation.

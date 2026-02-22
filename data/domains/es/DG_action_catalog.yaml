@@ -1,0 +1,604 @@
+domain:
+  id: 1
+  name: Gobernanza de Datos (DG)
+action_catalog:
+  DG-01:
+    title: Definir principios fundamentales de gobernanza y alcance
+    procedures:
+    - number: 1
+      name: Definir principios y alcance de gobernanza
+      prerequisite: Requiere identificación de temas de gobernanza
+      deliverable: Documento de alcance de gobernanza
+      recommendations:
+      - Usar guía DAMA para definir principios de gobernanza y dominios de 
+        decisión como se describe en DMBOK2 (Capítulo 3, p. 52–54).
+      - Distinguir alcance a nivel empresarial y de dominio siguiendo la 
+        segmentación estructural de DAMA (Capítulo 3.1, p. 49).
+      - Asegurar que los límites de alcance reflejen el modelo de DAMA para 
+        responsabilidades de gobernanza basado en autoridad de rol y tipos de 
+        decisión (Capítulo 3.2, p. 55–57).
+      - Confirmar que la alineación de administración sigue guía de DAMA para 
+        asignar responsabilidad durante la definición de alcance (Capítulo 4, p.
+        86).
+      notes:
+      - Usar el alcance de capacidades DCAM para asegurar que el alcance 
+        definido soporte las capacidades requeridas de gestión de datos.
+      - Incorporar áreas críticas de proceso de CMMI para priorizar dominios que
+        requieren intervención temprana de gobernanza.
+    - number: 2
+      name: Redactar política inicial de Gobernanza de Datos
+      prerequisite: Requiere un alcance definido
+      deliverable: Borrador de política v0.1
+      recommendations:
+      - Seguir los componentes de política de gobernanza de DAMA, incluyendo 
+        propósito, alcance, autoridad y escalamiento (Capítulo 3.5, p. 62).
+      - Asegurar alineación con principios de DAMA para rendición de cuentas y 
+        transparencia en decisiones (Capítulo 3, p. 51).
+      - Estructurar la política utilizando la guía de artefactos de DAMA para 
+        asegurar integridad y trazabilidad (Capítulo 3 Apéndice, p. 69–70).
+      - Incorporar responsabilidades de administración y propiedad de DAMA en 
+        las declaraciones de políticas (Capítulo 4, p. 86–89).
+      notes:
+      - Usar prácticas de formulación de políticas CMMI para reforzar claridad y
+        controles verificables en borradores tempranos de políticas.
+    - number: 3
+      name: Identificar roles preliminares de gobernanza
+      prerequisite: Requiere partes interesadas mapeadas
+      deliverable: Lista inicial de roles de gobernanza
+      recommendations:
+      - Usar definiciones de roles DAMA para propietario, steward, custodio y 
+        patrocinador para clasificar responsabilidades (Capítulo 3.2, p. 55–57).
+      - Mapear responsabilidades usando expectativas de responsabilidad DAMA 
+        para autoridad de decisión y escalamiento (Capítulo 3.4, p. 60).
+      - Validar cobertura de roles usando el modelo funcional de gobernanza de 
+        DAMA que distingue funciones estratégicas, tácticas y operativas (Figura
+        3-2, p.53).
+      - Confirmar que la claridad de roles soporta puntos de control de 
+        administración detallados por DAMA (Capítulo 4.3, p. 92).
+      notes:
+      - Usar criterios de preparación conductual IDGC para asegurar que 
+        individuos asignados a roles tengan apoyo cultural y organizacional para
+        tener éxito.
+    - number: 4
+      name: Asignar propiedad provisional de administración
+      prerequisite: Requiere dominios de datos identificados
+      deliverable: Matriz de propiedad de stewardship.
+      recommendations:
+      - Asignar administración según el perfil de competencia de DAMA para 
+        administradores de dominio y operativos (Capítulo 4, p. 86–89).
+      - Confirmar que las asignaciones reflejan los puntos de control del ciclo 
+        de vida de DAMA a lo largo de la creación, uso y retiro de datos 
+        (Capítulo 4.3, p. 92).
+      - Valide la alineación con el modelo de integración de gobernanza 
+        cross-funcional DAMA que vincula stewardship con actividades de 
+        gobernanza (Capítulo 3.3, p. 58–59).
+      - Documentar asignaciones usando estándares de artefactos DAMA para 
+        asegurar claridad y repetibilidad (Apéndice Capítulo 3, p. 69).
+      notes:
+      - Utilice la guía de alineación de roles DCAM para verificar que cada 
+        steward provisional pueda ejecutar capacidades a nivel de dominio.
+    - number: 5
+      name: Publicar comunicación inicial de gobernanza
+      prerequisite: Requiere lista de políticas y roles.
+      deliverable: Resumen de incorporación a la gobernanza
+      recommendations:
+      - Aplicar guía de comunicación de DAMA para explicar expectativas de 
+        gobernanza, responsabilidad e impacto operativo (Capítulo 3.6, p. 64).
+      - Asegurar transparencia usando los elementos de comunicación recomendados
+        por DAMA para principios y responsabilidades de gobernanza (Capítulo 
+        3.4, p. 60).
+      - Presentar políticas y definiciones de roles usando la estructura de 
+        artefactos de DAMA para mejorar la comprensión y consistencia (Capítulo 
+        3 Apéndice, p. 69–70).
+      - Reforzar responsabilidades de administración y propiedad siguiendo 
+        descripciones de roles DAMA (Capítulo 7).
+      notes:
+      - Usar los principios de transparencia de GDPR para asegurar que los 
+        interesados comprendan cómo la gobernanza apoya la rendición de cuentas 
+        y el uso conforme de datos.
+  DG-02:
+    title: Asignar propiedad y responsabilidades de gobernanza
+    procedures:
+    - number: 1
+      name: Consolide requisitos de políticas de gobernanza
+      prerequisite: Requiere que DG-01 estén completos
+      deliverable: Registro de requisitos
+      recommendations:
+      - Consolide los requisitos utilizando la guía DAMA para componentes de 
+        políticas, incluyendo propósito, alcance, autoridad y reglas de 
+        gobernanza como se describe en DMBOK2 (Capítulo 3.5, p. 62).
+      - Valide que los requisitos reflejen los principios DAMA para 
+        responsabilidad y autoridad de decisión descritos en fundamentos de 
+        gobernanza (Capítulo 3, p. 51).
+      - Asegurar que cada requisito se alinee con responsabilidades de 
+        stewardship y propiedad definidas por DAMA (Capítulo 3.2, p. 55–57).
+      - Confirmar cobertura de roles y procesos de gobernanza según el modelo 
+        funcional de actividades de gobernanza de DAMA (Capítulo 3.3, p. 58–59).
+      notes:
+      - Utilice criterios de capacidad de políticas DCAM para asegurar que los 
+        requisitos estén estructurados, sean consistentes y trazables a través 
+        de dominios de gobernanza.
+    - number: 2
+      name: Producir una política formal de gobernanza
+      prerequisite: Requiere requisitos validados
+      deliverable: Política de gobernanza corporativa v1.0
+      recommendations:
+      - Crear la política formal siguiendo la estructura recomendada por DAMA 
+        para políticas de gobernanza, incluyendo propósito, autoridad, roles, 
+        escalamiento y expectativas de cumplimiento (Capítulo 3.5, p. 62–63).
+      - Asegure que la política se alinee con los principios DAMA para 
+        transparencia en decisiones y responsabilidad clara (Capítulo 3, p. 51).
+      - Formatear el documento usando convenciones de artefactos DAMA para 
+        asegurar que la política sea auditable y repetible (Apéndice del 
+        Capítulo 3, p. 69–70).
+      - Incorpore responsabilidades de stewardship del modelo de stewardship 
+        DAMA para asegurar que la política defina la propiedad de decisiones 
+        (Capítulo 4, p. 86–89).
+      notes:
+      - Usar prácticas de aprobación de políticas CMMI para reforzar control de 
+        calidad y disciplina de versiones durante creación de políticas.
+    - number: 3
+      name: Definir estándares y reglas de gobernanza
+      prerequisite: Requiere política v1.0
+      deliverable: Manual de estándares de gobernanza de datos
+      recommendations:
+      - Definir estándares usando la guía de DAMA para tipos de reglas de 
+        gobernanza, incluyendo reglas de datos, reglas de ciclo de vida y reglas
+        de administración (Capítulo 3.5, p. 62–63).
+      - Confirmar que las reglas reflejan las expectativas semánticas, de 
+        metadatos y calidad de DAMA documentadas en DMBOK2 (Capítulos 9, 10 y 
+        11).
+      - Asegurar que cada estándar esté vinculado a un rol de gobernanza 
+        siguiendo las descripciones de responsabilidad de DAMA (Capítulo 3.2, p.
+        55–57).
+      - Validar completitud de reglas usando recomendaciones de DAMA para 
+        metadatos y dimensiones de calidad (Capítulo 10, p. 282–284).
+      notes:
+      - Aplicar principios de necesidad y proporcionalidad de GDPR al definir 
+        reglas que afecten derechos de acceso, uso o retención de datos 
+        personales.
+    - number: 4
+      name: Asignar propiedad y stewardship definitivos
+      prerequisite: Requiere descripciones de roles actualizadas.
+      deliverable: Mapa de propiedad y stewardship
+      recommendations:
+      - Asignar propietarios y stewards usando competencias formales y modelos 
+        de responsabilidad de DAMA para roles de gobernanza (Capítulo 4, p. 
+        86–89).
+      - Asegure que las asignaciones de propiedad reflejen la estructura de 
+        autoridad de escalamiento y decisión de DAMA (Capítulo 3.4, p. 60).
+      - Validar cobertura de administración en dominios de datos siguiendo 
+        alineación funcional de gobernanza DAMA (Figura 3-2, p. 53).
+      - Confirmar alineación de responsabilidades con puntos de control del 
+        ciclo de vida descritos por DAMA (Capítulo 4.3, p. 92).
+      notes:
+      - Usar indicadores de preparación IDGC para confirmar que propietarios y 
+        administradores tienen ajuste conductual y apoyo organizacional para 
+        ejecutar sus responsabilidades efectivamente.
+    - number: 5
+      name: Publicar roles y responsabilidades de gobernanza
+      prerequisite: Requiere aprobación y mapeo de roles
+      deliverable: Estatuto de roles de gobernanza
+      recommendations:
+      - Publicar roles siguiendo la guía DAMA sobre comunicación de gobernanza y
+        compromiso de partes interesadas (Capítulo 3.6, p. 64).
+      - Aclarar responsabilidades usando la estructura de rendición de cuentas 
+        de DAMA para evitar ambigüedades en la autoridad de decisión (Capítulo 
+        3, p.51).
+      - Documente responsabilidades y mapeos siguiendo el formato de artefactos 
+        DAMA para materiales de gobernanza (Apéndice del Capítulo 3, p. 69).
+      - Asegurar que los deberes de administración y propiedad se comuniquen 
+        claramente conforme a los principios de administración de DAMA (Capítulo
+        4, p. 86–87).
+      notes:
+      - Aplicar prácticas de alineación organizacional de DCAM para asegurar 
+        adopción consistente de roles en dominios de negocio y técnicos.
+  DG-03:
+    title: Aprobar reglas, roles y estructuras de gobernanza
+    procedures:
+    - number: 1
+      name: Presentar política de gobernanza para revisión del consejo
+      prerequisite: Requiere política de gobernanza v1.0
+      deliverable: Revisar paquete
+      recommendations:
+      - Presentar la política usando guía DAMA para estructuras formales de 
+        supervisión y aprobación de gobernanza según definido en DMBOK2 
+        (Capítulo 3.4, p. 60).
+      - Asegurar que la presentación incluya autoridad aparente de rol y 
+        derechos de decisión siguiendo el modelo de responsabilidad DAMA 
+        (Capítulo 3, p. 51).
+      - Adjuntar documentación de administración y propiedad alineada con 
+        definiciones de roles de gobernanza de DAMA (Capítulo 3.2, p. 55–57).
+      - Confirmar que los materiales reflejen funciones de gobernanza y vías de 
+        aprobación descritas por DAMA (Capítulo 3.3, p. 58–59).
+      notes:
+      - Usar criterios de evaluación CMMI para asegurar que el paquete de 
+        revisión cumple con estándares objetivos de aprobación.
+    - number: 2
+      name: Aprobar estatuto del consejo de gobernanza
+      prerequisite: Requiere revisión de la carta
+      deliverable: Estatuto del consejo de gobernanza v1.0
+      recommendations:
+      - Aprobar la carta siguiendo la guía de DAMA para establecer órganos de 
+        decisión de gobernanza y estructuras formales de autoridad (Capítulo 
+        3.4, p. 60–61).
+      - Asegurar que el estatuto defina derechos de decisión consistentes con 
+        descripciones de roles DAMA para supervisión de gobernanza (Capítulo 
+        3.2.2, p. 56).
+      - Validar límites de autoridad usando el modelo de gobernanza funcional de
+        DAMA, que aclara responsabilidades estratégicas y operativas (Figura 
+        3-2, p. 53).
+      - Confirmar reglas de escalamiento y alineación de stewardship según 
+        modelo de stewardship DAMA (Capítulo 4, p. 86–89).
+      notes:
+      - Aplique principios de autoridad organizacional DCAM para asegurar que la
+        estructura del consejo apoye la gobernanza a nivel empresarial.
+    - number: 3
+      name: Aprobar estándares y reglas de gobernanza
+      prerequisite: Requiere Manual de Estándares
+      deliverable: Estándares aprobados de Gobernanza de Datos
+      recommendations:
+      - Aprobar estándares usando la guía DAMA sobre reglas de gobernanza, 
+        incluyendo reglas de nomenclatura, reglas de calidad de datos y reglas 
+        de ciclo de vida (Capítulo 3.5, p. 62–63).
+      - Confirmar que las reglas incorporen expectativas DAMA para 
+        administración de metadatos y consistencia semántica (Capítulo 10, p. 
+        282–284).
+      - Validar alineación con los principios de calidad de DAMA, incluyendo 
+        precisión, integridad e integridad (Capítulo 11, p. 308–311).
+      - Asegurar que la aprobación de administración y propiedad siga la cadena 
+        de responsabilidad de gobernanza de DAMA (Capítulo 4, p. 86–87).
+      notes:
+      - Aplicar principios de necesidad y proporcionalidad de GDPR antes de 
+        aprobar reglas que afecten el manejo de datos personales.
+    - number: 4
+      name: Aprobar definiciones de roles de gobernanza
+      prerequisite: Requiere lista de roles y responsabilidades
+      deliverable: Matriz aprobada de roles de gobernanza
+      recommendations:
+      - Valide definiciones contra las descripciones de competencia DAMA para 
+        roles de gobernanza y administración (Capítulo 3.2, p. 55–57).
+      - Confirmar inclusión de autoridad de decisión y requisitos de 
+        escalamiento definidos por DAMA (Capítulo 3.4, p. 60).
+      - Asegurar que la matriz de roles refleje cobertura cruzada de dominios 
+        siguiendo la arquitectura funcional de gobernanza de DAMA (Figura 3-2, 
+        p. 53).
+      - Validar cobertura del ciclo de vida usando puntos de control de 
+        administración de DAMA descritos a lo largo del ciclo de vida de datos 
+        (Capítulo 4.3, p. 92).
+      notes:
+      - Usar prácticas de adecuación de roles de comportamiento IDGC para 
+        asegurar que los roles sean factibles en el contexto organizacional.
+    - number: 5
+      name: Aprobar conjunto de documentación de gobernanza
+      prerequisite: Requiere artefactos consolidados
+      deliverable: Paquete de documentación de gobernanza v1.0
+      recommendations:
+      - Validar documentación usando la lista de verificación de completitud de 
+        artefactos DAMA para confirmar precisión estructural e integridad de 
+        contenido (Apéndice del Capítulo 3, p. 69–70).
+      - Asegurar que las políticas, estándares y descripciones de roles estén 
+        alineados con los componentes de gobernanza de DAMA para transparencia y
+        responsabilidad (Capítulo 3.5, p. 62–63).
+      - Verificar alineación de documentación con funciones de gobernanza 
+        descritas por DAMA, incluyendo coordinación, administración y 
+        supervisión de calidad (Capítulo 3.3, p. 58–59).
+      - Confirmar que la documentación de metadatos y calidad sigue la guía de 
+        DAMA en los Capítulos 10 y 11.
+      notes:
+      - Aplicar prácticas de verificación CMMI para asegurar preparación 
+        documental para auditoría y evaluación de madurez.
+  DG-04:
+    title: Incorporar gobernanza en rutinas organizacionales y de dominio
+    procedures:
+    - number: 1
+      name: Implementar estándares de gobernanza en dominios
+      prerequisite: Requiere estándares aprobados
+      deliverable: Registro de implementación de estándares de gobernanza
+      recommendations:
+      - Implementar estándares siguiendo la guía DAMA sobre cómo las reglas de 
+        gobernanza deben incorporarse en procesos operativos y analíticos como 
+        se describe en DMBOK2 (Capítulo 3.5, p. 62).
+      - Asegurar que la integración se alinee con la descripción de DAMA sobre 
+        coordinación y actividades de gobernanza interdominio (Capítulo 3.3, p. 
+        58–59).
+      - Validar que cada dominio adopte estándares consistentemente según 
+        responsabilidades de administración y expectativas de supervisión de 
+        DAMA (Capítulo 4, p. 86–89).
+      - Confirmar que la implementación refleja puntos de control del ciclo de 
+        vida DAMA para definición controlada de datos, uso y retiro (Capítulo 
+        4.3, p. 92).
+      notes:
+      - Aplicar alineación de capacidad de dominio de DCAM para asegurar que los
+        estándares se integren uniformemente y permanezcan accionables.
+    - number: 2
+      name: Integrar reglas de gobernanza en flujos de trabajo operativos
+      prerequisite: Requiere mapeo de flujo de trabajo operativo.
+      deliverable: Registro de integración de flujo de trabajo de gobernanza
+      recommendations:
+      - Integrar reglas usando guía DAMA para incorporar controles de gobernanza
+        dentro de procesos de datos, incluyendo pasos de validación, aprobación 
+        y trazabilidad (Capítulo 3.3, p. 58).
+      - Asegurar que los pasos del flujo de trabajo reflejen las expectativas de
+        autoridad, interacción de administración y escalamiento de DAMA 
+        (Capítulo 3.4, p. 60).
+      - Validar adherencia a responsabilidades de stewardship DAMA, que definen 
+        quién debe intervenir en cada etapa del flujo de trabajo (Capítulo 4, p.
+        86–87).
+      - Confirmar que la integración de flujo de trabajo cubra metadatos, linaje
+        y componentes de calidad descritos por DAMA (Capítulos 9 a 1).
+      notes:
+      - Usar lógica de institucionalización CMMI para reforzar adopción de 
+        reglas de gobernanza como rutinas estables y repetibles.
+    - number: 3
+      name: Incorporar responsabilidades de gobernanza en descripciones de roles
+      prerequisite: Requiere roles de gobernanza aprobados
+      deliverable: Descripciones de roles actualizadas
+      recommendations:
+      - Actualizar descripciones de roles según el modelo de roles de DAMA, que 
+        define responsabilidades para propietarios, administradores y custodios 
+        (Capítulo 3.2, p. 55–57).
+      - Asegurar que las descripciones incluyan límites de autoridad y tipos de 
+        decisiones de gobernanza definidos por DAMA (Capítulo 3, p. 51).
+      - Alinear deberes con puntos de control del ciclo de vida de stewardship 
+        DAMA, incluyendo creación, aprobación, publicación y retiro (Capítulo 
+        4.3, p. 92).
+      - Validar que las responsabilidades apoyan los principios de comunicación 
+        de gobernanza y las expectativas de las partes interesadas descritas por
+        DAMA (Capítulo 3.6, p. 64).
+      notes:
+      - Usar guía de alineación conductual IDGC para promover adherencia y 
+        aceptación cultural de responsabilidades de gobernanza.
+    - number: 4
+      name: Integrar puntos de control de gobernanza en el ciclo de vida de 
+        datos
+      prerequisite: Requiere mapeo del ciclo de vida de datos.
+      deliverable: Matriz de puntos de control del ciclo de vida de gobernanza
+      recommendations:
+      - Integrar puntos de control siguiendo la estructura del ciclo de vida de 
+        DAMA, que define calidad, metadatos y puntos de control de gobernanza 
+        (Capítulo 4.3, p. 92).
+      - Asegure la alineación con definiciones DAMA para creación controlada, 
+        validación, uso y retiro presentadas en capítulos de gestión de datos 
+        (Capítulos 9, 10, 11).
+      - Confirmar que los propietarios de puntos de control están alineados con 
+        la autoridad de gobernanza y las directrices de escalamiento de DAMA 
+        (Capítulo 3.4, p. 60).
+      - Valide que los puntos de control del ciclo de vida abarquen 
+        responsabilidades estratégicas, tácticas y operativas descritas en la 
+        arquitectura funcional de gobernanza de DAMA (Figura 3-2, p. 53).
+      notes:
+      - Utilice criterios de capacidad del ciclo de vida DCAM para fortalecer la
+        cobertura de gobernanza del ciclo de vida y asegurar que los puntos de 
+        control puedan ser monitoreados efectivamente.
+    - number: 5
+      name: Aplicar controles de gobernanza a operaciones de dominio
+      prerequisite: Requiere estructuras definidas de administración y propiedad
+      deliverable: Registro de control de gobernanza de dominio.
+      recommendations:
+      - Aplique controles usando las definiciones DAMA para supervisión de 
+        gobernanza, incluyendo monitoreo, aprobación y acciones correctivas 
+        (Capítulo 3.3, p. 58–59).
+      - Asegurar que los controles se mantengan consistentes con principios DAMA
+        para transparencia en decisiones y aplicación de calidad (Capítulo 3.4, 
+        p. 60).
+      - Confirme que los stewards de dominio aplican controles según las 
+        responsabilidades DAMA para definición de datos, supervisión de acceso y
+        gestión del ciclo de vida (Capítulo 4, p. 86–89).
+      - Validar que la ejecución del control incorpore las reglas de calidad y 
+        metadatos de DAMA descritas en los capítulos relevantes de gestión de 
+        datos (Capítulos 9, 10, 11).
+      notes:
+      - Aplicar prácticas de monitoreo CMMI para asegurar que los controles de 
+        gobernanza se evalúen y mejoren continuamente.
+  DG-06:
+    title: Monitorear el desempeño de gobernanza y hacer cumplir el cumplimiento
+    procedures:
+    - number: 1
+      name: Monitorear cumplimiento con política de gobernanza
+      prerequisite: Requiere política aprobada v1.0.
+      deliverable: Informe de monitoreo de cumplimiento
+      recommendations:
+      - Monitorear el cumplimiento siguiendo la guía de DAMA para actividades de
+        supervisión de gobernanza, incluyendo la revisión regular de la adopción
+        de políticas y comportamiento de los interesados como se describe en 
+        DMBOK2 (Capítulo 3.3, p. 58–59).
+      - Validar adherencia a elementos de política basados en expectativas DAMA 
+        para transparencia y responsabilidad en operaciones de gobernanza 
+        (Capítulo 3.4, p. 60).
+      - Confirmar que el monitoreo cubre responsabilidades de administración y 
+        deberes de propiedad según definido por DAMA (Capítulo 4, p. 86–89).
+      - Asegurar que la evaluación del cumplimiento de políticas incluya 
+        dimensiones de calidad y metadatos de los capítulos de DAMA sobre 
+        calidad de datos y metadatos (Capítulos 10 y 11).
+      notes:
+      - Usar prácticas de verificación de cumplimiento CMMI para fortalecer la 
+        disciplina de monitoreo en procesos de gobernanza.
+    - number: 2
+      name: Revisión de adherencia a estándares de gobernanza
+      prerequisite: Requiere estándares implementados
+      deliverable: Evaluación de adherencia a estándares
+      recommendations:
+      - Revisar adherencia usando guía DAMA para validación de reglas y 
+        estándares de gobernanza, incluyendo alineación con terminología 
+        empresarial, criterios de calidad y restricciones del ciclo de vida 
+        (Capítulo 3.5, p. 62–63).
+      - Confirmar que la adherencia cubre estándares interdominios según el 
+        modelo de actividad de gobernanza de DAMA (Capítulo 3.3, p. 58–59).
+      - Validar que la revisión incluya verificaciones sobre la ejecución de la 
+        administración y desempeño de roles siguiendo responsabilidades DAMA 
+        (Capítulo 3.2, p. 55–57).
+      - Confirmar que los estándares se apliquen consistentemente en cada etapa 
+        del ciclo de vida usando puntos de control DAMA (Capítulo 4.3, p. 92).
+      notes:
+      - Usar la guía de aseguramiento de capacidades DCAM para evaluar si los 
+        estándares refuerzan las capacidades de gestión de datos empresariales.
+    - number: 3
+      name: Evaluar desempeño de stewardship y propiedad
+      prerequisite: Requiere asignaciones completas de stewardship y propiedad
+      deliverable: Informe de evaluación de desempeño de administración y 
+        propiedad
+      recommendations:
+      - Evaluar desempeño basado en competencias de administración de DAMA, 
+        incluyendo actividades relacionadas con definición, aprobación y 
+        supervisión de activos de datos (Capítulo 4, p. 86–89).
+      - Confirmar alineación con la estructura de autoridad de decisión de 
+        gobernanza de DAMA, que define cuándo y cómo deben intervenir los roles 
+        (Capítulo 3.4, p. 60).
+      - Validar que las evaluaciones reflejen las expectativas de DAMA para 
+        responsabilidades del ciclo de vida, incluyendo creación, uso y retiro 
+        (Capítulo 4.3, p. 92).
+      - Asegurar que los indicadores de desempeño cubran claridad de 
+        responsabilidades, oportunidad de decisiones y efectividad de 
+        supervisión según funciones de gobernanza DAMA (Capítulo 3.3, p. 58–59).
+      notes:
+      - Usar indicadores de comportamiento IDGC para evaluar madurez de 
+        stewardship y aceptación organizacional.
+    - number: 4
+      name: Rastrear la resolución de problemas de gobernanza
+      prerequisite: Requiere mecanismo de reporte de incidencias.
+      deliverable: Registro de resolución de incidencias de gobernanza
+      recommendations:
+      - Rastrear problemas siguiendo guía de DAMA sobre flujos de trabajo de 
+        supervisión de gobernanza y vías de escalamiento de problemas (Capítulo 
+        3.4, p. 60).
+      - Asegurar que los problemas se categoricen según tipos de reglas de DAMA,
+        incluyendo problemas de definición de datos, incumplimientos de calidad 
+        y desviaciones de políticas (Capítulo 3.5, p. 62–63).
+      - Validar que administradores y propietarios actúen conforme a puntos de 
+        control del ciclo de vida DAMA al resolver incidencias (Capítulo 4.3, p.
+        92).
+      - Confirmar que los procesos de resolución de problemas incluyen 
+        verificaciones de metadatos y calidad basadas en guía DAMA (Capítulos 10
+        y 11).
+      notes:
+      - Usar prácticas de acción correctiva CMMI para estructurar y hacer 
+        repetible la resolución de problemas.
+    - number: 5
+      name: Reportar sobre gobernanza de métricas de desempeño
+      prerequisite: Requiere KPIs definidos
+      deliverable: Informe de desempeño de gobernanza
+      recommendations:
+      - Reporte métricas alineadas con la guía DAMA para medición de gobernanza,
+        incluyendo indicadores relacionados con cumplimiento de políticas, 
+        actividad de stewardship y coordinación de dominios (Capítulo 3.6, p. 
+        64).
+      - Asegurar que los indicadores de desempeño reflejen métricas de calidad y
+        ciclo de vida DAMA en dominios de gestión de datos (Capítulos 10 y 11).
+      - Validar que los reportes apoyen la toma de decisiones de gobernanza y la
+        transparencia según los principios de responsabilidad DAMA (Capítulo 3, 
+        p. 51).
+      - Confirmar que las métricas destaquen tendencias en adopción de dominio y
+        madurez conductual alineadas con prácticas de stewardship DAMA (Capítulo
+        4, p. 86–87).
+      notes:
+      - Usar indicadores de capacidad de gestión de datos DCAM para reforzar 
+        interpretación de desempeño y benchmarking.
+  DG-09:
+    title: Optimizar el modelo de gobernanza e institucionalizar mejores 
+      prácticas
+    procedures:
+    - number: 1
+      name: Mejorar estándares de gobernanza basados en retroalimentación de 
+        evaluación
+      prerequisite: Requiere conocimientos de desempeño
+      deliverable: Estándares de gobernanza actualizados v2.0
+      recommendations:
+      - Mejorar estándares siguiendo la guía de DAMA para mejora iterativa de 
+        reglas de gobernanza y estructuras de reglas como se presenta en DMBOK2 
+        (Capítulo 3.5, p. 62–63).
+      - Asegurar que las actualizaciones reflejen principios DAMA para 
+        responsabilidad, transparencia y consistencia en toma de decisiones de 
+        gobernanza (Capítulo 3, p.51).
+      - Validar que las mejoras respondan a brechas identificadas en 
+        responsabilidades de stewardship y propiedad descritas por DAMA 
+        (Capítulo 4, p. 86–89).
+      - Confirmar que los estándares revisados incorporen puntos de control del 
+        ciclo de vida y expectativas de metadatos descritos en los capítulos de 
+        gestión de datos DAMA (Capítulos 9, 10 y 11).
+      notes:
+      - Aplique prácticas de mejora continua CMMI para asegurar que los 
+        estándares evolucionen basados en evidencia medible y madurez 
+        organizacional.
+    - number: 2
+      name: Automatizar controles de gobernanza donde sea aplicable
+      prerequisite: Requiere procesos de gobernanza estables
+      deliverable: Registro automatizado de control de gobernanza
+      recommendations:
+      - Automatizar controles usando la guía de DAMA para incorporar decisiones 
+        y verificaciones de gobernanza en rutinas repetibles de manejo de datos 
+        (Capítulo 3.3, p. 58–59).
+      - Asegurar que los controles automatizados refuercen las reglas DAMA 
+        relacionadas con calidad, linaje y consistencia de metadatos (Capítulos 
+        10 y 11).
+      - Validar alineación con obligaciones de stewardship DAMA, que requieren 
+        supervisión humana de controles automatizados cuando sea necesario 
+        (Capítulo 4, p. 86–87).
+      - Confirmar que la automatización soporta los requisitos de transparencia 
+        de DAMA documentando disparadores de control, resultados y excepciones 
+        (Capítulo 3.4, p. 60).
+      notes:
+      - Usar criterios de automatización DCAM para evaluar factibilidad y 
+        preparación de capacidad antes de implementar controles automatizados de
+        gobernanza.
+    - number: 3
+      name: Mejorar capacitación y desarrollo de competencias en gobernanza
+      prerequisite: Requiere un ciclo de evaluación de desempeño completado
+      deliverable: Currículo de capacitación en gobernanza actualizado
+      recommendations:
+      - Desarrollar capacitación siguiendo guía de DAMA sobre educación en 
+        gobernanza, comunicación y desarrollo de administración (Capítulo 3.6, 
+        p. 64).
+      - Asegure que el currículo refleje las definiciones de roles y 
+        expectativas de responsabilidad DAMA para propietarios y administradores
+        (Capítulo 3.2, p. 55–57).
+      - Validar inclusión de actividades del ciclo de vida de DAMA para reforzar
+        responsabilidades de gobernanza en creación, uso y retiro de datos 
+        (Capítulo 4.3, p. 92).
+      - Confirmar que la capacitación apoye la adopción de artefactos y 
+        estándares de gobernanza descritos en DAMA (Apéndice del Capítulo 3, p. 
+        69–70).
+      notes:
+      - Aplicar prácticas de madurez comportamental IDGC para fortalecer 
+        confianza en roles y alineación cultural durante el entrenamiento.
+    - number: 4
+      name: Institucionalizar prácticas de gobernanza a través de dominios
+      prerequisite: Requiere rutinas de gobernanza estables
+      deliverable: Registro de institucionalización de gobernanza
+      recommendations:
+      - Institucionalizar prácticas usando guía de DAMA para integrar gobernanza
+        en cultura organizacional, flujos de decisión y estructuras de 
+        responsabilidad (Capítulo 3.6, p. 64).
+      - Asegurar que la adopción interdominio se alinee con la arquitectura 
+        funcional de gobernanza de DAMA que integra áreas estratégicas, tácticas
+        y operativas (Figura 3-2, p. 53).
+      - Validar que las actividades de gobernanza se mantengan consistentes con 
+        responsabilidades de stewardship y modelos de rendición de cuentas 
+        definidos por DAMA (Capítulo 3.2, p. 55–57).
+      - Confirmar que la institucionalización cubra metadatos, calidad y 
+        controles del ciclo de vida como se describe en los capítulos DAMA sobre
+        funciones de gestión de datos (Capítulos 9, 10 y 11).
+      notes:
+      - Aplicar indicadores de institucionalización CMMI para fortalecer la 
+        consistencia y repetibilidad a largo plazo de comportamientos de 
+        gobernanza.
+    - number: 5
+      name: Optimizar continuamente el modelo operativo de gobernanza
+      prerequisite: Requiere un ciclo de revisión de modelos
+      deliverable: Modelo operativo de gobernanza v3.0
+      recommendations:
+      - Optimizar el modelo operativo usando guía de DAMA para refinar 
+        estructuras de gobernanza, autoridades de decisión y responsabilidades 
+        de roles (Capítulo 3.4, p. 60–61).
+      - Asegurar que las mejoras reflejen los principios de DAMA para 
+        transparencia, claridad y responsabilidad en la ejecución de la 
+        gobernanza (Capítulo 3, p. 51).
+      - Valide la alineación con los marcos de stewardship y propiedad de DAMA 
+        para asegurar una participación equilibrada en la gobernanza (Capítulo 
+        4, p. 86–89).
+      - Confirmar que el modelo operativo actualizado refuerce expectativas de 
+        metadatos, calidad y semántica encontradas en capítulos de gestión de 
+        datos DAMA (Capítulos 9, 10 y 11).
+      notes:
+      - Usar indicadores de madurez de capacidad de DCAM para alinear el modelo 
+        operativo con la evolución a nivel empresarial de la gestión de datos.

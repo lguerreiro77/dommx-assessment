@@ -1,0 +1,222 @@
+domain:
+  id: 9
+  name: Data Warehousing and Business Intelligence (DWBI)
+  description: "Este dominio evalúa la gobernanza de activos analíticos, capas semánticas,
+    estándares de consumo y estructuras de soporte a la decisión. Examina cómo se
+    validan, monitorean y alinean los resultados analíticos con el significado organizacional,
+    asegurando que los insights sean consistentes, trazables y usados éticamente.
+    La gobernanza debe extenderse más allá de las fuentes de datos hacia la interpretación
+    analítica, reforzando confiabilidad, responsabilidad y transparencia (DAMA-DMBOK2,
+    Capítulo 11).\n"
+maturity_scale:
+  0:
+    maturity_level: No existente
+    meaning: No existen prácticas de gobernanza ni responsabilidades o procesos 
+      definidos.
+    interpretation_for_assessment: Indica una ausencia completa de estructura y 
+      una necesidad inmediata de acción fundamental.
+  1:
+    maturity_level: Inicial.
+    meaning: Las actividades ocurren de forma informal y reactiva con poca o 
+      ninguna documentación.
+    interpretation_for_assessment: Refleja conciencia, pero también alta 
+      variabilidad y riesgo operativo.
+  2:
+    maturity_level: Emergente
+    meaning: Existen algunas prácticas pero permanecen inconsistentes, no 
+      documentadas o no adoptadas en todos los equipos.
+    interpretation_for_assessment: Muestra desarrollo temprano. La 
+      estandarización y documentación son necesarias para avanzar.
+  3:
+    maturity_level: Establecido
+    meaning: Procesos, roles y políticas están definidos, documentados y 
+      aplicados con estabilidad.
+    interpretation_for_assessment: Demuestra consistencia operativa y 
+      preparación para mejoras más estructuradas.
+  4:
+    maturity_level: Gestionado
+    meaning: La gobernanza está integrada en flujos de trabajo y apoyada por 
+      herramientas, monitoreo y supervisión.
+    interpretation_for_assessment: Representa adopción madura con ejecución 
+      confiable entre equipos.
+  5:
+    maturity_level: Optimizado
+    meaning: La gobernanza está completamente integrada, mejorada continuamente 
+      y alineada con expectativas de cumplimiento y ética.
+    interpretation_for_assessment: Representa madurez avanzada con gobernanza 
+      proactiva, optimización y mejora continua institucionalizada.
+questions:
+  Q1:
+    text: ¿Están formalmente definidas las reglas de gobernanza analítica, 
+      definiciones semánticas y estándares de consumo?
+    explanation: Evalúa definiciones gobernadas de significado y uso analítico.
+    objective: Asegurar consistencia y trazabilidad de insights.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – DW & BI; DCAM, Analytical Architecture;
+      IDGC, Structural Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Definir reglas de gobernanza analítica, estándares 
+          semánticos y principios de uso
+      1:
+        action_code: DWBI-02
+        description: Asigne roles de stewardship para gobernanza analítica.
+      2:
+        action_code: DWBI-03
+        description: Aprobar estándares de gobernanza analítica y semántica
+      3:
+        action_code: DWBI-04
+        description: Incorporar reglas de gobernanza analítica en los flujos de 
+          trabajo de BI
+      4:
+        action_code: DWBI-06
+        description: Automatizar validación semántica y controles de uso 
+          gobernado
+      5:
+        action_code: DWBI-09
+        description: Refinar continuamente la gobernanza analítica usando 
+          evidencia
+  Q2:
+    text: ¿Los activos analíticos (tableros, KPIs, informes) están catalogados, 
+      versionados y mantenidos bajo gobernanza?
+    explanation: Evalúa la gestión de artefactos analíticos.
+    objective: Mejorar la confiabilidad y la consistencia del ciclo de vida.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – ETL / ELT Processes; DCAM, Data Processing;
+      IDGC, Process Controls)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Definir reglas de catalogación, versionado y ciclo de vida 
+          para activos analíticos
+      1:
+        action_code: DWBI-02
+        description: Asigne propiedad para artefactos analíticos
+      2:
+        action_code: DWBI-03
+        description: Aprobar la gobernanza estructurada del ciclo de vida para 
+          activos analíticos
+      3:
+        action_code: DWBI-04
+        description: Implementar rutinas gobernadas de catalogación y versionado
+      4:
+        action_code: DWBI-06
+        description: Automatizar catalogación, versionado y seguimiento de 
+          linaje
+      5:
+        action_code: DWBI-09
+        description: Mejorar continuamente la gobernanza del ciclo de vida de 
+          artefactos
+  Q3:
+    text: ¿Las transformaciones de datos, lógica semántica y cálculos métricos 
+      están gobernados y son transparentes?
+    explanation: Evalúa capas semánticas gobernadas y linaje de métricas.
+    objective: Asegurar análisis confiables y reproducibles.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – Metrics Governance; DCAM, Analytics
+      Quality; IDGC, Semantic Controls)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Defina reglas para estandarización de métricas y lógica 
+          semántica
+      1:
+        action_code: DWBI-02
+        description: Asignar responsabilidades para gobernanza de métricas y 
+          transparencia
+      2:
+        action_code: DWBI-03
+        description: Apruebe catálogos de métricas y definiciones semánticas.
+      3:
+        action_code: DWBI-04
+        description: Incorporar lógica semántica gobernada en procesos BI
+      4:
+        action_code: DWBI-06
+        description: Automatizar la validación de métricas y el monitoreo de 
+          deriva semántica
+      5:
+        action_code: DWBI-09
+        description: Refinar continuamente la gobernanza de métricas y semántica
+  Q4:
+    text: ¿Se monitorean los procesos de consumo analítico para precisión, 
+      consistencia y uso responsable?
+    explanation: Evalúa la gobernanza del comportamiento de consumo y soporte a 
+      la decisión.
+    objective: Fortalecer la responsabilidad y la integridad de las decisiones.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – DW Lifecycle; Chapter 12 – Data Lifecycle;
+      DCAM, Lifecycle Execution; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Definir reglas para consumo analítico responsable
+      1:
+        action_code: DWBI-02
+        description: Asigne roles de supervisión para gobernanza de consumo.
+      2:
+        action_code: DWBI-03
+        description: Aprobar procesos gobernados de consumo
+      3:
+        action_code: DWBI-04
+        description: Implementar rutinas de monitoreo de consumo gobernado
+      4:
+        action_code: DWBI-06
+        description: Automatizar monitoreo de consumo y alertas conductuales
+      5:
+        action_code: DWBI-09
+        description: Mejorar continuamente la gobernanza de consumo usando 
+          métricas
+  Q5:
+    text: ¿Se miden y revisan indicadores de calidad analítica (exactitud, 
+      oportunidad, integridad)?
+    explanation: Evalúa la confiabilidad de los resultados analíticos.
+    objective: Mantener ambientes analíticos confiables.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – BI Monitoring & Quality; DCAM, Measurement;
+      IDGC, Monitoring & Validation)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Definir métricas de calidad analítica y reglas de monitoreo
+      1:
+        action_code: DWBI-02
+        description: Asignar responsabilidades para el monitoreo de calidad 
+          analítica
+      2:
+        action_code: DWBI-03
+        description: Aprobar ciclos de revisión de calidad y KPIs
+      3:
+        action_code: DWBI-04
+        description: Implementar tableros y rutinas de revisión de calidad
+      4:
+        action_code: DWBI-06
+        description: Automatice la validación de calidad analítica.
+      5:
+        action_code: DWBI-09
+        description: Mejorar continuamente la calidad analítica usando evidencia
+  Q6:
+    text: ¿Se aplican salvaguardas éticas, de privacidad y de uso responsable a 
+      analítica y generación de insights?
+    explanation: Asegura cumplimiento y aplicación ética de insights analíticos.
+    objective: Promover el uso analítico responsable y legal.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – Ethical Analytics; DCAM, Responsible
+      Use; IDGC, Ethical Reporting)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Definir reglas éticas, de privacidad y de uso responsable 
+          para analítica
+      1:
+        action_code: DWBI-02
+        description: Asignar supervisión para controles éticos y de privacidad
+      2:
+        action_code: DWBI-03
+        description: Aprobar salvaguardas éticas y de privacidad para análisis
+      3:
+        action_code: DWBI-04
+        description: Incorporar salvaguardas éticas y de privacidad en flujos de
+          trabajo analíticos
+      4:
+        action_code: DWBI-06
+        description: Automatice la validación de privacidad, minimización y 
+          equidad.
+      5:
+        action_code: DWBI-09
+        description: Mejorar continuamente la gobernanza ética mediante 
+          auditorías

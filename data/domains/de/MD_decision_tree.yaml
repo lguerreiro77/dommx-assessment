@@ -1,0 +1,235 @@
+domain:
+  id: 10
+  name: Metadaten (MD)
+  description: "Diese Domäne bewertet die Governance von geschäftlichen und technischen
+    Metadaten, einschließlich Definitionen, Herkunft, Katalogisierungsstrukturen und
+    Verantwortlichkeiten für Stewardship. Sie untersucht, wie Metadaten Transparenz,
+    Interpretierbarkeit und kontrollierte Entwicklung von Datenbeständen domänenübergreifend
+    ermöglichen. Metadatenmanagement ist ein grundlegender Mechanismus für Nachvollziehbarkeit,
+    semantische Konsistenz und zuverlässige Datennutzung (DAMA-DMBOK2, Kapitel 12).\n"
+maturity_scale:
+  0:
+    maturity_level: Nicht existent
+    meaning: Keine Governance-Praktiken und keine definierten 
+      Verantwortlichkeiten oder Prozesse.
+    interpretation_for_assessment: Zeigt ein vollständiges Fehlen von Struktur 
+      und einen unmittelbaren Bedarf an grundlegenden Maßnahmen an.
+  1:
+    maturity_level: Initial
+    meaning: Aktivitäten erfolgen informell und reaktiv mit wenig oder keiner 
+      Dokumentation.
+    interpretation_for_assessment: Spiegelt Bewusstsein wider, aber auch hohe 
+      Variabilität und operationelles Risiko.
+  2:
+    maturity_level: Im Entstehen
+    meaning: Einige Praktiken existieren, sind jedoch inkonsistent, 
+      undokumentiert oder werden nicht teamübergreifend angewendet.
+    interpretation_for_assessment: Zeigt frühe Entwicklung. Standardisierung und
+      Dokumentation sind notwendig, um Fortschritte zu erzielen.
+  3:
+    maturity_level: Etabliert
+    meaning: Prozesse, Rollen und Richtlinien sind definiert, dokumentiert und 
+      stabil angewendet.
+    interpretation_for_assessment: Demonstriert operationale Konsistenz und 
+      Bereitschaft für strukturiertere Verbesserungen.
+  4:
+    maturity_level: Verwaltet
+    meaning: Governance ist in Arbeitsabläufe integriert und wird durch Tools, 
+      Überwachung und Aufsicht unterstützt.
+    interpretation_for_assessment: Repräsentiert reife Einführung mit 
+      zuverlässiger Ausführung über Teams hinweg.
+  5:
+    maturity_level: Optimiert
+    meaning: Governance ist vollständig eingebettet, wird kontinuierlich 
+      verbessert und entspricht Compliance- und ethischen Erwartungen.
+    interpretation_for_assessment: Repräsentiert fortgeschrittene Reife mit 
+      proaktiver Governance, Optimierung und institutionalisierter 
+      kontinuierlicher Verbesserung.
+questions:
+  Q1:
+    text: Sind Geschäfts- und technische Metadatenstandards formell definiert 
+      und genehmigt?
+    explanation: Bewertet das Vorhandensein und die Klarheit geregelter 
+      Metadatenstrukturen.
+    objective: Sicherstellung semantischer Konsistenz und Interpretierbarkeit.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Management; DCAM, Metadata
+      Capability; IDGC, Information Management)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Definition von Geschäfts- und technischen 
+          Metadatenstandards
+      1:
+        action_code: MD-02
+        description: Weisen Sie Stewardship-Rollen für Metadaten-Governance zu
+      2:
+        action_code: MD-03
+        description: Genehmigen Sie gesteuerte Metadatenstrukturen
+      3:
+        action_code: MD-04
+        description: Metadatenstandards in Domänen- und Betriebsroutinen 
+          verankern
+      4:
+        action_code: MD-06
+        description: Automatisieren Sie Metadaten-Validierung und 
+          Regel-Durchsetzung
+      5:
+        action_code: MD-09
+        description: Metadatenstandards kontinuierlich anhand von Evidenzen 
+          verbessern
+  Q2:
+    text: Werden Metadaten systematisch erfasst, katalogisiert und gepflegt?
+    explanation: Bewertet Katalogisierungs-, Stewardship- und 
+      Aktualisierungsprozesse.
+    objective: Pflegen Sie genaue, zugängliche und verwaltete Metadaten.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Standards; DCAM, Metadata
+      Structure; IDGC, Documentation Controls)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Katalogisierungs- und Metadatenpflegeanforderungen 
+          definieren
+      1:
+        action_code: MD-02
+        description: Weisen Sie Verantwortlichkeiten für Metadatenerfassung und 
+          -aktualisierung zu
+      2:
+        action_code: MD-03
+        description: Genehmigen Sie Katalogisierungsstrukturen und 
+          Wartungsprozesse
+      3:
+        action_code: MD-04
+        description: Implementierung gesteuerter Katalogisierungs- und 
+          Aktualisierungsroutinen
+      4:
+        action_code: MD-06
+        description: Automatisierte Erfassung, Katalogisierung und 
+          Aktualisierung von Metadaten steuern
+      5:
+        action_code: MD-09
+        description: Verbessern Sie kontinuierlich die Governance der 
+          Metadatenkatalogisierung
+  Q3:
+    text: Wird Lineage verfolgt, gesteuert und zur Unterstützung von Transparenz
+      und Auswirkungsanalyse verwendet?
+    explanation: Untersuchung der Vollständigkeit der Herkunft und 
+      Governance-Kontrollen.
+    objective: Ermöglichen Sie Nachvollziehbarkeit und kontrollierte 
+      Datenentwicklung.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Stewardship; DCAM, Ownership;
+      IDGC, Accountability)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Lineage-Erfassung und Governance-Regeln definieren
+      1:
+        action_code: MD-02
+        description: Weisen Sie Lineage-Stewardship-Verantwortlichkeiten zu
+      2:
+        action_code: MD-03
+        description: Genehmigen Sie Herkunfts-Governance-Standards
+      3:
+        action_code: MD-04
+        description: Integrieren Sie Prozesse zur Erfassung und Pflege der 
+          Lineage
+      4:
+        action_code: MD-06
+        description: Herkunftserfassung, Validierung und Drift-Erkennung 
+          automatisieren
+      5:
+        action_code: MD-09
+        description: Kontinuierliche Verbesserung der Herkunfts-Governance 
+          mittels Metriken
+  Q4:
+    text: Sind Metadaten domänenübergreifend integriert, um Interoperabilität 
+      und gemeinsame Bedeutung zu unterstützen?
+    explanation: Bewertet domänenübergreifende semantische Ausrichtung.
+    objective: Sicherstellung einer kohärenten Interpretation in der gesamten 
+      Organisation.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Lifecycle; Chapter 12 –
+      Data Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Definieren Sie domänenübergreifende semantische und 
+          Metadaten-Ausrichtungsregeln
+      1:
+        action_code: MD-02
+        description: Verantwortlichkeiten für semantische Ausrichtung zuweisen
+      2:
+        action_code: MD-03
+        description: Genehmigung von semantischen und 
+          Metadaten-Integrationsstandards
+      3:
+        action_code: MD-04
+        description: Integrieren Sie domänenübergreifende 
+          Metadatenabstimmungsroutinen
+      4:
+        action_code: MD-06
+        description: Automatisieren von Metadatenharmonisierung und semantischem
+          Matching
+      5:
+        action_code: MD-09
+        description: Metadaten-Interoperabilitäts-Governance kontinuierlich 
+          verbessern
+  Q5:
+    text: Werden Metadatenqualitätsindikatoren gemessen und überprüft?
+    explanation: Betrachtet Metriken zur Genauigkeit, Vollständigkeit und 
+      Aktualität von Metadaten.
+    objective: Stellen Sie zuverlässige Metadaten als Grundlage für Governance 
+      sicher.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Quality; DCAM, Quality Controls;
+      IDGC, Monitoring)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Metadatenqualitätsindikatoren und Überwachungsregeln 
+          definieren
+      1:
+        action_code: MD-02
+        description: Weisen Sie Verantwortlichkeiten für die Überwachung der 
+          Metadatenqualität zu
+      2:
+        action_code: MD-03
+        description: Metadaten-Qualitäts-KPIs und Überprüfungszyklen genehmigen
+      3:
+        action_code: MD-04
+        description: Implementieren Sie Dashboards und Qualitätsprüfroutinen
+      4:
+        action_code: MD-06
+        description: Automatisierung der Validierung der Metadatenqualität
+      5:
+        action_code: MD-09
+        description: Metadatenqualitäts-Governance kontinuierlich verbessern
+  Q6:
+    text: Werden ethische, Datenschutz- und verantwortungsbewusste 
+      Schutzmaßnahmen auf Metadatenstrukturen angewendet?
+    explanation: Stellt sicher, dass Metadaten nicht missbraucht werden und 
+      Minimierungs- sowie Fairnessregeln eingehalten werden.
+    objective: Verantwortungsbewusste, rechtmäßige und ethische 
+      Metadaten-Nutzung steuern.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Ethical Metadata & Explainability;
+      DCAM, Responsible Use; IDGC, Ethical Transparency)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Definieren Sie ethische, Datenschutz- und 
+          Minimierungsregeln für Metadaten
+      1:
+        action_code: MD-02
+        description: Weisen Sie Stewardship für ethische und 
+          Datenschutz-Compliance zu
+      2:
+        action_code: MD-03
+        description: Genehmigen Sie ethische und Datenschutz-Schutzmaßnahmen
+      3:
+        action_code: MD-04
+        description: Einbettung ethischer und Datenschutzkontrollen in 
+          Metadatenroutinen
+      4:
+        action_code: MD-06
+        description: Automatisieren Sie Datenschutz-, Minimierungs- und 
+          Fairness-Validierung
+      5:
+        action_code: MD-09
+        description: Ethische Metadaten-Governance kontinuierlich verbessern

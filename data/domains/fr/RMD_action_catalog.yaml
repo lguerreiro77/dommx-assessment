@@ -1,0 +1,524 @@
+domain:
+  id: 8
+  name: Données de référence et maîtresses (RMD)
+action_catalog:
+  RMD-01:
+    title: Définir les principes fondamentaux et le périmètre des données master
+      et de référence
+    procedures:
+    - number: 1
+      name: Définissez les principes des données maîtresses et de référence 
+        ainsi que les limites de périmètre
+      prerequisite: Nécessite l'identification des domaines maîtres et de 
+        référence de l'entreprise
+      deliverable: Document des principes des données maîtres et de référence.
+      recommendations:
+      - Définissez les principes en utilisant les directives DAMA pour les 
+        entités maîtresses autoritaires et partagées « Chapitre 6, p. 180–182 ».
+      - Clarifier la distinction entre données maîtresses et de référence 
+        définie par DAMA “Chapitre 6, p. 186–188”.
+      - Aligner les principes avec les attentes de gouvernance pour la gestion, 
+        la propriété et la garde « Chapitre 3.2, p. 55–57 ».
+      - Valider la couverture du cycle de vie, incluant création, approbation, 
+        distribution et retrait « Chapitre 4.3, p. 92 ».
+      - Documentez les principes en utilisant les standards d'artefact DAMA « 
+        Annexe du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser le cadrage des capacités DCAM pour identifier les domaines 
+        maîtres ayant le plus grand impact en entreprise.
+    - number: 2
+      name: Rédigez le catalogue initial des domaines maîtres et de référence
+      prerequisite: Nécessite des principes définis
+      deliverable: Brouillon du catalogue de domaine v0.1.
+      recommendations:
+      - Identifier les domaines maîtres candidats tels que client, fournisseur, 
+        produit et organisation « Chapitre 6, p. 182–186 ».
+      - Identifier les listes de référence telles que classifications, 
+        vocabulaires contrôlés et valeurs de statut « Chapitre 6, p. 186–188 ».
+      - Documenter les métadonnées incluant propriétaire, gestionnaire, système 
+        d'enregistrement et finalité « Chapitre 9, p. 236–239 ».
+      - Valider les entrées du catalogue à travers les domaines métier.
+      notes:
+      - Appliquer le cadrage CMMI pour structurer les vagues de livraison.
+    - number: 3
+      name: Identifier les points de contrôle préliminaires des données 
+        maîtresses et de référence
+      prerequisite: Nécessite une cartographie des flux de travail
+      deliverable: Liste initiale des points de contrôle
+      recommendations:
+      - Identifier les points de contrôle du cycle de vie pour la création, la 
+        validation, l’enrichissement et la publication « Chapitre 6, p. 184–188 
+        ».
+      - Joindre des contrôles de qualité suivant les dimensions de qualité DAMA 
+        “Chapitre 11, p. 308–311”.
+      - Capturer les métadonnées telles que la traçabilité, la version et le 
+        statut d’approbation « Chapitre 9, p. 236–239 ».
+      - Confirmer les responsabilités de gestion pour chaque point de contrôle «
+        Chapitre 4, p. 86–89 ».
+      notes:
+      - Utilisez la cartographie de criticité DCAM pour prioriser les points à 
+        fort impact.
+    - number: 4
+      name: Attribuer la propriété provisoire des données maîtresses et de 
+        référence
+      prerequisite: Nécessite un catalogue et une liste de contrôle
+      deliverable: Matrice de propriété
+      recommendations:
+      - Attribuer propriétaires, gestionnaires et gardiens selon les rôles de 
+        gouvernance DAMA « Chapitre 4, p. 86–89 ».
+      - Clarifier les droits de décision selon les directives d'escalade DAMA « 
+        Chapitre 3.4, p. 60–61 ».
+      - S'assurer que les responsabilités du cycle de vie incluent 
+        l'intégration, les mises à jour, la résolution des conflits et la mise 
+        hors service “Chapitre 4.3, p. 92”.
+      - Enregistrer les affectations conformément à la documentation d'artefact 
+        DAMA « Annexe du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utilisez la pertinence comportementale IDGC pour sélectionner des 
+        propriétaires capables de faire le lien entre les domaines.
+    - number: 5
+      name: Publier les directives initiales de gouvernance master et de 
+        référence
+      prerequisite: Nécessite principes, catalogue et propriété
+      deliverable: Brief d'intégration de la gouvernance master et de référence
+      recommendations:
+      - Expliquer l'objectif et la pertinence d'entreprise des données 
+        maîtresses et de référence “Chapitre 6, p. 180–188”.
+      - Clarifier les responsabilités des propriétaires, responsables et 
+        dépositaires « Chapitre 3.2, p. 55–57 ».
+      - Décrire les points de contrôle du cycle de vie pour la création, la 
+        validation, la publication et l'archivage « Chapitre 4.3, p. 92 ».
+      - Publiez des directives en utilisant la structure d'artefact DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les pratiques de communication CMMI pour soutenir l'adoption à 
+        travers les domaines métier et technologiques.
+  RMD-02:
+    title: Formaliser la gestion et les normes master et de référence
+    procedures:
+    - number: 1
+      name: Consolider les exigences de données maîtres et de référence
+      prerequisite: Nécessite que RMD-01 soit complet
+      deliverable: Registre des exigences maîtres et de référence.
+      recommendations:
+      - Consolidez les exigences d'exactitude, d'exhaustivité, de cohérence et 
+        d'unicité en utilisant les dimensions de qualité DAMA « Chapitre 11, p. 
+        308–311 ».
+      - Capturer les règles métier pour l'approvisionnement, la validation et la
+        résolution des conflits des entités maîtresses “Chapitre 6, p. 184–186”.
+      - Identifier les exigences des listes de référence, incluant la structure,
+        la stabilité et les conditions d'approbation « Chapitre 6, p. 186–188 ».
+      - Attribuer la propriété des exigences selon les rôles de gouvernance « 
+        Chapitre 3.2, p. 55–57 ».
+      notes:
+      - Utilisez la priorisation DCAM pour classer les exigences selon l'impact 
+        sur l'entreprise.
+    - number: 2
+      name: Produisez un cadre formel de gestion des données maîtresses et de 
+        référence
+      prerequisite: Nécessite des exigences validées
+      deliverable: Cadre Master et Référence Data v1.0
+      recommendations:
+      - Structurer les processus du cycle de vie tels que l'identification, la 
+        modélisation, la source, la maintenance et la mise hors service 
+        conformément à DAMA « Chapitre 6, p. 180–188 ».
+      - Inclure les rôles de gouvernance, artefacts, droits de décision et 
+        règles d'escalade « Chapitre 3.4, p. 60–61 ».
+      - Intégrer les activités de contrôle de qualité des données « Chapitre 11,
+        p. 308–311 ».
+      - Documenter le cadre en utilisant le formatage des artefacts DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les pratiques de vérification du cadre CMMI pour assurer une 
+        couverture complète des activités du cycle de vie.
+    - number: 3
+      name: Définissez les normes et règles maîtres et de référence
+      prerequisite: Nécessite le cadre v1.0
+      deliverable: Manuel des normes maîtres et de référence
+      recommendations:
+      - Définir les conventions de nommage, identifiants, clés, logique de 
+        survie et règles de versionnage conformes à DAMA « Chapitre 6, p. 
+        184–186 ».
+      - Définir les structures de listes de référence, les étapes d'approbation 
+        et les exigences de versionnage « Chapitre 6, p. 186–188 ».
+      - Assurer que les définitions de métadonnées sont capturées pour chaque 
+        attribut « Chapitre 9, p. 236–239 ».
+      - Inclure les seuils de qualité et les conditions de validation alignés 
+        avec les dimensions de qualité DAMA « Chapitre 11, p. 308–311 ».
+      notes:
+      - Considérez les principes de minimisation GDPR lors de la définition des 
+        attributs maîtres personnels.
+    - number: 4
+      name: Valider les standards maîtres et de référence avec les parties 
+        prenantes métier
+      prerequisite: Nécessite un projet de normes
+      deliverable: Enregistrement d'alignement
+      recommendations:
+      - Confirmer l'alignement sémantique avec la terminologie métier 
+        conformément aux directives de modélisation DAMA « Chapitre 10, p. 
+        282–284 ».
+      - Valider les règles de survie et d’approvisionnement selon la faisabilité
+        opérationnelle.
+      - Assurer que les structures des listes de référence reflètent les besoins
+        réels de classification métier.
+      - Capturer les retours et les changements de version en utilisant la 
+        structure d’artefact DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les pratiques d’alignement DCAM pour équilibrer cohérence 
+        globale et flexibilité locale.
+    - number: 5
+      name: Approuver et publier les normes maîtres et de référence
+      prerequisite: Nécessite l'approbation de l'autorité de gouvernance
+      deliverable: Pack d’approbation des normes master et de référence
+      recommendations:
+      - Soumettre les normes via des instances décisionnelles formelles « 
+        Chapitre 3.4, p. 60–61 ».
+      - Valider la couverture pour les domaines prioritaires tels que client, 
+        produit ou localisation « Chapitre 6, p. 182–186 ».
+      - Publier dans un référentiel gouverné avec métadonnées pour version, 
+        statut et applicabilité « Chapitre 9, p. 236–239 ».
+      - Communiquer les normes en utilisant les pratiques de communication de 
+        gouvernance DAMA « Chapitre 3.6, p. 64–66 ».
+      notes:
+      - Utiliser les évaluations de préparation CMMI avant d'imposer l'adoption.
+  RMD-03:
+    title: Approuvez les règles, contrôles et responsabilités maîtres et de 
+      référence.
+    procedures:
+    - number: 1
+      name: Établir la charte du Conseil des données maîtresses et de référence
+      prerequisite: Nécessite des livrables RMD-02
+      deliverable: Charte approuvée
+      recommendations:
+      - Définir l'autorité, le périmètre et les responsabilités du conseil selon
+        les principes de gouvernance DAMA « Chapitre 3.4, p. 60–61 ».
+      - Aligner la structure de la charte avec les couches de gouvernance 
+        d'entreprise « Figure 3.2, p. 53 ».
+      - Incluez les responsabilités pour l'approbation des normes, les escalades
+        et la priorisation.
+      - Documenter la charte en utilisant la structure d'artefact DAMA “Chapitre
+        3 Annexe, p. 69–70”.
+      notes:
+      - Utiliser la cartographie de gouvernance DCAM pour intégrer les instances
+        de qualité des données, d'architecture et de conformité.
+    - number: 2
+      name: Attribuer les rôles de gouvernance master et de référence
+      prerequisite: Nécessite des descriptions de rôles
+      deliverable: Attribution des rôles de gouvernance.
+      recommendations:
+      - Attribuer des propriétaires responsables, des gestionnaires et des 
+        dépositaires conformément aux définitions DAMA « Chapitre 4, p. 86–89 ».
+      - Clarifiez qui peut demander des modifications et qui les approuve « 
+        Chapitre 3.4, p. 60–61 ».
+      - Assurez-vous que chaque domaine maître dispose d'un propriétaire 
+        responsable dédié.
+      - Enregistrez les affectations en utilisant la documentation d'artefact 
+        DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les critères comportementaux IDGC pour nommer des gestionnaires
+        capables de médiation inter-domaines.
+    - number: 3
+      name: Mettre en place des forums de décision maîtres et de référence
+      prerequisite: Nécessite l'approbation de la charte
+      deliverable: Calendrier de gouvernance et modèles de décision
+      recommendations:
+      - Incluez des points à l'ordre du jour tels que les nouveaux domaines, les
+        mises à jour des normes et les approbations d'exceptions.
+      - Appliquer des modèles de décision structurés alignés avec les pratiques 
+        de gouvernance DAMA « Chapitre 3.6, p. 64–66 ».
+      - Évaluez les impacts sur l'architecture, la qualité, la sécurité et le 
+        cycle de vie.
+      - Stocker les décisions en utilisant les modèles d'artefact DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser la discipline de réunion CMMI pour assurer une gouvernance 
+        structurée et auditable.
+    - number: 4
+      name: Lancer les cycles de revue des données maîtresses et de référence
+      prerequisite: Nécessite des forums définis
+      deliverable: Procès-verbal de la première revue
+      recommendations:
+      - Prioriser les domaines présentant les problèmes les plus importants de 
+        qualité et d'intégration des données.
+      - Revoir les doublons non résolus, les classifications conflictuelles et 
+        les identifiants incohérents « Chapitre 11, p. 308–311 ».
+      - Décider des chemins de remédiation via une gouvernance formelle « 
+        Chapitre 3.4, p. 60–61 ».
+      - Enregistrer les résultats de la revue en utilisant les modèles 
+        d'artefact DAMA « Annexe du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser les pratiques d’assurance DCAM pour lier les revues aux 
+        résultats d’entreprise.
+    - number: 5
+      name: Maintenir l'opération de gouvernance des données maîtresses et de 
+        référence
+      prerequisite: Nécessite un rythme de réunion stable
+      deliverable: Journal d'activité de gouvernance
+      recommendations:
+      - Conservez les enregistrements des décisions, dérogations, escalades et 
+        actions ouvertes « Chapitre 3.6, p. 64–66 ».
+      - Lier les entrées du journal aux domaines affectés et indicateurs de 
+        qualité.
+      - Revoir les modèles de problèmes récurrents pour affiner les standards.
+      - Stocker les journaux selon la structure d'artefact DAMA « Chapitre 3 
+        Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les techniques de surveillance CMMI pour détecter les problèmes
+        de capacité de gouvernance.
+  RMD-04:
+    title: Intégrer la gouvernance master et de référence dans les flux de 
+      travail
+    procedures:
+    - number: 1
+      name: Intégrez les points de contrôle de gouvernance dans les flux de 
+        travail
+      prerequisite: Nécessite des normes approuvées RMD-03
+      deliverable: Modèles de workflow mis à jour
+      recommendations:
+      - Positionnez les points de contrôle là où les données maîtresses ou de 
+        référence sont créées ou modifiées « Chapitre 6, p. 184–188 ».
+      - Assurez-vous que les étapes du workflow appliquent les règles de 
+        nommage, de codage et de validation.
+      - Escalader les exceptions via les canaux formels de gouvernance « 
+        Chapitre 3.4, p. 60–61 ».
+      - Documenter les flux de travail en utilisant les conventions d'artefacts 
+        DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utilisez la cartographie de gouvernance des workflows DCAM pour assurer 
+        une application cohérente.
+    - number: 2
+      name: Intégrer les critères maîtres et de référence dans la conception des
+        systèmes et des pipelines
+      prerequisite: Nécessite des normes de conception.
+      deliverable: Modèles de conception gouvernés
+      recommendations:
+      - Exiger que les systèmes s’approvisionnent exclusivement en données 
+        master à partir de référentiels approuvés « Chapitre 6, p. 184–186 ».
+      - Rejeter ou signaler les valeurs incohérentes avec les listes de 
+        référence.
+      - S'aligner avec la gouvernance d'intégration pour l'ingestion et la 
+        distribution « Chapitre 8, p. 252–260 ».
+      - Documenter les règles et modèles en utilisant les directives d'artefact 
+        DAMA “Annexe du Chapitre 3, p. 69–70”.
+      notes:
+      - Utiliser la vérification de conception CMMI pour exiger des preuves de 
+        conformité.
+    - number: 3
+      name: Mettre à jour la documentation du cycle de vie avec l'intégration 
+        maître et de référence
+      prerequisite: Nécessite une refonte des flux de travail
+      deliverable: Documentation du cycle de vie mise à jour
+      recommendations:
+      - Représenter les étapes du cycle de vie où les valeurs maîtresses ou de 
+        référence sont utilisées ou modifiées « Chapitre 4.3, p. 92 ».
+      - Lier les changements du cycle de vie aux mises à jour des listes maîtres
+        et de référence.
+      - Aligner les règles de rétention avec le cycle de vie des processus 
+        métier.
+      - Publier la documentation en utilisant la structure d'artefact DAMA 
+        “Annexe du Chapitre 3, p. 69–70”.
+      notes:
+      - Utiliser la cartographie du cycle de vie DCAM pour visualiser les 
+        dépendances.
+    - number: 4
+      name: Appliquer les contrôles maîtres et de référence aux points de 
+        décision
+      prerequisite: Nécessite des flux de travail gouvernés
+      deliverable: Preuve des contrôles de gouvernance
+      recommendations:
+      - Valider les demandes de nouveaux systèmes, flux ou modèles par rapport 
+        aux normes maîtres et de référence.
+      - Identifiez les cas de listes locales dupliquées ou d'identifiants non 
+        standard.
+      - Assurez-vous que les décisions suivent la logique d'escalade DAMA « 
+        Chapitre 3.4, p. 60–61 ».
+      - Enregistrer les résultats en utilisant les pratiques de documentation 
+        DAMA « Annexe du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utilisez les modèles de vérification CMMI pour intégrer les contrôles de
+        conformité.
+    - number: 5
+      name: Suivez l'adhésion à la gouvernance des données maîtres et de 
+        référence
+      prerequisite: Nécessite des routines de surveillance
+      deliverable: Registre de conformité
+      recommendations:
+      - Suivez l'adhérence au nommage, codage, sourcing et usage des listes de 
+        référence.
+      - Enregistrez les exceptions et dérogations avec justification.
+      - Validez les plans de remédiation via les instances de gouvernance.
+      - Stocker les enregistrements de conformité en utilisant les directives 
+        d'artefacts DAMA.
+      notes:
+      - Utilisez les indicateurs de diagnostic DCAM pour prioriser la 
+        remédiation.
+  RMD-06:
+    title: Automatiser la validation et la distribution des données maîtres et 
+      de référence
+    procedures:
+    - number: 1
+      name: Définir les indicateurs de surveillance des données maîtresses et de
+        référence
+      prerequisite: Nécessite des flux de travail RMD-04
+      deliverable: Ensemble KPI maître et de référence
+      recommendations:
+      - Définir des KPI tels que le taux de doublons, les valeurs obligatoires 
+        manquantes et la couverture d'adoption « Chapitre 11, p. 308–311 ».
+      - Alignez les indicateurs avec les définitions de métadonnées « Chapitre 
+        9, p. 236–239 ».
+      - Inclure la performance de distribution et la ponctualité.
+      - Attribuer la responsabilité KPI selon les rôles de gouvernance DAMA « 
+        Chapitre 4, p. 86–89 ».
+      notes:
+      - Utiliser les indicateurs de capacité DCAM pour construire un tableau de 
+        bord de maturité.
+    - number: 2
+      name: Établissez des règles automatisées de validation des données 
+        maîtresses et de référence
+      prerequisite: Nécessite des critères de validation
+      deliverable: Ensemble de règles automatisées
+      recommendations:
+      - Mettre en œuvre des règles d'unicité, de codes valides, d'intégrité 
+        référentielle et de logique de survie « Chapitre 11, p. 308–311 ».
+      - Cartographier les règles aux attributs de métadonnées « Chapitre 9, p. 
+        236–239 ».
+      - Acheminer les exceptions vers les gestionnaires pour révision.
+      - Documenter les règles suivant la structure d'artefact DAMA « Chapitre 3 
+        Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les contrôles de préparation à l'automatisation CMMI avant le 
+        déploiement.
+    - number: 3
+      name: Mettre en œuvre la distribution et la synchronisation des données 
+        maîtresses et de référence
+      prerequisite: Nécessite une architecture d'intégration
+      deliverable: Conception de distribution.
+      recommendations:
+      - Utiliser des modèles de distribution hub, publish–subscribe ou contrôlés
+        API « Chapitre 8, p. 252–260 ».
+      - Assurer que les métadonnées de version et d’horodatage accompagnent les 
+        valeurs distribuées « Chapitre 9, p. 236–239 ».
+      - Mettre en œuvre des canaux de retour pour que les consommateurs 
+        signalent les incohérences.
+      - Documenter l'architecture de distribution en utilisant les formats 
+        d'artefact DAMA « Annexe du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser les directives de capacité architecturale DCAM pour 
+        sélectionner les mécanismes de distribution optimaux.
+    - number: 4
+      name: Permettre des alertes automatisées pour les problèmes maîtres et de 
+        référence
+      prerequisite: Nécessite surveillance et distribution
+      deliverable: Flux d'alerte
+      recommendations:
+      - Créez des alertes pour les doublons, les valeurs invalides, les échecs 
+        de synchronisation et les usages abusifs des listes de référence.
+      - Acheminer les alertes vers les propriétaires et gestionnaires selon la 
+        responsabilité du domaine « Chapitre 4, p. 86–89 ».
+      - Incluez des métadonnées contextuelles pour le triage.
+      - Enregistrez les résultats d'alerte en utilisant les directives de 
+        documentation DAMA « Annexe du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser la logique de gestion des incidents CMMI pour définir des 
+        chemins de réponse structurés.
+    - number: 5
+      name: Maintenir la gouvernance automatisée des données maîtresses et de 
+        référence
+      prerequisite: Nécessite une maturité opérationnelle
+      deliverable: Journal d'automatisation
+      recommendations:
+      - Capturez les changements dans la logique des règles, les seuils et les 
+        mécanismes de distribution.
+      - Valider l’alignement continu avec les normes et définitions « Chapitre 
+        6, p. 184–188 ».
+      - Étendre progressivement l'automatisation à de nouveaux domaines.
+      - Stockez les journaux en utilisant les formats d'artefact DAMA « Chapitre
+        3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser l'analyse d'évolution des capacités DCAM pour planifier les 
+        améliorations futures de l'automatisation.
+  RMD-09:
+    title: Optimisez la gouvernance maîtresse et de référence et 
+      institutionnalisez les meilleures pratiques
+    procedures:
+    - number: 1
+      name: Examinez les tendances de performance des domaines maîtres et de 
+        référence
+      prerequisite: Nécessite une base RMD-06 KPI
+      deliverable: Analyse des tendances
+      recommendations:
+      - Analysez les tendances de qualité des données, y compris les doublons, 
+        classifications conflictuelles et références invalides « Chapitre 11, p.
+        308–311 ».
+      - Comparer les performances entre domaines pour détecter les problèmes 
+        structurels.
+      - Examinez les retards de distribution et de synchronisation « Chapitre 6,
+        p. 184–188 ».
+      - Documentez l'analyse en utilisant la structure d'artefact DAMA « Annexe 
+        du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utilisez le scoring de capacité DCAM pour comparer la maturité.
+    - number: 2
+      name: Améliorer les normes master et de référence en utilisant les 
+        insights
+      prerequisite: Nécessite une analyse des tendances
+      deliverable: Normes mises à jour
+      recommendations:
+      - Ajuster les définitions, règles de survie, conventions de nommage et 
+        structures de code “Chapitre 6, p. 186–188”.
+      - Mettre à jour les définitions de métadonnées pour améliorer la clarté « 
+        Chapitre 9, p. 236–239 ».
+      - Modifier les frontières de domaine en cas de chevauchement ou 
+        d’ambiguïté.
+      - Valider les mises à jour via les forums de gouvernance « Chapitre 3.4, 
+        p. 60–61 ».
+      notes:
+      - Utilisez la logique d'amélioration continue CMMI pour publier des mises 
+        à jour par incréments contrôlés.
+    - number: 3
+      name: Comparez les pratiques maîtres et de référence aux cadres externes
+      prerequisite: Nécessite un profil de maturité
+      deliverable: Preuve de référence
+      recommendations:
+      - Comparez les pratiques avec les modèles industriels ou réglementaires 
+        pour la gestion partagée des données.
+      - Cartographier les benchmarks externes aux attentes de DAMA pour la 
+        gouvernance master et de référence « Chapitre 6, p. 180–188 ».
+      - Identifiez les lacunes en gouvernance, qualité et architecture.
+      - Documenter les résultats en utilisant les modèles d'artefact DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utilisez les techniques de benchmarking DCAM pour traduire les 
+        comparaisons en objectifs de capacité.
+    - number: 4
+      name: Améliorer la logique d'automatisation maîtresse et de référence
+      prerequisite: Nécessite une automatisation RMD-06
+      deliverable: Ensemble d'automatisation mis à jour
+      recommendations:
+      - Étendre la logique de validation et de distribution pour couvrir de 
+        nouveaux modes de défaillance et incohérences.
+      - S'assurer que les mises à jour des métadonnées et de la documentation 
+        accompagnent les changements d'automatisation « Chapitre 9, p. 236–239 
+        ».
+      - Valider la logique dans des environnements contrôlés avant déploiement.
+      - Chercher l'approbation pour les mises à jour majeures via les forums de 
+        gouvernance « Chapitre 3.4, p. 60–61 ».
+      notes:
+      - Utiliser les indicateurs de maturité d’automatisation CMMI pour guider 
+        les investissements.
+    - number: 5
+      name: Maintenir un cycle d’amélioration continue du maître et de la 
+        référence
+      prerequisite: Nécessite un cycle d'optimisation
+      deliverable: Plan d'amélioration master et de référence
+      recommendations:
+      - Maintenir un backlog d'améliorations lié aux tendances KPI, aux journaux
+        d'incidents et aux besoins métier « Chapitre 3.6, p. 64–66 ».
+      - Regroupez les améliorations en initiatives à court, moyen et long terme.
+      - Aligner les améliorations avec la feuille de route de gouvernance des 
+        données d'entreprise « Chapitre 3, p. 51–53 ».
+      - Suivre les progrès en utilisant la documentation d'artefact DAMA « 
+        Annexe du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser la cartographie de l'évolution des capacités DCAM pour orienter
+        les gains de maturité à long terme.

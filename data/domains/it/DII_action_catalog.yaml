@@ -1,0 +1,583 @@
+domain:
+  id: 6
+  name: Integrazione e interoperabilità dei dati (DII)
+action_catalog:
+  DII-01:
+    title: Definire principi fondamentali e ambito di integrazione dati
+    procedures:
+    - number: 1
+      name: Definire principi di integrazione dati e confini di ambito
+      prerequisite: Richiede identificazione dei sistemi core di origine e 
+        destinazione
+      deliverable: Documento dei principi di integrazione dati
+      recommendations:
+      - Definire principi utilizzando le linee guida DAMA per integrazione e 
+        interoperabilità, con focus su coerenza semantica, trasparenza e 
+        controllo delle modifiche (DAMA DMBOK2, Capitolo 8, p. 252–260).
+      - Garantire che i principi siano allineati alle aspettative di governance 
+        per responsabilità, stewardship e proprietà (“Capitolo 3, p. 51–57”).
+      - Validare che i principi incorporino checkpoint del ciclo di vita per 
+        l’ingestione, la trasformazione e la pubblicazione dei dati integrati 
+        (“Capitolo 4.3, p. 92”).
+      - Documentare i principi secondo la struttura artefatto DAMA per chiarezza
+        e auditabilità (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizzare la definizione di ambito della capacità di integrazione DCAM 
+        per garantire che i principi siano allineati con le esigenze di 
+        integrazione a livello aziendale.
+    - number: 2
+      name: Redigere la panoramica iniziale dell’architettura di integrazione
+      prerequisite: Richiede principi definiti
+      deliverable: Panoramica dell'architettura di integrazione v0.1
+      recommendations:
+      - Redigere la panoramica basandosi sulle linee guida DAMA per pattern di 
+        integrazione logica, inclusi consolidamento, propagazione e federazione 
+        (“Capitolo 8, p. 252–258”).
+      - Garantire l'allineamento con le strutture di metadata che descrivono 
+        interfacce, lineage e regole di trasformazione (“Capitolo 9, p. 
+        236–239”).
+      - Valida il supporto per i controlli di qualità dei dati in linea con le 
+        dimensioni di qualità di DAMA (“Capitolo 11, p. 308–311”).
+      - Conferma che la panoramica rifletta le responsabilità di steward e 
+        proprietari definite dalla governance DAMA (“Capitolo 4, p. 86–89”).
+      notes:
+      - Utilizzare le pratiche di elaborazione architetturale CMMI per 
+        stabilizzare il primo blueprint di integrazione.
+    - number: 3
+      name: Identificare domini e flussi preliminari di integrazione
+      prerequisite: Richiede mappatura degli stakeholder
+      deliverable: Catalogo iniziale del dominio e dei flussi di integrazione
+      recommendations:
+      - Identificare domini e flussi seguendo le descrizioni DAMA degli scenari 
+        di integrazione e l'allineamento delle aree tematiche (“Capitolo 8, p. 
+        252–260”).
+      - Garantire che i flussi siano documentati con metadata per fonti, 
+        destinazioni, frequenza e logica di trasformazione (“Capitolo 9, p. 
+        236–239”).
+      - Convalidare l'allineamento del ciclo di vita affinché ogni flusso abbia 
+        condizioni definite di creazione, aggiornamento e dismissione (“Capitolo
+        4.3, p. 92”).
+      - Confermare le responsabilità di stewardship per ogni flusso secondo le 
+        definizioni di ruolo DAMA (“Capitolo 3.2, p. 55–57”).
+      notes:
+      - Utilizzare la mappatura della catena del valore DCAM per dare priorità 
+        ai flussi di integrazione più critici.
+    - number: 4
+      name: Assegna la proprietà provvisoria dell'integrazione
+      prerequisite: Richiede un dominio di integrazione e un catalogo di flussi
+      deliverable: Matrice di ownership di integrazione
+      recommendations:
+      - Assegna proprietà usando le linee guida DAMA per la stewardship di dati 
+        condivisi e asset di integrazione (“Capitolo 4, p. 86–89”).
+      - Garantire che la proprietà copra sia il significato aziendale sia la 
+        responsabilità della pipeline tecnica (“Capitolo 8, p. 252–258”).
+      - Validare i percorsi di escalation utilizzando le regole di decisione e 
+        gestione delle problematiche di governance DAMA (“Capitolo 3.4, p. 
+        60–61”).
+      - Documentare la proprietà utilizzando modelli di artefatti DAMA per 
+        registri di ruoli e responsabilità (“Appendice Capitolo 3, p. 69–70”).
+      notes:
+      - Utilizzare i criteri comportamentali IDGC per selezionare owner in grado
+        di coordinare tra domini.
+    - number: 5
+      name: Pubblicare linee guida iniziali di integrazione
+      prerequisite: Richiede principi, panoramica architetturale e proprietà
+      deliverable: Briefing di onboarding integrazione
+      recommendations:
+      - Pubblicare linee guida secondo le pratiche di comunicazione di 
+        governance DAMA (“Capitolo 3.6, p. 64–66”).
+      - Garantire che le linee guida coprano principi, modelli, aspettative di 
+        qualità dei dati e ruoli di stewardship (“Capitolo 8, p. 252–260”; 
+        “Capitolo 11, p. 308–311”).
+      - Validare che gli impatti del ciclo di vita dell’integrazione, inclusa la
+        conservazione e l’uso a valle, siano espliciti (“Capitolo 4.3, p. 92”).
+      - Confermare che la struttura della documentazione segue le 
+        raccomandazioni artefatto di DAMA (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizzare le pratiche di comunicazione CMMI per rendere accessibili le 
+        linee guida di integrazione sia ai team di business che tecnici.
+  DII-02:
+    title: Formalizzare stewardship e standard di integrazione
+    procedures:
+    - number: 1
+      name: Consolida i requisiti di integrazione
+      prerequisite: Richiede completamento DII-01
+      deliverable: Registri dei requisiti di integrazione
+      recommendations:
+      - Consolidare requisiti funzionali e non funzionali utilizzando categorie 
+        di integrazione DAMA come latenza, freschezza dei dati e necessità di 
+        sincronizzazione (“Capitolo 8, p. 252–260”).
+      - Validare i requisiti con le aspettative dei metadata per specifiche di 
+        interfaccia e lineage (“Capitolo 9, p. 236–239”).
+      - Garantire che i requisiti del ciclo di vita descrivano come i dati 
+        integrati saranno governati dall'ingestione allo smaltimento (“Capitolo 
+        4.3, p. 92”).
+      - Confermare le responsabilità di proprietà e stewardship per ogni 
+        requisito seguendo i ruoli di governance DAMA (“Capitolo 3.2, p. 
+        55–57”).
+      notes:
+      - Utilizzare la mappatura delle capacità DCAM per valutare il valore 
+        aziendale rispetto alla complessità tecnica.
+    - number: 2
+      name: Produrre un’architettura di riferimento formale per l’integrazione
+      prerequisite: Richiede requisiti validati
+      deliverable: Architettura di riferimento per l'integrazione v1.0
+      recommendations:
+      - Produce l'architettura utilizzando le descrizioni DAMA dei pattern di 
+        integrazione come consolidamento, propagazione dati e accesso virtuale 
+        (“Capitolo 8, p. 252–258”).
+      - Assicurare che i metadata catturino elementi chiave come modelli 
+        canonici, contratti di interfaccia e lineage delle pipeline (“Capitolo 
+        9, p. 236–239”).
+      - Verificare che i controlli di qualità siano integrati nelle fasi 
+        appropriate in conformità con le dimensioni di qualità DAMA (“Capitolo 
+        11, p. 308–311”).
+      - Documentare l’architettura secondo la struttura degli artefatti DAMA per
+        diagrammi e narrazione (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizzare le pratiche baseline architetturali CMMI per assicurare 
+        l’accordo degli stakeholder sulla versione 1.0.
+    - number: 3
+      name: Definire standard, modelli e regole di integrazione
+      prerequisite: Richiede architettura di riferimento v1.0
+      deliverable: Manuale degli Standard di Integrazione
+      recommendations:
+      - Definisce standard per pipeline ETL e ELT, orchestrazione e DataOps 
+        basati sulle linee guida di integrazione DAMA e governance del ciclo di 
+        vita (“Capitolo 8, p. 252–260”).
+      - Garantire che denominazioni, contratti di interfaccia e strutture 
+        semantiche siano conformi alle regole di metadata e modellazione di DAMA
+        (“Capitolo 9, p. 236–239”; “Capitolo 10, p. 282–284”).
+      - Valida la copertura del ciclo di vita con regole per l'onboarding di 
+        nuove fonti, la modifica delle trasformazioni e la dismissione dei 
+        flussi (“Capitolo 4.3, p. 92”).
+      - Conferma che l'accettazione della stewardship sia registrata secondo i 
+        ruoli di governance di DAMA (“Capitolo 3.2, p. 55–57”).
+      notes:
+      - Applicare i principi GDPR di minimizzazione e limitazione dello scopo 
+        nella definizione delle regole per l’integrazione di dati personali.
+    - number: 4
+      name: Validare gli standard di integrazione con gli stakeholder aziendali
+      prerequisite: Richiede bozza di standard
+      deliverable: Registro di allineamento
+      recommendations:
+      - Validare gli standard utilizzando le linee guida di comunicazione della 
+        governance DAMA per garantire che gli stakeholder aziendali comprendano 
+        il comportamento di integrazione (“Capitolo 3.6, p. 64–66”).
+      - Confermare che il significato semantico degli attributi integrati sia 
+        coerente con la terminologia aziendale (“Capitolo 10, p. 282–284”).
+      - Validare che le implicazioni di ciclo di vita e qualità siano 
+        accettabili per l’analisi e le operazioni a valle (“Capitolo 4.3, p. 
+        92”; “Capitolo 11, p. 308–311”).
+      - Garantire che il feedback sia documentato seguendo i pattern degli 
+        artefatti DAMA per commenti e decisioni (“Capitolo 3 Appendice, p. 
+        69–70”).
+      notes:
+      - Utilizzare tecniche di allineamento degli stakeholder DCAM per negoziare
+        compromessi tra velocità e governance.
+    - number: 5
+      name: Approvare e pubblicare gli standard di integrazione
+      prerequisite: Richiede approvazione dell’autorità di governance
+      deliverable: Pacchetto di approvazione degli standard di integrazione
+      recommendations:
+      - Approvare gli standard utilizzando il modello di autorità ed escalation 
+        DAMA per decisioni di governance dei dati (“Capitolo 3.4, p. 60–61”).
+      - Validare che gli standard consolidino i requisiti per qualità, lineage, 
+        accesso e ciclo di vita in tutti i domini rilevanti (“Capitolo 8, p. 
+        252–260”; “Capitolo 11, p. 308–311”).
+      - Assicurare che gli standard pubblicati siano archiviati come artefatti 
+        governati secondo le pratiche di documentazione DAMA (“Capitolo 3 
+        Appendice, p. 69–70”).
+      - Confermare che le responsabilità di stewardship e proprietà siano 
+        esplicite e comprese (“Capitolo 4, p. 86–89”).
+      notes:
+      - Utilizzare i controlli di readiness CMMI per garantire che team e 
+        piattaforme siano preparati ad adottare gli standard.
+  DII-03:
+    title: Approvare regole di integrazione, interfacce e responsabilità
+    procedures:
+    - number: 1
+      name: Stabilire la carta del Data Integration Council
+      prerequisite: Richiede deliverable DII-02
+      deliverable: Statuto approvato
+      recommendations:
+      - Stabilire lo statuto basato sulle definizioni di autorità di governance 
+        DAMA per organi decisionali e di escalation (“Capitolo 3.4, p. 60–61”).
+      - Garantire che l’ambito del consiglio copra standard di integrazione, 
+        pipeline critiche, modifiche alle interfacce e asset di dati condivisi 
+        (“Capitolo 8, p. 252–260”).
+      - Validare la mappatura ai livelli funzionali di governance secondo il 
+        modello aziendale DAMA (“Figura 3.2, p. 53”).
+      - Documentare il charter seguendo le linee guida artefatto di DAMA 
+        (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizzare i modelli di struttura di governance DCAM per collegare il 
+        consiglio con architettura, sicurezza e forum di qualità.
+    - number: 2
+      name: Assegnare ruoli di governance per l’integrazione
+      prerequisite: Richiede descrizioni di ruolo
+      deliverable: Registro di assegnazione dei ruoli di integrazione
+      recommendations:
+      - Assegnare ruoli utilizzando le definizioni di stewardship, custodia e 
+        ownership DAMA per dati condivisi e pipeline (“Capitolo 4, p. 86–89”).
+      - Assicurare che i confini di autorità per l'approvazione di cambiamenti, 
+        deroghe ed eccezioni seguano le regole decisionali DAMA (“Capitolo 3.4, 
+        p. 60–61”).
+      - Validare la copertura del ciclo di vita affinché i ruoli siano 
+        responsabili per onboarding, modifica e dismissione dei flussi di 
+        integrazione (“Capitolo 4.3, p. 92”).
+      - Registrare le assegnazioni utilizzando la struttura degli artefatti DAMA
+        per RACI e cataloghi di ruolo (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizzare i profili comportamentali IDGC per garantire che i titolari 
+        dei ruoli possano mediare i conflitti tra domini.
+    - number: 3
+      name: Implementa forum decisionali per l'integrazione
+      prerequisite: Richiede approvazione del charter
+      deliverable: Calendario e modelli di governance dell'integrazione
+      recommendations:
+      - Implementare forum regolari per rivedere nuovi flussi, modifiche alle 
+        pipeline e impatti strutturali come raccomandato da DAMA (“Capitolo 3.3,
+        p. 58–59”; “Capitolo 8, p. 252–260”).
+      - Assicurare che le agende includano prospettive di qualità, metadata, 
+        sicurezza e ciclo di vita (“Capitoli 9, 10, 11”).
+      - Validare che i criteri decisionali siano trasparenti e tracciabili in 
+        linea con i principi di governance DAMA (“Capitolo 3, p. 51–53”).
+      - Documenta le decisioni utilizzando modelli standard raccomandati da DAMA
+        per gli artefatti di governance (“Appendice Capitolo 3, p. 69–70”).
+      notes:
+      - Utilizzare la pratica delle riunioni CMMI per mantenere i forum 
+        focalizzati su evidenze e risultati.
+    - number: 4
+      name: Avviare cicli di revisione dell'integrazione
+      prerequisite: Richiede forum definiti
+      deliverable: Verbale della prima revisione
+      recommendations:
+      - Avviare cicli per rivedere standard di integrazione, flussi critici e 
+        interruzioni di interfaccia come raccomandato da DAMA per la 
+        supervisione (“Capitolo 3.3, p. 58–59”).
+      - Validare che le decisioni considerino gli impatti a monte e a valle, 
+        inclusa la coerenza semantica e la qualità (“Capitolo 8, p. 252–260”; 
+        “Capitolo 11, p. 308–311”).
+      - Assicurare che le implicazioni del ciclo di vita siano registrate per 
+        ogni decisione, inclusa la dismissione ove rilevante (“Capitolo 4.3, p. 
+        92”).
+      - Archiviare verbali e decisioni come artefatti governati seguendo la 
+        struttura DAMA (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizza le pratiche di assicurazione DCAM per confermare che i cicli di
+        revisione coprano i rischi di integrazione più critici.
+    - number: 5
+      name: Mantenere l'operazione di governance dell'integrazione
+      prerequisite: Richiede cadenza di meeting
+      deliverable: Registro attività di integrazione
+      recommendations:
+      - Mantieni un registro consolidato delle attività per decisioni, deroghe e
+        azioni in sospeso in linea con le linee guida di monitoraggio DAMA 
+        (“Capitolo 3.6, p. 64–66”).
+      - Garantire che il registro colleghi ogni decisione ai flussi interessati,
+        ai domini dati e ai ruoli responsabili (“Capitolo 3.2, p. 55–57”; 
+        “Capitolo 8, p. 252–260”).
+      - Validare che gli impatti sul ciclo di vita e sulla qualità delle 
+        decisioni chiave siano registrati per audit (“Capitolo 4.3, p. 92”; 
+        “Capitolo 11, p. 308–311”).
+      - Archivia il registro in un repository governato strutturato secondo le 
+        linee guida degli artefatti di DAMA (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizzare le pratiche di monitoraggio CMMI per rivedere il registro 
+        attività alla ricerca di modelli che indichino la necessità di 
+        miglioramenti di governance.
+  DII-04:
+    title: Incorporare la governance di integrazione nei flussi di lavoro
+    procedures:
+    - number: 1
+      name: Incorporare checkpoint di integrazione nei workflow di dominio
+      prerequisite: Richiede standard approvati DII-03
+      deliverable: Modelli di workflow aggiornati
+      recommendations:
+      - Incorporare checkpoint nelle fasi di ingestione, trasformazione e 
+        pubblicazione in linea con le linee guida del ciclo di vita di 
+        integrazione DAMA (“Capitolo 8, p. 252–260”; “Capitolo 4.3, p. 92”).
+      - Assicurare che ogni checkpoint preveda la validazione di metadati, 
+        lineage e controlli di qualità (“Capitolo 9, p. 236–239”; “Capitolo 11, 
+        p. 308–311”).
+      - Validare che i ruoli di stewardship e ownership siano esplicitamente 
+        collegati alle decisioni checkpoint (“Capitolo 3.2, p. 55–57”).
+      - Documentare le definizioni dei checkpoint nei modelli di workflow 
+        seguendo la struttura di artefatti DAMA (“Capitolo 3 Appendice, p. 
+        69–70”).
+      notes:
+      - Utilizzare la mappatura delle capacità di flusso di lavoro DCAM per 
+        assicurare che ogni flusso critico abbia un checkpoint di integrazione 
+        definito.
+    - number: 2
+      name: Integrare criteri di integrazione nel design di pipeline e 
+        orchestrazione
+      prerequisite: Richiede standard di integrazione
+      deliverable: Modelli di progettazione pipeline governati
+      recommendations:
+      - Integrare criteri per la cattura del lineage, la validazione dello 
+        schema e le regole di qualità dei dati nei template di pipeline ETL e 
+        ELT come raccomandato da DAMA (“Capitolo 8, p. 252–260”; “Capitolo 11, 
+        p. 308–311”).
+      - Garantire che i metadati per ogni pipeline, inclusi sorgente, 
+        destinazione e logica di trasformazione, siano definiti secondo DAMA 
+        (“Capitolo 9, p. 236–239”).
+      - Validare che i modelli di progettazione specifichino i trigger del ciclo
+        di vita per il rielaborazione, il backfill e il ritiro (“Capitolo 4.3, 
+        p. 92”).
+      - Confermare che le responsabilità di ruolo per l'approvazione del design 
+        della pipeline siano chiare e governate (“Capitolo 3.2, p. 55–57”).
+      notes:
+      - Applica le pratiche di verifica del design di CMMI per convalidare i 
+        criteri di integrazione prima della distribuzione.
+    - number: 3
+      name: Aggiornare la documentazione del ciclo di vita con punti di vista di
+        integrazione
+      prerequisite: Richiede la riprogettazione del workflow
+      deliverable: Documentazione del ciclo di vita aggiornata
+      recommendations:
+      - Aggiornare le descrizioni del ciclo di vita affinché gli eventi di 
+        integrazione, come il primo caricamento, gli aggiornamenti incrementali 
+        e il cutover, siano espliciti (“Capitolo 4.3, p. 92”; “Capitolo 8, p. 
+        252–260”).
+      - Garantire che i modelli di metadati includano attributi per stato di 
+        integrazione, identificatori batch e versionamento (“Capitolo 9, p. 
+        236–239”).
+      - Valida che la documentazione mostri dove sono applicati i controlli di 
+        qualità lungo la catena di integrazione (“Capitolo 11, p. 308–311”).
+      - Strutturare i documenti utilizzando le linee guida di artefatti DAMA per
+        descrizioni di processi e ciclo di vita (“Capitolo 3 Appendice, p. 
+        69–70”).
+      notes:
+      - Usa la mappatura delle capacità del ciclo di vita DCAM per collegare gli
+        eventi di integrazione con il più ampio ciclo di vita dei dati.
+    - number: 4
+      name: Applicare controlli di integrazione nei punti decisionali di dominio
+      prerequisite: Richiede flussi di lavoro governati
+      deliverable: Evidenza dei controlli di integrazione
+      recommendations:
+      - Applicare controlli quando si richiedono nuove fonti, si modificano 
+        interfacce o si altera la logica di trasformazione, seguendo le regole 
+        di governance DAMA (“Capitolo 3.4, p. 60–61”; “Capitolo 8, p. 252–260”).
+      - Validare che i dati integrati rispettino le definizioni semantiche e il 
+        significato aziendale (“Capitolo 10, p. 282–284”).
+      - Garantire che le soglie di qualità e i criteri di gestione delle 
+        eccezioni siano documentati per ogni decisione (“Capitolo 11, p. 
+        308–311”).
+      - Mantenere evidenze di approvazioni e rifiuti come artefatti governati 
+        (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizzare le attività di verifica CMMI per garantire che le decisioni 
+        di integrazione siano coerenti e basate su evidenze.
+    - number: 5
+      name: Monitorare l'aderenza alla governance dell'integrazione tra i domini
+      prerequisite: Richiede routine di monitoraggio
+      deliverable: Registro di conformità all’integrazione
+      recommendations:
+      - Monitorare l’aderenza agli standard e pattern di integrazione 
+        utilizzando criteri di monitoraggio coerenti con DAMA (“Capitolo 3.6, p.
+        64–66”; “Capitolo 8, p. 252–260”).
+      - Registrare i casi in cui i flussi deviano da schemi canonici o in cui 
+        sono state concesse deroghe (“Capitolo 3.4, p. 60–61”).
+      - Verificare che la registrazione delle deviazioni includa analisi 
+        dell'impatto sul ciclo di vita e sulla qualità (“Capitolo 4.3, p. 92”; 
+        “Capitolo 11, p. 308–311”).
+      - Archiviare il registro in un repository governato strutturato secondo i 
+        principi artefatto di DAMA (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizzare gli indicatori diagnostici DCAM per concentrare la rimedio 
+        sulle deviazioni più critiche.
+  DII-06:
+    title: Automatizzare la validazione e il monitoraggio dell'integrazione
+    procedures:
+    - number: 1
+      name: Definire indicatori di monitoraggio dell’integrazione
+      prerequisite: Richiede workflow DII-04
+      deliverable: Set di indicatori di performance chiave (KPI) di integrazione
+        KPI
+      recommendations:
+      - Definire KPI come tasso di caricamento riuscito, freschezza dei dati, 
+        tasso di rifiuto e completezza del lineage in linea con le linee guida 
+        di qualità e integrazione DAMA (“Capitolo 8, p. 252–260”; “Capitolo 11, 
+        p. 308–311”).
+      - Assicurare che gli indicatori siano collegati ad attributi di metadati e
+        eventi di pipeline catturati nei log di integrazione (“Capitolo 9, p. 
+        236–239”).
+      - Valida che i KPI supportino la supervisione del ciclo di vita per la 
+        rilevazione precoce di problemi di integrazione (“Capitolo 4.3, p. 92”).
+      - Assegnare la proprietà KPI a steward e ruoli operativi seguendo il 
+        modello di governance DAMA (“Capitolo 3.2, p. 55–57”; “Capitolo 4, p. 
+        86–89”).
+      notes:
+      - Utilizzare indicatori di capacità DCAM per costruire una scorecard di 
+        integrazione.
+    - number: 2
+      name: Stabilire regole automatizzate di validazione dell’integrazione
+      prerequisite: Richiede criteri di integrazione
+      deliverable: Set di regole di integrazione automatizzate
+      recommendations:
+      - Definire regole per conformità allo schema, campi obbligatori, coerenza 
+        referenziale e duplicazione seguendo le linee guida di qualità DAMA 
+        (“Capitolo 11, p. 308–311”; “Capitolo 8, p. 252–260”).
+      - Assicura che ogni regola sia descritta nei metadati, inclusi scopo, 
+        soglia e processo di eccezione (“Capitolo 9, p. 236–239”).
+      - Validare che le regole siano allineate ai requisiti del ciclo di vita 
+        per retry, quarantena e rollback (“Capitolo 4.3, p. 92”).
+      - Documentare il set di regole come artefatto controllato seguendo la 
+        struttura DAMA (“Appendice Capitolo 3, p. 69–70”).
+      notes:
+      - Utilizzare le pratiche di prontezza all’automazione CMMI per garantire 
+        che le regole siano distribuite e mantenute in modo coerente.
+    - number: 3
+      name: Implementare dashboard di monitoraggio dell’integrazione
+      prerequisite: Richiede un set di regole
+      deliverable: Dashboard di monitoraggio dell’integrazione
+      recommendations:
+      - Implementare dashboard che combinano stato della pipeline, valori KPI e 
+        indicatori di qualità in linea con le pratiche di monitoraggio DAMA 
+        (“Capitolo 3.6, p. 64–66”; “Capitolo 11, p. 308–311”).
+      - Garantire che le dashboard espongano viste di lineage e evidenzino 
+        flussi che superano le soglie (“Capitolo 9, p. 236–239”; “Capitolo 8, p.
+        252–260”).
+      - Validare che eventi del ciclo di vita come rielaborazioni, backfill e 
+        dismissioni siano visibili (“Capitolo 4.3, p. 92”).
+      - Fornisce accesso ai dashboard per steward, proprietari e team operativi 
+        come definito dai ruoli DAMA (“Capitolo 4, p. 86–89”).
+      notes:
+      - Utilizza le raccomandazioni di visualizzazione DCAM per mantenere i 
+        dashboard focalizzati sugli indicatori di integrazione più critici.
+    - number: 4
+      name: Abilita allarmi di integrazione automatizzati
+      prerequisite: Richiede dashboard attivi
+      deliverable: Feed di alert di integrazione
+      recommendations:
+      - Configurare avvisi per carichi falliti, superamento delle soglie, 
+        modifiche allo schema e lacune nel lineage, seguendo le linee guida di 
+        escalation DAMA (“Capitolo 3.4, p. 60–61”; “Capitolo 8, p. 252–260”).
+      - Garantire che i messaggi di allerta facciano riferimento ai flussi, 
+        domini e proprietari interessati utilizzando i metadata (“Capitolo 9, p.
+        236–239”).
+      - Validare che le regole di allerta considerino gli impatti del ciclo di 
+        vita sui consumatori a valle (“Capitolo 4.3, p. 92”).
+      - Indirizzare gli alert a steward e owner documentati nella matrice di 
+        ownership di integrazione (“Capitolo 3.2, p. 55–57”; “Capitolo 4, p. 
+        86–89”).
+      notes:
+      - Applica la logica di gestione degli incidenti di CMMI per garantire che 
+        ogni allerta abbia un percorso di risposta chiaro e criteri di chiusura.
+    - number: 5
+      name: Mantenere la governance di integrazione automatizzata
+      prerequisite: Richiede maturità operativa
+      deliverable: Registro di automazione dell'integrazione
+      recommendations:
+      - Mantenere registrazioni delle modifiche alle regole, nuovi controlli 
+        automatizzati e aggiornamenti di configurazione alert seguendo le 
+        pratiche di documentazione DAMA (“Capitolo 3 Appendice, p. 69–70”).
+      - Validare che l'automazione rimanga allineata con standard e modelli di 
+        integrazione (“Capitolo 8, p. 252–260”).
+      - Garantire la supervisione del ciclo di vita rivedendo periodicamente se 
+        l'automazione supporta ancora i flussi e i consumatori attuali 
+        (“Capitolo 4.3, p. 92”).
+      - Coinvolgere steward e proprietari nella revisione del registro di 
+        automazione come parte dei cicli di governance (“Capitolo 3.6, p. 
+        64–66”; “Capitolo 4, p. 86–89”).
+      notes:
+      - Utilizza le valutazioni di evoluzione delle capacità DCAM per 
+        pianificare dove l'automazione aggiuntiva può ridurre il rischio o lo 
+        sforzo manuale.
+  DII-09:
+    title: Ottimizzare la governance dell'integrazione e istituzionalizzare le 
+      migliori pratiche
+    procedures:
+    - number: 1
+      name: Revisiona le tendenze delle prestazioni di integrazione
+      prerequisite: Richiede baseline DII-06 KPI
+      deliverable: Analisi delle tendenze di integrazione
+      recommendations:
+      - Analizzare le tendenze per tassi di successo, ritardi, rifiuti di dati e
+        lacune di lineage in linea con le linee guida di monitoraggio DAMA 
+        (“Capitolo 3.6, p. 64–66”; “Capitolo 11, p. 308–311”).
+      - Confrontare modelli tra domini per identificare dove il design o gli 
+        standard di integrazione sono insufficienti (“Capitolo 8, p. 252–260”).
+      - Valida le implicazioni del ciclo di vita come backfill ripetuti o 
+        conservazione estesa dei dati di staging (“Capitolo 4.3, p. 92”).
+      - Documentare l'analisi in un rapporto governato seguendo la struttura 
+        degli artefatti DAMA (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizza il punteggio di maturità DCAM per confrontare le prestazioni di
+        integrazione con i livelli di capacità target.
+    - number: 2
+      name: Ottimizzare standard e modelli di integrazione basati su insight
+      prerequisite: Richiede analisi delle tendenze
+      deliverable: Standard e pattern di integrazione aggiornati
+      recommendations:
+      - Raffinare gli standard per affrontare problemi ripetuti come deriva 
+        dello schema, semantica ambigua o eccessiva duplicazione, in linea con 
+        DAMA (“Capitolo 8, p. 252–260”; “Capitolo 10, p. 282–284”).
+      - Garantire che le modifiche agli standard aggiornino anche i modelli di 
+        metadati e i template delle pipeline (“Capitolo 9, p. 236–239”).
+      - Convalidare che gli standard revisionati rimangano coerenti con le 
+        aspettative di ciclo di vita, qualità e sicurezza (“Capitolo 4.3, p. 
+        92”; “Capitolo 11, p. 308–311”).
+      - Registra approvazioni e versionamento degli standard aggiornati secondo 
+        le regole di documentazione DAMA (“Capitolo 3 Appendice, p. 69–70”).
+      notes:
+      - Utilizzare gli approcci di miglioramento continuo CMMI per pianificare 
+        miglioramenti incrementali ma misurabili.
+    - number: 3
+      name: Confrontare le pratiche di integrazione con framework esterni
+      prerequisite: Richiede profilo di maturità dell'integrazione
+      deliverable: Evidenza di benchmark di integrazione
+      recommendations:
+      - Confrontare le pratiche con riferimenti di settore e best practice, 
+        correlando i risultati ai principi di integrazione e governance DAMA 
+        (“Capitolo 8, p. 252–260”; “Capitolo 3.6, p. 64–66”).
+      - Includere confronto di pattern di integrazione, profondità del lineage e
+        gestione della qualità (“Capitolo 9, p. 236–239”; “Capitolo 11, p. 
+        308–311”).
+      - Validare che i risultati di benchmark informino le decisioni sul ciclo 
+        di vita e sul rischio (“Capitolo 4.3, p. 92”).
+      - Documentare i risultati come artefatti governati in linea con DAMA 
+        (“Appendice Capitolo 3, p. 69–70”).
+      notes:
+      - Utilizzare le linee guida di benchmarking DCAM per tradurre i risultati 
+        esterni in obiettivi concreti di capacità.
+    - number: 4
+      name: Migliora la logica di automazione dell'integrazione
+      prerequisite: Richiede automazione DII-06
+      deliverable: Set di automazione di integrazione aggiornato
+      recommendations:
+      - Migliorare l’automazione aggiungendo nuove regole di convalida, 
+        controlli di lineage o salvaguardie di orchestrazione basate su DAMA e 
+        problemi osservati (“Capitolo 8, p. 252–260”; “Capitolo 11, p. 
+        308–311”).
+      - Assicura che le modifiche all'automazione aggiornino definizioni e 
+        documentazione dei metadati (“Capitolo 9, p. 236–239”; “Capitolo 3 
+        Appendice, p. 69–70”).
+      - Validare che la nuova automazione rispetti le regole del ciclo di vita e
+        non crei debito tecnico nascosto (“Capitolo 4.3, p. 92”).
+      - Ottiene l'approvazione dagli organi di governance secondo le regole 
+        decisionali DAMA (“Capitolo 3.4, p. 60–61”).
+      notes:
+      - Utilizzare indicatori di maturità dell’automazione CMMI per identificare
+        quali nuovi controlli apportano il beneficio più significativo.
+    - number: 5
+      name: Mantenere un ciclo continuo di miglioramento dell’integrazione
+      prerequisite: Richiede un ciclo di ottimizzazione
+      deliverable: Piano di miglioramento dell'integrazione
+      recommendations:
+      - Mantenere un backlog di miglioramento che colleghi problemi di 
+        integrazione, cause radice e azioni proposte in linea con le linee guida
+        di evoluzione della governance DAMA (“Capitolo 3.6, p. 64–66”).
+      - Garantire che gli elementi includano aggiornamenti a standard, metadata,
+        automazione e formazione dove necessario (“Capitoli 8, 9, 11”).
+      - Validare che gli impatti sul ciclo di vita e le riduzioni del rischio 
+        siano considerati per ogni azione (“Capitolo 4.3, p. 92”).
+      - Documentare il piano e il suo stato utilizzando la struttura degli 
+        artefatti DAMA per le roadmap di governance (“Capitolo 3 Appendice, p. 
+        69–70”).
+      notes:
+      - Usa la mappatura dell'evoluzione delle capacità DCAM per allineare i 
+        miglioramenti dell'integrazione con la maturità complessiva della 
+        governance dei dati.

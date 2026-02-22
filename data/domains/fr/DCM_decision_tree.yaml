@@ -1,0 +1,243 @@
+domain:
+  id: 7
+  name: Gestion documentaire et de contenu (DCM)
+  description: Ce domaine examine la formalisation de la gestion des documents 
+    et contenus, l’existence de processus de cycle de vie gouvernés (rétention, 
+    archivage et élimination) et l’intégration des contrôles de gouvernance dans
+    les routines de données non structurées. La gestion des documents et 
+    contenus se concentre sur l’assurance que les données non structurées sont 
+    authentiques, accessibles et gouvernées tout au long de leur cycle de vie 
+    (DAMA-DMBOK2, Chapitre 7).
+maturity_scale:
+  0:
+    maturity_level: Inexistant
+    meaning: Aucune pratique de gouvernance et aucune responsabilité ou 
+      processus défini.
+    interpretation_for_assessment: Indique une absence totale de structure et un
+      besoin immédiat d'action fondamentale.
+  1:
+    maturity_level: Initial
+    meaning: Les activités se déroulent de manière informelle et réactive avec 
+      peu ou pas de documentation.
+    interpretation_for_assessment: Reflète une prise de conscience, mais aussi 
+      une forte variabilité et un risque opérationnel élevé.
+  2:
+    maturity_level: Émergent
+    meaning: Certaines pratiques existent mais restent incohérentes, non 
+      documentées ou non adoptées à travers les équipes.
+    interpretation_for_assessment: Montre un développement précoce. La 
+      standardisation et la documentation sont nécessaires pour progresser.
+  3:
+    maturity_level: Établi
+    meaning: Les processus, rôles et politiques sont définis, documentés et 
+      appliqués avec stabilité.
+    interpretation_for_assessment: Démontre la cohérence opérationnelle et la 
+      préparation à des améliorations plus structurées.
+  4:
+    maturity_level: Géré
+    meaning: La gouvernance est intégrée dans les flux de travail et soutenue 
+      par des outils, la surveillance et la supervision.
+    interpretation_for_assessment: Représente une adoption mature avec une 
+      exécution fiable à travers les équipes.
+  5:
+    maturity_level: Optimisé
+    meaning: La gouvernance est pleinement intégrée, continuellement améliorée 
+      et alignée avec les attentes de conformité et d'éthique.
+    interpretation_for_assessment: Représente une maturité avancée avec une 
+      gouvernance proactive, une optimisation et une amélioration continue 
+      institutionnalisée.
+questions:
+  Q1:
+    text: Les règles de classification des documents et contenus sont-elles 
+      formellement définies et approuvées ?
+    explanation: Évalue la clarté et la gouvernance de la classification et de 
+      l’étiquetage.
+    objective: Assurer une gestion structurée et gouvernée du contenu.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Document & Content Management; DCAM,
+      Content Management; IDGC, Structural Controls)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Définissez les règles de classification et d'étiquetage 
+          pour les documents et contenus
+      1:
+        action_code: DCM-02
+        description: Attribuez les rôles de gestion pour la gouvernance de la 
+          classification
+      2:
+        action_code: DCM-03
+        description: Approuver les normes de classification et d'étiquetage
+      3:
+        action_code: DCM-04
+        description: Intégrer les standards de classification dans les routines 
+          de gestion de contenu
+      4:
+        action_code: DCM-06
+        description: Automatisez la validation de classification et 
+          d'étiquetage.
+      5:
+        action_code: DCM-09
+        description: Affiner continuellement la gouvernance de la classification
+          à l'aide de métriques
+  Q2:
+    text: Les règles de rétention, d'archivage et d'élimination sont-elles 
+      gouvernées et appliquées de manière cohérente ?
+    explanation: Évalue la gouvernance du cycle de vie des documents et du 
+      contenu.
+    objective: Soutenir la conformité, la responsabilité et la réduction des 
+      risques.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Roles & Responsibilities; DCAM, Ownership;
+      IDGC, Accountability)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Définir les exigences de conservation, d'archivage et 
+          d'élimination
+      1:
+        action_code: DCM-02
+        description: Attribuez la stewardship du cycle de vie pour la rétention 
+          et l'archivage
+      2:
+        action_code: DCM-03
+        description: Approuvez les règles de rétention et d'archivage gouvernées
+      3:
+        action_code: DCM-04
+        description: Intégrer les règles du cycle de vie dans les routines de 
+          gestion de contenu
+      4:
+        action_code: DCM-06
+        description: Automatiser l'exécution de la rétention, de l'archivage et 
+          de l'élimination
+      5:
+        action_code: DCM-09
+        description: Améliorer en continu la gouvernance du cycle de vie en 
+          utilisant des preuves
+  Q3:
+    text: Les structures de métadonnées et les standards d'étiquetage sont-ils 
+      gouvernés et maintenus ?
+    explanation: Examiner la cohérence sémantique et structurelle pour le 
+      contenu non structuré.
+    objective: Améliorer la traçabilité et la découvrabilité.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Document Lifecycle; Chapter 12 – Data
+      Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Définissez les exigences de métadonnées et d'étiquetage 
+          pour le contenu
+      1:
+        action_code: DCM-02
+        description: Attribuez les responsabilités de stewardship des 
+          métadonnées
+      2:
+        action_code: DCM-03
+        description: Approuver les normes de métadonnées et d’étiquetage
+      3:
+        action_code: DCM-04
+        description: Mettre en œuvre des routines gouvernées d'étiquetage et de 
+          maintenance des métadonnées
+      4:
+        action_code: DCM-06
+        description: Automatiser la validation et la mise à jour du marquage des
+          métadonnées
+      5:
+        action_code: DCM-09
+        description: Améliorer continuellement la gouvernance des métadonnées à 
+          l’aide de métriques
+  Q4:
+    text: Les référentiels de contenu sont-ils gouvernés, surveillés et alignés 
+      avec les règles de gouvernance ?
+    explanation: Contrôle de la gouvernance des référentiels, espaces partagés 
+      et accès au contenu.
+    objective: Assurer un accès contrôlé et cohérent au contenu.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Metadata & Indexing; DCAM, Metadata
+      Integration; IDGC, Process Enablement)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Définissez les exigences de gouvernance pour les 
+          référentiels et espaces partagés.
+      1:
+        action_code: DCM-02
+        description: Attribuer les rôles de gouvernance des référentiels
+      2:
+        action_code: DCM-03
+        description: Approuver les règles de gouvernance du référentiel
+      3:
+        action_code: DCM-04
+        description: Exploiter les routines de référentiel gouverné et l'accès 
+          contrôlé
+      4:
+        action_code: DCM-06
+        description: Automatiser la surveillance des dépôts et la validation de 
+          conformité
+      5:
+        action_code: DCM-09
+        description: Améliorer continuellement la gouvernance des référentiels 
+          en utilisant des preuves
+  Q5:
+    text: La qualité du contenu (exactitude, actualité, exhaustivité) est-elle 
+      mesurée et revue ?
+    explanation: Évalue les processus de mesure et de revue pour la qualité du 
+      contenu.
+    objective: Maintenir des référentiels de contenu fiables et dignes de 
+      confiance.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Metrics & Monitoring; DCAM, Measurement;
+      IDGC, Monitoring & Audit)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Définir les indicateurs de qualité de contenu et les règles
+          de mesure
+      1:
+        action_code: DCM-02
+        description: Attribuer les responsabilités pour la surveillance de la 
+          qualité du contenu
+      2:
+        action_code: DCM-03
+        description: Approuver les cycles de revue qualité et les KPI
+      3:
+        action_code: DCM-04
+        description: Mettez en œuvre des tableaux de bord et des routines de 
+          revue de qualité
+      4:
+        action_code: DCM-06
+        description: Automatisez la validation de la qualité du contenu
+      5:
+        action_code: DCM-09
+        description: Améliorez continuellement la qualité du contenu à l'aide de
+          métriques
+  Q6:
+    text: Les garanties éthiques, de confidentialité et d'utilisation 
+      responsable sont-elles appliquées à la gestion des documents et du contenu
+      ?
+    explanation: Assure que les documents sont conformes aux règles de 
+      confidentialité, d'éthique et de minimisation.
+    objective: Soutenir une gestion responsable et conforme du contenu.
+    cross_reference: "(DAMA-DMBOK2, Chapter 7 – Privacy & Security; DCAM, Risk Controls;
+      IDGC, Ethical Handling)"
+    score_action_mapping:
+      0:
+        action_code: DCM-01
+        description: Définir les règles éthiques, de confidentialité et de 
+          minimisation pour le contenu
+      1:
+        action_code: DCM-02
+        description: Attribuer des rôles pour la supervision éthique et de la 
+          confidentialité
+      2:
+        action_code: DCM-03
+        description: Approuver les règles de contenu éthiques et de 
+          confidentialité
+      3:
+        action_code: DCM-04
+        description: Intégrer les garanties éthiques et de confidentialité dans 
+          les routines de gestion de contenu
+      4:
+        action_code: DCM-06
+        description: Automatiser la validation de la confidentialité, de 
+          l'éthique et de la minimisation
+      5:
+        action_code: DCM-09
+        description: Améliorer continuellement la gouvernance éthique et de 
+          confidentialité à l'aide d'audits

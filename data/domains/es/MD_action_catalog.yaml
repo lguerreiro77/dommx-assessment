@@ -1,0 +1,472 @@
+domain:
+  id: 10
+  name: Gestión de Metadatos (MD)
+action_catalog:
+  MD-01:
+    title: Definir alcance, principios y límites de gobernanza de gestión de 
+      metadatos
+    procedures:
+    - number: 1
+      name: Definir principios empresariales de metadatos
+      prerequisite: Requiere una base de gobernanza de datos
+      deliverable: Documento de principios de metadatos
+      recommendations:
+      - Definir principios para metadatos de negocio, técnicos y operativos 
+        siguiendo la guía DAMA “Capítulo 9, p. 236–239”.
+      - Establecer expectativas para alineación semántica, trazabilidad de 
+        linaje y vocabularios controlados.
+      - Aclarar roles para la propiedad, administración y custodia de metadatos 
+        “Capítulo 4, p. 86–89”.
+      - Documentar principios usando la estructura de artefactos de DAMA 
+        “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar mapeo de capacidades de DCAM para identificar funciones de 
+        metadatos requeridas.
+    - number: 2
+      name: Definir alcance de Gestión de Metadatos
+      prerequisite: Requiere principios definidos
+      deliverable: Documento de alcance de metadatos
+      recommendations:
+      - Define qué categorías de metadatos están dentro del alcance, tales como 
+        metadatos técnicos, de negocio, de proceso, de linaje y de calidad 
+        “Capítulo 9, p. 236–239”.
+      - Vincular alcance a sistemas gobernados, pipelines y entornos analíticos.
+      - Aclarar exclusiones tales como notas personales no gestionadas o hojas 
+        de cálculo informales.
+      - Capturar detalles de alcance usando prácticas de documentación DAMA 
+        “Apéndice Capítulo 3, p. 69–70”.
+      notes:
+      - Usar lógica de alcance CMMI para asegurar que el alcance inicial sea 
+        factible.
+    - number: 3
+      name: Mapear límites de gobernanza de metadatos
+      prerequisite: Requiere alcance
+      deliverable: Mapa de límites de metadatos
+      recommendations:
+      - Identificar sistemas, etapas del ciclo de vida y procesos donde se deben
+        capturar metadatos.
+      - Mapear límites a través de capas de ingestión, transformación, 
+        almacenamiento y consumo “Capítulo 9, p. 236–239”.
+      - Identificar interfaces entre metadatos, datos maestros y datos de 
+        referencia “Capítulo 6, p. 182–188”.
+      - Documentar mapas de límites usando plantillas de artefactos DAMA 
+        “Apéndice Capítulo 3, p. 69–70”.
+      notes:
+      - Usar verificaciones arquitectónicas DCAM para validar la completitud de 
+        límites de metadatos.
+    - number: 4
+      name: Definir criterios de éxito de metadatos
+      prerequisite: Requiere principios y límites
+      deliverable: Documento de criterios de éxito
+      recommendations:
+      - Definir criterios como completitud, corrección, disponibilidad, 
+        profundidad de linaje y consistencia semántica “Capítulo 11, p. 308–311”
+      - Identifique umbrales aceptables para la cobertura de metadatos por 
+        dominio.
+      - Vincular criterios con adopción empresarial y calidad de decisiones.
+      - Documentar criterios usando estructura de artefactos DAMA “Capítulo 3.6,
+        p. 64–66”.
+      notes:
+      - Usar indicadores de calidad de datos DCAM para traducir criterios a 
+        forma KPI.
+    - number: 5
+      name: Publicar alcance y principios de gobernanza de metadatos
+      prerequisite: Requiere un paquete consolidado de gobernanza
+      deliverable: Informe de gobernanza de metadatos
+      recommendations:
+      - Aclarar responsabilidades para creación, aprobación y mantenimiento de 
+        metadatos “Capítulo 4, p. 86–89”.
+      - Presentar expectativas para linaje, clasificación, definiciones 
+        semánticas y documentación de uso.
+      - Publicar principios y límites usando las convenciones de artefactos de 
+        DAMA “Apéndice del Capítulo 3, p. 69–70”.
+      - Comunicar expectativas de gobernanza a todos los usuarios afectados.
+      notes:
+      - Utilice prácticas de comunicación CMMI para fortalecer la adopción.
+  MD-02:
+    title: Establecer marco, estándares y definiciones de metadatos
+    procedures:
+    - number: 1
+      name: Definir marco de gestión de metadatos
+      prerequisite: Requiere entregables MD-01
+      deliverable: Marco de metadatos v1.0
+      recommendations:
+      - Estructurar el marco para cubrir creación, documentación, aprobación, 
+        almacenamiento, promoción y retiro de metadatos siguiendo la guía DAMA 
+        “Capítulo 9, p. 236–239”.
+      - Integrar dominios de gobernanza incluyendo calidad, administración, 
+        integración y datos maestros.
+      - Definir artefactos requeridos para actividades de metadatos.
+      - Documentar marco usando estructura de artefactos DAMA “Capítulo 3 
+        Apéndice, p. 69–70”.
+      notes:
+      - Usar mapas de capacidad DCAM para asegurar cobertura de componentes del 
+        ciclo de vida de metadatos.
+    - number: 2
+      name: Definir estándares de metadatos
+      prerequisite: Requiere un marco de metadatos
+      deliverable: Manual de estándares de metadatos
+      recommendations:
+      - Definir estándares para nombres, clasificación, definiciones de 
+        atributos, sinónimos, valores permitidos y reglas semánticas.
+      - Aclarar la estructura para metadatos técnicos, incluyendo linaje, lógica
+        de transformación y dependencias “Capítulo 9, p. 236–239”.
+      - Alinear estándares con dominios maestros y de referencia “Capítulo 6, p.
+        182–188”.
+      - Publicar estándares usando plantillas de documentación DAMA “Apéndice 
+        del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar el modelo de madurez de CMMI para secuenciar la adopción.
+    - number: 3
+      name: Defina reglas de documentación de metadatos
+      prerequisite: Requiere estándares de metadatos
+      deliverable: Guías de documentación
+      recommendations:
+      - Definir campos obligatorios de metadatos como significado de negocio, 
+        propietario, administrador, lógica de cálculo, entradas permitidas y 
+        detalles de linaje.
+      - Estandarizar documentación para pipelines, conjuntos de datos, 
+        atributos, informes e indicadores.
+      - Asegurar que la documentación de metadatos soporte controles de calidad 
+        y gobernanza “Capítulo 11, p. 308–311”.
+      - Registrar reglas usando estructura de artefactos DAMA “Apéndice Capítulo
+        3, p. 69–70”.
+      notes:
+      - Usar indicadores de capacidad de documentación DCAM para identificar 
+        brechas de documentación.
+    - number: 4
+      name: Validar estándares de metadatos y reglas de documentación
+      prerequisite: Requiere borradores de estándares
+      deliverable: Registro de validación
+      recommendations:
+      - Revisar corrección y claridad semántica usando prácticas de modelado 
+        DAMA “Capítulo 10, p. 282–284”.
+      - Validar requisitos de documentación de linaje, dependencia y 
+        transformación “Capítulo 9, p. 236–239”.
+      - Confirmar cobertura en tipos de metadatos técnicos, de negocio y de 
+        proceso.
+      - Registrar resultados de revisión usando estándares de artefactos DAMA 
+        “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Utilice la estructura de puertas de revisión CMMI para validación 
+        formal.
+    - number: 5
+      name: Aprobar y publicar estándares de metadatos
+      prerequisite: Requiere aprobación de gobernanza
+      deliverable: Publicación de estándares de metadatos
+      recommendations:
+      - Presentar estándares para revisión y aprobación por propietarios y 
+        administradores “Capítulo 3.4, p. 60–61”.
+      - Valide la aplicabilidad a través de dominios y capas arquitectónicas.
+      - Publicar usando formatos de artefactos gobernados “Apéndice Capítulo 3, 
+        p. 69–70”.
+      - Comunicar actualizaciones a todos los equipos relevantes.
+      notes:
+      - Usar niveles de madurez de capacidad DCAM para planificar adopción.
+  MD-03:
+    title: Aprobar reglas de metadatos, responsabilidades y procesos de decisión
+    procedures:
+    - number: 1
+      name: Establecer la carta del Metadata Council
+      prerequisite: Requiere el marco y estándares MD-02
+      deliverable: Estatuto aprobado del consejo
+      recommendations:
+      - Definir autoridad, objetivos y derechos de decisión siguiendo 
+        expectativas de gobernanza DAMA “Capítulo 3.4, p. 60–61”.
+      - Aclare las responsabilidades para aprobar estándares, resolver 
+        conflictos semánticos y gestionar excepciones de linaje.
+      - Alinear el estatuto con la estructura de gobernanza empresarial 
+        “Capítulo 3, p. 51–53”.
+      - Documentar estatuto usando patrones de artefactos DAMA “Apéndice del 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Usar verificaciones de alineación de gobernanza DCAM para validar 
+        alcance.
+    - number: 2
+      name: Asignar roles de gobernanza de metadatos
+      prerequisite: Requiere definiciones de roles
+      deliverable: Matriz de asignación de roles de metadatos
+      recommendations:
+      - Asignar responsabilidades para creación, aprobación, revisión y 
+        stewardship de metadatos “Capítulo 4, p. 86–89”.
+      - Definir rutas de escalamiento para disputas semánticas e inconsistencias
+        de linaje.
+      - Aclarar responsabilidad para mantener repositorios de metadatos.
+      - Registrar asignaciones usando métodos de documentación de DAMA “Apéndice
+        del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar criterios de idoneidad conductual IDGC para selección de stewards.
+    - number: 3
+      name: Definir foros de decisión de metadatos y flujos de aprobación
+      prerequisite: Requiere carta del consejo
+      deliverable: Flujo de trabajo de gobernanza de metadatos
+      recommendations:
+      - Definir puntos de control de aprobación para estándares, excepciones de 
+        linaje y actualizaciones semánticas “Capítulo 3.4, p. 60–61”.
+      - Vincular foros con integración, datos maestros y cuerpos de gobernanza 
+        BI.
+      - Definir evidencia requerida para aprobaciones.
+      - Documentar flujos de trabajo usando la estructura de artefactos DAMA 
+        “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar flujos de trabajo de gobernanza CMMI para asegurar decisiones 
+        estructuradas.
+    - number: 4
+      name: Ejecutar ciclos de revisión de metadatos
+      prerequisite: Requiere flujo de trabajo de gobernanza.
+      deliverable: Actas de ciclo de revisión
+      recommendations:
+      - Revise la completitud, claridad y significado comercial de las entradas 
+        de metadatos.
+      - Verificar corrección de linaje y mapeo de dependencias “Capítulo 9, p. 
+        236–239”.
+      - Escalar conflictos siguiendo reglas de gobernanza “Capítulo 3.4, p. 
+        60–61”.
+      - Registrar resultados usando plantillas de documentación DAMA “Apéndice 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Utilice indicadores de madurez de revisión DCAM para refinar ciclos.
+    - number: 5
+      name: Mantener operaciones de gobernanza de metadatos
+      prerequisite: Requiere cadencia de revisión
+      deliverable: Registro de operaciones de gobernanza
+      recommendations:
+      - Realice seguimiento de decisiones, exenciones, problemas de linaje y 
+        conflictos semánticos.
+      - Validar efectividad de gobernanza entre dominios.
+      - Escalar problemas recurrentes a gobernanza empresarial.
+      - Almacenar registros usando la guía de artefactos de DAMA “Capítulo 3 
+        Apéndice, p. 69–70”.
+      notes:
+      - Usar técnicas de monitoreo de gobernanza de CMMI para mejora continua.
+  MD-04:
+    title: Incorporar gobernanza de metadatos en el ciclo de vida de datos y 
+      pipelines
+    procedures:
+    - number: 1
+      name: Integrar captura de metadatos en procesos del ciclo de vida
+      prerequisite: Requiere estándares de metadatos
+      deliverable: Documentación actualizada del ciclo de vida
+      recommendations:
+      - Incorporar captura de metadatos en etapas de ingestión, transformación, 
+        curación y distribución “Capítulo 9, p. 236–239”.
+      - Requerir definiciones semánticas para cada atributo usado en procesos 
+        del ciclo de vida.
+      - Documentar cambios en el ciclo de vida usando la estructura de 
+        artefactos DAMA “Apéndice del Capítulo 3, p. 69–70”.
+      - Valide la cobertura del ciclo de vida con los administradores.
+      notes:
+      - Usar chequeos de capacidad de ciclo de vida DCAM para identificar 
+        brechas.
+    - number: 2
+      name: Incorporar requisitos de metadatos en el diseño de pipelines
+      prerequisite: Requiere reglas de metadatos gobernadas
+      deliverable: Plantillas de diseño de pipeline
+      recommendations:
+      - Incluir reglas de propagación de metadatos, mapeo de linaje y validación
+        semántica en plantillas de pipeline.
+      - Validar disponibilidad de metadatos antes de promover tareas de 
+        pipeline.
+      - Asegurar que los metadatos estén vinculados a dominios maestros y de 
+        referencia “Capítulo 6, p. 182–188”.
+      - Registrar diseño de metadatos de pipeline usando guía de artefactos DAMA
+        “Capítulo 3 Apéndice, p. 69–70”.
+      notes:
+      - Usar verificaciones de diseño CMMI para verificar la integridad.
+    - number: 3
+      name: Alinee la gobernanza de metadatos con revisiones de modelos y 
+        conjuntos de datos
+      prerequisite: Requiere procesos gobernados de revisión de modelos
+      deliverable: Revise evidencia.
+      recommendations:
+      - Validar definiciones de atributos, enlaces de linaje y claridad 
+        semántica.
+      - Confirmar documentación de métricas, transformaciones y dependencias.
+      - Capturar resultados de revisión usando estructura de documentación DAMA 
+        “Apéndice Capítulo 3, p. 69–70”.
+      - Alinear metadatos del modelo con terminología de negocio “Capítulo 10, 
+        p. 282–284”.
+      notes:
+      - Usar puntuación de consistencia semántica DCAM para priorizar 
+        incidencias.
+    - number: 4
+      name: Introducir puntos de control de validación de metadatos
+      prerequisite: Requiere alineación de ciclo de vida y pipeline
+      deliverable: Definiciones de puntos de control de validación
+      recommendations:
+      - Definir pasos de validación para linaje, reglas semánticas, completitud 
+        de metadatos y corrección de dependencias.
+      - Asignar propiedad a administradores y custodios.
+      - Dirigir excepciones a foros de gobernanza de metadatos “Capítulo 3.4, p.
+        60–61”.
+      - Almacenar definiciones de puntos de control usando estándares de 
+        artefactos DAMA “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar prácticas de verificación CMMI para fortalecer puntos de control.
+    - number: 5
+      name: Mantener gobernanza de metadatos del ciclo de vida
+      prerequisite: Requiere gobernanza estable del ciclo de vida
+      deliverable: Registro de gobernanza del ciclo de vida
+      recommendations:
+      - Rastrear desviaciones del ciclo de vida, brechas de linaje, definiciones
+        faltantes y semánticas ambiguas.
+      - Actualizar documentación del ciclo de vida basada en insights de 
+        gobernanza.
+      - Mantenga la alineación entre dominios como BI, integración y calidad.
+      - Documente actualizaciones usando convenciones de artefactos DAMA 
+        “Capítulo 3 Apéndice, p. 69–70”.
+      notes:
+      - Usar indicadores de madurez del ciclo de vida DCAM para guiar mejoras.
+  MD-06:
+    title: Automatizar captura de metadatos, linaje y control semántico
+    procedures:
+    - number: 1
+      name: Definir KPIs de monitoreo de metadatos
+      prerequisite: Requiere integración del ciclo de vida MD-04
+      deliverable: Conjunto de metadatos KPI
+      recommendations:
+      - Definir métricas de completitud, corrección, profundidad de linaje, 
+        precisión semántica y cobertura de propagación “Capítulo 11, p. 
+        308–311”.
+      - Alinee los KPIs de metadatos con los requisitos técnicos y comerciales 
+        de metadatos “Capítulo 9, p. 236–239”.
+      - Asignar responsabilidad a administradores, propietarios y custodios 
+        “Capítulo 4, p. 86–89”.
+      - Documentar KPIs usando plantillas de artefactos DAMA “Apéndice Capítulo 
+        3, p. 69–70”.
+      notes:
+      - Usar puntuación de capacidad DCAM para construir dashboards de 
+        metadatos.
+    - number: 2
+      name: Implementar validación automatizada de metadatos
+      prerequisite: Requiere un conjunto KPI
+      deliverable: Reglas de validación de metadatos
+      recommendations:
+      - Implementar reglas para definiciones faltantes, brechas de linaje, 
+        semánticas inválidas y entradas de metadatos desactualizadas.
+      - Mapear validación a categorías de metadatos.
+      - Dirigir excepciones a administradores o foros de gobernanza.
+      - Registrar la lógica de validación usando plantillas DAMA “Capítulo 3 
+        Apéndice, p. 69–70”.
+      notes:
+      - Usar técnicas de cobertura de pruebas CMMI para mejorar la precisión.
+    - number: 3
+      name: Implementar validación automatizada de linaje
+      prerequisite: Requiere estándares de linaje
+      deliverable: Plan de validación de linaje
+      recommendations:
+      - Valide enlaces de linaje a través de ingestión, transformación y 
+        distribución “Capítulo 9, p. 236–239”.
+      - Asegurar que las dependencias aguas arriba y aguas abajo coincidan con 
+        la semántica declarada.
+      - Detecte segmentos de linaje faltantes o rotos.
+      - Documentar validación usando la estructura de artefactos DAMA “Apéndice 
+        del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar indicadores de capacidad de linaje DCAM para identificar brechas 
+        críticas.
+    - number: 4
+      name: Implementar validación semántica y de definiciones
+      prerequisite: Requiere reglas semánticas
+      deliverable: Lógica de validación semántica
+      recommendations:
+      - Valide definiciones de atributos, sinónimos, valores permitidos y notas 
+        de uso.
+      - Asegurar la consistencia semántica del dominio usando la guía de 
+        modelado de DAMA “Capítulo 10, p. 282–284”.
+      - Detecte terminología comercial conflictiva o ambigua.
+      - Registrar lógica de validación usando plantillas de artefactos 
+        gobernados “Capítulo 3 Apéndice, p. 69–70”.
+      notes:
+      - Utilice técnicas de revisión semántica CMMI para la completitud de 
+        reglas.
+    - number: 5
+      name: Mantener gobernanza automatizada de metadatos
+      prerequisite: Requiere automatización operativa
+      deliverable: Registro de gobernanza de automatización de metadatos
+      recommendations:
+      - Rastrear actualizaciones a reglas de validación, umbrales, lógica 
+        semántica y algoritmos de linaje.
+      - Extienda la automatización a nuevos conjuntos de datos, pipelines o 
+        dominios.
+      - Asegurar alineación con estándares de metadatos y documentación del 
+        ciclo de vida.
+      - Documentar actualizaciones usando la estructura de artefactos DAMA 
+        “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Usar la evolución de capacidades DCAM para planificar mejoras en 
+        automatización.
+  MD-09:
+    title: Optimizar gobernanza de metadatos e institucionalizar mejores 
+      prácticas
+    procedures:
+    - number: 1
+      name: Revisión de la base de datos de tendencias de gobernanza
+      prerequisite: Requiere una línea base KPI
+      deliverable: Análisis de desempeño de metadatos.
+      recommendations:
+      - Analizar tendencias como definiciones faltantes, brechas de linaje, 
+        conflictos semánticos y metadatos obsoletos.
+      - Comparar desempeño entre dominios para detectar debilidades sistémicas.
+      - Validar la contribución del valor de metadatos a la toma de decisiones.
+      - Documentar hallazgos usando estructura de artefactos DAMA “Apéndice 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Usar benchmarks de capacidad de DCAM para calibrar madurez.
+    - number: 2
+      name: Mejorar estándares y reglas de metadatos
+      prerequisite: Requiere conocimientos de desempeño
+      deliverable: Estándares actualizados
+      recommendations:
+      - Actualice reglas de documentación, expectativas de linaje y definiciones
+        semánticas.
+      - Integrar nuevos requisitos de negocio.
+      - Aclarar términos ambiguos o conflictivos.
+      - Validar actualizaciones con foros de gobernanza de metadatos “Capítulo 
+        3.4, p. 60–61”.
+      notes:
+      - Usar lógica de control de cambios CMMI para actualizaciones 
+        formalizadas.
+    - number: 3
+      name: Compare prácticas de metadatos con marcos externos.
+      prerequisite: Requiere evaluación de madurez
+      deliverable: Informe de referencia
+      recommendations:
+      - Comparar procesos internos de Metadatos contra las mejores prácticas de 
+        la industria.
+      - Mapear discrepancias a expectativas DAMA “Capítulo 9, p. 236–239”.
+      - Identificar brechas de capacidad en gestión semántica, de linaje y 
+        dependencias.
+      - Registrar análisis comparativo usando plantillas de artefactos DAMA 
+        “Apéndice del Capítulo 3, p. 69–70”.
+      notes:
+      - Utilice el mapeo de benchmarking DCAM para derivar objetivos de mejora.
+    - number: 4
+      name: Mejorar la lógica de automatización de metadatos
+      prerequisite: Requiere automatización MD-06
+      deliverable: Reglas de automatización actualizadas.
+      recommendations:
+      - Extender reglas de validación para capturar nuevos patrones de fallas en
+        metadatos.
+      - Mejore la completitud del rastreo de linaje y la lógica de detección 
+        semántica.
+      - Validar actualizaciones de reglas en entornos controlados.
+      - Buscar aprobación vía flujos de trabajo de gobernanza “Capítulo 3.4, p. 
+        60–61”.
+      notes:
+      - Usar patrones de automatización CMMI para estructurar mejoras.
+    - number: 5
+      name: Mantener un ciclo continuo de mejora de metadatos
+      prerequisite: Requiere un ciclo de optimización
+      deliverable: Plan de mejora de metadatos
+      recommendations:
+      - Mantener backlog de mejoras basado en tendencias e insights de 
+        gobernanza de KPI “Capítulo 3.6, p. 64–66”.
+      - Agrupar mejoras en oleadas incrementales.
+      - Alinear mejoras con la hoja de ruta de gobernanza de datos empresarial 
+        “Capítulo 3, p. 51–53”.
+      - Rastrear progreso usando documentación de artefactos DAMA “Apéndice del 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Usar mapeo de evolución de capacidades DCAM para guiar avance de madurez
+        a largo plazo.

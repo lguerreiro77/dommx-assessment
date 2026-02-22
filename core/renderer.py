@@ -107,8 +107,8 @@ def render_app():
         if project_domains and os.path.isdir(project_domains):
             domain_root = project_domains
         else:
-            domain_root = os.path.join(BASE_DIR, fs_setup.get("main_domain", "data/domains/language/default"))
-
+            st.error("Project domain structure not found.")
+            st.stop()
 
         req_list = orch.get("execution_request", []) or []
         

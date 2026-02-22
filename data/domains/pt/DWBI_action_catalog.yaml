@@ -1,0 +1,132 @@
+domain:
+  id: 9
+  name: Data Warehousing e Business Intelligence (DWBI)
+action_catalog:
+  DWBI-01:
+    title: Definir visão, escopo e regras de business intelligence e data 
+      warehousing
+    procedures:
+    - number: 1
+      name: Definir visão corporativa de BI e analytics
+      prerequisite: Requer estratégia empresarial de dados
+      deliverable: Declaração de visão BI e analítica
+      recommendations:
+      - Estabelecer o propósito e papel de BI dentro da empresa seguindo 
+        princípios de alinhamento arquitetural DAMA “Capítulo 8, p. 252–260”.
+      - Identifique resultados analíticos de alto nível e necessidades de 
+        decisão entre domínios.
+      - Alinhar objetivos BI com stewardship, qualidade e governança de 
+        metadados “Capítulo 3.2, p. 55–57”.
+      - Documentar a visão usando a estrutura de artefatos DAMA “Capítulo 3 
+        Apêndice, p. 69–70”.
+      notes:
+      - Usar mapeamento de valor DCAM para expressar visão BI em termos de 
+        capacidade mensurável.
+    - number: 2
+      name: Definir escopo de negócios BI e de armazenamento de dados
+      prerequisite: Requer visão BI
+      deliverable: Mapa de escopo de negócios BI
+      recommendations:
+      - Identificar assuntos analíticos primários como vendas, finanças, 
+        operações e dados de clientes.
+      - Mapear perguntas de negócio para domínios mestre e de referência 
+        “Capítulo 6, p. 182–188”.
+      - Incluir limites de qualidade necessários para confiabilidade analítica 
+        “Capítulo 11, p. 308–311”.
+      - Capturar escopo de negócios usando práticas de documentação DAMA 
+        “Capítulo 3 Apêndice, p. 69–70”.
+      notes:
+      - Use práticas de escopo CMMI para garantir incrementos de entrega 
+        viáveis.
+  DWBI-02:
+    title: Atribuir papéis de gestão para governança analítica e supervisão
+    procedures:
+    - number: 1
+      name: Documentar princípios arquiteturais BI
+      prerequisite: Requer escopo DW/BI
+      deliverable: Conjunto de princípios arquiteturais BI
+      recommendations:
+      - Alinhe-se com os princípios de arquitetura DAMA para integração, 
+        reutilização e padronização “Capítulo 8, p. 252–260”.
+      - Definir princípios para camadas de sourcing, transformações, 
+        consolidação e consumo.
+      - Abordar stewardship e alinhamento de metadados “Capítulo 9, p. 236–239”.
+      - Documentar princípios usando formatação de artefatos DAMA “Apêndice do 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Usar mapeamento de capacidade arquitetural DCAM para identificar lacunas
+        arquiteturais.
+  DWBI-03:
+    title: Aprovar padrões de governança analítica, semântica e métrica
+    procedures:
+    - number: 3
+      name: Aprovar requisitos BI e definir controles analíticos
+      prerequisite: Requer revisão das partes interessadas
+      deliverable: Pacote de requisitos aprovado
+      recommendations:
+      - Aprovar controles de qualidade e linhagem alinhados às melhores práticas
+        DAMA “Capítulo 11, p. 308–311”.
+      - Validar regras de negócio e definições de métricas.
+      - Definir alocação de responsabilidades entre proprietários, stewards e 
+        custodians “Capítulo 4, p. 86–89”.
+      - Documentar resultados de aprovação usando artefatos de governança DAMA 
+        “Capítulo 3 Apêndice, p. 69–70”.
+      notes:
+      - Utilizar critérios de efetividade de controle DCAM para classificar a 
+        força do controle.
+  DWBI-04:
+    title: Incorporar governança analítica e lógica semântica em fluxos BI
+    procedures:
+    - number: 1
+      name: Integrar pontos de verificação de governança BI no ciclo de vida 
+        analítico
+      prerequisite: Requer requisitos BI aprovados
+      deliverable: Documentação atualizada do ciclo de vida analítico
+      recommendations:
+      - Mapear estágios de ingestão, preparação, modelagem e relatório para 
+        checkpoints de governança.
+      - Garantir captura de linhagem em cada estágio seguindo práticas de 
+        metadados DAMA “Capítulo 9, p. 236–239”.
+      - Definir responsabilidades para validação, aprovação e gestão de exceções
+        “Capítulo 4, p. 86–89”.
+      - Diagramas do ciclo de vida do documento utilizando os princípios de 
+        artefato DAMA “Capítulo 3 Apêndice, p. 69–70”.
+      notes:
+      - Usar práticas de integração de ciclo de vida CMMI para garantir 
+        consistência entre equipes.
+  DWBI-06:
+    title: Automatizar validação semântica, rastreamento de linhagem e 
+      monitoramento de qualidade
+    procedures:
+    - number: 2
+      name: Estabelecer regras automatizadas de validação BI
+      prerequisite: Requer um conjunto KPI
+      deliverable: Conjunto automatizado de regras BI
+      recommendations:
+      - Implementar checagens automatizadas para conformidade com dados mestre, 
+        listas de referência e estruturas dimensionais “Capítulo 6, p. 182–188”.
+      - Validar definições de métricas contra lógica governada.
+      - Incluir pontos de verificação de linhagem.
+      - Documentar regras usando práticas de artefatos DAMA “Apêndice do 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Utilizar avaliação de prontidão para automação CMMI antes da 
+        implantação.
+  DWBI-09:
+    title: Melhore continuamente a governança analítica e semântica usando 
+      evidências
+    procedures:
+    - number: 2
+      name: Melhorar os padrões e orientações de ciclo de vida do BI
+      prerequisite: Requer insights de governança
+      deliverable: Padrões BI atualizados
+      recommendations:
+      - Atualizar regras de modelagem, definições métricas e requisitos de 
+        metadados “Capítulo 10, p. 282–289”.
+      - Esclarecer expectativas de documentação da fonte da verdade e linhagem 
+        “Capítulo 9, p. 236–239”.
+      - Garantir consistência entre dimensões e atributos conformados.
+      - Validar atualizações por meio de fóruns de governança “Capítulo 3.4, p. 
+        60–61”.
+      notes:
+      - Utilize melhoria contínua CMMI para gerenciar atualizações de padrões.

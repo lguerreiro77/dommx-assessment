@@ -1,0 +1,128 @@
+domain:
+  id: 11
+  name: Qualité des données (DQ)
+action_catalog:
+  DQ-01:
+    title: Définir les principes fondamentaux de qualité des données, le 
+      périmètre et les règles de propriété
+    procedures:
+    - number: 1
+      name: Définissez les principes de qualité des données et les limites du 
+        périmètre.
+      prerequisite: Nécessite l'identification des actifs de données principaux
+      deliverable: Document des principes de qualité des données.
+      recommendations:
+      - Définissez les principes en utilisant les directives DAMA pour les 
+        dimensions de qualité telles que l'exactitude, l'exhaustivité, la 
+        cohérence et l'intégrité (Chapitre 11, p. 308–311).
+      - Assurer l'alignement avec les attentes de gouvernance DAMA pour la 
+        gestion et la propriété des activités de qualité (Chapitre 3.2, p. 
+        55–57).
+      - Valider la supervision du cycle de vie avec les points de contrôle DAMA 
+        pour la création, la transformation et la mise hors service (Chapitre 
+        4.3, p. 92).
+      - Documenter les principes selon la structure d’artefact DAMA pour la 
+        traçabilité (Chapitre 3 Annexe, p. 69–70).
+      notes:
+      - Utilisez le cadrage des capacités de qualité DCAM pour aligner les 
+        principes avec les besoins critiques de données de l'entreprise.
+  DQ-02:
+    title: Attribuez des rôles de stewardship pour la gouvernance de la qualité,
+      la validation et la remédiation
+    procedures:
+    - number: 1
+      name: Consolider les exigences de qualité des données
+      prerequisite: Nécessite que DQ-01 soit complet
+      deliverable: Registre des exigences qualité
+      recommendations:
+      - Consolidez les exigences en utilisant les directives de qualité et les 
+        définitions de dimensions DAMA (Chapitre 11, p. 308–311).
+      - Valider les exigences en utilisant les principes de clarté des 
+        métadonnées (Chapitre 9, p. 236).
+      - Assurez l'alignement du cycle de vie avec les points de contrôle qualité
+        DAMA (Chapitre 4.3, p. 92).
+      - Confirmez la couverture de stewardship et de propriété en utilisant les 
+        définitions de rôle DAMA (Chapitre 3.2, p. 55–57).
+      notes:
+      - Utiliser la priorisation des exigences DCAM pour se concentrer sur les 
+        contrôles qualité à fort impact.
+  DQ-03:
+    title: Approuver les dimensions de qualité gouvernées, les politiques de 
+      mesure et les règles de validation
+    procedures:
+    - number: 1
+      name: Établissez la charte du Conseil de Qualité des Données.
+      prerequisite: Nécessite des livrables DQ-02
+      deliverable: Charte approuvée
+      recommendations:
+      - Établir la charte en utilisant les directives DAMA pour les structures 
+        d’autorité de gouvernance (Chapitre 3.4, p. 60).
+      - S'assurer que les rôles sont alignés avec les attentes de stewardship 
+        qualité DAMA (Chapitre 4, p. 86–89).
+      - Validez l'alignement avec les couches fonctionnelles de gouvernance DAMA
+        (Figure 3-2, p. 53).
+      - Documenter la charte suivant la structure d'artefact DAMA (Chapitre 3 
+        Annexe, p. 69).
+      notes:
+      - Utilisez les techniques d'alignement d'autorité DCAM pour améliorer la 
+        clarté de la gouvernance.
+  DQ-04:
+    title: Intégrez les dimensions de qualité, les règles de mesure et la 
+      propriété dans les routines de domaine.
+    procedures:
+    - number: 1
+      name: Intégrer les contrôles qualité dans les workflows de domaine
+      prerequisite: Nécessite des normes approuvées DQ-03
+      deliverable: Modèles de workflow mis à jour
+      recommendations:
+      - Intégrer les contrôles suivant les directives DAMA pour la supervision 
+        qualité aux points de contrôle opérationnels (Chapitre 3.3, p. 58).
+      - Valider les contrôles en utilisant les définitions de qualité DAMA 
+        (Chapitre 11, p. 308–311).
+      - Assurer la supervision du cycle de vie en utilisant les points de 
+        contrôle DAMA (Chapitre 4.3, p. 92).
+      - Confirmez la supervision de la gestion en utilisant les responsabilités 
+        de gouvernance DAMA (Chapitre 4, p. 86–87).
+      notes:
+      - Utiliser les techniques de cartographie des contrôles DCAM pour 
+        renforcer la conformité.
+  DQ-06:
+    title: Automatiser la validation, l’exécution, la surveillance et le suivi 
+      de remédiation
+    procedures:
+    - number: 2
+      name: Établir des règles automatisées de validation de qualité
+      prerequisite: Nécessite des critères de validation
+      deliverable: Ensemble de règles de qualité automatisées
+      recommendations:
+      - Établir des règles conformément aux définitions de qualité et techniques
+        de validation DAMA (Chapitre 11, p. 308–311).
+      - Assurer que les règles incluent les exigences de clarté des métadonnées 
+        (Chapitre 9, p. 236).
+      - Validez l'alignement du cycle de vie en utilisant les points de contrôle
+        DAMA (Chapitre 4.3, p. 92).
+      - Documentez la logique d'automatisation en utilisant les directives des 
+        artefacts DAMA (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Appliquer la préparation à l'automatisation CMMI pour assurer la 
+        stabilité avant déploiement.
+  DQ-09:
+    title: Améliorer continuellement la mesure de la qualité, la validation et 
+      la gouvernance de la remédiation
+    procedures:
+    - number: 2
+      name: Améliorez les normes de qualité en utilisant les insights
+      prerequisite: Nécessite une analyse des tendances
+      deliverable: Normes de qualité mises à jour
+      recommendations:
+      - Améliorer les normes en utilisant les dimensions de qualité et les 
+        directives de mesure DAMA (Chapitre 11, p. 308–311).
+      - Validez les améliorations en utilisant les exigences de clarté des 
+        métadonnées DAMA (Chapitre 9, p. 236).
+      - Assurer l'alignement du cycle de vie en utilisant les points de contrôle
+        de supervision DAMA (Chapitre 4.3, p. 92).
+      - Confirmer l'approbation du stewardship en utilisant les rôles de 
+        gouvernance DAMA (Chapitre 4, p. 86–87).
+      notes:
+      - Appliquez les méthodes d'amélioration continue CMMI à l'affinement de la
+        structure.

@@ -1,0 +1,489 @@
+domain:
+  id: 10
+  name: Wenden Sie MD Prinzipien der Notwendigkeit und Verhältnismäßigkeit an, 
+    bevor Sie Regeln genehmigen, die die Verarbeitung personenbezogener Daten 
+    betreffen.
+action_catalog:
+  MD-01:
+    title: Metadatenmanagement-Umfang, Prinzipien und Governance-Grenzen 
+      definieren
+    procedures:
+    - number: 1
+      name: Unternehmensweite Metadatenprinzipien definieren
+      prerequisite: Erfordert eine Daten-Governance-Grundlage
+      deliverable: Metadaten-Prinzipien-Dokument
+      recommendations:
+      - Definieren Sie Prinzipien für Geschäfts-, technische und operative 
+        Metadaten gemäß DAMA Leitlinien „Kapitel 9, S. 236–239“.
+      - Erwartungen für semantische Ausrichtung, Herkunftsnachverfolgbarkeit und
+        kontrollierte Vokabulare festlegen.
+      - Klären Sie Rollen für Metadaten-Eigentum, Stewardship und Custodianship 
+        „Kapitel 4, S. 86–89“.
+      - Dokumentieren Sie Prinzipien mit DAMA Artefaktstruktur „Kapitel 3 
+        Anhang, S. 69–70“.
+      notes:
+      - Verwendung von DCAM-Fähigkeitszuordnung zur Identifikation 
+        erforderlicher Metadatenfunktionen.
+    - number: 2
+      name: Metadaten-Management-Umfang definieren
+      prerequisite: Erfordert definierte Prinzipien
+      deliverable: Metadaten-Geltungsbereichsdokument
+      recommendations:
+      - Definieren Sie, welche Metadatenkategorien im Umfang enthalten sind, wie
+        technische, geschäftliche, Prozess-, Herkunfts- und Qualitätsmetadaten 
+        „Kapitel 9, S. 236–239“.
+      - Umfang mit gesteuerten Systemen, Pipelines und Analyseumgebungen 
+        verknüpfen.
+      - Ausnahmen wie nicht verwaltete persönliche Notizen oder informelle 
+        Tabellenkalkulationen klären.
+      - Umfangsdetails unter Verwendung der DAMA Dokumentationspraktiken 
+        erfassen („Kapitel 3 Anhang, S. 69–70“).
+      notes:
+      - Verwenden Sie CMMI Abgrenzungslogik, um sicherzustellen, dass der 
+        Anfangsumfang machbar ist.
+    - number: 3
+      name: Abbildung von Metadaten-Governance-Grenzen
+      prerequisite: Erfordert Umfang
+      deliverable: Metadaten-Grenzenkarte
+      recommendations:
+      - Identifikation von Systemen, Lebenszyklusphasen und Prozessen, in denen 
+        Metadaten erfasst werden müssen.
+      - Grenzen über Aufnahme-, Transformations-, Speicher- und 
+        Verbrauchsschichten abbilden („Kapitel 9, S. 236–239“).
+      - Schnittstellen zwischen Metadaten, Stammdaten und Referenzdaten 
+        identifizieren („Kapitel 6, S. 182–188“).
+      - Dokumentieren Sie Grenzflächenkarten unter Verwendung von DAMA 
+        Artefaktvorlagen „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM-Architekturprüfungen, um die Vollständigkeit der 
+        Metadaten-Grenzen zu validieren.
+    - number: 4
+      name: Definition von Erfolgskriterien für Metadaten
+      prerequisite: Erfordert Prinzipien und Grenzen
+      deliverable: Erfolgskriterien-Dokument
+      recommendations:
+      - Kriterien wie Vollständigkeit, Korrektheit, Verfügbarkeit, Lineage-Tiefe
+        und semantische Konsistenz definieren „Kapitel 11, S. 308–311“.
+      - Identifizieren Sie akzeptable Schwellenwerte für Metadatenabdeckung nach
+        Domäne.
+      - Kriterien mit Geschäftsakzeptanz und Entscheidungsqualität verknüpfen.
+      - Dokumentieren Sie Kriterien unter Verwendung der DAMA Artefaktstruktur 
+        „Kapitel 3.6, S. 64–66“.
+      notes:
+      - Die DCAM Datenqualitätsindikatoren verwenden, um Kriterien in KPI Form 
+        zu übersetzen.
+    - number: 5
+      name: Veröffentlichen Sie den Umfang und die Prinzipien der 
+        Metadaten-Governance
+      prerequisite: Erfordert ein konsolidiertes Governance-Paket
+      deliverable: Metadaten-Governance-Briefing
+      recommendations:
+      - Klären Sie Verantwortlichkeiten für Metadatenerstellung, -genehmigung 
+        und -pflege „Kapitel 4, S. 86–89“.
+      - Stellen Sie Erwartungen an Lineage, Klassifikation, semantische 
+        Definitionen und Nutzungsdokumentation dar.
+      - Prinzipien und Grenzen unter Verwendung der DAMA Artefaktkonventionen 
+        veröffentlichen „Kapitel 3 Anhang, S. 69–70“.
+      - Kommunizieren Sie Governance-Erwartungen an alle betroffenen Nutzer
+      notes:
+      - Verwenden Sie CMMI Kommunikationspraktiken zur Stärkung der Akzeptanz.
+  MD-02:
+    title: Stellen Sie sicher, dass Entscheidungsrechte __ACR0__ 
+      Governance-Eskalationsleitlinien folgen (Kapitel 3.4, S. __ACR1__).
+    procedures:
+    - number: 1
+      name: Definieren Sie Metadaten-Management-Framework
+      prerequisite: Erfordert MD-01 Liefergegenstände
+      deliverable: Metadaten-Framework v1.0
+      recommendations:
+      - Strukturierung des Frameworks zur Abdeckung von Metadatenerstellung, 
+        Dokumentation, Genehmigung, Speicherung, Förderung und Stilllegung gemäß
+        DAMA-Leitlinien „Kapitel 9, S. 236–239“.
+      - Governance-Domänen einschließlich Qualität, Stewardship, Integration und
+        Stammdaten integrieren.
+      - Erforderliche Artefakte für Metadatenaktivitäten definieren.
+      - Dokumentieren Sie das Framework unter Verwendung der DAMA 
+        Artefaktstruktur „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Fähigkeitskarten, um die Abdeckung der 
+        Metadaten-Lebenszykluskomponenten sicherzustellen.
+    - number: 2
+      name: Metadatenstandards definieren
+      prerequisite: Erfordert ein Metadaten-Framework
+      deliverable: Metadaten-Standards-Handbuch
+      recommendations:
+      - Standards für Benennung, Klassifikation, Attributdefinitionen, Synonyme,
+        zulässige Werte und semantische Regeln definieren.
+      - Struktur für technische Metadaten klären, einschließlich Herkunft, 
+        Transformationslogik und Abhängigkeiten „Kapitel 9, S. 236–239“.
+      - Standards mit Master- und Referenzdomänen abstimmen („Kapitel 6, S. 
+        182–188“).
+      - Veröffentlichen Sie Standards mit DAMA-Dokumentationsvorlagen „Kapitel 3
+        Anhang, S. 69–70“.
+      notes:
+      - Das CMMI Reifegradmodell zur Reihenfolge der Einführung verwenden.
+    - number: 3
+      name: Definieren Sie Regeln für die Metadaten-Dokumentation
+      prerequisite: Erfordert Metadatenstandards
+      deliverable: Dokumentationsrichtlinien
+      recommendations:
+      - Pflichtmetadatenfelder definieren, wie geschäftliche Bedeutung, 
+        Eigentümer, Steward, Berechnungslogik, zulässige Eingaben und 
+        Herkunftsdetails.
+      - Standardisieren Sie die Dokumentation für Pipelines, Datensätze, 
+        Attribute, Berichte und Indikatoren.
+      - Sicherstellen, dass die Metadaten-Dokumentation Qualitäts- und 
+        Governance-Kontrollen unterstützt „Kapitel 11, S. 308–311“.
+      - Erfassen Sie Regeln unter Verwendung der DAMA Artefaktstruktur „Kapitel 
+        3 Anhang, S. 69–70“.
+      notes:
+      - Verwendung von DCAM-Dokumentationsfähigkeitsindikatoren zur 
+        Identifikation von Dokumentationslücken.
+    - number: 4
+      name: Validieren Sie Metadatenstandards und Dokumentationsregeln
+      prerequisite: Erfordert Entwurfsstandards
+      deliverable: Validierungsprotokoll
+      recommendations:
+      - Überprüfen Sie semantische Korrektheit und Klarheit anhand der 
+        Modellierungspraktiken von DAMA „Kapitel 10, S. 282–284“.
+      - Validieren Sie Anforderungen an Herkunft, Abhängigkeiten und 
+        Transformationsdokumentation „Kapitel 9, S. 236–239“.
+      - Abdeckung technischer, geschäftlicher und prozessbezogener 
+        Metadatentypen bestätigen.
+      - Dokumentieren Sie Überprüfungsergebnisse mit DAMA Artefaktstandards 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie die CMMI Review-Gate-Struktur für die formale Validierung.
+    - number: 5
+      name: Metadatenstandards genehmigen und veröffentlichen
+      prerequisite: Erfordert Governance-Genehmigung
+      deliverable: Veröffentlichung von Metadatenstandards
+      recommendations:
+      - Standards zur Überprüfung und Genehmigung durch Eigentümer und Stewards 
+        einreichen „Kapitel 3.4, S. 60–61“.
+      - Anwendbarkeit über Domänen und Architekturebenen validieren.
+      - Veröffentlichen unter Verwendung gesteuerter Artefaktformate „Kapitel 3 
+        Anhang, S. 69–70“.
+      - Kommunizieren Sie Aktualisierungen an alle relevanten Teams.
+      notes:
+      - DCAM Fähigkeitsreifegrade verwenden, um die Einführung zu planen.
+  MD-03:
+    title: Genehmigen Sie Metadatenregeln, Verantwortlichkeiten und 
+      Entscheidungsprozesse
+    procedures:
+    - number: 1
+      name: Das Mandat des Metadatenrats etablieren
+      prerequisite: Erfordert den MD-02 Rahmen und Standards
+      deliverable: Genehmigte Ratsatzung
+      recommendations:
+      - Definition von Befugnissen, Zielen und Entscheidungsrechten gemäß den 
+        Governance-Erwartungen von DAMA „Kapitel 3.4, S. 60–61“.
+      - Klarstellung von Verantwortlichkeiten für die Genehmigung von Standards,
+        die Lösung semantischer Konflikte und das Management von 
+        Herkunftsausnahmen.
+      - Ausrichtung der Charta an der Unternehmens-Governance-Struktur „Kapitel 
+        3, S. 51–53“.
+      - Dokumentieren Sie die Charta unter Verwendung der DAMA Artefaktmuster 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Governance-Ausrichtungsprüfungen zur Validierung des 
+        Umfangs.
+    - number: 2
+      name: Weisen Sie Metadaten-Governance-Rollen zu
+      prerequisite: Erfordert Rollendefinitionen
+      deliverable: Metadaten-Rollen-Zuweisungsmatrix
+      recommendations:
+      - Verantwortlichkeiten für Metadatenerstellung, Genehmigung, Überprüfung 
+        und Stewardship zuweisen „Kapitel 4, S. 86–89“.
+      - Definieren Sie Eskalationspfade für semantische Streitigkeiten und 
+        Lineage-Inkonsistenzen.
+      - Klären Sie die Verantwortung für die Pflege von Metadaten-Repositorien.
+      - Aufzeichnung von Zuweisungen unter Verwendung von 
+        DAMA-Dokumentationsmethoden „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie IDGC Verhaltens-Eignungskriterien für die Auswahl von 
+        Stewards.
+    - number: 3
+      name: Definieren Sie Metadaten-Entscheidungsforen und 
+        Genehmigungs-Workflows
+      prerequisite: Erfordert ein Ratsmandat
+      deliverable: Metadaten-Governance-Workflow
+      recommendations:
+      - Genehmigungs-Checkpoints für Standards, Lineage-Ausnahmen und 
+        semantische Aktualisierungen definieren „Kapitel 3.4, S. 60–61“.
+      - Foren mit Integrations-, Stammdaten- und BI Governance-Gremien 
+        verknüpfen.
+      - Definieren Sie erforderliche Nachweise für Genehmigungen.
+      - Dokumentieren Sie Arbeitsabläufe unter Verwendung der DAMA 
+        Artefaktstruktur „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie CMMI Governance-Workflows, um strukturierte Entscheidungen
+        sicherzustellen.
+    - number: 4
+      name: Sichert Compliance und ethische Anwendung analytischer Erkenntnisse.
+      prerequisite: Erfordert Governance-Workflow
+      deliverable: Überprüfen Sie Sitzungsprotokolle
+      recommendations:
+      - Überprüfen Sie Vollständigkeit, Klarheit und geschäftliche Bedeutung von
+        Metadateneinträgen.
+      - Herkunftskorrektheit und Abhängigkeitszuordnung überprüfen („Kapitel 9, 
+        S. 236–239“).
+      - Eskalieren Sie Konflikte gemäß Governance-Regeln „Kapitel 3.4, S. 
+        60–61“.
+      - Ergebnisse unter Verwendung der DAMA Dokumentationsvorlagen aufzeichnen 
+        („Kapitel 3 Anhang, S. 69–70“).
+      notes:
+      - Verwenden Sie DCAM Review-Reifeindikatoren zur Verfeinerung von Zyklen.
+    - number: 5
+      name: Metadaten-Governance-Operationen aufrechterhalten
+      prerequisite: Erfordert Review-Zyklen
+      deliverable: Governance-Betriebsprotokoll
+      recommendations:
+      - Verfolgen Sie Entscheidungen, Ausnahmen, Herkunftsprobleme und 
+        semantische Konflikte.
+      - Validieren Sie die Governance-Effektivität über Domänen hinweg.
+      - Eskaliere wiederkehrende Probleme an die Unternehmens-Governance.
+      - Speichern Sie Protokolle unter Verwendung der DAMA Artefaktanleitung 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie CMMI Governance-Überwachungstechniken für kontinuierliche 
+        Verbesserung.
+  MD-04:
+    title: Einbettung von Metadaten-Governance in Datenlebenszyklus und 
+      Pipelines
+    procedures:
+    - number: 1
+      name: Integration der Metadatenerfassung in Lifecycle-Prozesse
+      prerequisite: Erfordert Metadatenstandards
+      deliverable: Aktualisierte Lifecycle-Dokumentation
+      recommendations:
+      - Einbettung der Metadatenerfassung bei Aufnahme, Transformation, Pflege 
+        und Verteilung „Kapitel 9, S. 236–239“.
+      - Erfordern Sie semantische Definitionen für jedes Attribut, das in 
+        Lebenszyklusprozessen verwendet wird.
+      - Dokumentieren Sie Lebenszyklusänderungen unter Verwendung der DAMA 
+        Artefaktstruktur „Kapitel 3 Anhang, S. 69–70“.
+      - Lifecycle-Abdeckung mit Stewards validieren.
+      notes:
+      - Verwenden Sie DCAM Lebenszyklus-Fähigkeitsprüfungen, um Lücken zu 
+        identifizieren.
+    - number: 2
+      name: Einbettung von Metadatenanforderungen in Pipeline-Design
+      prerequisite: Erfordert geregelte Metadatenregeln
+      deliverable: Pipeline-Designvorlagen
+      recommendations:
+      - Einbeziehung von Metadaten-Propagation, Herkunftskartierung und 
+        semantischen Validierungsregeln in Pipeline-Vorlagen.
+      - Validieren Sie, dass Lebenszyklusbeschreibungen __ACR0__ 
+        Verantwortlichkeiten für Eigentümer und Stewards widerspiegeln (Kapitel 
+        4, S. __ACR1__–__ACR2__).
+      - Stellen Sie sicher, dass Metadaten mit Master- und Referenzdomänen 
+        verknüpft sind „Kapitel 6, S. 182–188“.
+      - Dokumentieren Sie das Pipeline-Metadaten-Design unter Verwendung der 
+        DAMA Artefakt-Richtlinien „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwendung von CMMI-Designprüfungen zur Überprüfung der Vollständigkeit.
+    - number: 3
+      name: Richten Sie die Metadaten-Governance an Modell- und 
+        Datensatzüberprüfungen aus
+      prerequisite: Gesteuerte Modell-Review-Prozesse erforderlich
+      deliverable: Überprüfen Sie Nachweise
+      recommendations:
+      - Validierung von Attributdefinitionen, Herkunftsverknüpfungen und 
+        semantischer Klarheit.
+      - Bestätigen Sie die Dokumentation von Metriken, Transformationen und 
+        Abhängigkeiten.
+      - Erfassen Sie Überprüfungsergebnisse unter Verwendung der DAMA 
+        Dokumentationsstruktur „Kapitel 3 Anhang, S. 69–70“.
+      - Modell-Metadaten mit Geschäftsterminologie abgleichen „Kapitel 10, S. 
+        282–284“.
+      notes:
+      - Die DCAM semantische Konsistenzbewertung verwenden, um Probleme zu 
+        priorisieren.
+    - number: 4
+      name: Metadaten-Validierungskontrollpunkte einführen
+      prerequisite: Erfordert Lebenszyklus- und Pipeline-Ausrichtung
+      deliverable: Definitionen von Validierungskontrollpunkten
+      recommendations:
+      - Validierungsschritte für Herkunft, semantische Regeln, 
+        Metadatenvollständigkeit und Abhängigkeitskorrektheit definieren.
+      - Eigentum an Stewards und Custodians zuweisen.
+      - Leiten Sie Ausnahmen an Metadaten-Governance-Foren weiter „Kapitel 3.4, 
+        S. 60–61“.
+      - Speichern Sie Prüfpunktdefinitionen unter Verwendung der 
+        DAMA-Artefaktstandards „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie CMMI Verifizierungspraktiken zur Stärkung von Checkpoints.
+    - number: 5
+      name: Pflegen Sie Lifecycle-Metadaten-Governance
+      prerequisite: Erfordert stabile Lebenszyklus-Governance
+      deliverable: Lifecycle-Governance-Protokoll
+      recommendations:
+      - Verfolgen Sie Lebenszyklusabweichungen, Herkunftslücken, fehlende 
+        Definitionen und mehrdeutige Semantik.
+      - Aktualisieren Sie Lebenszyklusdokumentation basierend auf 
+        Governance-Erkenntnissen.
+      - Erhalten Sie die Ausrichtung über Domänen wie BI, Integration und 
+        Qualität hinweg.
+      - Dokumentieren Sie Aktualisierungen unter Verwendung von DAMA 
+        Artefakt-Konventionen „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Lebenszyklus-Reifeindikatoren zur Steuerung von 
+        Verbesserungen.
+  MD-06:
+    title: Automatisieren Sie Metadaten-Erfassung, -Herkunft und semantische 
+      Kontrolle
+    procedures:
+    - number: 1
+      name: Definieren Sie KPIs für die Metadatenüberwachung
+      prerequisite: Erfordert MD-04 Lebenszyklusintegration
+      deliverable: Metadaten KPI Satz
+      recommendations:
+      - Metriken für Vollständigkeit, Korrektheit, Herkunftstiefe, semantische 
+        Genauigkeit und Propagationsabdeckung definieren („Kapitel 11, S. 
+        308–311“).
+      - Richten Sie Metadaten-KPIs an technischen und geschäftlichen 
+        Metadatenanforderungen aus „Kapitel 9, S. 236–239“.
+      - Weisen Sie Verantwortlichkeiten Stewards, Eigentümern und Verwahrern zu 
+        „Kapitel 4, S. 86–89“.
+      - KPIs mit DAMA Artefaktvorlagen dokumentieren „Kapitel 3 Anhang, S. 
+        69–70“.
+      notes:
+      - Verwendung von DCAM-Fähigkeitsbewertungen zum Aufbau von 
+        Metadaten-Dashboards.
+    - number: 2
+      name: Automatisierte Metadatenvalidierung implementieren
+      prerequisite: Erfordert ein KPI Set
+      deliverable: Metadatenvalidierungsregeln
+      recommendations:
+      - Implementieren Sie Regeln für fehlende Definitionen, Herkunftslücken, 
+        ungültige Semantik und veraltete Metadateneinträge.
+      - Validierung auf Metadatenkategorien abbilden.
+      - Leiten Sie Ausnahmen an Stewards oder Governance-Foren weiter.
+      - Validierungslogik mit DAMA Vorlagen dokumentieren „Kapitel 3 Anhang, S. 
+        69–70“.
+      notes:
+      - Verwenden Sie CMMI Testabdeckungstechniken zur Verbesserung der 
+        Genauigkeit.
+    - number: 3
+      name: Etablieren Sie Metadaten-Rahmenwerk, Standards und Definitionen
+      prerequisite: Erfordert Lineage-Standards
+      deliverable: Lineage-Validierungs-Blueprint
+      recommendations:
+      - Herkunftsverbindungen über Aufnahme, Transformation und Verteilung 
+        validieren „Kapitel 9, S. 236–239“.
+      - Sicherstellen, dass Upstream- und Downstream-Abhängigkeiten den 
+        deklarierten Semantiken entsprechen.
+      - Erkennen Sie fehlende oder unterbrochene Lineage-Segmente.
+      - Dokumentieren Sie Validierungen mit DAMA-Artefaktstruktur „Kapitel 3 
+        Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM-Lineage-Fähigkeitsindikatoren, um kritische Lücken zu
+        identifizieren.
+    - number: 4
+      name: Implementieren Sie semantische und Definitionsvalidierung
+      prerequisite: Erfordert semantische Regeln
+      deliverable: Semantische Validierungslogik
+      recommendations:
+      - Werden Zugriffskontrollen, Berechtigungen und Zugriffsrechte überwacht 
+        und regelmäßig überprüft?
+      - Sicherstellen der semantischen Konsistenz der Domäne unter Verwendung 
+        der DAMA Modellierungsrichtlinien „Kapitel 10, S. 282–284“.
+      - Erkennen Sie widersprüchliche oder mehrdeutige Geschäftsterminologie.
+      - Dokumentieren Sie Validierungslogik mit geregelten Artefaktvorlagen 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie CMMI semantische Überprüfungstechniken für 
+        Regelvollständigkeit.
+    - number: 5
+      name: Pflegen Sie automatisierte Metadaten-Governance
+      prerequisite: Erfordert operative Automatisierung
+      deliverable: Metadaten-Automatisierungs-Governance-Protokoll
+      recommendations:
+      - Definieren Sie grundlegende Prinzipien der Datenqualität, 
+        Geltungsbereich und Eigentumsregeln
+      - Erweiterung der Automatisierung auf neue Datensätze, Pipelines oder 
+        Domänen.
+      - Sicherstellen der Ausrichtung mit Metadatenstandards und 
+        Lebenszyklusdokumentation.
+      - Dokumentieren Sie Aktualisierungen mit DAMA Artefaktstruktur „Kapitel 3 
+        Anhang, S. 69–70“.
+      notes:
+      - Nutzen Sie DCAM-Fähigkeitsentwicklung zur Planung von 
+        Automatisierungsverbesserungen.
+  MD-09:
+    title: Optimieren Sie Metadaten-Governance und institutionalisieren Sie Best
+      Practices
+    procedures:
+    - number: 1
+      name: Datenbank der Governance-Trends überprüfen
+      prerequisite: Erfordert eine KPI Basislinie
+      deliverable: Analyse der Metadatenleistung
+      recommendations:
+      - Analysieren Sie Trends wie fehlende Definitionen, Herkunftslücken, 
+        semantische Konflikte und veraltete Metadaten.
+      - Leistung über Domänen hinweg vergleichen, um systemische Schwächen zu 
+        erkennen.
+      - Validierung des Beitrags von Metadatenwerten zur Entscheidungsfindung.
+      - Ergebnisse mit DAMA Artefaktstruktur dokumentieren „Kapitel 3 Anhang, S.
+        69–70“.
+      notes:
+      - Verwenden Sie DCAM Fähigkeitsbenchmarks zur Kalibrierung der Reife.
+    - number: 2
+      name: Verbessern Sie Metadatenstandards und -regeln
+      prerequisite: Erfordert Leistungsinformationen
+      deliverable: Aktualisierte Standards
+      recommendations:
+      - Aktualisieren Sie Dokumentationsregeln, Herkunftserwartungen und 
+        semantische Definitionen.
+      - Integration neuer Geschäftsanforderungen.
+      - Klären Sie mehrdeutige oder widersprüchliche Begriffe.
+      - Validierung von Updates mit Metadaten-Governance-Foren „Kapitel 3.4, S. 
+        60–61“.
+      notes:
+      - Verwenden Sie CMMI-Change-Control-Logik für formalisierte 
+        Aktualisierungen.
+    - number: 3
+      name: Benchmarken Sie Metadatenpraktiken anhand externer Frameworks
+      prerequisite: Erfordert Reifegradbewertung
+      deliverable: Benchmark-Bericht
+      recommendations:
+      - Vergleichen Sie interne Metadatenprozesse mit branchenüblichen Best 
+        Practices für Metadaten.
+      - Abbildung von Abweichungen zu DAMA-Erwartungen „Kapitel 9, S. 236–239“.
+      - Identifizieren Sie Fähigkeitslücken in den Bereichen Semantik, Lineage 
+        und Abhängigkeitsmanagement.
+      - Benchmark-Analysen mit DAMA Artefaktvorlagen dokumentieren „Kapitel 3 
+        Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Benchmark-Mapping, um Verbesserungsziele abzuleiten.
+    - number: 4
+      name: Verbessern Sie die Automatisierungslogik für Metadaten
+      prerequisite: Erfordert MD-06 Automatisierung
+      deliverable: Aktualisierte Automatisierungsregeln
+      recommendations:
+      - Erweitern Sie Validierungsregeln, um neue Metadaten-Fehlermuster zu 
+        erfassen.
+      - Vollständigkeit der Herkunftsnachverfolgung und semantische 
+        Erkennungslogik verbessern.
+      - Regelaktualisierungen in kontrollierten Umgebungen validieren.
+      - Holen Sie Genehmigungen über Governance-Workflows ein „Kapitel 3.4, S. 
+        60–61“.
+      notes:
+      - Verbesserungen mit CMMI Automatisierungsmustern strukturieren.
+    - number: 5
+      name: Einen kontinuierlichen Metadaten-Verbesserungszyklus 
+        aufrechterhalten
+      prerequisite: Erfordert einen Optimierungszyklus
+      deliverable: Metadaten-Verbesserungsplan
+      recommendations:
+      - Verbesserungs-Backlog basierend auf KPI Trends und 
+        Governance-Erkenntnissen pflegen „Kapitel 3.6, S. 64–66“.
+      - Verbesserungen in inkrementelle Wellen gruppieren.
+      - Richten Sie Verbesserungen am unternehmensweiten 
+        Daten-Governance-Fahrplan aus „Kapitel 3, S. 51–53“.
+      - Verfolgen Sie Fortschritte mit DAMA Artefaktdokumentation „Kapitel 3 
+        Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Fähigkeitsentwicklungs-Mapping zur Steuerung 
+        langfristiger Reifeentwicklung.

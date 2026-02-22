@@ -1,0 +1,242 @@
+domain:
+  id: 11
+  name: Qualité des données (DQ)
+  description: Ce domaine évalue comment les dimensions de qualité des données, 
+    les règles de validation, les cadres de surveillance et les workflows de 
+    remédiation sont gouvernés et maintenus à travers les domaines. Il examine 
+    les structures de propriété, les routines de mesure et l’intégration des 
+    contrôles qualité dans les processus opérationnels. La qualité des données 
+    est un mécanisme central de gouvernance procédurale qui assure la fiabilité,
+    la confiance et la cohérence de l’utilisation des données organisationnelles
+    (DAMA-DMBOK2, Chapitre 13).
+maturity_scale:
+  0:
+    maturity_level: Inexistant
+    meaning: Aucune pratique de gouvernance et aucune responsabilité ou 
+      processus défini.
+    interpretation_for_assessment: Indique une absence totale de structure et un
+      besoin immédiat d'action fondamentale.
+  1:
+    maturity_level: Initial
+    meaning: Les activités se déroulent de manière informelle et réactive avec 
+      peu ou pas de documentation.
+    interpretation_for_assessment: Reflète une prise de conscience, mais aussi 
+      une forte variabilité et un risque opérationnel élevé.
+  2:
+    maturity_level: Émergent
+    meaning: Certaines pratiques existent mais restent incohérentes, non 
+      documentées ou non adoptées à travers les équipes.
+    interpretation_for_assessment: Montre un développement précoce. La 
+      standardisation et la documentation sont nécessaires pour progresser.
+  3:
+    maturity_level: Établi
+    meaning: Les processus, rôles et politiques sont définis, documentés et 
+      appliqués avec stabilité.
+    interpretation_for_assessment: Démontre la cohérence opérationnelle et la 
+      préparation à des améliorations plus structurées.
+  4:
+    maturity_level: Géré
+    meaning: La gouvernance est intégrée dans les flux de travail et soutenue 
+      par des outils, la surveillance et la supervision.
+    interpretation_for_assessment: Représente une adoption mature avec une 
+      exécution fiable à travers les équipes.
+  5:
+    maturity_level: Optimisé
+    meaning: La gouvernance est pleinement intégrée, continuellement améliorée 
+      et alignée avec les attentes de conformité et d'éthique.
+    interpretation_for_assessment: Représente une maturité avancée avec une 
+      gouvernance proactive, une optimisation et une amélioration continue 
+      institutionnalisée.
+questions:
+  Q1:
+    text: Les dimensions de qualité des données et les règles de mesure 
+      sont-elles formellement définies et approuvées ?
+    explanation: Évalue la clarté et la gouvernance des attentes de qualité.
+    objective: Établissez des fondations de qualité cohérentes et gouvernées.
+    cross_reference: "(DAMA-DMBOK2, Chapter 13 – Data Quality; DCAM, Quality Management;
+      IDGC, Quality Principles)"
+    score_action_mapping:
+      0:
+        action_code: DQ-01
+        description: Définir les dimensions de qualité des données gouvernées et
+          les règles de mesure
+      1:
+        action_code: DQ-02
+        description: Attribuer les rôles de gestion pour la gouvernance de la 
+          qualité des données
+      2:
+        action_code: DQ-03
+        description: Approuver les dimensions de qualité gouvernées et les 
+          politiques de mesure
+      3:
+        action_code: DQ-04
+        description: Intégrer les dimensions de qualité et les règles de mesure 
+          dans les routines de domaine
+      4:
+        action_code: DQ-06
+        description: Automatiser la validation des dimensions et la cohérence 
+          des mesures
+      5:
+        action_code: DQ-09
+        description: Améliorez continuellement les règles de mesure de la 
+          qualité des données
+  Q2:
+    text: Les règles de validation, seuils et contrôles spécifiques au domaine 
+      sont-ils gouvernés et maintenus ?
+    explanation: Évalue la gouvernance des contrôles qualité.
+    objective: Permettre une validation fiable et une protection contre les 
+      défauts.
+    cross_reference: "(DAMA-DMBOK2, Chapter 13 – Quality Rules & Standards; DCAM,
+      Data Controls; IDGC, Rule Enforcement)"
+    score_action_mapping:
+      0:
+        action_code: DQ-01
+        description: Définissez les règles de validation de qualité et les 
+          exigences de seuil
+      1:
+        action_code: DQ-02
+        description: Attribuer les responsabilités pour la gouvernance de 
+          validation
+      2:
+        action_code: DQ-03
+        description: Approuver les règles de validation et les définitions de 
+          seuils
+      3:
+        action_code: DQ-04
+        description: Mettre en œuvre des routines de validation gouvernées dans 
+          les opérations
+      4:
+        action_code: DQ-06
+        description: Automatiser l'exécution des règles de validation et la 
+          détection des défauts
+      5:
+        action_code: DQ-09
+        description: Améliorer continuellement la gouvernance de validation à 
+          l'aide de métriques
+  Q3:
+    text: Les routines de surveillance de la qualité et les tableaux de bord 
+      sont-ils appliqués de manière cohérente à travers les domaines ?
+    explanation: Évalue la cohérence de la surveillance et la supervision de la 
+      gouvernance.
+    objective: Assurer une détection précoce et une visibilité transparente.
+    cross_reference: "(DAMA-DMBOK2, Chapter 13 – DQ Stewardship; Chapter 11 – Stewardship;
+      DCAM, Ownership; IDGC, Accountability)"
+    score_action_mapping:
+      0:
+        action_code: DQ-01
+        description: Définir les indicateurs de surveillance et les règles de 
+          gouvernance
+      1:
+        action_code: DQ-02
+        description: Attribuez les responsabilités de surveillance et de 
+          supervision
+      2:
+        action_code: DQ-03
+        description: Approuver les processus de surveillance et les cycles de 
+          revue
+      3:
+        action_code: DQ-04
+        description: Mettre en œuvre des tableaux de bord et une surveillance 
+          continue de la qualité
+      4:
+        action_code: DQ-06
+        description: Automatiser les routines de surveillance et d'alerte
+      5:
+        action_code: DQ-09
+        description: Affiner continuellement la gouvernance de surveillance en 
+          utilisant des preuves
+  Q4:
+    text: Les flux de travail de remédiation sont-ils gouvernés, assignés et 
+      traçables ?
+    explanation: Examine la gouvernance pour correction, escalade et résolution.
+    objective: Assurer une remédiation responsable et en temps utile.
+    cross_reference: "(DAMA-DMBOK2, Chapter 13 – DQ Lifecycle; Chapter 12 – Data Lifecycle;
+      DCAM, Lifecycle Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DQ-01
+        description: Définissez des règles gouvernées de remédiation et 
+          d'escalade
+      1:
+        action_code: DQ-02
+        description: Attribuer les responsabilités de remédiation et d'escalade
+      2:
+        action_code: DQ-03
+        description: Approuver les workflows de remédiation et la structure de 
+          gouvernance
+      3:
+        action_code: DQ-04
+        description: Intégrer les routines de remédiation gouvernées dans les 
+          opérations
+      4:
+        action_code: DQ-06
+        description: Automatiser le suivi des remédiations et la validation de 
+          la gouvernance
+      5:
+        action_code: DQ-09
+        description: Améliorez continuellement la gouvernance de la remédiation 
+          à l'aide de métriques
+  Q5:
+    text: La propriété de la qualité est-elle clairement définie et revue ?
+    explanation: Évalue les rôles de stewardship et les structures de 
+      responsabilité.
+    objective: Renforcer la responsabilité et le contrôle au niveau du domaine.
+    cross_reference: "(DAMA-DMBOK2, Chapter 13 – Monitoring & Remediation; DCAM, Measurement;
+      IDGC, Monitoring & Correction)"
+    score_action_mapping:
+      0:
+        action_code: DQ-01
+        description: Définir les responsabilités et l’autorité décisionnelle 
+          pour la propriété de la qualité
+      1:
+        action_code: DQ-02
+        description: Attribuer des gestionnaires et propriétaires pour la 
+          responsabilité qualité
+      2:
+        action_code: DQ-03
+        description: Approuver les structures de propriété de la qualité
+      3:
+        action_code: DQ-04
+        description: Intégrer la propriété de la qualité dans les routines de 
+          stewardship et de domaine
+      4:
+        action_code: DQ-06
+        description: Automatiser les contrôles de propriété et de responsabilité
+          de la qualité
+      5:
+        action_code: DQ-09
+        description: Affiner continuellement la gouvernance de la propriété de 
+          la qualité
+  Q6:
+    text: Des garanties éthiques, de confidentialité et d'utilisation 
+      responsable sont-elles appliquées aux règles de qualité et à la 
+      remédiation ?
+    explanation: Garantit l'équité, la minimisation et le traitement légal des 
+      processus qualité.
+    objective: Promouvoir une gouvernance responsable de la qualité.
+    cross_reference: "(DAMA-DMBOK2, Chapter 13 – Ethical Impact of Quality; DCAM,
+      Responsible Data Use; IDGC, Ethical Safeguards)"
+    score_action_mapping:
+      0:
+        action_code: DQ-01
+        description: Définir les règles éthiques, de confidentialité et de 
+          minimisation pour les processus qualité
+      1:
+        action_code: DQ-02
+        description: Attribuez la supervision de la gouvernance éthique et de la
+          vie privée.
+      2:
+        action_code: DQ-03
+        description: Approuvez les mesures éthiques et de confidentialité
+      3:
+        action_code: DQ-04
+        description: Intégrer les contrôles éthiques et de confidentialité dans 
+          les routines de qualité
+      4:
+        action_code: DQ-06
+        description: Automatiser la validation de la confidentialité et de 
+          l’éthique pour les workflows qualité
+      5:
+        action_code: DQ-09
+        description: Améliorer continuellement la gouvernance de la qualité 
+          éthique en utilisant des audits

@@ -1,0 +1,236 @@
+domain:
+  id: 6
+  name: Datenintegration und Interoperabilität (DII)
+  description: "Diese Domäne bewertet die Formalisierung der Datenbewegung, das Vorhandensein
+    von gesteuerten Integrationsmustern und die Stabilität von Interoperabilitätsstandards
+    in der gesamten Organisation. Datenintegration und Interoperabilität konzentrieren
+    sich darauf, sicherzustellen, dass Datenflüsse zwischen Systemen zuverlässig,
+    konsistent und gesteuert sind, um nahtlosen Datenaustausch und architektonische
+    Ausrichtung zu unterstützen (DAMA-DMBOK2, Kapitel 8).\n"
+maturity_scale:
+  0:
+    maturity_level: Nicht existent
+    meaning: Keine Governance-Praktiken und keine definierten 
+      Verantwortlichkeiten oder Prozesse.
+    interpretation_for_assessment: Zeigt ein vollständiges Fehlen von Struktur 
+      und einen unmittelbaren Bedarf an grundlegenden Maßnahmen an.
+  1:
+    maturity_level: Initial
+    meaning: Aktivitäten erfolgen informell und reaktiv mit wenig oder keiner 
+      Dokumentation.
+    interpretation_for_assessment: Spiegelt Bewusstsein wider, aber auch hohe 
+      Variabilität und operationelles Risiko.
+  2:
+    maturity_level: Im Entstehen
+    meaning: Einige Praktiken existieren, sind jedoch inkonsistent, 
+      undokumentiert oder werden nicht teamübergreifend angewendet.
+    interpretation_for_assessment: Zeigt frühe Entwicklung. Standardisierung und
+      Dokumentation sind notwendig, um Fortschritte zu erzielen.
+  3:
+    maturity_level: Etabliert
+    meaning: Prozesse, Rollen und Richtlinien sind definiert, dokumentiert und 
+      stabil angewendet.
+    interpretation_for_assessment: Demonstriert operationale Konsistenz und 
+      Bereitschaft für strukturiertere Verbesserungen.
+  4:
+    maturity_level: Verwaltet
+    meaning: Governance ist in Arbeitsabläufe integriert und wird durch Tools, 
+      Überwachung und Aufsicht unterstützt.
+    interpretation_for_assessment: Repräsentiert reife Einführung mit 
+      zuverlässiger Ausführung über Teams hinweg.
+  5:
+    maturity_level: Optimiert
+    meaning: Governance ist vollständig eingebettet, wird kontinuierlich 
+      verbessert und entspricht Compliance- und ethischen Erwartungen.
+    interpretation_for_assessment: Repräsentiert fortgeschrittene Reife mit 
+      proaktiver Governance, Optimierung und institutionalisierter 
+      kontinuierlicher Verbesserung.
+questions:
+  Q1:
+    text: Sind Integrationsstandards und gesteuerte Austauschregeln formell 
+      definiert und genehmigt?
+    explanation: Bewertet die Klarheit gemeinsamer Integrationsprinzipien und 
+      verbindlicher Standards.
+    objective: Sicherstellen eines konsistenten und gesteuerten Datenaustauschs.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Data Integration; DCAM, Data Sharing;
+      IDGC, Coordination Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Definition von Integrationsstandards und gesteuerten 
+          Austauschregeln
+      1:
+        action_code: DII-02
+        description: Weisen Sie die Integration von Governance-Rollen und 
+          Verantwortlichkeiten zu
+      2:
+        action_code: DII-03
+        description: Genehmigung von Integrationsstandards und Austauschregeln
+      3:
+        action_code: DII-04
+        description: Verankern Sie Integrationsstandards in Domänen- und 
+          Lebenszyklusroutinen
+      4:
+        action_code: DII-06
+        description: Automatisierte Integrationskonformitäts- und 
+          Validierungsprüfungen durchführen
+      5:
+        action_code: DII-09
+        description: Kontinuierliche Verfeinerung von Integrationsstandards 
+          anhand von Metriken
+  Q2:
+    text: Werden metadatengetriebene Integrationsregeln und -strukturen unter 
+      Governance-Autorität gepflegt?
+    explanation: Bewertet die Metadatenausrichtung zur Unterstützung von 
+      Integrationsflüssen.
+    objective: Stärken Sie Transparenz und Herkunft.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – APIs & Exchange Standards; DCAM, Interoperability;
+      IDGC, Process Standardization)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Definieren Sie metadatengetriebene Integrationsregeln
+      1:
+        action_code: DII-02
+        description: Stewardship für Metadaten zur Unterstützung der Integration
+          zuweisen
+      2:
+        action_code: DII-03
+        description: Freigabe von Metadatenstrukturen und Integrationsregeln
+      3:
+        action_code: DII-04
+        description: Einbettung metadatengetriebener Integrationsregeln in 
+          operative Routinen
+      4:
+        action_code: DII-06
+        description: Automatisierung der Metadatenintegration, -ausrichtung und 
+          -herkunftserfassung
+      5:
+        action_code: DII-09
+        description: Verbessern Sie kontinuierlich die metadatengetriebene 
+          Integration anhand von Nachweisen
+  Q3:
+    text: Werden domänenübergreifende Datenaustausche überprüft, genehmigt und 
+      nachvollziehbar dokumentiert?
+    explanation: Überprüfung der gesteuerten Datenbewegung zwischen Domänen.
+    objective: Vertrauen, Verantwortlichkeit und Konsistenz unterstützen.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Cross-Domain Integration; DCAM, Federated
+      Governance; IDGC, Relational Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Regeln für domänenübergreifenden Datenaustausch und 
+          Genehmigungen definieren
+      1:
+        action_code: DII-02
+        description: Weisen Sie domänenübergreifende 
+          Integrations-Governance-Rollen zu
+      2:
+        action_code: DII-03
+        description: Austauschregeln, Prüfzyklen und 
+          Rückverfolgbarkeitsstrukturen genehmigen
+      3:
+        action_code: DII-04
+        description: Implementieren Sie geregelte domänenübergreifende 
+          Austauschprozesse
+      4:
+        action_code: DII-06
+        description: Automatisierung von Rückverfolgbarkeit, Herkunft und 
+          Austauschüberwachung
+      5:
+        action_code: DII-09
+        description: Verbessern Sie kontinuierlich die Governance des 
+          domänenübergreifenden Austauschs
+  Q4:
+    text: Sind Integrationsmechanismen (APIs, gesteuerte Schnittstellen, 
+      Ingestionsregeln) standardisiert und durchgesetzt?
+    explanation: Bewertet gesteuerte Mechanismen für strukturierte 
+      Datenbewegung.
+    objective: Stellen Sie strukturelle und semantische Kohärenz sicher.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Integration Lifecycle; Chapter 12
+      – Data Lifecycle; DCAM, Lifecycle Execution; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Definieren Sie Standards für Integrationsmechanismen und 
+          governance-gesteuerte Schnittstellen
+      1:
+        action_code: DII-02
+        description: Verantwortung für Schnittstellen- und Ingestions-Governance
+          zuweisen
+      2:
+        action_code: DII-03
+        description: Genehmigen Sie Schnittstellen- und Ingestionsstandards
+      3:
+        action_code: DII-04
+        description: Integrieren Sie standardisierte Integrationsmechanismen in 
+          tägliche Governance-Routinen
+      4:
+        action_code: DII-06
+        description: Automatisieren Sie die Validierung der Konformität des 
+          Integrationsmechanismus
+      5:
+        action_code: DII-09
+        description: Optimieren Sie Integrationsmechanismen mithilfe von 
+          Leistungskennzahlen
+  Q5:
+    text: Wird die Integrationsleistung (Konsistenz, Latenz, Zuverlässigkeit) 
+      gemessen und überprüft?
+    explanation: Bewertet Integrations-, Qualitäts- und Stabilitätsmetriken.
+    objective: Erhalten Sie operative Zuverlässigkeit und Ausrichtung.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Integration Metrics; DCAM, Performance
+      & Controls; IDGC, Monitoring)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Definieren Sie Integrationsleistungsmetriken und 
+          Überwachungsregeln
+      1:
+        action_code: DII-02
+        description: Weisen Sie Verantwortlichkeiten für Leistungsüberwachung zu
+      2:
+        action_code: DII-03
+        description: Genehmigen Sie KPIs und Governance-Überprüfungszyklen
+      3:
+        action_code: DII-04
+        description: Implementierung von Dashboards und gesteuerter 
+          Berichterstattung für Integration
+      4:
+        action_code: DII-06
+        description: Automatisieren Sie die Leistungsüberwachung
+      5:
+        action_code: DII-09
+        description: Verbessern Sie kontinuierlich die Integrationsleistung 
+          basierend auf Metriken
+  Q6:
+    text: Sind ethische, Datenschutz- und verantwortungsbewusste 
+      Nutzungsbeschränkungen in die Integrations-Governance eingebettet?
+    explanation: Prüft Datenschutz-by-Design und ethische Schutzmaßnahmen bei 
+      Datenaustausch.
+    objective: Unterstützung konformer und verantwortungsvoller Datenbewegung.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Responsible Interoperability; DCAM,
+      Responsible Data Use; IDGC, Ethical Exchange)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Ethische und Datenschutzbeschränkungen für 
+          Integrations-Governance definieren
+      1:
+        action_code: DII-02
+        description: Weisen Sie ethische und Datenschutz-Überwachungsrollen für 
+          Integration zu
+      2:
+        action_code: DII-03
+        description: Genehmigen Sie ethische und Datenschutz-Integrationsregeln
+      3:
+        action_code: DII-04
+        description: Integrieren Sie ethische und Datenschutz-Schutzmaßnahmen in
+          Integrationsroutinen
+      4:
+        action_code: DII-06
+        description: Automatisierung der Validierung von ethischen, Datenschutz-
+          und verantwortungsbewussten Nutzungsaspekten
+      5:
+        action_code: DII-09
+        description: Kontinuierliche Verbesserung der ethischen 
+          Integrations-Governance

@@ -1,0 +1,506 @@
+domain:
+  id: 10
+  name: Gestion des métadonnées (MD)
+action_catalog:
+  MD-01:
+    title: Définir la portée, les principes et les limites de gouvernance de la 
+      gestion des métadonnées
+    procedures:
+    - number: 1
+      name: Définissez les principes d'entreprise pour les métadonnées
+      prerequisite: Nécessite une fondation de gouvernance des données
+      deliverable: Document des principes de métadonnées
+      recommendations:
+      - Définissez les principes pour les métadonnées métier, techniques et 
+        opérationnelles suivant les directives DAMA « Chapitre 9, p. 236–239 ».
+      - Établir les attentes pour l’alignement sémantique, la traçabilité de la 
+        lignée et les vocabulaires contrôlés.
+      - Clarifier les rôles pour la propriété, la gestion et la garde des 
+        métadonnées « Chapitre 4, p. 86–89 ».
+      - Documenter les principes en utilisant la structure d'artefact DAMA « 
+        Annexe du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser la cartographie des capacités DCAM pour identifier les 
+        fonctions métadonnées requises.
+    - number: 2
+      name: Définir le périmètre de gestion des métadonnées
+      prerequisite: Nécessite des principes définis
+      deliverable: Document de périmètre des métadonnées
+      recommendations:
+      - Définir quelles catégories de métadonnées sont dans le périmètre, telles
+        que les métadonnées techniques, métier, processus, lignée et qualité 
+        “Chapitre 9, p. 236–239”.
+      - Lier le périmètre aux systèmes gouvernés, pipelines et environnements 
+        analytiques.
+      - Clarifier les exclusions telles que les notes personnelles non gérées ou
+        les feuilles de calcul informelles.
+      - Capturer les détails du périmètre en utilisant les pratiques 
+        documentaires DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser la logique de délimitation CMMI pour assurer que la portée 
+        initiale est réalisable.
+    - number: 3
+      name: Cartographiez les limites de la gouvernance des métadonnées.
+      prerequisite: Nécessite un périmètre
+      deliverable: Carte des limites des métadonnées.
+      recommendations:
+      - Identifiez les systèmes, les étapes du cycle de vie et les processus où 
+        les métadonnées doivent être capturées.
+      - Cartographier les frontières à travers les couches d'ingestion, 
+        transformation, stockage et consommation “Chapitre 9, p. 236–239”.
+      - Identifier les interfaces entre métadonnées, données maîtresses et 
+        données de référence « Chapitre 6, p. 182–188 ».
+      - Documentez les cartes de délimitation en utilisant les modèles 
+        d'artefact DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les contrôles architecturaux DCAM pour valider l’exhaustivité 
+        des frontières de métadonnées.
+    - number: 4
+      name: Définir les critères de réussite des métadonnées
+      prerequisite: Nécessite des principes et des limites
+      deliverable: Document des critères de réussite
+      recommendations:
+      - Définir des critères tels que l'exhaustivité, la justesse, la 
+        disponibilité, la profondeur de traçabilité et la cohérence sémantique «
+        Chapitre 11, p. 308–311 ».
+      - Identifier les seuils acceptables pour la couverture des métadonnées par
+        domaine.
+      - Lier les critères à l'adoption métier et à la qualité des décisions.
+      - Documenter les critères en utilisant la structure d'artefact DAMA « 
+        Chapitre 3.6, p. 64–66 ».
+      notes:
+      - Utiliser les indicateurs de qualité des données DCAM pour traduire les 
+        critères en forme KPI.
+    - number: 5
+      name: Publier le périmètre et les principes de gouvernance des métadonnées
+      prerequisite: Nécessite un paquet de gouvernance consolidé
+      deliverable: Briefing de gouvernance des métadonnées
+      recommendations:
+      - Clarifiez les responsabilités pour la création, l'approbation et la 
+        maintenance des métadonnées « Chapitre 4, p. 86–89 ».
+      - Présenter les attentes pour la traçabilité, la classification, les 
+        définitions sémantiques et la documentation d'usage.
+      - Publiez les principes et limites en utilisant les conventions 
+        d'artefacts DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      - Communiquer les attentes de gouvernance à tous les utilisateurs 
+        concernés.
+      notes:
+      - Utilisez les pratiques de communication CMMI pour renforcer l'adoption.
+  MD-02:
+    title: Établissez le cadre, les normes et les définitions de métadonnées
+    procedures:
+    - number: 1
+      name: Définir le cadre de gestion des métadonnées
+      prerequisite: Nécessite des livrables MD-01
+      deliverable: Cadre de métadonnées v1.0
+      recommendations:
+      - Structurez le cadre pour couvrir la création, la documentation, 
+        l'approbation, le stockage, la promotion et la mise hors service des 
+        métadonnées en suivant les directives DAMA « Chapitre 9, p. 236–239 ».
+      - Intégrer les domaines de gouvernance incluant qualité, gestion, 
+        intégration et données master.
+      - Définir les artefacts requis pour les activités de métadonnées.
+      - Documenter le cadre en utilisant la structure d’artefact DAMA « Chapitre
+        3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les cartes de capacité DCAM pour assurer la couverture des 
+        composants du cycle de vie des métadonnées.
+    - number: 2
+      name: Définir les normes de métadonnées
+      prerequisite: Nécessite un cadre de métadonnées
+      deliverable: Manuel des normes de métadonnées
+      recommendations:
+      - Définir les standards pour la nomination, la classification, les 
+        définitions d'attributs, les synonymes, les valeurs autorisées et les 
+        règles sémantiques.
+      - Clarifiez la structure pour les métadonnées techniques, y compris la 
+        traçabilité, la logique de transformation et les dépendances « Chapitre 
+        9, p. 236–239 ».
+      - Aligner les normes avec les domaines maîtres et de référence « Chapitre 
+        6, p. 182–188 ».
+      - Publier les standards en utilisant les modèles de documentation DAMA « 
+        Annexe Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser le modèle de maturité CMMI pour séquencer l'adoption.
+    - number: 3
+      name: Définissez les règles de documentation des métadonnées.
+      prerequisite: Nécessite des normes de métadonnées
+      deliverable: Directives de documentation
+      recommendations:
+      - Définir les champs de métadonnées obligatoires tels que la signification
+        métier, le propriétaire, le gestionnaire, la logique de calcul, les 
+        entrées autorisées et les détails de traçabilité.
+      - Standardiser la documentation pour les pipelines, ensembles de données, 
+        attributs, rapports et indicateurs.
+      - S'assurer que la documentation des métadonnées soutient les contrôles de
+        qualité et de gouvernance “Chapitre 11, p. 308–311”.
+      - Enregistrer les règles en utilisant la structure d'artefact DAMA 
+        “Chapitre 3 Annexe, p. 69–70”.
+      notes:
+      - Utilisez les indicateurs de capacité de documentation DCAM pour 
+        identifier les lacunes documentaires.
+    - number: 4
+      name: Valider les normes de métadonnées et les règles de documentation
+      prerequisite: Nécessite des normes provisoires
+      deliverable: Enregistrement de validation
+      recommendations:
+      - Revue de la correction sémantique et de la clarté en utilisant les 
+        pratiques de modélisation DAMA « Chapitre 10, p. 282–284 ».
+      - Valider les exigences de documentation de la traçabilité, des 
+        dépendances et des transformations « Chapitre 9, p. 236–239 ».
+      - Confirmer la couverture des types de métadonnées techniques, métier et 
+        processus.
+      - Enregistrer les résultats de la revue en utilisant les standards 
+        d'artefacts DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utilisez la structure de porte de revue CMMI pour la validation 
+        formelle.
+    - number: 5
+      name: Approuvez et publiez les normes de métadonnées
+      prerequisite: Nécessite une approbation de gouvernance.
+      deliverable: Publication des normes de métadonnées
+      recommendations:
+      - Soumettre les normes pour revue et approbation par les propriétaires et 
+        gestionnaires « Chapitre 3.4, p. 60–61 ».
+      - Valider l'applicabilité à travers les domaines et les couches 
+        architecturales.
+      - Publier en utilisant les formats d'artefacts gouvernés « Chapitre 3 
+        Annexe, p. 69–70 ».
+      - Communiquer les mises à jour à toutes les équipes concernées.
+      notes:
+      - Utiliser les niveaux de maturité de capacité DCAM pour planifier 
+        l'adoption.
+  MD-03:
+    title: Approuvez les règles de métadonnées, les responsabilités et les 
+      processus décisionnels
+    procedures:
+    - number: 1
+      name: Établissez la charte du Conseil des Métadonnées
+      prerequisite: Nécessite le cadre et les normes MD-02
+      deliverable: Charte du conseil approuvée
+      recommendations:
+      - Définissez l'autorité, les objectifs et les droits de décision selon les
+        attentes de gouvernance DAMA « Chapitre 3.4, p. 60–61 ».
+      - Clarifiez les responsabilités pour l'approbation des normes, la 
+        résolution des conflits sémantiques et la gestion des exceptions de 
+        traçabilité.
+      - Aligner la charte avec la structure de gouvernance d'entreprise « 
+        Chapitre 3, p. 51–53 ».
+      - Documenter la charte en utilisant les modèles d'artefact DAMA « Chapitre
+        3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les contrôles d'alignement de gouvernance DCAM pour valider le 
+        périmètre.
+    - number: 2
+      name: Attribuer les rôles de gouvernance des métadonnées
+      prerequisite: Nécessite des définitions de rôles
+      deliverable: Matrice d'affectation des rôles de métadonnées
+      recommendations:
+      - Assigner les responsabilités pour la création, l'approbation, la revue 
+        et le stewardship des métadonnées “Chapitre 4, p. 86–89”.
+      - Définissez les voies d'escalade pour les litiges sémantiques et les 
+        incohérences de traçabilité.
+      - Clarifiez la responsabilité de la maintenance des référentiels de 
+        métadonnées.
+      - Enregistrer les affectations en utilisant les méthodes de documentation 
+        DAMA “Chapitre 3 Annexe, p. 69–70”.
+      notes:
+      - Utiliser les critères de convenance comportementale IDGC pour la 
+        sélection des gestionnaires.
+    - number: 3
+      name: Définir les forums de décision sur les métadonnées et les flux 
+        d'approbation
+      prerequisite: Nécessite une charte de conseil
+      deliverable: Workflow de gouvernance des métadonnées
+      recommendations:
+      - Définissez des points de contrôle d'approbation pour les normes, les 
+        exceptions de lignée et les mises à jour sémantiques « Chapitre 3.4, p. 
+        60–61 ».
+      - Lier les forums aux intégrations, données maîtres et organes de 
+        gouvernance BI.
+      - Définissez les preuves requises pour les approbations.
+      - Documenter les flux de travail en utilisant la structure d’artefact DAMA
+        « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les workflows de gouvernance CMMI pour garantir des décisions 
+        structurées.
+    - number: 4
+      name: Exécuter les cycles de revue des métadonnées
+      prerequisite: Nécessite un flux de travail de gouvernance
+      deliverable: Procès-verbal du cycle de revue
+      recommendations:
+      - Revoir l'exhaustivité, la clarté et la signification commerciale des 
+        entrées de métadonnées.
+      - Vérifier la justesse de la traçabilité et la cartographie des 
+        dépendances « Chapitre 9, p. 236–239 ».
+      - Escalader les conflits selon les règles de gouvernance “Chapitre 3.4, p.
+        60–61”.
+      - Enregistrer les résultats en utilisant les modèles de documentation DAMA
+        “Chapitre 3 Annexe, p. 69–70”.
+      notes:
+      - Utiliser les indicateurs de maturité de revue DCAM pour affiner les 
+        cycles.
+    - number: 5
+      name: Maintenir les opérations de gouvernance des métadonnées
+      prerequisite: Nécessite un rythme de revue
+      deliverable: Journal des opérations de gouvernance
+      recommendations:
+      - Suivre les décisions, dérogations, problèmes de traçabilité et conflits 
+        sémantiques.
+      - Valider l’efficacité de la gouvernance à travers les domaines.
+      - Escalader les problèmes récurrents à la gouvernance d'entreprise.
+      - Stocker les journaux en utilisant les directives d’artefact DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les techniques de surveillance de gouvernance CMMI pour 
+        l’amélioration continue.
+  MD-04:
+    title: Intégrer la gouvernance des métadonnées dans le cycle de vie des 
+      données et les pipelines
+    procedures:
+    - number: 1
+      name: Intégrer la capture des métadonnées dans les processus du cycle de 
+        vie
+      prerequisite: Nécessite des normes de métadonnées
+      deliverable: Documentation du cycle de vie mise à jour
+      recommendations:
+      - Intégrez la capture des métadonnées aux étapes d'ingestion, de 
+        transformation, de curation et de distribution « Chapitre 9, p. 236–239 
+        ».
+      - Exiger des définitions sémantiques pour chaque attribut utilisé dans les
+        processus du cycle de vie.
+      - Documenter les changements du cycle de vie en utilisant la structure 
+        d'artefact DAMA « Annexe Chapitre 3, p. 69–70 ».
+      - Valider la couverture du cycle de vie avec les gestionnaires.
+      notes:
+      - Utiliser les contrôles de capacité du cycle de vie DCAM pour identifier 
+        les lacunes.
+    - number: 2
+      name: Intégrer les exigences de métadonnées dans la conception des 
+        pipelines
+      prerequisite: Nécessite des règles métadonnées gouvernées.
+      deliverable: Modèles de conception de pipeline
+      recommendations:
+      - Inclure la propagation des métadonnées, la cartographie de la 
+        traçabilité et les règles de validation sémantique dans les modèles de 
+        pipeline.
+      - Validez la disponibilité des métadonnées avant de promouvoir les tâches 
+        du pipeline.
+      - S'assurer que les métadonnées sont liées aux domaines maîtres et de 
+        référence « Chapitre 6, p. 182–188 ».
+      - Enregistrez la conception des métadonnées du pipeline en utilisant les 
+        directives d'artefact DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les contrôles de conception CMMI pour vérifier l'exhaustivité.
+    - number: 3
+      name: Aligner la gouvernance des métadonnées avec les revues de modèles et
+        d'ensembles de données
+      prerequisite: Nécessite des processus de revue de modèle gouvernés
+      deliverable: Examiner les preuves
+      recommendations:
+      - Validez les définitions d'attributs, les liens de traçabilité et la 
+        clarté sémantique.
+      - Confirmer la documentation des métriques, transformations et 
+        dépendances.
+      - Capturer les résultats des revues en utilisant la structure de 
+        documentation DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      - Aligner les métadonnées du modèle avec la terminologie métier « Chapitre
+        10, p. 282–284 ».
+      notes:
+      - Utiliser le score de cohérence sémantique DCAM pour prioriser les 
+        problèmes.
+    - number: 4
+      name: Introduisez des points de contrôle de validation des métadonnées
+      prerequisite: Nécessite un alignement du cycle de vie et du pipeline
+      deliverable: Définitions des points de contrôle de validation
+      recommendations:
+      - Définir les étapes de validation pour le lignage, les règles 
+        sémantiques, la complétude des métadonnées et la correction des 
+        dépendances.
+      - Attribuer la propriété aux stewards et aux custodians.
+      - Acheminer les exceptions vers les forums de gouvernance des métadonnées 
+        “Chapitre 3.4, p. 60–61”.
+      - Stockez les définitions de points de contrôle en utilisant les normes 
+        d'artefact DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les pratiques de vérification CMMI pour renforcer les points de
+        contrôle.
+    - number: 5
+      name: Maintenir la gouvernance des métadonnées du cycle de vie
+      prerequisite: Nécessite une gouvernance stable du cycle de vie
+      deliverable: Journal de gouvernance du cycle de vie
+      recommendations:
+      - Suivez les écarts du cycle de vie, les lacunes de lignée, les 
+        définitions manquantes et les sémantiques ambiguës.
+      - Mettre à jour la documentation du cycle de vie basée sur les insights de
+        gouvernance.
+      - Maintenir l’alignement entre domaines tels que BI, intégration et 
+        qualité.
+      - Documenter les mises à jour en utilisant les conventions d'artefacts 
+        DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les indicateurs de maturité du cycle de vie DCAM pour guider 
+        les améliorations.
+  MD-06:
+    title: Automatiser la capture des métadonnées, la traçabilité et le contrôle
+      sémantique
+    procedures:
+    - number: 1
+      name: Définir les KPI de surveillance des métadonnées
+      prerequisite: Nécessite intégration du cycle de vie MD-04
+      deliverable: Ensemble de métadonnées KPI
+      recommendations:
+      - Définissez les métriques de complétude, exactitude, profondeur de 
+        lignée, précision sémantique et couverture de propagation « Chapitre 11,
+        p. 308–311 ».
+      - Aligner les KPI de métadonnées avec les exigences techniques et métier 
+        des métadonnées “Chapitre 9, p. 236–239”.
+      - Attribuer la responsabilité aux stewards, propriétaires et custodians « 
+        Chapitre 4, p. 86–89 ».
+      - Documentez les KPI en utilisant les modèles d'artefact DAMA « Chapitre 3
+        Annexe, p. 69–70 ».
+      notes:
+      - Utiliser le scoring de capacité DCAM pour construire des tableaux de 
+        bord de métadonnées.
+    - number: 2
+      name: Mettre en œuvre une validation automatisée des métadonnées
+      prerequisite: Nécessite un ensemble KPI
+      deliverable: Règles de validation des métadonnées
+      recommendations:
+      - Mettre en œuvre des règles pour les définitions manquantes, les lacunes 
+        de traçabilité, les sémantiques invalides et les entrées de métadonnées 
+        obsolètes.
+      - Cartographier la validation aux catégories de métadonnées.
+      - Dirigez les exceptions vers les gestionnaires ou les forums de 
+        gouvernance.
+      - Enregistrer la logique de validation en utilisant les modèles DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les techniques de couverture de test CMMI pour améliorer la 
+        précision.
+    - number: 3
+      name: Mettre en œuvre la validation automatisée de la traçabilité
+      prerequisite: Nécessite des standards de traçabilité
+      deliverable: Plan directeur de validation du lignage
+      recommendations:
+      - Valider les liens de traçabilité à travers ingestion, transformation et 
+        distribution « Chapitre 9, p. 236–239 ».
+      - Assurez-vous que les dépendances en amont et en aval correspondent à la 
+        sémantique déclarée.
+      - Détecte les segments de traçabilité manquants ou cassés.
+      - Documentez la validation en utilisant la structure d'artefact DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les indicateurs de capacité de traçabilité DCAM pour identifier
+        les lacunes critiques.
+    - number: 4
+      name: Mettre en œuvre la validation sémantique et des définitions
+      prerequisite: Nécessite des règles sémantiques
+      deliverable: Logique de validation sémantique
+      recommendations:
+      - Valider les définitions d’attributs, synonymes, valeurs autorisées et 
+        notes d’utilisation.
+      - Assurer la cohérence sémantique du domaine en utilisant les directives 
+        de modélisation DAMA « Chapitre 10, p. 282–284 ».
+      - Détectez la terminologie métier conflictuelle ou ambiguë.
+      - Enregistrez la logique de validation en utilisant les modèles 
+        d'artefacts gouvernés « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser les techniques de revue sémantique CMMI pour la complétude des 
+        règles.
+    - number: 5
+      name: Maintenir la gouvernance automatisée des métadonnées
+      prerequisite: Nécessite une automatisation opérationnelle
+      deliverable: Journal de gouvernance de l'automatisation des métadonnées
+      recommendations:
+      - Suivre les mises à jour des règles de validation, seuils, logique 
+        sémantique et algorithmes de traçabilité.
+      - Étendre l'automatisation à de nouveaux ensembles de données, pipelines 
+        ou domaines.
+      - Assurez l'alignement avec les normes de métadonnées et la documentation 
+        du cycle de vie.
+      - Documenter les mises à jour en utilisant la structure d'artefact DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser l'évolution des capacités DCAM pour planifier les améliorations
+        d'automatisation.
+  MD-09:
+    title: Optimisez la gouvernance des métadonnées et institutionnalisez les 
+      meilleures pratiques
+    procedures:
+    - number: 1
+      name: Revue de la base de données des tendances de gouvernance
+      prerequisite: Nécessite une base de référence KPI
+      deliverable: Analyse de performance des métadonnées
+      recommendations:
+      - Analyser les tendances telles que les définitions manquantes, les 
+        lacunes de traçabilité, les conflits sémantiques et les métadonnées 
+        obsolètes.
+      - Comparer les performances entre domaines pour détecter les faiblesses 
+        systémiques.
+      - Valider la contribution de la valeur des métadonnées à la prise de 
+        décision.
+      - Documenter les conclusions en utilisant la structure d'artefact DAMA « 
+        Annexe du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser les benchmarks de capacité DCAM pour calibrer la maturité.
+    - number: 2
+      name: Améliorer les normes et règles de métadonnées
+      prerequisite: Nécessite des analyses de performance
+      deliverable: Normes mises à jour
+      recommendations:
+      - Mettez à jour les règles de documentation, les attentes de lignée et les
+        définitions sémantiques.
+      - Intégrez les nouvelles exigences métier.
+      - Clarifier les termes ambigus ou conflictuels.
+      - Valider les mises à jour avec les forums de gouvernance des métadonnées 
+        « Chapitre 3.4, p. 60–61 ».
+      notes:
+      - Utiliser la logique de contrôle des changements CMMI pour les mises à 
+        jour formalisées.
+    - number: 3
+      name: Comparer les pratiques de métadonnées avec des cadres externes
+      prerequisite: Nécessite une évaluation de maturité
+      deliverable: Rapport de benchmarking
+      recommendations:
+      - Comparer les processus internes de métadonnées aux meilleures pratiques 
+        industrielles de métadonnées.
+      - Cartographiez les discordances avec les attentes DAMA « Chapitre 9, p. 
+        236–239 ».
+      - Identifiez les lacunes de capacité en gestion sémantique, de traçabilité
+        et de dépendances.
+      - Enregistrer l'analyse comparative en utilisant les modèles d'artefact 
+        DAMA « Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser la cartographie de référence DCAM pour définir des objectifs 
+        d’amélioration.
+    - number: 4
+      name: Améliorer la logique d'automatisation des métadonnées
+      prerequisite: Nécessite une automatisation MD-06
+      deliverable: Règles d'automatisation mises à jour
+      recommendations:
+      - Étendre les règles de validation pour capturer de nouveaux modèles 
+        d'échec de métadonnées.
+      - Améliorer la complétude du traçage de la traçabilité et la logique de 
+        détection sémantique.
+      - Valider les mises à jour des règles dans des environnements contrôlés.
+      - Chercher l'approbation via les workflows de gouvernance « Chapitre 3.4, 
+        p. 60–61 ».
+      notes:
+      - Utiliser les modèles d'automatisation CMMI pour structurer les 
+        améliorations.
+    - number: 5
+      name: Maintenez un cycle d'amélioration continue des métadonnées
+      prerequisite: Nécessite un cycle d'optimisation
+      deliverable: Plan d'amélioration des métadonnées
+      recommendations:
+      - Maintenir le backlog d'amélioration basé sur les tendances et les 
+        insights de gouvernance KPI « Chapitre 3.6, p. 64–66 ».
+      - Regroupez les améliorations en vagues incrémentales.
+      - Aligner les améliorations avec la feuille de route de gouvernance des 
+        données d'entreprise « Chapitre 3, p. 51–53 ».
+      - Suivre les progrès en utilisant la documentation d'artefact DAMA « 
+        Annexe du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser la cartographie d'évolution des capacités DCAM pour guider 
+        l'avancement de la maturité à long terme.

@@ -1,0 +1,242 @@
+domain:
+  id: 10
+  name: Métadonnées (MD)
+  description: "Ce domaine évalue la gouvernance des métadonnées métier et techniques,
+    y compris les définitions, la lignée, les structures de catalogage et les responsabilités
+    de stewardship. Il examine comment les métadonnées permettent la transparence,
+    l'interprétabilité et l'évolution contrôlée des actifs de données à travers les
+    domaines. La gestion des métadonnées est un mécanisme fondamental pour la traçabilité,
+    la cohérence sémantique et l'utilisation fiable des données (DAMA-DMBOK2, Chapitre
+    12).\n"
+maturity_scale:
+  0:
+    maturity_level: Inexistant
+    meaning: Aucune pratique de gouvernance et aucune responsabilité ou 
+      processus défini.
+    interpretation_for_assessment: Indique une absence totale de structure et un
+      besoin immédiat d'action fondamentale.
+  1:
+    maturity_level: Initial
+    meaning: Les activités se déroulent de manière informelle et réactive avec 
+      peu ou pas de documentation.
+    interpretation_for_assessment: Reflète une prise de conscience, mais aussi 
+      une forte variabilité et un risque opérationnel élevé.
+  2:
+    maturity_level: Émergent
+    meaning: Certaines pratiques existent mais restent incohérentes, non 
+      documentées ou non adoptées à travers les équipes.
+    interpretation_for_assessment: Montre un développement précoce. La 
+      standardisation et la documentation sont nécessaires pour progresser.
+  3:
+    maturity_level: Établi
+    meaning: Les processus, rôles et politiques sont définis, documentés et 
+      appliqués avec stabilité.
+    interpretation_for_assessment: Démontre la cohérence opérationnelle et la 
+      préparation à des améliorations plus structurées.
+  4:
+    maturity_level: Géré
+    meaning: La gouvernance est intégrée dans les flux de travail et soutenue 
+      par des outils, la surveillance et la supervision.
+    interpretation_for_assessment: Représente une adoption mature avec une 
+      exécution fiable à travers les équipes.
+  5:
+    maturity_level: Optimisé
+    meaning: La gouvernance est pleinement intégrée, continuellement améliorée 
+      et alignée avec les attentes de conformité et d'éthique.
+    interpretation_for_assessment: Représente une maturité avancée avec une 
+      gouvernance proactive, une optimisation et une amélioration continue 
+      institutionnalisée.
+questions:
+  Q1:
+    text: Les normes de métadonnées métier et techniques sont-elles formellement
+      définies et approuvées ?
+    explanation: Évalue l'existence et la clarté des structures de métadonnées 
+      gouvernées.
+    objective: Assurez la cohérence et l'interprétabilité sémantiques.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Management; DCAM, Metadata
+      Capability; IDGC, Information Management)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Définir les normes de métadonnées métier et techniques
+      1:
+        action_code: MD-02
+        description: Assigner les rôles de gestion pour la gouvernance des 
+          métadonnées
+      2:
+        action_code: MD-03
+        description: Approuvez les structures de métadonnées gouvernées
+      3:
+        action_code: MD-04
+        description: Intégrez les normes de métadonnées dans les routines de 
+          domaine et opérationnelles
+      4:
+        action_code: MD-06
+        description: Automatiser la validation des métadonnées et l'application 
+          des règles
+      5:
+        action_code: MD-09
+        description: Améliorer continuellement les normes de métadonnées en 
+          utilisant des preuves
+  Q2:
+    text: Les métadonnées sont-elles capturées, cataloguées et maintenues de 
+      manière systématique ?
+    explanation: Évalue les processus de catalogage, de stewardship et de mise à
+      jour.
+    objective: Maintenir des métadonnées précises, accessibles et gouvernées.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Standards; DCAM, Metadata
+      Structure; IDGC, Documentation Controls)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Définir les exigences de catalogage et de maintenance des 
+          métadonnées
+      1:
+        action_code: MD-02
+        description: Attribuer les responsabilités pour la capture et la mise à 
+          jour des métadonnées
+      2:
+        action_code: MD-03
+        description: Approuvez les structures de catalogage et les processus de 
+          maintenance
+      3:
+        action_code: MD-04
+        description: Mettre en œuvre des routines de catalogage et de mise à 
+          jour gouvernées
+      4:
+        action_code: MD-06
+        description: Automatiser la capture, le catalogage et les contrôles de 
+          mise à jour des métadonnées
+      5:
+        action_code: MD-09
+        description: Améliorez continuellement la gouvernance du catalogage des 
+          métadonnées.
+  Q3:
+    text: La traçabilité est-elle suivie, gouvernée et utilisée pour soutenir la
+      transparence et l'analyse d'impact ?
+    explanation: Examine la complétude de la traçabilité et les contrôles de 
+      gouvernance.
+    objective: Permettez la traçabilité et l'évolution contrôlée des données.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Stewardship; DCAM, Ownership;
+      IDGC, Accountability)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Définir les règles de capture et de gouvernance de la 
+          traçabilité
+      1:
+        action_code: MD-02
+        description: Attribuer les responsabilités de gouvernance de la 
+          traçabilité
+      2:
+        action_code: MD-03
+        description: Approuver les normes de gouvernance du lignage
+      3:
+        action_code: MD-04
+        description: Intégrer les processus de collecte et de maintenance de la 
+          traçabilité
+      4:
+        action_code: MD-06
+        description: Automatiser la collecte, la validation et la détection de 
+          dérive de la traçabilité
+      5:
+        action_code: MD-09
+        description: Améliorez continuellement la gouvernance de la traçabilité 
+          à l'aide de métriques
+  Q4:
+    text: Les métadonnées sont-elles intégrées à travers les domaines pour 
+      soutenir l'interopérabilité et le sens partagé ?
+    explanation: Évalue l'alignement sémantique inter-domaines.
+    objective: Assurez une interprétation cohérente à travers l'organisation.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Lifecycle; Chapter 12 –
+      Data Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Définir les règles d'alignement sémantique et de 
+          métadonnées inter-domaines
+      1:
+        action_code: MD-02
+        description: Attribuez les responsabilités pour l'alignement sémantique
+      2:
+        action_code: MD-03
+        description: Approuver les normes d'intégration sémantique et de 
+          métadonnées
+      3:
+        action_code: MD-04
+        description: Intégrer les routines d’alignement des métadonnées 
+          inter-domaines
+      4:
+        action_code: MD-06
+        description: Automatisez l'harmonisation des métadonnées et la 
+          correspondance sémantique
+      5:
+        action_code: MD-09
+        description: Améliorer continuellement la gouvernance de 
+          l'interopérabilité des métadonnées
+  Q5:
+    text: Les indicateurs de qualité des métadonnées sont-ils mesurés et révisés
+      ?
+    explanation: Examine les métriques de précision, d'exhaustivité et de 
+      ponctualité des métadonnées.
+    objective: Assurez une métadonnée fiable comme fondation pour la 
+      gouvernance.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Quality; DCAM, Quality Controls;
+      IDGC, Monitoring)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Définir les indicateurs de qualité des métadonnées et les 
+          règles de surveillance
+      1:
+        action_code: MD-02
+        description: Attribuez les responsabilités pour la supervision de la 
+          qualité des métadonnées.
+      2:
+        action_code: MD-03
+        description: Approuver les indicateurs clés de performance qualité des 
+          métadonnées et les cycles de revue
+      3:
+        action_code: MD-04
+        description: Mettez en œuvre des tableaux de bord et des routines de 
+          revue de qualité
+      4:
+        action_code: MD-06
+        description: Automatiser la validation de la qualité des métadonnées
+      5:
+        action_code: MD-09
+        description: Améliorez continuellement la gouvernance de la qualité des 
+          métadonnées
+  Q6:
+    text: Les garanties éthiques, de confidentialité et d'utilisation 
+      responsable sont-elles appliquées aux structures de métadonnées ?
+    explanation: Garantir que les métadonnées ne sont pas mal utilisées et 
+      respectent les règles de minimisation et d'équité.
+    objective: Gérez l'utilisation responsable, légale et éthique des 
+      métadonnées.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Ethical Metadata & Explainability;
+      DCAM, Responsible Use; IDGC, Ethical Transparency)"
+    score_action_mapping:
+      0:
+        action_code: MD-01
+        description: Définir les règles éthiques, de confidentialité et de 
+          minimisation pour les métadonnées
+      1:
+        action_code: MD-02
+        description: Attribuer la gestion de la conformité éthique et de la 
+          confidentialité
+      2:
+        action_code: MD-03
+        description: Approuvez les mesures éthiques et de confidentialité
+      3:
+        action_code: MD-04
+        description: Intégrez des contrôles éthiques et de confidentialité dans 
+          les routines de métadonnées
+      4:
+        action_code: MD-06
+        description: Automatisez la validation de la confidentialité, de la 
+          minimisation et de l'équité
+      5:
+        action_code: MD-09
+        description: Améliorer continuellement la gouvernance éthique des 
+          métadonnées

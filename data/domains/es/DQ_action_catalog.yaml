@@ -1,0 +1,123 @@
+domain:
+  id: 11
+  name: Calidad de Datos (DQ)
+action_catalog:
+  DQ-01:
+    title: Definir principios fundamentales de calidad de datos, alcance y 
+      reglas de propiedad
+    procedures:
+    - number: 1
+      name: Definir principios de calidad de datos y límites de alcance
+      prerequisite: Requiere identificación de activos de datos principales
+      deliverable: Documento de principios de calidad de datos
+      recommendations:
+      - Definir principios usando guía DAMA para dimensiones de calidad como 
+        precisión, completitud, consistencia e integridad (Capítulo 11, p. 
+        308–311).
+      - Asegurar alineación con expectativas de gobernanza DAMA para stewardship
+        y propiedad de actividades de calidad (Capítulo 3.2, p. 55–57).
+      - Validar supervisión del ciclo de vida con puntos de control DAMA para 
+        creación, transformación y retiro (Capítulo 4.3, p. 92).
+      - Documentar principios según la estructura de artefactos DAMA para 
+        trazabilidad (Apéndice del Capítulo 3, p. 69–70).
+      notes:
+      - Utilice el alcance de capacidad de calidad DCAM para alinear principios 
+        con necesidades críticas de datos empresariales.
+  DQ-02:
+    title: Asignar roles de stewardship para gobernanza de calidad, validación y
+      remediación
+    procedures:
+    - number: 1
+      name: Consolidar requisitos de calidad de datos
+      prerequisite: Requiere que DQ-01 esté completo
+      deliverable: Registro de requisitos de calidad
+      recommendations:
+      - Consolidar requisitos usando guías de calidad y definiciones de 
+        dimensiones DAMA (Capítulo 11, p. 308–311).
+      - Validar requisitos usando principios de claridad de metadatos (Capítulo 
+        9, p. 236).
+      - Asegurar alineación del ciclo de vida con puntos de control de calidad 
+        DAMA (Capítulo 4.3, p. 92).
+      - Confirmar cobertura de stewardship y propiedad usando definiciones de 
+        roles DAMA (Capítulo 3.2, p. 55–57).
+      notes:
+      - Utilice la priorización de requisitos DCAM para enfocarse en controles 
+        de calidad de alto impacto.
+  DQ-03:
+    title: Aprobar dimensiones de calidad gobernadas, políticas de medición y 
+      reglas de validación
+    procedures:
+    - number: 1
+      name: Establecer estatuto del Consejo de Calidad de Datos
+      prerequisite: Requiere entregables DQ-02
+      deliverable: Estatuto aprobado
+      recommendations:
+      - Establezca la carta usando la guía DAMA para estructuras de autoridad de
+        gobernanza (Capítulo 3.4, p. 60).
+      - Asegurar que los roles se alineen con expectativas de stewardship de 
+        calidad DAMA (Capítulo 4, p. 86–89).
+      - Validar alineación con capas funcionales de gobernanza de DAMA (Figura 
+        3-2, p. 53).
+      - Documentar la carta siguiendo estructura de artefactos DAMA (Capítulo 3 
+        Apéndice, p. 69).
+      notes:
+      - Usar técnicas de alineación de autoridad DCAM para mejorar claridad de 
+        gobernanza.
+  DQ-04:
+    title: Incorporar dimensiones de calidad, reglas de medición y propiedad en 
+      rutinas de dominio
+    procedures:
+    - number: 1
+      name: Incorpore controles de calidad en flujos de trabajo de dominio
+      prerequisite: Requiere estándares aprobados DQ-03
+      deliverable: Plantillas de flujo de trabajo actualizadas
+      recommendations:
+      - Incorporar controles siguiendo la guía de DAMA para supervisión de 
+        calidad en puntos de control operativos (Capítulo 3.3, p. 58).
+      - Validar controles usando definiciones de calidad DAMA (Capítulo 11, p. 
+        308–311).
+      - Asegurar supervisión del ciclo de vida usando puntos de control DAMA 
+        (Capítulo 4.3, p. 92).
+      - Confirmar supervisión de administración usando responsabilidades de 
+        gobernanza de DAMA (Capítulo 4, p. 86–87).
+      notes:
+      - Usar técnicas de mapeo de control DCAM para reforzar el cumplimiento.
+  DQ-06:
+    title: Automatizar validación, ejecución, monitoreo y seguimiento de 
+      remediación
+    procedures:
+    - number: 2
+      name: Establecer reglas automatizadas de validación de calidad
+      prerequisite: Requiere criterios de validación
+      deliverable: Conjunto automatizado de reglas de calidad
+      recommendations:
+      - Establecer reglas siguiendo las definiciones de calidad y técnicas de 
+        validación de DAMA (Capítulo 11, p. 308–311).
+      - Asegurar que las reglas incluyan requisitos de claridad de metadatos 
+        (Capítulo 9, p. 236).
+      - Valide la alineación del ciclo de vida usando puntos de control DAMA 
+        (Capítulo 4.3, p. 92).
+      - Documentar la lógica de automatización usando las directrices de 
+        artefactos de DAMA (Capítulo 3 Apéndice, p. 69).
+      notes:
+      - Aplicar preparación para automatización CMMI para asegurar estabilidad 
+        antes del despliegue.
+  DQ-09:
+    title: Mejorar continuamente la medición, validación y remediación de 
+      calidad en gobernanza
+    procedures:
+    - number: 2
+      name: Mejore estándares de calidad utilizando insights.
+      prerequisite: Requiere análisis de tendencias
+      deliverable: Estándares de calidad actualizados
+      recommendations:
+      - Mejorar estándares usando guía de dimensión y medición de calidad DAMA 
+        (Capítulo 11, p. 308–311).
+      - Validar mejoras usando requisitos de claridad de metadatos de DAMA 
+        (Capítulo 9, p. 236).
+      - Asegurar alineación del ciclo de vida usando puntos de control de 
+        supervisión DAMA (Capítulo 4.3, p. 92).
+      - Confirmar aprobación de administración usando roles de gobernanza DAMA 
+        (Capítulo 4, p. 86–87).
+      notes:
+      - Aplique métodos de mejora continua CMMI para refinamiento estructural.

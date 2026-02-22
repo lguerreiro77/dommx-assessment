@@ -1,0 +1,625 @@
+domain:
+  id: 6
+  name: Intégration et interopérabilité des données (DII)
+action_catalog:
+  DII-01:
+    title: Définissez les principes fondamentaux et le périmètre de 
+      l'intégration des données
+    procedures:
+    - number: 1
+      name: Définir les principes d’intégration des données et les limites du 
+        périmètre
+      prerequisite: Nécessite l'identification des systèmes sources et cibles 
+        principaux
+      deliverable: Document des principes d'intégration des données
+      recommendations:
+      - Définissez les principes en utilisant les directives DAMA pour 
+        l'intégration et l'interopérabilité, avec un focus sur la cohérence 
+        sémantique, la transparence et le contrôle des changements (DAMA DMBOK2,
+        Chapitre 8, p. 252–260).
+      - Assurer que les principes s'alignent avec les attentes de gouvernance 
+        pour la responsabilité, le stewardship et la propriété (« Chapitre 3, p.
+        51–57 »).
+      - Validez que les principes intègrent les points de contrôle du cycle de 
+        vie pour l'ingestion, la transformation et la publication des données 
+        intégrées (« Chapitre 4.3, p. 92 »).
+      - Documentez les principes selon la structure d'artefact DAMA pour plus de
+        clarté et d'auditabilité (« Chapitre 3 Annexe, p. 69–70 »).
+      notes:
+      - Utiliser la délimitation des capacités d'intégration DCAM pour assurer 
+        que les principes s'alignent avec les besoins d'intégration à l'échelle 
+        de l'entreprise.
+    - number: 2
+      name: Rédiger un aperçu initial de l'architecture d'intégration
+      prerequisite: Nécessite des principes définis
+      deliverable: Vue d'ensemble de l'architecture d'intégration v0.1
+      recommendations:
+      - Rédiger l'aperçu basé sur les directives DAMA pour les modèles 
+        d'intégration logique, y compris la consolidation, la propagation et la 
+        fédération (« Chapitre 8, p. 252–258 »).
+      - S'assurer de l'alignement avec les structures de métadonnées qui 
+        décrivent les interfaces, la traçabilité et les règles de transformation
+        (“Chapitre 9, p. 236–239”).
+      - Validez le support des contrôles de qualité des données conformément aux
+        dimensions de qualité DAMA (« Chapitre 11, p. 308–311 »).
+      - Confirmez que la vue d'ensemble reflète les responsabilités des 
+        gestionnaires et propriétaires définies par la gouvernance DAMA (« 
+        Chapitre 4, p. 86–89 »).
+      notes:
+      - Utiliser les pratiques d'élaboration architecturale CMMI pour stabiliser
+        le premier plan d'intégration.
+    - number: 3
+      name: Identifier les domaines et flux d'intégration préliminaires
+      prerequisite: Nécessite la cartographie des parties prenantes
+      deliverable: Catalogue initial des domaines et flux d'intégration
+      recommendations:
+      - Identifier les domaines et flux selon les descriptions DAMA des 
+        scénarios d'intégration et l'alignement des domaines d'activité (« 
+        Chapitre 8, p. 252–260 »).
+      - Assurer que les flux sont documentés avec des métadonnées pour les 
+        sources, cibles, fréquence et logique de transformation (« Chapitre 9, 
+        p. 236–239 »).
+      - Validez l'alignement du cycle de vie afin que chaque flux ait des 
+        conditions définies de création, mise à jour et mise hors service (« 
+        Chapitre 4.3, p. 92 »).
+      - Confirmer les responsabilités de stewardship pour chaque flux selon les 
+        définitions de rôle DAMA (“Chapitre 3.2, p. 55–57”).
+      notes:
+      - Utiliser la cartographie de la chaîne de valeur DCAM pour prioriser les 
+        flux d'intégration les plus critiques.
+    - number: 4
+      name: Attribuer la propriété provisoire de l'intégration
+      prerequisite: Nécessite un domaine d'intégration et un catalogue de flux
+      deliverable: Matrice de propriété d'intégration
+      recommendations:
+      - Attribuez la propriété en utilisant les directives DAMA pour la gestion 
+        des données partagées et des actifs d'intégration (« Chapitre 4, p. 
+        86–89 »).
+      - S'assurer que la propriété couvre à la fois la signification métier et 
+        la responsabilité technique du pipeline (« Chapitre 8, p. 252–258 »).
+      - Valider les chemins d'escalade en utilisant les règles de décision de 
+        gouvernance et de gestion des problèmes DAMA (« Chapitre 3.4, p. 60–61 
+        »).
+      - Documenter la propriété en utilisant les modèles d'artefact DAMA pour 
+        les enregistrements de rôles et responsabilités (« Annexe du Chapitre 3,
+        p. 69–70 »).
+      notes:
+      - Utiliser les critères comportementaux IDGC pour sélectionner des 
+        propriétaires capables de coordonner entre les domaines.
+    - number: 5
+      name: Publier les directives d'intégration initiales
+      prerequisite: Nécessite des principes, un aperçu d'architecture et une 
+        propriété
+      deliverable: Brief d’intégration à l’onboarding
+      recommendations:
+      - Publier les directives selon les pratiques de communication de 
+        gouvernance DAMA (« Chapitre 3.6, p. 64–66 »).
+      - S'assurer que les directives couvrent les principes, les modèles, les 
+        attentes de qualité des données et les rôles de stewardship (“Chapitre 
+        8, p. 252–260”; “Chapitre 11, p. 308–311”).
+      - Valider que les impacts du cycle de vie de l'intégration, incluant la 
+        conservation et l'utilisation en aval, sont explicites (« Chapitre 4.3, 
+        p. 92 »).
+      - Confirmer que la structure de documentation suit les recommandations 
+        d'artefact DAMA (« Chapitre 3 Annexe, p. 69–70 »).
+      notes:
+      - Utiliser les pratiques de communication CMMI pour rendre les directives 
+        d'intégration accessibles aux équipes métier et techniques.
+  DII-02:
+    title: Formalisez le stewardship et les normes d'intégration
+    procedures:
+    - number: 1
+      name: Consolider les exigences d'intégration
+      prerequisite: Nécessite que DII-01 soit complet
+      deliverable: Registres des exigences d'intégration
+      recommendations:
+      - Consolider les exigences fonctionnelles et non fonctionnelles en 
+        utilisant les catégories d'intégration DAMA telles que latence, 
+        fraîcheur des données et besoins de synchronisation (« Chapitre 8, p. 
+        252–260 »).
+      - Valider les exigences avec les attentes métadonnées pour les 
+        spécifications d'interface et la traçabilité (« Chapitre 9, p. 236–239 
+        »).
+      - Assurez que les exigences du cycle de vie décrivent comment les données 
+        intégrées seront gouvernées de l'ingestion à l'élimination (« Chapitre 
+        4.3, p. 92 »).
+      - Confirmez les responsabilités de propriété et de stewardship pour chaque
+        exigence suivant les rôles de gouvernance DAMA (« Chapitre 3.2, p. 55–57
+        »).
+      notes:
+      - Utilisez la cartographie des capacités DCAM pour pondérer la valeur 
+        métier par rapport à la complexité technique.
+    - number: 2
+      name: Produisez une architecture de référence d'intégration formelle
+      prerequisite: Nécessite des exigences validées
+      deliverable: Architecture de référence d'intégration v1.0
+      recommendations:
+      - Produire l'architecture en utilisant les descriptions DAMA des modèles 
+        d'intégration tels que consolidation, propagation de données et accès 
+        virtuel (“Chapitre 8, p. 252–258”).
+      - Assurez-vous que les métadonnées capturent les éléments clés tels que 
+        les modèles canoniques, les contrats d'interface et la lignée des 
+        pipelines (« Chapitre 9, p. 236–239 »).
+      - Valider que les contrôles qualité sont intégrés aux étapes appropriées 
+        en alignement avec les dimensions qualité DAMA (« Chapitre 11, p. 
+        308–311 »).
+      - Documentez l'architecture selon la structure d'artefact DAMA pour les 
+        diagrammes et le récit (« Annexe du Chapitre 3, p. 69–70 »).
+      notes:
+      - Utiliser les pratiques de base architecturale CMMI pour sécuriser 
+        l'accord des parties prenantes sur la version 1.0.
+    - number: 3
+      name: Définir les normes, modèles et règles d'intégration
+      prerequisite: Nécessite une architecture de référence v1.0
+      deliverable: Manuel des normes d'intégration.
+      recommendations:
+      - Définir les normes pour les pipelines ETL et ELT, l'orchestration et 
+        DataOps basées sur les directives d'intégration et la gouvernance du 
+        cycle de vie DAMA (« Chapitre 8, p. 252–260 »).
+      - Assurez-vous que le nommage, les contrats d'interface et les structures 
+        sémantiques respectent les règles de métadonnées et de modélisation DAMA
+        (« Chapitre 9, p. 236–239 » ; « Chapitre 10, p. 282–284 »).
+      - Valider la couverture du cycle de vie avec des règles pour l'intégration
+        de nouvelles sources, la modification des transformations et la mise 
+        hors service des flux (« Chapitre 4.3, p. 92 »).
+      - Confirmer que l'acceptation de la gestion est enregistrée selon les 
+        rôles de gouvernance DAMA (« Chapitre 3.2, p. 55–57 »).
+      notes:
+      - Appliquer les principes GDPR de minimisation et de limitation de 
+        finalité lors de la définition des règles pour l’intégration des données
+        personnelles.
+    - number: 4
+      name: Valider les normes d’intégration avec les parties prenantes métier
+      prerequisite: Nécessite un projet de normes
+      deliverable: Enregistrement d'alignement
+      recommendations:
+      - Validez les normes en utilisant les directives de communication de 
+        gouvernance DAMA pour assurer la compréhension des parties prenantes 
+        métier du comportement d'intégration (« Chapitre 3.6, p. 64–66 »).
+      - Confirmer que le sens sémantique des attributs intégrés est cohérent 
+        avec la terminologie d’entreprise (« Chapitre 10, p. 282–284 »).
+      - Validez que les implications du cycle de vie et de la qualité sont 
+        acceptables pour l'analytique et les opérations en aval (« Chapitre 4.3,
+        p. 92 » ; « Chapitre 11, p. 308–311 »).
+      - S'assurer que les retours sont documentés selon les modèles d'artefacts 
+        DAMA pour les commentaires et décisions (« Chapitre 3 Annexe, p. 69–70 
+        »).
+      notes:
+      - Utiliser les techniques d'alignement des parties prenantes DCAM pour 
+        négocier les compromis entre rapidité et gouvernance.
+    - number: 5
+      name: Approuvez et publiez les normes d'intégration
+      prerequisite: Nécessite l'approbation de l'autorité de gouvernance
+      deliverable: Pack d'approbation des normes d'intégration
+      recommendations:
+      - Approuvez les normes en utilisant le modèle d'autorité et d'escalade 
+        DAMA pour les décisions de gouvernance des données (« Chapitre 3.4, p. 
+        60–61 »).
+      - Validez que les normes consolident les exigences de qualité, 
+        traçabilité, accès et cycle de vie à travers tous les domaines 
+        pertinents (« Chapitre 8, p. 252–260 » ; « Chapitre 11, p. 308–311 »).
+      - Assurer que les normes publiées sont stockées en tant qu’artefacts 
+        gouvernés selon les pratiques de documentation DAMA (« Chapitre 3 
+        Annexe, p. 69–70 »).
+      - Confirmez que les responsabilités de gestion et de propriété sont 
+        explicites et comprises (« Chapitre 4, p. 86–89 »).
+      notes:
+      - Utiliser les contrôles de préparation CMMI pour garantir que les équipes
+        et plateformes sont prêtes à adopter les normes.
+  DII-03:
+    title: Approuver les règles, interfaces et responsabilités d'intégration
+    procedures:
+    - number: 1
+      name: Établir la charte du Conseil d'Intégration des Données
+      prerequisite: Nécessite des livrables DII-02
+      deliverable: Charte approuvée
+      recommendations:
+      - Établir la charte basée sur les définitions d'autorité de gouvernance 
+        DAMA pour les organes décisionnels et l'escalade (« Chapitre 3.4, p. 
+        60–61 »).
+      - Assurez que le périmètre du conseil couvre les normes d'intégration, les
+        pipelines critiques, les changements d'interface et les actifs de 
+        données partagés (« Chapitre 8, p. 252–260 »).
+      - Valider la cartographie aux niveaux fonctionnels de gouvernance selon le
+        modèle d'entreprise DAMA (« Figure 3.2, p. 53 »).
+      - Documenter la charte selon les directives d'artefacts DAMA (« Chapitre 3
+        Annexe, p. 69–70 »).
+      notes:
+      - Utiliser les modèles de structure de gouvernance DCAM pour connecter le 
+        conseil avec les forums d'architecture, de sécurité et de qualité.
+    - number: 2
+      name: Assigner les rôles de gouvernance d'intégration
+      prerequisite: Nécessite des descriptions de rôles
+      deliverable: Enregistrement d'affectation de rôle d'intégration
+      recommendations:
+      - Attribuez les rôles en utilisant les définitions de gestion, de 
+        dépositaires et de propriété DAMA pour les données partagées et les 
+        pipelines (« Chapitre 4, p. 86–89 »).
+      - Assurez-vous que les limites d'autorité pour l'approbation des 
+        changements, dérogations et exceptions suivent les règles de décision 
+        DAMA (« Chapitre 3.4, p. 60–61 »).
+      - Valider la couverture du cycle de vie afin que les rôles soient 
+        responsables de l'intégration, du changement et de la mise hors service 
+        des flux d'intégration (« Chapitre 4.3, p. 92 »).
+      - Enregistrer les affectations en utilisant la structure d’artefact DAMA 
+        pour les catalogues RACI et de rôles (« Chapitre 3 Annexe, p. 69–70 »).
+      notes:
+      - Utiliser les profils comportementaux IDGC pour assurer que les 
+        titulaires de rôles peuvent médiatiser les conflits entre domaines.
+    - number: 3
+      name: Mettre en place des forums de décision d'intégration
+      prerequisite: Nécessite l'approbation de la charte
+      deliverable: Calendrier et modèles de gouvernance d'intégration
+      recommendations:
+      - Mettre en place des forums réguliers pour examiner les nouveaux flux, 
+        les modifications des pipelines et les impacts structurels comme 
+        recommandé par DAMA (« Chapitre 3.3, p. 58–59 » ; « Chapitre 8, p. 
+        252–260 »).
+      - Assurer que les ordres du jour incluent les perspectives qualité, 
+        métadonnées, sécurité et cycle de vie (« Chapitres 9, 10, 11 »).
+      - Validez que les critères de décision sont transparents et traçables 
+        conformément aux principes de gouvernance DAMA (« Chapitre 3, p. 51–53 
+        »).
+      - Documentez les décisions en utilisant les modèles standard recommandés 
+        par DAMA pour les artefacts de gouvernance (« Annexe du Chapitre 3, p. 
+        69–70 »).
+      notes:
+      - Utiliser les pratiques de réunion CMMI pour maintenir les forums centrés
+        sur les preuves et les résultats.
+    - number: 4
+      name: Lancez les cycles de revue d'intégration
+      prerequisite: Nécessite des forums définis
+      deliverable: Procès-verbal de la première revue
+      recommendations:
+      - Lancez des cycles pour revoir les normes d'intégration, les flux 
+        critiques et les ruptures d'interface comme recommandé par DAMA pour la 
+        supervision (« Chapitre 3.3, p. 58–59 »).
+      - Valider que les décisions prennent en compte les impacts en amont et en 
+        aval, y compris la cohérence sémantique et la qualité (« Chapitre 8, p. 
+        252–260 » ; « Chapitre 11, p. 308–311 »).
+      - Assurez que les implications du cycle de vie sont enregistrées pour 
+        chaque décision, y compris la mise hors service le cas échéant (« 
+        Chapitre 4.3, p. 92 »).
+      - Archiver les procès-verbaux et décisions en tant qu'artefacts gouvernés 
+        selon la structure DAMA (« Annexe Chapitre 3, p. 69–70 »).
+      notes:
+      - Utiliser les pratiques d'assurance DCAM pour confirmer que les cycles de
+        révision couvrent les risques d'intégration les plus critiques.
+    - number: 5
+      name: Maintenir l'opération de gouvernance d'intégration
+      prerequisite: Nécessite un rythme de réunions
+      deliverable: Journal d'activité d'intégration
+      recommendations:
+      - Maintenir un journal consolidé des activités pour les décisions, 
+        dérogations et actions en suspens conformément aux directives de 
+        surveillance DAMA (« Chapitre 3.6, p. 64–66 »).
+      - Assurer que le journal relie chaque décision aux flux affectés, domaines
+        de données et rôles responsables (« Chapitre 3.2, p. 55–57 » ; « 
+        Chapitre 8, p. 252–260 »).
+      - Validez que les impacts du cycle de vie et de qualité des décisions clés
+        sont enregistrés pour audit (« Chapitre 4.3, p. 92 » ; « Chapitre 11, p.
+        308–311 »).
+      - Stocker le journal dans un référentiel gouverné structuré selon les 
+        directives d’artefact DAMA (« Chapitre 3 Annexe, p. 69–70 »).
+      notes:
+      - Utiliser les pratiques de surveillance CMMI pour examiner le journal 
+        d’activité à la recherche de modèles indiquant des besoins 
+        d’amélioration de la gouvernance.
+  DII-04:
+    title: Intégrer la gouvernance de l’intégration dans les workflows
+    procedures:
+    - number: 1
+      name: Intégrer les points de contrôle d'intégration dans les flux de 
+        travail des domaines
+      prerequisite: Nécessite des standards approuvés DII-03
+      deliverable: Modèles de workflow mis à jour
+      recommendations:
+      - Intégrer des points de contrôle aux étapes d’ingestion, de 
+        transformation et de publication conformément aux directives de cycle de
+        vie d’intégration DAMA (« Chapitre 8, p. 252–260 » ; « Chapitre 4.3, p. 
+        92 »).
+      - S'assurer que chaque point de contrôle implique la validation des 
+        métadonnées, de la traçabilité et des contrôles de qualité (“Chapitre 9,
+        p. 236–239”; “Chapitre 11, p. 308–311”).
+      - Valider que les rôles de responsabilité et de gestion sont explicitement
+        liés aux décisions des points de contrôle (« Chapitre 3.2, p. 55–57 »).
+      - Documenter les définitions de points de contrôle dans les modèles de 
+        flux de travail suivant la structure d'artefact DAMA (“Annexe du 
+        Chapitre 3, p. 69–70”).
+      notes:
+      - Utiliser la cartographie des capacités de workflow DCAM pour s'assurer 
+        que chaque flux critique a un point de contrôle d'intégration défini.
+    - number: 2
+      name: Intégrer les critères d'intégration dans la conception des pipelines
+        et de l'orchestration
+      prerequisite: Nécessite des normes d'intégration
+      deliverable: Modèles de conception de pipeline gouvernés.
+      recommendations:
+      - Intégrer les critères de capture de traçabilité, validation de schéma et
+        règles de qualité des données dans les modèles de pipeline ETL et ELT 
+        comme recommandé par DAMA (« Chapitre 8, p. 252–260 » ; « Chapitre 11, 
+        p. 308–311 »).
+      - S'assurer que les métadonnées pour chaque pipeline, incluant la source, 
+        la cible et la logique de transformation, sont définies selon DAMA (« 
+        Chapitre 9, p. 236–239 »).
+      - Valider que les modèles de conception spécifient les déclencheurs du 
+        cycle de vie pour le retraitement, le remplissage rétroactif et la mise 
+        hors service (« Chapitre 4.3, p. 92 »).
+      - Confirmer que les responsabilités des rôles pour l'approbation de la 
+        conception des pipelines sont claires et gouvernées (« Chapitre 3.2, p. 
+        55–57 »).
+      notes:
+      - Appliquer les pratiques de vérification de conception CMMI pour valider 
+        les critères d'intégration avant déploiement.
+    - number: 3
+      name: Mettez à jour la documentation du cycle de vie avec les points de 
+        vue d'intégration
+      prerequisite: Nécessite une refonte des flux de travail
+      deliverable: Documentation du cycle de vie mise à jour
+      recommendations:
+      - Mettre à jour les descriptions du cycle de vie afin que les événements 
+        d'intégration, tels que le premier chargement, les mises à jour 
+        incrémentielles et la bascule, soient explicites (“Chapitre 4.3, p. 92”;
+        “Chapitre 8, p. 252–260”).
+      - S'assurer que les modèles de métadonnées incluent des attributs pour le 
+        statut d'intégration, les identifiants de lot et la gestion des versions
+        (« Chapitre 9, p. 236–239 »).
+      - Valider que la documentation montre où les contrôles qualité sont 
+        appliqués le long de la chaîne d'intégration (« Chapitre 11, p. 308–311 
+        »).
+      - Structurez les documents en utilisant les directives d'artefact DAMA 
+        pour les descriptions de processus et de cycle de vie (« Chapitre 3 
+        Annexe, p. 69–70 »).
+      notes:
+      - Utiliser la cartographie des capacités du cycle de vie DCAM pour relier 
+        les événements d’intégration au cycle de vie global des données.
+    - number: 4
+      name: Appliquer les contrôles d’intégration aux points décisionnels de 
+        domaine
+      prerequisite: Nécessite des flux de travail gouvernés
+      deliverable: Preuve des contrôles d'intégration
+      recommendations:
+      - Appliquer les contrôles lors de la demande de nouvelles sources, du 
+        changement d'interfaces ou de la modification de la logique de 
+        transformation, suivant les règles de gouvernance DAMA (« Chapitre 3.4, 
+        p. 60–61 » ; « Chapitre 8, p. 252–260 »).
+      - Validez que les données intégrées respectent les définitions sémantiques
+        et le sens métier (« Chapitre 10, p. 282–284 »).
+      - S'assurer que les seuils de qualité et les critères de gestion des 
+        exceptions sont documentés pour chaque décision (« Chapitre 11, p. 
+        308–311 »).
+      - Maintenir les preuves d’approbations et de rejets en tant qu’artefacts 
+        gouvernés (« Chapitre 3 Annexe, p. 69–70 »).
+      notes:
+      - Utiliser les activités de vérification CMMI pour garantir que les 
+        décisions d'intégration sont cohérentes et basées sur des preuves.
+    - number: 5
+      name: Suivre l'adhérence à la gouvernance d'intégration à travers les 
+        domaines
+      prerequisite: Nécessite des routines de surveillance
+      deliverable: Registre de conformité d’intégration
+      recommendations:
+      - Suivre l'adhérence aux normes et modèles d'intégration en utilisant des 
+        critères de surveillance cohérents avec DAMA (« Chapitre 3.6, p. 64–66 »
+        ; « Chapitre 8, p. 252–260 »).
+      - Enregistrer les cas où les flux dévient des modèles canoniques ou où des
+        dérogations ont été accordées (« Chapitre 3.4, p. 60–61 »).
+      - Validez que l'enregistrement des écarts inclut une analyse d'impact sur 
+        le cycle de vie et la qualité (« Chapitre 4.3, p. 92 » ; « Chapitre 11, 
+        p. 308–311 »).
+      - Stocker le registre dans un référentiel gouverné structuré selon les 
+        principes d'artefact DAMA (“Chapitre 3 Annexe, p. 69–70”).
+      notes:
+      - Utiliser les indicateurs diagnostiques DCAM pour cibler la remédiation 
+        sur les écarts les plus critiques.
+  DII-06:
+    title: Automatiser la validation et la surveillance de l'intégration
+    procedures:
+    - number: 1
+      name: Définir les indicateurs de surveillance de l'intégration
+      prerequisite: Nécessite des workflows DII-04
+      deliverable: Ensemble d'indicateurs clés de performance d'intégration KPI
+      recommendations:
+      - Définir des KPI tels que le taux de chargement réussi, la fraîcheur des 
+        données, le taux de rejet et la complétude de la traçabilité 
+        conformément aux directives de qualité et d’intégration DAMA (« Chapitre
+        8, p. 252–260 » ; « Chapitre 11, p. 308–311 »).
+      - Assurer que les indicateurs sont liés aux attributs de métadonnées et 
+        aux événements de pipeline capturés dans les journaux d'intégration (« 
+        Chapitre 9, p. 236–239 »).
+      - Validez que les KPI soutiennent la supervision du cycle de vie pour la 
+        détection précoce des problèmes d'intégration (« Chapitre 4.3, p. 92 »).
+      - Attribuer la propriété KPI aux gestionnaires et rôles opérationnels 
+        selon le modèle de gouvernance DAMA (« Chapitre 3.2, p. 55–57 » ; « 
+        Chapitre 4, p. 86–89 »).
+      notes:
+      - Utilisez les indicateurs de capacité DCAM pour construire un tableau de 
+        bord d'intégration.
+    - number: 2
+      name: Établir des règles automatisées de validation d'intégration
+      prerequisite: Nécessite des critères d'intégration
+      deliverable: Ensemble de règles d'intégration automatisée
+      recommendations:
+      - Définir les règles de conformité au schéma, champs obligatoires, 
+        cohérence référentielle et duplication selon les directives qualité DAMA
+        (« Chapitre 11, p. 308–311 » ; « Chapitre 8, p. 252–260 »).
+      - Assurer que chaque règle est décrite dans les métadonnées, incluant son 
+        but, seuil et processus d'exception (« Chapitre 9, p. 236–239 »).
+      - Valider que les règles sont alignées avec les exigences du cycle de vie 
+        pour la réexécution, la mise en quarantaine et le retour en arrière (« 
+        Chapitre 4.3, p. 92 »).
+      - Documentez l'ensemble des règles comme un artefact contrôlé suivant la 
+        structure DAMA (« Annexe du Chapitre 3, p. 69–70 »).
+      notes:
+      - Utiliser les pratiques de préparation à l'automatisation CMMI pour 
+        garantir que les règles sont déployées et maintenues de manière 
+        cohérente.
+    - number: 3
+      name: Mettre en œuvre des tableaux de bord de surveillance de 
+        l'intégration
+      prerequisite: Nécessite un ensemble de règles
+      deliverable: Tableau de bord de surveillance de l'intégration
+      recommendations:
+      - Mettez en œuvre des tableaux de bord combinant l'état des pipelines, les
+        valeurs KPI et les indicateurs de qualité conformément aux pratiques de 
+        surveillance DAMA (« Chapitre 3.6, p. 64–66 » ; « Chapitre 11, p. 
+        308–311 »).
+      - S'assurer que les tableaux de bord exposent les vues de traçabilité et 
+        mettent en évidence les flux qui dépassent les seuils (« Chapitre 9, p. 
+        236–239 » ; « Chapitre 8, p. 252–260 »).
+      - Valider que les événements du cycle de vie tels que le retraitement, les
+        compléments et la mise hors service sont visibles (« Chapitre 4.3, p. 92
+        »).
+      - Fournir l'accès aux tableaux de bord pour les gestionnaires, 
+        propriétaires et équipes opérationnelles tels que définis par les rôles 
+        DAMA (« Chapitre 4, p. 86–89 »).
+      notes:
+      - Utilisez les recommandations de visualisation DCAM pour garder les 
+        tableaux de bord concentrés sur les indicateurs d'intégration les plus 
+        critiques.
+    - number: 4
+      name: Permettre les alertes d'intégration automatisées
+      prerequisite: Nécessite des tableaux de bord actifs
+      deliverable: Flux d’alerte d’intégration
+      recommendations:
+      - Configurez des alertes pour les échecs de chargement, les dépassements 
+        de seuils, les changements de schéma et les lacunes de traçabilité, en 
+        suivant les directives d'escalade DAMA (« Chapitre 3.4, p. 60–61 » ; « 
+        Chapitre 8, p. 252–260 »).
+      - S'assurer que les messages d'alerte référencent les flux, domaines et 
+        propriétaires affectés en utilisant les métadonnées (“Chapitre 9, p. 
+        236–239”).
+      - Valider que les règles d'alerte considèrent les impacts du cycle de vie 
+        sur les consommateurs en aval (« Chapitre 4.3, p. 92 »).
+      - Acheminer les alertes vers les gestionnaires et propriétaires documentés
+        dans la matrice de propriété d'intégration (« Chapitre 3.2, p. 55–57 » ;
+        « Chapitre 4, p. 86–89 »).
+      notes:
+      - Appliquer la logique de gestion des incidents de CMMI pour garantir que 
+        chaque alerte dispose d'un chemin de réponse clair et de critères de 
+        clôture.
+    - number: 5
+      name: Maintenir la gouvernance automatisée de l’intégration
+      prerequisite: Nécessite une maturité opérationnelle
+      deliverable: Journal d’automatisation de l’intégration
+      recommendations:
+      - Conserver les enregistrements des modifications de règles, des nouveaux 
+        contrôles automatisés et des mises à jour de configuration d'alerte 
+        conformément aux pratiques de documentation DAMA (« Annexe du Chapitre 
+        3, p. 69–70 »).
+      - Validez que l'automatisation reste alignée avec les normes et modèles 
+        d'intégration (« Chapitre 8, p. 252–260 »).
+      - Assurer la supervision du cycle de vie en révisant périodiquement si 
+        l'automatisation soutient toujours les flux et consommateurs actuels (« 
+        Chapitre 4.3, p. 92 »).
+      - Impliquer les stewards et propriétaires dans la revue du journal 
+        d'automatisation dans le cadre des cycles de gouvernance (“Chapitre 3.6,
+        p. 64–66”; “Chapitre 4, p. 86–89”).
+      notes:
+      - Utiliser les évaluations d’évolution des capacités DCAM pour planifier 
+        où une automatisation supplémentaire peut réduire les risques ou 
+        l’effort manuel.
+  DII-09:
+    title: Optimiser la gouvernance de l’intégration et institutionnaliser les 
+      meilleures pratiques
+    procedures:
+    - number: 1
+      name: Revue des tendances de performance d'intégration
+      prerequisite: Nécessite une base DII-06 KPI
+      deliverable: Analyse des tendances d'intégration
+      recommendations:
+      - Analyser les tendances des taux de succès, retards, rejets de données et
+        lacunes de traçabilité conformément aux directives de surveillance DAMA 
+        (« Chapitre 3.6, p. 64–66 » ; « Chapitre 11, p. 308–311 »).
+      - Comparer les modèles entre domaines pour identifier où la conception ou 
+        les normes d’intégration sont insuffisantes (« Chapitre 8, p. 252–260 
+        »).
+      - Valider les implications du cycle de vie telles que les remplissages 
+        répétés ou la rétention prolongée des données de staging (« Chapitre 
+        4.3, p. 92 »).
+      - Documenter l’analyse dans un rapport gouverné suivant la structure 
+        d’artefact DAMA (« Chapitre 3 Annexe, p. 69–70 »).
+      notes:
+      - Utiliser le scoring de maturité DCAM pour comparer la performance 
+        d'intégration aux niveaux de capacité cibles.
+    - number: 2
+      name: Optimiser les standards et modèles d'intégration basés sur les 
+        insights
+      prerequisite: Nécessite une analyse des tendances
+      deliverable: Normes et modèles d'intégration mis à jour.
+      recommendations:
+      - Affiner les normes pour traiter les problèmes récurrents tels que la 
+        dérive de schéma, les sémantiques ambiguës ou la duplication excessive, 
+        conformément à DAMA (“Chapitre 8, p. 252–260”; “Chapitre 10, p. 
+        282–284”).
+      - S'assurer que les modifications des normes mettent également à jour les 
+        modèles de métadonnées et les modèles de pipeline (“Chapitre 9, p. 
+        236–239”).
+      - Valider que les normes révisées restent cohérentes avec les attentes du 
+        cycle de vie, de qualité et de sécurité (“Chapitre 4.3, p. 92”; 
+        “Chapitre 11, p. 308–311”).
+      - Enregistrer les approbations et la version des normes mises à jour selon
+        les règles de documentation DAMA (« Chapitre 3 Annexe, p. 69–70 »).
+      notes:
+      - Utiliser les approches d'amélioration continue CMMI pour planifier des 
+        améliorations incrémentales mais mesurables.
+    - number: 3
+      name: Comparez les pratiques d'intégration aux cadres externes
+      prerequisite: Nécessite un profil de maturité d'intégration
+      deliverable: Preuves de référence d'intégration
+      recommendations:
+      - Comparez les pratiques aux références industrielles et meilleures 
+        pratiques, en reliant les résultats aux principes d'intégration et de 
+        gouvernance DAMA (« Chapitre 8, p. 252–260 » ; « Chapitre 3.6, p. 64–66 
+        »).
+      - Inclure la comparaison des modèles d’intégration, la profondeur de 
+        traçabilité et la gestion de la qualité (« Chapitre 9, p. 236–239 » ; « 
+        Chapitre 11, p. 308–311 »).
+      - Validez que les résultats de référence informent les décisions relatives
+        au cycle de vie et aux risques (« Chapitre 4.3, p. 92 »).
+      - Documenter les conclusions en tant qu'artefacts gouvernés conformément à
+        DAMA (“Chapitre 3 Annexe, p. 69–70”).
+      notes:
+      - Utiliser les directives de benchmarking DCAM pour traduire les résultats
+        externes en objectifs concrets de capacité.
+    - number: 4
+      name: Améliorez la logique d'automatisation de l'intégration.
+      prerequisite: Nécessite une automatisation DII-06
+      deliverable: Ensemble d'automatisation d'intégration mis à jour.
+      recommendations:
+      - Améliorez l'automatisation en ajoutant de nouvelles règles de 
+        validation, contrôles de traçabilité ou protections d'orchestration 
+        basées sur DAMA et les problèmes observés (« Chapitre 8, p. 252–260 » ; 
+        « Chapitre 11, p. 308–311 »).
+      - Assurer que les changements d’automatisation mettent à jour les 
+        définitions et la documentation des métadonnées (« Chapitre 9, p. 
+        236–239 » ; « Chapitre 3 Annexe, p. 69–70 »).
+      - Valider que la nouvelle automatisation respecte les règles du cycle de 
+        vie et ne crée pas de dette technique cachée (« Chapitre 4.3, p. 92 »).
+      - Obtenez l'approbation des instances de gouvernance selon les règles de 
+        décision DAMA (« Chapitre 3.4, p. 60–61 »).
+      notes:
+      - Utilisez les indicateurs de maturité d'automatisation CMMI pour 
+        identifier quels nouveaux contrôles apportent le bénéfice le plus 
+        significatif.
+    - number: 5
+      name: Maintenir un cycle d'amélioration continue de l'intégration
+      prerequisite: Nécessite un cycle d'optimisation
+      deliverable: Plan d'amélioration de l'intégration
+      recommendations:
+      - Maintenir un backlog d'amélioration qui relie les problèmes 
+        d'intégration, les causes profondes et les actions proposées 
+        conformément aux directives d'évolution de la gouvernance DAMA 
+        (“Chapitre 3.6, p. 64–66”).
+      - Assurez que les éléments incluent les mises à jour des normes, des 
+        métadonnées, de l'automatisation et de la formation lorsque nécessaire 
+        (« Chapitres 8, 9, 11 »).
+      - Validez que les impacts sur le cycle de vie et les réductions de risques
+        sont pris en compte pour chaque action (« Chapitre 4.3, p. 92 »).
+      - Documenter le plan et son état en utilisant la structure d'artefact DAMA
+        pour les feuilles de route de gouvernance (“Annexe du Chapitre 3, p. 
+        69–70”).
+      notes:
+      - Utilisez la cartographie de l'évolution des capacités DCAM pour aligner 
+        les améliorations d'intégration avec la maturité globale de la 
+        gouvernance des données.
