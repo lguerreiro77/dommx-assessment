@@ -112,9 +112,15 @@ def save_user(
         _fetch_cached_table.clear("users")
     except Exception:
         pass
+        
+    # Limpa caches Streamlit
+    _read_users_records.clear()
+    load_user.clear()
+    load_user_by_hash.clear()
+    get_all_users.clear()    
+        
 
     return True
-
 
 
 

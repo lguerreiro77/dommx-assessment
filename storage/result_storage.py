@@ -43,7 +43,7 @@ def save_results(user_id: str, project_id: str, answers_dict: dict):
             {"user_id": user_id, "project_id": project_id},
             {
                 "answers_json_encrypted": enc,
-                "updated_at": ts
+                "last_update_timestamp": ts
             }
         )
     else:
@@ -53,7 +53,7 @@ def save_results(user_id: str, project_id: str, answers_dict: dict):
                 "user_id": user_id,
                 "project_id": project_id,
                 "answers_json_encrypted": enc,
-                "updated_at": ts
+                "last_update_timestamp": ts
             }
         )
 

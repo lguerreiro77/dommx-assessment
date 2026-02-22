@@ -450,24 +450,32 @@ def render_assessment():
                     #can_export = bool(st.session_state.get("last_saved_snapshot"))
                     #excel_data = export_all_to_excel() if can_export else b""
                     
-                    try:
-                        excel_data = export_all_to_excel()
-                        can_export = True
-                    except Exception as e:
-                        st.write("EXPORT ERROR:", e)
-                        excel_data = b""
-                        can_export = False
-
-                    st.download_button(
-                        label="📊 Export All Results",
-                        data=excel_data,
-                        file_name="DOMMx_Results.xlsx",
-                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    # Botão sempre visível
+                    if st.button(
+                        "📊 Export All Results",
+                        key="btn_export_results",
                         use_container_width=True,
-                        disabled=not can_export,                        
                         type="secondary"
-                    )
+                    ):
 
+                        try:
+                            excel_data = export_all_to_excel()
+
+                            if not excel_data:
+                                st.warning("No results available for export.")
+                            else:
+                                st.download_button(
+                                    label="⬇ Download Excel",
+                                    data=excel_data,
+                                    file_name="DOMMx_Results.xlsx",
+                                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                    use_container_width=True,
+                                    key="btn_download_results"
+                                )
+
+                        except Exception as e:
+                            st.write("EXPORT ERROR:", e)
+                            
         # ===============================
         # QUESTION TEXT
         # ===============================

@@ -237,6 +237,18 @@ def export_all_to_excel():
 
         user_id = r.get("user_id")
         project_id = r.get("project_id")
+                
+        last_update_ts = r.get("last_update_timestamp", "")
+        last_update_display = ""
+
+        if last_update_ts:
+            try:
+                from datetime import datetime
+                dt = datetime.fromisoformat(last_update_ts)
+                last_update_display = dt.strftime("%d/%m/%Y %H:%M:%S")
+            except Exception:
+                last_update_display = last_update_ts
+        
 
         # ✅ Apenas projetos existentes
         if project_id not in valid_project_ids:
@@ -245,6 +257,7 @@ def export_all_to_excel():
         full_name = user_lookup.get(user_id, {}).get("full_name", "")
         email = user_lookup.get(user_id, {}).get("email", "")
         project_name = project_lookup.get(project_id, "")
+               
 
         enc = r.get("answers_json_encrypted")
         if not enc:
@@ -289,7 +302,8 @@ def export_all_to_excel():
                     "Question ID": qid_str,
                     "Question": qtext,
                     "Answer (Score)": score,
-                    "Maturity Level": maturity_label
+                    "Maturity Level": maturity_label,
+                    "Last Update": last_update_display
                 })
 
     if not rows:

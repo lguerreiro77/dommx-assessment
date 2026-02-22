@@ -5,6 +5,7 @@ from storage.user_storage import (
     get_all_users,
     load_user_by_hash,
     hash_password,
+    verify_password,    
     _read_users_records  # 🔥 necessário para limpar cache raiz
 )
 
@@ -33,15 +34,20 @@ def _get_admin_email():
 
 def render_account_page(session_state):
 
-    st.title("User / Account")
 
     if st.session_state.get("account_updated"):
         st.success("Record updated successfully.")
         del st.session_state["account_updated"]
 
+    if st.session_state.get("password_updated"):
+        st.success("Password updated successfully.")
+        del st.session_state["password_updated"]
+
     if st.session_state.get("account_deleted"):
         st.success("Account deleted successfully.")
-        del st.session_state["account_deleted"]
+        del st.session_state["account_deleted"]    
+  
+    st.title("User / Account")                
     
     is_admin = bool(session_state.get("is_admin"))
 
@@ -70,8 +76,7 @@ def render_account_page(session_state):
     if not user_data:
         st.error("User not found.")
         return
-
-    st.write(f"**Email:** {user_data.get('email')}")
+    
     st.write(f"**Consent:** {user_data.get('consent')}")
 
     st.caption(
@@ -89,6 +94,9 @@ def render_account_page(session_state):
         st.session_state._pwd_update_pending = False
     if "_pwd_update_payload" not in st.session_state:
         st.session_state._pwd_update_payload = None
+        
+    if "_delete_pending" not in st.session_state:
+        st.session_state._delete_pending = False
 
     # ========================
     # PERSONAL DATA
@@ -141,7 +149,7 @@ def render_account_page(session_state):
                     st.session_state._account_update_payload = None
                     st.rerun()
 
-        if st.button("Update", disabled=st.session_state._account_update_pending):
+        if st.button("Update", key="btn_update_personal", disabled=st.session_state._account_update_pending):
 
             if not full_name.strip():
                 st.error("Full name is required.")
@@ -165,14 +173,48 @@ def render_account_page(session_state):
             st.rerun()
 
     st.divider()
-
-    # ========================
+    
+    ## ========================
     # PASSWORD
     # ========================
     st.subheader("Change Password")
 
     new_password = st.text_input("New password", type="password")
     confirm_password = st.text_input("Confirm password", type="password")
+
+    if "_pwd_attempted" not in st.session_state:
+        st.session_state._pwd_attempted = False
+
+    if st.button(
+        "Update Password", key="btn_update_password",
+        disabled=st.session_state._pwd_update_pending
+    ):
+        st.session_state._pwd_attempted = True
+
+        # 🔎 Validações somente após clique
+        if not new_password:
+            st.error("Password cannot be empty.")
+            return
+
+        if len(new_password) < 6:
+            st.error("Password must have at least 6 characters.")
+            return
+
+        if new_password != confirm_password:
+            st.error("Passwords do not match.")
+            return
+
+        if verify_password(new_password, user_data.get("password_hash", "")):
+            st.error("New password cannot be the same as current password.")
+            return
+
+        # Se passou todas validações
+        st.session_state._pwd_update_pending = True
+        st.session_state._pwd_update_payload = {
+            "new_password": new_password
+        }
+        st.rerun()
+
 
     if st.session_state._pwd_update_pending and st.session_state._pwd_update_payload:
         with st.spinner("Updating password..."):
@@ -189,7 +231,8 @@ def render_account_page(session_state):
                 load_user_by_hash.clear()
                 get_all_users.clear()
 
-                st.success("Password updated successfully.")
+                st.session_state.password_updated = True
+                
 
             except Exception as e:
                 st.error(str(e))
@@ -197,61 +240,70 @@ def render_account_page(session_state):
             finally:
                 st.session_state._pwd_update_pending = False
                 st.session_state._pwd_update_payload = None
+                st.session_state._pwd_attempted = False
                 st.rerun()
-
-    if st.button("Update Password", disabled=st.session_state._pwd_update_pending):
-
-        if new_password != confirm_password:
-            st.error("Passwords do not match.")
-            return
-
-        st.session_state._pwd_update_pending = True
-        st.session_state._pwd_update_payload = {
-            "new_password": new_password
-        }
-        st.rerun()
-
+    
     st.divider()
-
+    
     # ========================
     # DELETE ACCOUNT
     # ========================
     st.subheader("Delete Account")
     st.warning("This will permanently delete ALL your data.")
 
-    if st.button("Delete account"):
+    if st.session_state._delete_pending:
+        with st.spinner("Deleting account..."):
+            try:
+                _delete_account(user_hash)
+
+                admin_email = _get_env("SMTP_USER")
+                if admin_email:
+                    try:
+                        send_email(
+                            admin_email,
+                            "Account Deleted",
+                            f"User deleted the account: {user_data.get('email')}"
+                        )
+                    except Exception:
+                        pass
+
+                if str(session_state.get("user_id")).strip() == user_hash:
+                    for key in list(st.session_state.keys()):
+                        del st.session_state[key]
+
+                    st.session_state.app_mode = "login"
+                    st.rerun()
+                else:
+                    st.session_state.account_deleted = True
+                    st.session_state.confirm_delete = False
+                    st.session_state._delete_pending = False
+                    st.rerun()
+
+            except Exception as e:
+                st.error(str(e))
+                st.session_state._delete_pending = False
+                st.rerun()
+
+    if st.button(
+        "Delete account", key="btn_delete",
+        disabled=st.session_state._delete_pending
+    ):
         st.session_state.confirm_delete = True
 
     if st.session_state.get("confirm_delete"):
-        confirm = st.checkbox("I confirm permanent deletion.")
+        confirm = st.checkbox(
+            "I confirm permanent deletion.",
+            disabled=st.session_state._delete_pending
+        )
 
-        if st.button("Confirm delete", disabled=not confirm):
-
-            _delete_account(user_hash)
-
-            admin_email = _get_env("SMTP_USER")
-            if admin_email:
-                try:
-                    send_email(
-                        admin_email,
-                        "Account Deleted",
-                        f"User deleted the account: {user_data.get('email')}"
-                    )
-                except Exception:
-                    pass
-
-            if str(session_state.get("user_id")).strip() == user_hash:
-
-                for key in list(st.session_state.keys()):
-                    del st.session_state[key]
-
-                st.session_state.app_mode = "login"
-                st.rerun()
-            else:
-                st.session_state.account_deleted = True
-                st.session_state.confirm_delete = False
-                st.rerun()
-
+        if st.button(
+            "Confirm delete",
+            disabled=(not confirm) or st.session_state._delete_pending
+        ):
+            st.session_state._delete_pending = True
+            st.rerun()
+            
+        
 
 def _delete_account(user_hash):
 
