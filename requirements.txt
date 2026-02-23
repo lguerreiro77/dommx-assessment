@@ -10,3 +10,5 @@ gspread
 google-auth
 pycountry
 phonenumbers
+ruamel.yaml
+openai

@@ -18,8 +18,10 @@ def add_message(text: str, level: str = "error"):
         st.session_state.assessment_messages = []
 
     if isinstance(text, str):
-        if hasattr(st, "_tr"):
-            text = st._tr(text)
+        try:
+            text = st._tr(text, force=True)
+        except Exception:
+            pass
 
     st.session_state.assessment_messages.append({
         "ts": time.time(),

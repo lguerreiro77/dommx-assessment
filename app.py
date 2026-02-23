@@ -18,6 +18,7 @@ from auth.auth_service import render_auth
 from core.renderer import render_app
 from core.config import APP_TITLE
 from core.session_utils import logout
+from core.i18n_markers import YAMLText
 
 st.set_page_config(page_title=APP_TITLE, layout="centered")
 init_session()
@@ -56,8 +57,6 @@ def load_app_config():
 # -------------------------
 # Variaveis de sistema
 # -------------------------
-
-TR_MARK = "__TR__"
     
 def refresh_locale_config():
 
@@ -149,35 +148,90 @@ def _translator_instance(target_base: str):
     return GoogleTranslator(source="auto", target=target_base)
 
 
+def _get_cache_path(locale: str) -> Path:
+    return Path(f"data/domains/{locale}/ui_cache.json")
+
+
+def _load_cache(locale: str) -> dict:
+    path = _get_cache_path(locale)
+    if path.exists():
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def _save_cache(locale: str, cache: dict):
+    path = _get_cache_path(locale)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=2)
+
+
+from openai import OpenAI
+import os
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+def _ui_translate_openai(text: str, target_lang: str) -> str:
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            temperature=0,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a translation engine for UI text. "
+                        "Translate the user text strictly into the requested language. "
+                        "Return only the translated text. "
+                        "Do not explain anything. "
+                        "Do not keep the original language."
+                    ),
+                },
+                {
+                    "role": "user",
+                    "content": f"Translate to {target_lang}:\n\n{text}",
+                },
+            ]
+        )
+
+        result = response.choices[0].message.content.strip()
+        return result if result else text
+
+    except Exception:
+        return text
+        
 def _tr_cached(text: str, target_base: str) -> str:
 
     if not text:
         return ""
 
-    if GoogleTranslator is None:
-        return text
+    loc = st.session_state.get("locale", DEFAULT_LOCALE)
+    cache_path = Path(f"data/domains/{loc}/ui_cache.json")
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
 
-    cache_key = f"{target_base}::{text}"
+    try:
+        if cache_path.exists():
+            cache = json.loads(cache_path.read_text(encoding="utf-8")) or {}
+        else:
+            cache = {}
+    except Exception:
+        cache = {}
 
-    if "_persistent_tr_cache" not in st.session_state:
-        st.session_state["_persistent_tr_cache"] = {}
-
-    cache = st.session_state["_persistent_tr_cache"]
+    cache_key = text  # cache por idioma já está no path
 
     if cache_key in cache:
         return cache[cache_key]
 
+    translated = _ui_translate_openai(text, target_base)
+
+    cache[cache_key] = translated
     try:
-        translator = _translator_instance(target_base)
-        if not translator:
-            return text
-
-        result = translator.translate(text)
-        cache[cache_key] = result
-        return result
-
+        cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
     except Exception:
-        return text
+        pass
+
+    return translated
 
 
 def html_tr(html: str) -> str:
@@ -210,59 +264,57 @@ st._html_tr = html_tr
 
 def tr(text: str, *, force=False) -> str:
 
-    if not text or not isinstance(text, str):
+    if text is None:
         return text
+
+    if not isinstance(text, str):
+        return text
+
+    if isinstance(text, YAMLText):
+        return str(text)
 
     raw = text.strip()
 
-    # 🔹 Nunca traduz códigos tipo Q1, Q12
+    # 🔒 NÃO traduz nada quando estiver renderizando YAML
+    if st.session_state.get("_yaml_rendering") and not force:
+        return text
+        
+    raw = text.strip()
+
+    # 🔹 nunca traduz códigos tipo Q1
     if re.fullmatch(r"[Qq]\d+", raw):
         return text
 
-    # 🔹 Nunca traduz siglas técnicas tipo DG, DA, DSO
+    # 🔹 nunca traduz siglas/códigos curtos
     if re.fullmatch(r"[A-Z]{2,6}", raw):
         return text
 
-    # 🔹 Nunca traduz códigos mistos tipo D1_Q2, Q1.1
+    # 🔹 nunca traduz identificadores mistos (IDs, Quarter, etc)
     if re.fullmatch(r"[A-Z0-9_.\-]+", raw):
         return text
 
-    # 🔹 Se bloqueado (assessment YAML), não traduz
-    if not force and st.session_state.get("_block_auto_tr"):
+    # 🔒 se bloqueado e não forçado, não traduz
+    if (not force) and st.session_state.get("_block_auto_tr"):
         return text
-
-    if text.startswith(TR_MARK):
-        return text.replace(TR_MARK, "", 1)
 
     loc = st.session_state.get("locale", DEFAULT_LOCALE)
 
+    # idioma default não traduz
     if loc == DEFAULT_LOCALE:
         return text
 
     target_base = LOCALE_TO_TRANSLATOR.get(loc)
-
     if not target_base:
         return text
 
     return _tr_cached(text, target_base)
+    
         
 st._tr = tr
 
 def _stable_hash(obj) -> str:
     s = json.dumps(obj, ensure_ascii=False, sort_keys=True, default=str)
     return hashlib.md5(s.encode("utf-8")).hexdigest()
-
-
-def _walk_translate_values(obj, translate_fn):
-    # traduz só VALORES (não mexe em keys)
-    if isinstance(obj, str):
-        out = translate_fn(obj)
-        return (TR_MARK + out) if out else out
-    if isinstance(obj, list):
-        return [_walk_translate_values(x, translate_fn) for x in obj]
-    if isinstance(obj, dict):
-        return {k: _walk_translate_values(v, translate_fn) for k, v in obj.items()}
-    return obj
 
 
 # -------------------------
@@ -292,11 +344,7 @@ def render_locale_flag_combo():
         _set_query_param("lang", selected)
 
         # limpa cache de tradução para evitar “não traduzido” cacheado
-        try:
-            _tr_cached.clear()
-        except Exception:
-            pass
-
+        
         st.rerun()
 
 
@@ -304,49 +352,9 @@ def render_locale_flag_combo():
 # Auto patch Streamlit (translate without refactor)
 # -------------------------
 def _translate_value(v):
+    if isinstance(v, YAMLText):
+        return v
     return tr(v) if isinstance(v, str) else v
-
-
-def _wrap_streamlit_func(func, *, translate_kwargs=None, skip_if_kwargs=None, translate_all_str_args=False):
-    if getattr(func, "_dommx_wrapped", False):
-        return func
-
-    translate_kwargs = set(translate_kwargs or [])
-    skip_if_kwargs = dict(skip_if_kwargs or {})
-
-    def wrapper(*args, **kwargs):
-
-        for k, expected in skip_if_kwargs.items():
-            if kwargs.get(k) == expected:
-                return func(*args, **kwargs)
-
-        # 🔒 Nunca traduz durante assessment YAML
-        if st.session_state.get("_block_auto_tr"):
-            return func(*args, **kwargs)
-
-        if translate_all_str_args and args:
-            args = tuple(_translate_value(a) for a in args)
-
-        elif args and isinstance(args[0], str):
-            label_text = args[0]
-
-            if re.fullmatch(r"[Qq]\d+", label_text.strip()):
-                pass
-            elif re.fullmatch(r"[A-Z]{2,6}", label_text.strip()):
-                pass
-            else:
-                label_text = tr(label_text)
-
-            args = (label_text,) + args[1:]
-
-        for k in translate_kwargs:
-            if k in kwargs and isinstance(kwargs[k], str):
-                kwargs[k] = tr(kwargs[k])
-
-        return func(*args, **kwargs)
-
-    wrapper._dommx_wrapped = True
-    return wrapper
 
 
 def _wrap_tabs(func):
@@ -362,102 +370,123 @@ def _wrap_tabs(func):
     return wrapper
 
 
-def patch_streamlit_i18n() -> None:
-    for name in ["success", "error", "warning", "info", "caption", "text", "title", "header", "subheader"]:
+def patch_streamlit_i18n():
+
+    def _wrap_streamlit_func(func, *, translate_kwargs=(), skip_if_kwargs=None, translate_all_str_args=False):
+
+        if getattr(func, "_dommx_wrapped", False):
+            return func
+
+        skip_if_kwargs = skip_if_kwargs or {}
+
+        def _translate_value(v):
+            if isinstance(v, str) and getattr(v, "_dommx_yaml", False):
+                return v
+            return tr(v) if isinstance(v, str) else v
+
+        def wrapper(*args, **kwargs):
+            
+            # 🚫 NÃO interceptar markdown com HTML
+            if func.__name__ == "markdown" and kwargs.get("unsafe_allow_html"):
+                return func(*args, **kwargs)
+
+            # Se algum kwarg pede "skip", não traduz
+            for k, expected in skip_if_kwargs.items():
+                if kwargs.get(k) == expected:
+                    return func(*args, **kwargs)
+
+            # Traduz todos args string (raramente usado)
+            if translate_all_str_args and args:
+                args = tuple(_translate_value(a) for a in args)
+
+            # Traduz primeiro argumento (label) se for string e não for YAML
+            elif args and isinstance(args[0], str):
+                label_text = args[0]
+
+                if not getattr(label_text, "_dommx_yaml", False):
+
+                    # não traduz códigos curtos
+                    s = label_text.strip()
+                    if re.fullmatch(r"[Qq]\d+", s):
+                        pass
+                    elif re.fullmatch(r"[A-Z]{2,6}", s):
+                        pass
+                    else:
+                        label_text = tr(label_text)
+
+                args = (label_text,) + args[1:]
+
+            # Traduz kwargs relevantes (placeholder/help/caption etc)
+            for k in translate_kwargs:
+                if k in kwargs and isinstance(kwargs[k], str):
+                    if getattr(kwargs[k], "_dommx_yaml", False):
+                        continue
+                    kwargs[k] = tr(kwargs[k])
+
+            return func(*args, **kwargs)
+
+        wrapper._dommx_wrapped = True
+        return wrapper
+
+
+    # ---- WRAPS PRINCIPAIS (UI hardcoded) ----
+    # Observação: YAML aparece como YAMLText e será ignorado pelo wrapper.
+
+    WRAP_SPECS = {
+        # mensagens
+        "success": {"translate_kwargs": ()},
+        "error": {"translate_kwargs": ()},
+        "warning": {"translate_kwargs": ()},
+        "info": {"translate_kwargs": ()},
+
+        # textos
+        "title": {"translate_kwargs": ()},
+        "header": {"translate_kwargs": ()},
+        "subheader": {"translate_kwargs": ()},
+        "caption": {"translate_kwargs": ()},
+        "text": {"translate_kwargs": ()},
+        "write": {"translate_kwargs": ()},
+        "markdown": {"translate_kwargs": ()},
+
+        # botões
+        "button": {"translate_kwargs": ("help",)},
+        "download_button": {"translate_kwargs": ("help",)},
+
+        # inputs (o que estava falhando pra você)
+        "text_input": {"translate_kwargs": ("help", "placeholder")},
+        "text_area": {"translate_kwargs": ("help", "placeholder")},
+        "number_input": {"translate_kwargs": ("help", "placeholder")},
+        "date_input": {"translate_kwargs": ("help",)},
+        "time_input": {"translate_kwargs": ("help",)},
+        "selectbox": {"translate_kwargs": ("help",)},
+        "radio": {"translate_kwargs": ("help",)},
+        "multiselect": {"translate_kwargs": ("help",)},
+        "checkbox": {"translate_kwargs": ("help",)},
+        "toggle": {"translate_kwargs": ("help",)},
+
+        # uploader (o que estava falhando pra você)
+        "file_uploader": {"translate_kwargs": ("help",)},
+        # form submit
+        "form_submit_button": {"translate_kwargs": ("help",)},
+    }
+
+    for name, spec in WRAP_SPECS.items():
         if hasattr(st, name):
-            setattr(st, name, _wrap_streamlit_func(getattr(st, name), translate_all_str_args=False))
+            original = getattr(st, name)
+            wrapped = _wrap_streamlit_func(
+                original,
+                translate_kwargs=spec.get("translate_kwargs", ()),
+                skip_if_kwargs=spec.get("skip_if_kwargs", None),
+                translate_all_str_args=spec.get("translate_all_str_args", False),
+            )
+            setattr(st, name, wrapped)
 
-    if hasattr(st, "write"):
-        st.write = _wrap_streamlit_func(st.write, translate_all_str_args=True)
-
-    # 🔹 PATCH BUTTON (traduz primeiro argumento)
-    if hasattr(st, "button"):
-        original_button = st.button
-
-        def button_wrapper(label, *args, **kwargs):
-            if isinstance(label, str):
-                label = tr(label)
-            return original_button(label, *args, **kwargs)
-
-        st.button = button_wrapper
-
-    # 🔹 PATCH DOWNLOAD BUTTON
-    if hasattr(st, "download_button"):
-        original_download = st.download_button
-
-        def download_wrapper(label, *args, **kwargs):
-            if isinstance(label, str):
-                label = tr(label)
-            return original_download(label, *args, **kwargs)
-
-        st.download_button = download_wrapper
-
-    # markdown: NÃO traduz unsafe html globalmente (para não quebrar layout)
-    # 🔹 PATCH MARKDOWN
-    if hasattr(st, "markdown"):
-
-        original_markdown = st.markdown
-
-        def markdown_wrapper(body, *args, **kwargs):
-
-            # 🔒 assessment YAML: nunca traduz nada
-            if st.session_state.get("_block_auto_tr"):
-                return original_markdown(body, *args, **kwargs)
-
-            unsafe = kwargs.get("unsafe_allow_html") is True
-
-            if isinstance(body, str):
-
-                # 1) HTML com unsafe_allow_html=True
-                if unsafe:
-                    # NÃO traduz CSS/STYLE
-                    if "<style" in body.lower():
-                        return original_markdown(body, *args, **kwargs)
-
-                    # traduz HTML mantendo tags
-                    html_tr_fn = getattr(st, "_html_tr", None)
-                    if callable(html_tr_fn):
-                        body = html_tr_fn(body)
-                    return original_markdown(body, *args, **kwargs)
-
-                # 2) Markdown normal
-                body = tr(body)
-
-            return original_markdown(body, *args, **kwargs)
-
-        st.markdown = markdown_wrapper
-
-    kw = ["label", "help", "placeholder"]
-    for name in [                
-        "selectbox",
-        "radio",
-        "multiselect",
-        "checkbox",
-        "toggle",
-        "text_input",
-        "text_area",
-        "number_input",
-        "date_input",
-        "time_input",
-        "file_uploader",
-        "form_submit_button",
-        "expander",
-    ]:
-        if hasattr(st, name):
-            setattr(st, name, _wrap_streamlit_func(getattr(st, name), translate_kwargs=kw, translate_all_str_args=False))
-
-    if hasattr(st, "tabs"):
-        st.tabs = _wrap_tabs(st.tabs)
-
-    if hasattr(st, "tabs"):
-        st.tabs = _wrap_tabs(st.tabs)
-
-    # 🔹 PATCH SPINNER
+    # spinner
     if hasattr(st, "spinner"):
         original_spinner = st.spinner
 
         def spinner_wrapper(text="", *args, **kwargs):
-            if isinstance(text, str):
+            if isinstance(text, str) and not getattr(text, "_dommx_yaml", False):
                 text = tr(text)
             return original_spinner(text, *args, **kwargs)
 
