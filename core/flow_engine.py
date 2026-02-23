@@ -17,6 +17,10 @@ def add_message(text: str, level: str = "error"):
     if "assessment_messages" not in st.session_state:
         st.session_state.assessment_messages = []
 
+    if isinstance(text, str):
+        if hasattr(st, "_tr"):
+            text = st._tr(text)
+
     st.session_state.assessment_messages.append({
         "ts": time.time(),
         "level": level,

@@ -16,6 +16,7 @@ import os
 
 def render_app():
     
+    
     if st.session_state.get("bootstrap_recovery"):
         st.warning(
             "Project structure not found.\n\n"
@@ -134,3 +135,5 @@ def render_app():
         from core.flow_engine import add_message
         add_message(f"Renderer error: {e}", "error")
         st.exception(e)
+
+    

@@ -26,6 +26,8 @@ repo = get_repository()
 # HELPERS
 # =========================================================
 
+
+
 def _normalize_bool_yesno(value, default_if_unknown=True) -> bool:
     if value is None:
         return default_if_unknown
@@ -63,7 +65,7 @@ def _validate_maturity_scale(raw_scale):
         return fallback, errors
 
     if not isinstance(raw_scale, list) or not raw_scale:
-        errors.append("Invalid maturity_scale: must be a non-empty array. Falling back to default [0..5].")
+        errors.append(tr("Invalid maturity_scale: must be a non-empty array. Falling back to default [0..5]."))
         return fallback, errors
 
     out = []
@@ -71,14 +73,14 @@ def _validate_maturity_scale(raw_scale):
         try:
             out.append(int(x))
         except Exception:
-            errors.append(f"Invalid maturity_scale value '{x}': must be integer. Falling back to default [0..5].")
+            errors.append(tr(f"Invalid maturity_scale value '{x}': must be integer. Falling back to default [0..5]."))
             return fallback, errors
 
     out = sorted(list(dict.fromkeys(out)))
 
     bad = [v for v in out if v < 0 or v > 5]
     if bad:
-        errors.append(f"Invalid maturity_scale values out of range 0..5: {bad}. Falling back to default [0..5].")
+        errors.append(tr(f"Invalid maturity_scale values out of range 0..5: {bad}. Falling back to default [0..5]."))
         return fallback, errors
 
     return out, errors
@@ -113,15 +115,6 @@ def safe_load(path):
     try:
         with open(path, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
-
-        if not isinstance(data, dict):
-            return data
-
-        p = (path or "").lower()
-        is_domain_yaml = ("decision" in p and "tree" in p) or ("action" in p and "catalog" in p)
-
-        if is_domain_yaml and hasattr(st, "translate_yaml_domain"):
-            return st.translate_yaml_domain(data)
 
         return data
 
@@ -249,8 +242,11 @@ def render_assessment():
         st.stop()
 
     domains_dir = os.path.join(project_root, "Domains")   
-    
-    current_locale = st.session_state.get("locale", "us")
+        
+    current_locale = st.session_state.get("locale")
+
+    if not current_locale:
+        st.stop()
 
     domains_dir = os.path.join(project_root, "Domains")
 
@@ -265,10 +261,27 @@ def render_assessment():
         current_locale,
         dom_meta["files"]["action_catalog"]
     )
+    
+    if not os.path.isfile(tree_path):
+        tree_path = os.path.join(
+            domains_dir,
+            DEFAULT_LOCALE,
+            dom_meta["files"]["decision_tree"]
+        )
+
+    if not os.path.isfile(catalog_path):
+        catalog_path = os.path.join(
+            domains_dir,
+            DEFAULT_LOCALE,
+            dom_meta["files"]["action_catalog"]
+        )
+
+    st.session_state["_block_auto_tr"] = True
 
     tree_data = safe_load(tree_path) or {}
-    catalog_data = safe_load(catalog_path) or {}
+    catalog_data = safe_load(catalog_path) or {} 
         
+    # 🔹 manter bloqueado até terminar render do assessment YAML            
 
     question_block = tree_data.get("questions", {}) or {}
     question_block = {str(k).lower(): v for k, v in question_block.items()}
@@ -538,12 +551,12 @@ def render_assessment():
         # LIKERT SCALE (DYNAMIC maturity_scale)
         # -------------------------------------------------
         LIKERT = {
-            0: ("🔴", "Initial", "#d32f2f"),
-            1: ("🟠", "Ad-hoc", "#f57c00"),
-            2: ("🟡", "Emerging", "#fbc02d"),
-            3: ("🟢", "Defined", "#7cb342"),
-            4: ("🟢", "Managed", "#388e3c"),
-            5: ("🔵", "Optimized", "#1976d2"),
+            0: ("🔴", st._tr("Initial"), "#d32f2f"),
+            1: ("🟠", st._tr("Ad-hoc"), "#f57c00"),
+            2: ("🟡", st._tr("Emerging"), "#fbc02d"),
+            3: ("🟢", st._tr("Defined"), "#7cb342"),
+            4: ("🟢", st._tr("Managed"), "#388e3c"),
+            5: ("🔵", st._tr("Optimized"), "#1976d2"),
         }
 
         st.markdown("### Maturity Level")
@@ -557,20 +570,18 @@ def render_assessment():
         st.markdown("""
             <style>
             div[data-testid="stButton"] > button {
-                height: 60px !important;
+                height: 50px !important;
                 width: 100% !important;
-                padding: 8px 6px !important;
+                padding: 4px 6px !important;
                 display: flex !important;
-                flex-direction: column !important;
                 justify-content: center !important;
                 align-items: center !important;
-                line-height: 1.1 !important;
-                white-space: pre-line !important;
+                white-space: nowrap !important;
             }
 
-            /* ↓↓↓ SOMENTE ISSO FOI ADICIONADO ↓↓↓ */
             div[data-testid="stButton"] > button p {
-                font-size: 13px !important;
+                font-size: 11px !important;
+                margin: 0 !important;
             }
             </style>
             """, unsafe_allow_html=True)
@@ -920,3 +931,6 @@ def render_assessment():
                         st.session_state.open_submit_dialog = False
                         st.rerun()
 
+    
+    st.session_state["_block_auto_tr"] = False
+    
