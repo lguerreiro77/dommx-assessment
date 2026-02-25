@@ -10,6 +10,7 @@ Domain_flow:
 
   - sequence: 1
     domain_id: 1
+    dependence: [1]
     acronym: "DG"
     name: "Data Governance"
     files:
@@ -18,6 +19,7 @@ Domain_flow:
 
   - sequence: 2
     domain_id: 2
+    dependence: [2]
     acronym: "DA"
     name: "Data Architecture"
     files:
@@ -26,6 +28,7 @@ Domain_flow:
 
   - sequence: 3
     domain_id: 3
+    dependence: [3]
     acronym: "DMD"
     name: "Data Modelling and Design"
     files:
@@ -34,6 +37,7 @@ Domain_flow:
 
   - sequence: 4
     domain_id: 4
+    dependence: [4]
     acronym: "DSO"
     name: "Data Storage and Operations"
     files:
@@ -42,6 +46,7 @@ Domain_flow:
 
   - sequence: 5
     domain_id: 5
+    dependence: [5]
     acronym: "DS"
     name: "Data Security"
     files:
@@ -50,6 +55,7 @@ Domain_flow:
 
   - sequence: 6
     domain_id: 6
+    dependence: [6]
     acronym: "DII"
     name: "Data Integration and Interoperability"
     files:
@@ -58,6 +64,7 @@ Domain_flow:
 
   - sequence: 7
     domain_id: 7
+    dependence: [7]
     acronym: "DCM"
     name: "Document and Content Management"
     files:
@@ -66,6 +73,7 @@ Domain_flow:
 
   - sequence: 8
     domain_id: 8
+    dependence: [8]
     acronym: "RMD"
     name: "Reference and Master Data"
     files:
@@ -74,6 +82,7 @@ Domain_flow:
 
   - sequence: 9
     domain_id: 9
+    dependence: [9]
     acronym: "DWBI"
     name: "Data Warehousing and Business Intelligence"
     files:
@@ -82,6 +91,7 @@ Domain_flow:
 
   - sequence: 10
     domain_id: 10
+    dependence: [10]
     acronym: "MD"
     name: "Metadata"
     files:
@@ -90,6 +100,7 @@ Domain_flow:
 
   - sequence: 11
     domain_id: 11
+    dependence: [11]
     acronym: "DQ"
     name: "Data Quality"
     files:
@@ -98,6 +109,7 @@ Domain_flow:
 
   - sequence: 12
     domain_id: 12
+    dependence: [12]
     acronym: "AIML"
     name: "AI and Machine Learning"
     files:

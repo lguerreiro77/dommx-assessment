@@ -186,34 +186,35 @@ def render_account_page(session_state):
         st.session_state._pwd_attempted = False
 
     if st.button(
-        "Update Password", key="btn_update_password",
+        "Update Password",
+        key="btn_update_password",
         disabled=st.session_state._pwd_update_pending
     ):
         st.session_state._pwd_attempted = True
 
+        error_msg = None
+
         # 🔎 Validações somente após clique
         if not new_password:
-            st.error("Password cannot be empty.")
-            return
+            error_msg = "Password cannot be empty."
 
-        if len(new_password) < 6:
-            st.error("Password must have at least 6 characters.")
-            return
+        elif len(new_password) < 6:
+            error_msg = "Password must have at least 6 characters."
 
-        if new_password != confirm_password:
-            st.error("Passwords do not match.")
-            return
+        elif new_password != confirm_password:
+            error_msg = "Passwords do not match."
 
-        if verify_password(new_password, user_data.get("password_hash", "")):
-            st.error("New password cannot be the same as current password.")
-            return
+        elif verify_password(new_password, user_data.get("password_hash", "")):
+            error_msg = "New password cannot be the same as current password."
 
-        # Se passou todas validações
-        st.session_state._pwd_update_pending = True
-        st.session_state._pwd_update_payload = {
-            "new_password": new_password
-        }
-        st.rerun()
+        if error_msg:
+            st.error(error_msg)
+        else:
+            st.session_state._pwd_update_pending = True
+            st.session_state._pwd_update_payload = {
+                "new_password": new_password
+            }
+            st.rerun()
 
 
     if st.session_state._pwd_update_pending and st.session_state._pwd_update_payload:

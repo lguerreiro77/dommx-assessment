@@ -10,6 +10,9 @@ from storage.project_storage import (
 @st.dialog("Manage Projects", width="medium")
 def render_projects_modal():
 
+    # Reset confirmação sempre que o modal abrir
+    st.session_state["_delete_target_project"] = None
+
     # -------------------------
     # FLASH
     # -------------------------
@@ -26,16 +29,7 @@ def render_projects_modal():
         else:
             st.info(msg)
 
-    projects = get_projects() or []
-    
-    # -------------------------------------------------
-    # RESET DELETE CONFIRM STATE WHEN MODAL REOPENED
-    # -------------------------------------------------
-    if st.session_state.get("open_dialog") != "projects":
-        for key in list(st.session_state.keys()):
-            if key.startswith("confirm_delete_stage_") or key.startswith("confirm_delete_checkbox_"):
-                del st.session_state[key]
-
+    projects = get_projects() or []      
 
     collapse_all = bool(st.session_state.pop("_collapse_projects", False))
 
@@ -164,7 +158,6 @@ def render_projects_modal():
                 if st.button("Delete", key=f"delete_start_{project_id}"):
 
                     st.session_state["_delete_target_project"] = project_id
-                    st.rerun()
 
 
             # ==========================
@@ -202,6 +195,10 @@ def render_projects_modal():
                             st.session_state["active_project"] = None
                             st.session_state["project_root"] = None
                             st.session_state["app_mode"] = "login"
+
+                        # 🔥 MANTER MODAL ABERTO
+                        st.session_state.open_dialog = "projects"
+                        st.rerun()
         
         
                 with col_del2:

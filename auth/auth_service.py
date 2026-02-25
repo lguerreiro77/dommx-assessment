@@ -515,9 +515,70 @@ def render_project_selection():
             allow_open = raw_open
         else:
             allow_open = str(raw_open).strip().lower() == "true"
-
+            
+        
         has_access = selected_project in user_projects
 
+        # -------------------------------------------------
+        # FINISHED PROJECT -> SHOW REPORT + BACK, DO NOT ENTER
+        # -------------------------------------------------
+        if selected_project and has_finished_project(user_id, selected_project):
+
+            st.success("You have already completed all actions for this project.")
+
+            # CSS: mesmos tamanhos e altura
+            st.markdown(
+                """
+                <style>
+                div[data-testid="stButton"] > button,
+                div[data-testid="stDownloadButton"] > button {
+                    height: 55px !important;
+                    border-radius: 8px !important;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
+
+            # PDF placeholder (vazio/mini)
+            import io
+            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+            from reportlab.lib.styles import getSampleStyleSheet
+            from reportlab.lib.pagesizes import A4
+
+            buffer = io.BytesIO()
+            doc = SimpleDocTemplate(buffer, pagesize=A4)
+            styles = getSampleStyleSheet()
+
+            elements = [
+                Paragraph("DOMMx Final Assessment Report", styles["Heading1"]),
+                Spacer(1, 20),
+                Paragraph("Placeholder PDF (test).", styles["Normal"]),
+            ]
+            doc.build(elements)
+
+            pdf = buffer.getvalue()
+            buffer.close()
+
+            col_r1, col_r2 = st.columns(2)
+
+            with col_r1:
+                st.download_button(
+                    label="📄 Download Final Report",
+                    data=pdf,
+                    file_name="DOMMx_Final_Report.pdf",
+                    mime="application/pdf",
+                    use_container_width=True
+                )
+
+            with col_r2:
+                if st.button("↩ Back to Login", use_container_width=True):
+                    st.session_state.app_mode = "login"
+                    st.session_state.pop("_temp_user", None)
+                    st.rerun()
+
+            return
+        
         col_enter, col_request = st.columns(2)
 
         with col_enter:
@@ -525,15 +586,7 @@ def render_project_selection():
                 "Enter",
                 use_container_width=True,
                 disabled=not (has_access or allow_open),
-            ):
-
-                # 🔥 CHECK FIRST
-                if has_finished_project(user_id, selected_project):
-                    st.success("You have already completed all actions for this project.")                    
-                    time.sleep(4)
-                    st.session_state.app_mode = "login"
-                    st.session_state.pop("_temp_user", None)
-                    st.rerun()
+            ):                
 
                 # 🔥 NORMAL FLOW (only if not finished)
                 st.session_state.user_id = user_id

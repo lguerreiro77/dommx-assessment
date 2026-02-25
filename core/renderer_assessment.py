@@ -17,6 +17,9 @@ from auth.crypto_service import decrypt_text
 from storage.log_storage import save_log_snapshot
 from core.i18n_markers import mark_yaml_strings
 
+from core.comments_manager import save_comment, load_comment, delete_comment
+from storage.export_comments_service import export_all_comments_to_excel
+
 from data.repository_factory import get_repository
 repo = get_repository()
 
@@ -166,31 +169,79 @@ def render_final_screen():
 # MAIN ASSESSMENT RENDER
 # =========================================================
 
-def render_assessment():       
+def render_assessment():                   
        
         # -------------------------------------------------
         # FINAL SCREEN (fora do dialog)
         # -------------------------------------------------
 
         if st.session_state.get("final_screen"):
-            
+
             st.success("Assessment completed successfully.")
 
-            start = st.session_state.get("final_start", time.time())
-            duration = 5
+            st.markdown("### Final Report")
 
-            elapsed = time.time() - start
-            remaining = int(duration - elapsed)
+            col1, col2 = st.columns(2)
 
-            if remaining > 0:
-                st.info(f"You will be logged out automatically in {remaining} seconds...")
-                time.sleep(1)
-                st.rerun()
-            else:
-                logout()
-                st.rerun()
+            # BOTÃO DOWNLOAD PDF (vazio por enquanto)
+            with col1:
+                if st.button("📄 Download Final Report", use_container_width=True):
 
-            st.stop()   
+                    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+                    from reportlab.lib.styles import getSampleStyleSheet
+                    from reportlab.lib import colors
+                    from reportlab.lib.pagesizes import A4
+                    from reportlab.platypus import Paragraph
+                    from reportlab.lib.styles import ParagraphStyle
+                    from reportlab.platypus import SimpleDocTemplate
+                    from reportlab.platypus import Spacer
+                    from reportlab.platypus import Frame
+                    from reportlab.platypus import PageTemplate
+                    from reportlab.platypus import BaseDocTemplate
+                    from reportlab.platypus import FrameBreak
+                    from reportlab.platypus import KeepTogether
+                    from reportlab.platypus import ListFlowable
+                    from reportlab.platypus import ListItem
+
+                    from reportlab.platypus import SimpleDocTemplate
+                    from reportlab.platypus import Paragraph
+                    from reportlab.platypus import Spacer
+                    from reportlab.lib.styles import getSampleStyleSheet
+                    from reportlab.lib.pagesizes import A4
+
+                    import io
+
+                    buffer = io.BytesIO()
+
+                    doc = SimpleDocTemplate(buffer, pagesize=A4)
+                    elements = []
+
+                    styles = getSampleStyleSheet()
+
+                    elements.append(Paragraph("DOMMx Final Assessment Report", styles["Heading1"]))
+                    elements.append(Spacer(1, 20))
+                    elements.append(Paragraph("This is a placeholder PDF.", styles["Normal"]))
+
+                    doc.build(elements)
+
+                    pdf = buffer.getvalue()
+                    buffer.close()
+
+                    st.download_button(
+                        label="⬇ Download PDF",
+                        data=pdf,
+                        file_name="DOMMx_Final_Report.pdf",
+                        mime="application/pdf",
+                        use_container_width=True
+                    )
+
+            # BOTÃO EXIT
+            with col2:
+                if st.button("🚪 Exit System", use_container_width=True):
+                    logout()
+                    st.rerun()
+
+            st.stop()
            
         
         fs_path = get_filesystem_setup_path()
@@ -326,6 +377,14 @@ def render_assessment():
         
         if "last_save_ts" not in st.session_state:
             st.session_state.last_save_ts = time.time()
+        
+        domain_key = f"domain_{st.session_state.dom_idx}"
+
+        if "last_save_ts" not in st.session_state:
+            st.session_state.last_save_ts = time.time()
+
+        if "show_comment_box" not in st.session_state:
+            st.session_state.show_comment_box = False
             
         if domain_key not in st.session_state.answers:
             st.session_state.answers[domain_key] = {}
@@ -551,6 +610,37 @@ def render_assessment():
                             except Exception as e:
                                 st.write("EXPORT ERROR:", e)
                                 
+                        
+                        # ===============================
+                        # EXPORT COMMENTS
+                        # ===============================
+
+                        if st.button(
+                            "💬 Export All Comments",
+                            key="btn_export_comments",
+                            use_container_width=True,
+                            type="secondary"
+                        ):
+
+                            try:
+                                excel_data = export_all_comments_to_excel()
+
+                                if not excel_data:
+                                    st.warning("No comments available for export.")
+                                else:
+                                    st.download_button(
+                                        label="⬇ Download Comments",
+                                        data=excel_data,
+                                        file_name="DOMMx_Comments.xlsx",
+                                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                        use_container_width=True,
+                                        key="btn_download_comments"
+                                    )
+
+                            except Exception as e:
+                                st.write("EXPORT COMMENTS ERROR:", e)
+                        
+                        
             st.session_state["_yaml_rendering"] = True
                                 
             # ===============================
@@ -943,7 +1033,140 @@ def render_assessment():
                         if st.button("Cancel", use_container_width=True):
                             st.session_state.open_submit_dialog = False
                             st.rerun()
+                            
+            # -------------------------------------------------
+            # COMMENT SECTION
+            # -------------------------------------------------
 
-        st.session_state["_yaml_rendering"] = False
-    
-    
+            st.markdown("<br><br>", unsafe_allow_html=True)
+
+            # BOTÃO PRINCIPAL
+            if not st.session_state.get("show_comment_box"):
+
+                if st.button(
+                    st._tr("💬 Comment", force=True),
+                    key="btn_comment_toggle"
+                ):
+                    st.session_state.show_comment_box = True
+                    st.rerun()
+
+
+            # CAIXA ABERTA
+            else:
+
+                existing_comment = load_comment(
+                    st.session_state.user_id,
+                    st.session_state.active_project,
+                    dom_id,
+                    q_id
+                )
+
+                comment_text = st.text_area(
+                    st._tr("Comment", force=True),
+                    value=existing_comment,
+                    height=200,
+                    key=f"comment_box_{dom_id}_{q_id}",
+                    label_visibility="collapsed"
+                )
+
+                st.markdown(
+                    """
+                    <style>
+                    div[data-testid="stButton"] > button[kind="primary"] {
+                        padding: 0.6rem 1rem !important;
+                        border-radius: 8px !important;
+                    }
+                    div[data-testid="stButton"] > button:not([kind="primary"]) {
+                        padding: 0.6rem 1rem !important;
+                        border-radius: 8px !important;
+                    }
+                    </style>
+                    """,
+                    unsafe_allow_html=True
+                )
+
+                col_btn1, col_btn2, col_btn3 = st.columns([3,3,4])
+
+                with col_btn1:
+                    
+                    if st.button(
+                        st._tr("Save", force=True),
+                        key="btn_comment_ok",
+                        type="primary",
+                        use_container_width=True
+                    ):
+
+                        if len(comment_text) > 10000:
+
+                            st.error(
+                                st._tr(
+                                    "Comment exceeds maximum allowed size (10,000 characters).",
+                                    force=True
+                                )
+                            )
+
+                        else:
+
+                            try:
+
+                                save_comment(
+                                    st.session_state.user_id,
+                                    st.session_state.active_project,
+                                    dom_id,
+                                    q_id,
+                                    current_answer,
+                                    comment_text
+                                )
+
+                                st.session_state.show_comment_box = False
+                                st.rerun()
+
+                            except ValueError as e:
+
+                                if str(e) == "COMMENT_TOO_LONG":
+
+                                    st.error(
+                                        st._tr(
+                                            "Comment exceeds maximum allowed size (10,000 characters).",
+                                            force=True
+                                        )
+                                    )
+
+                with col_btn2:
+                    if existing_comment:
+                        if st.button(
+                            st._tr("Delete", force=True),
+                            key="btn_comment_delete",
+                            use_container_width=True
+                        ):
+                            st.session_state.confirm_delete_comment = True
+
+                # CONFIRM DELETE
+                if st.session_state.get("confirm_delete_comment"):
+
+                    st.warning(
+                        st._tr("Are you sure you want to delete this comment?", force=True)
+                    )
+
+                    col_c1, col_c2 = st.columns(2)
+
+                    with col_c1:
+                        if st.button(st._tr("Confirm", force=True), key="confirm_delete_comment_btn"):
+
+                            delete_comment(
+                                st.session_state.user_id,
+                                st.session_state.active_project,
+                                dom_id,
+                                q_id
+                            )
+
+                            st.session_state.confirm_delete_comment = False
+                            st.session_state.show_comment_box = False
+                            st.rerun()
+
+                    with col_c2:
+                        if st.button(st._tr("Cancel", force=True), key="cancel_delete_comment_btn"):
+                            st.session_state.confirm_delete_comment = False
+                            st.rerun()
+                            
+                

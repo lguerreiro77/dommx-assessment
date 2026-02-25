@@ -28,10 +28,15 @@ def handle_page_and_dialogs():
 
     if dialog == "projects":
         render_projects_modal()
+        st.session_state.open_dialog = None
+
     elif dialog == "associate":
         render_user_project_modal()
+        st.session_state.open_dialog = None
+
     elif dialog == "remove_association":
         render_remove_association_modal()
+        st.session_state.open_dialog = None
 
     # INTRO SCREEN
     if not st.session_state.get("intro_seen", False):

@@ -12,3 +12,4 @@ pycountry
 phonenumbers
 ruamel.yaml
 openai
+reportlab
