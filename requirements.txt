@@ -13,3 +13,5 @@ phonenumbers
 ruamel.yaml
 openai
 reportlab
+pymupdf
+PyPDF2
