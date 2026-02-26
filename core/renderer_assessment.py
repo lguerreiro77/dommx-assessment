@@ -20,6 +20,9 @@ from core.i18n_markers import mark_yaml_strings
 from core.comments_manager import save_comment, load_comment, delete_comment
 from storage.export_comments_service import export_all_comments_to_excel
 
+from core.ai_report_service import AIReportService
+
+
 from data.repository_factory import get_repository
 repo = get_repository()
 
@@ -183,57 +186,32 @@ def render_assessment():
 
             col1, col2 = st.columns(2)
 
-            # BOTÃO DOWNLOAD PDF (vazio por enquanto)
+            # BOTÃO DOWNLOAD WORD (AI REPORT)
             with col1:
                 if st.button("📄 Download Final Report", use_container_width=True):
-
-                    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-                    from reportlab.lib.styles import getSampleStyleSheet
-                    from reportlab.lib import colors
-                    from reportlab.lib.pagesizes import A4
-                    from reportlab.platypus import Paragraph
-                    from reportlab.lib.styles import ParagraphStyle
-                    from reportlab.platypus import SimpleDocTemplate
-                    from reportlab.platypus import Spacer
-                    from reportlab.platypus import Frame
-                    from reportlab.platypus import PageTemplate
-                    from reportlab.platypus import BaseDocTemplate
-                    from reportlab.platypus import FrameBreak
-                    from reportlab.platypus import KeepTogether
-                    from reportlab.platypus import ListFlowable
-                    from reportlab.platypus import ListItem
-
-                    from reportlab.platypus import SimpleDocTemplate
-                    from reportlab.platypus import Paragraph
-                    from reportlab.platypus import Spacer
-                    from reportlab.lib.styles import getSampleStyleSheet
-                    from reportlab.lib.pagesizes import A4
-
-                    import io
-
-                    buffer = io.BytesIO()
-
-                    doc = SimpleDocTemplate(buffer, pagesize=A4)
-                    elements = []
-
-                    styles = getSampleStyleSheet()
-
-                    elements.append(Paragraph("DOMMx Final Assessment Report", styles["Heading1"]))
-                    elements.append(Spacer(1, 20))
-                    elements.append(Paragraph("This is a placeholder PDF.", styles["Normal"]))
-
-                    doc.build(elements)
-
-                    pdf = buffer.getvalue()
-                    buffer.close()
-
-                    st.download_button(
-                        label="⬇ Download PDF",
-                        data=pdf,
-                        file_name="DOMMx_Final_Report.pdf",
-                        mime="application/pdf",
-                        use_container_width=True
+                    
+                    report_service = AIReportService(
+                        base_dir=BASE_DIR,
+                        repo=repo,
+                        ai_call=None  # Coloque wrapper OpenAI aqui se quiser IA ativa
                     )
+
+                    docx_path = report_service.generate_report_docx(
+                        project_id=st.session_state.project_id,
+                        user_id=st.session_state.get("user_id"),
+                        is_admin=st.session_state.get("is_admin", False),
+                        language="pt",
+                        force_regen=False
+                    )
+
+                    with open(docx_path, "rb") as f:
+                        st.download_button(
+                            label="⬇ Download Word Report",
+                            data=f,
+                            file_name=os.path.basename(docx_path),
+                            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                            use_container_width=True
+                        )
 
             # BOTÃO EXIT
             with col2:

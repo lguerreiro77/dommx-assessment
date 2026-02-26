@@ -12,6 +12,10 @@ from storage.project_storage import get_all_projects, get_projects
 from storage.user_project_storage import get_projects_for_user
 from storage.user_storage import load_user, save_user, verify_password, get_all_users, load_user_by_hash
 
+from core.ai_report_service import AIReportService
+from data.repository_factory import get_repository
+from core.config import BASE_DIR
+import os
 
 from data.repository_factory import get_repository
 
@@ -563,13 +567,44 @@ def render_project_selection():
             col_r1, col_r2 = st.columns(2)
 
             with col_r1:
-                st.download_button(
-                    label="📄 Download Final Report",
-                    data=pdf,
-                    file_name="DOMMx_Final_Report.pdf",
-                    mime="application/pdf",
-                    use_container_width=True
-                )
+                
+                repo = get_repository()
+
+                # Verifica se já existem resultados para o projeto
+                results = repo.fetch_all("results") or []
+
+                project_results = [
+                    r for r in results
+                    if str(r.get("project_id")) == str(selected_project)
+                ]
+
+                if project_results:
+
+                    report_service = AIReportService(
+                        base_dir=BASE_DIR,
+                        repo=repo,
+                        ai_call=None  # Ativar wrapper OpenAI se quiser IA ativa
+                    )
+
+                    docx_path = report_service.generate_report_docx(
+                        project_id=selected_project,
+                        user_id=st.session_state.get("user_id"),
+                        is_admin=st.session_state.get("is_admin", False),
+                        language="pt",
+                        force_regen=False
+                    )
+
+                    with open(docx_path, "rb") as f:
+                        st.download_button(
+                            label="📄 Download Final Report",
+                            data=f,
+                            file_name=os.path.basename(docx_path),
+                            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                            use_container_width=True
+                        )
+
+                else:
+                    st.info("No assessment results available for this project.")
 
             with col_r2:
                 if st.button("↩ Back to Login", use_container_width=True):
