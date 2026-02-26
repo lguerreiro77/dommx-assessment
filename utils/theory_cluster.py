@@ -859,6 +859,241 @@ def run_domain_generation(
 
     return out_obj
 
+# ============================================================
+# INCONSISTENCY ENGINE (Advanced Structural Scenario Matrix)
+# ============================================================
+
+INCONSISTENCY_CACHE = THEORY_DIR / "Dependencies_inconsistencies_theory_cluster_output.json"
+
+
+def build_inconsistencies_json(rebuild_cache=False):
+
+    ensure_dir(CACHE_DIR)
+
+    client = openai_client()
+    model = DEFAULT_MODEL_DT
+    system_prompt = (
+        "You are an expert in data governance structural modeling. "
+        "Produce precise, architecture-aware structural analysis. "
+        "No JSON. No fluff."
+    )
+
+    flow = load_yaml(FLOW_PATH)
+    domain_flow = flow.get("Domain_flow", [])
+
+    # ------------------------------------------------------------
+    # Load or init cache (seed level)
+    # ------------------------------------------------------------
+
+    seed_cache = load_json(INCONSISTENCY_CACHE, default={"_meta": {}, "generated": {}})
+    generated = seed_cache.setdefault("generated", {})
+
+    if rebuild_cache:
+        generated.clear()
+
+    # ------------------------------------------------------------
+    # Prepare seed tasks (1 per domain-ref pair)
+    # ------------------------------------------------------------
+
+    tasks = []
+
+    for domain in domain_flow:
+        domain_id = domain["domain_id"]
+
+        for ref_id in domain.get("dependence", []):
+            if ref_id == domain_id:
+                continue
+
+            pair_key = f"{domain_id}|{ref_id}"
+
+            if pair_key in generated:
+                continue
+
+            ref_domain = next((d for d in domain_flow if d["domain_id"] == ref_id), None)
+            if not ref_domain:
+                continue
+
+            tasks.append({
+                "pair_key": pair_key,
+                "domain": domain,
+                "ref_domain": ref_domain
+            })
+
+    total_tasks = len(tasks)
+    done_tasks = 0
+    progress_line("Inconsistency seeds", 0, total_tasks)
+
+    # ------------------------------------------------------------
+    # Worker
+    # ------------------------------------------------------------
+
+    def worker(task):
+
+        d = task["domain"]
+        r = task["ref_domain"]
+
+        prompt = f"""
+Generate a structural dependency analytical baseline between:
+
+Primary Domain: {d['name']} ({d['acronym']})
+Reference Domain: {r['name']} ({r['acronym']})
+
+Return structured analysis including:
+
+1) Core structural dependency explanation
+2) Typical imbalance patterns between these domains
+3) Structural correction architecture pattern
+4) Cascading risk and governance degradation logic
+
+Keep it compact, technical, prescriptive and architecture-oriented.
+Around 2 short paragraphs if necessary maximum at 3 per section.
+"""
+
+        txt = call_gpt_text(
+            client=client,
+            model=model,
+            system=system_prompt,
+            user=prompt
+        )
+
+        return task["pair_key"], txt.strip()
+
+    # ------------------------------------------------------------
+    # Parallel generation (batched)
+    # ------------------------------------------------------------
+
+    batch_size = 6
+    max_workers = 4
+
+    batches = [tasks[i:i + batch_size] for i in range(0, len(tasks), batch_size)]
+
+    for batch in batches:
+
+        with ThreadPoolExecutor(max_workers=max_workers) as ex:
+            futures = {ex.submit(worker, t): t for t in batch}
+
+            for fut in as_completed(futures):
+                task = futures[fut]
+                try:
+                    pair_key, txt = fut.result()
+                    generated[pair_key] = {"seed_text": txt}
+                except Exception as e:
+                    generated[task["pair_key"]] = {"seed_text": "", "error": str(e)}
+
+                done_tasks += 1
+                progress_line("Inconsistency seeds", done_tasks, total_tasks)
+
+        save_json(INCONSISTENCY_CACHE, seed_cache)
+
+    # ------------------------------------------------------------
+    # Build final structured JSON
+    # ------------------------------------------------------------
+
+    # total pairs for progress
+    total_pairs = 0
+    for d in domain_flow:
+        did = d["domain_id"]
+        total_pairs += sum(1 for rid in d.get("dependence", []) if rid != did)
+
+    done_pairs = 0
+    progress_line("Building JSON", 0, total_pairs)
+
+    results = []
+
+    for domain in domain_flow:
+        domain_id = domain["domain_id"]
+        acronym = domain["acronym"]
+
+        for ref_id in domain.get("dependence", []):
+            if ref_id == domain_id:
+                continue
+
+            ref_domain = next((d for d in domain_flow if d["domain_id"] == ref_id), None)
+            if not ref_domain:
+                continue
+
+            pair_key = f"{domain_id}|{ref_id}"
+            seed_text = generated.get(pair_key, {}).get("seed_text", "")
+
+            scenarios = {}
+
+            for scenario_key, scenario_label, prefix in [
+                ("reference_inferior", "Reference Maturity is Inferior",
+                 "Assume the reference domain is structurally less mature than the primary domain."),
+                ("reference_superior", "Reference Maturity is Superior",
+                 "Assume the reference domain is structurally more mature than the primary domain."),
+                ("reference_not_evaluated", "Reference Maturity is not evaluated",
+                 "Assume the reference domain has not been evaluated or is structurally undefined."),
+            ]:
+
+                scenarios[scenario_key] = {
+                    "comparison": scenario_label,
+                    "whynot_text": f"{prefix}\n\n{seed_text}",
+                    "whatcauses_text": seed_text,
+                    "howtofix_text": seed_text,
+                    "analysis_text": seed_text,
+                }
+
+            # Structural Severity (deterministic)
+
+            depth_factor = len(domain.get("dependence", []))
+            centrality_factor = len([
+                d for d in domain_flow
+                if domain_id in d.get("dependence", [])
+            ])
+
+            severity_score = min(4, max(1, int((depth_factor + centrality_factor) / 3)))
+
+            severity_label_map = {
+                1: "Low",
+                2: "Moderate",
+                3: "High",
+                4: "Critical",
+            }
+
+            severity_label = severity_label_map[severity_score]
+
+            severity_rationale = (
+                f"The structural dependency between {acronym} and "
+                f"{ref_domain['acronym']} is classified as {severity_label} "
+                f"due to dependency depth {depth_factor} and structural "
+                f"centrality {centrality_factor}, indicating systemic "
+                f"propagation potential if misaligned."
+            )
+
+            results.append({
+                "domain_id": domain_id,
+                "domain_acronym": acronym,
+                "reference_domain_id": ref_id,
+                "reference_acronym": ref_domain["acronym"],
+                "dependency_broken": True,
+                "Structural Severity Classification": {
+                    "severity_level": severity_label,
+                    "severity_score": severity_score,
+                    "severity_rationale": severity_rationale,
+                },
+                "scenarios": scenarios,
+            })
+
+            done_pairs += 1
+            progress_line("Building JSON", done_pairs, total_pairs)
+
+    final_output = {
+        "Structural Severity Meaning": {
+            "1": "Low – Localized structural impact with limited cross-domain propagation.",
+            "2": "Moderate – Operational instability affecting adjacent domains.",
+            "3": "High – Multi-domain structural degradation with governance implications.",
+            "4": "Critical – Systemic structural failure with cascading organizational risk."
+        },
+        "inconsistencies": results
+    }
+
+    save_json(INCONSISTENCY_CACHE, final_output)
+
+    print("")  # encerra barra limpa
+    return final_output
+
+
 # =========================================================
 # MAIN
 # =========================================================
@@ -874,8 +1109,16 @@ def main():
     parser.add_argument("--clear-cache", action="store_true", help="clear DOMAIN cache before generating")
     parser.add_argument("--clear-pdf-cache", action="store_true", help="clear GLOBAL pdf cache before generating")
     parser.add_argument("--clear-topic-cache", action="store_true", help="clear GLOBAL topic excerpts cache before generating")
+    parser.add_argument("--inconsistency", action="store_true", help="Generate structural dependency inconsistencies only" )
+    parser.add_argument("--rebuild-inconsistency-cache",action="store_true",help="Force rebuild of inconsistency cache" )
 
     args = parser.parse_args()
+    
+    if args.inconsistency:
+        build_inconsistencies_json(
+            rebuild_cache=args.rebuild_inconsistency_cache
+        )
+        return
 
     ensure_dir(OUTPUT_DIR)
     ensure_dir(CACHE_DIR)
