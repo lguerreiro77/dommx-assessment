@@ -100,5 +100,15 @@
   "Welcome to DOMMx Assessment": "Bienvenue dans l'évaluation DOMMx",
   "This diagnostic evaluates organizational maturity across selected data domains. Please answer honestly based on current state.\n": "Ce diagnostic évalue la maturité organisationnelle dans des domaines de données sélectionnés. Veuillez répondre honnêtement en fonction de l'état actuel.",
   "Continue ➡": "Continuer ➡",
-  "Objective: Renforcer les structures de prise de décision, renforcer la responsabilité et soutenir une gouvernance fédérée ou orientée DII.": "Objectif : Renforcer les structures de prise de décision, renforcer la responsabilité et soutenir une gouvernance fédérée ou orientée DII."
+  "Objective: Renforcer les structures de prise de décision, renforcer la responsabilité et soutenir une gouvernance fédérée ou orientée DII.": "Objectif : Renforcer les structures de prise de décision, renforcer la responsabilité et soutenir une gouvernance fédérée ou orientée DII.",
+  "📄 Open Consent Term": "📄 Ouvrir le terme de consentement",
+  "⬇ Download Consent Term": "⬇ Télécharger le terme de consentement",
+  "You have already completed all actions for this project.": "Vous avez déjà terminé toutes les actions pour ce projet.",
+  "↩ Login": "↩ Connexion",
+  "🗑 Revoke Consent": "🗑 Révoquer le consentement",
+  "↩ Log off": "↩ Déconnexion",
+  "🗑 Revoke permission": "🗑 Révoquer l'autorisation",
+  "🗑 Delete Account": "🗑 Supprimer le compte",
+  "Revoke Consent and delete account": "Révoquer le consentement et supprimer le compte",
+  "Révoquer le consentement et supprimer le compte": "Révoquer le consentement et supprimer le compte"
 }

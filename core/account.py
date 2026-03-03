@@ -9,11 +9,30 @@ from storage.user_storage import (
     _read_users_records  # 🔥 necessário para limpar cache raiz
 )
 
+from core.config import BASE_DIR
+
 from data.repository_factory import get_repository
 from auth.crypto_service import encrypt_text
 from auth.email_service import send_email
 
+
 repo = get_repository()
+
+
+# =========================================================
+# Variaveis
+# =========================================================
+
+
+consent_pdf_path = os.path.join(
+            BASE_DIR,
+            "data",
+            "general",
+            "Consentimento_Informado_Focus_Group_DOMMx.pdf"
+        )
+
+
+
 
 
 def _get_env(name: str):
@@ -255,19 +274,56 @@ def render_account_page(session_state):
     if st.session_state._delete_pending:
         with st.spinner("Deleting account..."):
             try:
+                # capture email BEFORE delete (keep behavior stable)
+                user_email = user_data.get("email")
+
                 _delete_account(user_hash)
 
+                # Admin email (existing behavior)
                 admin_email = _get_env("SMTP_USER")
                 if admin_email:
                     try:
                         send_email(
                             admin_email,
                             "Account Deleted",
-                            f"User deleted the account: {user_data.get('email')}"
+                            f"User deleted the account: {user_email}"
                         )
                     except Exception:
                         pass
 
+                # User email: consent revoked + attach term
+                try:
+                    consent_pdf_path = os.path.join(
+                        BASE_DIR,
+                        "data",
+                        "general",
+                        "Consentimento_Informado_Focus_Group_DOMMx.pdf"
+                    )
+
+                    pdf_bytes = None
+                    if os.path.isfile(consent_pdf_path):
+                        with open(consent_pdf_path, "rb") as f:
+                            pdf_bytes = f.read()
+
+                    attachments = None
+                    if pdf_bytes:
+                        attachments = [{
+                            "filename": "Consentimento_Informado_Focus_Group_DOMMx.pdf",
+                            "content": pdf_bytes,
+                            "mime": "application/pdf"
+                        }]
+
+                    if user_email:
+                        send_email(
+                            user_email,
+                            "Consent Revoked - DOMMx Focus Group",
+                            "Your account was deleted and the associated consent was revoked.\n\nAttached: Consent Term.",
+                            attachments=attachments
+                        )
+                except Exception:
+                    pass
+
+                # Continue original flow
                 if str(session_state.get("user_id")).strip() == user_hash:
                     for key in list(st.session_state.keys()):
                         del st.session_state[key]
@@ -304,7 +360,6 @@ def render_account_page(session_state):
             st.session_state._delete_pending = True
             st.rerun()
             
-        
 
 def _delete_account(user_hash):
 

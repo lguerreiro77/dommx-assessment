@@ -4,6 +4,7 @@ import time
 import pycountry
 import shutil
 import streamlit as st
+import streamlit.components.v1 as components
 import hashlib
 
 from auth.email_service import send_email
@@ -48,6 +49,39 @@ def has_finished_project(user_id, project_id):
             return True
 
     return False
+
+# =========================================================
+# remove consent and account
+# =========================================================
+
+def _delete_account_and_data(user_hash: str):
+    user_hash = str(user_hash).strip()
+
+    tables_with_user_id = [
+        "results",
+        "usersprojects",
+        "finished_assessments",
+        "logs",
+    ]
+
+    for table in tables_with_user_id:
+        try:
+            repo.delete(table, {"user_id": user_hash})
+        except Exception:
+            pass
+
+    try:
+        repo.delete("users", {"email_hash": user_hash})
+    except Exception:
+        pass
+
+    # best effort cache clear
+    try:
+        get_all_users.clear()
+        load_user.clear()
+        load_user_by_hash.clear()
+    except Exception:
+        pass
 
 
 # =========================================================
@@ -331,9 +365,83 @@ def render_register():
         state_province = st.text_input("State/Province")
         city = st.text_input("City")
 
-        consent = st.checkbox("I consent to the use of my personal data for DOMMx *")
+        # -------------------------
+        # CONSENT TERM (real file link, Chrome safe)
+        # -------------------------
+        consent_pdf_path = os.path.join(
+            BASE_DIR,
+            "data",
+            "general",
+            "Consentimento_Informado_Focus_Group_DOMMx.pdf"
+        )
+
+        if "consent_term_opened" not in st.session_state:
+            st.session_state.consent_term_opened = False
+
+        # ALWAYS initialize and load bytes (needed for blob open)
+        pdf_bytes = None
+        pdf_exists = os.path.isfile(consent_pdf_path)
+
+        if pdf_exists:
+            try:
+                with open(consent_pdf_path, "rb") as f:
+                    pdf_bytes = f.read()
+            except Exception:
+                pdf_bytes = None
+                pdf_exists = False
+
+        col_term_a, col_term_b = st.columns([1, 1])
+
+        with col_term_a:
+            if st.button("📄 Open Consent Term", key="btn_open_consent_term", use_container_width=True):
+                if pdf_bytes:
+                    import base64
+                    b64 = base64.b64encode(pdf_bytes).decode("utf-8")
+
+                    components.html(
+                        f"""
+                        <script>
+                        (function() {{
+                            const b64 = "{b64}";
+                            const byteChars = atob(b64);
+                            const byteNumbers = new Array(byteChars.length);
+                            for (let i = 0; i < byteChars.length; i++) {{
+                                byteNumbers[i] = byteChars.charCodeAt(i);
+                            }}
+                            const byteArray = new Uint8Array(byteNumbers);
+                            const blob = new Blob([byteArray], {{ type: "application/pdf" }});
+                            const url = URL.createObjectURL(blob);
+                            window.open(url, "_blank");
+                            setTimeout(() => URL.revokeObjectURL(url), 60000);
+                        }})();
+                        </script>
+                        """,
+                        height=0,
+                    )
+
+                    st.session_state.consent_term_opened = True
+                else:
+                    st.error("Consent term file not found.")
+
+        with col_term_b:
+            if pdf_exists:
+                with open(consent_pdf_path, "rb") as f:
+                    st.download_button(
+                        "⬇ Download Consent Term",
+                        data=f,
+                        file_name="Consentimento_Informado_Focus_Group_DOMMx.pdf",
+                        mime="application/pdf",
+                        use_container_width=True
+                    )
+
+        consent = st.checkbox(
+            "I consent to the use of my personal data for DOMMx *",
+            key="chk_register_consent",
+            disabled=not st.session_state.consent_term_opened
+        )
 
         col_save, col_back = st.columns(2)
+       
 
         # Execução do save em rerun, para bloquear cliques múltiplos
         if st.session_state._register_pending and st.session_state._register_payload:
@@ -356,12 +464,49 @@ def render_register():
                     )
 
                     admin_email = get_env("SMTP_USER")
+                    consent_pdf_path = os.path.join(
+                        BASE_DIR,
+                        "data",
+                        "general",
+                        "Consentimento_Informado_Focus_Group_DOMMx.pdf"
+                    )
+
+                    pdf_bytes = None
+                    if os.path.isfile(consent_pdf_path):
+                        try:
+                            with open(consent_pdf_path, "rb") as f:
+                                pdf_bytes = f.read()
+                        except Exception:
+                            pdf_bytes = None
+
+                    # Email: user + admin confirming consent, with attachment
+                    if pdf_bytes:
+                        attachments = [{
+                            "filename": "Consentimento_Informado_Focus_Group_DOMMx.pdf",
+                            "content": pdf_bytes,
+                            "mime": "application/pdf"
+                        }]
+                    else:
+                        attachments = None
+
+                    try:
+                        # user email
+                        send_email(
+                            payload["email"].strip(),
+                            "Consent Given - DOMMx Focus Group",
+                            "Your account was created and your consent was registered.\n\nAttached: Consent Term.",
+                            attachments=attachments
+                        )
+                    except Exception:
+                        pass
+
                     if admin_email:
                         try:
                             send_email(
                                 admin_email,
-                                "New User Registration",
-                                f"New user created: {payload['email']}"
+                                "Consent Given - DOMMx Focus Group",
+                                f"User gave consent: {payload['email']}\n\nAttached: Consent Term.",
+                                attachments=attachments
                             )
                         except Exception:
                             pass
@@ -545,22 +690,40 @@ def render_project_selection():
         # -------------------------------------------------
         if selected_project and has_finished_project(user_id, selected_project):
 
-            st.success("You have already completed all actions for this project.")
+            st.success(st._html_tr("You have already completed all actions for this project."))
 
             st.markdown(
                 """
                 <style>
+
                 div[data-testid="stButton"] > button,
                 div[data-testid="stDownloadButton"] > button {
-                    height: 55px !important;
-                    border-radius: 8px !important;
+
+                    height: 72px !important;                           
+                    border-radius: 10px !important;
+
+                    padding: 18px 24px !important;  /* mais largo */
+                    font-size: 10px !important;
+                    font-weight: 600 !important;
+                    line-height: 1.25 !important;
+
+                    white-space: normal !important; /* permite quebra */
+                    word-break: break-word !important;
+                    text-align: center !important;
                 }
+
                 </style>
                 """,
                 unsafe_allow_html=True
             )
 
-            col_r1, col_r2 = st.columns(2)
+            # state flags (avoid duplicate ids / rerun safe)
+            if "_revoke_consent_pending" not in st.session_state:
+                st.session_state._revoke_consent_pending = False
+            if "_confirm_revoke_consent" not in st.session_state:
+                st.session_state._confirm_revoke_consent = False
+
+            col_r1, col_r2, col_r3 = st.columns(3)
 
             current_locale = st.session_state.get("locale") or "us"
 
@@ -579,23 +742,156 @@ def render_project_selection():
                 language=current_locale,
                 force_regen=False
             )
-            
-            with col_r1:
 
+            with col_r1:
                 with open(docx_path, "rb") as f:
                     st.download_button(
-                        label="📄 Download Final Report (Word)",
+                        label=st._html_tr("📄 Download Report"),
                         data=f,
                         file_name=os.path.basename(docx_path),
                         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                        use_container_width=True
+                        use_container_width=True,
+                        key="btn_download_final_report_finished",
                     )
-                
+                #st.caption("Word")
+
             with col_r2:
-                if st.button("↩ Back to Login", use_container_width=True):
+                if st.button(st._html_tr("↩ Log off"), use_container_width=True, key="btn_back_to_login_finished"):
                     st.session_state.app_mode = "login"
                     st.session_state.pop("_temp_user", None)
                     st.rerun()
+                #st.caption("Sair")
+
+            with col_r3:
+                if st.button(st._html_tr("🗑 Delete Account"), use_container_width=True, key="btn_revoke_consent_open"):
+                    st.session_state._confirm_revoke_consent = True                    
+                    st.rerun()
+                st.caption(st._tr("Revoke Consent and delete account"))
+                    
+
+            if st.session_state.get("_confirm_revoke_consent"):
+                st.warning(st._html_tr("This will permanently delete your account and ALL your data. This action cannot be undone."))
+
+                confirm_revoke = st.checkbox(
+                    st._html_tr("I understand and I want to permanently delete my account and revoke consent."),
+                    key="chk_confirm_revoke_consent_finished",
+                    disabled=st.session_state._revoke_consent_pending,
+                )
+
+                col_c1, col_c2 = st.columns(2)
+
+                with col_c1:
+                    if st.button(
+                        st._html_tr("Confirm"),
+                        use_container_width=True,
+                        key="btn_confirm_revoke_consent_finished",
+                        disabled=(not confirm_revoke) or st.session_state._revoke_consent_pending
+                    ):
+                        st.session_state._revoke_consent_pending = True
+                        st.rerun()
+
+                with col_c2:
+                    if st.button(
+                        st._html_tr("Cancel"),
+                        use_container_width=True,
+                        key="btn_cancel_revoke_consent_finished",
+                        disabled=st.session_state._revoke_consent_pending
+                    ):
+                        st.session_state._confirm_revoke_consent = False
+                        st.rerun()
+
+            # execute delete on rerun (safe)
+            if st.session_state.get("_revoke_consent_pending"):
+                with st.spinner(st._html_tr("Revoking consent and deleting account...")):
+                    try:
+                        user_hash = str(st.session_state.get("user_id") or "").strip()
+
+                        # ---------- load user email (source of truth) ----------
+                        current_user = load_user_by_hash(user_hash)
+                        user_email = (current_user.get("email") if current_user else None) or user.get("email")
+
+                        # ---------- PDF attachment (real BASE_DIR path) ----------
+                        consent_pdf_path = os.path.join(
+                            BASE_DIR,
+                            "data",
+                            "general",
+                            "Consentimento_Informado_Focus_Group_DOMMx.pdf"
+                        )
+
+                        pdf_bytes = None
+                        if os.path.isfile(consent_pdf_path):
+                            try:
+                                with open(consent_pdf_path, "rb") as f:
+                                    pdf_bytes = f.read()
+                            except Exception:
+                                pdf_bytes = None
+
+                        attachments = None
+                        if pdf_bytes:
+                            attachments = [{
+                                "filename": "Consentimento_Informado_Focus_Group_DOMMx.pdf",
+                                "content": pdf_bytes,
+                                "mime": "application/pdf"
+                            }]
+
+                        # ---------- delete data (same logic as account.py) ----------
+                        tables_with_user_id = [
+                            "results",
+                            "usersprojects",
+                            "finished_assessments",
+                            "logs",
+                        ]
+
+                        for table in tables_with_user_id:
+                            try:
+                                repo.delete(table, {"user_id": user_hash})
+                            except Exception:
+                                pass
+
+                        try:
+                            repo.delete("users", {"email_hash": user_hash})
+                        except Exception:
+                            pass
+
+                        # ---------- emails ----------
+                        admin_email = get_env("SMTP_USER")
+
+                        # email user: consent revoked + attachment
+                        if user_email:
+                            try:
+                                send_email(
+                                    user_email,
+                                    st._html_tr(
+                                    "Consent Revoked - DOMMx Focus Group",
+                                    "Your consent was revoked and your account (and all associated data) was deleted.\n\nAttached: Consent Term."),
+                                    attachments=attachments
+                                )
+                            except Exception:
+                                pass
+
+                        # email admin: consent revoked + attachment
+                        if admin_email:
+                            try:
+                                send_email(
+                                    admin_email,
+                                    "Consent Revoked - DOMMx Focus Group",
+                                    f"User revoked consent and deleted the account: {user_email or user_hash}\n\nAttached: Consent Term.",
+                                    attachments=attachments
+                                )
+                            except Exception:
+                                pass
+
+                        # ---------- logout / clear session ----------
+                        for key in list(st.session_state.keys()):
+                            del st.session_state[key]
+
+                        st.session_state.app_mode = "login"
+                        st.rerun()
+
+                    except Exception as e:
+                        st.error(str(e))
+                        st.session_state._revoke_consent_pending = False
+                        st.rerun()
 
             return
             

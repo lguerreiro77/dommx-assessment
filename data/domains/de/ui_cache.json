@@ -104,5 +104,18 @@
   "This diagnostic evaluates organizational maturity across selected data domains. Please answer honestly based on current state.\n": "Diese Diagnose bewertet die organisatorische Reife in ausgewählten Datenbereichen. Bitte antworten Sie ehrlich basierend auf dem aktuellen Stand.",
   "Continue ➡": "Weiter ➡",
   "Objective: Entscheidungsstrukturen stärken, Verantwortlichkeit festigen und föderierte oder DII-orientierte Governance unterstützen.": "Ziel: Entscheidungsstrukturen stärken, Verantwortlichkeit festigen und föderierte oder DII-orientierte Governance unterstützen.",
-  "Temporary connection issue. Please try again in a few seconds.": "Vorübergehendes Verbindungsproblem. Bitte versuchen Sie es in wenigen Sekunden erneut."
+  "Temporary connection issue. Please try again in a few seconds.": "Vorübergehendes Verbindungsproblem. Bitte versuchen Sie es in wenigen Sekunden erneut.",
+  "📄 Open Consent Term": "📄 Zustimmungstext öffnen",
+  "⬇ Download Consent Term": "⬇ Zustimmungstext herunterladen",
+  "You have already completed all actions for this project.": "Sie haben bereits alle Aktionen für dieses Projekt abgeschlossen.",
+  "↩ Login": "↩ Anmelden",
+  "🗑 Revoke Consent": "🗑 Einwilligung widerrufen",
+  "↩ Log off": "↩ Abmelden",
+  "🗑 Revoke permission": "🗑 Berechtigung widerrufen",
+  "🗑 Delete Account": "🗑 Konto löschen",
+  "Revoke Consent and delete account": "Zustimmung widerrufen und Konto löschen",
+  "Zustimmung widerrufen und Konto löschen": "Zustimmung widerrufen und Konto löschen",
+  "This will permanently delete your account and ALL your data. This action cannot be undone.": "Dies wird Ihr Konto und ALLE Ihre Daten dauerhaft löschen. Diese Aktion kann nicht rückgängig gemacht werden.",
+  "I understand and I want to permanently delete my account and revoke consent.": "Ich verstehe und möchte mein Konto dauerhaft löschen und meine Einwilligung widerrufen.",
+  "Confirm": "Bestätigen"
 }

@@ -103,5 +103,15 @@
   "Enter": "Inserisci",
   "Welcome to DOMMx Assessment": "Benvenuto alla valutazione DOMMx",
   "This diagnostic evaluates organizational maturity across selected data domains. Please answer honestly based on current state.\n": "Questa diagnosi valuta la maturità organizzativa attraverso domini di dati selezionati. Si prega di rispondere onestamente in base allo stato attuale.",
-  "Continue ➡": "Continua ➡"
+  "Continue ➡": "Continua ➡",
+  "📄 Open Consent Term": "📄 Apri Termini di Consenso",
+  "⬇ Download Consent Term": "⬇ Scarica il Termini di Consenso",
+  "You have already completed all actions for this project.": "Hai già completato tutte le azioni per questo progetto.",
+  "↩ Login": "↩ Accedi",
+  "🗑 Revoke Consent": "🗑 Revoca il consenso",
+  "↩ Log off": "↩ Disconnetti",
+  "🗑 Revoke permission": "🗑 Revoca autorizzazione",
+  "🗑 Delete Account": "🗑 Elimina Account",
+  "Revoke Consent and delete account": "Revoca il consenso e cancella l'account",
+  "Revoca il consenso e cancella l'account": "Revoca il consenso e cancella l'account"
 }

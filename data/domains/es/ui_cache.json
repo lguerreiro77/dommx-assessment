@@ -99,5 +99,14 @@
   "You have already completed all actions for this project.": "Ya has completado todas las acciones para este proyecto.",
   "Progress saved successfully.": "Progreso guardado con éxito.",
   "↩ Back to Login": "↩ Volver a Iniciar Sesión",
-  "Temporary connection issue. Please try again in a few seconds.": "Problema de conexión temporal. Por favor, inténtalo de nuevo en unos segundos."
+  "Temporary connection issue. Please try again in a few seconds.": "Problema de conexión temporal. Por favor, inténtalo de nuevo en unos segundos.",
+  "📄 Open Consent Term": "📄 Abrir Término de Consentimiento",
+  "⬇ Download Consent Term": "⬇ Descargar Término de Consentimiento",
+  "↩ Login": "↩ Iniciar sesión",
+  "🗑 Revoke Consent": "🗑 Revocar Consentimiento",
+  "↩ Log off": "↩ Cerrar sesión",
+  "🗑 Revoke permission": "🗑 Revocar permiso",
+  "🗑 Delete Account": "🗑 Eliminar cuenta",
+  "Revoke Consent and delete account": "Revocar consentimiento y eliminar cuenta",
+  "Revocar consentimiento y eliminar cuenta": "Revocar consentimiento y eliminar cuenta"
 }
