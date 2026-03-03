@@ -65,25 +65,40 @@ action_catalog:
       - Utilizzare tecniche di allineamento dell'autorità DCAM per migliorare la
         chiarezza della governance.
   DQ-04:
-    title: Integrare dimensioni di qualità, regole di misurazione e proprietà 
-      nelle routine di dominio
+    title: Integrare routine di rimedio governate e controlli etici nelle 
+      operazioni
     procedures:
-    - number: 1
-      name: Incorporare controlli di qualità nei workflow di dominio
-      prerequisite: Richiede standard approvati DQ-03
-      deliverable: Modelli di workflow aggiornati
+    - number: 5
+      name: Monitorare l'adesione alla qualità dei dati
+      prerequisite: Richiede routine di monitoraggio
+      deliverable: Registro di conformità alla qualità
       recommendations:
-      - Integrare controlli seguendo le linee guida DAMA per la supervisione 
-        della qualità ai checkpoint operativi (Capitolo 3.3, p. 58).
-      - Validare i controlli utilizzando le definizioni di qualità DAMA 
-        (Capitolo 11, p. 308–311).
-      - Garantisci la supervisione del ciclo di vita utilizzando i checkpoint di
-        DAMA (Capitolo 4.3, p. 92).
-      - Conferma la supervisione della stewardship usando le responsabilità di 
-        governance DAMA (Capitolo 4, p. 86–87).
+      - Tracciare l’aderenza utilizzando le linee guida di monitoraggio della 
+        governance DAMA (Capitolo 3.6, p. 64).
+      - Validare gli indicatori di qualità utilizzando le regole e le dimensioni
+        di DAMA (Capitolo 11, p. 308–311).
+      - Confermare l'allineamento del ciclo di vita e della stewardship 
+        utilizzando checkpoint e ruoli di governance DAMA (Capitoli 3 e 4).
+      - Documentare la conformità utilizzando i modelli di artefatti DAMA 
+        (Appendice Capitolo 3, p. 69).
       notes:
-      - Utilizzare le tecniche di mappatura dei controlli DCAM per rafforzare la
-        conformità.
+      - Applicare i criteri diagnostici DCAM per identificare lacune di qualità.
+    - number: 6
+      name: Rinforzo dell'istituzionalizzazione strutturale
+      prerequisite: Richiede meccanismo di governance approvato e baseline 
+        politica formalizzata
+      deliverable: Procedura di governance istituzionalizzata con Control Owner 
+        assegnato e evidenze documentate di esecuzione ripetibile
+      recommendations:
+      - Assegnare un Control Owner formalmente responsabile del mantenimento del
+        meccanismo di governance.
+      - Definire criteri oggettivi di accettazione che confermino esecuzione 
+        stabile e coerente.
+      - Produrre artefatti documentati che attestino l'applicazione operativa 
+        ripetibile.
+      - Garantire l'integrazione nelle routine organizzative consolidate.
+      - Mantenere la tracciabilità tra il meccanismo di governance e la politica
+        di governo.
   DQ-06:
     title: Automatizzare validazione, esecuzione, monitoraggio e tracciamento 
       delle azioni correttive
@@ -104,6 +119,17 @@ action_catalog:
       notes:
       - Applicare la prontezza all'automazione CMMI per garantire stabilità 
         prima del deployment.
+    - number: 6
+      name: Rinforzo della misurazione strutturale e supervisione
+      prerequisite: Richiede un meccanismo di governance istituzionalizzato
+      deliverable: Ambiente di controllo di governance gestito e misurato
+      recommendations:
+      - Definire metriche di performance misurabili allineate agli obiettivi di 
+        governance.
+      - Implementare meccanismi strutturati di monitoraggio o dashboard.
+      - Stabilire cicli formali di validazione inclusi revisioni periodiche.
+      - Mantenere documentazione tracciabile dei risultati di performance.
+      - Definire percorsi di escalation per deviazioni non risolte.
   DQ-09:
     title: Migliorare continuamente la misurazione della qualità, la validazione
       e la governance della rimedio
@@ -124,3 +150,16 @@ action_catalog:
       notes:
       - Applica i metodi di miglioramento continuo CMMI per il raffinamento 
         strutturale.
+    - number: 6
+      name: Ottimizzazione strutturale e rinforzo adattivo
+      prerequisite: Richiede meccanismo di governance gestito e misurato
+      deliverable: Processo di governance ottimizzato che dimostra automazione e
+        miglioramento adattivo
+      recommendations:
+      - Introdurre elementi di automazione a supporto dell'applicazione e del 
+        monitoraggio.
+      - Implementare cicli di miglioramento continuo basati sulle tendenze di 
+        performance.
+      - Condurre benchmarking rispetto a framework di governance riconosciuti.
+      - Documentare miglioramenti misurabili su più cicli.
+      - Garantire l'adattabilità ai cambiamenti normativi e organizzativi.

@@ -127,5 +127,8 @@
   "📄 Download Final Report": "📄 Baixar Relatório Final",
   "🚪 Exit System": "🚪 Sair do Sistema",
   "You have already completed all actions for this project.": "Você já completou todas as ações para este projeto.",
-  "↩ Back to Login": "↩ Voltar ao Login"
+  "↩ Back to Login": "↩ Voltar ao Login",
+  "Temporary connection issue. Please try again in a few seconds.": "Problema de conexão temporário. Por favor, tente novamente em alguns segundos.",
+  "Erro real: 'Client' object has no attribute 'session'": "Erro real: o objeto 'Client' não tem o atributo 'session'",
+  "Renderer error: Project file not found: general/flow.yaml": "Erro de renderização: Arquivo do projeto não encontrado: general/flow.yaml"
 }

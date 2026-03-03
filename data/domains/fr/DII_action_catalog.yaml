@@ -306,112 +306,46 @@ action_catalog:
         d’activité à la recherche de modèles indiquant des besoins 
         d’amélioration de la gouvernance.
   DII-04:
-    title: Intégrer la gouvernance de l’intégration dans les workflows
+    title: Intégrer les mécanismes d'intégration et les garde-fous éthiques dans
+      les routines
     procedures:
     - number: 1
-      name: Intégrer les points de contrôle d'intégration dans les flux de 
-        travail des domaines
-      prerequisite: Nécessite des standards approuvés DII-03
-      deliverable: Modèles de workflow mis à jour
+      name: Intégrer les garanties éthiques et de confidentialité dans les 
+        routines d’intégration
+      prerequisite: Nécessite des règles éthiques et de confidentialité 
+        approuvées
+      deliverable: Journal d'intégration éthique
       recommendations:
-      - Intégrer des points de contrôle aux étapes d’ingestion, de 
-        transformation et de publication conformément aux directives de cycle de
-        vie d’intégration DAMA (« Chapitre 8, p. 252–260 » ; « Chapitre 4.3, p. 
-        92 »).
-      - S'assurer que chaque point de contrôle implique la validation des 
-        métadonnées, de la traçabilité et des contrôles de qualité (“Chapitre 9,
-        p. 236–239”; “Chapitre 11, p. 308–311”).
-      - Valider que les rôles de responsabilité et de gestion sont explicitement
-        liés aux décisions des points de contrôle (« Chapitre 3.2, p. 55–57 »).
-      - Documenter les définitions de points de contrôle dans les modèles de 
-        flux de travail suivant la structure d'artefact DAMA (“Annexe du 
-        Chapitre 3, p. 69–70”).
+      - Intégrer des garde-fous conformément aux directives DAMA pour une 
+        interopérabilité responsable et la confidentialité dès la conception 
+        dans les échanges (« Chapitre 6, p. 195–200 »).
+      - S'assurer que chaque point d'intégration valide la conformité aux 
+        contraintes d'utilisation éthique et de minimisation (« Chapitre 3, p. 
+        51–53 » ; « Chapitre 12, p. 345–350 »).
+      - Valider que les rôles de gestion sont actifs dans la surveillance des 
+        mouvements responsables des données (« Chapitre 3.2, p. 55–57 »).
+      - Documenter l'exécution des garde-fous selon les modèles d'artefacts DAMA
+        pour la supervision éthique (« Annexe du Chapitre 3, p. 69–70 »).
       notes:
-      - Utiliser la cartographie des capacités de workflow DCAM pour s'assurer 
-        que chaque flux critique a un point de contrôle d'intégration défini.
-    - number: 2
-      name: Intégrer les critères d'intégration dans la conception des pipelines
-        et de l'orchestration
-      prerequisite: Nécessite des normes d'intégration
-      deliverable: Modèles de conception de pipeline gouvernés.
+      - Utiliser les critères DCAM d'utilisation responsable des données pour 
+        garantir que les routines d'intégration respectent l'équité et la 
+        transparence.
+    - number: 6
+      name: Renforcement de l'institutionnalisation structurelle
+      prerequisite: Nécessite un mécanisme de gouvernance approuvé et une base 
+        politique formalisée
+      deliverable: Procédure de gouvernance institutionnalisée avec Control 
+        Owner assigné et preuve documentée d'exécution répétable
       recommendations:
-      - Intégrer les critères de capture de traçabilité, validation de schéma et
-        règles de qualité des données dans les modèles de pipeline ETL et ELT 
-        comme recommandé par DAMA (« Chapitre 8, p. 252–260 » ; « Chapitre 11, 
-        p. 308–311 »).
-      - S'assurer que les métadonnées pour chaque pipeline, incluant la source, 
-        la cible et la logique de transformation, sont définies selon DAMA (« 
-        Chapitre 9, p. 236–239 »).
-      - Valider que les modèles de conception spécifient les déclencheurs du 
-        cycle de vie pour le retraitement, le remplissage rétroactif et la mise 
-        hors service (« Chapitre 4.3, p. 92 »).
-      - Confirmer que les responsabilités des rôles pour l'approbation de la 
-        conception des pipelines sont claires et gouvernées (« Chapitre 3.2, p. 
-        55–57 »).
-      notes:
-      - Appliquer les pratiques de vérification de conception CMMI pour valider 
-        les critères d'intégration avant déploiement.
-    - number: 3
-      name: Mettez à jour la documentation du cycle de vie avec les points de 
-        vue d'intégration
-      prerequisite: Nécessite une refonte des flux de travail
-      deliverable: Documentation du cycle de vie mise à jour
-      recommendations:
-      - Mettre à jour les descriptions du cycle de vie afin que les événements 
-        d'intégration, tels que le premier chargement, les mises à jour 
-        incrémentielles et la bascule, soient explicites (“Chapitre 4.3, p. 92”;
-        “Chapitre 8, p. 252–260”).
-      - S'assurer que les modèles de métadonnées incluent des attributs pour le 
-        statut d'intégration, les identifiants de lot et la gestion des versions
-        (« Chapitre 9, p. 236–239 »).
-      - Valider que la documentation montre où les contrôles qualité sont 
-        appliqués le long de la chaîne d'intégration (« Chapitre 11, p. 308–311 
-        »).
-      - Structurez les documents en utilisant les directives d'artefact DAMA 
-        pour les descriptions de processus et de cycle de vie (« Chapitre 3 
-        Annexe, p. 69–70 »).
-      notes:
-      - Utiliser la cartographie des capacités du cycle de vie DCAM pour relier 
-        les événements d’intégration au cycle de vie global des données.
-    - number: 4
-      name: Appliquer les contrôles d’intégration aux points décisionnels de 
-        domaine
-      prerequisite: Nécessite des flux de travail gouvernés
-      deliverable: Preuve des contrôles d'intégration
-      recommendations:
-      - Appliquer les contrôles lors de la demande de nouvelles sources, du 
-        changement d'interfaces ou de la modification de la logique de 
-        transformation, suivant les règles de gouvernance DAMA (« Chapitre 3.4, 
-        p. 60–61 » ; « Chapitre 8, p. 252–260 »).
-      - Validez que les données intégrées respectent les définitions sémantiques
-        et le sens métier (« Chapitre 10, p. 282–284 »).
-      - S'assurer que les seuils de qualité et les critères de gestion des 
-        exceptions sont documentés pour chaque décision (« Chapitre 11, p. 
-        308–311 »).
-      - Maintenir les preuves d’approbations et de rejets en tant qu’artefacts 
-        gouvernés (« Chapitre 3 Annexe, p. 69–70 »).
-      notes:
-      - Utiliser les activités de vérification CMMI pour garantir que les 
-        décisions d'intégration sont cohérentes et basées sur des preuves.
-    - number: 5
-      name: Suivre l'adhérence à la gouvernance d'intégration à travers les 
-        domaines
-      prerequisite: Nécessite des routines de surveillance
-      deliverable: Registre de conformité d’intégration
-      recommendations:
-      - Suivre l'adhérence aux normes et modèles d'intégration en utilisant des 
-        critères de surveillance cohérents avec DAMA (« Chapitre 3.6, p. 64–66 »
-        ; « Chapitre 8, p. 252–260 »).
-      - Enregistrer les cas où les flux dévient des modèles canoniques ou où des
-        dérogations ont été accordées (« Chapitre 3.4, p. 60–61 »).
-      - Validez que l'enregistrement des écarts inclut une analyse d'impact sur 
-        le cycle de vie et la qualité (« Chapitre 4.3, p. 92 » ; « Chapitre 11, 
-        p. 308–311 »).
-      - Stocker le registre dans un référentiel gouverné structuré selon les 
-        principes d'artefact DAMA (“Chapitre 3 Annexe, p. 69–70”).
-      notes:
-      - Utiliser les indicateurs diagnostiques DCAM pour cibler la remédiation 
-        sur les écarts les plus critiques.
+      - Attribuer un Control Owner formellement responsable du maintien du 
+        mécanisme de gouvernance.
+      - Définir des critères d'acceptation objectifs confirmant une exécution 
+        stable et cohérente.
+      - Produire des artefacts documentés attestant d'une application 
+        opérationnelle répétable.
+      - Assurer l'intégration dans les routines organisationnelles établies.
+      - Maintenir la traçabilité entre le mécanisme de gouvernance et la 
+        politique gouvernante.
   DII-06:
     title: Automatiser la validation et la surveillance de l'intégration
     procedures:
@@ -519,6 +453,19 @@ action_catalog:
       - Utiliser les évaluations d’évolution des capacités DCAM pour planifier 
         où une automatisation supplémentaire peut réduire les risques ou 
         l’effort manuel.
+    - number: 6
+      name: Renforcement de la mesure structurelle et de la supervision
+      prerequisite: Nécessite un mécanisme de gouvernance institutionnalisé
+      deliverable: Environnement de contrôle de gouvernance géré et mesuré
+      recommendations:
+      - Définir des indicateurs de performance mesurables alignés sur les 
+        objectifs de gouvernance.
+      - Mettre en œuvre des mécanismes de surveillance structurés ou des 
+        tableaux de bord.
+      - Établir des cycles de validation formels incluant des revues 
+        périodiques.
+      - Maintenir une documentation traçable des résultats de performance.
+      - Définir des voies d'escalade pour les écarts non résolus.
   DII-09:
     title: Optimiser la gouvernance de l’intégration et institutionnaliser les 
       meilleures pratiques
@@ -623,3 +570,18 @@ action_catalog:
       - Utilisez la cartographie de l'évolution des capacités DCAM pour aligner 
         les améliorations d'intégration avec la maturité globale de la 
         gouvernance des données.
+    - number: 6
+      name: Optimisation structurelle et renforcement adaptatif
+      prerequisite: Nécessite un mécanisme de gouvernance géré et mesuré
+      deliverable: Processus de gouvernance optimisé démontrant automatisation 
+        et amélioration adaptative
+      recommendations:
+      - Introduire des éléments d'automatisation soutenant l'application et la 
+        surveillance.
+      - Mettre en place des boucles d'amélioration continue basées sur les 
+        tendances de performance.
+      - Réaliser un benchmarking par rapport à des cadres de gouvernance 
+        reconnus.
+      - Documenter l'amélioration mesurable sur plusieurs cycles.
+      - Assurer l'adaptabilité aux évolutions réglementaires et 
+        organisationnelles.

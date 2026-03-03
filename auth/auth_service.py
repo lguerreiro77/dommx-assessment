@@ -148,13 +148,17 @@ def render_login():
         if st.button("Login", use_container_width=True):
 
             from storage.project_storage import (
-                get_projects,
+                get_projects,                                   
                 create_project,
             )
             import os
             from core.config import BASE_DIR
 
-            user = load_user(email)            
+            try:
+                user = load_user(email)
+            except Exception as e:
+                st.error(f"Erro real: {e}")
+                raise  
 
             if not user or not verify_password(password, user["password_hash"]):
                 _flash_set("User does not exist or password is incorrect.", "error")
@@ -274,7 +278,13 @@ def render_login():
                 _flash_set("Enter a valid email first.", "error")
                 st.rerun()
 
-            if load_user(email):
+            try:
+                existing_user = load_user(email)
+            except Exception as e:
+                st.error(f"Erro real: {e}")
+                raise
+
+            if existing_user:
                 _flash_set("This email already exists. Please login.", "error")
                 st.rerun()
 
@@ -402,7 +412,14 @@ def render_register():
                     errors.append("Password must be at least 8 characters.")
                 if password != confirm_password:
                     errors.append("Passwords do not match.")
-                if load_user(email.strip()):
+                
+                try:
+                    existing_user = load_user(email.strip())
+                except Exception:
+                    error_box.error("Temporary connection issue. Please try again.")
+                    return
+
+                if existing_user:
                     errors.append("User already exists.")
 
                 # -------------------------------------------------
@@ -530,7 +547,6 @@ def render_project_selection():
 
             st.success("You have already completed all actions for this project.")
 
-            # CSS: mesmos tamanhos e altura
             st.markdown(
                 """
                 <style>
@@ -544,68 +560,37 @@ def render_project_selection():
                 unsafe_allow_html=True
             )
 
-            # PDF placeholder (vazio/mini)
-            import io
-            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
-            from reportlab.lib.styles import getSampleStyleSheet
-            from reportlab.lib.pagesizes import A4
-
-            buffer = io.BytesIO()
-            doc = SimpleDocTemplate(buffer, pagesize=A4)
-            styles = getSampleStyleSheet()
-
-            elements = [
-                Paragraph("DOMMx Final Assessment Report", styles["Heading1"]),
-                Spacer(1, 20),
-                Paragraph("Placeholder PDF (test).", styles["Normal"]),
-            ]
-            doc.build(elements)
-
-            pdf = buffer.getvalue()
-            buffer.close()
-
             col_r1, col_r2 = st.columns(2)
 
+            current_locale = st.session_state.get("locale") or "us"
+
+            repo = get_repository()
+
+            report_service = AIReportService(
+                base_dir=BASE_DIR,
+                repo=repo
+            )
+
+            # Geração via cache interno
+            docx_path = report_service.generate_report_docx(
+                project_id=selected_project,
+                user_id=st.session_state.get("user_id"),
+                is_admin=st.session_state.get("is_admin", False),
+                language=current_locale,
+                force_regen=False
+            )
+            
             with col_r1:
+
+                with open(docx_path, "rb") as f:
+                    st.download_button(
+                        label="📄 Download Final Report (Word)",
+                        data=f,
+                        file_name=os.path.basename(docx_path),
+                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        use_container_width=True
+                    )
                 
-                repo = get_repository()
-
-                # Verifica se já existem resultados para o projeto
-                results = repo.fetch_all("results") or []
-
-                project_results = [
-                    r for r in results
-                    if str(r.get("project_id")) == str(selected_project)
-                ]
-
-                if project_results:
-
-                    report_service = AIReportService(
-                        base_dir=BASE_DIR,
-                        repo=repo,
-                        ai_call=None  # Ativar wrapper OpenAI se quiser IA ativa
-                    )
-
-                    docx_path = report_service.generate_report_docx(
-                        project_id=selected_project,
-                        user_id=st.session_state.get("user_id"),
-                        is_admin=st.session_state.get("is_admin", False),
-                        language="pt",
-                        force_regen=False
-                    )
-
-                    with open(docx_path, "rb") as f:
-                        st.download_button(
-                            label="📄 Download Final Report",
-                            data=f,
-                            file_name=os.path.basename(docx_path),
-                            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                            use_container_width=True
-                        )
-
-                else:
-                    st.info("No assessment results available for this project.")
-
             with col_r2:
                 if st.button("↩ Back to Login", use_container_width=True):
                     st.session_state.app_mode = "login"
@@ -613,7 +598,7 @@ def render_project_selection():
                     st.rerun()
 
             return
-        
+            
         col_enter, col_request = st.columns(2)
 
         with col_enter:

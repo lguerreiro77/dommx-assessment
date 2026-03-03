@@ -1,0 +1,117 @@
+domain:
+  id: 2
+  name: "Data Architecture (DA)"
+  description: >
+    Items in this domain assess architectural principles, the presence of reference data architecture, the integration of business and data perspectives, and the alignment of structural definitions with organizational strategies. These elements are foundational mechanisms that enable scalable, sustainable governance. Research consistently shows that data architecture functions as a core structural layer that supports interoperability, consistency, lifecycle governance, and the controlled evolution of data assets across the enterprise (Legner et al., 2020)
+
+maturity_scale:
+
+  0:
+    maturity_level: "Non-existent"
+    meaning: "No governance practices and no defined responsibilities or processes."
+    interpretation_for_assessment: "Indicates a complete absence of structure and an immediate need for foundational action."
+
+  1:
+    maturity_level: "Initial"
+    meaning: "Activities occur informally and reactively with little or no documentation."
+    interpretation_for_assessment: "Reflects awareness, but also high variability and operational risk."
+
+  2:
+    maturity_level: "Emerging"
+    meaning: "Some practices exist but remain inconsistent, undocumented, or not adopted across teams."
+    interpretation_for_assessment: "Shows early development. Standardization and documentation are necessary to progress."
+
+  3:
+    maturity_level: "Established"
+    meaning: "Processes, roles, and policies are defined, documented, and applied with stability."
+    interpretation_for_assessment: "Demonstrates operational consistency and readiness for more structured improvements."
+
+  4:
+    maturity_level: "Managed"
+    meaning: "Governance is integrated into workflows and supported by tools, monitoring, and oversight."
+    interpretation_for_assessment: "Represents mature adoption with reliable execution across teams."
+
+  5:
+    maturity_level: "Optimized"
+    meaning: "Governance is fully embedded, continuously improved, and aligned with compliance and ethical expectations."
+    interpretation_for_assessment: "Represents advanced maturity with proactive governance, optimization, and institutionalized continuous improvement."
+
+questions:
+
+  Q1:
+    text: "Are data architecture principles formally defined and approved?"
+    explanation: "Evaluates whether architectural principles exist and are endorsed."
+    objective: "Establish shared architectural rules for data."
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Data Architecture; DCAM, Data Architecture Capability; IDGC, Structural Mechanisms)"
+    score_action_mapping:
+      0: { action_code: "DA-01", description: "Architecture aligned with governance, ethics, and data protection" }
+      1: { action_code: "DA-02", description: "Assign owners responsible for the architecture principles" }
+      2: { action_code: "DA-03", description: "Approve principles through the architecture or governance authority" }
+      3: { action_code: "DA-04", description: "Embed architectural principles in modelling, metadata, and domain routines" }
+      4: { action_code: "DA-06", description: "Automate enforcement of architecture through validation controls" }
+      5: { action_code: "DA-09", description: "Continuously improve architecture oversight using metrics and evidence" }
+
+  Q2:
+    text: "Are authoritative data sources and domain boundaries formally identified?"
+    explanation: "Assesses clarity of trusted sources, golden records, and domain scoping."
+    objective: "Reduce duplication and ensure coherence."
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Architecture Standards; DCAM, Architecture Standards; IDGC, Policy Enablement)"
+    score_action_mapping:
+      0: { action_code: "DA-01", description: "Define authoritative sources and domain boundaries aligned with governance rules" }
+      1: { action_code: "DA-02", description: "Assign ownership and stewardship for authoritative data domains" }
+      2: { action_code: "DA-03", description: "Approve authoritative sources and domain definitions" }
+      3: { action_code: "DA-04", description: "Embed authoritative data rules into architecture and integration routines" }
+      4: { action_code: "DA-06", description: "Automate validation of authoritative data sources and domain alignment" }
+      5: { action_code: "DA-09", description: "Continuously improve authoritative source governance using evidence" }
+
+  Q3:
+    text: "Are data models (conceptual, logical) governed, maintained, and accessible?"
+    explanation: "Checks if models are developed, reviewed, and versioned."
+    objective: "Improve the quality and consistency of structural definitions."
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Architecture Integration; DCAM, Data Sharing & Interoperability; IDGC, Coordination Mechanisms)"
+    score_action_mapping:
+      0: { action_code: "DA-01", description: "Define governance requirements for conceptual and logical modelling" }
+      1: { action_code: "DA-02", description: "Assign modelling governance roles and responsibilities" }
+      2: { action_code: "DA-03", description: "Approve modelling standards and lifecycle rules" }
+      3: { action_code: "DA-04", description: "Embed modelling governance into design and metadata routines" }
+      4: { action_code: "DA-06", description: "Automate validation of modelling standards and version control" }
+      5: { action_code: "DA-09", description: "Continuously improve modelling governance based on reviews and audits" }
+
+  Q4:
+    text: "Are data integration and interoperability standards defined and enforced?"
+    explanation: "Examines rules for sharing, exchange, and semantic alignment."
+    objective: "Promote reusable and governed data flows."
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Architecture Processes; Chapter 12 – Data Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Governance)"
+    score_action_mapping:
+      0: { action_code: "DA-01", description: "Define integration and interoperability governance standards" }
+      1: { action_code: "DA-02", description: "Assign responsibilities for integration governance" }
+      2: { action_code: "DA-03", description: "Approve interoperability standards and integration rules" }
+      3: { action_code: "DA-04", description: "Embed integration governance into operational workflows" }
+      4: { action_code: "DA-06", description: "Automate interoperability and integration validation controls" }
+      5: { action_code: "DA-09", description: "Continuously improve interoperability governance using metrics" }
+
+  Q5:
+    text: "Are architecture performance, alignment, and compliance monitored?"
+    explanation: "Verifies measurable governance over architectural decisions."
+    objective: "Maintain sustainable and controlled evolution."
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Architecture Metrics; DCAM, Performance Measurement; IDGC, Monitoring Framework)"
+    score_action_mapping:
+      0: { action_code: "DA-01", description: "Define architecture monitoring requirements and indicators" }
+      1: { action_code: "DA-02", description: "Assign responsibilities for architectural monitoring" }
+      2: { action_code: "DA-03", description: "Establish architecture KPIs, review cycles, and escalation rules" }
+      3: { action_code: "DA-04", description: "Implement dashboards, architecture reviews, and compliance checks" }
+      4: { action_code: "DA-06", description: "Automate monitoring and alignment validation" }
+      5: { action_code: "DA-09", description: "Continuously improve architecture oversight using metrics and evidence" }
+
+  Q6:
+    text: "Are privacy, ethics, and responsible design embedded in the data architecture?"
+    explanation: "Checks privacy-by-design, ethical safeguards, and risk controls."
+    objective: "Ensure compliant and responsible data architecture."
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Architecture Risk; DCAM, Risk Management; IDGC, Risk & Compliance)"
+    score_action_mapping:
+      0: { action_code: "DA-01", description: "Define privacy-by-design, ethical and risk control requirements" }
+      1: { action_code: "DA-02", description: "Assign ethical, privacy, and risk governance roles" }
+      2: { action_code: "DA-03", description: "Approve privacy and ethics design rules" }
+      3: { action_code: "DA-04", description: "Integrate ethical and privacy controls into architecture governance" }
+      4: { action_code: "DA-06", description: "Automate ethical and privacy compliance validation" }
+      5: { action_code: "DA-09", description: "Continuously improve ethical design using evidence and audits" }

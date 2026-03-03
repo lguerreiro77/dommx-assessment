@@ -339,6 +339,22 @@ action_catalog:
         artefatti DAMA.
       notes:
       - Usa indicatori diagnostici DCAM per prioritizzare la rimedio.
+    - number: 6
+      name: Rinforzo dell'istituzionalizzazione strutturale
+      prerequisite: Richiede meccanismo di governance approvato e baseline 
+        politica formalizzata
+      deliverable: Procedura di governance istituzionalizzata con Control Owner 
+        assegnato e evidenze documentate di esecuzione ripetibile
+      recommendations:
+      - Assegnare un Control Owner formalmente responsabile del mantenimento del
+        meccanismo di governance.
+      - Definire criteri oggettivi di accettazione che confermino esecuzione 
+        stabile e coerente.
+      - Produrre artefatti documentati che attestino l'applicazione operativa 
+        ripetibile.
+      - Garantire l'integrazione nelle routine organizzative consolidate.
+      - Mantenere la tracciabilità tra il meccanismo di governance e la politica
+        di governo.
   RMD-06:
     title: Automatizza la validazione e distribuzione master e di riferimento
     procedures:
@@ -419,6 +435,17 @@ action_catalog:
       notes:
       - Utilizzare l'analisi dell'evoluzione delle capacità DCAM per pianificare
         futuri miglioramenti di automazione.
+    - number: 6
+      name: Rinforzo della misurazione strutturale e supervisione
+      prerequisite: Richiede un meccanismo di governance istituzionalizzato
+      deliverable: Ambiente di controllo di governance gestito e misurato
+      recommendations:
+      - Definire metriche di performance misurabili allineate agli obiettivi di 
+        governance.
+      - Implementare meccanismi strutturati di monitoraggio o dashboard.
+      - Stabilire cicli formali di validazione inclusi revisioni periodiche.
+      - Mantenere documentazione tracciabile dei risultati di performance.
+      - Definire percorsi di escalation per deviazioni non risolte.
   RMD-09:
     title: Ottimizzare la governance master e di riferimento e 
       istituzionalizzare le best practice
@@ -503,3 +530,16 @@ action_catalog:
       notes:
       - Utilizzare la mappatura dell'evoluzione delle capacità di DCAM per 
         guidare i guadagni di maturità a lungo termine.
+    - number: 6
+      name: Ottimizzazione strutturale e rinforzo adattivo
+      prerequisite: Richiede meccanismo di governance gestito e misurato
+      deliverable: Processo di governance ottimizzato che dimostra automazione e
+        miglioramento adattivo
+      recommendations:
+      - Introdurre elementi di automazione a supporto dell'applicazione e del 
+        monitoraggio.
+      - Implementare cicli di miglioramento continuo basati sulle tendenze di 
+        performance.
+      - Condurre benchmarking rispetto a framework di governance riconosciuti.
+      - Documentare miglioramenti misurabili su più cicli.
+      - Garantire l'adattabilità ai cambiamenti normativi e organizzativi.

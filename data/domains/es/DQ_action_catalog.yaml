@@ -64,24 +64,41 @@ action_catalog:
       - Usar técnicas de alineación de autoridad DCAM para mejorar claridad de 
         gobernanza.
   DQ-04:
-    title: Incorporar dimensiones de calidad, reglas de medición y propiedad en 
-      rutinas de dominio
+    title: Incorporar rutinas de remediación gobernadas y controles éticos en 
+      las operaciones
     procedures:
-    - number: 1
-      name: Incorpore controles de calidad en flujos de trabajo de dominio
-      prerequisite: Requiere estándares aprobados DQ-03
-      deliverable: Plantillas de flujo de trabajo actualizadas
+    - number: 5
+      name: Monitorear la adherencia a la calidad de datos
+      prerequisite: Requiere rutinas de monitoreo
+      deliverable: Registro de cumplimiento de calidad
       recommendations:
-      - Incorporar controles siguiendo la guía de DAMA para supervisión de 
-        calidad en puntos de control operativos (Capítulo 3.3, p. 58).
-      - Validar controles usando definiciones de calidad DAMA (Capítulo 11, p. 
-        308–311).
-      - Asegurar supervisión del ciclo de vida usando puntos de control DAMA 
-        (Capítulo 4.3, p. 92).
-      - Confirmar supervisión de administración usando responsabilidades de 
-        gobernanza de DAMA (Capítulo 4, p. 86–87).
+      - Rastrear adherencia usando la guía de monitoreo de gobernanza DAMA 
+        (Capítulo 3.6, p. 64).
+      - Validar indicadores de calidad utilizando reglas y dimensiones de DAMA 
+        (Capítulo 11, p. 308–311).
+      - Confirmar la alineación del ciclo de vida y la administración mediante 
+        puntos de control y roles de gobernanza de DAMA (Capítulos 3 y 4).
+      - Documentar el cumplimiento utilizando patrones de artefactos de DAMA 
+        (Apéndice del Capítulo 3, p. 69).
       notes:
-      - Usar técnicas de mapeo de control DCAM para reforzar el cumplimiento.
+      - Aplicar criterios diagnósticos de DCAM para identificar brechas de 
+        calidad.
+    - number: 6
+      name: Refuerzo de institucionalización estructural
+      prerequisite: Requiere mecanismo de gobernanza aprobado y línea base de 
+        políticas formalizada
+      deliverable: Procedimiento de gobernanza institucionalizado con Control 
+        Owner asignado y evidencia documentada de ejecución repetible
+      recommendations:
+      - Asignar un Control Owner formalmente responsable de sostener el 
+        mecanismo de gobernanza.
+      - Definir criterios objetivos de aceptación que confirmen ejecución 
+        estable y consistente.
+      - Producir artefactos documentados que evidencien la aplicación operativa 
+        repetible.
+      - Asegurar la integración en las rutinas organizacionales establecidas.
+      - Mantener la trazabilidad entre el mecanismo de gobernanza y la política 
+        gobernante.
   DQ-06:
     title: Automatizar validación, ejecución, monitoreo y seguimiento de 
       remediación
@@ -102,6 +119,18 @@ action_catalog:
       notes:
       - Aplicar preparación para automatización CMMI para asegurar estabilidad 
         antes del despliegue.
+    - number: 6
+      name: Refuerzo de medición y supervisión estructural
+      prerequisite: Requiere un mecanismo de gobernanza institucionalizado
+      deliverable: Entorno de control de gobernanza gestionado y medido
+      recommendations:
+      - Definir métricas de desempeño medibles alineadas con los objetivos de 
+        gobernanza.
+      - Implementar mecanismos estructurados de monitoreo o paneles de control.
+      - Establecer ciclos formales de validación que incluyan revisiones 
+        periódicas.
+      - Mantener documentación trazable de resultados de desempeño.
+      - Definir vías de escalamiento para desviaciones no resueltas.
   DQ-09:
     title: Mejorar continuamente la medición, validación y remediación de 
       calidad en gobernanza
@@ -121,3 +150,16 @@ action_catalog:
         (Capítulo 4, p. 86–87).
       notes:
       - Aplique métodos de mejora continua CMMI para refinamiento estructural.
+    - number: 6
+      name: Optimización estructural y refuerzo adaptativo
+      prerequisite: Requiere mecanismo de gobernanza gestionado y medido
+      deliverable: Proceso de gobernanza optimizado que demuestra automatización
+        y mejora adaptativa
+      recommendations:
+      - Introducir elementos de automatización que apoyen la aplicación y el 
+        monitoreo.
+      - Implementar ciclos de mejora continua basados en tendencias de 
+        desempeño.
+      - Realizar benchmarking contra marcos de gobernanza reconocidos.
+      - Documentar mejoras medibles en múltiples ciclos.
+      - Asegurar la adaptabilidad a cambios regulatorios y organizacionales.

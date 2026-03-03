@@ -1,0 +1,22 @@
+demo_code_map:
+  structural_codes:
+    domain_context_section: '3'
+    organizational_context_subsection: '3.2'
+    procedure_definition_section: '5'
+    execution_structure_subsection: '5.4'
+    control_supervision_section: '7'
+    monitoring_subsection: '7.1'
+    escalation_subsection: '7.3'
+  sources_scanned:
+  - utils\theory-cluster\output\demo\AIML_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\DA_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\DCM_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\DG_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\DII_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\DMD_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\DQ_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\DSO_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\DS_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\DWBI_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\MD_theory_demo_output_PATCHED.json
+  - utils\theory-cluster\output\demo\RMD_theory_demo_output_PATCHED.json

@@ -57,8 +57,9 @@ action_catalog:
       - Kartieren Sie Verantwortlichkeiten anhand der DAMA-Erwartungen zur 
         Verantwortlichkeit für Entscheidungsbefugnis und Eskalation (Kapitel 
         3.4, S. 60).
-      - "Validate role coverage using DAMA’s functional governance model that distinguishes
-        strategic, tactical, and operational functions (Figure 3-2, p.53)."
+      - Validieren Sie die Rollenabdeckung anhand des funktionalen 
+        Governance-Modells von DAMA, das strategische, taktische und operative 
+        Funktionen unterscheidet (Abbildung 3-2, S. 53).
       - Bestätigen, dass Rollenklarheit Stewardship-Checkpoints unterstützt, die
         von DAMA detailliert sind (Kapitel 4.3, S. 92).
       notes:
@@ -412,6 +413,23 @@ action_catalog:
       notes:
       - Anwenden von CMMI Überwachungspraktiken, um sicherzustellen, dass 
         Governance-Kontrollen kontinuierlich bewertet und verbessert werden.
+    - number: 6
+      name: Strukturelle Institutionalisierungsverstärkung
+      prerequisite: Erfordert genehmigten Governance-Mechanismus und 
+        formalisierte Richtlinienbasis
+      deliverable: Institutionalisierte Governance-Prozedur mit zugewiesenem 
+        Control Owner und dokumentiertem Nachweis wiederholbarer Ausführung
+      recommendations:
+      - Weisen Sie einen formal verantwortlichen Control Owner zu, der den 
+        Governance-Mechanismus aufrechterhält.
+      - Definieren Sie objektive Akzeptanzkriterien, die eine stabile und 
+        konsistente Ausführung bestätigen.
+      - Erstellen Sie dokumentierte Artefakte, die die wiederholbare operative 
+        Anwendung belegen.
+      - Stellen Sie die Integration in etablierte organisatorische Abläufe 
+        sicher.
+      - Pflegen Sie die Rückverfolgbarkeit zwischen Governance-Mechanismus und 
+        steuernder Richtlinie.
   DG-06:
     title: Governance-Leistung überwachen und Compliance durchsetzen
     procedures:
@@ -518,6 +536,19 @@ action_catalog:
       notes:
       - Verwenden Sie DCAM Datenmanagement-Fähigkeitsindikatoren zur Verstärkung
         der Leistungsinterpretation und des Benchmarkings.
+    - number: 6
+      name: Strukturelle Mess- und Überwachungsverstärkung
+      prerequisite: Erfordert einen institutionalisierten Governance-Mechanismus
+      deliverable: Gesteuerte und gemessene Governance-Kontrollumgebung
+      recommendations:
+      - Definieren Sie messbare Leistungskennzahlen, die mit den 
+        Governance-Zielen übereinstimmen.
+      - Implementieren Sie strukturierte Überwachungsmechanismen oder 
+        Dashboards.
+      - Etablieren Sie formale Validierungszyklen einschließlich periodischer 
+        Überprüfungen.
+      - Pflegen Sie eine nachvollziehbare Dokumentation der Leistungsergebnisse.
+      - Definieren Sie Eskalationswege für ungelöste Abweichungen.
   DG-09:
     title: Governance-Modell optimieren und Best Practices institutionalisieren
     procedures:
@@ -621,3 +652,17 @@ action_catalog:
       notes:
       - DCAM Fähigkeitsreifeindikatoren verwenden, um das Betriebsmodell mit der
         unternehmensweiten Entwicklung des Datenmanagements abzustimmen.
+    - number: 6
+      name: Strukturoptimierung und adaptive Verstärkung
+      prerequisite: Erfordert gesteuerten und gemessenen Governance-Mechanismus
+      deliverable: Optimierter Governance-Prozess mit nachgewiesener 
+        Automatisierung und adaptiver Verbesserung
+      recommendations:
+      - Führen Sie Automatisierungselemente zur Unterstützung von Durchsetzung 
+        und Überwachung ein.
+      - Implementieren Sie kontinuierliche Verbesserungszyklen basierend auf 
+        Leistungstrends.
+      - Führen Sie Benchmarking anhand anerkannter Governance-Rahmenwerke durch.
+      - Dokumentieren Sie messbare Verbesserungen über mehrere Zyklen.
+      - Stellen Sie Anpassungsfähigkeit an regulatorische und organisatorische 
+        Veränderungen sicher.

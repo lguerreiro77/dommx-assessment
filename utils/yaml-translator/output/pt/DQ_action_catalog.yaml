@@ -1,0 +1,166 @@
+domain:
+  id: 11
+  name: Qualidade de Dados (DQ)
+action_catalog:
+  DQ-01:
+    title: Definir princípios fundamentais de qualidade de dados, escopo e 
+      regras de propriedade
+    procedures:
+    - number: 1
+      name: Definir princípios de qualidade de dados e limites de escopo
+      prerequisite: Requer identificação de ativos de dados principais
+      deliverable: Documento de princípios de qualidade de dados
+      recommendations:
+      - Definir princípios usando as diretrizes DAMA para dimensões de qualidade
+        como precisão, completude, consistência e integridade (Capítulo 11, p. 
+        308–311).
+      - Garantir alinhamento com expectativas de governança DAMA para governança
+        e propriedade de atividades de qualidade (Capítulo 3.2, p. 55–57).
+      - Validar supervisão do ciclo de vida com pontos de verificação DAMA para 
+        criação, transformação e aposentadoria (Capítulo 4.3, p. 92).
+      - Documentar princípios conforme a estrutura de artefatos DAMA para 
+        rastreabilidade (Capítulo 3 Apêndice, p. 69–70).
+      notes:
+      - Use escopo de capacidade de qualidade DCAM para alinhar princípios com 
+        necessidades críticas de dados corporativos.
+  DQ-02:
+    title: Atribuir papéis de stewardship para governança, validação e 
+      remediação da qualidade
+    procedures:
+    - number: 1
+      name: Consolidar requisitos de qualidade de dados
+      prerequisite: Requer DQ-01 completos
+      deliverable: Registro de requisitos de qualidade
+      recommendations:
+      - Consolidar requisitos usando diretrizes de qualidade e definições de 
+        dimensão DAMA (Capítulo 11, p. 308–311).
+      - Valide requisitos usando princípios de clareza de metadados (Capítulo 9,
+        p. 236).
+      - Garantir alinhamento do ciclo de vida com pontos de verificação de 
+        qualidade DAMA (Capítulo 4.3, p. 92).
+      - Confirmar cobertura de stewardship e propriedade usando definições de 
+        papéis DAMA (Capítulo 3.2, p. 55–57).
+      notes:
+      - Usar priorização de requisitos DCAM para focar em controles de qualidade
+        de alto impacto.
+  DQ-03:
+    title: Aprovar dimensões de qualidade governadas, políticas de medição e 
+      regras de validação
+    procedures:
+    - number: 1
+      name: Estabelecer carta do Conselho de Qualidade de Dados
+      prerequisite: Requer entregáveis DQ-02
+      deliverable: Estatuto aprovado
+      recommendations:
+      - Estabelecer o estatuto usando orientação DAMA para estruturas de 
+        autoridade de governança (Capítulo 3.4, p. 60).
+      - Garantir que os papéis estejam alinhados com as expectativas de gestão 
+        de qualidade DAMA (Capítulo 4, p. 86–89).
+      - Validar alinhamento com camadas funcionais de governança DAMA (Figura 
+        3-2, p. 53).
+      - Documentar o estatuto seguindo a estrutura de artefatos DAMA (Capítulo 3
+        Apêndice, p. 69).
+      notes:
+      - Utilizar técnicas de alinhamento de autoridade DCAM para aprimorar 
+        clareza da governança.
+  DQ-04:
+    title: Incorporar rotinas de remediação governadas e controles éticos nas 
+      operações
+    procedures:
+    - number: 5
+      name: Acompanhar conformidade da qualidade dos dados
+      prerequisite: Requer rotinas de monitoramento
+      deliverable: Registro de conformidade de qualidade
+      recommendations:
+      - Rastrear aderência usando orientações de monitoramento de governança 
+        DAMA (Capítulo 3.6, p. 64).
+      - Validar indicadores de qualidade usando regras e dimensões DAMA 
+        (Capítulo 11, p. 308–311).
+      - Confirmar alinhamento do ciclo de vida e da governança usando pontos de 
+        verificação DAMA e papéis de governança (Capítulos 3 e 4).
+      - Documentar conformidade usando padrões de artefatos DAMA (Apêndice do 
+        Capítulo 3, p. 69).
+      notes:
+      - Aplicar critérios diagnósticos DCAM para identificar lacunas de 
+        qualidade.
+    - number: 6
+      name: Reforço da Institucionalização Estrutural
+      prerequisite: Requer mecanismo de governança aprovado e base de política 
+        formalizada
+      deliverable: Procedimento de governança institucionalizado com 
+        proprietário de controle designado e evidência documentada de execução 
+        repetível
+      recommendations:
+      - Designar um Proprietário de Controle formalmente responsável por 
+        sustentar o mecanismo de governança.
+      - Definir critérios objetivos de aceitação confirmando execução estável e 
+        consistente.
+      - Produzir artefatos documentados evidenciando aplicação operacional 
+        repetível.
+      - Garantir integração nas rotinas organizacionais estabelecidas.
+      - Manter rastreabilidade entre o mecanismo de governança e a política 
+        governante.
+  DQ-06:
+    title: Automatizar validação, execução, monitoramento e rastreamento de 
+      remediação
+    procedures:
+    - number: 2
+      name: Estabelecer regras automatizadas de validação de qualidade
+      prerequisite: Requer critérios de validação
+      deliverable: Conjunto automatizado de regras de qualidade
+      recommendations:
+      - Estabelecer regras seguindo definições de qualidade e técnicas de 
+        validação DAMA (Capítulo 11, p. 308–311).
+      - Garantir que as regras incluam requisitos de clareza de metadados 
+        (Capítulo 9, p. 236).
+      - Validar alinhamento do ciclo de vida usando pontos de verificação DAMA 
+        (Capítulo 4.3, p. 92).
+      - Documentar lógica de automação usando diretrizes de artefatos do DAMA 
+        (Apêndice do Capítulo 3, p. 69).
+      notes:
+      - Aplicar prontidão para automação CMMI para garantir estabilidade antes 
+        da implantação.
+    - number: 6
+      name: Reforço da Medição e Supervisão Estrutural
+      prerequisite: Requer mecanismo de governança institucionalizado
+      deliverable: Ambiente de controle de governança gerenciado e mensurado
+      recommendations:
+      - Definir métricas de desempenho mensuráveis alinhadas aos objetivos de 
+        governança.
+      - Implementar mecanismos estruturados de monitoramento ou painéis de 
+        controle.
+      - Estabelecer ciclos formais de validação incluindo revisões periódicas.
+      - Manter documentação rastreável dos resultados de desempenho.
+      - Definir caminhos de escalonamento para desvios não resolvidos.
+  DQ-09:
+    title: Melhorar continuamente medição, validação e governança de remediação 
+      de qualidade
+    procedures:
+    - number: 2
+      name: Aprimorar padrões de qualidade usando insights
+      prerequisite: Requer análise de tendências
+      deliverable: Padrões de qualidade atualizados
+      recommendations:
+      - Melhorar padrões usando orientação de dimensão e medição de qualidade 
+        DAMA (Capítulo 11, p. 308–311).
+      - Validar melhorias usando requisitos de clareza de metadados DAMA 
+        (Capítulo 9, p. 236).
+      - Garantir alinhamento do ciclo de vida usando pontos de verificação de 
+        supervisão DAMA (Capítulo 4.3, p. 92).
+      - Confirme a aprovação da governança usando papéis de governança DAMA 
+        (Capítulo 4, p. 86–87).
+      notes:
+      - Aplique métodos de melhoria contínua CMMI para refinamento estrutural.
+    - number: 6
+      name: Otimização Estrutural e Reforço Adaptativo
+      prerequisite: Requer mecanismo de governança gerenciado e mensurado
+      deliverable: Processo de governança otimizado demonstrando automação e 
+        melhoria adaptativa
+      recommendations:
+      - Introduzir elementos de automação que apoiem a aplicação e o 
+        monitoramento.
+      - Implementar ciclos de melhoria contínua baseados em tendências de 
+        desempenho.
+      - Realizar benchmarking contra frameworks de governança reconhecidos.
+      - Documentar melhoria mensurável em múltiplos ciclos.
+      - Garantir adaptabilidade a mudanças regulatórias e organizacionais.

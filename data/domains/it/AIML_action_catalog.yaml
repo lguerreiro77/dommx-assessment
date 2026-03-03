@@ -246,6 +246,22 @@ action_catalog:
       notes:
       - Utilizzare indicatori di esecuzione del controllo DCAM per verificarne 
         l'efficacia.
+    - number: 6
+      name: Rinforzo dell'istituzionalizzazione strutturale
+      prerequisite: Richiede meccanismo di governance approvato e baseline 
+        politica formalizzata
+      deliverable: Procedura di governance istituzionalizzata con Control Owner 
+        assegnato e evidenze documentate di esecuzione ripetibile
+      recommendations:
+      - Assegnare un Control Owner formalmente responsabile del mantenimento del
+        meccanismo di governance.
+      - Definire criteri oggettivi di accettazione che confermino esecuzione 
+        stabile e coerente.
+      - Produrre artefatti documentati che attestino l'applicazione operativa 
+        ripetibile.
+      - Garantire l'integrazione nelle routine organizzative consolidate.
+      - Mantenere la tracciabilità tra il meccanismo di governance e la politica
+        di governo.
   AIML-06:
     title: Monitorare le prestazioni di AI e ML e far rispettare la conformità
     procedures:
@@ -296,6 +312,17 @@ action_catalog:
         DAMA (Capitolo 3.6).
       notes:
       - Utilizzare indicatori di benchmarking DCAM dove disponibili.
+    - number: 6
+      name: Rinforzo della misurazione strutturale e supervisione
+      prerequisite: Richiede un meccanismo di governance istituzionalizzato
+      deliverable: Ambiente di controllo di governance gestito e misurato
+      recommendations:
+      - Definire metriche di performance misurabili allineate agli obiettivi di 
+        governance.
+      - Implementare meccanismi strutturati di monitoraggio o dashboard.
+      - Stabilire cicli formali di validazione inclusi revisioni periodiche.
+      - Mantenere documentazione tracciabile dei risultati di performance.
+      - Definire percorsi di escalation per deviazioni non risolte.
   AIML-09:
     title: Ottimizzare continuamente la maturità di governance AI e ML
     procedures:
@@ -347,3 +374,16 @@ action_catalog:
       notes:
       - Utilizzare le pratiche di ciclo di vita degli artefatti DAMA per 
         mantenere la coerenza a lungo termine.
+    - number: 6
+      name: Ottimizzazione strutturale e rinforzo adattivo
+      prerequisite: Richiede meccanismo di governance gestito e misurato
+      deliverable: Processo di governance ottimizzato che dimostra automazione e
+        miglioramento adattivo
+      recommendations:
+      - Introdurre elementi di automazione a supporto dell'applicazione e del 
+        monitoraggio.
+      - Implementare cicli di miglioramento continuo basati sulle tendenze di 
+        performance.
+      - Condurre benchmarking rispetto a framework di governance riconosciuti.
+      - Documentare miglioramenti misurabili su più cicli.
+      - Garantire l'adattabilità ai cambiamenti normativi e organizzativi.

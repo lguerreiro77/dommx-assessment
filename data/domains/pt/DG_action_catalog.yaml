@@ -390,6 +390,23 @@ action_catalog:
       notes:
       - Aplique práticas de monitoramento CMMI para garantir que os controles de
         governança sejam continuamente avaliados e aprimorados.
+    - number: 6
+      name: Reforço da Institucionalização Estrutural
+      prerequisite: Requer mecanismo de governança aprovado e base de política 
+        formalizada
+      deliverable: Procedimento de governança institucionalizado com 
+        proprietário de controle designado e evidência documentada de execução 
+        repetível
+      recommendations:
+      - Designar um Proprietário de Controle formalmente responsável por 
+        sustentar o mecanismo de governança.
+      - Definir critérios objetivos de aceitação confirmando execução estável e 
+        consistente.
+      - Produzir artefatos documentados evidenciando aplicação operacional 
+        repetível.
+      - Garantir integração nas rotinas organizacionais estabelecidas.
+      - Manter rastreabilidade entre o mecanismo de governança e a política 
+        governante.
   DG-06:
     title: Monitore o desempenho da governança e aplique conformidade
     procedures:
@@ -497,6 +514,18 @@ action_catalog:
       notes:
       - Usar indicadores de capacidade de gestão de dados do DCAM para reforçar 
         interpretação de desempenho e benchmarking.
+    - number: 6
+      name: Reforço da Medição e Supervisão Estrutural
+      prerequisite: Requer mecanismo de governança institucionalizado
+      deliverable: Ambiente de controle de governança gerenciado e mensurado
+      recommendations:
+      - Definir métricas de desempenho mensuráveis alinhadas aos objetivos de 
+        governança.
+      - Implementar mecanismos estruturados de monitoramento ou painéis de 
+        controle.
+      - Estabelecer ciclos formais de validação incluindo revisões periódicas.
+      - Manter documentação rastreável dos resultados de desempenho.
+      - Definir caminhos de escalonamento para desvios não resolvidos.
   DG-09:
     title: Otimizar modelo de governança e institucionalizar melhores práticas
     procedures:
@@ -602,3 +631,16 @@ action_catalog:
       - Utilizar indicadores de maturidade de capacidade DCAM para alinhar o 
         modelo operacional com a evolução em nível empresarial da gestão de 
         dados.
+    - number: 6
+      name: Otimização Estrutural e Reforço Adaptativo
+      prerequisite: Requer mecanismo de governança gerenciado e mensurado
+      deliverable: Processo de governança otimizado demonstrando automação e 
+        melhoria adaptativa
+      recommendations:
+      - Introduzir elementos de automação que apoiem a aplicação e o 
+        monitoramento.
+      - Implementar ciclos de melhoria contínua baseados em tendências de 
+        desempenho.
+      - Realizar benchmarking contra frameworks de governança reconhecidos.
+      - Documentar melhoria mensurável em múltiplos ciclos.
+      - Garantir adaptabilidade a mudanças regulatórias e organizacionais.

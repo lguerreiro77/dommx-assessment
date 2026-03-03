@@ -1,0 +1,299 @@
+# DOMMx YAML Translator  
+EN → Multi-language Corporate Translator  
+(OpenAI Batch + Persistent Cache)
+
+---
+
+## 🎯 Purpose
+
+Utility to translate DOMMx YAML domain files from US English into structured corporate target languages while:
+
+- Preserving YAML layout and structure
+- Preserving quotes and formatting
+- Preserving acronyms and governance terminology
+- Skipping technical keys like `cross_reference`
+- Maintaining same filename output
+- Using persistent translation cache
+- Supporting multi-language output folders
+- Supporting CLI-based language selection
+
+Designed for controlled enterprise-grade content localization.
+
+---
+
+# 🏗 Architecture
+
+BASE_DIR  
+│  
+├── data/  
+│   └── domains/  
+│       └── us/               ← INPUT YAMLs (source language)  
+│  
+├── utils/  
+│   └── yaml-translator/  
+│       ├── translator.py     ← This script  
+│       ├── _cache/  
+│       │   └── translation_<lang>_cache.json  
+│       └── output/  
+│           └── <lang>/  
+│               └── *.yaml    ← Translated output  
+
+---
+
+# 📁 Paths & Resolution
+
+## Base
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent  
+DOMAINS_DIR = BASE_DIR / "data" / "domains"
+
+## Input
+
+data/domains/us/*.yaml  
+
+Controlled by:
+
+INPUT_FOLDER = DOMAINS_DIR / "us"
+
+## Output (Dynamic)
+
+utils/yaml-translator/output/<language>/*.yaml  
+
+The output folder is dynamically created at runtime based on the CLI parameter.
+
+## Cache (Dynamic)
+
+utils/yaml-translator/_cache/translation_<language>_cache.json  
+
+Each language has its own isolated persistent cache file.
+
+---
+
+# 🌍 Supported Languages
+
+Defined inside the script:
+
+LANG_PROMPTS = {  
+    "it": "neutral corporate Italian",  
+    "pt": "neutral corporate Brazilian Portuguese",  
+    "es": "neutral corporate Spanish",  
+    "de": "neutral corporate German",  
+    "fr": "neutral corporate French"  
+}
+
+---
+
+# 🧠 Language Selection via CLI
+
+The translator supports dynamic language selection using command line parameters.
+
+## Run Single Language
+
+python translator.py pt  
+python translator.py es  
+
+## Run All Languages
+
+python translator.py all  
+
+### Behavior
+
+- LANG is dynamically defined from CLI argument.  
+- Output folder is created per language.  
+- Cache file is created per language.  
+- In `all` mode:
+  - Each language runs sequentially.
+  - Each language uses its own isolated cache.
+  - Each language generates its own output folder.
+
+---
+
+# 🧠 Core Translation Logic
+
+## 1️⃣ YAML Engine
+
+Uses ruamel.yaml:
+
+- preserve_quotes = True  
+- allow_duplicate_keys = True  
+- Layout integrity guaranteed  
+
+## 2️⃣ String Collection
+
+Function:
+
+collect_strings(obj)
+
+Traverses:
+
+- dict  
+- list  
+- nested structures  
+
+Skips:
+
+if k == "cross_reference":  
+    continue  
+
+Collects unique strings into a set.
+
+## 3️⃣ Acronym Preservation
+
+Regex:
+
+ACRONYM_REGEX = re.compile(r"\b[A-Z0-9]{2,}\b")
+
+Mechanism:
+
+1. Replace acronyms with tokens  
+   GDPR → __ACR0__  
+2. Send to OpenAI  
+3. Restore original acronyms post-translation  
+
+Ensures DAMA, DCAM, GDPR, DMBOK, ISO, CMMI remain unchanged.
+
+## 4️⃣ Batch Translation Engine
+
+Function:
+
+batch_translate(strings)
+
+Behavior:
+
+- Translates only strings not present in cache  
+- Processes in chunks of 200  
+- Sends JSON array to OpenAI  
+- Expects JSON list response  
+- Extracts valid JSON safely even if model returns extra text  
+- Temperature = 0 (deterministic)  
+
+Model:
+
+gpt-4.1-mini
+
+## 5️⃣ Cache System
+
+Structure:
+
+{  
+  "Original string": "Translated string"  
+}
+
+Stored per language.
+
+Advantages:
+
+- No duplicate API cost  
+- Performance optimization  
+- Stable deterministic translations  
+- Language-isolated persistence  
+
+## 6️⃣ Apply Phase
+
+Function:
+
+apply_translation(obj)
+
+Recursively replaces:
+
+- Strings → translated version from CACHE  
+- Preserves cross_reference untouched  
+
+---
+
+# 🔁 Processing Flow
+
+process()  
+    ↓  
+Load all YAML files  
+    ↓  
+Collect unique strings  
+    ↓  
+Batch translate (if not cached)  
+    ↓  
+Apply translations  
+    ↓  
+Write translated YAML preserving structure  
+
+---
+
+# 🧩 What It Preserves
+
+- YAML layout  
+- Quotes  
+- Duplicate keys  
+- Indentation  
+- File name  
+- Folder structure  
+- Governance terminology  
+- Acronyms  
+- cross_reference nodes  
+
+---
+
+# ⚙️ Configuration Summary
+
+CLI <language> → Target language code  
+CLI all → Execute for all supported languages  
+INPUT_FOLDER → Source YAML folder  
+OUTPUT_ROOT → Root output directory  
+CACHE_DIR → Cache directory  
+CHUNK → Batch size (200)  
+Model → gpt-4.1-mini  
+Temperature → 0  
+
+---
+
+# 🔐 Environment Requirements
+
+.env must contain:
+
+OPENAI_API_KEY=your_key_here  
+
+Loaded via:
+
+load_dotenv()  
+client = OpenAI()
+
+---
+
+# 🚀 How To Run
+
+From project root:
+
+python utils/yaml-translator/translator.py pt  
+
+Or:
+
+python utils/yaml-translator/translator.py all  
+
+---
+
+# 📦 Output Behavior
+
+For input:
+
+data/domains/us/DG.yaml  
+
+Output example:
+
+utils/yaml-translator/output/pt/DG.yaml  
+
+Same filename, translated content.
+
+---
+
+# 🧠 Design Philosophy
+
+This tool is:
+
+- Deterministic  
+- Enterprise-safe  
+- Layout-preserving  
+- Governance-aware  
+- Cache-optimized  
+- Domain-agnostic  
+- Locale-scalable  
+- CLI-driven  
+
+Built specifically for structured governance YAML localization inside DOMMx.

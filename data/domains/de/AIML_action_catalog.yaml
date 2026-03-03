@@ -251,6 +251,23 @@ action_catalog:
       notes:
       - Verwenden Sie DCAM Kontrollausführungsindikatoren zur 
         Wirksamkeitsprüfung.
+    - number: 6
+      name: Strukturelle Institutionalisierungsverstärkung
+      prerequisite: Erfordert genehmigten Governance-Mechanismus und 
+        formalisierte Richtlinienbasis
+      deliverable: Institutionalisierte Governance-Prozedur mit zugewiesenem 
+        Control Owner und dokumentiertem Nachweis wiederholbarer Ausführung
+      recommendations:
+      - Weisen Sie einen formal verantwortlichen Control Owner zu, der den 
+        Governance-Mechanismus aufrechterhält.
+      - Definieren Sie objektive Akzeptanzkriterien, die eine stabile und 
+        konsistente Ausführung bestätigen.
+      - Erstellen Sie dokumentierte Artefakte, die die wiederholbare operative 
+        Anwendung belegen.
+      - Stellen Sie die Integration in etablierte organisatorische Abläufe 
+        sicher.
+      - Pflegen Sie die Rückverfolgbarkeit zwischen Governance-Mechanismus und 
+        steuernder Richtlinie.
   AIML-06:
     title: Überwachen Sie AI und ML Leistung und erzwingen Sie Compliance
     procedures:
@@ -297,6 +314,19 @@ action_catalog:
       - Metriken gemäß DAMA Governance-Messpraktiken berichten (Kapitel 3.6).
       notes:
       - Verwenden Sie DCAM Benchmarking-Indikatoren, wo verfügbar.
+    - number: 6
+      name: Strukturelle Mess- und Überwachungsverstärkung
+      prerequisite: Erfordert einen institutionalisierten Governance-Mechanismus
+      deliverable: Gesteuerte und gemessene Governance-Kontrollumgebung
+      recommendations:
+      - Definieren Sie messbare Leistungskennzahlen, die mit den 
+        Governance-Zielen übereinstimmen.
+      - Implementieren Sie strukturierte Überwachungsmechanismen oder 
+        Dashboards.
+      - Etablieren Sie formale Validierungszyklen einschließlich periodischer 
+        Überprüfungen.
+      - Pflegen Sie eine nachvollziehbare Dokumentation der Leistungsergebnisse.
+      - Definieren Sie Eskalationswege für ungelöste Abweichungen.
   AIML-09:
     title: Optimieren Sie kontinuierlich die Governance-Reife von AI und ML
     procedures:
@@ -348,3 +378,17 @@ action_catalog:
       notes:
       - Verwendung von DAMA-Artefakt-Lebenszykluspraktiken zur Aufrechterhaltung
         langfristiger Konsistenz.
+    - number: 6
+      name: Strukturoptimierung und adaptive Verstärkung
+      prerequisite: Erfordert gesteuerten und gemessenen Governance-Mechanismus
+      deliverable: Optimierter Governance-Prozess mit nachgewiesener 
+        Automatisierung und adaptiver Verbesserung
+      recommendations:
+      - Führen Sie Automatisierungselemente zur Unterstützung von Durchsetzung 
+        und Überwachung ein.
+      - Implementieren Sie kontinuierliche Verbesserungszyklen basierend auf 
+        Leistungstrends.
+      - Führen Sie Benchmarking anhand anerkannter Governance-Rahmenwerke durch.
+      - Dokumentieren Sie messbare Verbesserungen über mehrere Zyklen.
+      - Stellen Sie Anpassungsfähigkeit an regulatorische und organisatorische 
+        Veränderungen sicher.

@@ -297,105 +297,47 @@ action_catalog:
       - Verwenden Sie CMMI Überwachungspraktiken, um das Aktivitätsprotokoll auf
         Muster zu überprüfen, die Governance-Verbesserungen erfordern.
   DII-04:
-    title: Einbettung der Integrations-Governance in Workflows
+    title: Integrieren Sie Integrationsmechanismen und ethische Schutzmaßnahmen 
+      in Abläufe
     procedures:
     - number: 1
-      name: Integrations-Checkpoints in Domänen-Workflows einbetten
-      prerequisite: Erfordert DII-03 genehmigte Standards
-      deliverable: Aktualisierte Workflow-Vorlagen
+      name: Integrieren Sie ethische und Datenschutz-Schutzmaßnahmen in 
+        Integrationsroutinen
+      prerequisite: Erfordert genehmigte ethische und Datenschutzregeln
+      deliverable: Ethik-Integrationsprotokoll
       recommendations:
-      - Verankern Sie Kontrollpunkte bei Aufnahme, Transformation und 
-        Veröffentlichung gemäß DAMA-Integrationslebenszyklusanleitung („Kapitel 
-        8, S. 252–260“; „Kapitel 4.3, S. 92“).
-      - Stellen Sie sicher, dass jeder Prüfpunkt die Validierung von Metadaten, 
-        Lineage und Qualitätskontrollen beinhaltet („Kapitel 9, S. 236–239“; 
-        „Kapitel 11, S. 308–311“).
-      - Validierung, dass Stewardship- und Eigentümerrollen explizit mit 
-        Checkpoint-Entscheidungen verknüpft sind („Kapitel 3.2, S. 55–57“).
-      - Führen Sie Metadaten-Überprüfungszyklen durch
+      - Integrieren Sie Schutzmaßnahmen gemäß DAMA-Richtlinien für 
+        verantwortungsvolle Interoperabilität und Privacy-by-Design bei 
+        Austauschprozessen („Kapitel 6, S. 195–200“).
+      - Stellen Sie sicher, dass jeder Integrationspunkt die Einhaltung 
+        ethischer Nutzungs- und Minimierungsanforderungen validiert („Kapitel 3,
+        S. 51–53“; „Kapitel 12, S. 345–350“).
+      - Validieren Sie, dass Stewardship-Rollen aktiv die verantwortungsvolle 
+        Datenbewegung überwachen („Kapitel 3.2, S. 55–57“).
+      - Dokumentieren Sie die Ausführung von Schutzmaßnahmen gemäß 
+        DAMA-Artefaktmustern für ethische Aufsicht („Kapitel 3 Anhang, S. 
+        69–70“).
       notes:
-      - Verwenden Sie DCAM-Workflow-Fähigkeitszuordnung, um sicherzustellen, 
-        dass jeder kritische Ablauf einen definierten Integrationscheckpoint 
-        hat.
-    - number: 2
-      name: Integration von Integrationskriterien in Pipeline- und 
-        Orchestrierungsdesign
-      prerequisite: Erfordert Integrationsstandards
-      deliverable: Gesteuerte Pipeline-Designvorlagen
+      - Nutzen Sie DCAM-Kriterien für verantwortungsvolle Datennutzung, um 
+        sicherzustellen, dass Integrationsroutinen Fairness und Transparenz 
+        gewährleisten.
+    - number: 6
+      name: Strukturelle Institutionalisierungsverstärkung
+      prerequisite: Erfordert genehmigten Governance-Mechanismus und 
+        formalisierte Richtlinienbasis
+      deliverable: Institutionalisierte Governance-Prozedur mit zugewiesenem 
+        Control Owner und dokumentiertem Nachweis wiederholbarer Ausführung
       recommendations:
-      - Integrieren Sie Kriterien für Lineage-Erfassung, Schema-Validierung und 
-        Datenqualitätsregeln in ETL und ELT Pipeline-Vorlagen gemäß DAMA 
-        („Kapitel 8, S. 252–260“; „Kapitel 11, S. 308–311“).
-      - Stellen Sie sicher, dass Metadaten für jede Pipeline, einschließlich 
-        Quelle, Ziel und Transformationslogik, gemäß DAMA definiert sind 
-        („Kapitel 9, S. 236–239“).
-      - Validieren Sie, dass Designvorlagen Lifecycle-Auslöser für 
-        Nachbearbeitung, Backfill und Ausmusterung spezifizieren („Kapitel 4.3, 
-        S. 92“).
-      - Bestätigen Sie, dass Rollenverantwortlichkeiten für die Genehmigung des 
-        Pipeline-Designs klar und geregelt sind („Kapitel 3.2, S. 55–57“).
-      notes:
-      - Wenden Sie CMMI Design-Verifikationspraktiken an, um 
-        Integrationskriterien vor der Bereitstellung zu validieren.
-    - number: 3
-      name: Aktualisieren der Lebenszyklusdokumentation mit 
-        Integrationssichtweisen
-      prerequisite: Erfordert Workflow-Neugestaltung
-      deliverable: Aktualisierte Lifecycle-Dokumentation
-      recommendations:
-      - Aktualisieren Sie Lebenszyklusbeschreibungen, sodass 
-        Integrationsereignisse wie Erstladung, inkrementelle Updates und Cutover
-        explizit sind („Kapitel 4.3, S. 92“; „Kapitel 8, S. 252–260“).
-      - Stellen Sie sicher, dass Metadatenmodelle Attribute für 
-        Integrationsstatus, Batch-Identifikatoren und Versionierung enthalten 
-        („Kapitel 9, S. 236–239“).
-      - Validierung, dass die Dokumentation zeigt, wo Qualitätskontrollen 
-        entlang der Integrationskette angewendet werden („Kapitel 11, S. 
-        308–311“).
-      - Dokumente unter Verwendung der DAMA Artefaktanleitung für Prozess- und 
-        Lebenszyklusbeschreibungen strukturieren („Kapitel 3 Anhang, S. 69–70“).
-      notes:
-      - Verwenden Sie DCAM Lebenszyklusfähigkeits-Mapping, um 
-        Integrationsereignisse mit dem umfassenderen Datenlebenszyklus zu 
-        verbinden.
-    - number: 4
-      name: Integrationsprüfungen an Domänen-Entscheidungspunkten anwenden
-      prerequisite: Erfordert gesteuerte Workflows
-      deliverable: Nachweise für Integrationskontrollen
-      recommendations:
-      - Wenden Sie Prüfungen an, wenn neue Quellen angefordert, Schnittstellen 
-        geändert oder Transformationslogik angepasst wird, gemäß den 
-        DAMA-Governance-Regeln („Kapitel 3.4, S. 60–61“; „Kapitel 8, S. 
-        252–260“).
-      - Validieren Sie, dass integrierte Daten semantische Definitionen und 
-        geschäftliche Bedeutung respektieren („Kapitel 10, S. 282–284“).
-      - Konsolidieren Sie Anforderungen für Genauigkeit, Vollständigkeit, 
-        Konsistenz und Einzigartigkeit mit 11 Qualitätsdimensionen „Kapitel 308,
-        S. 311–3308“.
-      - Bewahren Sie Nachweise über Genehmigungen und Ablehnungen als gesteuerte
-        Artefakte auf („Kapitel 3 Anhang, S. 69–70“).
-      notes:
-      - Verwenden Sie CMMI Verifizierungsaktivitäten, um sicherzustellen, dass 
-        Integrationsentscheidungen konsistent und evidenzbasiert sind.
-    - number: 5
-      name: Verfolgen Sie die Einhaltung der Integrations-Governance über 
-        Domänen hinweg
-      prerequisite: Erfordert Überwachungsroutinen
-      deliverable: Register zur Integrations-Compliance
-      recommendations:
-      - Verfolgen Sie die Einhaltung von Integrationsstandards und -mustern mit 
-        Überwachungskriterien, die mit DAMA übereinstimmen („Kapitel 3.6, S. 
-        64–66“; „Kapitel 8, S. 252–260“).
-      - Fälle aufzeichnen, in denen Abläufe von kanonischen Mustern abweichen 
-        oder Ausnahmen gewährt wurden („Kapitel 3.4, S. 60–61“).
-      - Validieren, dass die Registrierung von Abweichungen eine Lebenszyklus- 
-        und Qualitätsauswirkungsanalyse beinhaltet („Kapitel 4.3, S. 92“; 
-        „Kapitel 11, S. 308–311“).
-      - Speichern Sie das Register in einem geregelten Repository, das gemäß den
-        DAMA Artefaktprinzipien strukturiert ist („Kapitel 3 Anhang, S. 69–70“).
-      notes:
-      - Verwenden Sie DCAM Diagnoseindikatoren, um die Behebung auf die 
-        kritischsten Abweichungen zu fokussieren.
+      - Weisen Sie einen formal verantwortlichen Control Owner zu, der den 
+        Governance-Mechanismus aufrechterhält.
+      - Definieren Sie objektive Akzeptanzkriterien, die eine stabile und 
+        konsistente Ausführung bestätigen.
+      - Erstellen Sie dokumentierte Artefakte, die die wiederholbare operative 
+        Anwendung belegen.
+      - Stellen Sie die Integration in etablierte organisatorische Abläufe 
+        sicher.
+      - Pflegen Sie die Rückverfolgbarkeit zwischen Governance-Mechanismus und 
+        steuernder Richtlinie.
   DII-06:
     title: Automatisieren Sie Integrationsvalidierung und -überwachung
     procedures:
@@ -496,6 +438,19 @@ action_catalog:
       - Bewertungen der DCAM Fähigkeitsentwicklung nutzen, um zu planen, wo 
         zusätzliche Automatisierung Risiken oder manuellen Aufwand reduzieren 
         kann.
+    - number: 6
+      name: Strukturelle Mess- und Überwachungsverstärkung
+      prerequisite: Erfordert einen institutionalisierten Governance-Mechanismus
+      deliverable: Gesteuerte und gemessene Governance-Kontrollumgebung
+      recommendations:
+      - Definieren Sie messbare Leistungskennzahlen, die mit den 
+        Governance-Zielen übereinstimmen.
+      - Implementieren Sie strukturierte Überwachungsmechanismen oder 
+        Dashboards.
+      - Etablieren Sie formale Validierungszyklen einschließlich periodischer 
+        Überprüfungen.
+      - Pflegen Sie eine nachvollziehbare Dokumentation der Leistungsergebnisse.
+      - Definieren Sie Eskalationswege für ungelöste Abweichungen.
   DII-09:
     title: Optimierung der Integrations-Governance und Institutionalisierung von
       Best Practices
@@ -594,3 +549,17 @@ action_catalog:
       - Verwendung von DCAM-Fähigkeitsentwicklungszuordnung zur Ausrichtung von 
         Integrationsverbesserungen an der allgemeinen Reife der 
         Daten-Governance.
+    - number: 6
+      name: Strukturoptimierung und adaptive Verstärkung
+      prerequisite: Erfordert gesteuerten und gemessenen Governance-Mechanismus
+      deliverable: Optimierter Governance-Prozess mit nachgewiesener 
+        Automatisierung und adaptiver Verbesserung
+      recommendations:
+      - Führen Sie Automatisierungselemente zur Unterstützung von Durchsetzung 
+        und Überwachung ein.
+      - Implementieren Sie kontinuierliche Verbesserungszyklen basierend auf 
+        Leistungstrends.
+      - Führen Sie Benchmarking anhand anerkannter Governance-Rahmenwerke durch.
+      - Dokumentieren Sie messbare Verbesserungen über mehrere Zyklen.
+      - Stellen Sie Anpassungsfähigkeit an regulatorische und organisatorische 
+        Veränderungen sicher.

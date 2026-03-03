@@ -1,0 +1,237 @@
+domain:
+  id: 2
+  name: Arquitetura de Dados (DA)
+  description: "Itens neste domínio avaliam princípios arquiteturais, a presença de
+    arquitetura de dados de referência, a integração das perspectivas de negócios
+    e dados, e o alinhamento das definições estruturais com as estratégias organizacionais.
+    Esses elementos são mecanismos fundamentais que possibilitam governança escalável
+    e sustentável. Pesquisas mostram consistentemente que a arquitetura de dados funciona
+    como uma camada estrutural central que suporta interoperabilidade, consistência,
+    governança do ciclo de vida e evolução controlada dos ativos de dados em toda
+    a empresa (Legner et al., 2020)\n"
+maturity_scale:
+  0:
+    maturity_level: Inexistente
+    meaning: Sem práticas de governança e sem responsabilidades ou processos 
+      definidos.
+    interpretation_for_assessment: Indica ausência completa de estrutura e 
+      necessidade imediata de ação fundamental.
+  1:
+    maturity_level: Inicial
+    meaning: Atividades ocorrem de forma informal e reativa com pouca ou nenhuma
+      documentação.
+    interpretation_for_assessment: Reflete conscientização, mas também alta 
+      variabilidade e risco operacional.
+  2:
+    maturity_level: Emergente
+    meaning: Algumas práticas existem, mas permanecem inconsistentes, não 
+      documentadas ou não adotadas entre equipes.
+    interpretation_for_assessment: Mostra desenvolvimento inicial. Padronização 
+      e documentação são necessárias para avançar.
+  3:
+    maturity_level: Estabelecido
+    meaning: Processos, papéis e políticas são definidos, documentados e 
+      aplicados com estabilidade.
+    interpretation_for_assessment: Demonstra consistência operacional e 
+      prontidão para melhorias mais estruturadas.
+  4:
+    maturity_level: Gerenciado
+    meaning: A governança está integrada em fluxos de trabalho e suportada por 
+      ferramentas, monitoramento e supervisão.
+    interpretation_for_assessment: Representa adoção madura com execução 
+      confiável entre equipes.
+  5:
+    maturity_level: Otimizado
+    meaning: A governança está totalmente incorporada, continuamente aprimorada 
+      e alinhada com expectativas de conformidade e ética.
+    interpretation_for_assessment: Representa maturidade avançada com governança
+      proativa, otimização e melhoria contínua institucionalizada.
+questions:
+  Q1:
+    text: Os princípios de arquitetura de dados são formalmente definidos e 
+      aprovados?
+    explanation: Avalia se princípios arquiteturais existem e são endossados.
+    objective: Estabeleça regras arquiteturais compartilhadas para dados.
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Data Architecture; DCAM, Data Architecture
+      Capability; IDGC, Structural Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DA-01
+        description: Arquitetura alinhada com governança, ética e proteção de 
+          dados
+      1:
+        action_code: DA-02
+        description: Atribuir proprietários responsáveis pelos princípios de 
+          arquitetura
+      2:
+        action_code: DA-03
+        description: Aprovar princípios por meio da autoridade de arquitetura ou
+          governança
+      3:
+        action_code: DA-04
+        description: Incorporar princípios arquiteturais em rotinas de 
+          modelagem, metadados e domínio
+      4:
+        action_code: DA-06
+        description: Automatizar aplicação da arquitetura por meio de controles 
+          de validação
+      5:
+        action_code: DA-09
+        description: Melhorar continuamente a supervisão da arquitetura usando 
+          métricas e evidências
+  Q2:
+    text: Fontes autoritativas de dados e limites de domínio estão formalmente 
+      identificados?
+    explanation: Avalia clareza das fontes confiáveis, registros dourados e 
+      escopo do domínio.
+    objective: Reduzir duplicação e garantir coerência.
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Architecture Standards; DCAM, Architecture
+      Standards; IDGC, Policy Enablement)"
+    score_action_mapping:
+      0:
+        action_code: DA-01
+        description: Definir fontes autoritativas e limites de domínio alinhados
+          com regras de governança
+      1:
+        action_code: DA-02
+        description: Atribuir propriedade e gestão para domínios de dados 
+          autoritativos
+      2:
+        action_code: DA-03
+        description: Aprovar fontes autoritativas e definições de domínio
+      3:
+        action_code: DA-04
+        description: Incorpore regras de dados autoritativas na arquitetura e 
+          rotinas de integração
+      4:
+        action_code: DA-06
+        description: Automatizar validação de fontes de dados autoritativas e 
+          alinhamento de domínio
+      5:
+        action_code: DA-09
+        description: Melhorar continuamente a governança de fontes autoritativas
+          usando evidências
+  Q3:
+    text: Os modelos de dados (conceitual, lógico) são governados, mantidos e 
+      acessíveis?
+    explanation: Verifica se os modelos são desenvolvidos, revisados e 
+      versionados.
+    objective: Melhorar a qualidade e consistência das definições estruturais.
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Architecture Integration; DCAM, Data
+      Sharing & Interoperability; IDGC, Coordination Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DA-01
+        description: Definir requisitos de governança para modelagem conceitual 
+          e lógica
+      1:
+        action_code: DA-02
+        description: Atribuir papéis e responsabilidades de governança de 
+          modelagem
+      2:
+        action_code: DA-03
+        description: Aprovar padrões de modelagem e regras de ciclo de vida
+      3:
+        action_code: DA-04
+        description: Incorpore governança de modelagem em rotinas de design e 
+          metadados
+      4:
+        action_code: DA-06
+        description: Automatizar validação de padrões de modelagem e controle de
+          versão
+      5:
+        action_code: DA-09
+        description: Melhore continuamente a governança de modelagem com base em
+          revisões e auditorias
+  Q4:
+    text: Os padrões de integração e interoperabilidade de dados são definidos e
+      aplicados?
+    explanation: Examina regras para compartilhamento, intercâmbio e alinhamento
+      semântico.
+    objective: Promova fluxos de dados reutilizáveis e governados
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Architecture Processes; Chapter 12
+      – Data Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Governance)"
+    score_action_mapping:
+      0:
+        action_code: DA-01
+        description: Definir padrões de governança para integração e 
+          interoperabilidade
+      1:
+        action_code: DA-02
+        description: Atribuir responsabilidades para governança de integração
+      2:
+        action_code: DA-03
+        description: Aprovar padrões de interoperabilidade e regras de 
+          integração
+      3:
+        action_code: DA-04
+        description: Incorporar governança de integração nos fluxos operacionais
+      4:
+        action_code: DA-06
+        description: Automatizar controles de validação de interoperabilidade e 
+          integração
+      5:
+        action_code: DA-09
+        description: Melhorar continuamente governança de interoperabilidade 
+          usando métricas
+  Q5:
+    text: A arquitetura, desempenho, alinhamento e conformidade são monitorados?
+    explanation: Verifica governança mensurável sobre decisões arquiteturais.
+    objective: Manter evolução sustentável e controlada.
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Architecture Metrics; DCAM, Performance
+      Measurement; IDGC, Monitoring Framework)"
+    score_action_mapping:
+      0:
+        action_code: DA-01
+        description: Definir requisitos e indicadores de monitoramento da 
+          arquitetura
+      1:
+        action_code: DA-02
+        description: Atribuir responsabilidades para monitoramento arquitetural
+      2:
+        action_code: DA-03
+        description: Estabelecer KPIs de arquitetura, ciclos de revisão e regras
+          de escalonamento
+      3:
+        action_code: DA-04
+        description: Implementar dashboards, revisões arquiteturais e 
+          verificações de conformidade
+      4:
+        action_code: DA-06
+        description: Automatizar monitoramento e validação de alinhamento
+      5:
+        action_code: DA-09
+        description: Melhorar continuamente a supervisão da arquitetura usando 
+          métricas e evidências
+  Q6:
+    text: Privacidade, ética e design responsável estão incorporados na 
+      arquitetura de dados?
+    explanation: Verifica privacy-by-design, salvaguardas éticas e controles de 
+      risco.
+    objective: Garantir arquitetura de dados responsável e em conformidade.
+    cross_reference: "(DAMA-DMBOK2, Chapter 4 – Architecture Risk; DCAM, Risk Management;
+      IDGC, Risk & Compliance)"
+    score_action_mapping:
+      0:
+        action_code: DA-01
+        description: Definir requisitos de privacidade por design, éticos e de 
+          controle de risco
+      1:
+        action_code: DA-02
+        description: Atribuir papéis de governança ética, de privacidade e de 
+          risco
+      2:
+        action_code: DA-03
+        description: Aprovar regras de design de privacidade e ética
+      3:
+        action_code: DA-04
+        description: Integrar controles éticos e de privacidade na governança de
+          arquitetura
+      4:
+        action_code: DA-06
+        description: Automatizar validação de conformidade ética e de 
+          privacidade
+      5:
+        action_code: DA-09
+        description: Melhorar continuamente o design ético usando evidências e 
+          auditorias

@@ -1,0 +1,29 @@
+{
+  "Domain": "DCM",
+  "topics": [
+    "IDGC",
+    "Stewardship",
+    "Metadata",
+    "Compliance",
+    "Audit",
+    "Principles",
+    "Validate lifecycle alignment with DAMA checkpoints for creation, maintenance, and archival (“Chapter 4.3, p. 92”).",
+    "Use DCAM information asset scoping to prioritize the most sensitive or high-impact content classes.",
+    "Validate classes with lifecycle stages for creation, collaboration, publication, and archival (“Chapter 4.3, p. 92”).",
+    "Use CMMI taxonomy refinement guidelines to stabilize early classification schemes.",
+    "Consolidate requirements using DAMA guidance for document authenticity, classification, access control, and retention (“Chapter 12, p. 330–338”).",
+    "Ensure semantic clarity using DAMA modelling guidance where textual definitions must support classification (“Chapter 10, p. 282–284”).",
+    "Use DCAM requirement scoring to prioritize high-risk content classes.",
+    "Validate alignment with semantic expectations using DAMA conceptual modelling (“Chapter 10, p. 282–284”).",
+    "Ensure lifecycle alignment with controlled transitions (“Chapter 4.3, p. 92”).",
+    "GDPR",
+    "Track adherence to classification, versioning, retention, and quality rules following DAMA (“Chapter 12, p. 330–338”).",
+    "Validate lifecycle transitions to detect premature deletions or missing archival (“Chapter 4.3, p. 92”).",
+    "Record findings as governed artefacts (“Chapter 3 Appendix, p. 69–70”).",
+    "Use DCAM diagnostic indicators to prioritize remediation actions.",
+    "Validate lifecycle appropriateness (“Chapter 4.3, p. 92”).",
+    "Document the rule set following DAMA artefact guidance (“Chapter 3 Appendix, p. 69–70”).",
+    "Use CMMI automation readiness checks before enabling enforcement.",
+    "Ensure alignment with lifecycle expectations (“Chapter 4.3, p. 92”)."
+  ]
+}

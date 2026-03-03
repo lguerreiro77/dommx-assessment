@@ -341,6 +341,22 @@ action_catalog:
       notes:
       - Utiliser les indicateurs de maturité du cycle de vie DCAM pour guider 
         les améliorations.
+    - number: 6
+      name: Renforcement de l'institutionnalisation structurelle
+      prerequisite: Nécessite un mécanisme de gouvernance approuvé et une base 
+        politique formalisée
+      deliverable: Procédure de gouvernance institutionnalisée avec Control 
+        Owner assigné et preuve documentée d'exécution répétable
+      recommendations:
+      - Attribuer un Control Owner formellement responsable du maintien du 
+        mécanisme de gouvernance.
+      - Définir des critères d'acceptation objectifs confirmant une exécution 
+        stable et cohérente.
+      - Produire des artefacts documentés attestant d'une application 
+        opérationnelle répétable.
+      - Assurer l'intégration dans les routines organisationnelles établies.
+      - Maintenir la traçabilité entre le mécanisme de gouvernance et la 
+        politique gouvernante.
   MD-06:
     title: Automatiser la capture des métadonnées, la traçabilité et le contrôle
       sémantique
@@ -424,6 +440,19 @@ action_catalog:
       notes:
       - Utiliser l'évolution des capacités DCAM pour planifier les améliorations
         d'automatisation.
+    - number: 6
+      name: Renforcement de la mesure structurelle et de la supervision
+      prerequisite: Nécessite un mécanisme de gouvernance institutionnalisé
+      deliverable: Environnement de contrôle de gouvernance géré et mesuré
+      recommendations:
+      - Définir des indicateurs de performance mesurables alignés sur les 
+        objectifs de gouvernance.
+      - Mettre en œuvre des mécanismes de surveillance structurés ou des 
+        tableaux de bord.
+      - Établir des cycles de validation formels incluant des revues 
+        périodiques.
+      - Maintenir une documentation traçable des résultats de performance.
+      - Définir des voies d'escalade pour les écarts non résolus.
   MD-09:
     title: Optimisez la gouvernance des métadonnées et institutionnalisez les 
       meilleures pratiques
@@ -504,3 +533,18 @@ action_catalog:
       notes:
       - Utiliser la cartographie d'évolution des capacités DCAM pour guider 
         l'avancement de la maturité à long terme.
+    - number: 6
+      name: Optimisation structurelle et renforcement adaptatif
+      prerequisite: Nécessite un mécanisme de gouvernance géré et mesuré
+      deliverable: Processus de gouvernance optimisé démontrant automatisation 
+        et amélioration adaptative
+      recommendations:
+      - Introduire des éléments d'automatisation soutenant l'application et la 
+        surveillance.
+      - Mettre en place des boucles d'amélioration continue basées sur les 
+        tendances de performance.
+      - Réaliser un benchmarking par rapport à des cadres de gouvernance 
+        reconnus.
+      - Documenter l'amélioration mesurable sur plusieurs cycles.
+      - Assurer l'adaptabilité aux évolutions réglementaires et 
+        organisationnelles.

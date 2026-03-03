@@ -341,6 +341,23 @@ action_catalog:
       notes:
       - Verwenden Sie DCAM Diagnoseindikatoren zur Priorisierung von 
         Remediation.
+    - number: 6
+      name: Strukturelle Institutionalisierungsverstärkung
+      prerequisite: Erfordert genehmigten Governance-Mechanismus und 
+        formalisierte Richtlinienbasis
+      deliverable: Institutionalisierte Governance-Prozedur mit zugewiesenem 
+        Control Owner und dokumentiertem Nachweis wiederholbarer Ausführung
+      recommendations:
+      - Weisen Sie einen formal verantwortlichen Control Owner zu, der den 
+        Governance-Mechanismus aufrechterhält.
+      - Definieren Sie objektive Akzeptanzkriterien, die eine stabile und 
+        konsistente Ausführung bestätigen.
+      - Erstellen Sie dokumentierte Artefakte, die die wiederholbare operative 
+        Anwendung belegen.
+      - Stellen Sie die Integration in etablierte organisatorische Abläufe 
+        sicher.
+      - Pflegen Sie die Rückverfolgbarkeit zwischen Governance-Mechanismus und 
+        steuernder Richtlinie.
   RMD-06:
     title: Master- und Referenzvalidierung sowie -verteilung automatisieren
     procedures:
@@ -392,7 +409,7 @@ action_catalog:
       name: Aktivieren Sie automatisierte Warnungen für Master- und 
         Referenzprobleme
       prerequisite: Erfordert Überwachung und Verteilung
-      deliverable: "Alert feed"
+      deliverable: Alarm-Feed
       recommendations:
       - Warnmeldungen für Duplikate, ungültige Werte, Synchronisationsfehler und
         Missbrauch von Referenzlisten erstellen.
@@ -419,6 +436,19 @@ action_catalog:
       notes:
       - Verwenden Sie DCAM Fähigkeitsentwicklungsanalyse, um zukünftige 
         Automatisierungsverbesserungen zu planen.
+    - number: 6
+      name: Strukturelle Mess- und Überwachungsverstärkung
+      prerequisite: Erfordert einen institutionalisierten Governance-Mechanismus
+      deliverable: Gesteuerte und gemessene Governance-Kontrollumgebung
+      recommendations:
+      - Definieren Sie messbare Leistungskennzahlen, die mit den 
+        Governance-Zielen übereinstimmen.
+      - Implementieren Sie strukturierte Überwachungsmechanismen oder 
+        Dashboards.
+      - Etablieren Sie formale Validierungszyklen einschließlich periodischer 
+        Überprüfungen.
+      - Pflegen Sie eine nachvollziehbare Dokumentation der Leistungsergebnisse.
+      - Definieren Sie Eskalationswege für ungelöste Abweichungen.
   RMD-09:
     title: Optimieren Sie Stammdaten- und Referenz-Governance und 
       institutionalisieren Sie Best Practices
@@ -505,3 +535,17 @@ action_catalog:
       notes:
       - Verwenden Sie DCAM Fähigkeitsentwicklungs-Mapping zur Steuerung 
         langfristiger Reifegewinne.
+    - number: 6
+      name: Strukturoptimierung und adaptive Verstärkung
+      prerequisite: Erfordert gesteuerten und gemessenen Governance-Mechanismus
+      deliverable: Optimierter Governance-Prozess mit nachgewiesener 
+        Automatisierung und adaptiver Verbesserung
+      recommendations:
+      - Führen Sie Automatisierungselemente zur Unterstützung von Durchsetzung 
+        und Überwachung ein.
+      - Implementieren Sie kontinuierliche Verbesserungszyklen basierend auf 
+        Leistungstrends.
+      - Führen Sie Benchmarking anhand anerkannter Governance-Rahmenwerke durch.
+      - Dokumentieren Sie messbare Verbesserungen über mehrere Zyklen.
+      - Stellen Sie Anpassungsfähigkeit an regulatorische und organisatorische 
+        Veränderungen sicher.

@@ -75,25 +75,39 @@ action_catalog:
       - Utilizar critérios de efetividade de controle DCAM para classificar a 
         força do controle.
   DWBI-04:
-    title: Incorporar governança analítica e lógica semântica em fluxos BI
+    title: Implementar catalogação governada, versionamento e monitoramento de 
+      consumo
     procedures:
-    - number: 1
-      name: Integrar pontos de verificação de governança BI no ciclo de vida 
-        analítico
-      prerequisite: Requer requisitos BI aprovados
-      deliverable: Documentação atualizada do ciclo de vida analítico
+    - number: 5
+      name: Manter governança operacional BI
+      prerequisite: Requer operação BI em estado estável
+      deliverable: Registro de governança operacional BI
       recommendations:
-      - Mapear estágios de ingestão, preparação, modelagem e relatório para 
-        checkpoints de governança.
-      - Garantir captura de linhagem em cada estágio seguindo práticas de 
-        metadados DAMA “Capítulo 9, p. 236–239”.
-      - Definir responsabilidades para validação, aprovação e gestão de exceções
-        “Capítulo 4, p. 86–89”.
-      - Diagramas do ciclo de vida do documento utilizando os princípios de 
-        artefato DAMA “Capítulo 3 Apêndice, p. 69–70”.
+      - Monitorar uso BI, problemas de qualidade e lacunas de metadados.
+      - Validar a conformidade com os processos de publicação e certificação.
+      - Acompanhar falhas recorrentes para atualização de padrões ou processos.
+      - Armazenar logs usando estrutura de artefatos DAMA “Apêndice do Capítulo 
+        3, p. 69–70”.
       notes:
-      - Usar práticas de integração de ciclo de vida CMMI para garantir 
-        consistência entre equipes.
+      - Usar diagnósticos do modelo operacional DCAM para identificar áreas de 
+        governança fracas.
+    - number: 6
+      name: Reforço da Institucionalização Estrutural
+      prerequisite: Requer mecanismo de governança aprovado e base de política 
+        formalizada
+      deliverable: Procedimento de governança institucionalizado com 
+        proprietário de controle designado e evidência documentada de execução 
+        repetível
+      recommendations:
+      - Designar um Proprietário de Controle formalmente responsável por 
+        sustentar o mecanismo de governança.
+      - Definir critérios objetivos de aceitação confirmando execução estável e 
+        consistente.
+      - Produzir artefatos documentados evidenciando aplicação operacional 
+        repetível.
+      - Garantir integração nas rotinas organizacionais estabelecidas.
+      - Manter rastreabilidade entre o mecanismo de governança e a política 
+        governante.
   DWBI-06:
     title: Automatizar validação semântica, rastreamento de linhagem e 
       monitoramento de qualidade
@@ -112,6 +126,18 @@ action_catalog:
       notes:
       - Utilizar avaliação de prontidão para automação CMMI antes da 
         implantação.
+    - number: 6
+      name: Reforço da Medição e Supervisão Estrutural
+      prerequisite: Requer mecanismo de governança institucionalizado
+      deliverable: Ambiente de controle de governança gerenciado e mensurado
+      recommendations:
+      - Definir métricas de desempenho mensuráveis alinhadas aos objetivos de 
+        governança.
+      - Implementar mecanismos estruturados de monitoramento ou painéis de 
+        controle.
+      - Estabelecer ciclos formais de validação incluindo revisões periódicas.
+      - Manter documentação rastreável dos resultados de desempenho.
+      - Definir caminhos de escalonamento para desvios não resolvidos.
   DWBI-09:
     title: Melhore continuamente a governança analítica e semântica usando 
       evidências
@@ -130,3 +156,16 @@ action_catalog:
         60–61”.
       notes:
       - Utilize melhoria contínua CMMI para gerenciar atualizações de padrões.
+    - number: 6
+      name: Otimização Estrutural e Reforço Adaptativo
+      prerequisite: Requer mecanismo de governança gerenciado e mensurado
+      deliverable: Processo de governança otimizado demonstrando automação e 
+        melhoria adaptativa
+      recommendations:
+      - Introduzir elementos de automação que apoiem a aplicação e o 
+        monitoramento.
+      - Implementar ciclos de melhoria contínua baseados em tendências de 
+        desempenho.
+      - Realizar benchmarking contra frameworks de governança reconhecidos.
+      - Documentar melhoria mensurável em múltiplos ciclos.
+      - Garantir adaptabilidade a mudanças regulatórias e organizacionais.

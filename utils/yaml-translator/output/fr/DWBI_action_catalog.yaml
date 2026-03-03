@@ -1,0 +1,180 @@
+domain:
+  id: 9
+  name: Entrepôt de données et Business Intelligence (DWBI)
+action_catalog:
+  DWBI-01:
+    title: Définissez la vision, le périmètre et les règles de l'intelligence 
+      d'affaires et de l'entreposage.
+    procedures:
+    - number: 1
+      name: Définir la vision d'entreprise BI et analytique
+      prerequisite: Nécessite une stratégie de données d'entreprise
+      deliverable: Déclaration de vision BI et analytique
+      recommendations:
+      - Établir le but et le rôle de BI au sein de l’entreprise suivant les 
+        principes d’alignement architecturaux DAMA « Chapitre 8, p. 252–260 ».
+      - Identifier les résultats analytiques de haut niveau et les besoins 
+        décisionnels à travers les domaines.
+      - Aligner les objectifs BI avec la gestion, la qualité et la gouvernance 
+        des métadonnées « Chapitre 3.2, p. 55–57 ».
+      - Documenter la vision en utilisant la structure d’artefact DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser la cartographie de valeur DCAM pour exprimer la vision BI en 
+        termes de capacités mesurables.
+    - number: 2
+      name: Définir le périmètre métier BI et d'entreposage
+      prerequisite: Nécessite une vision BI
+      deliverable: Carte du périmètre métier BI
+      recommendations:
+      - Identifier les sujets analytiques principaux tels que ventes, finances, 
+        opérations et données clients.
+      - Cartographiez les questions métier aux domaines maîtres et de référence 
+        « Chapitre 6, p. 182–188 ».
+      - Inclure les seuils de qualité nécessaires à la fiabilité analytique « 
+        Chapitre 11, p. 308–311 ».
+      - Capturer la portée commerciale en utilisant les pratiques de 
+        documentation DAMA “Chapitre 3 Annexe, p. 69–70”.
+      notes:
+      - Utiliser les pratiques de cadrage CMMI pour assurer des incréments de 
+        livraison réalisables.
+  DWBI-02:
+    title: Assigner les rôles de gestion pour la gouvernance analytique et la 
+      supervision
+    procedures:
+    - number: 1
+      name: Documenter les principes architecturaux BI
+      prerequisite: Nécessite un périmètre DW/BI
+      deliverable: Ensemble de principes d'architecture BI.
+      recommendations:
+      - S'aligner sur les principes d'architecture DAMA pour l'intégration, la 
+        réutilisation et la standardisation “Chapitre 8, p. 252–260”.
+      - Définissez les principes pour les couches d'approvisionnement, de 
+        transformation, de consolidation et de consommation.
+      - Traiter le stewardship et l'alignement des métadonnées « Chapitre 9, p. 
+        236–239 ».
+      - Documenter les principes en utilisant le format d'artefact DAMA « 
+        Chapitre 3 Annexe, p. 69–70 ».
+      notes:
+      - Utiliser la cartographie des capacités d'architecture DCAM pour 
+        identifier les lacunes architecturales.
+  DWBI-03:
+    title: Approuver les normes de gouvernance analytique, sémantique et 
+      métrique
+    procedures:
+    - number: 3
+      name: Approuver les exigences BI et définir les contrôles analytiques
+      prerequisite: Nécessite une revue des parties prenantes
+      deliverable: Pack d’exigences approuvé
+      recommendations:
+      - Approuver les contrôles de qualité et de traçabilité alignés avec les 
+        meilleures pratiques DAMA « Chapitre 11, p. 308–311 ».
+      - Valider les règles métier et les définitions métriques.
+      - Définir l'allocation des responsabilités entre propriétaires, 
+        gestionnaires et custodians « Chapitre 4, p. 86–89 ».
+      - Documenter les résultats d'approbation en utilisant les artefacts de 
+        gouvernance DAMA “Chapitre 3 Annexe, p. 69–70”.
+      notes:
+      - Utilisez les critères d'efficacité des contrôles DCAM pour classifier la
+        robustesse des contrôles.
+  DWBI-04:
+    title: Mettre en œuvre un catalogage, un versionnage et une surveillance de 
+      la consommation gouvernés
+    procedures:
+    - number: 5
+      name: Maintenir la gouvernance opérationnelle BI
+      prerequisite: Nécessite une opération BI en régime stable
+      deliverable: Journal de gouvernance opérationnelle BI
+      recommendations:
+      - Surveiller l'utilisation de BI, les problèmes de qualité et les lacunes 
+        des métadonnées.
+      - Valider le respect des processus de publication et de certification.
+      - Suivre les échecs récurrents de mise à jour des normes ou processus.
+      - Stocker les journaux en utilisant la structure d'artefact DAMA « Annexe 
+        du Chapitre 3, p. 69–70 ».
+      notes:
+      - Utiliser les diagnostics du modèle opérationnel DCAM pour identifier les
+        zones de gouvernance faibles.
+    - number: 6
+      name: Renforcement de l'institutionnalisation structurelle
+      prerequisite: Nécessite un mécanisme de gouvernance approuvé et une base 
+        politique formalisée
+      deliverable: Procédure de gouvernance institutionnalisée avec Control 
+        Owner assigné et preuve documentée d'exécution répétable
+      recommendations:
+      - Attribuer un Control Owner formellement responsable du maintien du 
+        mécanisme de gouvernance.
+      - Définir des critères d'acceptation objectifs confirmant une exécution 
+        stable et cohérente.
+      - Produire des artefacts documentés attestant d'une application 
+        opérationnelle répétable.
+      - Assurer l'intégration dans les routines organisationnelles établies.
+      - Maintenir la traçabilité entre le mécanisme de gouvernance et la 
+        politique gouvernante.
+  DWBI-06:
+    title: Automatisez la validation sémantique, le suivi de traçabilité et la 
+      surveillance de la qualité.
+    procedures:
+    - number: 2
+      name: Établir des règles de validation automatisées BI
+      prerequisite: Nécessite un ensemble KPI
+      deliverable: Jeu de règles automatisé BI
+      recommendations:
+      - Mettre en œuvre des contrôles automatisés pour la conformité aux données
+        master, listes de référence et structures dimensionnelles « Chapitre 6, 
+        p. 182–188 ».
+      - Valider les définitions des métriques par rapport à la logique 
+        gouvernée.
+      - Inclure les points de contrôle de validation de traçabilité.
+      - Documenter les règles en utilisant les pratiques d'artefact DAMA “Annexe
+        du Chapitre 3, p. 69–70”.
+      notes:
+      - Utiliser l'évaluation de préparation à l'automatisation CMMI avant le 
+        déploiement.
+    - number: 6
+      name: Renforcement de la mesure structurelle et de la supervision
+      prerequisite: Nécessite un mécanisme de gouvernance institutionnalisé
+      deliverable: Environnement de contrôle de gouvernance géré et mesuré
+      recommendations:
+      - Définir des indicateurs de performance mesurables alignés sur les 
+        objectifs de gouvernance.
+      - Mettre en œuvre des mécanismes de surveillance structurés ou des 
+        tableaux de bord.
+      - Établir des cycles de validation formels incluant des revues 
+        périodiques.
+      - Maintenir une documentation traçable des résultats de performance.
+      - Définir des voies d'escalade pour les écarts non résolus.
+  DWBI-09:
+    title: Améliorer continuellement la gouvernance analytique et sémantique en 
+      utilisant des preuves
+    procedures:
+    - number: 2
+      name: Améliorer les normes et directives du cycle de vie BI
+      prerequisite: Nécessite des insights de gouvernance
+      deliverable: Standards BI mis à jour
+      recommendations:
+      - Mettre à jour les règles de modélisation, définitions métriques et 
+        exigences de métadonnées « Chapitre 10, p. 282–289 ».
+      - Clarifiez les attentes de documentation de source de vérité et de 
+        traçabilité « Chapitre 9, p. 236–239 ».
+      - Assurer la cohérence à travers les dimensions et attributs conformés.
+      - Valider les mises à jour via les forums de gouvernance « Chapitre 3.4, 
+        p. 60–61 ».
+      notes:
+      - Utiliser l'amélioration continue CMMI pour gérer les mises à jour des 
+        normes.
+    - number: 6
+      name: Optimisation structurelle et renforcement adaptatif
+      prerequisite: Nécessite un mécanisme de gouvernance géré et mesuré
+      deliverable: Processus de gouvernance optimisé démontrant automatisation 
+        et amélioration adaptative
+      recommendations:
+      - Introduire des éléments d'automatisation soutenant l'application et la 
+        surveillance.
+      - Mettre en place des boucles d'amélioration continue basées sur les 
+        tendances de performance.
+      - Réaliser un benchmarking par rapport à des cadres de gouvernance 
+        reconnus.
+      - Documenter l'amélioration mesurable sur plusieurs cycles.
+      - Assurer l'adaptabilité aux évolutions réglementaires et 
+        organisationnelles.

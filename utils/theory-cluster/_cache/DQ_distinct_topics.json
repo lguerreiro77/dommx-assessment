@@ -1,0 +1,31 @@
+{
+  "Domain": "DQ",
+  "topics": [
+    "IDGC",
+    "Principles",
+    "Data Quality",
+    "Stewardship",
+    "Decision authority",
+    "Audit",
+    "Validate lifecycle oversight with DAMA checkpoints for creation, transformation, and retirement (Chapter 4.3, p. 92).",
+    "Consolidate requirements using DAMA quality guidelines and dimension definitions (Chapter 11, p. 308–311).",
+    "Metadata",
+    "Ensure lifecycle alignment with DAMA quality checkpoints (Chapter 4.3, p. 92).",
+    "Use DCAM requirement prioritization to focus on high-impact quality controls.",
+    "Establish the charter using DAMA guidance for governance authority structures (Chapter 3.4, p. 60).",
+    "Validate alignment with DAMA governance functional layers (Figure 3-2, p. 53).",
+    "Document the charter following DAMA artefact structure (Chapter 3 Appendix, p. 69).",
+    "Use DCAM authority-alignment techniques to enhance governance clarity.",
+    "Track adherence using DAMA governance monitoring guidance (Chapter 3.6, p. 64).",
+    "Validate quality indicators using DAMA rules and dimensions (Chapter 11, p. 308–311).",
+    "Compliance",
+    "Apply DCAM diagnostic criteria to identify quality gaps.",
+    "Establish rules following DAMA quality definitions and validation techniques (Chapter 11, p. 308–311).",
+    "Validate lifecycle alignment using DAMA checkpoints (Chapter 4.3, p. 92).",
+    "Document automation logic using DAMA artefact guidelines (Chapter 3 Appendix, p. 69).",
+    "Apply CMMI automation readiness to ensure stability prior to deployment.",
+    "Improve standards using DAMA quality dimension and measurement guidance (Chapter 11, p. 308–311).",
+    "Ensure lifecycle alignment using DAMA oversight checkpoints (Chapter 4.3, p. 92).",
+    "Apply CMMI continuous improvement methods to structure refinement."
+  ]
+}

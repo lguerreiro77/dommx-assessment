@@ -67,25 +67,41 @@ action_catalog:
       - Utilisez les techniques d'alignement d'autorité DCAM pour améliorer la 
         clarté de la gouvernance.
   DQ-04:
-    title: Intégrez les dimensions de qualité, les règles de mesure et la 
-      propriété dans les routines de domaine.
+    title: Intégrer des routines de remédiation gouvernées et des contrôles 
+      éthiques dans les opérations
     procedures:
-    - number: 1
-      name: Intégrer les contrôles qualité dans les workflows de domaine
-      prerequisite: Nécessite des normes approuvées DQ-03
-      deliverable: Modèles de workflow mis à jour
+    - number: 5
+      name: Suivre l'adhésion à la qualité des données
+      prerequisite: Nécessite des routines de surveillance
+      deliverable: Registre de conformité qualité
       recommendations:
-      - Intégrer les contrôles suivant les directives DAMA pour la supervision 
-        qualité aux points de contrôle opérationnels (Chapitre 3.3, p. 58).
-      - Valider les contrôles en utilisant les définitions de qualité DAMA 
-        (Chapitre 11, p. 308–311).
-      - Assurer la supervision du cycle de vie en utilisant les points de 
-        contrôle DAMA (Chapitre 4.3, p. 92).
-      - Confirmez la supervision de la gestion en utilisant les responsabilités 
-        de gouvernance DAMA (Chapitre 4, p. 86–87).
+      - Suivre l’adhérence en utilisant les directives de surveillance de 
+        gouvernance DAMA (Chapitre 3.6, p. 64).
+      - Valider les indicateurs de qualité en utilisant les règles et dimensions
+        DAMA (Chapitre 11, p. 308–311).
+      - Confirmer l'alignement du cycle de vie et de la gestion à l'aide des 
+        points de contrôle et des rôles de gouvernance DAMA (Chapitres 3 et 4).
+      - Documenter la conformité en utilisant les modèles d'artefacts DAMA 
+        (Annexe du Chapitre 3, p. 69).
       notes:
-      - Utiliser les techniques de cartographie des contrôles DCAM pour 
-        renforcer la conformité.
+      - Appliquer les critères de diagnostic DCAM pour identifier les lacunes de
+        qualité.
+    - number: 6
+      name: Renforcement de l'institutionnalisation structurelle
+      prerequisite: Nécessite un mécanisme de gouvernance approuvé et une base 
+        politique formalisée
+      deliverable: Procédure de gouvernance institutionnalisée avec Control 
+        Owner assigné et preuve documentée d'exécution répétable
+      recommendations:
+      - Attribuer un Control Owner formellement responsable du maintien du 
+        mécanisme de gouvernance.
+      - Définir des critères d'acceptation objectifs confirmant une exécution 
+        stable et cohérente.
+      - Produire des artefacts documentés attestant d'une application 
+        opérationnelle répétable.
+      - Assurer l'intégration dans les routines organisationnelles établies.
+      - Maintenir la traçabilité entre le mécanisme de gouvernance et la 
+        politique gouvernante.
   DQ-06:
     title: Automatiser la validation, l’exécution, la surveillance et le suivi 
       de remédiation
@@ -106,6 +122,19 @@ action_catalog:
       notes:
       - Appliquer la préparation à l'automatisation CMMI pour assurer la 
         stabilité avant déploiement.
+    - number: 6
+      name: Renforcement de la mesure structurelle et de la supervision
+      prerequisite: Nécessite un mécanisme de gouvernance institutionnalisé
+      deliverable: Environnement de contrôle de gouvernance géré et mesuré
+      recommendations:
+      - Définir des indicateurs de performance mesurables alignés sur les 
+        objectifs de gouvernance.
+      - Mettre en œuvre des mécanismes de surveillance structurés ou des 
+        tableaux de bord.
+      - Établir des cycles de validation formels incluant des revues 
+        périodiques.
+      - Maintenir une documentation traçable des résultats de performance.
+      - Définir des voies d'escalade pour les écarts non résolus.
   DQ-09:
     title: Améliorer continuellement la mesure de la qualité, la validation et 
       la gouvernance de la remédiation
@@ -126,3 +155,18 @@ action_catalog:
       notes:
       - Appliquez les méthodes d'amélioration continue CMMI à l'affinement de la
         structure.
+    - number: 6
+      name: Optimisation structurelle et renforcement adaptatif
+      prerequisite: Nécessite un mécanisme de gouvernance géré et mesuré
+      deliverable: Processus de gouvernance optimisé démontrant automatisation 
+        et amélioration adaptative
+      recommendations:
+      - Introduire des éléments d'automatisation soutenant l'application et la 
+        surveillance.
+      - Mettre en place des boucles d'amélioration continue basées sur les 
+        tendances de performance.
+      - Réaliser un benchmarking par rapport à des cadres de gouvernance 
+        reconnus.
+      - Documenter l'amélioration mesurable sur plusieurs cycles.
+      - Assurer l'adaptabilité aux évolutions réglementaires et 
+        organisationnelles.

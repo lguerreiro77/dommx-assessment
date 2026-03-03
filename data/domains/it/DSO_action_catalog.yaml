@@ -332,6 +332,22 @@ action_catalog:
         86).
       notes:
       - Utilizzare diagnostica di capacità operativa DCAM.
+    - number: 6
+      name: Rinforzo dell'istituzionalizzazione strutturale
+      prerequisite: Richiede meccanismo di governance approvato e baseline 
+        politica formalizzata
+      deliverable: Procedura di governance istituzionalizzata con Control Owner 
+        assegnato e evidenze documentate di esecuzione ripetibile
+      recommendations:
+      - Assegnare un Control Owner formalmente responsabile del mantenimento del
+        meccanismo di governance.
+      - Definire criteri oggettivi di accettazione che confermino esecuzione 
+        stabile e coerente.
+      - Produrre artefatti documentati che attestino l'applicazione operativa 
+        ripetibile.
+      - Garantire l'integrazione nelle routine organizzative consolidate.
+      - Mantenere la tracciabilità tra il meccanismo di governance e la politica
+        di governo.
   DSO-06:
     title: Automatizzare la validazione e il monitoraggio operativi
     procedures:
@@ -407,6 +423,17 @@ action_catalog:
         (Capitolo 3 Appendice, p. 69).
       notes:
       - Utilizzare valutazioni operative DCAM.
+    - number: 6
+      name: Rinforzo della misurazione strutturale e supervisione
+      prerequisite: Richiede un meccanismo di governance istituzionalizzato
+      deliverable: Ambiente di controllo di governance gestito e misurato
+      recommendations:
+      - Definire metriche di performance misurabili allineate agli obiettivi di 
+        governance.
+      - Implementare meccanismi strutturati di monitoraggio o dashboard.
+      - Stabilire cicli formali di validazione inclusi revisioni periodiche.
+      - Mantenere documentazione tracciabile dei risultati di performance.
+      - Definire percorsi di escalation per deviazioni non risolte.
   DSO-09:
     title: Migliorare continuamente la maturità operativa utilizzando evidenze
     procedures:
@@ -486,3 +513,16 @@ action_catalog:
         (Capitolo 3 Appendice, p. 69).
       notes:
       - Utilizzare la mappatura dell’evoluzione delle capacità DCAM.
+    - number: 6
+      name: Ottimizzazione strutturale e rinforzo adattivo
+      prerequisite: Richiede meccanismo di governance gestito e misurato
+      deliverable: Processo di governance ottimizzato che dimostra automazione e
+        miglioramento adattivo
+      recommendations:
+      - Introdurre elementi di automazione a supporto dell'applicazione e del 
+        monitoraggio.
+      - Implementare cicli di miglioramento continuo basati sulle tendenze di 
+        performance.
+      - Condurre benchmarking rispetto a framework di governance riconosciuti.
+      - Documentare miglioramenti misurabili su più cicli.
+      - Garantire l'adattabilità ai cambiamenti normativi e organizzativi.

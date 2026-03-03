@@ -1,0 +1,171 @@
+domain:
+  id: 9
+  name: Data Warehousing e Business Intelligence (DWBI)
+action_catalog:
+  DWBI-01:
+    title: Definir visão, escopo e regras de business intelligence e data 
+      warehousing
+    procedures:
+    - number: 1
+      name: Definir visão corporativa de BI e analytics
+      prerequisite: Requer estratégia empresarial de dados
+      deliverable: Declaração de visão BI e analítica
+      recommendations:
+      - Estabelecer o propósito e papel de BI dentro da empresa seguindo 
+        princípios de alinhamento arquitetural DAMA “Capítulo 8, p. 252–260”.
+      - Identifique resultados analíticos de alto nível e necessidades de 
+        decisão entre domínios.
+      - Alinhar objetivos BI com stewardship, qualidade e governança de 
+        metadados “Capítulo 3.2, p. 55–57”.
+      - Documentar a visão usando a estrutura de artefatos DAMA “Capítulo 3 
+        Apêndice, p. 69–70”.
+      notes:
+      - Usar mapeamento de valor DCAM para expressar visão BI em termos de 
+        capacidade mensurável.
+    - number: 2
+      name: Definir escopo de negócios BI e de armazenamento de dados
+      prerequisite: Requer visão BI
+      deliverable: Mapa de escopo de negócios BI
+      recommendations:
+      - Identificar assuntos analíticos primários como vendas, finanças, 
+        operações e dados de clientes.
+      - Mapear perguntas de negócio para domínios mestre e de referência 
+        “Capítulo 6, p. 182–188”.
+      - Incluir limites de qualidade necessários para confiabilidade analítica 
+        “Capítulo 11, p. 308–311”.
+      - Capturar escopo de negócios usando práticas de documentação DAMA 
+        “Capítulo 3 Apêndice, p. 69–70”.
+      notes:
+      - Use práticas de escopo CMMI para garantir incrementos de entrega 
+        viáveis.
+  DWBI-02:
+    title: Atribuir papéis de gestão para governança analítica e supervisão
+    procedures:
+    - number: 1
+      name: Documentar princípios arquiteturais BI
+      prerequisite: Requer escopo DW/BI
+      deliverable: Conjunto de princípios arquiteturais BI
+      recommendations:
+      - Alinhe-se com os princípios de arquitetura DAMA para integração, 
+        reutilização e padronização “Capítulo 8, p. 252–260”.
+      - Definir princípios para camadas de sourcing, transformações, 
+        consolidação e consumo.
+      - Abordar stewardship e alinhamento de metadados “Capítulo 9, p. 236–239”.
+      - Documentar princípios usando formatação de artefatos DAMA “Apêndice do 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Usar mapeamento de capacidade arquitetural DCAM para identificar lacunas
+        arquiteturais.
+  DWBI-03:
+    title: Aprovar padrões de governança analítica, semântica e métrica
+    procedures:
+    - number: 3
+      name: Aprovar requisitos BI e definir controles analíticos
+      prerequisite: Requer revisão das partes interessadas
+      deliverable: Pacote de requisitos aprovado
+      recommendations:
+      - Aprovar controles de qualidade e linhagem alinhados às melhores práticas
+        DAMA “Capítulo 11, p. 308–311”.
+      - Validar regras de negócio e definições de métricas.
+      - Definir alocação de responsabilidades entre proprietários, stewards e 
+        custodians “Capítulo 4, p. 86–89”.
+      - Documentar resultados de aprovação usando artefatos de governança DAMA 
+        “Capítulo 3 Apêndice, p. 69–70”.
+      notes:
+      - Utilizar critérios de efetividade de controle DCAM para classificar a 
+        força do controle.
+  DWBI-04:
+    title: Implementar catalogação governada, versionamento e monitoramento de 
+      consumo
+    procedures:
+    - number: 5
+      name: Manter governança operacional BI
+      prerequisite: Requer operação BI em estado estável
+      deliverable: Registro de governança operacional BI
+      recommendations:
+      - Monitorar uso BI, problemas de qualidade e lacunas de metadados.
+      - Validar a conformidade com os processos de publicação e certificação.
+      - Acompanhar falhas recorrentes para atualização de padrões ou processos.
+      - Armazenar logs usando estrutura de artefatos DAMA “Apêndice do Capítulo 
+        3, p. 69–70”.
+      notes:
+      - Usar diagnósticos do modelo operacional DCAM para identificar áreas de 
+        governança fracas.
+    - number: 6
+      name: Reforço da Institucionalização Estrutural
+      prerequisite: Requer mecanismo de governança aprovado e base de política 
+        formalizada
+      deliverable: Procedimento de governança institucionalizado com 
+        proprietário de controle designado e evidência documentada de execução 
+        repetível
+      recommendations:
+      - Designar um Proprietário de Controle formalmente responsável por 
+        sustentar o mecanismo de governança.
+      - Definir critérios objetivos de aceitação confirmando execução estável e 
+        consistente.
+      - Produzir artefatos documentados evidenciando aplicação operacional 
+        repetível.
+      - Garantir integração nas rotinas organizacionais estabelecidas.
+      - Manter rastreabilidade entre o mecanismo de governança e a política 
+        governante.
+  DWBI-06:
+    title: Automatizar validação semântica, rastreamento de linhagem e 
+      monitoramento de qualidade
+    procedures:
+    - number: 2
+      name: Estabelecer regras automatizadas de validação BI
+      prerequisite: Requer um conjunto KPI
+      deliverable: Conjunto automatizado de regras BI
+      recommendations:
+      - Implementar checagens automatizadas para conformidade com dados mestre, 
+        listas de referência e estruturas dimensionais “Capítulo 6, p. 182–188”.
+      - Validar definições de métricas contra lógica governada.
+      - Incluir pontos de verificação de linhagem.
+      - Documentar regras usando práticas de artefatos DAMA “Apêndice do 
+        Capítulo 3, p. 69–70”.
+      notes:
+      - Utilizar avaliação de prontidão para automação CMMI antes da 
+        implantação.
+    - number: 6
+      name: Reforço da Medição e Supervisão Estrutural
+      prerequisite: Requer mecanismo de governança institucionalizado
+      deliverable: Ambiente de controle de governança gerenciado e mensurado
+      recommendations:
+      - Definir métricas de desempenho mensuráveis alinhadas aos objetivos de 
+        governança.
+      - Implementar mecanismos estruturados de monitoramento ou painéis de 
+        controle.
+      - Estabelecer ciclos formais de validação incluindo revisões periódicas.
+      - Manter documentação rastreável dos resultados de desempenho.
+      - Definir caminhos de escalonamento para desvios não resolvidos.
+  DWBI-09:
+    title: Melhore continuamente a governança analítica e semântica usando 
+      evidências
+    procedures:
+    - number: 2
+      name: Melhorar os padrões e orientações de ciclo de vida do BI
+      prerequisite: Requer insights de governança
+      deliverable: Padrões BI atualizados
+      recommendations:
+      - Atualizar regras de modelagem, definições métricas e requisitos de 
+        metadados “Capítulo 10, p. 282–289”.
+      - Esclarecer expectativas de documentação da fonte da verdade e linhagem 
+        “Capítulo 9, p. 236–239”.
+      - Garantir consistência entre dimensões e atributos conformados.
+      - Validar atualizações por meio de fóruns de governança “Capítulo 3.4, p. 
+        60–61”.
+      notes:
+      - Utilize melhoria contínua CMMI para gerenciar atualizações de padrões.
+    - number: 6
+      name: Otimização Estrutural e Reforço Adaptativo
+      prerequisite: Requer mecanismo de governança gerenciado e mensurado
+      deliverable: Processo de governança otimizado demonstrando automação e 
+        melhoria adaptativa
+      recommendations:
+      - Introduzir elementos de automação que apoiem a aplicação e o 
+        monitoramento.
+      - Implementar ciclos de melhoria contínua baseados em tendências de 
+        desempenho.
+      - Realizar benchmarking contra frameworks de governança reconhecidos.
+      - Documentar melhoria mensurável em múltiplos ciclos.
+      - Garantir adaptabilidade a mudanças regulatórias e organizacionais.

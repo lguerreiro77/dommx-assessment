@@ -82,7 +82,7 @@ questions:
     text: ¿Están gobernadas y mantenidas las reglas de validación, umbrales y 
       verificaciones específicas de dominio?
     explanation: Evalúa la gobernanza de controles de calidad.
-    objective: "Enable reliable validation and protection against defects."
+    objective: Permitir una validación confiable y protección contra defectos.
     cross_reference: "(DAMA-DMBOK2, Chapter 13 – Quality Rules & Standards; DCAM,
       Data Controls; IDGC, Rule Enforcement)"
     score_action_mapping:

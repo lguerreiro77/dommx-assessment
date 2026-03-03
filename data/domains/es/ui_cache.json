@@ -95,5 +95,9 @@
   "Enter": "Entrar",
   "Welcome to DOMMx Assessment": "Bienvenido a la Evaluación DOMMx",
   "This diagnostic evaluates organizational maturity across selected data domains. Please answer honestly based on current state.\n": "Este diagnóstico evalúa la madurez organizacional en dominios de datos seleccionados. Por favor, responda honestamente según el estado actual.",
-  "Continue ➡": "Continuar ➡"
+  "Continue ➡": "Continuar ➡",
+  "You have already completed all actions for this project.": "Ya has completado todas las acciones para este proyecto.",
+  "Progress saved successfully.": "Progreso guardado con éxito.",
+  "↩ Back to Login": "↩ Volver a Iniciar Sesión",
+  "Temporary connection issue. Please try again in a few seconds.": "Problema de conexión temporal. Por favor, inténtalo de nuevo en unos segundos."
 }

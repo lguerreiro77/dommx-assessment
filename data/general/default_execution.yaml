@@ -17,10 +17,10 @@ execution_request:
     selected_questions:
       - id: "Q1"
         mandatory: "Yes"
-        procedures: [1, 2, 3, 4, 5]
+        procedures: [1, 2, 3, 4, 5, 6]
       - id: "Q2"
         mandatory: "Yes"
-        procedures: [1, 2, 3, 4, 5]
+        procedures: [1, 2, 3, 4, 5, 6]
 
   - domain: 2
     acronym: "DA"
@@ -28,7 +28,7 @@ execution_request:
     selected_questions:
       - id: "Q1"
         mandatory: "Yes"
-        procedures: [1, 2, 3, 4, 5]
+        procedures: [1, 2, 3, 4, 5, 6]
       - id: "Q2"
 
   - domain: 3
@@ -37,7 +37,7 @@ execution_request:
     selected_questions:
       - id: "Q1"
         mandatory: "Yes"
-        procedures: [1, 2, 3, 4, 5]
+        procedures: [1, 2, 3, 4, 5, 6]
       - id: "Q2"
         mandatory: "Yes"
  

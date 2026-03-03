@@ -19,11 +19,29 @@ import streamlit as st
 from typing import List, Dict, Any
 from data.sheets_client import get_table
 
+import time
+from gspread.exceptions import APIError
+
 
 @st.cache_data(ttl=120, show_spinner=False)
 def _fetch_cached_table(table: str) -> List[Dict[str, Any]]:
-    ws = get_table(table)
-    return ws.get_all_records()
+
+    retries = 3
+    delay = 1
+
+    for attempt in range(retries):
+        try:
+            ws = get_table(table)
+            return ws.get_all_records()
+
+        except APIError:
+            if attempt < retries - 1:
+                time.sleep(delay)
+                delay *= 2
+            else:
+                raise RuntimeError(
+                    f"Temporary Google Sheets failure while reading '{table}'."
+                )
 
 
 class SheetsAdapter:

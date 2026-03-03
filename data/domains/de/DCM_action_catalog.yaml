@@ -88,24 +88,43 @@ action_catalog:
       - Richten Sie Aufbewahrungsstandards an GDPR Minimierungs- und rechtlichen
         Zweckanforderungen aus, sofern zutreffend.
   DCM-04:
-    title: Integrieren Sie Klassifizierungs-, Metadaten- und Qualitätsprüfungen 
-      in Inhaltsverarbeitungsroutinen
+    title: Integrieren Sie Lifecycle-Regeln, ethische Schutzmaßnahmen und 
+      Repository-Routinen in Abläufe
     procedures:
-    - number: 1
-      name: Integrieren Sie Content-Governance-Kontrollpunkte in Arbeitsabläufe
-      prerequisite: Erfordert genehmigte DCM-03 Standards
-      deliverable: Aktualisierte Workflow-Vorlagen
+    - number: 5
+      name: Verfolgen Sie die Einhaltung der Inhaltsgovernance
+      prerequisite: Erfordert Überwachungsroutinen
+      deliverable: Inhalts-Compliance-Register
       recommendations:
-      - Integrieren Sie Prüfpunkt für Erstellung, Überprüfung, Genehmigung und 
-        Archivierung gemäß DAMA-Lebenszyklus („Kapitel 12, S. 330–338“).
-      - Validieren Sie Metadatenfelder wie Version, Eigentümer, Aufbewahrung und
-        Klassifizierung („Kapitel 9, S. 236–239“).
-      - Sicherstellung von Qualitätsanforderungen für Dokumentengenauigkeit und 
-        -vollständigkeit („Kapitel 11, S. 308–311“).
-      - Bestätigen Sie die Beteiligung von Stewardship („Kapitel 4, S. 86–89“).
+      - Verfolgen Sie die Einhaltung von Klassifizierungs-, Versionierungs-, 
+        Aufbewahrungs- und Qualitätsregeln gemäß DAMA („Kapitel 12, S. 
+        330–338“).
+      - Validieren Sie Lifecycle-Übergänge, um vorzeitige Löschungen oder 
+        fehlende Archivierung zu erkennen („Kapitel 4.3, S. 92“).
+      - Bestätigen Sie Metadaten-Genauigkeit und semantische Integrität 
+        („Kapitel 9 und 10“).
+      - Erfassen Sie Befunde als gesteuerte Artefakte („Kapitel 3 Anhang, S. 
+        69–70“).
       notes:
-      - Verwenden Sie die DCAM Workflow-Abbildung, um Governance-Konsistenz über
-        Teams hinweg sicherzustellen.
+      - Nutzen Sie DCAM-Diagnoseindikatoren, um Remediationsmaßnahmen zu 
+        priorisieren.
+    - number: 6
+      name: Strukturelle Institutionalisierungsverstärkung
+      prerequisite: Erfordert genehmigten Governance-Mechanismus und 
+        formalisierte Richtlinienbasis
+      deliverable: Institutionalisierte Governance-Prozedur mit zugewiesenem 
+        Control Owner und dokumentiertem Nachweis wiederholbarer Ausführung
+      recommendations:
+      - Weisen Sie einen formal verantwortlichen Control Owner zu, der den 
+        Governance-Mechanismus aufrechterhält.
+      - Definieren Sie objektive Akzeptanzkriterien, die eine stabile und 
+        konsistente Ausführung bestätigen.
+      - Erstellen Sie dokumentierte Artefakte, die die wiederholbare operative 
+        Anwendung belegen.
+      - Stellen Sie die Integration in etablierte organisatorische Abläufe 
+        sicher.
+      - Pflegen Sie die Rückverfolgbarkeit zwischen Governance-Mechanismus und 
+        steuernder Richtlinie.
   DCM-06:
     title: Automatisieren Sie Klassifikation, Lebenszyklus, Metadaten- und 
       Qualitätsvalidierung
@@ -127,6 +146,19 @@ action_catalog:
       notes:
       - Verwenden Sie CMMI Automatisierungsbereitschaftsprüfungen vor der 
         Aktivierung der Durchsetzung.
+    - number: 6
+      name: Strukturelle Mess- und Überwachungsverstärkung
+      prerequisite: Erfordert einen institutionalisierten Governance-Mechanismus
+      deliverable: Gesteuerte und gemessene Governance-Kontrollumgebung
+      recommendations:
+      - Definieren Sie messbare Leistungskennzahlen, die mit den 
+        Governance-Zielen übereinstimmen.
+      - Implementieren Sie strukturierte Überwachungsmechanismen oder 
+        Dashboards.
+      - Etablieren Sie formale Validierungszyklen einschließlich periodischer 
+        Überprüfungen.
+      - Pflegen Sie eine nachvollziehbare Dokumentation der Leistungsergebnisse.
+      - Definieren Sie Eskalationswege für ungelöste Abweichungen.
   DCM-09:
     title: Verfeinern Sie kontinuierlich die Inhalts-Governance und den 
       Lebenszyklus anhand von Evidenzen
@@ -148,3 +180,17 @@ action_catalog:
       notes:
       - Verwenden Sie CMMI Prinzipien der kontinuierlichen Verbesserung zur 
         Strukturierung von Verfeinerungszyklen.
+    - number: 6
+      name: Strukturoptimierung und adaptive Verstärkung
+      prerequisite: Erfordert gesteuerten und gemessenen Governance-Mechanismus
+      deliverable: Optimierter Governance-Prozess mit nachgewiesener 
+        Automatisierung und adaptiver Verbesserung
+      recommendations:
+      - Führen Sie Automatisierungselemente zur Unterstützung von Durchsetzung 
+        und Überwachung ein.
+      - Implementieren Sie kontinuierliche Verbesserungszyklen basierend auf 
+        Leistungstrends.
+      - Führen Sie Benchmarking anhand anerkannter Governance-Rahmenwerke durch.
+      - Dokumentieren Sie messbare Verbesserungen über mehrere Zyklen.
+      - Stellen Sie Anpassungsfähigkeit an regulatorische und organisatorische 
+        Veränderungen sicher.

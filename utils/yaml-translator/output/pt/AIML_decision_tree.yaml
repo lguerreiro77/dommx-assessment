@@ -1,0 +1,259 @@
+domain:
+  id: 12
+  name: AI e Machine Learning (AIML)
+  description: "Este domínio avalia a governança de sistemas algorítmicos, risco de
+    modelos, transparência e uso ético de sistemas orientados a dados. Aborda lacunas
+    documentadas na governança de AI/ML quando críticos para o negócio ou sujeitos
+    a escrutínio regulatório. Funcionalmente fundamentado em DAMA-DMBOK2 Capítulo
+    14, é complementado por DCAM para risco de modelo e CMMI para consistência de
+    processos ao longo do ciclo de vida do modelo.\n"
+maturity_scale:
+  0:
+    maturity_level: Inexistente
+    meaning: Sem práticas de governança e sem responsabilidades ou processos 
+      definidos.
+    interpretation_for_assessment: Indica ausência completa de estrutura e 
+      necessidade imediata de ação fundamental.
+  1:
+    maturity_level: Inicial
+    meaning: Atividades ocorrem de forma informal e reativa com pouca ou nenhuma
+      documentação.
+    interpretation_for_assessment: Reflete conscientização, mas também alta 
+      variabilidade e risco operacional.
+  2:
+    maturity_level: Emergente
+    meaning: Algumas práticas existem, mas permanecem inconsistentes, não 
+      documentadas ou não adotadas entre equipes.
+    interpretation_for_assessment: Mostra desenvolvimento inicial. Padronização 
+      e documentação são necessárias para avançar.
+  3:
+    maturity_level: Estabelecido
+    meaning: Processos, papéis e políticas são definidos, documentados e 
+      aplicados com estabilidade.
+    interpretation_for_assessment: Demonstra consistência operacional e 
+      prontidão para melhorias mais estruturadas.
+  4:
+    maturity_level: Gerenciado
+    meaning: A governança está integrada em fluxos de trabalho e suportada por 
+      ferramentas, monitoramento e supervisão.
+    interpretation_for_assessment: Representa adoção madura com execução 
+      confiável entre equipes.
+  5:
+    maturity_level: Otimizado
+    meaning: A governança está totalmente incorporada, continuamente aprimorada 
+      e alinhada com expectativas de conformidade e ética.
+    interpretation_for_assessment: Representa maturidade avançada com governança
+      proativa, otimização e melhoria contínua institucionalizada.
+questions:
+  Q1:
+    text: Os modelos AI e ML são formalmente aprovados, documentados e 
+      governados antes da implantação?
+    explanation: Avalia se modelos AI/ML estão sujeitos a aprovação formal, 
+      padrões de documentação e controles de governança antes do uso 
+      operacional.
+    objective: Garantir implantação rastreável, auditável e controlada de 
+      modelos AI/ML.
+    cross_reference: "(DAMA-DMBOK2, Chapter 3 – Data Governance; Chapter 16 – Big
+      Data & Analytics; Chapter 12 – Data Lifecycle Management; DCAM, Analytics Governance;
+      NIST AI RMF – Govern)"
+    score_action_mapping:
+      0:
+        action_code: AIML-01
+        description: Critérios formais de aprovação e requisitos documentais 
+          para AI/ML
+      1:
+        action_code: AIML-02
+        description: Atribuir ownership e papéis de governança para aprovação de
+          modelos AI/ML
+      2:
+        action_code: AIML-03
+        description: Aprovar documentação e políticas padronizadas de modelo 
+          AI/ML
+      3:
+        action_code: AIML-04
+        description: Incorporar pontos de aprovação e documentação no ciclo de 
+          vida AI/ML
+      4:
+        action_code: AIML-06
+        description: Automatizar registro de modelos, fluxos de aprovação e 
+          controles
+      5:
+        action_code: AIML-09
+        description: Melhorar continuamente AI/ML usando resultados de auditoria
+          e evidências do ciclo de vida
+  Q2:
+    text: Fontes de dados, características e conjuntos de treinamento são 
+      governados e controlados em qualidade durante o ciclo de vida do modelo?
+    explanation: Avalia governança sobre proveniência de dados, engenharia de 
+      características e qualidade de dados de treinamento usados em modelos 
+      AI/ML.
+    objective: Reduzir viés, vazamento de dados e comportamento não confiável do
+      modelo.
+    cross_reference: "(DAMA-DMBOK2, Chapter 16 – Big Data & Analytics; Chapter 13
+      – Data Quality; Chapter 11 – Metadata Management; DCAM, Data Controls; ISO/IEC
+      25012)"
+    score_action_mapping:
+      0:
+        action_code: AIML-01
+        description: Define regras de governança para fontes de dados de 
+          treinamento, features e proveniência de dados
+      1:
+        action_code: AIML-02
+        description: Atribuir responsabilidades para governança de conjunto de 
+          dados, características e linhagem
+      2:
+        action_code: AIML-03
+        description: Aprovar padrões de governança de qualidade de dados, 
+          linhagem e funcionalidades
+      3:
+        action_code: AIML-04
+        description: Incorporar controles governados de dados e features nas 
+          rotinas de desenvolvimento de modelos
+      4:
+        action_code: AIML-06
+        description: Automatizar verificações de qualidade de dados, captura de 
+          linhagem e validação de características
+      5:
+        action_code: AIML-09
+        description: Refine continuamente a governança de dados e recursos com 
+          base nos resultados dos modelos
+  Q3:
+    text: O desempenho do modelo, drift, viés e riscos são monitorados 
+      continuamente usando métricas e limites definidos?
+    explanation: Avalia a existência de rotinas de monitoramento para precisão, 
+      deriva, viés e risco operacional em modelos AI/ML.
+    objective: Assegurar detecção precoce de degradação e confiabilidade 
+      sustentada do modelo.
+    cross_reference: "(DAMA-DMBOK2, Chapter 16 – Big Data & Analytics; Chapter 13
+      – Data Quality; Chapter 12 – Data Lifecycle Management; DCAM, Monitoring & Measurement;
+      NIST AI RMF – Measure)"
+    score_action_mapping:
+      0:
+        action_code: AIML-01
+        description: Definir indicadores e limites para monitoramento de 
+          desempenho, drift, viés e risco
+      1:
+        action_code: AIML-02
+        description: Atribuir responsabilidades de monitoramento, revisão e 
+          escalonamento
+      2:
+        action_code: AIML-03
+        description: Aprovar métricas de monitoramento, limites e ciclos de 
+          revisão
+      3:
+        action_code: AIML-04
+        description: Implementar painéis de monitoramento contínuo e rotinas de 
+          revisão
+      4:
+        action_code: AIML-06
+        description: Automatizar detecção de deriva, monitoramento de viés e 
+          mecanismos de alerta
+      5:
+        action_code: AIML-09
+        description: Melhorar continuamente governança de monitoramento usando 
+          comportamento observado do modelo
+  Q4:
+    text: Os modelos AI e ML são explicáveis, transparentes e auditáveis para as
+      partes interessadas relevantes?
+    explanation: Examina a aplicação de mecanismos de explicabilidade, 
+      transparência e auditabilidade apropriados à criticidade do modelo.
+    objective: Habilitar responsabilidade, conformidade regulatória e tomada de 
+      decisão informada.
+    cross_reference: "(DAMA-DMBOK2, Chapter 16 – Big Data & Analytics; Chapter 11
+      – Metadata Management; Chapter 3 – Data Governance; OECD AI Principles – Transparency;
+      EU AI Act – Transparency Requirements)"
+    score_action_mapping:
+      0:
+        action_code: AIML-01
+        description: Requisitos de explicabilidade, transparência e 
+          auditabilidade por criticidade do modelo
+      1:
+        action_code: AIML-02
+        description: Atribuir accountability para controles de explicabilidade e
+          transparência
+      2:
+        action_code: AIML-03
+        description: Aprovar padrões de explicabilidade e requisitos de 
+          evidência de auditoria
+      3:
+        action_code: AIML-04
+        description: Incorporar controles de explicabilidade e auditoria no 
+          desenvolvimento e revisão de modelos
+      4:
+        action_code: AIML-06
+        description: Automatizar artefatos de explicabilidade, logs e trilhas de
+          auditoria
+      5:
+        action_code: AIML-09
+        description: Refinar continuamente a governança de transparência usando 
+          feedback de auditoria
+  Q5:
+    text: Os papéis, responsabilidades e propriedade para modelos AI/ML estão 
+      claramente definidos e aplicados?
+    explanation: Avalia a clareza da responsabilidade entre proprietários de 
+      modelo, proprietários de dados, desenvolvedores e stakeholders 
+      operacionais.
+    objective: Fortalecer propriedade, responsabilidade e aplicação da 
+      governança.
+    cross_reference: "(DAMA-DMBOK2, Chapter 3 – Data Governance; Chapter 14 – Data
+      Management Organization & Roles; Chapter 16 – Big Data & Analytics; DCAM, Operating
+      Model)"
+    score_action_mapping:
+      0:
+        action_code: AIML-01
+        description: Definir papéis, propriedade e responsabilidade para modelos
+          AI/ML
+      1:
+        action_code: AIML-02
+        description: Atribuir proprietários de modelo, proprietários de dados e 
+          responsabilidades operacionais
+      2:
+        action_code: AIML-03
+        description: Aprovar modelo operacional AI/ML e matriz de 
+          responsabilidades
+      3:
+        action_code: AIML-04
+        description: Incorporar propriedade e responsabilidade nas rotinas de 
+          governança e ciclo de vida
+      4:
+        action_code: AIML-06
+        description: Automatizar aplicação de papéis e controles de propriedade 
+          quando aplicável
+      5:
+        action_code: AIML-09
+        description: Otimizar continuamente a governança de propriedade com base
+          em resultados operacionais
+  Q6:
+    text: São aplicadas salvaguardas éticas, legais e responsáveis-AI ao longo 
+      do ciclo de vida AI/ML?
+    explanation: Assegura que princípios éticos, restrições legais e controles 
+      de uso responsável estejam incorporados nas práticas AI/ML.
+    objective: Promover adoção AI confiável, legal e socialmente responsável.
+    cross_reference: "(DAMA-DMBOK2, Chapter 3 – Data Governance; Chapter 16 – Big
+      Data & Analytics; Chapter 7 – Data Security; OECD AI Principles; NIST AI RMF
+      – Govern; EU AI Act – Risk & Ethics)"
+    score_action_mapping:
+      0:
+        action_code: AIML-01
+        description: Definir salvaguardas e restrições éticas, legais e 
+          responsáveis de AI
+      1:
+        action_code: AIML-02
+        description: Atribuir responsabilidades de supervisão para conformidade 
+          ética e legal
+      2:
+        action_code: AIML-03
+        description: Aprovar políticas responsáveis-AI e requisitos de 
+          salvaguarda
+      3:
+        action_code: AIML-04
+        description: Incorporar controles éticos e legais em processos de ciclo 
+          de vida AI/ML
+      4:
+        action_code: AIML-06
+        description: Automatizar verificações éticas, validação de conformidade 
+          e controles de risco
+      5:
+        action_code: AIML-09
+        description: Melhorar continuamente a governança responsável-AI usando 
+          auditorias e revisões

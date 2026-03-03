@@ -1,0 +1,230 @@
+domain:
+  id: 6
+  name: Integração e Interoperabilidade de Dados (DII)
+  description: "Este domínio avalia a formalização do movimento de dados, a existência
+    de padrões de integração governados e a estabilidade dos padrões de interoperabilidade
+    em toda a organização. Integração e Interoperabilidade de Dados focam em garantir
+    que os fluxos de dados entre sistemas sejam confiáveis, consistentes e governados,
+    apoiando compartilhamento de dados fluido e alinhamento arquitetural (DAMA-DMBOK2,
+    Capítulo 8).\n"
+maturity_scale:
+  0:
+    maturity_level: Inexistente
+    meaning: Sem práticas de governança e sem responsabilidades ou processos 
+      definidos.
+    interpretation_for_assessment: Indica ausência completa de estrutura e 
+      necessidade imediata de ação fundamental.
+  1:
+    maturity_level: Inicial
+    meaning: Atividades ocorrem de forma informal e reativa com pouca ou nenhuma
+      documentação.
+    interpretation_for_assessment: Reflete conscientização, mas também alta 
+      variabilidade e risco operacional.
+  2:
+    maturity_level: Emergente
+    meaning: Algumas práticas existem, mas permanecem inconsistentes, não 
+      documentadas ou não adotadas entre equipes.
+    interpretation_for_assessment: Mostra desenvolvimento inicial. Padronização 
+      e documentação são necessárias para avançar.
+  3:
+    maturity_level: Estabelecido
+    meaning: Processos, papéis e políticas são definidos, documentados e 
+      aplicados com estabilidade.
+    interpretation_for_assessment: Demonstra consistência operacional e 
+      prontidão para melhorias mais estruturadas.
+  4:
+    maturity_level: Gerenciado
+    meaning: A governança está integrada em fluxos de trabalho e suportada por 
+      ferramentas, monitoramento e supervisão.
+    interpretation_for_assessment: Representa adoção madura com execução 
+      confiável entre equipes.
+  5:
+    maturity_level: Otimizado
+    meaning: A governança está totalmente incorporada, continuamente aprimorada 
+      e alinhada com expectativas de conformidade e ética.
+    interpretation_for_assessment: Representa maturidade avançada com governança
+      proativa, otimização e melhoria contínua institucionalizada.
+questions:
+  Q1:
+    text: Os padrões de integração e regras de troca governadas estão 
+      formalmente definidos e aprovados?
+    explanation: Avalia a clareza dos princípios compartilhados de integração e 
+      padrões obrigatórios.
+    objective: Assegurar troca de dados consistente e governada.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Data Integration; DCAM, Data Sharing;
+      IDGC, Coordination Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Definir padrões de integração e regras de troca governadas
+      1:
+        action_code: DII-02
+        description: Atribua integração de papéis e responsabilidades de 
+          governança
+      2:
+        action_code: DII-03
+        description: Aprovar padrões de integração e regras de troca
+      3:
+        action_code: DII-04
+        description: Incorporar padrões de integração nas rotinas de domínio e 
+          ciclo de vida
+      4:
+        action_code: DII-06
+        description: Automatizar conformidade e verificações de validação de 
+          integração
+      5:
+        action_code: DII-09
+        description: Refinar continuamente padrões de integração usando métricas
+  Q2:
+    text: Regras e estruturas de integração orientadas por metadados são 
+      mantidas sob autoridade de governança?
+    explanation: Avalia alinhamento de metadados que suportam fluxos de 
+      integração.
+    objective: Fortalecer transparência e linhagem.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – APIs & Exchange Standards; DCAM, Interoperability;
+      IDGC, Process Standardization)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Definir regras de integração orientadas por metadados
+      1:
+        action_code: DII-02
+        description: Atribuir responsabilidade de steward para metadados que 
+          suportam integração
+      2:
+        action_code: DII-03
+        description: Aprovar estruturas de metadados e regras de integração
+      3:
+        action_code: DII-04
+        description: Incorporar regras de integração orientadas a metadados em 
+          rotinas operacionais
+      4:
+        action_code: DII-06
+        description: Automatizar integração, alinhamento e captura de linhagem 
+          de metadados
+      5:
+        action_code: DII-09
+        description: Melhore continuamente a integração orientada a metadados 
+          usando evidências
+  Q3:
+    text: As trocas de dados entre domínios são revisadas, aprovadas e 
+      rastreáveis?
+    explanation: Verifica o movimento governado de dados entre domínios.
+    objective: Suportar confiança, responsabilidade e consistência.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Cross-Domain Integration; DCAM, Federated
+      Governance; IDGC, Relational Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Definir regras para trocas e aprovações de dados entre 
+          domínios
+      1:
+        action_code: DII-02
+        description: Atribuir papéis de governança de integração cross-domain
+      2:
+        action_code: DII-03
+        description: Aprovar regras de intercâmbio, ciclos de revisão e 
+          estruturas de rastreabilidade
+      3:
+        action_code: DII-04
+        description: Implementar processos governados de troca entre domínios
+      4:
+        action_code: DII-06
+        description: Automatizar rastreabilidade, linhagem e monitoramento de 
+          troca
+      5:
+        action_code: DII-09
+        description: Melhorar continuamente a governança de troca entre domínios
+  Q4:
+    text: Mecanismos de integração (APIs, interfaces governadas, regras de 
+      ingestão) são padronizados e aplicados?
+    explanation: Avalia mecanismos governados para movimentação estruturada de 
+      dados.
+    objective: Garantir coerência estrutural e semântica.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Integration Lifecycle; Chapter 12
+      – Data Lifecycle; DCAM, Lifecycle Execution; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Definir padrões para mecanismos de integração e interfaces 
+          governadas
+      1:
+        action_code: DII-02
+        description: Atribuir responsabilidade pela governança de interface e 
+          ingestão
+      2:
+        action_code: DII-03
+        description: Aprovar padrões de interface e ingestão
+      3:
+        action_code: DII-04
+        description: Incorporar mecanismos padrão de integração em rotinas 
+          diárias de governança
+      4:
+        action_code: DII-06
+        description: Automatizar validação da conformidade do mecanismo de 
+          integração
+      5:
+        action_code: DII-09
+        description: Otimizar mecanismos de integração usando métricas de 
+          desempenho
+  Q5:
+    text: O desempenho da integração (consistência, latência, confiabilidade) é 
+      medido e revisado?
+    explanation: Avalia métricas de integração, qualidade e estabilidade.
+    objective: Manter confiança operacional e alinhamento.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Integration Metrics; DCAM, Performance
+      & Controls; IDGC, Monitoring)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Definir métricas de desempenho de integração e regras de 
+          monitoramento
+      1:
+        action_code: DII-02
+        description: Atribuir responsabilidades para monitoramento de desempenho
+      2:
+        action_code: DII-03
+        description: Aprovar KPIs e ciclos de revisão de governança
+      3:
+        action_code: DII-04
+        description: Implementar dashboards e relatórios governados para 
+          integração
+      4:
+        action_code: DII-06
+        description: Automatizar monitoramento de desempenho
+      5:
+        action_code: DII-09
+        description: Melhorar continuamente o desempenho da integração com base 
+          em métricas
+  Q6:
+    text: Restrições éticas, de privacidade e uso responsável estão incorporadas
+      na governança de integração?
+    explanation: Verifica privacidade por design e salvaguardas éticas em trocas
+      de dados.
+    objective: Suportar movimentação de dados conforme compliance e 
+      responsabilidade.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Responsible Interoperability; DCAM,
+      Responsible Data Use; IDGC, Ethical Exchange)"
+    score_action_mapping:
+      0:
+        action_code: DII-01
+        description: Definir restrições éticas e de privacidade para governança 
+          de integração
+      1:
+        action_code: DII-02
+        description: Atribuir papéis de supervisão ética e de privacidade para 
+          integração
+      2:
+        action_code: DII-03
+        description: Aprovar regras de integração ética e de privacidade
+      3:
+        action_code: DII-04
+        description: Incorporar salvaguardas éticas e de privacidade nas rotinas
+          de integração
+      4:
+        action_code: DII-06
+        description: Automatizar validação ética, de privacidade e de uso 
+          responsável
+      5:
+        action_code: DII-09
+        description: Melhorar continuamente a governança ética de integração

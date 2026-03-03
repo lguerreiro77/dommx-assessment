@@ -10,6 +10,10 @@ def init_session():
         "domain_intro_seen": False,
         "dom_idx": 0,
         "q_idx": 0,
+
+        # 🔹 ADICIONAR
+        "project_id": None,
+        "active_project": None,
     }
 
     for k, v in defaults.items():

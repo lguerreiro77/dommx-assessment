@@ -22,14 +22,16 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive"
 ]
 
-
 @st.cache_resource
 def _get_client():
     credentials = Credentials.from_service_account_file(
         os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE"),
         scopes=SCOPES
     )
-    return gspread.authorize(credentials)
+
+    gc = gspread.authorize(credentials)
+
+    return gc
 
    
 @st.cache_resource

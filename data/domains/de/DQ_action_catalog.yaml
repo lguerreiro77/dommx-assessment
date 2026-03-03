@@ -69,25 +69,42 @@ action_catalog:
       - Verwenden Sie DCAM Techniken zur Ausrichtung von Autoritäten, um 
         Governance-Klarheit zu verbessern.
   DQ-04:
-    title: Qualitätsdimensionen, Messregeln und Verantwortlichkeiten in 
-      Domänenroutinen einbetten
+    title: Integrieren Sie gesteuerte Remediationsroutinen und ethische 
+      Kontrollen in den Betrieb
     procedures:
-    - number: 1
-      name: Einbettung von Qualitätskontrollen in Domänen-Workflows
-      prerequisite: Erfordert DQ-03 genehmigte Standards
-      deliverable: Aktualisierte Workflow-Vorlagen
+    - number: 5
+      name: Verfolgen Sie die Einhaltung der Datenqualität
+      prerequisite: Erfordert Überwachungsroutinen
+      deliverable: Qualitäts-Compliance-Register
       recommendations:
-      - Integrieren Sie Kontrollen gemäß DAMA Leitlinien für 
-        Qualitätsüberwachung an operativen Kontrollpunkten (Kapitel 3.3, S. 58).
-      - Validierung von Kontrollen anhand von DAMA-Qualitätsdefinitionen 
-        (Kapitel 11, S. 308–311).
-      - Lebenszyklusaufsicht unter Verwendung der DAMA Kontrollpunkte 
-        sicherstellen (Kapitel 4.3, S. 92).
-      - Bestätigen der Stewardship-Überwachung mit DAMA 
-        Governance-Verantwortlichkeiten (Kapitel 4, S. 86–87).
+      - Verfolgen Sie die Einhaltung mit DAMA Governance-Überwachungsleitlinien 
+        (Kapitel 3.6, S. 64).
+      - Validieren Sie Qualitätsindikatoren anhand von DAMA-Regeln und 
+        Dimensionen (Kapitel 11, S. 308–311).
+      - Bestätigen Sie die Übereinstimmung von Lifecycle und Stewardship anhand 
+        von DAMA-Checkpoints und Governance-Rollen (Kapitel 3 und 4).
+      - Dokumentieren Sie die Einhaltung mithilfe von DAMA-Artefaktmustern 
+        (Kapitel 3 Anhang, S. 69).
       notes:
-      - Verwenden Sie DCAM Kontrollzuordnungstechniken zur Verstärkung der 
-        Compliance.
+      - Wenden Sie DCAM-Diagnosekriterien an, um Qualitätslücken zu 
+        identifizieren.
+    - number: 6
+      name: Strukturelle Institutionalisierungsverstärkung
+      prerequisite: Erfordert genehmigten Governance-Mechanismus und 
+        formalisierte Richtlinienbasis
+      deliverable: Institutionalisierte Governance-Prozedur mit zugewiesenem 
+        Control Owner und dokumentiertem Nachweis wiederholbarer Ausführung
+      recommendations:
+      - Weisen Sie einen formal verantwortlichen Control Owner zu, der den 
+        Governance-Mechanismus aufrechterhält.
+      - Definieren Sie objektive Akzeptanzkriterien, die eine stabile und 
+        konsistente Ausführung bestätigen.
+      - Erstellen Sie dokumentierte Artefakte, die die wiederholbare operative 
+        Anwendung belegen.
+      - Stellen Sie die Integration in etablierte organisatorische Abläufe 
+        sicher.
+      - Pflegen Sie die Rückverfolgbarkeit zwischen Governance-Mechanismus und 
+        steuernder Richtlinie.
   DQ-06:
     title: Automatisieren von Validierung, Ausführung, Überwachung und 
       Nachverfolgung von Behebungen
@@ -108,6 +125,19 @@ action_catalog:
       notes:
       - Wenden Sie CMMI Automatisierungsbereitschaft an, um Stabilität vor der 
         Bereitstellung sicherzustellen.
+    - number: 6
+      name: Strukturelle Mess- und Überwachungsverstärkung
+      prerequisite: Erfordert einen institutionalisierten Governance-Mechanismus
+      deliverable: Gesteuerte und gemessene Governance-Kontrollumgebung
+      recommendations:
+      - Definieren Sie messbare Leistungskennzahlen, die mit den 
+        Governance-Zielen übereinstimmen.
+      - Implementieren Sie strukturierte Überwachungsmechanismen oder 
+        Dashboards.
+      - Etablieren Sie formale Validierungszyklen einschließlich periodischer 
+        Überprüfungen.
+      - Pflegen Sie eine nachvollziehbare Dokumentation der Leistungsergebnisse.
+      - Definieren Sie Eskalationswege für ungelöste Abweichungen.
   DQ-09:
     title: Verbessern Sie kontinuierlich die Qualitätsmessung, Validierung und 
       Sanierungs-Governance
@@ -128,3 +158,17 @@ action_catalog:
       notes:
       - Wenden Sie CMMI Methoden der kontinuierlichen Verbesserung zur 
         Strukturverfeinerung an.
+    - number: 6
+      name: Strukturoptimierung und adaptive Verstärkung
+      prerequisite: Erfordert gesteuerten und gemessenen Governance-Mechanismus
+      deliverable: Optimierter Governance-Prozess mit nachgewiesener 
+        Automatisierung und adaptiver Verbesserung
+      recommendations:
+      - Führen Sie Automatisierungselemente zur Unterstützung von Durchsetzung 
+        und Überwachung ein.
+      - Implementieren Sie kontinuierliche Verbesserungszyklen basierend auf 
+        Leistungstrends.
+      - Führen Sie Benchmarking anhand anerkannter Governance-Rahmenwerke durch.
+      - Dokumentieren Sie messbare Verbesserungen über mehrere Zyklen.
+      - Stellen Sie Anpassungsfähigkeit an regulatorische und organisatorische 
+        Veränderungen sicher.

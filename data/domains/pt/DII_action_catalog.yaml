@@ -285,104 +285,44 @@ action_catalog:
       - Usar práticas de monitoramento do CMMI para revisar o log de atividades 
         em busca de padrões que indiquem necessidade de melhorias na governança.
   DII-04:
-    title: Incorporar governança de integração nos fluxos de trabalho
+    title: Incorporar mecanismos de integração e salvaguardas éticas nas rotinas
     procedures:
     - number: 1
-      name: Incorporar pontos de verificação de integração nos fluxos de 
-        trabalho do domínio
-      prerequisite: Requer padrões aprovados DII-03
-      deliverable: Modelos de fluxo de trabalho atualizados
-      recommendations:
-      - Incorporar pontos de verificação nas etapas de ingestão, transformação e
-        publicação em conformidade com a orientação do ciclo de vida de 
-        integração DAMA (“Capítulo 8, p. 252–260”; “Capítulo 4.3, p. 92”).
-      - Garantir que cada ponto de verificação envolva validação de metadados, 
-        linhagem e controles de qualidade (“Capítulo 9, p. 236–239”; “Capítulo 
-        11, p. 308–311”).
-      - Validar que papéis de governança e propriedade estejam explicitamente 
-        vinculados a decisões de pontos de verificação (“Capítulo 3.2, p. 
-        55–57”).
-      - Documentar definições de pontos de controle em modelos de fluxo de 
-        trabalho seguindo estrutura de artefatos DAMA (“Capítulo 3 Apêndice, p. 
-        69–70”).
-      notes:
-      - Usar mapeamento de capacidade de fluxo de trabalho DCAM para garantir 
-        que cada fluxo crítico tenha um ponto de verificação de integração 
-        definido.
-    - number: 2
-      name: Integrar critérios de integração no design de pipeline e 
-        orquestração
-      prerequisite: Requer padrões de integração
-      deliverable: Templates governados de design de pipeline
-      recommendations:
-      - Integrar critérios para captura de lineage, validação de esquema e 
-        regras de qualidade de dados em templates de pipeline ETL e ELT conforme
-        recomendado por DAMA (“Capítulo 8, p. 252–260”; “Capítulo 11, p. 
-        308–311”).
-      - Garantir que metadados para cada pipeline, incluindo fonte, destino e 
-        lógica de transformação, estejam definidos conforme DAMA (“Capítulo 9, 
-        p. 236–239”).
-      - Validar que modelos de design especificam gatilhos do ciclo de vida para
-        reprocessamento, backfill e aposentadoria (“Capítulo 4.3, p. 92”).
-      - Confirme que as responsabilidades de papéis para aprovação do design do 
-        pipeline estão claras e governadas (“Capítulo 3.2, p. 55–57”).
-      notes:
-      - Aplicar práticas de verificação de design CMMI para validar critérios de
-        integração antes da implantação.
-    - number: 3
-      name: Atualizar documentação do ciclo de vida com pontos de vista de 
+      name: Incorporar salvaguardas éticas e de privacidade nas rotinas de 
         integração
-      prerequisite: Requer redesenho de fluxo de trabalho
-      deliverable: Documentação do ciclo de vida atualizada
+      prerequisite: Requer regras éticas e de privacidade aprovadas
+      deliverable: Registro de integração ética
       recommendations:
-      - Atualizar descrições do ciclo de vida para que eventos de integração, 
-        como carga inicial, atualizações incrementais e cutover, sejam 
-        explícitos (“Capítulo 4.3, p. 92”; “Capítulo 8, p. 252–260”).
-      - Garantir que modelos de metadados incluam atributos para status de 
-        integração, identificadores de lote e versionamento (“Capítulo 9, p. 
-        236–239”).
-      - Validar que a documentação mostra onde os controles de qualidade são 
-        aplicados ao longo da cadeia de integração (“Capítulo 11, p. 308–311”).
-      - Estruture documentos usando orientações de artefatos DAMA para 
-        descrições de processos e ciclo de vida (“Apêndice do Capítulo 3, p. 
-        69–70”).
+      - Incorporar salvaguardas seguindo orientações DAMA para 
+        interoperabilidade responsável e privacidade por design em trocas 
+        (“Capítulo 6, p. 195–200”).
+      - Garantir que cada ponto de integração valide conformidade com uso ético 
+        e restrições de minimização (“Capítulo 3, p. 51–53”; “Capítulo 12, p. 
+        345–350”).
+      - Validar que os papéis de governança estão ativos no monitoramento do 
+        movimento responsável de dados (“Capítulo 3.2, p. 55–57”).
+      - Documentar execução de salvaguardas seguindo padrões de artefatos DAMA 
+        para supervisão ética (“Apêndice do Capítulo 3, p. 69–70”).
       notes:
-      - Usar mapeamento de capacidade de ciclo de vida DCAM para conectar 
-        eventos de integração com o ciclo de vida de dados mais amplo.
-    - number: 4
-      name: Aplicar verificações de integração em pontos decisórios do domínio
-      prerequisite: Requer workflows governados
-      deliverable: Evidência de controles de integração
+      - Usar critérios de uso responsável de dados DCAM para garantir que 
+        rotinas de integração mantenham justiça e transparência.
+    - number: 6
+      name: Reforço da Institucionalização Estrutural
+      prerequisite: Requer mecanismo de governança aprovado e base de política 
+        formalizada
+      deliverable: Procedimento de governança institucionalizado com 
+        proprietário de controle designado e evidência documentada de execução 
+        repetível
       recommendations:
-      - Aplicar checagens ao solicitar novas fontes, alterar interfaces ou 
-        modificar lógica de transformação, seguindo regras de governança do DAMA
-        (“Capítulo 3.4, p. 60–61”; “Capítulo 8, p. 252–260”).
-      - Validar que dados integrados respeitam definições semânticas e 
-        significado de negócios (“Capítulo 10, p. 282–284”).
-      - Garantir que limiares de qualidade e critérios de tratamento de exceções
-        estejam documentados para cada decisão (“Capítulo 11, p. 308–311”).
-      - Mantenha evidências de aprovações e rejeições como artefatos governados 
-        (“Apêndice do Capítulo 3, p. 69–70”).
-      notes:
-      - Utilize atividades de verificação CMMI para garantir que decisões de 
-        integração sejam consistentes e baseadas em evidências.
-    - number: 5
-      name: Rastrear aderência à governança de integração entre domínios
-      prerequisite: Requer rotinas de monitoramento
-      deliverable: Registro de conformidade de integração
-      recommendations:
-      - Monitorar aderência a padrões e padrões de integração usando critérios 
-        de monitoramento consistentes com DAMA (“Capítulo 3.6, p. 64–66”; 
-        “Capítulo 8, p. 252–260”).
-      - Registrar casos onde fluxos desviam dos padrões canônicos ou onde 
-        isenções foram concedidas (“Capítulo 3.4, p. 60–61”).
-      - Validar que o registro de desvios inclui análise de impacto no ciclo de 
-        vida e qualidade (“Capítulo 4.3, p. 92”; “Capítulo 11, p. 308–311”).
-      - Armazenar o registro em um repositório governado estruturado conforme os
-        princípios de artefatos DAMA (“Capítulo 3 Apêndice, p. 69–70”).
-      notes:
-      - Utilizar indicadores diagnósticos DCAM para focar remediação nas 
-        divergências mais críticas.
+      - Designar um Proprietário de Controle formalmente responsável por 
+        sustentar o mecanismo de governança.
+      - Definir critérios objetivos de aceitação confirmando execução estável e 
+        consistente.
+      - Produzir artefatos documentados evidenciando aplicação operacional 
+        repetível.
+      - Garantir integração nas rotinas organizacionais estabelecidas.
+      - Manter rastreabilidade entre o mecanismo de governança e a política 
+        governante.
   DII-06:
     title: Automatizar validação e monitoramento de integração
     procedures:
@@ -480,6 +420,18 @@ action_catalog:
       notes:
       - Usar avaliações de evolução de capacidade DCAM para planejar onde 
         automação adicional pode reduzir risco ou esforço manual.
+    - number: 6
+      name: Reforço da Medição e Supervisão Estrutural
+      prerequisite: Requer mecanismo de governança institucionalizado
+      deliverable: Ambiente de controle de governança gerenciado e mensurado
+      recommendations:
+      - Definir métricas de desempenho mensuráveis alinhadas aos objetivos de 
+        governança.
+      - Implementar mecanismos estruturados de monitoramento ou painéis de 
+        controle.
+      - Estabelecer ciclos formais de validação incluindo revisões periódicas.
+      - Manter documentação rastreável dos resultados de desempenho.
+      - Definir caminhos de escalonamento para desvios não resolvidos.
   DII-09:
     title: Otimizar governança de integração e institucionalizar melhores 
       práticas
@@ -572,3 +524,16 @@ action_catalog:
       notes:
       - Utilizar mapeamento de evolução de capacidade DCAM para alinhar 
         melhorias de integração com a maturidade geral da governança de dados.
+    - number: 6
+      name: Otimização Estrutural e Reforço Adaptativo
+      prerequisite: Requer mecanismo de governança gerenciado e mensurado
+      deliverable: Processo de governança otimizado demonstrando automação e 
+        melhoria adaptativa
+      recommendations:
+      - Introduzir elementos de automação que apoiem a aplicação e o 
+        monitoramento.
+      - Implementar ciclos de melhoria contínua baseados em tendências de 
+        desempenho.
+      - Realizar benchmarking contra frameworks de governança reconhecidos.
+      - Documentar melhoria mensurável em múltiplos ciclos.
+      - Garantir adaptabilidade a mudanças regulatórias e organizacionais.

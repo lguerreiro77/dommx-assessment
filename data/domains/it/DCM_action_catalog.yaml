@@ -87,26 +87,41 @@ action_catalog:
       - Allineare gli standard di conservazione con i requisiti di 
         minimizzazione e scopo legale GDPR quando applicabile.
   DCM-04:
-    title: Integrare classificazione, metadata e revisioni di qualità nelle 
-      routine di gestione dei contenuti
+    title: Integrare regole di ciclo di vita, salvaguardie etiche e routine di 
+      repository nelle procedure operative
     procedures:
-    - number: 1
-      name: Incorpora checkpoint di governance dei contenuti nei flussi di 
-        lavoro
-      prerequisite: Richiede standard approvati DCM-03
-      deliverable: Modelli di workflow aggiornati
+    - number: 5
+      name: Monitorare l'adesione alla governance dei contenuti
+      prerequisite: Richiede routine di monitoraggio
+      deliverable: Registro di conformità dei contenuti
       recommendations:
-      - Integra checkpoint per creazione, revisione, approvazione e 
-        archiviazione seguendo il ciclo di vita DAMA (“Capitolo 12, p. 
-        330–338”).
-      - Validare campi di metadati come versione, proprietario, conservazione e 
-        classificazione (“Capitolo 9, p. 236–239”).
-      - Garantire requisiti di qualità per accuratezza e completezza della 
-        documentazione (“Capitolo 11, p. 308–311”).
-      - Conferma il coinvolgimento della stewardship (“Capitolo 4, p. 86–89”).
+      - Monitorare l'adesione a regole di classificazione, versioning, retention
+        e qualità seguendo DAMA (“Capitolo 12, p. 330–338”).
+      - Validare le transizioni del ciclo di vita per rilevare cancellazioni 
+        premature o archiviazioni mancanti (“Capitolo 4.3, p. 92”).
+      - Confermare l'accuratezza dei metadata e l'integrità semantica (“Capitoli
+        9 e 10”).
+      - Registrare i risultati come artefatti governati (“Appendice Capitolo 3, 
+        p. 69–70”).
       notes:
-      - Utilizzare la mappatura dei workflow DCAM per garantire coerenza di 
-        governance tra i team.
+      - Utilizzare indicatori diagnostici DCAM per prioritizzare le azioni di 
+        rimedio.
+    - number: 6
+      name: Rinforzo dell'istituzionalizzazione strutturale
+      prerequisite: Richiede meccanismo di governance approvato e baseline 
+        politica formalizzata
+      deliverable: Procedura di governance istituzionalizzata con Control Owner 
+        assegnato e evidenze documentate di esecuzione ripetibile
+      recommendations:
+      - Assegnare un Control Owner formalmente responsabile del mantenimento del
+        meccanismo di governance.
+      - Definire criteri oggettivi di accettazione che confermino esecuzione 
+        stabile e coerente.
+      - Produrre artefatti documentati che attestino l'applicazione operativa 
+        ripetibile.
+      - Garantire l'integrazione nelle routine organizzative consolidate.
+      - Mantenere la tracciabilità tra il meccanismo di governance e la politica
+        di governo.
   DCM-06:
     title: Automatizza classificazione, ciclo di vita, metadati e validazione 
       della qualità
@@ -127,6 +142,17 @@ action_catalog:
       notes:
       - Utilizzare i controlli di readiness all'automazione CMMI prima di 
         abilitare l'applicazione.
+    - number: 6
+      name: Rinforzo della misurazione strutturale e supervisione
+      prerequisite: Richiede un meccanismo di governance istituzionalizzato
+      deliverable: Ambiente di controllo di governance gestito e misurato
+      recommendations:
+      - Definire metriche di performance misurabili allineate agli obiettivi di 
+        governance.
+      - Implementare meccanismi strutturati di monitoraggio o dashboard.
+      - Stabilire cicli formali di validazione inclusi revisioni periodiche.
+      - Mantenere documentazione tracciabile dei risultati di performance.
+      - Definire percorsi di escalation per deviazioni non risolte.
   DCM-09:
     title: Raffinare continuamente la governance dei contenuti e del ciclo di 
       vita utilizzando evidenze
@@ -148,3 +174,16 @@ action_catalog:
       notes:
       - Usa i principi di miglioramento continuo CMMI per strutturare i cicli di
         raffinamento.
+    - number: 6
+      name: Ottimizzazione strutturale e rinforzo adattivo
+      prerequisite: Richiede meccanismo di governance gestito e misurato
+      deliverable: Processo di governance ottimizzato che dimostra automazione e
+        miglioramento adattivo
+      recommendations:
+      - Introdurre elementi di automazione a supporto dell'applicazione e del 
+        monitoraggio.
+      - Implementare cicli di miglioramento continuo basati sulle tendenze di 
+        performance.
+      - Condurre benchmarking rispetto a framework di governance riconosciuti.
+      - Documentare miglioramenti misurabili su più cicli.
+      - Garantire l'adattabilità ai cambiamenti normativi e organizzativi.

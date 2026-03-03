@@ -75,26 +75,37 @@ action_catalog:
       - Usar criterios de efectividad de control DCAM para clasificar la 
         fortaleza del control.
   DWBI-04:
-    title: Incorporar gobernanza analítica y lógica semántica en flujos de 
-      trabajo BI
+    title: Implementar catalogación gobernada, versionado y monitoreo de consumo
     procedures:
-    - number: 1
-      name: Integrar puntos de control de gobernanza BI en el ciclo de vida 
-        analítico
-      prerequisite: Requiere requisitos BI aprobados
-      deliverable: Documentación actualizada del ciclo de vida analítico
+    - number: 5
+      name: Mantener la gobernanza operativa de BI
+      prerequisite: Requiere operación de BI en estado estable
+      deliverable: Registro de gobernanza operativa de BI
       recommendations:
-      - Mapear etapas de ingestión, preparación, modelado e informes a puntos de
-        control de gobernanza.
-      - Asegurar captura de linaje en cada etapa siguiendo prácticas de 
-        metadatos DAMA “Capítulo 9, p. 236–239”.
-      - Defina responsabilidades para validación, aprobación y gestión de 
-        excepciones “Capítulo 4, p. 86–89”.
-      - Documentar diagramas del ciclo de vida usando principios de artefactos 
-        de DAMA “Capítulo 3 Apéndice, p. 69–70”.
+      - Monitorear el uso de BI, problemas de calidad y brechas de metadatos.
+      - Validar la adherencia a los procesos de publicación y certificación.
+      - Monitorear fallas recurrentes para actualizar estándares o procesos.
+      - Almacenar registros usando la estructura de artefactos de DAMA “Apéndice
+        del Capítulo 3, p. 69–70”.
       notes:
-      - Usar prácticas de integración del ciclo de vida CMMI para asegurar 
-        consistencia entre equipos.
+      - Usar diagnósticos del modelo operativo de DCAM para identificar áreas de
+        gobernanza débiles.
+    - number: 6
+      name: Refuerzo de institucionalización estructural
+      prerequisite: Requiere mecanismo de gobernanza aprobado y línea base de 
+        políticas formalizada
+      deliverable: Procedimiento de gobernanza institucionalizado con Control 
+        Owner asignado y evidencia documentada de ejecución repetible
+      recommendations:
+      - Asignar un Control Owner formalmente responsable de sostener el 
+        mecanismo de gobernanza.
+      - Definir criterios objetivos de aceptación que confirmen ejecución 
+        estable y consistente.
+      - Producir artefactos documentados que evidencien la aplicación operativa 
+        repetible.
+      - Asegurar la integración en las rutinas organizacionales establecidas.
+      - Mantener la trazabilidad entre el mecanismo de gobernanza y la política 
+        gobernante.
   DWBI-06:
     title: Automatizar validación semántica, seguimiento de linaje y monitoreo 
       de calidad
@@ -114,6 +125,18 @@ action_catalog:
       notes:
       - Usar la evaluación de preparación para automatización CMMI antes del 
         despliegue.
+    - number: 6
+      name: Refuerzo de medición y supervisión estructural
+      prerequisite: Requiere un mecanismo de gobernanza institucionalizado
+      deliverable: Entorno de control de gobernanza gestionado y medido
+      recommendations:
+      - Definir métricas de desempeño medibles alineadas con los objetivos de 
+        gobernanza.
+      - Implementar mecanismos estructurados de monitoreo o paneles de control.
+      - Establecer ciclos formales de validación que incluyan revisiones 
+        periódicas.
+      - Mantener documentación trazable de resultados de desempeño.
+      - Definir vías de escalamiento para desviaciones no resueltas.
   DWBI-09:
     title: Mejorar continuamente la gobernanza analítica y semántica usando 
       evidencia
@@ -133,3 +156,16 @@ action_catalog:
       notes:
       - Utilice la mejora continua CMMI para gestionar actualizaciones de 
         estándares.
+    - number: 6
+      name: Optimización estructural y refuerzo adaptativo
+      prerequisite: Requiere mecanismo de gobernanza gestionado y medido
+      deliverable: Proceso de gobernanza optimizado que demuestra automatización
+        y mejora adaptativa
+      recommendations:
+      - Introducir elementos de automatización que apoyen la aplicación y el 
+        monitoreo.
+      - Implementar ciclos de mejora continua basados en tendencias de 
+        desempeño.
+      - Realizar benchmarking contra marcos de gobernanza reconocidos.
+      - Documentar mejoras medibles en múltiples ciclos.
+      - Asegurar la adaptabilidad a cambios regulatorios y organizacionales.

@@ -55,8 +55,8 @@ action_catalog:
         und Integrität validieren (Kapitel 11, S. 308–311).
       - Stellen Sie sicher, dass Metadaten die Nachverfolgung der Durchsetzung 
         von Kontrollen gemäß DAMA-Richtlinien unterstützen (Kapitel 9, S. 236).
-      - "Confirm stewardship participation according to DAMA responsibilities (Chapter
-        4, p. 86–87)."
+      - Bestätigen Sie die Teilnahme der Stewardship gemäß den 
+        DAMA-Verantwortlichkeiten (Kapitel 4, S. 86–87).
       notes:
       - Verwenden Sie DCAM Bewertungen der Kontrollkritikalität, um wesentliche 
         Kontrollen zu priorisieren.
@@ -354,6 +354,23 @@ action_catalog:
       notes:
       - Verwenden Sie DCAM Diagnosekriterien, um Sicherheitslücken und Risiken 
         zu identifizieren.
+    - number: 6
+      name: Strukturelle Institutionalisierungsverstärkung
+      prerequisite: Erfordert genehmigten Governance-Mechanismus und 
+        formalisierte Richtlinienbasis
+      deliverable: Institutionalisierte Governance-Prozedur mit zugewiesenem 
+        Control Owner und dokumentiertem Nachweis wiederholbarer Ausführung
+      recommendations:
+      - Weisen Sie einen formal verantwortlichen Control Owner zu, der den 
+        Governance-Mechanismus aufrechterhält.
+      - Definieren Sie objektive Akzeptanzkriterien, die eine stabile und 
+        konsistente Ausführung bestätigen.
+      - Erstellen Sie dokumentierte Artefakte, die die wiederholbare operative 
+        Anwendung belegen.
+      - Stellen Sie die Integration in etablierte organisatorische Abläufe 
+        sicher.
+      - Pflegen Sie die Rückverfolgbarkeit zwischen Governance-Mechanismus und 
+        steuernder Richtlinie.
   DS-06:
     title: Automatisieren Sie Sicherheitskontrollen und Validierung sensibler 
       Daten
@@ -441,6 +458,19 @@ action_catalog:
       notes:
       - Verwendung von DCAM-Sicherheitsfähigkeitsentwicklungszuordnung zur 
         Identifikation von Automatisierungsmöglichkeiten.
+    - number: 6
+      name: Strukturelle Mess- und Überwachungsverstärkung
+      prerequisite: Erfordert einen institutionalisierten Governance-Mechanismus
+      deliverable: Gesteuerte und gemessene Governance-Kontrollumgebung
+      recommendations:
+      - Definieren Sie messbare Leistungskennzahlen, die mit den 
+        Governance-Zielen übereinstimmen.
+      - Implementieren Sie strukturierte Überwachungsmechanismen oder 
+        Dashboards.
+      - Etablieren Sie formale Validierungszyklen einschließlich periodischer 
+        Überprüfungen.
+      - Pflegen Sie eine nachvollziehbare Dokumentation der Leistungsergebnisse.
+      - Definieren Sie Eskalationswege für ungelöste Abweichungen.
   DS-09:
     title: Dokumentieren Sie Kontrollpunktdefinitionen in Workflow-Vorlagen 
       gemäß __ACR0__ Artefaktstruktur („Kapitel 3 Anhang, S. 
@@ -528,3 +558,17 @@ action_catalog:
       notes:
       - Verwendung von DCAM-Fähigkeitsevolutionszuordnung zur Planung 
         langfristiger Verbesserungen der Sicherheitsreife.
+    - number: 6
+      name: Strukturoptimierung und adaptive Verstärkung
+      prerequisite: Erfordert gesteuerten und gemessenen Governance-Mechanismus
+      deliverable: Optimierter Governance-Prozess mit nachgewiesener 
+        Automatisierung und adaptiver Verbesserung
+      recommendations:
+      - Führen Sie Automatisierungselemente zur Unterstützung von Durchsetzung 
+        und Überwachung ein.
+      - Implementieren Sie kontinuierliche Verbesserungszyklen basierend auf 
+        Leistungstrends.
+      - Führen Sie Benchmarking anhand anerkannter Governance-Rahmenwerke durch.
+      - Dokumentieren Sie messbare Verbesserungen über mehrere Zyklen.
+      - Stellen Sie Anpassungsfähigkeit an regulatorische und organisatorische 
+        Veränderungen sicher.

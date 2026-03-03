@@ -89,26 +89,41 @@ action_catalog:
       - Alignez les normes de rétention avec les exigences de minimisation et de
         finalité légale GDPR lorsque applicable
   DCM-04:
-    title: Intégrer la classification, les métadonnées et les revues de qualité 
-      dans les routines de gestion de contenu
+    title: Intégrer les règles du cycle de vie, les garde-fous éthiques et les 
+      routines de référentiel dans les routines
     procedures:
-    - number: 1
-      name: Intégrer les points de contrôle de gouvernance de contenu dans les 
-        flux de travail
-      prerequisite: Nécessite des normes approuvées DCM-03
-      deliverable: Modèles de workflow mis à jour
+    - number: 5
+      name: Suivre l'adhésion à la gouvernance du contenu
+      prerequisite: Nécessite des routines de surveillance
+      deliverable: Registre de conformité du contenu
       recommendations:
-      - Intégrez des points de contrôle pour la création, la revue, 
-        l'approbation et l'archivage suivant le cycle de vie DAMA (« Chapitre 
-        12, p. 330–338 »).
-      - Valider les champs de métadonnées tels que version, propriétaire, 
-        rétention et classification (« Chapitre 9, p. 236–239 »).
-      - Assurez les exigences de qualité pour l'exactitude et l'exhaustivité des
-        documents (« Chapitre 11, p. 308–311 »).
-      - Confirmer l'implication des responsables (« Chapitre 4, p. 86–89 »).
+      - Suivre le respect des règles de classification, versionnage, rétention 
+        et qualité selon DAMA (« Chapitre 12, p. 330–338 »).
+      - Valider les transitions du cycle de vie pour détecter les suppressions 
+        prématurées ou les archivages manquants (« Chapitre 4.3, p. 92 »).
+      - Confirmer l'exactitude des métadonnées et l'intégrité sémantique (« 
+        Chapitres 9 et 10 »).
+      - Enregistrer les constats en tant qu'artefacts gouvernés (« Annexe du 
+        Chapitre 3, p. 69–70 »).
       notes:
-      - Utilisez la cartographie des workflows DCAM pour assurer la cohérence de
-        la gouvernance entre les équipes.
+      - Utiliser les indicateurs de diagnostic DCAM pour prioriser les actions 
+        de remédiation.
+    - number: 6
+      name: Renforcement de l'institutionnalisation structurelle
+      prerequisite: Nécessite un mécanisme de gouvernance approuvé et une base 
+        politique formalisée
+      deliverable: Procédure de gouvernance institutionnalisée avec Control 
+        Owner assigné et preuve documentée d'exécution répétable
+      recommendations:
+      - Attribuer un Control Owner formellement responsable du maintien du 
+        mécanisme de gouvernance.
+      - Définir des critères d'acceptation objectifs confirmant une exécution 
+        stable et cohérente.
+      - Produire des artefacts documentés attestant d'une application 
+        opérationnelle répétable.
+      - Assurer l'intégration dans les routines organisationnelles établies.
+      - Maintenir la traçabilité entre le mécanisme de gouvernance et la 
+        politique gouvernante.
   DCM-06:
     title: Automatiser la classification, le cycle de vie, les métadonnées et la
       validation de qualité
@@ -129,6 +144,19 @@ action_catalog:
       notes:
       - Utilisez les contrôles de préparation à l'automatisation CMMI avant 
         d'activer l'application.
+    - number: 6
+      name: Renforcement de la mesure structurelle et de la supervision
+      prerequisite: Nécessite un mécanisme de gouvernance institutionnalisé
+      deliverable: Environnement de contrôle de gouvernance géré et mesuré
+      recommendations:
+      - Définir des indicateurs de performance mesurables alignés sur les 
+        objectifs de gouvernance.
+      - Mettre en œuvre des mécanismes de surveillance structurés ou des 
+        tableaux de bord.
+      - Établir des cycles de validation formels incluant des revues 
+        périodiques.
+      - Maintenir une documentation traçable des résultats de performance.
+      - Définir des voies d'escalade pour les écarts non résolus.
   DCM-09:
     title: Affiner continuellement la gouvernance du contenu et du cycle de vie 
       en utilisant des preuves
@@ -150,3 +178,18 @@ action_catalog:
       notes:
       - Utiliser les principes d'amélioration continue CMMI pour structurer les 
         cycles de raffinement.
+    - number: 6
+      name: Optimisation structurelle et renforcement adaptatif
+      prerequisite: Nécessite un mécanisme de gouvernance géré et mesuré
+      deliverable: Processus de gouvernance optimisé démontrant automatisation 
+        et amélioration adaptative
+      recommendations:
+      - Introduire des éléments d'automatisation soutenant l'application et la 
+        surveillance.
+      - Mettre en place des boucles d'amélioration continue basées sur les 
+        tendances de performance.
+      - Réaliser un benchmarking par rapport à des cadres de gouvernance 
+        reconnus.
+      - Documenter l'amélioration mesurable sur plusieurs cycles.
+      - Assurer l'adaptabilité aux évolutions réglementaires et 
+        organisationnelles.

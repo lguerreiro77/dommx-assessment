@@ -1,0 +1,1114 @@
+report_text:
+  us:
+  
+    cover_purpose_dommmx: |
+      This report represents the operational application of DOMMx through a structured domain-based assessment.
+
+      For each evaluated domain, the report presents the current maturity level and defines the structured set of actions required to evolve to the next level.
+
+      The content is prescriptive and focused on the construction and strengthening of data governance artifacts, and should be used as a technical foundation to document, institutionalize, and enhance governance practices proportionally to the identified maturity level.
+
+    how_to_use_report: |
+      This report should be used as a technical guide for the structured evolution of data governance by domain.
+
+      Based on the maturity level identified in the assessment, DOMMx activates prescriptive action packages that define what must be built, formalized, or strengthened to enable progression to the next maturity stage.
+
+      The practical application of this report involves:
+
+      1. Building formal governance artifacts when they do not exist or are insufficient
+      2. Standardizing and documenting practices when partially structured
+      3. Integrating and institutionalizing mechanisms when already defined
+      4. Preparing the domain for measurable management in subsequent cycles
+
+      Each domain section should be converted into formal documentation adapted to the specific organizational context, maintaining the proposed structure while contextualizing the technical content to the evaluated domain.
+
+      This report is not merely descriptive. Its purpose is to drive structured action and maturity progression.
+    
+    likert:
+      0: Initial
+      1: Ad-hoc
+      2: Emerging
+      3: Defined
+      4: Managed
+      5: Optimized
+    blueprint_global_keywords:
+    - document control
+    - executive summary
+    - document governance
+    - appendices
+    - evidence required
+    - acceptance criteria
+    - control owner
+    blueprint_common_template_keywords:
+    - document control
+    - executive summary
+    - appendices
+    blueprint_closure_keywords:
+    - document governance
+    - evidence required
+    - acceptance criteria
+    - control owner
+    cover_title_admin: DOMMx Consolidated Project Report
+    cover_title_user: DOMMx Assessment Report
+    cover_subtitle: Data Operating Model and Maturity
+    project: 'Project:'
+    scope: 'Scope:'
+    scope_all_users: All assessed users
+    users_included: 'Users included:'
+    assessed_user: 'Assessed user:'
+    report_language: 'Report language:'
+    generated: 'Generated (UTC):'
+    toc: Table of Contents
+    section_1: 1. Assessment Results
+    section_1_intro_1: 'The blueprint and prescriptive guidance presented in this
+      report strictly follow the evaluated domain structure and the maturity values
+      obtained during the current assessment cycle. They do not necessarily represent
+      the entirety of the DOMMx operating model nor the full scope of any referenced
+      data governance framework.
+
+      '
+    section_1_intro_2: 'This section provides maturity results by domain, including
+      per-question scores, computed domain averages, and the final domain maturity
+      grade. The domain maturity grade is computed as floor(AVG).
+
+      '
+    domain_summary: 1.1 Domain Summary
+    domain_maturity_rule: 'Domain maturity grade is computed as floor(AVG). Final
+      grade:'
+    no_scored_questions: No scored questions were found for this domain in the current
+      assessment snapshot.
+    scoring_rule: 'Scoring rule: AVG = mean(question scores). Final domain maturity
+      = floor(AVG).'
+    section_2: 2. Structural Dependencies and Inconsistencies
+    section_2_intro: 'This section documents structural dependencies between domains
+      and highlights detected dependency breaks or maturity incoherences. Declared
+      dependencies are derived from the project flow definition, and remediation rationale
+      is sourced from the dependency inconsistency knowledge base.
+
+      '
+    declared_dependencies: 2.1 Declared Dependencies (project flow)
+    no_dependencies: No dependencies declared.
+    detected_breaks: 2.2 Detected Dependency Breaks and Remediation Guidance
+    no_dependency_records: No dependency inconsistency records were found for the
+      evaluated domains.
+    no_dependency_breaks: 'No dependency breaks were detected for the evaluated domains
+      based on the available inconsistency knowledge base.
+
+      '
+    section_3: 3. Domain Blueprint and Prescriptive Procedures
+    section_3_intro: 'This section provides the prescriptive blueprint to progress
+      from the current maturity grade. For each domain, a triggered Action Code is
+      identified and its governance procedure pack (DEMO) is provided in a structured
+      format.
+
+      '
+    blueprint_context: 'The blueprint and prescriptive procedures below strictly reflect
+      the evaluated domains and their respective maturity grades obtained in this
+      assessment cycle. They do not necessarily represent the full scope of the DOMMx
+      operating model nor any comprehensive external governance framework.
+
+      '
+    
+    description_label: "Description: "  
+    current_maturity: 'Current maturity grade:'
+    triggered_action: 'Triggered Action:'
+    triggered_action_code: 'Triggered Action Code:'
+    no_demo: No DEMO procedure pack found for this domain/action.
+    procedure_pack: Prescriptive Procedure Pack
+    domain_summary_title: 1.1 Domain Summary
+    table_domain: Domain
+    table_domain_name: Domain Name
+    table_avg: AVG
+    table_final_grade: Final Grade (floor)
+    table_maturity_level: Maturity Level
+    table_question: Question
+    table_score: Score
+    table_nearest_level: Nearest Level
+    table_notes: Notes
+    declared_dependencies_heading: 2.1 Declared Dependencies (project flow)
+    declared_dependencies_label: 'Declared dependencies:'
+    unknown_domain: Unknown domain
+    not_evaluated_scope: not evaluated in this report scope
+    procedure_pack_full: Prescriptive Procedure Pack
+    section_4: 4. References
+    depends_on: depends on
+    severity_rationale_label: 'Severity rationale:'
+    scenario_label: 'Scenario:'
+    maturity_levels_title: 3.1 Maturity Levels
+    maturity_level_prefix: Level
+    example_elements_title: Sample elements
+    procedure_number: Procedure number
+    procedure_name: Name
+    procedure_prerequisite: Prerequisite
+    procedure_deliverable: Deliverable
+    procedure_recommendations: 'Recommendations:'
+    procedure_notes: 'Notes:'
+    domain_definition_prefix: 'Domain definition:'
+    section_3_assessment_result: 3.1 Assessment Result and Strategic Direction
+    section_3_common_elements: 3.2 Common Elements Across Domains
+    section_3_common_template: 3.2.1 Standard Governance Artifact Structure
+    section_3_common_transversal: 3.2.2 Transversal Structural Elements
+    section_3_maturity_consolidated: 3.3 Consolidated Maturity Model Definition
+    section_3_domain_specific_closure: Document-Level Governance Elements
+    section_3_document_governance: Document Governance
+    section_3_minimum_evidence: Minimum Organizational Evidence
+    section_3_evolution_criteria: Evolution Criteria for Next Cycle
+    executive_reading: 'Executive Reading:'    
+    section_3_common_elements_intro: 'This section defines structural components that
+      apply consistently across all domains.  These elements establish coherence,
+      governance alignment, and institutional integration.
+
+      '
+    section_3_common_template_intro: 'Every governance artifact must follow a standardized
+      structural template to ensure  consistency, traceability, and auditability.
+
+      '
+    section_3_common_transversal_intro: 'These transversal structural elements apply
+      across domains and ensure organizational  alignment, accountability, and control
+      integration.
+
+      '
+    section_3_procedure_pack_intro: 'The prescriptive procedure package consolidates
+      domain-specific actions and operational  mechanisms required to advance maturity
+      to the next level.
+
+      '
+    section_3_domain_context_objective: 'Objective: Define the specific domain and
+      contextualize the governance action.'
+    section_3_domain_context_expected: 'Expected content: Domain definition, organizational
+      context, and maturity positioning  based on the assessed maturity score.
+
+      '
+    section_3_document_governance_intro: Rules to keep this report controlled, auditable,
+      and maintainable over time.
+    section_3_minimum_evidence_intro: Minimum organizational evidences required to
+      sustain governance adoption and verification.
+    section_3_evolution_criteria_intro: Criteria used to validate readiness to evolve
+      to the next cycle and maturity level.
+    section_3_domain_context_title: Domain Definition and Context
+    section_3_domain_context_domain_specific_title: "Contextualization of the Assessed Domain"
+    
+    maturity_dispersion_title: "Maturity dispersion detected within this domain."
+    maturity_dispersion_text: "Significant variance between question scores suggests structural inconsistency or uneven implementation maturity across components."
+
+  pt:
+  
+    cover_purpose_dommmx: |
+      Este relatório constitui a aplicação operacional do DOMMx por meio de um assessment estruturado por domínio.
+
+      Para cada domínio avaliado, o documento apresenta o nível atual de maturidade e define o conjunto estruturado de ações necessárias para evoluir ao próximo nível.
+
+      O conteúdo é prescritivo e orientado à construção e fortalecimento de artefatos de governança de dados, devendo ser utilizado como base técnica para documentar, institucionalizar e aprimorar práticas de governança de forma proporcional ao nível identificado.
+
+    how_to_use_report: |
+      Este relatório deve ser utilizado como guia técnico para a evolução estruturada da governança de dados por domínio.
+
+      Com base no nível de maturidade identificado no assessment, o DOMMx aciona pacotes prescritivos que definem o que deve ser construído, formalizado ou fortalecido para viabilizar a progressão ao próximo estágio.
+
+      A aplicação prática deste relatório envolve:
+
+      1. Construir artefatos formais quando inexistentes ou insuficientes
+      2. Padronizar e documentar práticas quando parcialmente estruturadas
+      3. Integrar e institucionalizar mecanismos quando já definidos
+      4. Preparar o domínio para gestão mensurável nos ciclos subsequentes
+
+      Cada seção por domínio deve ser convertida em documentação formal adaptada ao contexto organizacional específico, mantendo a estrutura proposta e contextualizando o conteúdo técnico conforme a realidade do domínio avaliado.
+
+      Este relatório não é meramente descritivo. Seu propósito é orientar ação estruturada e progressão de maturidade.  
+  
+    likert:
+      0: Inicial
+      1: Ad-hoc
+      2: Emergente
+      3: Definido
+      4: Gerenciado
+      5: Otimizado
+    blueprint_global_keywords:
+    - controle de documentos
+    - resumo executivo
+    - governança do documento
+    - apêndices
+    - evidências requeridas
+    - critérios de aceitação
+    - proprietário do controle
+    blueprint_common_template_keywords:
+    - controle de documentos
+    - resumo executivo
+    - apêndices
+    blueprint_closure_keywords:
+    - governança do documento
+    - evidências requeridas
+    - critérios de aceitação
+    - proprietário do controle
+    cover_title_admin: Relatório Consolidado do Projeto DOMMx
+    cover_title_user: Relatório de Avaliação DOMMx
+    cover_subtitle: Modelo Operacional e Maturidade de Dados
+    project: 'Projeto:'
+    scope: 'Escopo:'
+    scope_all_users: Todos os usuários avaliados
+    users_included: 'Usuários incluídos:'
+    assessed_user: 'Usuário avaliado:'
+    report_language: 'Idioma do relatório:'
+    generated: 'Gerado (UTC):'
+    toc: Sumário
+    section_1: 1. Resultados da Avaliação
+    section_1_intro_1: 'O blueprint e as orientações prescritivas apresentados neste
+      relatório seguem estritamente a estrutura de domínios avaliada e os níveis de
+      maturidade obtidos no ciclo atual de avaliação. Não representam necessariamente
+      a totalidade do modelo operacional DOMMx nem o escopo completo de qualquer framework
+      de governança de dados referenciado.
+
+      '
+    section_1_intro_2: 'Esta seção apresenta os resultados de maturidade por domínio,
+      incluindo as pontuações por questão, as médias calculadas por domínio e o nível
+      final de maturidade do domínio. O nível de maturidade é calculado como floor(AVG).
+
+      '
+    domain_summary: 1.1 Resumo por Domínio
+    domain_maturity_rule: 'O nível de maturidade do domínio é calculado como floor(AVG).
+      Nível final:'
+    no_scored_questions: Não foram encontradas questões pontuadas para este domínio
+      na versão atual da avaliação.
+    scoring_rule: 'Regra de pontuação: AVG = média das pontuações das questões. Maturidade
+      final = floor(AVG).'
+    section_2: 2. Dependências Estruturais e Inconsistências
+    section_2_intro: 'Esta seção documenta as dependências estruturais entre domínios
+      e destaca possíveis rupturas de dependência ou incoerências de maturidade identificadas.
+      As dependências declaradas são derivadas da definição de fluxo do projeto e
+      as orientações de remediação são baseadas na base de conhecimento de inconsistências.
+
+      '
+    declared_dependencies: 2.1 Dependências Declaradas (fluxo do projeto)
+    no_dependencies: Nenhuma dependência declarada.
+    detected_breaks: 2.2 Rupturas de Dependência Detectadas e Orientações de Remediação
+    no_dependency_records: Nenhum registro de inconsistência de dependência foi encontrado
+      para os domínios avaliados.
+    no_dependency_breaks: 'Não foram detectadas rupturas de dependência para os domínios
+      avaliados com base na base de conhecimento disponível.
+
+      '
+    section_3: 3. Blueprint de Domínio e Procedimentos Prescritivos
+    section_3_intro: 'Esta seção apresenta o blueprint prescritivo para evolução a
+      partir do nível atual de maturidade. Para cada domínio, é identificado um Código
+      de Ação acionado e seu respectivo pacote de procedimentos de governança é apresentado
+      de forma estruturada.
+
+      '
+    blueprint_context: 'O blueprint e os procedimentos prescritivos abaixo refletem
+      exclusivamente os domínios avaliados e seus respectivos níveis de maturidade
+      neste ciclo de avaliação. Não representam necessariamente o escopo completo
+      do modelo DOMMx nem de frameworks externos.
+
+      '
+    description_label: "Descrição: "
+    current_maturity: 'Nível atual de maturidade:'
+    triggered_action: 'Ação acionada:'
+    triggered_action_code: 'Código da ação acionada:'
+    no_demo: Nenhum pacote de procedimento DEMO encontrado para este domínio/ação.
+    procedure_pack: Pacote de Procedimentos Prescritivos
+    domain_summary_title: 1.1 Resumo por Domínio
+    table_domain: Domínio
+    table_domain_name: Nome do Domínio
+    table_avg: AVG
+    table_final_grade: Nível Final (floor)
+    table_maturity_level: Nível de Maturidade
+    table_question: Questão
+    table_score: Pontuação
+    table_nearest_level: Nível Mais Próximo
+    table_notes: Observações
+    declared_dependencies_heading: 2.1 Dependências Declaradas (fluxo do projeto)
+    declared_dependencies_label: 'Dependências declaradas:'
+    unknown_domain: Domínio desconhecido
+    not_evaluated_scope: não avaliado no escopo deste relatório
+    procedure_pack_full: Pacote de Procedimentos Prescritivos
+    section_4: 4. Referências
+    depends_on: depende de
+    severity_rationale_label: 'Justificativa de severidade:'
+    scenario_label: 'Cenário:'
+    maturity_levels_title: 3.1 Níveis de Maturidade
+    maturity_level_prefix: Nível
+    example_elements_title: Elementos de exemplo
+    procedure_number: Número do Procedimento
+    procedure_name: Nome
+    procedure_prerequisite: Pré-requisito
+    procedure_deliverable: Entregável
+    procedure_recommendations: 'Recomendações:'
+    procedure_notes: 'Notas:'
+    domain_definition_prefix: 'Definição do Domínio:'
+    section_3_assessment_result: 3.1 Resultado do Assessment e Direção Estratégica
+    section_3_common_elements: 3.2 Elementos Comuns a Todos os Domínios
+    section_3_common_template: 3.2.1 Estrutura Padrão de Artefato de Governança
+    section_3_common_transversal: 3.2.2 Elementos Estruturais Transversais
+    section_3_maturity_consolidated: 3.3 Definição Consolidada do Modelo de Maturidade
+    section_3_domain_specific_closure: Elementos Comuns ao Documento Geral
+    section_3_document_governance: Governança do Documento
+    section_3_minimum_evidence: Evidências Mínimas Organizacionais
+    section_3_evolution_criteria: Critério de Evolução para Próximo Ciclo
+    executive_reading: 'Leitura Executiva:'
+    section_3_common_elements_intro: 'Esta seção define componentes estruturais aplicáveis
+      de forma consistente a todos os domínios,  garantindo coerência, alinhamento
+      de governança e integração institucional.
+
+      '
+    section_3_common_template_intro: 'Todo artefato de governança deve seguir um modelo
+      estrutural padronizado para assegurar  consistência, rastreabilidade e auditabilidade.
+
+      '
+    section_3_common_transversal_intro: 'Estes elementos estruturais transversais
+      aplicam-se a todos os domínios, assegurando  alinhamento organizacional, responsabilização
+      e integração de controles.
+
+      '
+    section_3_procedure_pack_intro: 'O pacote de procedimentos prescritivos consolida
+      ações específicas do domínio e  mecanismos operacionais necessários para evolução
+      de maturidade.
+
+      '
+    section_3_domain_context_objective: 'Objetivo: Definir o domínio específico e
+      contextualizar a ação de governança.'
+    section_3_domain_context_expected: 'Conteúdo esperado: Definição do domínio, contexto
+      organizacional e posicionamento  de maturidade com base na pontuação obtida
+      no assessment.
+
+      '
+    section_3_document_governance_intro: Regras para manter este relatório controlado,
+      auditável e sustentável ao longo do tempo.
+    section_3_minimum_evidence_intro: Evidências organizacionais mínimas necessárias
+      para sustentar adoção e verificação da governança.
+    section_3_evolution_criteria_intro: Critérios usados para validar prontidão para
+      evoluir para o próximo ciclo e nível de maturidade.
+    section_3_domain_context_title: Definição de Domínio e Contexto
+    section_3_domain_context_domain_specific_title: "Contextualização do Domínio Avaliado"
+    
+    maturity_dispersion_title: "Dispersão de maturidade detectada neste domínio."
+    maturity_dispersion_text: "Variações significativas entre as pontuações indicam possível inconsistência estrutural ou implementação desigual entre os componentes."    
+    
+  es:
+  
+    cover_purpose_dommmx: |
+      Este informe constituye la aplicación operativa de DOMMx mediante una evaluación estructurada por dominio.
+
+      Para cada dominio evaluado, el documento presenta el nivel actual de madurez y define el conjunto estructurado de acciones necesarias para evolucionar al siguiente nivel.
+
+      El contenido es prescriptivo y está orientado a la construcción y fortalecimiento de artefactos de gobernanza de datos, debiendo utilizarse como base técnica para documentar, institucionalizar y mejorar prácticas de gobernanza de forma proporcional al nivel identificado.
+
+    how_to_use_report: |
+      Este informe debe utilizarse como guía técnica para la evolución estructurada de la gobernanza de datos por dominio.
+
+      Con base en el nivel de madurez identificado en la evaluación, DOMMx activa paquetes prescriptivos que definen qué debe construirse, formalizarse o fortalecerse para permitir la progresión al siguiente nivel.
+
+      La aplicación práctica de este informe implica:
+
+      1. Construir artefactos formales cuando no existan o sean insuficientes
+      2. Estandarizar y documentar prácticas cuando estén parcialmente estructuradas
+      3. Integrar e institucionalizar mecanismos cuando ya estén definidos
+      4. Preparar el dominio para una gestión medible en ciclos posteriores
+
+      Cada sección por dominio debe convertirse en documentación formal adaptada al contexto organizacional específico, manteniendo la estructura propuesta y contextualizando el contenido técnico según la realidad del dominio evaluado.
+
+      Este informe no es meramente descriptivo. Su propósito es impulsar acción estructurada y progresión de madurez.  
+  
+    likert:
+      0: Inicial
+      1: Ad-hoc
+      2: Emergente
+      3: Definido
+      4: Gestionado
+      5: Optimizado
+    blueprint_global_keywords:
+    - control del documento
+    - resumen ejecutivo
+    - gobernanza del documento
+    - anexos
+    - evidencia requerida
+    - criterios de aceptación
+    - propietario del control
+    blueprint_common_template_keywords:
+    - control del documento
+    - resumen ejecutivo
+    - anexos
+    blueprint_closure_keywords:
+    - gobernanza del documento
+    - evidencia requerida
+    - criterios de aceptación
+    - propietario del control
+    cover_title_admin: Informe Consolidado del Proyecto DOMMx
+    cover_title_user: Informe de Evaluación DOMMx
+    cover_subtitle: Modelo Operativo y Madurez de Datos
+    project: 'Proyecto:'
+    scope: 'Alcance:'
+    scope_all_users: Todos los usuarios evaluados
+    users_included: 'Usuarios incluidos:'
+    assessed_user: 'Usuario evaluado:'
+    report_language: 'Idioma del informe:'
+    generated: 'Generado (UTC):'
+    toc: Índice
+    section_1: 1. Resultados de la Evaluación
+    section_1_intro_1: 'El blueprint y la guía prescriptiva presentados en este informe
+      siguen estrictamente la estructura de dominios evaluada y los valores de madurez
+      obtenidos durante el ciclo de evaluación actual. No representan necesariamente
+      la totalidad del modelo operativo DOMMx ni el alcance completo de ningún marco
+      de gobierno de datos referenciado.
+
+      '
+    section_1_intro_2: 'Esta sección presenta los resultados de madurez por dominio,
+      incluyendo puntuaciones por pregunta, promedios calculados por dominio y la
+      calificación final de madurez del dominio. La calificación de madurez del dominio
+      se calcula como floor(AVG).
+
+      '
+    domain_summary: 1.1 Resumen por Dominio
+    domain_maturity_rule: 'La calificación de madurez del dominio se calcula como
+      floor(AVG). Calificación final:'
+    no_scored_questions: No se encontraron preguntas puntuadas para este dominio en
+      el corte actual de la evaluación.
+    scoring_rule: 'Regla de puntuación: AVG = media (promedio) de las puntuaciones.
+      Madurez final = floor(AVG).'
+    section_2: 2. Dependencias Estructurales e Inconsistencias
+    section_2_intro: 'Esta sección documenta las dependencias estructurales entre
+      dominios y destaca rupturas de dependencia o incoherencias de madurez detectadas.
+      Las dependencias declaradas se derivan de la definición de flujo del proyecto,
+      y la justificación de remediación se obtiene de la base de conocimiento de inconsistencias
+      de dependencias.
+
+      '
+    declared_dependencies: 2.1 Dependencias Declaradas (flujo del proyecto)
+    no_dependencies: No se declararon dependencias.
+    detected_breaks: 2.2 Rupturas de Dependencia Detectadas y Guía de Remediación
+    no_dependency_records: No se encontraron registros de inconsistencias de dependencias
+      para los dominios evaluados.
+    no_dependency_breaks: 'No se detectaron rupturas de dependencias para los dominios
+      evaluados con base en la base de conocimiento de inconsistencias disponible.
+
+      '
+    section_3: 3. Blueprint del Dominio y Procedimientos Prescriptivos
+    section_3_intro: 'Esta sección proporciona el blueprint prescriptivo para avanzar
+      desde la calificación de madurez actual. Para cada dominio, se identifica un
+      Código de Acción activado y se presenta su paquete de procedimientos de gobernanza
+      (DEMO) en un formato estructurado.
+
+      '
+    blueprint_context: 'El blueprint y los procedimientos prescriptivos a continuación
+      reflejan estrictamente los dominios evaluados y sus respectivas calificaciones
+      de madurez obtenidas en este ciclo de evaluación. No representan necesariamente
+      el alcance completo del modelo operativo DOMMx ni ningún marco externo integral
+      de gobernanza.
+
+      '
+    description_label: "Descripción: "
+    current_maturity: 'Calificación de madurez actual:'
+    triggered_action: 'Acción activada:'
+    triggered_action_code: 'Código de Acción activado:'
+    no_demo: No se encontró un paquete de procedimientos DEMO para este dominio/acción.
+    procedure_pack: Paquete de Procedimientos Prescriptivos
+    domain_summary_title: 1.1 Resumen por Dominio
+    table_domain: Dominio
+    table_domain_name: Nombre del Dominio
+    table_avg: AVG
+    table_final_grade: Calificación Final (floor)
+    table_maturity_level: Nivel de Madurez
+    table_question: Pregunta
+    table_score: Puntuación
+    table_nearest_level: Nivel Más Cercano
+    table_notes: Notas
+    declared_dependencies_heading: 2.1 Dependencias Declaradas (flujo del proyecto)
+    declared_dependencies_label: 'Dependencias declaradas:'
+    unknown_domain: Dominio desconocido
+    not_evaluated_scope: no evaluado en el alcance de este informe
+    procedure_pack_full: Paquete de Procedimientos Prescriptivos
+    section_4: 4. Referencias
+    depends_on: depende de
+    severity_rationale_label: 'Justificación de severidad:'
+    scenario_label: 'Escenario:'
+    maturity_levels_title: 3.1 Niveles de Madurez
+    maturity_level_prefix: Nivel
+    example_elements_title: Elementos de ejemplo
+    procedure_number: Número del Procedimiento
+    procedure_name: Nombre
+    procedure_prerequisite: Prerequisito
+    procedure_deliverable: Entregable
+    procedure_recommendations: 'Recomendaciones:'
+    procedure_notes: 'Notas:'
+    domain_definition_prefix: 'Definición del Dominio:'
+    section_3_assessment_result: 3.1 Resultado del Assessment y Dirección Estratégica
+    section_3_common_elements: 3.2 Elementos Comunes a Todos los Dominios
+    section_3_common_template: 3.2.1 Estructura Estándar del Artefacto de Gobernanza
+    section_3_common_transversal: 3.2.2 Elementos Estructurales Transversales
+    section_3_maturity_consolidated: 3.3 Definición Consolidada del Modelo de Madurez
+    section_3_domain_specific_closure: Elementos Comunes del Documento
+    section_3_document_governance: Gobernanza del Documento
+    section_3_minimum_evidence: Evidencia Organizacional Mínima
+    section_3_evolution_criteria: Criterios de Evolución para el Próximo Ciclo
+    executive_reading: 'Lectura Ejecutiva:'
+    section_3_common_elements_intro: 'Esta sección define componentes estructurales
+      aplicables de manera consistente a todos  los dominios, garantizando coherencia
+      y alineación organizacional.
+
+      '
+    section_3_common_template_intro: 'Todo artefacto de gobernanza debe seguir una
+      estructura estándar que asegure consistencia  y trazabilidad.
+
+      '
+    section_3_common_transversal_intro: 'Estos elementos transversales aplican a todos
+      los dominios y garantizan alineación y control organizacional.
+
+      '
+    section_3_procedure_pack_intro: 'El paquete prescriptivo consolida acciones específicas
+      del dominio necesarias para la evolución de madurez.
+
+      '
+    section_3_domain_context_objective: 'Objetivo: Definir el dominio específico y
+      contextualizar la acción de gobernanza.'
+    section_3_domain_context_expected: 'Contenido esperado: Definición del dominio,
+      contexto organizacional y posicionamiento  de madurez según la puntuación obtenida.
+
+      '
+    section_3_document_governance_intro: Reglas para mantener este informe controlado,
+      auditable y sostenible en el tiempo.
+    section_3_minimum_evidence_intro: Evidencias organizacionales mínimas necesarias
+      para sostener la adopción y verificación de la gobernanza.
+    section_3_evolution_criteria_intro: Criterios usados para validar la preparación
+      para evolucionar al siguiente ciclo y nivel de madurez.
+    section_3_domain_context_title: Definición de Dominio y Contexto
+    section_3_domain_context_domain_specific_title: "Contextualización del Dominio Evaluado"
+    
+    maturity_dispersion_title: "Dispersión de madurez detectada en este dominio."
+    maturity_dispersion_text: "La variación significativa entre las puntuaciones sugiere inconsistencia estructural o implementación desigual entre componentes."
+    
+  fr:
+  
+    cover_purpose_dommmx: |
+      Ce rapport constitue l’application opérationnelle du DOMMx au moyen d’une évaluation structurée par domaine.
+
+      Pour chaque domaine évalué, le document présente le niveau actuel de maturité et définit l’ensemble structuré des actions nécessaires pour évoluer vers le niveau suivant.
+
+      Le contenu est prescriptif et orienté vers la construction et le renforcement des artefacts de gouvernance des données. Il doit être utilisé comme base technique pour documenter, institutionnaliser et améliorer les pratiques de gouvernance de manière proportionnelle au niveau identifié.
+
+    how_to_use_report: |
+      Ce rapport doit être utilisé comme guide technique pour l’évolution structurée de la gouvernance des données par domaine.
+
+      Sur la base du niveau de maturité identifié lors de l’évaluation, le DOMMx active des ensembles d’actions prescriptives définissant ce qui doit être construit, formalisé ou renforcé afin de permettre la progression vers le niveau suivant.
+
+      L’application pratique de ce rapport implique :
+
+      1. Construire des artefacts formels lorsqu’ils sont inexistants ou insuffisants
+      2. Standardiser et documenter les pratiques lorsqu’elles sont partiellement structurées
+      3. Intégrer et institutionnaliser les mécanismes lorsqu’ils sont déjà définis
+      4. Préparer le domaine à une gestion mesurable lors des cycles ultérieurs
+
+      Chaque section par domaine doit être transformée en documentation formelle adaptée au contexte organisationnel spécifique, tout en conservant la structure proposée et en contextualisant le contenu technique selon la réalité du domaine évalué.
+
+      Ce rapport n’est pas simplement descriptif. Son objectif est de favoriser une action structurée et une progression de maturité.  
+  
+    likert:
+      0: Initial
+      1: Ad-hoc
+      2: Émergent
+      3: Défini
+      4: Maîtrisé
+      5: Optimisé
+    blueprint_global_keywords:
+    - contrôle du document
+    - résumé exécutif
+    - gouvernance du document
+    - annexes
+    - preuve requise
+    - critères d’acceptation
+    - propriétaire du contrôle
+    blueprint_common_template_keywords:
+    - contrôle du document
+    - résumé exécutif
+    - annexes
+    blueprint_closure_keywords:
+    - gouvernance du document
+    - preuve requise
+    - critères d’acceptation
+    - propriétaire du contrôle
+    cover_title_admin: Rapport Consolidé du Projet DOMMx
+    cover_title_user: Rapport d'Évaluation DOMMx
+    cover_subtitle: Modèle Opérationnel et Maturité des Données
+    project: 'Projet:'
+    scope: 'Périmètre:'
+    scope_all_users: Tous les utilisateurs évalués
+    users_included: 'Utilisateurs inclus:'
+    assessed_user: 'Utilisateur évalué:'
+    report_language: 'Langue du rapport:'
+    generated: 'Généré (UTC):'
+    toc: Table des matières
+    section_1: 1. Résultats de l'Évaluation
+    section_1_intro_1: 'Le blueprint et les orientations prescriptives présentés dans
+      ce rapport suivent strictement la structure des domaines évalués et les niveaux
+      de maturité obtenus lors du cycle d''évaluation actuel. Ils ne représentent
+      pas nécessairement l''intégralité du modèle opérationnel DOMMx ni l''ensemble
+      du périmètre de tout cadre de gouvernance des données référencé.
+
+      '
+    section_1_intro_2: 'Cette section présente les résultats de maturité par domaine,
+      y compris les scores par question, les moyennes calculées par domaine et le
+      niveau final de maturité. Le niveau final est calculé comme floor(AVG).
+
+      '
+    domain_summary: 1.1 Synthèse par Domaine
+    domain_maturity_rule: 'Le niveau de maturité du domaine est calculé comme floor(AVG).
+      Niveau final:'
+    no_scored_questions: Aucune question notée n'a été trouvée pour ce domaine dans
+      l'évaluation actuelle.
+    scoring_rule: 'Règle de notation: AVG = moyenne des scores des questions. Niveau
+      final = floor(AVG).'
+    section_2: 2. Dépendances Structurelles et Incohérences
+    section_2_intro: 'Cette section documente les dépendances structurelles entre
+      les domaines et met en évidence les ruptures de dépendance ou incohérences de
+      maturité détectées. Les dépendances déclarées proviennent de la définition du
+      flux projet et les recommandations sont issues de la base de connaissance des
+      incohérences.
+
+      '
+    declared_dependencies: 2.1 Dépendances Déclarées (flux du projet)
+    no_dependencies: Aucune dépendance déclarée.
+    detected_breaks: 2.2 Ruptures Détectées et Recommandations de Remédiation
+    no_dependency_records: Aucun enregistrement d'incohérence n'a été trouvé pour
+      les domaines évalués.
+    no_dependency_breaks: 'Aucune rupture de dépendance n''a été détectée pour les
+      domaines évalués sur la base de la base de connaissance disponible.
+
+      '
+    section_3: 3. Blueprint de Domaine et Procédures Prescriptives
+    section_3_intro: 'Cette section fournit le blueprint prescriptif pour progresser
+      depuis le niveau actuel. Pour chaque domaine, un Code d''Action déclenché est
+      identifié et son pack de procédures est présenté de manière structurée.
+
+      '
+    blueprint_context: 'Le blueprint et les procédures prescriptives ci-dessous reflètent
+      strictement les domaines évalués et leurs niveaux de maturité dans ce cycle.
+      Ils ne représentent pas nécessairement l''intégralité du modèle DOMMx.
+
+      '
+    description_label: "Description : "
+    current_maturity: 'Niveau actuel de maturité:'
+    triggered_action: 'Action déclenchée:'
+    triggered_action_code: 'Code de l''action déclenchée:'
+    no_demo: Aucun pack de procédure DEMO trouvé pour ce domaine/action.
+    procedure_pack: Pack de Procédures Prescriptives
+    domain_summary_title: 1.1 Synthèse par Domaine
+    table_domain: Domaine
+    table_domain_name: Nom du Domaine
+    table_avg: AVG
+    table_final_grade: Niveau Final (floor)
+    table_maturity_level: Niveau de Maturité
+    table_question: Question
+    table_score: Score
+    table_nearest_level: Niveau le Plus Proche
+    table_notes: Notes
+    declared_dependencies_heading: 2.1 Dépendances Déclarées (flux du projet)
+    declared_dependencies_label: 'Dépendances déclarées:'
+    unknown_domain: Domaine inconnu
+    not_evaluated_scope: non évalué dans le périmètre de ce rapport
+    procedure_pack_full: Pack de Procédures Prescriptives
+    section_4: 4. Références
+    depends_on: dépend de
+    severity_rationale_label: 'Justification de la sévérité:'
+    scenario_label: 'Scénario:'
+    maturity_levels_title: 3.1 Niveaux de Maturité
+    maturity_level_prefix: Niveau
+    example_elements_title: Éléments d'exemple
+    procedure_number: Numéro de Procédure
+    procedure_name: Nom
+    procedure_prerequisite: Prérequis
+    procedure_deliverable: Livrable
+    procedure_recommendations: 'Recommandations:'
+    procedure_notes: 'Notes:'
+    domain_definition_prefix: 'Définition du Domaine:'
+    section_3_assessment_result: 3.1 Résultat de l'Évaluation et Orientation Stratégique
+    section_3_common_elements: 3.2 Éléments Communs à Tous les Domaines
+    section_3_common_template: 3.2.1 Structure Standard des Artefacts de Gouvernance
+    section_3_common_transversal: 3.2.2 Éléments Structurels Transversaux
+    section_3_maturity_consolidated: 3.3 Définition Consolidée du Modèle de Maturité
+    section_3_domain_specific_closure: Éléments Communs au Document
+    section_3_document_governance: Gouvernance du Document
+    section_3_minimum_evidence: Preuves Organisationnelles Minimales
+    section_3_evolution_criteria: Critère d'Évolution pour le Prochain Cycle
+    executive_reading: 'Lecture Exécutive:'
+    section_3_common_elements_intro: 'Cette section définit des éléments structurels
+      communs à tous les domaines, assurant cohérence et intégration organisationnelle.
+
+      '
+    section_3_common_template_intro: 'Chaque artefact de gouvernance doit suivre une
+      structure standardisée garantissant cohérence et traçabilité.
+
+      '
+    section_3_common_transversal_intro: 'Ces éléments transversaux assurent l’alignement
+      organisationnel et le contrôle intégré.
+
+      '
+    section_3_procedure_pack_intro: 'Le package prescriptif consolide les actions
+      spécifiques nécessaires à l’évolution du niveau de maturité.
+
+      '
+    section_3_domain_context_objective: 'Objectif : Définir le domaine spécifique
+      et contextualiser l’action de gouvernance.'
+    section_3_domain_context_expected: 'Contenu attendu : Définition du domaine, contexte
+      organisationnel et positionnement de maturité.
+
+      '
+    section_3_document_governance_intro: Règles pour maintenir ce rapport contrôlé,
+      auditable et durable dans le temps.
+    section_3_minimum_evidence_intro: Preuves organisationnelles minimales nécessaires
+      pour soutenir l’adoption et la vérification de la gouvernance.
+    section_3_evolution_criteria_intro: Critères utilisés pour valider la préparation
+      à évoluer vers le prochain cycle et niveau de maturité.
+    section_3_domain_context_title: Définition du Domaine et Contexte
+    section_3_domain_context_domain_specific_title: "Contextualisation du Domaine Évalué"
+    
+    maturity_dispersion_title: "Dispersion de maturité détectée dans ce domaine."
+    maturity_dispersion_text: "Une variation significative entre les scores suggère une incohérence structurelle ou une mise en œuvre inégale des composants."
+    
+  it:
+  
+    cover_purpose_dommmx: |
+      Questo rapporto rappresenta l’applicazione operativa del DOMMx attraverso una valutazione strutturata per dominio.
+
+      Per ciascun dominio valutato, il documento presenta il livello attuale di maturità e definisce l’insieme strutturato di azioni necessarie per evolvere al livello successivo.
+
+      Il contenuto è prescrittivo ed è orientato alla costruzione e al rafforzamento degli artefatti di data governance. Deve essere utilizzato come base tecnica per documentare, istituzionalizzare e migliorare le pratiche di governance in modo proporzionale al livello identificato.
+
+    how_to_use_report: |
+      Questo rapporto deve essere utilizzato come guida tecnica per l’evoluzione strutturata della data governance per dominio.
+
+      Sulla base del livello di maturità identificato nella valutazione, il DOMMx attiva pacchetti prescrittivi che definiscono cosa deve essere costruito, formalizzato o rafforzato per consentire la progressione al livello successivo.
+
+      L’applicazione pratica di questo rapporto comporta:
+
+      1. Costruire artefatti formali quando inesistenti o insufficienti
+      2. Standardizzare e documentare pratiche quando parzialmente strutturate
+      3. Integrare e istituzionalizzare meccanismi quando già definiti
+      4. Preparare il dominio a una gestione misurabile nei cicli successivi
+
+      Ogni sezione per dominio deve essere convertita in documentazione formale adattata al contesto organizzativo specifico, mantenendo la struttura proposta e contestualizzando il contenuto tecnico in base alla realtà del dominio valutato.
+
+      Questo rapporto non è meramente descrittivo. Il suo scopo è guidare un’azione strutturata e la progressione della maturità.
+  
+    likert:
+      0: Iniziale
+      1: Ad-hoc
+      2: Emergente
+      3: Definito
+      4: Gestito
+      5: Ottimizzato
+    blueprint_global_keywords:
+    - controllo del documento
+    - sintesi esecutiva
+    - governance del documento
+    - appendici
+    - evidenza richiesta
+    - criteri di accettazione
+    - proprietario del controllo
+    blueprint_common_template_keywords:
+    - controllo del documento
+    - sintesi esecutiva
+    - appendici
+    blueprint_closure_keywords:
+    - governance del documento
+    - evidenza richiesta
+    - criteri di accettazione
+    - proprietario del controllo
+    cover_title_admin: Rapporto Consolidato del Progetto DOMMx
+    cover_title_user: Rapporto di Valutazione DOMMx
+    cover_subtitle: Modello Operativo e Maturità dei Dati
+    project: 'Progetto:'
+    scope: 'Ambito:'
+    scope_all_users: Tutti gli utenti valutati
+    users_included: 'Utenti inclusi:'
+    assessed_user: 'Utente valutato:'
+    report_language: 'Lingua del rapporto:'
+    generated: 'Generato (UTC):'
+    toc: Indice
+    section_1: 1. Risultati della Valutazione
+    section_1_intro_1: 'Il blueprint e le linee guida prescrittive presentati in questo
+      rapporto seguono rigorosamente la struttura dei domini valutati e i livelli
+      di maturità ottenuti nel ciclo corrente. Non rappresentano necessariamente l''intero
+      modello DOMMx.
+
+      '
+    section_1_intro_2: 'Questa sezione presenta i risultati di maturità per dominio,
+      inclusi i punteggi per domanda, le medie calcolate e il livello finale. Il livello
+      finale è calcolato come floor(AVG).
+
+      '
+    domain_summary: 1.1 Sintesi per Dominio
+    domain_maturity_rule: 'Il livello di maturità è calcolato come floor(AVG). Livello
+      finale:'
+    no_scored_questions: Nessuna domanda valutata trovata per questo dominio.
+    scoring_rule: 'Regola di calcolo: AVG = media dei punteggi. Livello finale = floor(AVG).'
+    section_2: 2. Dipendenze Strutturali e Incoerenze
+    section_2_intro: 'Questa sezione documenta le dipendenze strutturali tra domini
+      e le eventuali incoerenze rilevate. Le dipendenze dichiarate derivano dal flusso
+      di progetto.
+
+      '
+    declared_dependencies: 2.1 Dipendenze Dichiarate (flusso di progetto)
+    no_dependencies: Nessuna dipendenza dichiarata.
+    detected_breaks: 2.2 Rotture Rilevate e Linee Guida di Remediation
+    no_dependency_records: Nessun record di incoerenza trovato.
+    no_dependency_breaks: 'Nessuna rottura di dipendenza rilevata per i domini valutati.
+
+      '
+    section_3: 3. Blueprint del Dominio e Procedure Prescrittive
+    section_3_intro: 'Questa sezione fornisce il blueprint prescrittivo per evolvere
+      dal livello attuale. Per ogni dominio viene identificato un Codice Azione attivato.
+
+      '
+    blueprint_context: 'Il blueprint riflette esclusivamente i domini valutati in
+      questo ciclo.
+
+      '
+    description_label: "Descrizione: "
+    current_maturity: 'Livello attuale di maturità:'
+    triggered_action: 'Azione attivata:'
+    triggered_action_code: 'Codice azione attivata:'
+    no_demo: Nessun pacchetto DEMO trovato.
+    procedure_pack: Pacchetto di Procedure Prescrittive
+    domain_summary_title: 1.1 Sintesi per Dominio
+    table_domain: Dominio
+    table_domain_name: Nome del Dominio
+    table_avg: AVG
+    table_final_grade: Livello Finale (floor)
+    table_maturity_level: Livello di Maturità
+    table_question: Domanda
+    table_score: Punteggio
+    table_nearest_level: Livello Più Vicino
+    table_notes: Note
+    declared_dependencies_heading: 2.1 Dipendenze Dichiarate (flusso di progetto)
+    declared_dependencies_label: 'Dipendenze dichiarate:'
+    unknown_domain: Dominio sconosciuto
+    not_evaluated_scope: non valutato in questo rapporto
+    procedure_pack_full: Pacchetto di Procedure Prescrittive
+    section_4: 4. Riferimenti
+    depends_on: dipende da
+    severity_rationale_label: 'Motivazione della severità:'
+    scenario_label: 'Scenario:'
+    maturity_levels_title: 3.1 Livelli di Maturità
+    maturity_level_prefix: Livello
+    example_elements_title: Elementi di esempio
+    procedure_number: Numero Procedura
+    procedure_name: Nome
+    procedure_prerequisite: Prerequisito
+    procedure_deliverable: Deliverable
+    procedure_recommendations: 'Raccomandazioni:'
+    procedure_notes: 'Note:'
+    domain_definition_prefix: 'Definizione del Dominio:'
+    section_3_assessment_result: 3.1 Risultato della Valutazione e Direzione Strategica
+    section_3_common_elements: 3.2 Elementi Comuni a Tutti i Domini
+    section_3_common_template: 3.2.1 Struttura Standard dell'Artefatto di Governance
+    section_3_common_transversal: 3.2.2 Elementi Strutturali Trasversali
+    section_3_maturity_consolidated: 3.3 Definizione Consolidata del Modello di Maturità
+    section_3_domain_specific_closure: Elementi Comuni del Documento
+    section_3_document_governance: Governance del Documento
+    section_3_minimum_evidence: Evidenza Organizzativa Minima
+    section_3_evolution_criteria: Criterio di Evoluzione per il Prossimo Ciclo
+    executive_reading: 'Lettura Esecutiva:'
+    section_3_common_elements_intro: 'Questa sezione definisce elementi strutturali
+      comuni a tutti i domini, garantendo coerenza e integrazione organizzativa.
+
+      '
+    section_3_common_template_intro: 'Ogni artefatto di governance deve seguire una
+      struttura standardizzata per assicurare coerenza e tracciabilità.
+
+      '
+    section_3_common_transversal_intro: 'Questi elementi strutturali trasversali garantiscono
+      allineamento organizzativo e controllo integrato.
+
+      '
+    section_3_procedure_pack_intro: 'Il pacchetto prescrittivo consolida azioni specifiche
+      del dominio per supportare l’evoluzione della maturità.
+
+      '
+    section_3_domain_context_objective: 'Obiettivo: Definire il dominio specifico
+      e contestualizzare l’azione di governance.'
+    section_3_domain_context_expected: 'Contenuto atteso: Definizione del dominio,
+      contesto organizzativo e posizionamento di maturità.
+
+      '
+    section_3_document_governance_intro: Regole per mantenere questo report controllato,
+      verificabile e sostenibile nel tempo.
+    section_3_minimum_evidence_intro: Evidenze organizzative minime necessarie per
+      sostenere l’adozione e la verifica della governance.
+    section_3_evolution_criteria_intro: Criteri usati per validare la prontezza ad
+      evolvere al prossimo ciclo e livello di maturità.
+    section_3_domain_context_title: Definizione del Dominio e Contesto
+    section_3_domain_context_domain_specific_title: "Contestualizzazione del Dominio Valutato"
+    
+    maturity_dispersion_title: "Dispersione di maturità rilevata in questo dominio."
+    maturity_dispersion_text: "Una variazione significativa tra i punteggi suggerisce incoerenza strutturale o implementazione non uniforme tra i componenti."
+
+  de:
+  
+    cover_purpose_dommmx: |
+      Dieser Bericht stellt die operative Anwendung des DOMMx durch eine strukturierte domänenbasierte Bewertung dar.
+
+      Für jede bewertete Domäne beschreibt das Dokument den aktuellen Reifegrad und definiert die strukturierte Menge an Maßnahmen, die erforderlich sind, um den nächsten Reifegrad zu erreichen.
+
+      Der Inhalt ist präskriptiv und auf die Erstellung und Stärkung von Data-Governance-Artefakten ausgerichtet. Er dient als technische Grundlage zur Dokumentation, Institutionalisierung und Weiterentwicklung von Governance-Praktiken entsprechend dem identifizierten Reifegrad.
+
+    how_to_use_report: |
+      Dieser Bericht dient als technischer Leitfaden für die strukturierte Weiterentwicklung der Data Governance nach Domänen.
+
+      Basierend auf dem im Assessment identifizierten Reifegrad aktiviert DOMMx präskriptive Maßnahmenpakete, die definieren, was aufgebaut, formalisiert oder gestärkt werden muss, um den nächsten Reifegrad zu erreichen.
+
+      Die praktische Anwendung dieses Berichts umfasst:
+
+      1. Formale Governance-Artefakte aufzubauen, wenn sie fehlen oder unzureichend sind
+      2. Praktiken zu standardisieren und zu dokumentieren, wenn sie teilweise strukturiert sind
+      3. Mechanismen zu integrieren und zu institutionalisieren, wenn sie bereits definiert sind
+      4. Die Domäne auf eine messbare Steuerung in nachfolgenden Zyklen vorzubereiten
+
+      Jeder Domänenabschnitt sollte in eine formale Dokumentation überführt werden, die an den spezifischen organisatorischen Kontext angepasst ist, wobei die vorgeschlagene Struktur beibehalten und der technische Inhalt entsprechend der bewerteten Domäne kontextualisiert wird.
+
+      Dieser Bericht ist nicht lediglich beschreibend. Sein Zweck besteht darin, strukturierte Maßnahmen und Reifegradentwicklung zu fördern.
+  
+    likert:
+      0: Initial
+      1: Ad-hoc
+      2: Aufstrebend
+      3: Definiert
+      4: Gesteuert
+      5: Optimiert
+    blueprint_global_keywords:
+    - dokumentenkontrolle
+    - zusammenfassung
+    - dokumenten-governance
+    - anhänge
+    - erforderliche nachweise
+    - akzeptanzkriterien
+    - verantwortlicher für die kontrolle
+    blueprint_common_template_keywords:
+    - dokumentenkontrolle
+    - zusammenfassung
+    - anhänge
+    blueprint_closure_keywords:
+    - dokumenten-governance
+    - erforderliche nachweise
+    - akzeptanzkriterien
+    - verantwortlicher für die kontrolle
+    cover_title_admin: Konsolidierter DOMMx Projektbericht
+    cover_title_user: DOMMx Bewertungsbericht
+    cover_subtitle: Datenbetriebsmodell und Reifegrad
+    project: 'Projekt:'
+    scope: 'Umfang:'
+    scope_all_users: Alle bewerteten Benutzer
+    users_included: 'Einbezogene Benutzer:'
+    assessed_user: 'Bewerteter Benutzer:'
+    report_language: 'Berichtssprache:'
+    generated: 'Erstellt (UTC):'
+    toc: Inhaltsverzeichnis
+    section_1: 1. Bewertungsergebnisse
+    section_1_intro_1: 'Das Blueprint und die vorgeschriebenen Leitlinien in diesem
+      Bericht folgen strikt der bewerteten Domänenstruktur und den im aktuellen Zyklus
+      ermittelten Reifegraden.
+
+      '
+    section_1_intro_2: 'Dieser Abschnitt zeigt die Reifegrade pro Domäne einschließlich
+      Durchschnittswerten. Der finale Reifegrad wird als floor(AVG) berechnet.
+
+      '
+    domain_summary: 1.1 Domänenübersicht
+    domain_maturity_rule: 'Der finale Reifegrad wird als floor(AVG) berechnet:'
+    no_scored_questions: Keine bewerteten Fragen für diese Domäne gefunden.
+    scoring_rule: 'Berechnungsregel: AVG = Mittelwert der Bewertungen. Final = floor(AVG).'
+    section_2: 2. Strukturelle Abhängigkeiten und Inkonsistenzen
+    section_2_intro: 'Dieser Abschnitt dokumentiert strukturelle Abhängigkeiten zwischen
+      Domänen und identifiziert erkannte Inkonsistenzen.
+
+      '
+    declared_dependencies: 2.1 Deklarierte Abhängigkeiten (Projektfluss)
+    no_dependencies: Keine Abhängigkeiten deklariert.
+    detected_breaks: 2.2 Erkannte Abhängigkeitsbrüche und Handlungsempfehlungen
+    no_dependency_records: Keine Inkonsistenzdatensätze gefunden.
+    no_dependency_breaks: 'Keine Abhängigkeitsbrüche auf Basis der verfügbaren Wissensbasis
+      erkannt.
+
+      '
+    section_3: 3. Domänen-Blueprint und Vorgeschriebene Verfahren
+    section_3_intro: 'Dieser Abschnitt stellt das preskriptive Blueprint zur Weiterentwicklung
+      bereit. Für jede Domäne wird ein ausgelöster Aktionscode identifiziert.
+
+      '
+    blueprint_context: 'Das Blueprint spiegelt ausschließlich die bewerteten Domänen
+      dieses Zyklus wider.
+
+      '
+    description_label: "Beschreibung: "
+    current_maturity: 'Aktueller Reifegrad:'
+    triggered_action: 'Ausgelöste Aktion:'
+    triggered_action_code: 'Ausgelöster Aktionscode:'
+    no_demo: Kein DEMO-Verfahrenspaket gefunden.
+    procedure_pack: Vorgeschriebenes Verfahrenspaket
+    domain_summary_title: 1.1 Domänenübersicht
+    table_domain: Domäne
+    table_domain_name: Domänenname
+    table_avg: AVG
+    table_final_grade: Finaler Reifegrad (floor)
+    table_maturity_level: Reifegrad
+    table_question: Frage
+    table_score: Bewertung
+    table_nearest_level: Nächstes Niveau
+    table_notes: Anmerkungen
+    declared_dependencies_heading: 2.1 Deklarierte Abhängigkeiten (Projektfluss)
+    declared_dependencies_label: 'Deklarierte Abhängigkeiten:'
+    unknown_domain: Unbekannte Domäne
+    not_evaluated_scope: nicht im Berichtsumfang bewertet
+    procedure_pack_full: Vorgeschriebenes Verfahrenspaket
+    section_4: 4. Referenzen
+    depends_on: abhängig von
+    severity_rationale_label: 'Begründung der Schwere:'
+    scenario_label: 'Szenario:'
+    maturity_levels_title: 3.1 Reifegrade
+    maturity_level_prefix: Stufe
+    example_elements_title: Beispielelemente
+    procedure_number: Prozedurnummer
+    procedure_name: Name
+    procedure_prerequisite: Voraussetzung
+    procedure_deliverable: Ergebnis
+    procedure_recommendations: 'Empfehlungen:'
+    procedure_notes: 'Hinweise:'
+    domain_definition_prefix: 'Domänendefinition:'
+    section_3_assessment_result: 3.1 Bewertungsergebnis und Strategische Ausrichtung
+    section_3_common_elements: 3.2 Gemeinsame Elemente aller Domänen
+    section_3_common_template: 3.2.1 Standardstruktur des Governance-Artefakts
+    section_3_common_transversal: 3.2.2 Transversale Strukturelemente
+    section_3_maturity_consolidated: 3.3 Konsolidierte Definition des Reifegradmodells
+    section_3_domain_specific_closure: Gemeinsame Elemente des Dokuments
+    section_3_document_governance: Dokument-Governance
+    section_3_minimum_evidence: Minimale organisatorische Nachweise
+    section_3_evolution_criteria: Evolutionskriterien für den nächsten Zyklus
+    executive_reading: 'Management-Zusammenfassung:'
+    section_3_common_elements_intro: 'Dieser Abschnitt definiert strukturelle Elemente,
+      die für alle Domänen gelten und organisatorische Konsistenz gewährleisten.
+
+      '
+    section_3_common_template_intro: 'Jedes Governance-Artefakt muss einer standardisierten
+      Struktur folgen, um Konsistenz und Nachvollziehbarkeit sicherzustellen.
+
+      '
+    section_3_common_transversal_intro: 'Diese übergreifenden Strukturelemente gewährleisten
+      organisatorische Ausrichtung und integrierte Kontrolle.
+
+      '
+    section_3_procedure_pack_intro: 'Das preskriptive Maßnahmenpaket konsolidiert
+      domänenspezifische Schritte zur Weiterentwicklung des Reifegrades.
+
+      '
+    section_3_domain_context_objective: 'Ziel: Definition der spezifischen Domäne
+      und Kontextualisierung der Governance-Maßnahme.'
+    section_3_domain_context_expected: 'Erwarteter Inhalt: Domänendefinition, organisatorischer
+      Kontext und Reifegradpositionierung.'
+    section_3_document_governance_intro: Regeln, um diesen Bericht kontrolliert, prüfbar
+      und langfristig wartbar zu halten.
+    section_3_minimum_evidence_intro: Minimale organisatorische Evidenzen zur Unterstützung
+      von Einführung und Nachweis der Governance.
+    section_3_evolution_criteria_intro: Kriterien zur Validierung der Bereitschaft
+      für den nächsten Zyklus und Reifegrad.
+    section_3_domain_context_title: Domänendefinition und Kontext
+    section_3_domain_context_domain_specific_title: "Kontextualisierung des Bewerteten Domänenbereichs"
+    
+    maturity_dispersion_title: "Reifegradstreuung in diesem Bereich festgestellt."
+    maturity_dispersion_text: "Erhebliche Unterschiede zwischen den Bewertungen deuten auf strukturelle Inkonsistenzen oder ungleichmäßige Implementierung hin."

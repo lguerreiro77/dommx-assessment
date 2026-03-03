@@ -1,0 +1,195 @@
+# read_theory_cluster_improve.md
+
+## File
+utils/theory-cluster/theory_cluster_improve.py
+
+---
+
+## 1. Purpose
+
+Transform raw cluster outputs into report-ready audit-grade governance text.
+
+Reads:
+utils/theory-cluster/output/cluster/<DOMAIN>_theory_cluster_output.json
+
+Writes:
+utils/theory-cluster/output/improved/<DOMAIN>_theory_improved_output.json
+
+Focus:
+- Formal audit tone
+- Structured paragraphs
+- Deterministic JSON output
+- Cache-driven cost control
+
+---
+
+## 2. Architecture Overview
+
+Cluster output JSON
+   ↓
+Function 1 – Context_Initial aggregation
+   ↓
+Function 2 – Evaluation_Initial extraction
+   ↓
+Function 3 – Details_Initial aggregation
+   ↓
+Function 4 – Join arrays
+   ↓
+Function 5 – AI rewrite (parallel + cached)
+   ↓
+Improved output JSON
+
+---
+
+## 3. Input / Output Paths
+
+### Input
+utils/theory-cluster/output/cluster/<DOMAIN>_theory_cluster_output.json
+
+### Output
+utils/theory-cluster/output/improved/<DOMAIN>_theory_improved_output.json
+
+### Cache
+utils/theory-cluster/_cache/<DOMAIN>_theory_improve_cache.json
+
+---
+
+## 4. Functional Breakdown
+
+### Function 1 – Context_Initial
+
+- Filters decision_tree rows
+- Score == 1
+- Question Q1–Q6
+- Aggregates distinct Objective values
+
+Returns:
+[Domain, Context_Initial]
+
+---
+
+### Function 2 – Evaluation_Initial
+
+- decision_tree rows
+- Question == Q1
+- Score 0–5
+- Returns:
+  Domain
+  Score
+  Action_Code
+  Text
+
+---
+
+### Function 3 – Details_Initial
+
+- action_catalog rows
+- Groups by Action_Code
+- Preserves procedure ordering
+- Concatenates procedural definitions
+
+---
+
+### Function 4 – Join
+
+Join grain:
+Domain + Score + Action_Code
+
+Produces unified item:
+{
+  Domain,
+  Score,
+  Action_Code,
+  Action_Title,
+  Context_Initial,
+  Evaluation_Initial,
+  Details_Initial,
+  Procedures
+}
+
+---
+
+### Function 5 – AI Improvement
+
+Uses strict JSON system prompt:
+
+{
+  "context": "...",
+  "evaluation": "...",
+  "details": "..."
+}
+
+Constraints:
+- context = exactly 3 paragraphs
+- evaluation = exactly 4 paragraphs
+- details = exactly 4 paragraphs
+- No bullets
+- No markdown
+- No commentary
+
+---
+
+## 5. Fingerprint Strategy
+
+Fingerprint includes:
+
+- Domain
+- Score
+- Action_Code
+- Action_Title
+- Context_Initial
+- Evaluation_Initial
+- Details_Initial
+
+If any input changes → regeneration occurs.
+
+---
+
+## 6. Performance Controls
+
+DEFAULT_MODEL_IMPROVE = gpt-4o-mini  
+DEFAULT_MAX_WORKERS = 6  
+DEFAULT_BATCH_SIZE = 12  
+
+Parallel:
+ThreadPoolExecutor
+
+Batch-based saving to prevent loss.
+
+---
+
+## 7. CLI Parameters
+
+--mode all | domain  
+--domain DG  
+--model gpt-4o-mini  
+--max-workers  
+--batch-size  
+--clear-cache  
+
+---
+
+## 8. Execution
+
+Run all domains:
+python theory_cluster_improve.py
+
+Run single domain:
+python theory_cluster_improve.py --mode domain --domain DG
+
+Force regeneration:
+python theory_cluster_improve.py --clear-cache
+
+---
+
+## 9. Pipeline Position
+
+YAML + PDFs
+   ↓
+theory_cluster.py
+   ↓
+Cluster Output JSON
+   ↓
+theory_cluster_improve.py
+   ↓
+Improved Output JSON

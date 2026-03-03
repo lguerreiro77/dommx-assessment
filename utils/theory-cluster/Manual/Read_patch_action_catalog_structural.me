@@ -1,0 +1,253 @@
+# DOMMx – Action Catalog Structural Patch Engine
+
+## Overview
+
+`patch_action_catalog_structural.py` is a structural enforcement utility for the DOMMx framework.
+
+Its purpose is to automatically inject **Procedure 6 – Structural Reinforcement** into Action Catalog YAML files based on maturity suffix logic (XX-04, XX-06, XX-09).
+
+The script is:
+
+- Flow-driven  
+- Domain-aware  
+- Deterministic  
+- Idempotent  
+- Architecture-aligned with theory_cluster  
+
+It ensures that structural maturity differentiation defined in Section 6.1 of the thesis is operationally enforced in the blueprint layer.
+
+---
+
+# Architectural Context
+
+The script follows the same structural logic used in:
+
+utils/theory-cluster/
+
+It resolves domain configuration dynamically from:
+
+data/general/flow.yaml
+
+Each domain entry in `Domain_flow` must contain:
+
+```yaml
+files:
+  decision_tree: <file>
+  action_catalog: <file>
+```
+
+The script reads:
+
+data/domains/<language>/<action_catalog_file>
+
+And injects Procedure 6 where required.
+
+---
+
+# Structural Enforcement Logic
+
+The script identifies Action Codes by their suffix:
+
+| Suffix | Meaning | Procedure Injected |
+|--------|---------|-------------------|
+| XX-04 | Level 3 – Managed | Structural Institutionalization Reinforcement |
+| XX-06 | Level 4 – Measured | Structural Measurement and Oversight Reinforcement |
+| XX-09 | Level 5 – Optimized | Structural Optimization and Adaptive Reinforcement |
+
+The last two digits of the action code determine the reinforcement procedure.
+
+The procedure is inserted only if:
+
+- It does not already exist  
+- The action_catalog structure is valid  
+
+The procedure number injected is always:
+
+Procedure 6
+
+---
+
+# Directory Structure Assumed
+
+```
+project-root/
+│
+├── data/
+│   ├── general/
+│   │   └── flow.yaml
+│   │
+│   └── domains/
+│       └── us/
+│           ├── DG_action_catalog.yaml
+│           ├── DQ_action_catalog.yaml
+│           └── ...
+│
+└── utils/
+    └── patch_action_catalog_structural.py
+```
+
+Base path resolution:
+
+BASE_DIR = project root  
+FLOW_PATH = data/general/flow.yaml  
+DOMAINS_DIR = data/domains/
+
+---
+
+# Command Line Parameters
+
+## 1. Run for All Domains
+
+```bash
+python patch_action_catalog_structural.py --overwrite
+```
+
+Behavior:
+
+- Reads flow.yaml  
+- Iterates over all domains ordered by sequence  
+- Patches all action_catalog YAML files  
+- Overwrites original files  
+
+---
+
+## 2. Run for Single Domain
+
+```bash
+python patch_action_catalog_structural.py --domain DG --overwrite
+```
+
+Behavior:
+
+- Filters by acronym in flow.yaml  
+- Patches only that domain  
+- Overwrites original  
+
+---
+
+## 3. Generate PATCHED Files (Safe Mode)
+
+```bash
+python patch_action_catalog_structural.py
+```
+
+Behavior:
+
+- Generates:
+  DG_action_catalog_PATCHED.yaml  
+- Original files remain untouched  
+
+---
+
+## 4. Language Selection
+
+Default:
+
+--language us
+
+Example:
+
+```bash
+python patch_action_catalog_structural.py --language pt --overwrite
+```
+
+This will resolve:
+
+data/domains/pt/<action_catalog_file>
+
+---
+
+# Execution Flow
+
+1. Load flow.yaml  
+2. Sort Domain_flow by sequence  
+3. Filter by acronym if provided  
+4. Resolve action_catalog YAML path  
+5. Load YAML  
+6. Sort action codes by numeric suffix  
+7. If suffix in {04, 06, 09}:  
+   - Check if Procedure 6 exists  
+   - Inject if missing  
+8. Save YAML (overwrite or PATCHED)  
+
+---
+
+# Idempotency
+
+The script is safe to run multiple times.
+
+It checks whether Procedure 6 already exists before inserting.
+
+Procedure 6 will never be duplicated.
+
+---
+
+# Design Principles
+
+- No hardcoded domain names  
+- Flow-driven architecture  
+- Deterministic ordering  
+- Blueprint-level structural enforcement  
+- Separation of thesis logic from YAML authoring  
+- Fully aligned with DOMMx structural maturity model  
+
+---
+
+# What It Does NOT Do
+
+- Does not modify decision_tree.yaml  
+- Does not validate action codes against decision_tree  
+- Does not generate text  
+- Does not call OpenAI  
+- Does not alter procedure numbering other than adding number 6  
+
+---
+
+# Integration in DOMMx Lifecycle
+
+Recommended execution order:
+
+1. Update thesis structural definitions  
+2. Update PROCEDURE_LIBRARY if needed  
+3. Run patch script  
+4. Commit YAML changes  
+5. Run theory_cluster.py if regeneration is required  
+
+---
+
+# Risk Handling
+
+If a domain in flow.yaml:
+
+- Has no action_catalog entry → raises ValueError  
+- Points to non-existing file → prints Missing file and continues  
+- Has invalid structure → skips with warning  
+
+---
+
+# Structural Maturity Enforcement Guarantee
+
+After execution:
+
+- All XX-04 contain Procedure 6 (Level 3 enforcement)  
+- All XX-06 contain Procedure 6 (Level 4 enforcement)  
+- All XX-09 contain Procedure 6 (Level 5 enforcement)  
+
+This ensures the procedural blueprint remains aligned with:
+
+- Structural Differentiation Logic (Section 6.1)  
+- Prescriptive maturity escalation  
+- Non-descriptive enforcement  
+- Auditability and architectural integrity  
+
+---
+
+# Future Extensions
+
+Possible improvements:
+
+- Cross validation with decision_tree.yaml  
+- Enforcement failure exit codes for CI pipelines  
+- Structural integrity validator mode  
+- YAML schema validation  
+- Dry-run diff mode  

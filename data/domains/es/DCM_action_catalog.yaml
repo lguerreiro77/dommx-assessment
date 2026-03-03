@@ -87,26 +87,41 @@ action_catalog:
       - Alinear estándares de retención con minimización y requisitos legales de
         GDPR cuando aplique.
   DCM-04:
-    title: Incorpore clasificación, metadatos y revisiones de calidad en rutinas
-      de manejo de contenido.
+    title: Incorporar reglas de ciclo de vida, salvaguardas éticas y rutinas de 
+      repositorio en las rutinas
     procedures:
-    - number: 1
-      name: Incorpore puntos de control de gobernanza de contenido en flujos de 
-        trabajo.
-      prerequisite: Requiere estándares aprobados DCM-03
-      deliverable: Plantillas de flujo de trabajo actualizadas
+    - number: 5
+      name: Monitorear la adherencia a la gobernanza de contenido
+      prerequisite: Requiere rutinas de monitoreo
+      deliverable: Registro de cumplimiento de contenido
       recommendations:
-      - Incorporar puntos de control para creación, revisión, aprobación y 
-        archivo siguiendo el ciclo de vida de DAMA (“Capítulo 12, p. 330–338”).
-      - Validar campos de metadatos como versión, propietario, retención y 
-        clasificación (“Capítulo 9, p. 236–239”).
-      - Asegure requisitos de calidad para precisión y completitud documental 
-        (“Capítulo 11, p. 308–311”).
-      - Confirmar la participación de la administración (“Capítulo 4, p. 
-        86–89”).
+      - Monitorear la adherencia a reglas de clasificación, versionado, 
+        retención y calidad siguiendo DAMA (“Capítulo 12, p. 330–338”).
+      - Validar transiciones del ciclo de vida para detectar eliminaciones 
+        prematuras o archivos faltantes (“Capítulo 4.3, p. 92”).
+      - Confirmar la precisión de metadatos e integridad semántica (“Capítulos 9
+        y 10”).
+      - Registrar hallazgos como artefactos gobernados (“Apéndice del Capítulo 
+        3, p. 69–70”).
       notes:
-      - Usar el mapeo de flujos de trabajo de DCAM para asegurar consistencia en
-        gobernanza entre equipos.
+      - Usar indicadores diagnósticos de DCAM para priorizar acciones de 
+        remediación.
+    - number: 6
+      name: Refuerzo de institucionalización estructural
+      prerequisite: Requiere mecanismo de gobernanza aprobado y línea base de 
+        políticas formalizada
+      deliverable: Procedimiento de gobernanza institucionalizado con Control 
+        Owner asignado y evidencia documentada de ejecución repetible
+      recommendations:
+      - Asignar un Control Owner formalmente responsable de sostener el 
+        mecanismo de gobernanza.
+      - Definir criterios objetivos de aceptación que confirmen ejecución 
+        estable y consistente.
+      - Producir artefactos documentados que evidencien la aplicación operativa 
+        repetible.
+      - Asegurar la integración en las rutinas organizacionales establecidas.
+      - Mantener la trazabilidad entre el mecanismo de gobernanza y la política 
+        gobernante.
   DCM-06:
     title: Automatizar clasificación, ciclo de vida, metadatos y validación de 
       calidad
@@ -127,6 +142,18 @@ action_catalog:
       notes:
       - Usar verificaciones de preparación para automatización CMMI antes de 
         habilitar la aplicación.
+    - number: 6
+      name: Refuerzo de medición y supervisión estructural
+      prerequisite: Requiere un mecanismo de gobernanza institucionalizado
+      deliverable: Entorno de control de gobernanza gestionado y medido
+      recommendations:
+      - Definir métricas de desempeño medibles alineadas con los objetivos de 
+        gobernanza.
+      - Implementar mecanismos estructurados de monitoreo o paneles de control.
+      - Establecer ciclos formales de validación que incluyan revisiones 
+        periódicas.
+      - Mantener documentación trazable de resultados de desempeño.
+      - Definir vías de escalamiento para desviaciones no resueltas.
   DCM-09:
     title: Refinar continuamente la gobernanza de contenido y el ciclo de vida 
       utilizando evidencia
@@ -148,3 +175,16 @@ action_catalog:
       notes:
       - Usar principios de mejora continua CMMI para estructurar ciclos de 
         refinamiento.
+    - number: 6
+      name: Optimización estructural y refuerzo adaptativo
+      prerequisite: Requiere mecanismo de gobernanza gestionado y medido
+      deliverable: Proceso de gobernanza optimizado que demuestra automatización
+        y mejora adaptativa
+      recommendations:
+      - Introducir elementos de automatización que apoyen la aplicación y el 
+        monitoreo.
+      - Implementar ciclos de mejora continua basados en tendencias de 
+        desempeño.
+      - Realizar benchmarking contra marcos de gobernanza reconocidos.
+      - Documentar mejoras medibles en múltiples ciclos.
+      - Asegurar la adaptabilidad a cambios regulatorios y organizacionales.

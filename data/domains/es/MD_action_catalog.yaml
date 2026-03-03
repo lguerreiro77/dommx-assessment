@@ -317,6 +317,22 @@ action_catalog:
         “Capítulo 3 Apéndice, p. 69–70”.
       notes:
       - Usar indicadores de madurez del ciclo de vida DCAM para guiar mejoras.
+    - number: 6
+      name: Refuerzo de institucionalización estructural
+      prerequisite: Requiere mecanismo de gobernanza aprobado y línea base de 
+        políticas formalizada
+      deliverable: Procedimiento de gobernanza institucionalizado con Control 
+        Owner asignado y evidencia documentada de ejecución repetible
+      recommendations:
+      - Asignar un Control Owner formalmente responsable de sostener el 
+        mecanismo de gobernanza.
+      - Definir criterios objetivos de aceptación que confirmen ejecución 
+        estable y consistente.
+      - Producir artefactos documentados que evidencien la aplicación operativa 
+        repetible.
+      - Asegurar la integración en las rutinas organizacionales establecidas.
+      - Mantener la trazabilidad entre el mecanismo de gobernanza y la política 
+        gobernante.
   MD-06:
     title: Automatizar captura de metadatos, linaje y control semántico
     procedures:
@@ -396,6 +412,18 @@ action_catalog:
       notes:
       - Usar la evolución de capacidades DCAM para planificar mejoras en 
         automatización.
+    - number: 6
+      name: Refuerzo de medición y supervisión estructural
+      prerequisite: Requiere un mecanismo de gobernanza institucionalizado
+      deliverable: Entorno de control de gobernanza gestionado y medido
+      recommendations:
+      - Definir métricas de desempeño medibles alineadas con los objetivos de 
+        gobernanza.
+      - Implementar mecanismos estructurados de monitoreo o paneles de control.
+      - Establecer ciclos formales de validación que incluyan revisiones 
+        periódicas.
+      - Mantener documentación trazable de resultados de desempeño.
+      - Definir vías de escalamiento para desviaciones no resueltas.
   MD-09:
     title: Optimizar gobernanza de metadatos e institucionalizar mejores 
       prácticas
@@ -470,3 +498,16 @@ action_catalog:
       notes:
       - Usar mapeo de evolución de capacidades DCAM para guiar avance de madurez
         a largo plazo.
+    - number: 6
+      name: Optimización estructural y refuerzo adaptativo
+      prerequisite: Requiere mecanismo de gobernanza gestionado y medido
+      deliverable: Proceso de gobernanza optimizado que demuestra automatización
+        y mejora adaptativa
+      recommendations:
+      - Introducir elementos de automatización que apoyen la aplicación y el 
+        monitoreo.
+      - Implementar ciclos de mejora continua basados en tendencias de 
+        desempeño.
+      - Realizar benchmarking contra marcos de gobernanza reconocidos.
+      - Documentar mejoras medibles en múltiples ciclos.
+      - Asegurar la adaptabilidad a cambios regulatorios y organizacionales.

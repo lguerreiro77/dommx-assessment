@@ -1,0 +1,292 @@
+# read_theory_cluster_demo.md
+
+## File
+utils/theory-cluster/theory_cluster_demo.py
+
+---
+
+## 1. Purpose
+
+Generate realistic, audit-grade, prescriptive corporate document blueprints per procedure, based on improved theory outputs.
+
+Reads:
+utils/theory-cluster/output/improved/<DOMAIN>_theory_improved_output.json
+
+Writes:
+utils/theory-cluster/output/demo/<DOMAIN>_theory_demo_output.json
+
+Optional:
+utils/theory-cluster/output/demo/<DOMAIN>_theory_demo_output_PATCHED.json
+
+This is the final simulation layer of the DOMMx Theory Stack.
+
+---
+
+## 2. Architecture Overview
+
+Improved Output JSON
+   ↓
+Explode by Procedure
+   ↓
+Dynamic Score Assignment
+   ↓
+OpenAI Blueprint Generation
+   ↓
+Deterministic Governance Injection
+   ↓
+Cache Storage
+   ↓
+Demo Output JSON
+   ↓
+(Optional) Governance Structural Patch Engine
+   ↓
+Patched Demo Output JSON
+
+---
+
+## 3. Key Directories
+
+BASE_DIR = project root  
+THEORY_DIR = utils/theory-cluster  
+
+INPUT_DIR  = utils/theory-cluster/output/improved  
+OUTPUT_DIR = utils/theory-cluster/output/demo  
+CACHE_DIR  = utils/theory-cluster/_cache  
+
+---
+
+## 4. Inputs and Outputs
+
+### Input
+
+utils/theory-cluster/output/improved/<DOMAIN>_theory_improved_output.json
+
+Contains:
+- Domain
+- Score
+- Action_Code
+- Action_Title
+- Context
+- Evaluation
+- Details
+- Procedures list
+
+---
+
+### Output
+
+utils/theory-cluster/output/demo/<DOMAIN>_theory_demo_output.json
+
+Structure:
+
+{
+  "items": [
+    {
+      "domain": "...",
+      "action_code": "...",
+      "procedure": ...,
+      "demo": "Full structured document blueprint"
+    }
+  ]
+}
+
+---
+
+### Patched Output (Optional)
+
+utils/theory-cluster/output/demo/<DOMAIN>_theory_demo_output_PATCHED.json
+
+Adds deterministic governance enforcement and maturity corrections.
+
+---
+
+## 5. Core Components
+
+### 5.1 Procedure Explosion Engine
+
+Each action may contain multiple procedures.
+
+The script explodes:
+
+Action → N Procedures
+
+Each procedure becomes an independent demo generation unit.
+
+---
+
+### 5.2 Dynamic Maturity Scoring
+
+Score is dynamically derived per Domain + Action_Code.
+
+Mechanism:
+- Collect distinct Action_Codes
+- Sort numerically (DG-01 → DG-09)
+- Assign ordinal score 0..N
+
+Score affects:
+- Structural depth
+- KPI enforcement
+- Control intensity
+- Section 7 behavior
+- Governance layers injection
+
+---
+
+### 5.3 Prompt Engine
+
+Produces deterministic enterprise blueprint structure including:
+
+- Fixed macro-structure (Sections 1–9 mandatory)
+- Maturity behavior enforcement
+- Governance terminology standardization
+- Strict prohibitions
+- Structured bullet governance processes
+- Mandatory structural compliance
+
+Maturity logic:
+Score 0–5 strictly enforces governance intensity.
+
+---
+
+### 5.4 Deterministic Governance Injection
+
+After AI response:
+
+If score >= 3 → governance_layer_score_3() injected  
+If score >= 4 → governance_layer_score_4() injected  
+If score == 5 → governance_layer_score_5() injected  
+
+This guarantees industrial differentiation between levels.
+
+---
+
+## 6. Governance Structural Patch Engine
+
+Optional mode:
+--patch
+
+Applies deterministic post-processing:
+
+1. Fix duplicated governance terms
+2. Rebuild Section 7 entirely based on maturity
+3. Enforce maturity language discipline
+4. Remove forbidden placeholders
+5. Normalize spacing
+
+Section 7 is rebuilt deterministically:
+
+Score 0–1 → Foundational  
+Score 2 → Defined  
+Score 3 → Managed  
+Score 4 → Controlled  
+Score 5 → Optimized + 7.4 mandatory  
+
+This ensures structural coherence even if model output deviates.
+
+---
+
+## 7. Cache Strategy
+
+Cache file:
+utils/theory-cluster/_cache/<DOMAIN>_theory_demo_cache.json
+
+Fingerprint includes:
+- Domain
+- Action_Code
+- Procedure
+- Procedure_Title
+- Procedure_Text
+- Score
+
+If unchanged → generation skipped.
+
+Prevents unnecessary token spend.
+
+---
+
+## 8. Performance Controls
+
+DEFAULT_MODEL = gpt-4o-mini  
+DEFAULT_MAX_WORKERS = 6  
+DEFAULT_BATCH_SIZE = 15  
+
+Parallelization:
+ThreadPoolExecutor  
+
+Batch-based persistence:
+Cache saved after each batch.
+
+---
+
+## 9. Progress Tracking
+
+Includes:
+
+- Real-time visual progress bar
+- Percentage
+- Elapsed time
+- ETA estimation
+- Batch tracking
+- Error logging per procedure
+
+Ensures operational transparency during execution.
+
+---
+
+## 10. CLI Parameters
+
+--mode all | domain  
+--domain DG  
+--patch  
+--model gpt-4o-mini  
+--max-workers  
+--batch-size  
+--clear-cache  
+
+---
+
+## 11. Execution Examples
+
+Generate one domain:
+python theory_cluster_demo.py --mode domain --domain DG
+
+Generate all domains:
+python theory_cluster_demo.py --mode all
+
+Force regeneration:
+python theory_cluster_demo.py --mode domain --domain DG --clear-cache
+
+Apply deterministic patch:
+python theory_cluster_demo.py --mode domain --domain DG --patch
+
+---
+
+## 12. Position in DOMMx Pipeline
+
+YAML + PDFs
+   ↓
+theory_cluster.py
+   ↓
+Cluster Output JSON
+   ↓
+theory_cluster_improve.py
+   ↓
+Improved Output JSON
+   ↓
+theory_cluster_demo.py
+   ↓
+Enterprise Blueprint Simulation
+
+---
+
+## 13. Design Principles
+
+- Deterministic structure enforcement
+- Maturity-driven governance rigor
+- Terminology standardization
+- Cost control via fingerprint cache
+- Parallelized execution
+- Post-generation structural hardening
+- Industrial-grade audit documentation output
+
+This script represents the final governance simulation layer of the DOMMx Theory Engine.

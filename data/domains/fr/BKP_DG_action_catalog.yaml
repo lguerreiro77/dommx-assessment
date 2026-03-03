@@ -1,0 +1,639 @@
+domain:
+  id: 1
+  name: Gouvernance des données (DG)
+action_catalog:
+  DG-01:
+    title: Définir les principes fondamentaux de gouvernance et le périmètre
+    procedures:
+    - number: 1
+      name: Définir les principes et le périmètre de gouvernance
+      prerequisite: Nécessite l'identification des thèmes de gouvernance
+      deliverable: Document de périmètre de gouvernance
+      recommendations:
+      - Utilisez les directives DAMA pour définir les principes de gouvernance 
+        et les domaines de décision comme décrit dans DMBOK2 (Chapitre 3, p. 
+        52–54).
+      - Distinguez la portée au niveau entreprise et au niveau domaine en 
+        suivant la segmentation structurelle de DAMA (Chapitre 3.1, p. 49).
+      - S'assurer que les limites du périmètre reflètent le modèle DAMA des 
+        responsabilités de gouvernance basé sur l'autorité des rôles et les 
+        types de décision (Chapitre 3.2, p. 55–57).
+      - Confirmer que l'alignement du stewardship suit les directives DAMA pour 
+        l'attribution de responsabilités lors de la définition de la portée 
+        (Chapitre 4, p. 86).
+      notes:
+      - Utilisez le cadrage des capacités DCAM pour garantir que le périmètre 
+        défini soutient les capacités requises de gestion des données.
+      - Incorporez les domaines de processus critiques CMMI pour prioriser les 
+        domaines nécessitant une intervention précoce de gouvernance.
+    - number: 2
+      name: Rédiger la politique initiale de gouvernance des données
+      prerequisite: Nécessite un périmètre défini
+      deliverable: Projet de politique v0.1
+      recommendations:
+      - Suivre les composants de politique de gouvernance DAMA, incluant but, 
+        périmètre, autorité et escalade (Chapitre 3.5, p. 62).
+      - Assurer l'alignement avec les principes DAMA pour la responsabilité et 
+        la transparence des décisions (Chapitre 3, p. 51).
+      - Structurer la politique en utilisant les directives d'artefacts de DAMA 
+        pour assurer exhaustivité et traçabilité (Annexe Chapitre 3, p. 69–70).
+      - Incorporer les responsabilités de gestion et de propriété DAMA dans les 
+        déclarations de politique (Chapitre 4, p. 86–89).
+      notes:
+      - Utiliser les pratiques de formulation de politique CMMI pour renforcer 
+        la clarté et les contrôles vérifiables dans les premiers brouillons de 
+        politique.
+    - number: 3
+      name: Identifier les rôles préliminaires de gouvernance
+      prerequisite: Nécessite des parties prenantes cartographiées
+      deliverable: Liste initiale des rôles de gouvernance
+      recommendations:
+      - Utilisez les définitions de rôles DAMA pour propriétaire, steward, 
+        gardien et sponsor afin de classifier les responsabilités (Chapitre 3.2,
+        p. 55–57).
+      - Cartographier les responsabilités en utilisant les attentes de 
+        responsabilité DAMA pour l’autorité décisionnelle et l’escalade 
+        (Chapitre 3.4, p. 60).
+      - Valider la couverture des rôles en utilisant le modèle fonctionnel de 
+        gouvernance DAMA qui distingue les fonctions stratégiques, tactiques et 
+        opérationnelles (Figure 3-2, p.53).
+      - Confirmez que la clarté des rôles soutient les points de contrôle de 
+        stewardship détaillés par DAMA (Chapitre 4.3, p. 92).
+      notes:
+      - Utiliser les critères de préparation comportementale IDGC pour garantir 
+        que les individus assignés aux rôles disposent du soutien culturel et 
+        organisationnel nécessaire à leur réussite.
+    - number: 4
+      name: Attribuer une propriété de gestion provisoire
+      prerequisite: Nécessite des domaines de données identifiés
+      deliverable: Matrice de propriété de stewardship
+      recommendations:
+      - Attribuer la gestion selon le profil de compétence DAMA pour les 
+        gestionnaires de domaine et opérationnels (Chapitre 4, p. 86–89).
+      - Confirmer que les affectations reflètent les points de contrôle du cycle
+        de vie DAMA à travers la création, l’utilisation et la mise hors service
+        des données (Chapitre 4.3, p. 92).
+      - Validez l'alignement avec le modèle d'intégration de gouvernance 
+        transversale DAMA qui relie la gestion à la gouvernance (Chapitre 3.3, 
+        p. 58–59).
+      - Documenter les affectations en utilisant les normes d'artefact DAMA pour
+        garantir clarté et répétabilité (Chapitre 3 Annexe, p. 69).
+      notes:
+      - Utilisez les directives d'alignement des rôles DCAM pour vérifier que 
+        chaque steward provisoire peut exécuter les capacités au niveau du 
+        domaine.
+    - number: 5
+      name: Publier la communication initiale de gouvernance
+      prerequisite: Nécessite une liste de politiques et de rôles
+      deliverable: Brief d'intégration à la gouvernance
+      recommendations:
+      - Appliquez les directives de communication DAMA pour expliquer les 
+        attentes de gouvernance, la responsabilité et l'impact opérationnel 
+        (Chapitre 3.6, p. 64).
+      - Assurer la transparence en utilisant les éléments de communication 
+        recommandés par DAMA pour les principes et responsabilités de 
+        gouvernance (Chapitre 3.4, p. 60).
+      - Présenter les définitions de politique et de rôle en utilisant la 
+        structure d'artefact DAMA pour améliorer la compréhension et la 
+        cohérence (Annexe du Chapitre 3, p. 69–70).
+      - Renforcer les responsabilités de gouvernance et de propriété selon les 
+        descriptions de rôles DAMA (Chapitre 7).
+      notes:
+      - Utiliser les principes de transparence GDPR pour garantir que les 
+        parties prenantes comprennent comment la gouvernance soutient la 
+        responsabilité et l'utilisation conforme des données.
+  DG-02:
+    title: Attribuer la propriété et les responsabilités de gouvernance
+    procedures:
+    - number: 1
+      name: Consolider les exigences de la politique de gouvernance
+      prerequisite: Nécessite que DG-01 soit complet
+      deliverable: Registre des exigences
+      recommendations:
+      - Consolider les exigences en utilisant les directives DAMA pour les 
+        composants de politique, incluant but, périmètre, autorité et règles de 
+        gouvernance comme décrit dans DMBOK2 (Chapitre 3.5, p. 62).
+      - Valider que les exigences reflètent les principes DAMA pour la 
+        responsabilité et l'autorité décisionnelle décrits dans les fondamentaux
+        de gouvernance (Chapitre 3, p. 51).
+      - S'assurer que chaque exigence est alignée avec les responsabilités de 
+        gestion et de propriété définies par DAMA (Chapitre 3.2, p. 55–57).
+      - Confirmer la couverture des rôles et processus de gouvernance selon le 
+        modèle fonctionnel des activités de gouvernance DAMA (Chapitre 3.3, p. 
+        58–59).
+      notes:
+      - Utiliser les critères de capacité politique DCAM pour s'assurer que les 
+        exigences sont structurées, cohérentes et traçables à travers les 
+        domaines de gouvernance.
+    - number: 2
+      name: Produire une politique formelle de gouvernance
+      prerequisite: Nécessite des exigences validées
+      deliverable: Politique de gouvernance d'entreprise v1.0.
+      recommendations:
+      - Créer la politique formelle suivant la structure recommandée par DAMA 
+        pour les politiques de gouvernance, incluant but, autorité, rôles, 
+        escalade et attentes de conformité (Chapitre 3.5, p. 62–63).
+      - S'assurer que la politique s'aligne avec les principes DAMA pour la 
+        transparence des décisions et une responsabilité claire (Chapitre 3, p. 
+        51).
+      - Formater le document en utilisant les conventions d’artefact DAMA pour 
+        assurer que la politique est auditable et reproductible (Chapitre 3 
+        Annexe, p. 69–70).
+      - Incorporer les responsabilités de gestion issues du modèle de gestion 
+        DAMA pour garantir que la politique définit la propriété des décisions 
+        (Chapitre 4, p. 86–89).
+      notes:
+      - Utiliser les pratiques d’approbation de politique CMMI pour renforcer le
+        contrôle qualité et la discipline de version lors de la création de 
+        politiques.
+    - number: 3
+      name: Définissez les normes et règles de gouvernance
+      prerequisite: Nécessite une politique v1.0
+      deliverable: Manuel des normes de gouvernance des données
+      recommendations:
+      - Définir les normes en utilisant les directives DAMA pour les types de 
+        règles de gouvernance, incluant règles de données, règles du cycle de 
+        vie et règles de gestion (Chapitre 3.5, p. 62–63).
+      - Confirmez que les règles reflètent les attentes sémantiques, métadonnées
+        et qualité de DAMA documentées dans DMBOK2 (Chapitres 9, 10 et 11).
+      - S'assurer que chaque norme est liée à un rôle de gouvernance 
+        conformément aux descriptions de responsabilités DAMA (Chapitre 3.2, p. 
+        55–57).
+      - Valider l'exhaustivité des règles en utilisant les recommandations DAMA 
+        pour les métadonnées et les dimensions de qualité (Chapitre 10, p. 
+        282–284).
+      notes:
+      - Appliquez les principes de nécessité et de proportionnalité GDPR lors de
+        la définition des règles affectant les droits d'accès, l'utilisation ou 
+        la rétention des données personnelles.
+    - number: 4
+      name: Attribuer une propriété et un stewardship définitifs
+      prerequisite: Nécessite des descriptions de rôle mises à jour.
+      deliverable: Carte de propriété et de gestion
+      recommendations:
+      - Attribuez propriétaires et stewards en utilisant les compétences 
+        formelles et les modèles de responsabilité DAMA pour les rôles de 
+        gouvernance (Chapitre 4, p. 86–89).
+      - Assurer que les affectations de propriété reflètent la structure 
+        d’escalade et d’autorité décisionnelle DAMA (Chapitre 3.4, p. 60).
+      - Valider la couverture de stewardship à travers les domaines de données 
+        suivant l'alignement fonctionnel de gouvernance DAMA (Figure 3-2, p. 
+        53).
+      - Confirmer l’alignement des responsabilités avec les points de contrôle 
+        du cycle de vie décrits par DAMA (Chapitre 4.3, p. 92).
+      notes:
+      - Utiliser les indicateurs de préparation IDGC pour confirmer que les 
+        propriétaires et gestionnaires ont l'aptitude comportementale et le 
+        soutien organisationnel pour exécuter efficacement leurs 
+        responsabilités.
+    - number: 5
+      name: Publier les rôles et responsabilités de gouvernance
+      prerequisite: Nécessite l'approbation et la cartographie des rôles
+      deliverable: Charte des rôles de gouvernance
+      recommendations:
+      - Publiez les rôles en suivant les directives DAMA sur la communication de
+        gouvernance et l'engagement des parties prenantes (Chapitre 3.6, p. 64).
+      - Clarifiez les responsabilités en utilisant la structure de 
+        responsabilité DAMA pour éviter toute ambiguïté dans l'autorité 
+        décisionnelle (Chapitre 3, p.51).
+      - Documenter les responsabilités et les cartographies selon le format 
+        d'artefact DAMA pour les matériaux de gouvernance (Annexe Chapitre 3, p.
+        69).
+      - S'assurer que les devoirs de stewardship et de propriété sont clairement
+        communiqués conformément aux principes de stewardship DAMA (Chapitre 4, 
+        p. 86–87).
+      notes:
+      - Appliquer les pratiques d’alignement organisationnel DCAM pour assurer 
+        que les rôles sont adoptés de manière cohérente à travers les domaines 
+        métier et techniques.
+  DG-03:
+    title: Approuver les règles, rôles et structures de gouvernance
+    procedures:
+    - number: 1
+      name: Soumettre la politique de gouvernance pour revue du conseil
+      prerequisite: Nécessite la politique de gouvernance v1.0
+      deliverable: Dossier de revue
+      recommendations:
+      - Soumettre la politique en utilisant les directives DAMA pour la 
+        supervision formelle de la gouvernance et les structures d'approbation 
+        définies dans DMBOK2 (Chapitre 3.4, p. 60).
+      - Assurer que la soumission inclut une autorité de rôle apparente et des 
+        droits de décision suivant le modèle de responsabilité DAMA (Chapitre 3,
+        p. 51).
+      - Joindre la documentation de stewardship et de propriété alignée avec les
+        définitions de rôles de gouvernance DAMA (Chapitre 3.2, p. 55–57).
+      - Confirmer que les supports reflètent les fonctions de gouvernance et les
+        voies d'approbation décrites par DAMA (Chapitre 3.3, p. 58–59).
+      notes:
+      - Utiliser les critères d'évaluation CMMI pour garantir que le dossier de 
+        revue répond aux normes objectives d'approbation.
+    - number: 2
+      name: Approuvez la charte du conseil de gouvernance
+      prerequisite: Nécessite une révision de la charte
+      deliverable: Charte du conseil de gouvernance v1.0
+      recommendations:
+      - Approuver la charte selon les directives DAMA pour l'établissement des 
+        organes décisionnels de gouvernance et des structures d'autorité 
+        formelles (Chapitre 3.4, p. 60–61).
+      - Assurez-vous que la charte définit les droits de décision conformément 
+        aux descriptions de rôle DAMA pour la supervision de la gouvernance 
+        (Chapitre 3.2.2, p. 56).
+      - Valider les limites d'autorité en utilisant le modèle fonctionnel de 
+        gouvernance DAMA, qui clarifie les responsabilités stratégiques et 
+        opérationnelles (Figure 3-2, p. 53).
+      - Confirmer les règles d'escalade et l'alignement de la gestion selon le 
+        modèle de gestion DAMA (Chapitre 4, p. 86–89).
+      notes:
+      - Appliquer les principes d’autorité organisationnelle DCAM pour assurer 
+        que la structure du conseil soutient la gouvernance à l’échelle de 
+        l’entreprise.
+    - number: 3
+      name: Approuver les normes et règles de gouvernance
+      prerequisite: Nécessite un manuel des normes
+      deliverable: Standards approuvés de gouvernance des données
+      recommendations:
+      - Approuver les normes en utilisant les directives DAMA sur les règles de 
+        gouvernance, incluant les règles de nommage, de qualité des données et 
+        de cycle de vie (Chapitre 3.5, p. 62–63).
+      - Confirmez que les règles intègrent les attentes DAMA pour le stewardship
+        des métadonnées et la cohérence sémantique (Chapitre 10, p. 282–284).
+      - Valider l'alignement avec les principes de qualité DAMA, y compris la 
+        précision, l'exhaustivité et l'intégrité (Chapitre 11, p. 308–311).
+      - Assurez que l'approbation du stewardship et de la propriété suit la 
+        chaîne de responsabilité de gouvernance DAMA (Chapitre 4, p. 86–87).
+      notes:
+      - Appliquer les principes GDPR de nécessité et de proportionnalité avant 
+        d'approuver des règles affectant le traitement des données personnelles.
+    - number: 4
+      name: Approuvez les définitions des rôles de gouvernance
+      prerequisite: Nécessite une liste de rôles et responsabilités
+      deliverable: Matrice de rôles de gouvernance approuvée
+      recommendations:
+      - Valider les définitions par rapport aux descriptions de compétences DAMA
+        pour les rôles de gouvernance et de stewardship (Chapitre 3.2, p. 
+        55–57).
+      - Confirmer l’inclusion de l’autorité décisionnelle et des exigences 
+        d’escalade définies par DAMA (Chapitre 3.4, p. 60).
+      - Assurer que la matrice des rôles reflète la couverture inter-domaines 
+        selon l'architecture fonctionnelle de gouvernance DAMA (Figure 3-2, p. 
+        53).
+      - Valider la couverture du cycle de vie en utilisant les points de 
+        contrôle de stewardship DAMA décrits tout au long du cycle de vie des 
+        données (Chapitre 4.3, p. 92).
+      notes:
+      - Utiliser les pratiques de pertinence des rôles comportementaux IDGC pour
+        garantir que les rôles sont réalisables dans le contexte 
+        organisationnel.
+    - number: 5
+      name: Approuver le jeu de documentation de gouvernance
+      prerequisite: Nécessite des artefacts consolidés
+      deliverable: Pack de documentation de gouvernance v1.0
+      recommendations:
+      - Validez la documentation en utilisant la checklist de complétude des 
+        artefacts DAMA pour confirmer l'exactitude de la structure et 
+        l'intégrité du contenu (Annexe du Chapitre 3, p. 69–70).
+      - Assurez-vous que la politique, les normes et les descriptions de rôles 
+        sont alignées avec les composants de gouvernance DAMA pour la 
+        transparence et la responsabilité (Chapitre 3.5, p. 62–63).
+      - Vérifiez l'alignement de la documentation avec les fonctions de 
+        gouvernance décrites par DAMA, incluant la coordination, le stewardship 
+        et la supervision de la qualité (Chapitre 3.3, p. 58–59).
+      - Confirmez que la documentation liée aux métadonnées et à la qualité suit
+        les directives DAMA dans les Chapitres 10 et 11.
+      notes:
+      - Appliquer les pratiques de vérification CMMI pour assurer la préparation
+        de la documentation à l'audit et à l'évaluation de maturité.
+  DG-04:
+    title: Intégrer la gouvernance dans les routines organisationnelles et de 
+      domaine
+    procedures:
+    - number: 1
+      name: Mettre en œuvre des normes de gouvernance à travers les domaines
+      prerequisite: Nécessite des normes approuvées
+      deliverable: Journal de mise en œuvre des normes de gouvernance
+      recommendations:
+      - Mettre en œuvre des normes suivant les directives DAMA sur la manière 
+        dont les règles de gouvernance doivent être incorporées dans les 
+        processus opérationnels et analytiques comme décrit dans DMBOK2 
+        (Chapitre 3.5, p. 62).
+      - S'assurer que l'intégration est alignée avec la description DAMA des 
+        activités de coordination et de gouvernance inter-domaines (Chapitre 
+        3.3, p. 58–59).
+      - Valider que chaque domaine adopte les normes de manière cohérente selon 
+        les responsabilités de gestion et les attentes de supervision DAMA 
+        (Chapitre 4, p. 86–89).
+      - Confirmer que la mise en œuvre reflète les points de contrôle du cycle 
+        de vie DAMA pour la définition, l'utilisation et la mise hors service 
+        contrôlées des données (Chapitre 4.3, p. 92).
+      notes:
+      - Appliquer l'alignement des capacités de domaine DCAM pour garantir que 
+        les normes sont intégrées uniformément et restent opérationnelles.
+    - number: 2
+      name: Intégrer les règles de gouvernance dans les flux de travail 
+        opérationnels
+      prerequisite: Nécessite la cartographie des flux de travail opérationnels
+      deliverable: Enregistrement de l'intégration des workflows de gouvernance
+      recommendations:
+      - Intégrez les règles en utilisant les directives DAMA pour incorporer les
+        contrôles de gouvernance dans les processus de données, y compris les 
+        étapes de validation, d'approbation et de traçabilité (Chapitre 3.3, p. 
+        58).
+      - S'assurer que les étapes du flux de travail reflètent les attentes DAMA 
+        en matière d'autorité, d'interaction des responsables et d'escalade 
+        (Chapitre 3.4, p. 60).
+      - Validez l'adhérence aux responsabilités de stewardship DAMA, qui 
+        définissent qui doit intervenir à chaque étape du workflow (Chapitre 4, 
+        p. 86–87).
+      - Confirmer que l'intégration des workflows couvre les composants 
+        métadonnées, traçabilité et qualité décrits par DAMA (Chapitres 9 à 1).
+      notes:
+      - Utiliser la logique d'institutionnalisation CMMI pour renforcer 
+        l'adoption des règles de gouvernance en tant que routines stables et 
+        répétables.
+    - number: 3
+      name: Intégrer les responsabilités de gouvernance dans les descriptions de
+        rôles
+      prerequisite: Nécessite des rôles de gouvernance approuvés
+      deliverable: Descriptions de rôles mises à jour
+      recommendations:
+      - Mettre à jour les descriptions de rôle selon le modèle de rôle DAMA, qui
+        définit les responsabilités des propriétaires, gestionnaires et 
+        custodians (Chapitre 3.2, p. 55–57).
+      - Assurer que les descriptions incluent les limites d'autorité et les 
+        types de décisions de gouvernance définis par DAMA (Chapitre 3, p. 51).
+      - Alignez les devoirs avec les points de contrôle du cycle de vie de 
+        stewardship DAMA, incluant la création, l'approbation, la publication et
+        la mise hors service (Chapitre 4.3, p. 92).
+      - Valider que les responsabilités soutiennent les principes de 
+        communication de gouvernance et les attentes des parties prenantes 
+        décrits par DAMA (Chapitre 3.6, p. 64).
+      notes:
+      - Utiliser les directives d'alignement comportemental IDGC pour promouvoir
+        l'adhésion et l'acceptation culturelle des responsabilités de 
+        gouvernance.
+    - number: 4
+      name: Intégrer les points de contrôle de gouvernance dans le cycle de vie 
+        des données
+      prerequisite: Nécessite une cartographie du cycle de vie des données
+      deliverable: Matrice des points de contrôle du cycle de vie de la 
+        gouvernance
+      recommendations:
+      - Intégrer les points de contrôle suivant la structure du cycle de vie 
+        DAMA, qui définit les points de contrôle qualité, métadonnées et 
+        gouvernance (Chapitre 4.3, p. 92).
+      - Assurez l'alignement avec les définitions DAMA pour la création 
+        contrôlée, la validation, l'utilisation et la mise hors service 
+        présentées dans les chapitres de gestion des données (Chapitres 9, 10, 
+        11).
+      - Confirmer que les propriétaires des points de contrôle sont alignés avec
+        l'autorité de gouvernance et les directives d'escalade DAMA (Chapitre 
+        3.4, p. 60).
+      - Valider que les points de contrôle du cycle de vie couvrent les 
+        responsabilités stratégiques, tactiques et opérationnelles décrites dans
+        l'architecture fonctionnelle de gouvernance DAMA (Figure 3-2, p. 53).
+      notes:
+      - Utilisez les critères de capacité du cycle de vie DCAM pour renforcer la
+        couverture de la gouvernance du cycle de vie et assurer que les points 
+        de contrôle peuvent être efficacement surveillés.
+    - number: 5
+      name: Appliquer les contrôles de gouvernance aux opérations de domaine
+      prerequisite: Nécessite des structures définies de gestion et de propriété
+      deliverable: Journal de contrôle de gouvernance de domaine
+      recommendations:
+      - Appliquer les contrôles en utilisant les définitions DAMA pour la 
+        supervision de la gouvernance, incluant la surveillance, l'approbation 
+        et les actions correctives (Chapitre 3.3, p. 58–59).
+      - Assurer que les contrôles restent conformes aux principes DAMA pour la 
+        transparence des décisions et l’application de la qualité (Chapitre 3.4,
+        p. 60).
+      - Confirmez que les gestionnaires de domaine appliquent les contrôles 
+        selon les responsabilités DAMA pour la définition des données, la 
+        supervision des accès et la gestion du cycle de vie (Chapitre 4, p. 
+        86–89).
+      - Valider que l'exécution des contrôles intègre les règles de qualité et 
+        de métadonnées DAMA décrites dans les chapitres pertinents de gestion 
+        des données (Chapitres 9, 10, 11).
+      notes:
+      - Appliquer les pratiques de surveillance CMMI pour garantir que les 
+        contrôles de gouvernance sont continuellement évalués et améliorés.
+  DG-06:
+    title: Surveiller la performance de la gouvernance et faire respecter la 
+      conformité
+    procedures:
+    - number: 1
+      name: Surveiller la conformité à la politique de gouvernance
+      prerequisite: Nécessite une politique approuvée v1.0
+      deliverable: Rapport de surveillance de conformité
+      recommendations:
+      - Surveiller la conformité suivant les directives DAMA pour les activités 
+        de supervision de la gouvernance, incluant la revue régulière de 
+        l'adoption des politiques et du comportement des parties prenantes comme
+        décrit dans DMBOK2 (Chapitre 3.3, p. 58–59).
+      - Valider la conformité aux éléments de politique basés sur les attentes 
+        DAMA en matière de transparence et de responsabilité dans les opérations
+        de gouvernance (Chapitre 3.4, p. 60).
+      - Confirmer que la surveillance couvre les responsabilités de stewardship 
+        et les devoirs de propriété tels que définis par DAMA (Chapitre 4, p. 
+        86–89).
+      - Assurer que l’évaluation de la conformité politique inclut les 
+        dimensions qualité et métadonnées des chapitres DAMA sur la qualité des 
+        données et les métadonnées (Chapitres 10 et 11).
+      notes:
+      - Utilisez les pratiques de vérification de conformité CMMI pour renforcer
+        la discipline de surveillance à travers les processus de gouvernance.
+    - number: 2
+      name: Revue de la conformité aux normes de gouvernance
+      prerequisite: Nécessite des standards implémentés
+      deliverable: Évaluation de l'adhérence aux standards
+      recommendations:
+      - Revoir la conformité en utilisant les directives DAMA pour la validation
+        des règles et normes de gouvernance, y compris l’alignement avec la 
+        terminologie d’entreprise, les critères de qualité et les contraintes du
+        cycle de vie (Chapitre 3.5, p. 62–63).
+      - Confirmer que l'adhérence couvre les normes inter-domaines telles que 
+        décrites par le modèle d'activité de gouvernance DAMA (Chapitre 3.3, p. 
+        58–59).
+      - Valider que la revue inclut des vérifications de l'exécution de la 
+        gouvernance et de la performance des rôles conformément aux 
+        responsabilités DAMA (Chapitre 3.2, p. 55–57).
+      - Confirmer que les normes sont appliquées de manière cohérente à chaque 
+        étape du cycle de vie en utilisant les points de contrôle DAMA (Chapitre
+        4.3, p. 92).
+      notes:
+      - Utiliser les directives d'assurance des capacités DCAM pour évaluer si 
+        les normes renforcent les capacités de gestion des données d'entreprise.
+    - number: 3
+      name: Évaluez la performance du stewardship et de la propriété
+      prerequisite: Nécessite des affectations complètes de gestion et de 
+        propriété
+      deliverable: Rapport d'évaluation de la performance du stewardship et de 
+        la propriété
+      recommendations:
+      - Évaluer la performance basée sur les compétences de gestion DAMA, y 
+        compris les activités liées à la définition, l'approbation et la 
+        supervision des actifs de données (Chapitre 4, p. 86–89).
+      - Confirmer l'alignement avec la structure d'autorité décisionnelle de 
+        gouvernance DAMA, qui définit quand et comment les rôles doivent 
+        intervenir (Chapitre 3.4, p. 60).
+      - Valider que les évaluations reflètent les attentes DAMA pour les 
+        responsabilités du cycle de vie, y compris la création, l'utilisation et
+        la mise hors service (Chapitre 4.3, p. 92).
+      - S'assurer que les indicateurs de performance couvrent la clarté des 
+        responsabilités, la rapidité des décisions et l'efficacité de la 
+        supervision comme décrit par les fonctions de gouvernance DAMA (Chapitre
+        3.3, p. 58–59).
+      notes:
+      - Utiliser les indicateurs comportementaux IDGC pour évaluer la maturité 
+        de la gestion et l'acceptation organisationnelle.
+    - number: 4
+      name: Suivez la résolution des problèmes de gouvernance
+      prerequisite: Nécessite un mécanisme de signalement des incidents
+      deliverable: Registre de résolution des problèmes de gouvernance
+      recommendations:
+      - Suivez les problèmes en suivant les directives DAMA sur les flux de 
+        travail de supervision de gouvernance et les chemins d'escalade des 
+        problèmes (Chapitre 3.4, p. 60).
+      - S'assurer que les problèmes sont catégorisés selon les types de règles 
+        DAMA, y compris les problèmes de définition des données, les violations 
+        de qualité et les écarts de politique (Chapitre 3.5, p. 62–63).
+      - Valider que les gestionnaires et propriétaires agissent selon les points
+        de contrôle du cycle de vie DAMA lors de la résolution des problèmes 
+        (Chapitre 4.3, p. 92).
+      - Confirmer que les processus de résolution des problèmes incluent des 
+        contrôles de métadonnées et de qualité basés sur les directives DAMA 
+        (Chapitres 10 et 11).
+      notes:
+      - Utiliser les pratiques d'action corrective CMMI pour structurer et 
+        rendre répétable la résolution des problèmes.
+    - number: 5
+      name: Rapport sur la gouvernance des indicateurs de performance.
+      prerequisite: Nécessite des KPI définis.
+      deliverable: Rapport de performance de gouvernance
+      recommendations:
+      - Rapporter les métriques alignées avec les directives DAMA pour la mesure
+        de la gouvernance, incluant les indicateurs liés à la conformité 
+        politique, l'activité de gestion et la coordination des domaines 
+        (Chapitre 3.6, p. 64).
+      - Assurer que les indicateurs de performance reflètent les métriques de 
+        qualité et de cycle de vie DAMA à travers les domaines de gestion des 
+        données (Chapitres 10 et 11).
+      - Valider que le reporting soutient la prise de décision en gouvernance et
+        la transparence selon les principes de responsabilité de DAMA (Chapitre 
+        3, p. 51).
+      - Confirmer que les métriques mettent en évidence les tendances d’adoption
+        des domaines et la maturité comportementale alignée avec les pratiques 
+        de gestion DAMA (Chapitre 4, p. 86–87).
+      notes:
+      - Utilisez les indicateurs de capacité de gestion des données DCAM pour 
+        renforcer l'interprétation de la performance et le benchmarking.
+  DG-09:
+    title: Optimisez le modèle de gouvernance et institutionnalisez les 
+      meilleures pratiques.
+    procedures:
+    - number: 1
+      name: Améliorer les normes de gouvernance sur la base des retours 
+        d'évaluation
+      prerequisite: Nécessite des analyses de performance
+      deliverable: Normes de gouvernance mises à jour v2.0
+      recommendations:
+      - Améliorer les normes en suivant les directives DAMA pour l'amélioration 
+        itérative des règles de gouvernance et des structures de règles telles 
+        que présentées dans DMBOK2 (Chapitre 3.5, p. 62–63).
+      - S'assurer que les mises à jour reflètent les principes DAMA 
+        d'imputabilité, de transparence et de cohérence dans la prise de 
+        décision en gouvernance (Chapitre 3, p.51).
+      - Valider que les améliorations répondent aux lacunes identifiées dans les
+        responsabilités de gestion et de propriété décrites par DAMA (Chapitre 
+        4, p. 86–89).
+      - Confirmer que les normes révisées intègrent les points de contrôle du 
+        cycle de vie et les attentes en matière de métadonnées décrites dans les
+        chapitres de gestion des données DAMA (Chapitres 9, 10 et 11).
+      notes:
+      - Appliquer les pratiques d'amélioration continue CMMI pour assurer 
+        l'évolution des normes basée sur des preuves mesurables et la maturité 
+        organisationnelle.
+    - number: 2
+      name: Automatisez les contrôles de gouvernance lorsque cela est applicable
+      prerequisite: Nécessite des processus de gouvernance stables
+      deliverable: Enregistrement automatisé des contrôles de gouvernance
+      recommendations:
+      - Automatiser les contrôles en utilisant les directives DAMA pour intégrer
+        les décisions et contrôles de gouvernance dans des routines répétables 
+        de gestion des données (Chapitre 3.3, p. 58–59).
+      - S'assurer que les contrôles automatisés renforcent les règles DAMA 
+        relatives à la qualité, la traçabilité et la cohérence des métadonnées 
+        (Chapitres 10 et 11).
+      - Validez l'alignement avec les obligations de stewardship DAMA, qui 
+        requièrent une supervision humaine des contrôles automatisés lorsque 
+        nécessaire (Chapitre 4, p. 86–87).
+      - Confirmer que l’automatisation soutient les exigences de transparence 
+        DAMA en documentant les déclencheurs de contrôle, résultats et 
+        exceptions (Chapitre 3.4, p. 60).
+      notes:
+      - Utilisez les critères d'automatisation DCAM pour évaluer la faisabilité 
+        et la préparation des capacités avant de mettre en œuvre des contrôles 
+        de gouvernance automatisés.
+    - number: 3
+      name: Améliorer la formation à la gouvernance et le développement des 
+        compétences
+      prerequisite: Nécessite un cycle d'évaluation de performance complet
+      deliverable: Programme de formation à la gouvernance mis à jour
+      recommendations:
+      - Développez la formation selon les directives DAMA sur l'éducation à la 
+        gouvernance, la communication et le développement de la gestion 
+        (Chapitre 3.6, p. 64).
+      - Assurer que le curriculum reflète les définitions de rôle et attentes de
+        responsabilité DAMA pour les propriétaires et gestionnaires (Chapitre 
+        3.2, p. 55–57).
+      - Validez l'inclusion des activités du cycle de vie DAMA pour renforcer 
+        les responsabilités de gouvernance à travers la création, l'utilisation 
+        et la mise hors service des données (Chapitre 4.3, p. 92).
+      - Confirmer que la formation soutient l’adoption des artefacts et normes 
+        de gouvernance décrits dans DAMA (Chapitre 3 Annexe, p. 69–70).
+      notes:
+      - Appliquer les pratiques de maturité comportementale IDGC pour renforcer 
+        la confiance dans les rôles et l'alignement culturel lors des 
+        formations.
+    - number: 4
+      name: Institutionnalisez les pratiques de gouvernance à travers les 
+        domaines
+      prerequisite: Nécessite des routines de gouvernance stables
+      deliverable: Enregistrement de l'institutionnalisation de la gouvernance
+      recommendations:
+      - Institutionnaliser les pratiques en utilisant les directives DAMA pour 
+        intégrer la gouvernance dans la culture organisationnelle, les flux 
+        décisionnels et les structures de responsabilité (Chapitre 3.6, p. 64).
+      - Garantir que l'adoption inter-domaines s'aligne avec l'architecture de 
+        gouvernance fonctionnelle de DAMA qui intègre les domaines stratégiques,
+        tactiques et opérationnels (Figure 3-2, p. 53).
+      - Valider que les activités de gouvernance restent cohérentes avec les 
+        responsabilités de gestion et les modèles de responsabilité définis par 
+        DAMA (Chapitre 3.2, p. 55–57).
+      - Confirmer que l'institutionnalisation couvre les métadonnées, la qualité
+        et les contrôles du cycle de vie comme décrit dans les chapitres DAMA 
+        sur les fonctions de gestion des données (Chapitres 9, 10 et 11).
+      notes:
+      - Appliquer les indicateurs d'institutionnalisation CMMI pour renforcer la
+        cohérence et la répétabilité à long terme des comportements de 
+        gouvernance.
+    - number: 5
+      name: Optimiser continuellement le modèle opérationnel de gouvernance
+      prerequisite: Nécessite un cycle de revue de modèle
+      deliverable: Modèle opérationnel de gouvernance v3.0
+      recommendations:
+      - Optimiser le modèle opérationnel en utilisant les directives DAMA pour 
+        affiner les structures de gouvernance, les autorités décisionnelles et 
+        les responsabilités des rôles (Chapitre 3.4, p. 60–61).
+      - S'assurer que les améliorations reflètent les principes DAMA de 
+        transparence, clarté et responsabilité dans l'exécution de la 
+        gouvernance (Chapitre 3, p. 51).
+      - Valider l'alignement avec les cadres de gestion et de propriété DAMA 
+        pour assurer une participation équilibrée à la gouvernance (Chapitre 4, 
+        p. 86–89).
+      - Confirmez que le modèle opérationnel mis à jour renforce les attentes en
+        matière de métadonnées, de qualité et de sémantique trouvées dans les 
+        chapitres de gestion des données DAMA (Chapitres 9, 10 et 11).
+      notes:
+      - Utiliser les indicateurs de maturité des capacités DCAM pour aligner le 
+        modèle opérationnel avec l'évolution au niveau entreprise de la gestion 
+        des données.

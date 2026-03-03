@@ -181,37 +181,38 @@ def render_assessment():
         if st.session_state.get("final_screen"):
 
             st.success("Assessment completed successfully.")
-
             st.markdown("### Final Report")
 
             col1, col2 = st.columns(2)
 
-            # BOTÃO DOWNLOAD WORD (AI REPORT)
+            current_locale = st.session_state.get("locale") or "us"
+
+            report_service = AIReportService(
+                base_dir=BASE_DIR,
+                repo=repo
+            )
+
+            # Gera caminhos (usa cache interno, não regenera se já existir)
+            docx_path = report_service.generate_report_docx(
+                project_id=st.session_state.active_project,
+                user_id=st.session_state.get("user_id"),
+                is_admin=st.session_state.get("is_admin", False),
+                language=current_locale,
+                force_regen=False
+            )            
+
+            # BOTÕES DOWNLOAD
             with col1:
-                if st.button("📄 Download Final Report", use_container_width=True):
-                    
-                    report_service = AIReportService(
-                        base_dir=BASE_DIR,
-                        repo=repo,
-                        ai_call=None  # Coloque wrapper OpenAI aqui se quiser IA ativa
-                    )
 
-                    docx_path = report_service.generate_report_docx(
-                        project_id=st.session_state.project_id,
-                        user_id=st.session_state.get("user_id"),
-                        is_admin=st.session_state.get("is_admin", False),
-                        language="pt",
-                        force_regen=False
+                with open(docx_path, "rb") as f:
+                    st.download_button(
+                        label="📄 Download Word Report",
+                        data=f,
+                        file_name=os.path.basename(docx_path),
+                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        use_container_width=True
                     )
-
-                    with open(docx_path, "rb") as f:
-                        st.download_button(
-                            label="⬇ Download Word Report",
-                            data=f,
-                            file_name=os.path.basename(docx_path),
-                            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                            use_container_width=True
-                        )
+             
 
             # BOTÃO EXIT
             with col2:

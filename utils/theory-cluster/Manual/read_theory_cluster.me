@@ -1,0 +1,221 @@
+# read_theory_cluster.md
+
+## File
+utils/theory-cluster/theory_cluster.py
+
+---
+
+## 1. Purpose
+
+Generate structured theory outputs per Data Governance domain by:
+
+- Reading domain YAML definitions (decision_tree + action_catalog)
+- Extracting authoritative PDF excerpts
+- Grounding content using framework references
+- Generating structured prescriptive outputs via OpenAI
+- Writing per-domain cluster outputs with caching and cost control
+
+This script is the foundational generation layer of the DOMMx Theory Stack.
+
+---
+
+## 2. Architecture Overview
+
+High-level flow:
+
+flow.yaml
+   ↓
+Domain YAMLs (decision_tree + action_catalog)
+   ↓
+Flatten into structured rows
+   ↓
+Extract topics and PDF excerpts (cached)
+   ↓
+OpenAI generation (parallel, batched)
+   ↓
+Per-domain cluster JSON output
+
+---
+
+## 3. Key Directories
+
+### Base Structure
+
+BASE_DIR = project root  
+DATA_DIR = data/  
+GENERAL_DIR = data/general  
+DOMAINS_DIR = data/domains  
+THEORY_DIR = utils/theory-cluster  
+
+---
+
+### Inputs
+
+| Component | Path |
+|-----------|------|
+| flow.yaml | data/general/flow.yaml |
+| Domain YAML | data/domains/<language>/ |
+| PDF references | utils/theory-cluster/PDFs/ |
+
+---
+
+### Outputs
+
+| Output | Path |
+|--------|------|
+| Cluster output | utils/theory-cluster/output/cluster/<DOMAIN>_theory_cluster_output.json |
+| Domain cache | utils/theory-cluster/_cache/<DOMAIN>_theory_cluster_cache.json |
+| PDF cache | utils/theory-cluster/_cache/pdf_pages_cache.json |
+| Topic excerpts cache | utils/theory-cluster/_cache/topic_excerpts_cache.json |
+
+---
+
+## 4. Runtime Defaults
+
+DEFAULT_LANGUAGE = us  
+DEFAULT_MODEL_DT = gpt-4o-mini  
+DEFAULT_MODEL_AC = gpt-4o-mini  
+DEFAULT_MAX_WORKERS = 6  
+DEFAULT_BATCH_SIZE = 10  
+
+---
+
+## 5. Core Components
+
+### 5.1 Decision Tree Processing
+
+- Flattens decision_tree YAML nodes
+- Produces structured rows containing:
+  - Domain
+  - Question
+  - Score
+  - Action_Code
+  - Objective
+  - Cross_Reference
+
+These rows become AI generation inputs.
+
+---
+
+### 5.2 Action Catalog Processing
+
+- Flattens action_catalog YAML nodes
+- Produces:
+  - Domain
+  - Action_Code
+  - Procedure
+  - Recommendations
+  - Notes
+  - Topic_Keys
+
+Maintains deterministic ordering.
+
+---
+
+### 5.3 PDF Grounding Engine
+
+- Extract topics from:
+  - Cross references
+  - Recommendations
+  - Notes
+- Cache PDF pages once
+- Cache topic excerpts globally
+- Limit excerpts per item
+
+Ensures:
+- Cost control
+- Performance stability
+- Deterministic excerpt reuse
+
+---
+
+### 5.4 OpenAI Generation Layer
+
+Two parallel streams:
+
+- Decision Tree narrative
+- Action Catalog procedural output
+
+Uses:
+ThreadPoolExecutor  
+Batching  
+Retry with exponential backoff  
+
+---
+
+## 6. Cache Strategy
+
+### Domain Cache
+
+Keyed by Hash_Key per row.
+
+Prevents regeneration when inputs unchanged.
+
+---
+
+### Global PDF Cache
+
+Stores:
+- File size
+- File timestamp
+- Extracted pages
+
+Invalidates automatically if file changes.
+
+---
+
+### Topic Excerpts Cache
+
+Maps:
+topic → list of {pdf, excerpt}
+
+Prevents repeated PDF scanning.
+
+---
+
+## 7. Inconsistency Engine
+
+Optional mode:
+--inconsistency
+
+Generates structural cross-domain dependency analysis.
+
+Output:
+Dependencies_inconsistencies_theory_cluster_output.json
+
+Includes:
+- Structural severity
+- Scenario simulation
+- Deterministic impact classification
+
+---
+
+## 8. CLI Parameters
+
+--language  
+--domain  
+--model-dt  
+--model-ac  
+--max-workers  
+--batch-size  
+--clear-cache  
+--clear-pdf-cache  
+--clear-topic-cache  
+--inconsistency  
+--rebuild-inconsistency-cache  
+
+---
+
+## 9. Execution Examples
+
+Run all domains:
+python theory_cluster.py
+
+Run single domain:
+python theory_cluster.py --domain DG
+
+Clear cache:
+python theory_cluster.py --clear-cache
+
+Generate only inconsistencies:
+python theory_cluster.py --inconsistency

@@ -371,6 +371,23 @@ action_catalog:
       notes:
       - DCAM Modellierungs-Sicherungsindikatoren anwenden, um 
         Modellierungsschwächen und Verbesserungsbereiche zu identifizieren.
+    - number: 6
+      name: Strukturelle Institutionalisierungsverstärkung
+      prerequisite: Erfordert genehmigten Governance-Mechanismus und 
+        formalisierte Richtlinienbasis
+      deliverable: Institutionalisierte Governance-Prozedur mit zugewiesenem 
+        Control Owner und dokumentiertem Nachweis wiederholbarer Ausführung
+      recommendations:
+      - Weisen Sie einen formal verantwortlichen Control Owner zu, der den 
+        Governance-Mechanismus aufrechterhält.
+      - Definieren Sie objektive Akzeptanzkriterien, die eine stabile und 
+        konsistente Ausführung bestätigen.
+      - Erstellen Sie dokumentierte Artefakte, die die wiederholbare operative 
+        Anwendung belegen.
+      - Stellen Sie die Integration in etablierte organisatorische Abläufe 
+        sicher.
+      - Pflegen Sie die Rückverfolgbarkeit zwischen Governance-Mechanismus und 
+        steuernder Richtlinie.
   DMD-06:
     title: Automatisieren Sie Modellvalidierung und semantische Qualität
     procedures:
@@ -392,7 +409,8 @@ action_catalog:
       - Verwenden Sie DCAM Fähigkeitsindikatoren, um Messskalen für die 
         Modellreife zu erstellen.
     - number: 2
-      name: "Establish automated semantic and structural validation rules"
+      name: Etablieren Sie automatisierte semantische und strukturelle 
+        Validierungsregeln
       prerequisite: Modellierungskriterien erforderlich
       deliverable: Automatisierter Validierungsregel-Satz
       recommendations:
@@ -458,6 +476,19 @@ action_catalog:
       notes:
       - Verwendung von DCAM-Betriebsfähigkeitsbewertungen zur Identifikation von
         Bereichen, in denen Modellierungsautomatisierung erweitert werden kann.
+    - number: 6
+      name: Strukturelle Mess- und Überwachungsverstärkung
+      prerequisite: Erfordert einen institutionalisierten Governance-Mechanismus
+      deliverable: Gesteuerte und gemessene Governance-Kontrollumgebung
+      recommendations:
+      - Definieren Sie messbare Leistungskennzahlen, die mit den 
+        Governance-Zielen übereinstimmen.
+      - Implementieren Sie strukturierte Überwachungsmechanismen oder 
+        Dashboards.
+      - Etablieren Sie formale Validierungszyklen einschließlich periodischer 
+        Überprüfungen.
+      - Pflegen Sie eine nachvollziehbare Dokumentation der Leistungsergebnisse.
+      - Definieren Sie Eskalationswege für ungelöste Abweichungen.
   DMD-09:
     title: Optimieren Sie Modellierungsstrukturen und institutionalisieren Sie 
       semantische Governance
@@ -546,3 +577,17 @@ action_catalog:
       notes:
       - Verwenden Sie DCAM Fähigkeitsentwicklungs-Mapping, um langfristiges 
         Wachstum in der Modellierungsreife zu planen.
+    - number: 6
+      name: Strukturoptimierung und adaptive Verstärkung
+      prerequisite: Erfordert gesteuerten und gemessenen Governance-Mechanismus
+      deliverable: Optimierter Governance-Prozess mit nachgewiesener 
+        Automatisierung und adaptiver Verbesserung
+      recommendations:
+      - Führen Sie Automatisierungselemente zur Unterstützung von Durchsetzung 
+        und Überwachung ein.
+      - Implementieren Sie kontinuierliche Verbesserungszyklen basierend auf 
+        Leistungstrends.
+      - Führen Sie Benchmarking anhand anerkannter Governance-Rahmenwerke durch.
+      - Dokumentieren Sie messbare Verbesserungen über mehrere Zyklen.
+      - Stellen Sie Anpassungsfähigkeit an regulatorische und organisatorische 
+        Veränderungen sicher.
