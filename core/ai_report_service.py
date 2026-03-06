@@ -11,13 +11,15 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
-
+from openai import OpenAI
+import streamlit as st
 import yaml
 
 from docx import Document
 from docx.shared import Pt
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 
 @dataclass
@@ -73,6 +75,302 @@ class AIReportService:
       - PDF (simple corporate)
     """
     
+###----------------------------------------------------------------------------------------------------------------------------------------------------            
+    
+    def _load_dependency_inconsistency_theory(self, language: str):
+
+        import json
+
+        lang = (language or "us").lower()
+
+        path = (
+            self.base_dir
+            / "data"
+            / "domains"
+            / lang
+            / "Dependencies_inconsistencies_theory_cluster_output.json"
+        )
+
+        if not path.exists():
+            return []
+
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if isinstance(data, dict):
+            return data.get("inconsistencies", [])
+
+        if isinstance(data, list):
+            return data
+
+        return []
+
+
+    def _detect_structural_dependency_inconsistencies(
+        self,
+        domain_metas: Dict[str, DomainMeta],
+        scores: List[DomainScore]
+    ) -> List[Dict[str, Any]]:
+
+        # usa avg_floor para regra estrutural do relatório
+        score_by_acr = {s.acronym: s.avg_floor for s in scores}
+
+        # domain_id → acronym lookup
+        id_to_acr = {str(m.domain_id): m.acronym for m in domain_metas.values()}
+
+        inconsistencies: List[Dict[str, Any]] = []
+
+        for m in domain_metas.values():
+
+            child_acr = m.acronym
+            child_score = score_by_acr.get(child_acr)
+
+            if child_score is None:
+                continue
+
+            deps = m.dependence or []
+            deps_only = deps[:-1] if len(deps) >= 2 else deps  # regra do flow
+
+            for dep_id in deps_only:
+
+                parent_acr = id_to_acr.get(str(dep_id))
+                if not parent_acr:
+                    continue
+
+                parent_score = score_by_acr.get(parent_acr)
+                if parent_score is None:
+                    continue
+
+                gap = child_score - parent_score
+
+                # regra estrutural: só consideramos ruptura quando gap >= 1
+                if gap < 1:
+                    continue
+
+                # evitar duplicação
+                if any(x["child"] == child_acr and x["parent"] == parent_acr for x in inconsistencies):
+                    continue
+
+                inconsistencies.append(
+                    {
+                        "child": child_acr,
+                        "parent": parent_acr,
+                        "child_score": child_score,
+                        "parent_score": parent_score,
+                        "gap": gap
+                    }
+                )
+
+        # ordem consistente: segue dependências do fluxo (child depois parent)
+        inconsistencies = sorted(inconsistencies, key=lambda x: (x["child"], x["parent"]))
+        return inconsistencies
+
+
+    def _render_dependency_breaks(
+        self,
+        doc: Document,
+        inconsistencies: List[Dict[str, Any]],
+        theory_data: List[Dict[str, Any]],
+        language: str,
+        acr_to_name: Optional[Dict[str, str]] = None
+    ):
+
+        import re
+
+        if not inconsistencies:
+            self._add_paragraph(doc, self._t("no_dependency_breaks", language))
+            return
+
+        acr_to_name = acr_to_name or {}
+
+        # index rápido (child, parent) -> item do theory json
+        theory_map: Dict[tuple, Dict[str, Any]] = {}
+        for t in (theory_data or []):
+            c = (t.get("domain_acronym") or "").strip()
+            p = (t.get("reference_acronym") or "").strip()
+            if c and p:
+                theory_map.setdefault((c,p), t)
+
+        dep_index = 1
+        
+        
+        seen = set()
+
+        for inc in inconsistencies:
+
+            child = inc.get("child")
+            parent = inc.get("parent")
+            gap = inc.get("gap", 0)
+
+            # evita duplicação do mesmo par
+            key = (child, parent)
+            if key in seen:
+                continue
+            seen.add(key)
+
+            child_name = acr_to_name.get(child, "")
+            parent_name = acr_to_name.get(parent, "")
+
+            # 2.2.1, 2.2.2, ...
+            heading = f"2.2.{dep_index} - {child} · {child_name} {self._t('depends_on', language)} {parent} · {parent_name}".strip()
+            self._add_heading(doc, heading, level=3)
+            dep_index += 1
+
+            th = theory_map.get((child, parent)) or theory_map.get((parent, child))
+
+            if th:
+
+                sev = (
+                    (th.get("Structural Severity Classification") or {})
+                    .get("severity_rationale")
+                )
+
+                if sev and len(sev) < 250:
+                    self._add_paragraph(
+                        doc,
+                        f"{self._t('severity_rationale_label', language)} {sev}"
+                    )
+
+                scenarios = th.get("scenarios") or {}
+
+                scenario = scenarios.get("reference_inferior")
+
+                if gap < 1:
+                    scenario = scenarios.get("reference_superior")
+
+                if scenario is None:
+                    scenario = scenarios.get("reference_not_evaluated")
+
+                txt = scenario.get("analysis_text") if scenario else None
+
+                if txt and isinstance(txt, str):
+
+                    txt = re.sub(
+                        r"(?m)^\s*#{1,6}\s*\d+\)\s*(.+)$",
+                        r"• \1",
+                        txt
+                    )
+
+                    txt = re.sub(r"(?m)^#{1,6}\s*", "", txt)
+                    
+                    txt = txt.replace("\r", "")                  
+                    
+                    sections = re.split(r"(?=^\s*• )", txt, flags=re.MULTILINE)
+
+                    for section in sections:
+                        clean = section.strip()
+                        if clean:
+                            self._add_paragraph(doc, clean)
+
+            else:
+
+                fallback = (
+                    f"{child} is more mature than its structural dependency {parent}. "
+                    f"This usually means the dependent domain is advancing without the needed foundation in the dependency."
+                )
+
+                self._add_paragraph(doc, fallback)
+
+            doc.add_paragraph("")
+
+
+    def _add_dependencies_section(
+        self,
+        doc: Document,
+        domain_metas: Dict[str, DomainMeta],
+        scores: List[DomainScore],
+        issues: List[DependencyIssue],
+        language: str
+    ):
+
+        T = lambda k: self._t(k, language)
+
+        # Only evaluate dependencies for domains in scope
+        in_scope_acr = {s.acronym for s in scores}
+        score_by_acr = {s.acronym: s.avg_floor for s in scores}
+
+        # Build acronym -> name lookup from domain_metas
+        acr_to_name = {m.acronym: m.name for m in domain_metas.values()}
+
+        # =========================================================
+        # 2.1 Declared Dependencies (mantém o que já funcionava)
+        # =========================================================
+        self._add_heading(doc, T("declared_dependencies_heading"), level=2)
+
+        for m in domain_metas.values():
+
+            if m.acronym not in in_scope_acr:
+                continue
+
+            self._add_heading(doc, f"{m.acronym} · {m.name}", level=3)
+
+            dep = m.dependence or []
+            if not dep:
+                self._add_paragraph(doc, T("no_dependencies"))
+                continue
+
+            # regra do flow: último elemento é o próprio domínio
+            deps_only = dep[:-1] if len(dep) >= 2 else dep
+
+            # remover autorreferência
+            deps_only = [
+                x for x in deps_only
+                if not any(
+                    str(mm.domain_id) == str(x) and mm.acronym == m.acronym
+                    for mm in domain_metas.values()
+                )
+            ]
+
+            if not deps_only:
+                self._add_paragraph(doc, T("no_dependencies"))
+                continue
+
+            self._add_paragraph(doc, T("declared_dependencies_label"))
+
+            for x in deps_only:
+
+                dep_acr = None
+                dep_name = ""
+
+                for mm in domain_metas.values():
+                    if str(mm.domain_id) == str(x):
+                        dep_acr = mm.acronym
+                        dep_name = mm.name
+                        break
+
+                if not dep_acr:
+                    doc.add_paragraph(f"- {T('unknown_domain')} (domain_id={x})", style="List Bullet")
+                    continue
+
+                dep_grade = score_by_acr.get(dep_acr)
+
+                if dep_grade is None:
+                    doc.add_paragraph(f"- {dep_acr} · {dep_name} ({T('not_evaluated_scope')})", style="List Bullet")
+                else:
+                    doc.add_paragraph(
+                        f"- {dep_acr} · {dep_name} (grade {dep_grade} · {self._likert_label(dep_grade, language)})",
+                        style="List Bullet"
+                    )
+
+        # =========================================================
+        # 2.2 Detected Breaks (NOVA rota única, sem misturar issues)
+        # =========================================================
+        self._add_heading(doc, T("detected_breaks"), level=2)
+
+        theory_data = self._load_dependency_inconsistency_theory(language)
+        inconsistencies = self._detect_structural_dependency_inconsistencies(domain_metas, scores)
+
+        self._render_dependency_breaks(
+            doc=doc,
+            inconsistencies=inconsistencies,
+            theory_data=theory_data,
+            language=language,
+            acr_to_name=acr_to_name
+        )
+            
+            
+###----------------------------------------------------------------------------------------------------------------------------------------------------            
+            
     def _normalize_maturity_labels_in_demo(
         self,
         text: str,
@@ -125,6 +423,229 @@ class AIReportService:
 
         return text
     
+    # =========================================================
+    # Radar Analysis Helpers (DOMMx)
+    # =========================================================
+
+    client = OpenAI()
+
+    def _polish_text_with_ai(self, analysis: Dict[str, Any], language: str) -> str:
+
+        key = hashlib.md5((json.dumps(analysis) + language).encode()).hexdigest()
+
+        if not hasattr(self, "_ai_cache"):
+            self._ai_cache = {}
+
+        if key in self._ai_cache:
+            return self._ai_cache[key]
+            
+        
+        scores = "\n".join(
+            f"{d}: {s}"
+            for d, s in analysis["sorted_domains"]
+        )        
+        
+
+        prompt = f"""
+    Write a concise, professional interpretation of a data governance maturity radar chart.
+
+    Language: {language}
+
+    Inputs (do not repeat numbers verbatim in the output):
+    - maturity_index: {analysis['maturity_index']}
+    - balance_index: {analysis['balance_index']}
+    - risk_index: {analysis['risk_index']}
+    - domain_scores: {analysis['sorted_domains']}
+
+    Rules:
+    1) No title. No asterisks. No headings.    
+    2) Output only analytical narrative text. Do not list scores, indices, or domain numbers.
+    3) Use 2–3 short paragraphs. Bullet points only if strictly necessary.
+    4) Disparity logic:
+       - Only describe “major disparity” if any domain differs by more than 1.0 point from the average score.
+       - If all domains are within 0.5 points of each other, explicitly state the profile is balanced.
+    5) Priority logic:
+       - Priority domains are those below the average score.
+       - If none are below average, say priorities are incremental and focus on consistency and scaling.
+    6) Risk interpretation:
+       - Interpret risk_index only as “exposure driven by the lowest-maturity domains” (do not assume security/compliance).
+    7) Recommendations:
+       - When suggesting priorities, briefly explain how to improve in generic governance terms (process, roles, standards, monitoring), without mentioning specific tools or technologies.
+    8) Always finish the last sentence.
+    9) Keep it under 250 words.    
+        """
+
+        try:
+
+            resp = self.client.chat.completions.create(
+                model="gpt-4o-mini",
+                temperature=0.7,
+                max_tokens=500,
+                messages=[
+                    {"role": "system", "content": "You are an expert in data governance maturity assessments."},
+                    {"role": "user", "content": prompt}
+                ]
+            )
+
+            text = resp.choices[0].message.content.strip()
+
+            self._ai_cache[key] = text
+
+            return text
+
+        except Exception:
+            return ""
+        
+    def _compute_radar_analysis(self, domains_scores: Dict[str, float], max_score: float = 5.0):
+
+        from statistics import mean, pstdev
+
+        scores = list(domains_scores.values())
+        n = len(scores)
+
+        avg = mean(scores)
+        std = pstdev(scores) if n > 1 else 0
+
+        min_score = min(scores)
+        max_score_obs = max(scores)
+
+        maturity_index = avg / max_score
+
+        balance_index = 1 - ((max_score_obs - min_score) / max_score)
+
+        risk_index = 1 - (min_score / max_score)
+
+        leaders = []
+        critical = []
+
+        for d, s in domains_scores.items():
+
+            if s >= avg + std:
+                leaders.append(d)
+
+            elif s <= avg - std:
+                critical.append(d)
+
+        sorted_domains = sorted(
+            domains_scores.items(),
+            key=lambda x: x[1]
+        )
+        
+
+        return {
+            "domain_count": n,
+            "maturity_index": round(maturity_index, 2),
+            "balance_index": round(balance_index, 2),
+            "risk_index": round(risk_index, 2),
+            "leaders": leaders,
+            "critical": critical,
+            "sorted_domains": sorted_domains
+        }
+
+
+    def _generate_radar_analysis_text(self, analysis: Dict[str, Any], language: str) -> str:
+
+        lang = (language or "us").lower()
+
+        # report_text por idioma (já carregado por _load_report_texts)
+        texts = self._report_texts.get(lang) or self._report_texts.get("us") or {}
+
+        # templates (carregados fora do bloco report_text)
+        templates = getattr(self, "_analysis_templates", None) or []
+        if not templates:
+            return ""
+
+        import random
+        template = random.choice(templates)
+
+        leaders = ", ".join(analysis.get("leaders") or []) if analysis.get("leaders") else texts.get("tag_no_leader", "")
+        critical = ", ".join(analysis.get("critical") or []) if analysis.get("critical") else texts.get("tag_no_critical", "")
+
+        maturity_index = float(analysis.get("maturity_index", 0.0))
+        balance_index = float(analysis.get("balance_index", 0.0))
+        risk_index = float(analysis.get("risk_index", 0.0))
+
+        # -------- labels via tags (sem texto hardcoded) --------
+        def _maturity_label(v: float) -> str:
+            # v esperado 0..5
+            lvl = int(round(v))
+            lvl = max(0, min(5, lvl))
+            if lvl <= 1:
+                return texts.get("tag_maturity_initial", "")
+            if lvl == 2:
+                return texts.get("tag_maturity_emerging", "")
+            if lvl == 3:
+                return texts.get("tag_maturity_established", "")
+            if lvl == 4:
+                return texts.get("tag_maturity_managed", "")
+            return texts.get("tag_maturity_optimized", "")
+
+        def _balance_label(v: float) -> str:
+            # v típico 0..1 (quanto maior, mais equilibrado)
+            if v >= 0.80:
+                return texts.get("tag_balance_high", "")
+            if v >= 0.60:
+                return texts.get("tag_balance_moderate", "")
+            if v >= 0.40:
+                return texts.get("tag_balance_low", "")
+            return texts.get("tag_balance_fragmented", "")
+
+        def _risk_label(v: float) -> str:
+            # v típico 0..1 (quanto maior, mais risco)
+            if v <= 0.25:
+                return texts.get("tag_risk_low", "")
+            if v <= 0.50:
+                return texts.get("tag_risk_moderate", "")
+            if v <= 0.75:
+                return texts.get("tag_risk_high", "")
+            return texts.get("tag_risk_critical", "")
+
+        context = {
+            "maturity_index": maturity_index,
+            "balance_index": balance_index,
+            "risk_index": risk_index,
+            "domain_count": analysis.get("domain_count", 0),
+            "leaders": leaders,
+            "critical": critical,
+            "maturity_label": _maturity_label(maturity_index),
+            "balance_label": _balance_label(balance_index),
+            "risk_label": _risk_label(risk_index),
+        }
+
+        paragraphs = []
+
+        # IMPORTANTE:
+        # Os templates usam {tag_*} e também {maturity_index}, etc.
+        # Então a gente passa texts + context no format.
+        paragraphs.append(template.get("p1", "").format(**texts, **context))
+        paragraphs.append(template.get("p2", "").format(**texts, **context))
+        paragraphs.append(template.get("p3", "").format(**texts, **context))
+
+        # parágrafo por domínio (funciona com 3 ou 12 sem mudar nada)
+        for domain, score in (analysis.get("sorted_domains") or []):
+            if domain in (analysis.get("critical") or []):
+                status = texts.get("tag_domain_status_critical", "")
+            elif domain in (analysis.get("leaders") or []):
+                status = texts.get("tag_domain_status_leader", "")
+            else:
+                status = texts.get("tag_domain_status_aligned", "")
+
+            p = texts.get("domain_paragraph", "{domain} {score} {status}")
+            paragraphs.append(
+                p.format(
+                    domain=domain,
+                    score=score,
+                    status=status
+                )
+            )
+
+        # limpa vazios (evita parágrafo em branco “mudo”)
+        paragraphs = [p for p in paragraphs if (p or "").strip()]
+
+        return "\n\n".join(paragraphs)
+        
+    # =========================================================
+    
     def _add_radar_chart(self, doc: Document, scores: List[DomainScore], language: str):
 
         if not scores:
@@ -146,7 +667,7 @@ class AIReportService:
         values = values + values[:1]
         angles = angles + angles[:1]
 
-        fig = plt.figure(figsize=(6, 6))
+        fig = plt.figure(figsize=(4.5, 4.5))
         ax = fig.add_subplot(111, polar=True)
 
         ax.plot(angles, values, linewidth=2)
@@ -165,10 +686,58 @@ class AIReportService:
         plt.savefig(buf, format="png", dpi=200)
         plt.close(fig)
         buf.seek(0)
+        
+        p = doc.add_paragraph()
+        run = p.add_run()
+        run.add_picture(buf, width=Inches(3.75))
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        
+        # =====================================================
+        # Radar Analysis Text (DOMMx)
+        # =====================================================
 
-        doc.add_paragraph("")
-        doc.add_picture(buf, width=Inches(5.0))
-        doc.add_paragraph("")
+        domains_scores = {}
+
+        for s in scores:
+            try:
+                domains_scores[s.acronym] = float(s.avg_raw)
+            except Exception:
+                pass
+
+        if len(domains_scores) >= 2:
+
+            analysis = self._compute_radar_analysis(domains_scores)
+                        
+            cache_key = hashlib.md5((json.dumps(analysis) + language).encode()).hexdigest()
+
+            if not hasattr(self, "_ai_cache"):
+                self._ai_cache = {}
+
+            if cache_key in self._ai_cache:
+                analysis_text = self._ai_cache[cache_key]
+            else:
+                with st.spinner(st._html_tr("   ...")):
+                    analysis_text = self._polish_text_with_ai(
+                        analysis,
+                        language
+                    )
+
+            if analysis_text:
+
+                #doc.add_paragraph("")  # 1 linha após a figura
+
+                title = self._t("tag_analysis_radar", language)
+
+                p_title = doc.add_paragraph()
+                run_title = p_title.add_run(title)
+                run_title.bold = True
+
+                #doc.add_paragraph("")  # 1 linha após o título
+
+                for block in analysis_text.split("\n\n"):
+                    doc.add_paragraph(block)
+
+                #doc.add_paragraph("")
         
 
     def _likert_label(self, grade: int, lang: str) -> str:
@@ -200,6 +769,29 @@ class AIReportService:
         except Exception:
             return {}
             
+    def _load_analysis_templates(self) -> List[Dict[str, str]]:
+        """
+        Loads radar analysis templates from:
+            root/data/general/report_texts.yaml
+        Returns a list of dicts: [{"p1": "...", "p2": "...", "p3": "..."}, ...]
+        Fallback: empty list
+        """
+        path = self.base_dir / "data" / "general" / "report_texts.yaml"
+
+        if not path.exists():
+            return []
+
+        try:
+            data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+            templates = data.get("analysis_templates", []) or []
+            # garante formato esperado
+            if isinstance(templates, list):
+                return [t for t in templates if isinstance(t, dict)]
+            return []
+        except Exception:
+            return []   
+    
+            
 
     def _t(self, key: str, lang: str) -> str:
         lang = (lang or "us").lower()
@@ -224,6 +816,7 @@ class AIReportService:
 
         # Load report texts from YAML
         self._report_texts = self._load_report_texts()
+        self._analysis_templates = self._load_analysis_templates()
                 
         
     def _force_update_fields_on_open(self, doc: Document):
@@ -361,13 +954,89 @@ class AIReportService:
         self._add_results_section(doc, scores, is_admin=is_admin, language=resolved_lang)
 
         # 2) Dependencies
-        #self._add_page_break(doc)
+        self._add_page_break(doc)
         self._add_heading(doc, T("section_2"), level=1)
         self._add_paragraph(doc, T("section_2_intro"))
-        self._add_dependencies_section(doc, domain_metas, scores, deps_issues,resolved_lang)
+        
+        # ---------------------------------------------------------
+        # 2.1 Declared Dependencies
+        # ---------------------------------------------------------
+        self._add_paragraph(doc, "")
+        self._add_heading(doc, T("declared_dependencies_heading"), level=2)
+
+        score_by_acr = {s.acronym: s.avg_floor for s in scores}
+        in_scope_acr = {s.acronym for s in scores}
+
+        for m in domain_metas.values():
+
+            if m.acronym not in in_scope_acr:
+                continue
+
+            self._add_heading(doc, f"{m.acronym} · {m.name}", level=3)
+
+            dep = m.dependence or []
+
+            if not dep:
+                self._add_paragraph(doc, T("no_dependencies"))
+                continue
+
+            deps_only = dep[:-1] if len(dep) >= 2 else dep
+
+            if not deps_only:
+                self._add_paragraph(doc, T("no_dependencies"))
+                continue
+
+            self._add_paragraph(doc, T("declared_dependencies_label"))
+
+            for x in deps_only:
+
+                for mm in domain_metas.values():
+
+                    if str(mm.domain_id) == str(x):
+
+                        dep_acr = mm.acronym
+                        dep_name = mm.name
+
+                        dep_grade = score_by_acr.get(dep_acr)
+
+                        if dep_grade is None:
+
+                            doc.add_paragraph(
+                                f"{dep_acr} · {dep_name} ({T('not_evaluated_scope')})",
+                                style="List Bullet"
+                            )
+
+                        else:
+
+                            doc.add_paragraph(
+                                f"{dep_acr} · {dep_name} "
+                                f"(grade {dep_grade} · {self._likert_label(dep_grade, resolved_lang)})",
+                                style="List Bullet"
+                            )
+        
+        #2.2
+        
+        doc.add_paragraph("")
+        self._add_heading(doc, self._t("detected_breaks", resolved_lang), level=2)
+        
+        theory_data = self._load_dependency_inconsistency_theory(resolved_lang)
+
+        inconsistencies = self._detect_structural_dependency_inconsistencies(
+            domain_metas,
+            scores
+        )
+        
+        doc.add_paragraph("")
+         
+        self._render_dependency_breaks(
+            doc,
+            inconsistencies,
+            theory_data,
+            resolved_lang
+        )
 
         # 3) Blueprint
-        #self._add_page_break(doc)
+        self._add_page_break(doc)
         self._add_heading(doc, T("section_3"), level=1)
         self._add_paragraph(doc, T("section_3_intro"))
         
@@ -1235,16 +1904,20 @@ class AIReportService:
 
     def _add_results_section(self, doc: Document, scores: List[DomainScore], is_admin: bool, language: str):
         
-        T = lambda k: self._t(k, language)
-        
-        doc.add_paragraph("")        
-        self._add_heading(doc, T("domain_summary_title"), level=2)
-        
+        T = lambda k: self._t(k, language)        
+                       
         # -------------------------------------------------
         # 1.1 Radar Chart
         # -------------------------------------------------
-        #doc.add_paragraph("")
-        self._add_radar_chart(doc, scores, language)
+        
+        self._add_radar_chart(doc, scores, language)                 
+                
+        # -------------------------------------------------
+        # 1.1 Tabela por dominio 
+        # -------------------------------------------------
+        #doc.add_page_break()
+        doc.add_paragraph("")
+        self._add_heading(doc, T("domain_summary_title"), level=2)
 
         table = doc.add_table(rows=1, cols=5)
         hdr = table.rows[0].cells
@@ -1317,119 +1990,7 @@ class AIReportService:
                         if alert_text and alert_text != "maturity_dispersion_text":
                             p.add_run(alert_text)
 
-    def _add_dependencies_section(
-        self,
-        doc: Document,
-        domain_metas: Dict[str, DomainMeta],
-        scores: List[DomainScore],
-        issues: List[DependencyIssue],
-        language: str
-    ):
-            
-        T = lambda k: self._t(k, language)
-        
-        # Only evaluate dependencies for domains in scope
-        in_scope_acr = {s.acronym for s in scores}
-        score_by_acr = {s.acronym: s.avg_floor for s in scores}
-
-        # Build acronym -> name lookup from domain_metas
-        acr_to_name = {m.acronym: m.name for m in domain_metas.values()}
-        
-        self._add_heading(doc, T("declared_dependencies_heading"), level=2)
-
-        for m in domain_metas.values():
-            if m.acronym not in in_scope_acr:
-                continue
-
-            self._add_heading(doc, f"{m.acronym} · {m.name}", level=3)
-
-            dep = m.dependence or []
-            if not dep:                
-                self._add_paragraph(doc, T("no_dependencies"))
-                continue
-
-            # Your rule: last element is the domain itself; previous are dependencies
-            deps_only = []
-
-            if len(dep) >= 2:
-                deps_only = dep[:-1]
-            else:
-                deps_only = dep
-
-            # remover autorreferência
-            deps_only = [
-                x for x in deps_only
-                if not any(
-                    str(mm.domain_id) == str(x) and mm.acronym == m.acronym
-                    for mm in domain_metas.values()
-                )
-            ]
-
-            if not deps_only:                
-                self._add_paragraph(doc, T("no_dependencies"))
-                continue
-            
-            self._add_paragraph(doc, T("declared_dependencies_label"))
-            
-            for x in deps_only:
-                # dependence numbers represent domain_id. We need resolve to acronym via domain_metas domain_id
-                dep_acr = None
-                dep_name = ""
-                for mm in domain_metas.values():
-                    if str(mm.domain_id) == str(x):
-                        dep_acr = mm.acronym
-                        dep_name = mm.name
-                        break
-
-                if not dep_acr:                    
-                    doc.add_paragraph(f"- {T('unknown_domain')} (domain_id={x})", style="List Bullet")
-                    continue
-
-                dep_grade = score_by_acr.get(dep_acr)
-                if dep_grade is None:                    
-                    doc.add_paragraph(f"- {dep_acr} · {dep_name} ({T('not_evaluated_scope')})", style="List Bullet")
-                else:
-                    doc.add_paragraph(f"- {dep_acr} · {dep_name} (grade {dep_grade} · {self._likert_label(dep_grade,language)})", style="List Bullet")
-
-        #self._add_page_break(doc)        
-        self._add_heading(doc, T("detected_breaks"), level=2)
-
-        relevant = [x for x in issues if x.domain_acronym in in_scope_acr]
-        broken = [x for x in relevant if x.dependency_broken]
-
-        if not relevant:
-            self._add_paragraph(doc, T("no_dependency_records"))
-            return
-
-        if not broken:
-            self._add_paragraph(doc, T("no_dependency_breaks"))
-            return
-
-        for it in broken:
-            dname = acr_to_name.get(it.domain_acronym, "")
-            rname = acr_to_name.get(it.reference_acronym, "")
-            
-            title = f"{it.domain_acronym} · {dname} {T('depends_on')} {it.reference_acronym} · {rname}"
-            
-            self._add_heading(doc, title, level=3)
-
-            if it.severity_rationale:
-                self._add_paragraph(doc, f"{T('severity_rationale_label')} {it.severity_rationale}")
-
-            if isinstance(it.scenarios, dict) and it.scenarios:
-                for sk in sorted(it.scenarios.keys()):
-                    sc = it.scenarios.get(sk) or {}
-                    if not isinstance(sc, dict):
-                        continue
-
-                    sc_title = sc.get("comparison") or sk                    
-                    self._add_heading(doc, f"{T('scenario_label')} {sc_title}", level=3)
-
-                    for field in ("whynot_text", "whatcauses_text", "howtofix_text", "analysis_text"):
-                        txt = sc.get(field)
-                        if txt and isinstance(txt, str):
-                            self._add_paragraph(doc, txt.strip())
-
+    
     
     def _norm_title(self, s: str) -> str:
         return re.sub(r"\s+", " ", (s or "").strip().lower())

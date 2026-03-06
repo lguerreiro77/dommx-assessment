@@ -11,13 +11,15 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
-
+from openai import OpenAI
+import streamlit as st
 import yaml
 
 from docx import Document
 from docx.shared import Pt
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 
 @dataclass
@@ -73,13 +75,499 @@ class AIReportService:
       - PDF (simple corporate)
     """
     
+    def _load_dependency_inconsistency_theory(self, language: str):
+
+        lang = language.lower()
+
+        path = (
+            self.base_dir
+            / "data"
+            / "domains"
+            / lang
+            / "Dependencies_inconsistencies_theory_cluster_output.json"
+        )
+
+        if not path.exists():
+            return []
+
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        if isinstance(data, dict):
+            return data.get("inconsistencies", [])
+
+        if isinstance(data, list):
+            return data
+
+        return []
+
+
+    def _detect_structural_dependency_inconsistencies(
+            self,
+            domain_metas: Dict[str, DomainMeta],
+            scores: List[DomainScore]
+        ) -> List[Dict[str, Any]]:
+
+        score_by_acr = {s.acronym: s.avg_floor for s in scores}
+
+        id_to_acr = {
+            str(m.domain_id): m.acronym
+            for m in domain_metas.values()
+        }
+
+        inconsistencies = []
+
+        for m in domain_metas.values():
+
+            child_acr = m.acronym
+            child_score = score_by_acr.get(child_acr)
+
+            if child_score is None:
+                continue
+
+            deps = m.dependence or []
+
+            deps_only = deps[:-1] if len(deps) >= 2 else deps
+
+            for dep_id in deps_only:
+
+                parent_acr = id_to_acr.get(str(dep_id))
+
+                if not parent_acr:
+                    continue
+
+                parent_score = score_by_acr.get(parent_acr)
+
+                if parent_score is None:
+                    continue
+
+                gap = child_score - parent_score
+
+                if gap >= 1:
+
+                    if any(
+                        x["child"] == child_acr and x["parent"] == parent_acr
+                        for x in inconsistencies
+                    ):
+                        continue
+
+                    if gap >= 3:
+                        gap_class = "critical"
+                    elif gap == 2:
+                        gap_class = "high"
+                    else:
+                        gap_class = "moderate"
+
+                    inconsistencies.append(
+                        {
+                            "child": child_acr,
+                            "parent": parent_acr,
+                            "child_score": child_score,
+                            "parent_score": parent_score,
+                            "gap": gap,
+                            "gap_class": gap_class
+                        }
+                    )
+
+        return inconsistencies
+
+
+    def _render_dependency_breaks(
+        self,
+        doc: Document,
+        inconsistencies: List[Dict[str, Any]],
+        theory_data: List[Dict[str, Any]],
+        language: str
+    ):
+
+        import re
+
+        if not inconsistencies:
+
+            self._add_paragraph(
+                doc,
+                self._t("no_dependency_breaks", language)
+            )
+            return
+
+        # ordenar para relatório consistente
+        inconsistencies = sorted(
+            inconsistencies,
+            key=lambda x: (x["child"], x["parent"])
+        )
+
+        dep_index = 1
+
+        for inc in inconsistencies:
+
+            child = inc.get("child")
+            parent = inc.get("parent")
+            gap = inc.get("gap", 0)
+            gap_class = inc.get("gap_class")
+
+            self._add_heading(
+                doc,
+                f"2.2.{dep_index} - {child} depende de {parent}",
+                level=3
+            )
+
+            dep_index += 1
+
+            theory = None
+
+            for t in theory_data:
+
+                if (
+                    t.get("domain_acronym") == child
+                    and t.get("reference_acronym") == parent
+                ):
+                    theory = t
+                    break
+
+            if theory:
+
+                severity = (
+                    theory
+                    .get("Structural Severity Classification", {})
+                    .get("severity_rationale")
+                )
+
+                if severity:
+
+                    if gap_class:
+                        severity = f"[{gap_class.upper()} GAP] " + severity
+
+                    self._add_paragraph(doc, severity)
+
+                try:
+
+                    scenarios = theory.get("scenarios", {})
+
+                    if gap >= 1:
+                        scenario = scenarios.get("reference_inferior")
+
+                    elif gap < 0:
+                        scenario = scenarios.get("reference_superior")
+
+                    else:
+                        scenario = scenarios.get("reference_not_evaluated")
+
+                    if scenario:
+
+                        txt = sc.get("analysis_text")
+
+                        if txt and isinstance(txt, str):
+
+                            txt = re.sub(r"^\s*#+\s*\d+\)\s*", "• ", txt, flags=re.MULTILINE)
+
+                            paragraphs = txt.split("\n")
+
+                            for part in paragraphs:
+                                clean = part.strip()
+                                if clean:
+                                    self._add_paragraph(doc, clean)
+
+                            continue   # ← ESSENCIAL: impede renderização duplicada
+
+                except Exception:
+                    pass
+
+            else:
+
+                fallback = (
+                    f"The maturity of {child} exceeds the maturity of its "
+                    f"structural dependency {parent}. This may indicate that "
+                    f"advanced practices in the dependent domain are not yet "
+                    f"supported by the necessary governance or architectural "
+                    f"foundations."
+                )
+
+                self._add_paragraph(doc, fallback)
+
+            doc.add_paragraph("")
+            
+    def _normalize_maturity_labels_in_demo(
+        self,
+        text: str,
+        tree_data: Dict[str, Any]
+    ) -> str:
+        """
+        Substitui qualquer ocorrência de:
+        'Nível X - Algo'
+        'Pontuação X - Algo'
+        Pelo label oficial definido no maturity_scale do decision_tree.
+        """
+
+        if not text or not isinstance(tree_data, dict):
+            return text
+
+        maturity_scale = tree_data.get("maturity_scale") or {}
+        if not isinstance(maturity_scale, dict):
+            return text
+
+        # construir mapa oficial
+        official = {}
+        for k, v in maturity_scale.items():
+            try:
+                level = int(k)
+            except Exception:
+                continue
+
+            label = str(v.get("maturity_level") or "").strip()
+            if label:
+                official[level] = label
+
+        if not official:
+            return text
+
+        import re
+
+        def replace(match):
+            level = int(match.group(1))
+            if level in official:
+                return f"Nível {level} - {official[level]}"
+            return match.group(0)
+
+        # captura Nível 3 - Algo
+        pattern1 = re.compile(r"Nível\s+(\d+)\s*-\s*([^\n]+)")
+        text = pattern1.sub(replace, text)
+
+        # captura Pontuação 3 - Algo
+        pattern2 = re.compile(r"Pontuação\s+(\d+)\s*-\s*([^\n]+)")
+        text = pattern2.sub(replace, text)
+
+        return text
+    
+    # =========================================================
+    # Radar Analysis Helpers (DOMMx)
+    # =========================================================
+
+    client = OpenAI()
+
+    def _polish_text_with_ai(self, analysis: Dict[str, Any], language: str) -> str:
+
+        key = hashlib.md5((json.dumps(analysis) + language).encode()).hexdigest()
+
+        if not hasattr(self, "_ai_cache"):
+            self._ai_cache = {}
+
+        if key in self._ai_cache:
+            return self._ai_cache[key]
+            
+        
+        scores = "\n".join(
+            f"{d}: {s}"
+            for d, s in analysis["sorted_domains"]
+        )        
+        
+
+        prompt = f"""
+    Write a concise, professional interpretation of a data governance maturity radar chart.
+
+    Language: {language}
+
+    Inputs (do not repeat numbers verbatim in the output):
+    - maturity_index: {analysis['maturity_index']}
+    - balance_index: {analysis['balance_index']}
+    - risk_index: {analysis['risk_index']}
+    - domain_scores: {analysis['sorted_domains']}
+
+    Rules:
+    1) No title. No asterisks. No headings.    
+    2) Output only analytical narrative text. Do not list scores, indices, or domain numbers.
+    3) Use 2–3 short paragraphs. Bullet points only if strictly necessary.
+    4) Disparity logic:
+       - Only describe “major disparity” if any domain differs by more than 1.0 point from the average score.
+       - If all domains are within 0.5 points of each other, explicitly state the profile is balanced.
+    5) Priority logic:
+       - Priority domains are those below the average score.
+       - If none are below average, say priorities are incremental and focus on consistency and scaling.
+    6) Risk interpretation:
+       - Interpret risk_index only as “exposure driven by the lowest-maturity domains” (do not assume security/compliance).
+    7) Recommendations:
+       - When suggesting priorities, briefly explain how to improve in generic governance terms (process, roles, standards, monitoring), without mentioning specific tools or technologies.
+    8) Always finish the last sentence.
+    9) Keep it under 250 words.    
+        """
+
+        try:
+
+            resp = self.client.chat.completions.create(
+                model="gpt-4o-mini",
+                temperature=0.7,
+                max_tokens=500,
+                messages=[
+                    {"role": "system", "content": "You are an expert in data governance maturity assessments."},
+                    {"role": "user", "content": prompt}
+                ]
+            )
+
+            text = resp.choices[0].message.content.strip()
+
+            self._ai_cache[key] = text
+
+            return text
+
+        except Exception:
+            return ""
+        
+    def _compute_radar_analysis(self, domains_scores: Dict[str, float], max_score: float = 5.0):
+
+        from statistics import mean, pstdev
+
+        scores = list(domains_scores.values())
+        n = len(scores)
+
+        avg = mean(scores)
+        std = pstdev(scores) if n > 1 else 0
+
+        min_score = min(scores)
+        max_score_obs = max(scores)
+
+        maturity_index = avg / max_score
+
+        balance_index = 1 - ((max_score_obs - min_score) / max_score)
+
+        risk_index = 1 - (min_score / max_score)
+
+        leaders = []
+        critical = []
+
+        for d, s in domains_scores.items():
+
+            if s >= avg + std:
+                leaders.append(d)
+
+            elif s <= avg - std:
+                critical.append(d)
+
+        sorted_domains = sorted(
+            domains_scores.items(),
+            key=lambda x: x[1]
+        )
+        
+
+        return {
+            "domain_count": n,
+            "maturity_index": round(maturity_index, 2),
+            "balance_index": round(balance_index, 2),
+            "risk_index": round(risk_index, 2),
+            "leaders": leaders,
+            "critical": critical,
+            "sorted_domains": sorted_domains
+        }
+
+
+    def _generate_radar_analysis_text(self, analysis: Dict[str, Any], language: str) -> str:
+
+        lang = (language or "us").lower()
+
+        # report_text por idioma (já carregado por _load_report_texts)
+        texts = self._report_texts.get(lang) or self._report_texts.get("us") or {}
+
+        # templates (carregados fora do bloco report_text)
+        templates = getattr(self, "_analysis_templates", None) or []
+        if not templates:
+            return ""
+
+        import random
+        template = random.choice(templates)
+
+        leaders = ", ".join(analysis.get("leaders") or []) if analysis.get("leaders") else texts.get("tag_no_leader", "")
+        critical = ", ".join(analysis.get("critical") or []) if analysis.get("critical") else texts.get("tag_no_critical", "")
+
+        maturity_index = float(analysis.get("maturity_index", 0.0))
+        balance_index = float(analysis.get("balance_index", 0.0))
+        risk_index = float(analysis.get("risk_index", 0.0))
+
+        # -------- labels via tags (sem texto hardcoded) --------
+        def _maturity_label(v: float) -> str:
+            # v esperado 0..5
+            lvl = int(round(v))
+            lvl = max(0, min(5, lvl))
+            if lvl <= 1:
+                return texts.get("tag_maturity_initial", "")
+            if lvl == 2:
+                return texts.get("tag_maturity_emerging", "")
+            if lvl == 3:
+                return texts.get("tag_maturity_established", "")
+            if lvl == 4:
+                return texts.get("tag_maturity_managed", "")
+            return texts.get("tag_maturity_optimized", "")
+
+        def _balance_label(v: float) -> str:
+            # v típico 0..1 (quanto maior, mais equilibrado)
+            if v >= 0.80:
+                return texts.get("tag_balance_high", "")
+            if v >= 0.60:
+                return texts.get("tag_balance_moderate", "")
+            if v >= 0.40:
+                return texts.get("tag_balance_low", "")
+            return texts.get("tag_balance_fragmented", "")
+
+        def _risk_label(v: float) -> str:
+            # v típico 0..1 (quanto maior, mais risco)
+            if v <= 0.25:
+                return texts.get("tag_risk_low", "")
+            if v <= 0.50:
+                return texts.get("tag_risk_moderate", "")
+            if v <= 0.75:
+                return texts.get("tag_risk_high", "")
+            return texts.get("tag_risk_critical", "")
+
+        context = {
+            "maturity_index": maturity_index,
+            "balance_index": balance_index,
+            "risk_index": risk_index,
+            "domain_count": analysis.get("domain_count", 0),
+            "leaders": leaders,
+            "critical": critical,
+            "maturity_label": _maturity_label(maturity_index),
+            "balance_label": _balance_label(balance_index),
+            "risk_label": _risk_label(risk_index),
+        }
+
+        paragraphs = []
+
+        # IMPORTANTE:
+        # Os templates usam {tag_*} e também {maturity_index}, etc.
+        # Então a gente passa texts + context no format.
+        paragraphs.append(template.get("p1", "").format(**texts, **context))
+        paragraphs.append(template.get("p2", "").format(**texts, **context))
+        paragraphs.append(template.get("p3", "").format(**texts, **context))
+
+        # parágrafo por domínio (funciona com 3 ou 12 sem mudar nada)
+        for domain, score in (analysis.get("sorted_domains") or []):
+            if domain in (analysis.get("critical") or []):
+                status = texts.get("tag_domain_status_critical", "")
+            elif domain in (analysis.get("leaders") or []):
+                status = texts.get("tag_domain_status_leader", "")
+            else:
+                status = texts.get("tag_domain_status_aligned", "")
+
+            p = texts.get("domain_paragraph", "{domain} {score} {status}")
+            paragraphs.append(
+                p.format(
+                    domain=domain,
+                    score=score,
+                    status=status
+                )
+            )
+
+        # limpa vazios (evita parágrafo em branco “mudo”)
+        paragraphs = [p for p in paragraphs if (p or "").strip()]
+
+        return "\n\n".join(paragraphs)
+        
+    # =========================================================
+    
     def _add_radar_chart(self, doc: Document, scores: List[DomainScore], language: str):
 
         if not scores:
             return
 
-        # radar precisa pelo menos 3 eixos para ficar decente
-        if len(scores) < 3:
+        # radar precisa pelo menos 2 eixos para ficar decente
+        if len(scores) < 2:
             return
 
         import numpy as np
@@ -94,7 +582,7 @@ class AIReportService:
         values = values + values[:1]
         angles = angles + angles[:1]
 
-        fig = plt.figure(figsize=(6, 6))
+        fig = plt.figure(figsize=(4.5, 4.5))
         ax = fig.add_subplot(111, polar=True)
 
         ax.plot(angles, values, linewidth=2)
@@ -113,10 +601,50 @@ class AIReportService:
         plt.savefig(buf, format="png", dpi=200)
         plt.close(fig)
         buf.seek(0)
+        
+        p = doc.add_paragraph()
+        run = p.add_run()
+        run.add_picture(buf, width=Inches(3.75))
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        
+        # =====================================================
+        # Radar Analysis Text (DOMMx)
+        # =====================================================
 
-        doc.add_paragraph("")
-        doc.add_picture(buf, width=Inches(5.0))
-        doc.add_paragraph("")
+        domains_scores = {}
+
+        for s in scores:
+            try:
+                domains_scores[s.acronym] = float(s.avg_raw)
+            except Exception:
+                pass
+
+        if len(domains_scores) >= 2:
+
+            analysis = self._compute_radar_analysis(domains_scores)
+                        
+            with st.spinner(st._html_tr("Generating report...")):
+                analysis_text = self._polish_text_with_ai(
+                    analysis,
+                    language
+                )
+
+            if analysis_text:
+
+                #doc.add_paragraph("")  # 1 linha após a figura
+
+                title = self._t("tag_analysis_radar", language)
+
+                p_title = doc.add_paragraph()
+                run_title = p_title.add_run(title)
+                run_title.bold = True
+
+                #doc.add_paragraph("")  # 1 linha após o título
+
+                for block in analysis_text.split("\n\n"):
+                    doc.add_paragraph(block)
+
+                #doc.add_paragraph("")
         
 
     def _likert_label(self, grade: int, lang: str) -> str:
@@ -148,6 +676,29 @@ class AIReportService:
         except Exception:
             return {}
             
+    def _load_analysis_templates(self) -> List[Dict[str, str]]:
+        """
+        Loads radar analysis templates from:
+            root/data/general/report_texts.yaml
+        Returns a list of dicts: [{"p1": "...", "p2": "...", "p3": "..."}, ...]
+        Fallback: empty list
+        """
+        path = self.base_dir / "data" / "general" / "report_texts.yaml"
+
+        if not path.exists():
+            return []
+
+        try:
+            data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+            templates = data.get("analysis_templates", []) or []
+            # garante formato esperado
+            if isinstance(templates, list):
+                return [t for t in templates if isinstance(t, dict)]
+            return []
+        except Exception:
+            return []   
+    
+            
 
     def _t(self, key: str, lang: str) -> str:
         lang = (lang or "us").lower()
@@ -172,6 +723,7 @@ class AIReportService:
 
         # Load report texts from YAML
         self._report_texts = self._load_report_texts()
+        self._analysis_templates = self._load_analysis_templates()
                 
         
     def _force_update_fields_on_open(self, doc: Document):
@@ -241,7 +793,7 @@ class AIReportService:
         doc = Document()
         self._setup_doc_styles(doc)
         self._force_update_fields_on_open(doc)
-
+        
         # Cover
         self._add_cover(
             doc=doc,
@@ -253,9 +805,51 @@ class AIReportService:
             language=resolved_lang
         )
 
-        # TOC
+        # -------------------------------------------------
+        # Cover Purpose – DOMMx
+        # -------------------------------------------------
+        purpose_text = T("cover_purpose_dommmx")
+        if purpose_text and purpose_text != "cover_purpose_dommmx":
+            doc.add_paragraph("")
+            self._add_paragraph(doc, purpose_text)
+
+        # -------------------------------------------------
+        # How to Use This Report
+        # -------------------------------------------------
+        how_text = T("how_to_use_report")
+
+        if how_text and how_text != "how_to_use_report":
+
+            self._add_page_break(doc)
+
+            title_txt = T("how_to_use_report_title")
+            if not title_txt or title_txt == "how_to_use_report_title":
+                title_txt = "How to Use This Report"
+
+            # Título visual sem entrar no TOC
+            p = doc.add_paragraph()
+            run = p.add_run(title_txt)
+            run.bold = True
+            run.font.size = Pt(18)
+
+            doc.add_paragraph("")
+            self._add_paragraph(doc, how_text)
+
+        # -------------------------------------------------
+        # Table of Contents (visual only, not structural)
+        # -------------------------------------------------
         self._add_page_break(doc)
-        self._add_heading(doc, T("toc"), level=1)
+
+        toc_title = T("toc")
+        if not toc_title or toc_title == "toc":
+            toc_title = "Table of Contents"
+
+        p = doc.add_paragraph()
+        run = p.add_run(toc_title)
+        run.bold = True
+        run.font.size = Pt(20)
+
+        doc.add_paragraph("")
         self._add_toc_field(doc)
         
 
@@ -267,13 +861,89 @@ class AIReportService:
         self._add_results_section(doc, scores, is_admin=is_admin, language=resolved_lang)
 
         # 2) Dependencies
-        #self._add_page_break(doc)
+        doc.add_paragraph("")
         self._add_heading(doc, T("section_2"), level=1)
         self._add_paragraph(doc, T("section_2_intro"))
-        self._add_dependencies_section(doc, domain_metas, scores, deps_issues,resolved_lang)
+        
+        # ---------------------------------------------------------
+        # 2.1 Declared Dependencies
+        # ---------------------------------------------------------
+        self._add_paragraph(doc, "")
+        self._add_heading(doc, T("declared_dependencies_heading"), level=2)
+
+        score_by_acr = {s.acronym: s.avg_floor for s in scores}
+        in_scope_acr = {s.acronym for s in scores}
+
+        for m in domain_metas.values():
+
+            if m.acronym not in in_scope_acr:
+                continue
+
+            self._add_heading(doc, f"{m.acronym} · {m.name}", level=3)
+
+            dep = m.dependence or []
+
+            if not dep:
+                self._add_paragraph(doc, T("no_dependencies"))
+                continue
+
+            deps_only = dep[:-1] if len(dep) >= 2 else dep
+
+            if not deps_only:
+                self._add_paragraph(doc, T("no_dependencies"))
+                continue
+
+            self._add_paragraph(doc, T("declared_dependencies_label"))
+
+            for x in deps_only:
+
+                for mm in domain_metas.values():
+
+                    if str(mm.domain_id) == str(x):
+
+                        dep_acr = mm.acronym
+                        dep_name = mm.name
+
+                        dep_grade = score_by_acr.get(dep_acr)
+
+                        if dep_grade is None:
+
+                            doc.add_paragraph(
+                                f"{dep_acr} · {dep_name} ({T('not_evaluated_scope')})",
+                                style="List Bullet"
+                            )
+
+                        else:
+
+                            doc.add_paragraph(
+                                f"{dep_acr} · {dep_name} "
+                                f"(grade {dep_grade} · {self._likert_label(dep_grade, resolved_lang)})",
+                                style="List Bullet"
+                            )
+        
+        #2.2
+        
+        doc.add_paragraph("")
+        self._add_heading(doc, self._t("detected_breaks", resolved_lang), level=2)
+        
+        theory_data = self._load_dependency_inconsistency_theory(resolved_lang)
+
+        inconsistencies = self._detect_structural_dependency_inconsistencies(
+            domain_metas,
+            scores
+        )
+        
+        doc.add_paragraph("")
+         
+        self._render_dependency_breaks(
+            doc,
+            inconsistencies,
+            theory_data,
+            resolved_lang
+        )
 
         # 3) Blueprint
-        #self._add_page_break(doc)
+        self._add_page_break(doc)
         self._add_heading(doc, T("section_3"), level=1)
         self._add_paragraph(doc, T("section_3_intro"))
         
@@ -796,31 +1466,109 @@ class AIReportService:
     # =========================================================
     # DOCX helpers
     # =========================================================
+    
+    def _normalize_maturity_label_text(
+        self,
+        text: str,
+        tree_data: Dict[str, Any]
+    ) -> str:
+        """
+        Normaliza qualquer ocorrência de:
+        Nível X - Algo
+        Pontuação X - Algo
+        para o label oficial definido no maturity_scale.
+        """
 
+        if not text or not isinstance(tree_data, dict):
+            return text
+
+        maturity_scale = tree_data.get("maturity_scale") or {}
+        if not isinstance(maturity_scale, dict):
+            return text
+
+        official = {}
+        for k, v in maturity_scale.items():
+            try:
+                level = int(k)
+            except Exception:
+                continue
+
+            label = str(v.get("maturity_level") or "").strip()
+            if label:
+                official[level] = label
+
+        if not official:
+            return text
+
+        import re
+
+        def replace(match):
+            level = int(match.group(1))
+            if level in official:
+                return f"Nível {level} - {official[level]}"
+            return match.group(0)
+
+        pattern1 = re.compile(r"Nível\s+(\d+)\s*-\s*([^\n]+)")
+        text = pattern1.sub(replace, text)
+
+        pattern2 = re.compile(r"Pontuação\s+(\d+)\s*-\s*([^\n]+)")
+        text = pattern2.sub(replace, text)
+
+        return text
+
+    def _add_structured_kv_block(
+        self,
+        doc: Document,
+        key: str,
+        value: str
+    ):
+        """
+        KV estruturado com espaçamento executivo.
+        Usado para blocos principais como:
+        Número do Procedimento
+        Nome
+        Pré-requisito
+        Entregável
+        """
+
+        from docx.shared import Pt
+
+        p = doc.add_paragraph()
+        p.paragraph_format.space_before = Pt(6)
+        p.paragraph_format.space_after = Pt(6)
+
+        p.add_run(f"{key}: ").bold = True
+        p.add_run(value or "")
+        
+        
     def _render_text_with_bold_prefix_if_colon(
         self,
         doc: Document,
         text: str
     ):
-        """
-        Se a linha tiver formato 'Tema: Conteúdo',
-        coloca o texto antes dos dois pontos em negrito.
-        """
-
-        if ":" not in text:
-            self._add_paragraph(doc, text)
+        if not text:
             return
 
-        prefix, suffix = text.split(":", 1)
+        text = text.strip()
 
-        # Evitar quebrar URLs ou textos estranhos
-        if len(prefix.strip()) < 2:
-            self._add_paragraph(doc, text)
+        # Caso 1: termina com ":" → label puro
+        if text.endswith(":") and ":" not in text[:-1]:
+            p = doc.add_paragraph()
+            p.add_run(text).bold = True
             return
 
-        p = doc.add_paragraph()
-        p.add_run(prefix.strip() + ": ").bold = True
-        p.add_run(suffix.strip())
+        # Caso 2: formato "Label: Conteúdo"
+        if ":" in text:
+            prefix, suffix = text.split(":", 1)
+
+            if len(prefix.strip()) >= 2:
+                p = doc.add_paragraph()
+                p.add_run(prefix.strip() + ": ").bold = True
+                p.add_run(suffix.strip())
+                return
+
+        # Caso padrão
+        self._add_paragraph(doc, text)
     
     def _setup_doc_styles(self, doc: Document):
 
@@ -919,17 +1667,19 @@ class AIReportService:
         self._add_heading(doc, self._t("example_elements_title", language), level=4)
 
         def add_kv(key: str, val: str):
-            p = doc.add_paragraph()
-            p.add_run(f"{key}: ").bold = True
-            p.add_run(val or "")
+            self._add_structured_kv_block(doc, key, val)
 
         for i, proc in enumerate(procedures, start=1):
             if not isinstance(proc, dict):
                 continue
-
+                
+            is_proc6 = str(action_code).endswith("06") and int(proc.get("number") or 0) == 6
+            max_bullets_proc6 = 5  # ajuste se quiser 3/4
+            
             # Small separation between procedures (not a page break)
             if i > 1:
-                doc.add_paragraph("")
+                spacer = doc.add_paragraph()
+                spacer.paragraph_format.space_before = Pt(12)
 
             add_kv(self._t("procedure_number", language), str(proc.get("number") or "").strip())
             add_kv(self._t("procedure_name", language), str(proc.get("name") or "").strip())
@@ -943,7 +1693,10 @@ class AIReportService:
             if isinstance(recs, list) and recs:
                 p = doc.add_paragraph()
                 p.add_run(self._t("procedure_recommendations", language)).bold = True
-                for r in recs:
+
+                recs_to_render = recs[:max_bullets_proc6] if is_proc6 else recs
+
+                for r in recs_to_render:
                     rr = str(r or "").strip()
                     if rr:
                         doc.add_paragraph(rr, style="List Bullet")
@@ -952,8 +1705,10 @@ class AIReportService:
             if note_value:
                 p = doc.add_paragraph()
                 p.add_run(self._t("procedure_notes", language)).bold = True
+
                 if isinstance(note_value, list):
-                    for n in note_value:
+                    notes_to_render = note_value[:max_bullets_proc6] if is_proc6 else note_value
+                    for n in notes_to_render:
                         nn = str(n or "").strip()
                         if nn:
                             doc.add_paragraph(nn, style="List Bullet")
@@ -1006,6 +1761,7 @@ class AIReportService:
         run = title.add_run(T("cover_title_admin") if is_admin else T("cover_title_user"))
         run.bold = True
         run.font.size = Pt(28)
+        
 
         subtitle = doc.add_paragraph()
         run2 = subtitle.add_run(T("cover_subtitle"))
@@ -1055,9 +1811,19 @@ class AIReportService:
 
     def _add_results_section(self, doc: Document, scores: List[DomainScore], is_admin: bool, language: str):
         
-        T = lambda k: self._t(k, language)
+        T = lambda k: self._t(k, language)        
+                       
+        # -------------------------------------------------
+        # 1.1 Radar Chart
+        # -------------------------------------------------
         
-        doc.add_paragraph("")        
+        self._add_radar_chart(doc, scores, language)                 
+                
+        # -------------------------------------------------
+        # 1.1 Tabela por dominio 
+        # -------------------------------------------------
+        #doc.add_page_break()
+        doc.add_paragraph("")
         self._add_heading(doc, T("domain_summary_title"), level=2)
 
         table = doc.add_table(rows=1, cols=5)
@@ -1077,9 +1843,9 @@ class AIReportService:
             row[4].text = self._likert_label(s.avg_floor, language)
              
         
-        for s in scores:
+        for idx, s in enumerate(scores, start=2):
             doc.add_paragraph("")
-            self._add_heading(doc, f"1.2 {s.acronym} · {s.name}", level=2)
+            self._add_heading(doc, f"1.{idx} {s.acronym} · {s.name}", level=2)
 
             self._add_paragraph(
                 doc,
@@ -1110,8 +1876,28 @@ class AIReportService:
                 r[3].text = ""
             
             self._add_paragraph(doc, T("scoring_rule"))
+            
+            # -------------------------------------------------
+            # Consistency Alert (i18n)
+            # -------------------------------------------------
+            vals = [v for _, _, v in s.question_scores]
 
-    def _add_dependencies_section(
+            if vals:
+                if max(vals) - min(vals) >= 3:
+
+                    alert_title = T("maturity_dispersion_title")
+                    alert_text = T("maturity_dispersion_text")
+
+                    if alert_title and alert_title != "maturity_dispersion_title":
+                        doc.add_paragraph("")
+                        p = doc.add_paragraph()
+                        run = p.add_run(f"⚠ {alert_title} ")
+                        run.bold = True
+
+                        if alert_text and alert_text != "maturity_dispersion_text":
+                            p.add_run(alert_text)
+
+    def _OLD_add_dependencies_section(
         self,
         doc: Document,
         domain_metas: Dict[str, DomainMeta],
@@ -1119,38 +1905,39 @@ class AIReportService:
         issues: List[DependencyIssue],
         language: str
     ):
-            
+
         T = lambda k: self._t(k, language)
-        
+
         # Only evaluate dependencies for domains in scope
         in_scope_acr = {s.acronym for s in scores}
         score_by_acr = {s.acronym: s.avg_floor for s in scores}
 
         # Build acronym -> name lookup from domain_metas
         acr_to_name = {m.acronym: m.name for m in domain_metas.values()}
-        
-        self._add_heading(doc, T("declared_dependencies_heading"), level=2)
+
+        self._add_heading(doc, "2.1 " + T("declared_dependencies_heading"), level=3)
+
+        # ---------------------------------------------------------
+        # 2.1 Declared Dependencies (EXISTING LOGIC - UNCHANGED)
+        # ---------------------------------------------------------
 
         for m in domain_metas.values():
+
             if m.acronym not in in_scope_acr:
                 continue
 
             self._add_heading(doc, f"{m.acronym} · {m.name}", level=3)
 
             dep = m.dependence or []
-            if not dep:                
+
+            if not dep:
                 self._add_paragraph(doc, T("no_dependencies"))
                 continue
 
             # Your rule: last element is the domain itself; previous are dependencies
-            deps_only = []
+            deps_only = dep[:-1] if len(dep) >= 2 else dep
 
-            if len(dep) >= 2:
-                deps_only = dep[:-1]
-            else:
-                deps_only = dep
-
-            # remover autorreferência
+            # remove self reference
             deps_only = [
                 x for x in deps_only
                 if not any(
@@ -1159,34 +1946,163 @@ class AIReportService:
                 )
             ]
 
-            if not deps_only:                
+            if not deps_only:
                 self._add_paragraph(doc, T("no_dependencies"))
                 continue
-            
+
             self._add_paragraph(doc, T("declared_dependencies_label"))
-            
+
             for x in deps_only:
-                # dependence numbers represent domain_id. We need resolve to acronym via domain_metas domain_id
+
                 dep_acr = None
                 dep_name = ""
+
                 for mm in domain_metas.values():
                     if str(mm.domain_id) == str(x):
                         dep_acr = mm.acronym
                         dep_name = mm.name
                         break
 
-                if not dep_acr:                    
-                    doc.add_paragraph(f"- {T('unknown_domain')} (domain_id={x})", style="List Bullet")
+                if not dep_acr:
+                    doc.add_paragraph(
+                        f"- {T('unknown_domain')} (domain_id={x})",
+                        style="List Bullet"
+                    )
                     continue
 
                 dep_grade = score_by_acr.get(dep_acr)
-                if dep_grade is None:                    
-                    doc.add_paragraph(f"- {dep_acr} · {dep_name} ({T('not_evaluated_scope')})", style="List Bullet")
-                else:
-                    doc.add_paragraph(f"- {dep_acr} · {dep_name} (grade {dep_grade} · {self._likert_label(dep_grade,language)})", style="List Bullet")
 
-        #self._add_page_break(doc)        
-        self._add_heading(doc, T("detected_breaks"), level=2)
+                if dep_grade is None:
+                    doc.add_paragraph(
+                        f"- {dep_acr} · {dep_name} ({T('not_evaluated_scope')})",
+                        style="List Bullet"
+                    )
+                else:
+                    doc.add_paragraph(
+                        f"- {dep_acr} · {dep_name} "
+                        f"(grade {dep_grade} · {self._likert_label(dep_grade, language)})",
+                        style="List Bullet"
+                    )
+
+        # ---------------------------------------------------------
+        # 2.2 Detected Breaks
+        # ---------------------------------------------------------
+
+        self._add_heading(doc, "2.2 " + T("detected_breaks"), level=3)
+        
+        # ---------------------------------------------------------
+        # AUTO POPULATE issues FROM THEORY JSON (structural breaks)
+        # ---------------------------------------------------------
+
+        theory_list = self._load_dependency_inconsistency_theory(language)
+
+        # index rápido: (child, parent) -> theory item
+        theory_map = {}
+
+        for t in theory_list:
+            try:
+                c = (t.get("domain_acronym") or "").strip()
+                p = (t.get("reference_acronym") or "").strip()
+                if c and p:
+                    theory_map[(c, p)] = t
+            except Exception:
+                pass
+
+        # detecta breaks usando avg_floor e dependências do flow
+        for m in domain_metas.values():
+
+            if m.acronym not in in_scope_acr:
+                continue
+
+            child_acr = m.acronym
+            child_score = score_by_acr.get(child_acr)
+
+            if child_score is None:
+                continue
+
+            dep = m.dependence or []
+            deps_only = dep[:-1] if len(dep) >= 2 else dep
+
+            # remover autorreferência
+            deps_only = [
+                x for x in deps_only
+                if not any(
+                    str(mm.domain_id) == str(x) and mm.acronym == child_acr
+                    for mm in domain_metas.values()
+                )
+            ]
+
+            for x in deps_only:
+
+                parent_acr = None
+
+                for mm in domain_metas.values():
+                    if str(mm.domain_id) == str(x):
+                        parent_acr = mm.acronym
+                        break
+
+                if not parent_acr:
+                    continue
+
+                parent_score = score_by_acr.get(parent_acr)
+
+                if parent_score is None:
+                    continue
+
+                # regra estrutural: filho > pai
+                if child_score > parent_score:
+
+                    # evita duplicar se já veio preenchido de fora
+                    if any(
+                        it.domain_acronym == child_acr and it.reference_acronym == parent_acr
+                        for it in (issues or [])
+                    ):
+                        continue
+
+                    th = theory_map.get((child_acr, parent_acr))
+
+                    if th:
+
+                        diff = child_score - parent_score
+
+                        scenario = None
+
+                        for sc in (th.get("scenarios") or {}).values():
+
+                            cmp = sc.get("comparison", "")
+
+                            if diff >= 1 and ">" in cmp:
+                                scenario = sc
+                                break
+
+                            if diff == 0 and "=" in cmp:
+                                scenario = sc
+                                break
+
+                            if diff < 0 and "<" in cmp:
+                                scenario = sc
+                                break
+
+                        sev = (
+                            (th.get("Structural Severity Classification") or {})
+                            .get("severity_rationale") or ""
+                        )
+
+                        issues.append(
+                            DependencyIssue(
+                                domain_acronym=child_acr,
+                                reference_acronym=parent_acr,
+                                dependency_broken=True,
+                                severity_rationale=sev,
+                                scenarios=scenario if scenario else {}
+                            )
+                        )
+
+       
+
+        # ---------------------------------------------------------
+        # EXISTING RENDERER (UNCHANGED)
+        # ---------------------------------------------------------
 
         relevant = [x for x in issues if x.domain_acronym in in_scope_acr]
         broken = [x for x in relevant if x.dependency_broken]
@@ -1200,29 +2116,49 @@ class AIReportService:
             return
 
         for it in broken:
+
             dname = acr_to_name.get(it.domain_acronym, "")
             rname = acr_to_name.get(it.reference_acronym, "")
-            
-            title = f"{it.domain_acronym} · {dname} {T('depends_on')} {it.reference_acronym} · {rname}"
-            
+
+            title = (
+                f"{it.domain_acronym} · {dname} "
+                f"{T('depends_on')} "
+                f"{it.reference_acronym} · {rname}"
+            )
+
             self._add_heading(doc, title, level=3)
 
             if it.severity_rationale:
-                self._add_paragraph(doc, f"{T('severity_rationale_label')} {it.severity_rationale}")
+                self._add_paragraph(
+                    doc,
+                    f"{T('severity_rationale_label')} {it.severity_rationale}"
+                )
 
             if isinstance(it.scenarios, dict) and it.scenarios:
-                for sk in sorted(it.scenarios.keys()):
-                    sc = it.scenarios.get(sk) or {}
-                    if not isinstance(sc, dict):
-                        continue
 
-                    sc_title = sc.get("comparison") or sk                    
-                    self._add_heading(doc, f"{T('scenario_label')} {sc_title}", level=3)
+                sc = it.scenarios or {}
 
-                    for field in ("whynot_text", "whatcauses_text", "howtofix_text", "analysis_text"):
-                        txt = sc.get(field)
-                        if txt and isinstance(txt, str):
-                            self._add_paragraph(doc, txt.strip())
+                txt = sc.get("analysis_text")
+
+                if txt and isinstance(txt, str):
+
+                    txt = re.sub(r"#+\s*", "", txt)
+                    txt = re.sub(r"\n?\s*\d+[\.\)]\s*", "\n• ", txt)
+
+                    self._add_paragraph(doc, txt.strip())
+
+                    if not txt:
+                        for v in sc.values():
+                            if isinstance(v, dict) and "analysis_text" in v:
+                                txt = v["analysis_text"]
+                                break
+
+                    if txt and isinstance(txt, str):
+
+                        txt = txt.replace("### ", "")
+                        txt = re.sub(r"\n?\s*\d+[\.\)]\s*", "\n• ", txt)
+
+                        self._add_paragraph(doc, txt.strip())
 
     
     def _norm_title(self, s: str) -> str:
@@ -1527,6 +2463,19 @@ class AIReportService:
         language: str
     ):
         T = lambda k: self._t(k, language)
+        
+        tree_data = None
+        
+        
+
+        # --- LOAD DEMO CODE MAP ---
+        demo_map_path = self.base_dir / "data" / "general" / "demo_code_map.yaml"
+        demo_map = self._safe_load_yaml(demo_map_path) or {}
+        struct_codes = demo_map.get("demo_code_map", {}).get("structural_codes", {})
+
+        CODE_DOMAIN_SECTION = str(struct_codes.get("domain_context_section", "3"))
+        CODE_ORG_CONTEXT = str(struct_codes.get("organizational_context_subsection", "3.2"))
+        CODE_EXECUTION_STRUCTURE = str(struct_codes.get("execution_structure_subsection", "5.4"))
 
         lang = (language or "us").lower()
         texts = self._report_texts or {}
@@ -1547,33 +2496,80 @@ class AIReportService:
             t = self._norm_title(title)
             return any(self._norm_title(k) in t for k in closure_keywords)
     
-        def render_demo_section_blocks(sec: Dict[str, Any]):
+        def render_demo_section_blocks(
+            sec: Dict[str, Any],
+            tree_data: Optional[Dict[str, Any]]
+        ):
+
             for block in sec.get("blocks", []):
+
+                # -----------------------------
+                # Normaliza texto do bloco (se houver)
+                # -----------------------------
+                if "text" in block and isinstance(block["text"], str):
+                    block["text"] = self._normalize_maturity_label_text(
+                        block["text"],
+                        tree_data
+                    )
+
+                # -----------------------------
+                # SUBSECTION
+                # -----------------------------
                 if block["kind"] == "subsection":
+
                     self._add_heading(doc, block["title"], level=4)
 
-                    for item in block["items"]:
+                    for item in block.get("items", []):
+
+                        # Normaliza texto do item
+                        if "text" in item and isinstance(item["text"], str):
+                            item["text"] = self._normalize_maturity_label_text(
+                                item["text"],
+                                tree_data
+                            )
+
                         if item["type"] == "bullet":
                             doc.add_paragraph(item["text"], style="List Bullet")
+
                         elif item["type"] == "kv":
                             p = doc.add_paragraph()
                             p.add_run(item["key"] + ": ").bold = True
                             p.add_run(item["text"])
-                        else:
-                            self._render_text_with_bold_prefix_if_colon(doc, item["text"])
 
+                        else:
+                            self._render_text_with_bold_prefix_if_colon(
+                                doc,
+                                item.get("text", "")
+                            )
+
+                # -----------------------------
+                # KV
+                # -----------------------------
                 elif block["kind"] == "kv":
+
                     p = doc.add_paragraph()
                     p.add_run(block["key"] + ": ").bold = True
-                    p.add_run(block["text"])
+                    p.add_run(block.get("text", ""))
 
+                # -----------------------------
+                # BULLET
+                # -----------------------------
                 elif block["kind"] == "bullet":
-                    doc.add_paragraph(block["text"], style="List Bullet")
 
+                    doc.add_paragraph(block.get("text", ""), style="List Bullet")
+
+                # -----------------------------
+                # TEXTO PADRÃO
+                # -----------------------------
                 else:
-                    self._render_text_with_bold_prefix_if_colon(doc, block["text"])
+
+                    self._render_text_with_bold_prefix_if_colon(
+                        doc,
+                        block.get("text", "")
+                    )
 
         global_sections0: List[Dict[str, Any]] = []
+        sections0_all: List[Dict[str, Any]] = []
 
         if scores:
             s0 = scores[0]
@@ -1581,7 +2577,8 @@ class AIReportService:
             item0 = self._load_demo_item_for_action(s0.acronym, action0, language)
             demo0 = str(item0.get("demo") or "").strip() if item0 else ""
             sections0 = self._parse_demo_sections(demo0) if demo0 else []
-            global_sections0 = [sec for sec in sections0 if is_global_section(sec.get("title", ""))]
+            sections0_all = sections0
+            global_sections0 = [sec for sec in sections0_all if is_global_section(sec.get("title", ""))]
 
         # -------------------------------------------------
         # 3.1 Assessment Result and Strategic Direction
@@ -1619,13 +2616,14 @@ class AIReportService:
             sec_counter += 1
 
             self._add_heading(doc, f"{section_number} {sec['title']}", level=4)
-            render_demo_section_blocks(sec)
+            render_demo_section_blocks(sec, tree_data)
 
         # 3.2.2
         self._add_heading(doc, T("section_3_common_transversal"), level=3)
+        self._add_paragraph(doc, T("section_3_common_transversal_intro"))
 
         sec_counter = 1
-        for sec in global_sections0:
+        for sec in sections0_all:
             title_norm = self._norm_title(sec.get("title", ""))
             if is_common_template(sec.get("title", "")):
                 continue
@@ -1636,7 +2634,7 @@ class AIReportService:
             sec_counter += 1
 
             self._add_heading(doc, f"{section_number} {sec['title']}", level=4)
-            render_demo_section_blocks(sec)
+            render_demo_section_blocks(sec, tree_data)
 
         # -------------------------------------------------
         # 3.3 Consolidated Maturity Model
@@ -1672,8 +2670,10 @@ class AIReportService:
                 f"{chapter_number} {s.acronym} · {s.name}",
                 level=2
             )
-
+            
+            # -------------------------------
             # Load decision tree
+            # -------------------------------
             tree_data, _ = self._load_domain_tree_and_catalog(
                 project_id=project_id,
                 domain_acronym=s.acronym,
@@ -1681,36 +2681,9 @@ class AIReportService:
                 language=language
             )
 
-            # -------------------------------
-            # 3.x.1 Definição de Domínio e Contexto
-            # -------------------------------
-            context_number = f"{chapter_number}.1"
-
-            self._add_heading(
-                doc,
-                f"{context_number} {T('section_3_domain_context_title')}",
-                level=3
-            )
-
-            # Objetivo e Conteúdo esperado
-            self._add_paragraph(doc, T("section_3_domain_context_objective"))
-            self._add_paragraph(doc, T("section_3_domain_context_expected"))
-
-            # Description from decision_tree.yaml
-            desc = self._domain_description(tree_data)
-            if desc:
-                self._add_paragraph(doc, desc)
-
-            # Current maturity positioning
-            self._add_paragraph(
-                doc,
-                f"{T('current_maturity')} "
-                f"{T('maturity_level_prefix')} {s.avg_floor} "
-                f"({self._likert_label(s.avg_floor, language)})."
-            )
 
             # -------------------------------
-            # Triggered Action
+            # Triggered Action (primeiro define tudo)
             # -------------------------------
             action_code = self._triggered_action_code(s.acronym, s.avg_floor)
 
@@ -1732,6 +2705,100 @@ class AIReportService:
                 ).strip()
                 demo = str(item.get("demo") or "").strip()
 
+            
+            demo = self._normalize_maturity_labels_in_demo(demo, tree_data)
+            
+            
+            # -------------------------------
+            # 3.x.1 Definição de Domínio e Contexto
+            # -------------------------------
+            context_number = f"{chapter_number}.1"
+
+            # evitar duplicação lógica com 3.2.2.1
+            lbl = T("section_3_domain_context_domain_specific_title")
+
+            if (
+                not lbl
+                or lbl == "section_3_domain_context_domain_specific_title"
+                or str(lbl).startswith("[section_")
+            ):
+                lbl = "Domain Contextualization (Assessed Domain)"
+
+            self._add_heading(
+                doc,
+                f"{context_number} {lbl}",
+                level=3
+            )
+
+            # descrição do domínio
+            desc = self._domain_description(tree_data)
+            if desc:
+                p = doc.add_paragraph()
+                p.add_run(T("description_label")).bold = True
+                p.add_run(desc)
+                        
+            self._render_text_with_bold_prefix_if_colon(
+                doc,
+                T("section_3_domain_context_objective")
+            )
+
+            self._render_text_with_bold_prefix_if_colon(
+                doc,
+                T("section_3_domain_context_expected")
+            )
+
+            self._add_paragraph(
+                doc,
+                f"{T('current_maturity')} "
+                f"{T('maturity_level_prefix')} {s.avg_floor} "
+                f"({self._likert_label(s.avg_floor, language)})."
+            )
+
+            # -------------------------------
+            # Contexto Organizacional (usa demo já definido)
+            # -------------------------------
+            if demo:
+
+                parsed = self._parse_demo_sections(demo)
+
+                sec3 = next(
+                    (x for x in parsed
+                     if str(x.get("code") or "").strip() == CODE_DOMAIN_SECTION),
+                    None
+                )
+
+                if sec3:
+
+                    sub32 = None
+                    for b in sec3.get("blocks", []):
+                        if (
+                            b.get("kind") == "subsection"
+                            and str(b.get("code") or "").strip() == CODE_ORG_CONTEXT
+                        ):
+                            sub32 = b
+                            break
+
+                    if sub32:
+                        self._add_heading(doc, sub32["title"], level=4)
+
+                        for it in sub32.get("items", []):
+                            if it["type"] == "bullet":
+                                doc.add_paragraph(it["text"], style="List Bullet")
+
+                            elif it["type"] == "kv":
+                                p = doc.add_paragraph()
+                                p.add_run(it["key"] + ": ").bold = True
+                                p.add_run(it["text"])
+
+                            else:
+                                self._render_text_with_bold_prefix_if_colon(
+                                    doc,
+                                    it["text"]
+                                )
+
+            # -------------------------------
+            # Triggered Action Label
+            # -------------------------------
             if title:
                 self._add_paragraph(
                     doc,
@@ -1771,6 +2838,12 @@ class AIReportService:
                 sec for sec in sections
                 if not is_global_section(sec.get("title", ""))
             ]
+            
+            # Avoid duplicating "Domain Definition and Context" (already rendered in 3.x.1)
+            sections = [
+                sec for sec in sections
+                if str(sec.get("code") or "").strip() != CODE_DOMAIN_SECTION
+            ]
 
             render_example_block = True
 
@@ -1779,20 +2852,50 @@ class AIReportService:
 
                 section_number = f"{procedure_number}.{sec_index}"
 
+                title = sec["title"]
+                
+                is_procedure_6 = str(action_code).endswith("06")
+
+                normalized = str(title).strip().lower()
+
+                if normalized == T("procedure_action_definition").lower():
+                    title = f"Ação {action_code}"
+
+                elif normalized == T("procedure_definition").lower():
+                    title = f"Procedimentos da Ação {action_code}"
+
                 self._add_heading(
                     doc,
-                    f"{section_number} {sec['title']}",
+                    f"{section_number} {title}",
                     level=4
                 )
 
                 for block in sec["blocks"]:
 
                     if block["kind"] == "subsection":
+                        
+                        if str(block["title"]).strip().lower() == "elementos de exemplo":
+                            self._add_heading(doc, block["title"], level=6)
+                            continue
 
                         self._add_heading(doc, block["title"], level=5)
 
-                        # Renderiza conteúdo normal primeiro
-                        for item in block["items"]:
+                        # Injeta os elementos prescritivos ANTES do conteúdo normal (topo)
+                        if (
+                            render_example_block
+                            and str(block.get("code") or "").strip() == CODE_EXECUTION_STRUCTURE
+                        ):
+                            self._add_procedure_elements_of_example(
+                                doc=doc,
+                                domain_acronym=s.acronym,
+                                action_code=action_code,
+                                language=language
+                            )
+                            render_example_block = False
+
+                        # Renderiza conteúdo normal
+                        for item in block["items"]:                            
+
                             if item["type"] == "bullet":
                                 doc.add_paragraph(item["text"], style="List Bullet")
 
@@ -1802,10 +2905,15 @@ class AIReportService:
                                 p.add_run(item["text"])
 
                             else:
-                                self._render_text_with_bold_prefix_if_colon(
-                                    doc,
-                                    item["text"]
-                                )
+                                # melhorar títulos curtos isolados
+                                if ":" not in item["text"] and len(item["text"].split()) <= 4:
+                                    p = doc.add_paragraph()
+                                    p.add_run(item["text"]).bold = True
+                                else:
+                                    self._render_text_with_bold_prefix_if_colon(
+                                        doc,
+                                        item["text"]
+                                    )
 
                         # Depois injeta os elementos prescritivos
                         if (
@@ -1857,18 +2965,21 @@ class AIReportService:
             f"{closing_chapter}.1 {T('section_3_document_governance')}",
             level=3
         )
+        self._add_paragraph(doc, T("section_3_document_governance_intro"))
 
         self._add_heading(
             doc,
             f"{closing_chapter}.2 {T('section_3_minimum_evidence')}",
             level=3
         )
+        self._add_paragraph(doc, T("section_3_minimum_evidence_intro"))
 
         self._add_heading(
             doc,
             f"{closing_chapter}.3 {T('section_3_evolution_criteria')}",
             level=3
         )
+        self._add_paragraph(doc, T("section_3_evolution_criteria_intro"))
 
     def _parse_demo_sections(self, demo: str) -> List[Dict[str, Any]]:
         text = (demo or "").replace("\r\n", "\n").strip()
@@ -1890,16 +3001,19 @@ class AIReportService:
         out = []
         for ch in chunks:
             lines = ch.split("\n")
-
             raw_title = lines[0].strip()
 
-            # 🔥 REMOVE prefixo numérico tipo "1. ", "2. ", etc.
+            m0 = re.match(r"^\s*(\d+)\.\s+(.+?)\s*$", raw_title)
+            code = m0.group(1).strip() if m0 else ""
+
+            # REMOVE prefixo numérico tipo "1. "
             title = re.sub(r"^\s*\d+\.\s*", "", raw_title).strip()
 
             body = "\n".join(lines[1:]).strip()
             blocks = self._parse_demo_body_blocks(body)
 
             out.append({
+                "code": code,
                 "title": title,
                 "blocks": blocks
             })
@@ -1911,48 +3025,57 @@ class AIReportService:
             return []
 
         blocks = []
-        current_subsection = None
 
         for raw in body.split("\n"):
             if not raw.strip():
                 continue
 
-            line = re.sub(r"^\s*\d+(\.\d+)*\.?\s*", "", raw.strip())
+            raw_strip = raw.strip()
+
+            # Captura "7.1 Title" / "5.4 Title:" etc
+            mcode = re.match(r"^\s*(\d+(?:\.\d+)*)\s+(.+?)\s*$", raw_strip)
+            raw_code = mcode.group(1).strip() if mcode else ""
+            line = mcode.group(2).strip() if mcode else raw_strip
+
             line = self._clean_placeholders(line)
 
-            # 🔹 Subsection header (termina com :)
-            if line.endswith(":") and not ":" in line[:-1]:
-                current_subsection = line[:-1].strip()
+            # Subsection header:
+            # 1) termina com ":" e só tem esse ":" no fim
+            # 2) OU tem código x.y (ex: 7.1 / 7.3 / 5.4) mesmo sem ":"
+            is_subsection_by_colon = line.endswith(":") and (":" not in line[:-1])
+            is_subsection_by_code = bool(raw_code) and bool(re.match(r"^\d+\.\d+$", raw_code))
+
+            if is_subsection_by_colon or is_subsection_by_code:
+                title = line[:-1].strip() if is_subsection_by_colon else line.strip()
                 blocks.append({
                     "kind": "subsection",
-                    "title": current_subsection,
+                    "code": raw_code,
+                    "title": title,
                     "items": []
                 })
                 continue
 
-            # 🔹 Bullet explícito
+            # Bullet explícito
             if line.startswith("- "):
                 text = line[2:].strip()
-
                 if blocks and blocks[-1]["kind"] == "subsection":
                     blocks[-1]["items"].append({"type": "bullet", "text": text})
                 else:
                     blocks.append({"kind": "bullet", "text": text})
                 continue
 
-            # 🔹 KV
+            # KV
             m = re.match(r"^([A-Za-z][A-Za-z\s]+):\s*(.+)$", line)
             if m:
                 key = m.group(1).strip()
                 val = m.group(2).strip()
-
                 if blocks and blocks[-1]["kind"] == "subsection":
                     blocks[-1]["items"].append({"type": "kv", "key": key, "text": val})
                 else:
                     blocks.append({"kind": "kv", "key": key, "text": val})
                 continue
 
-            # 🔹 Texto simples
+            # Texto simples
             if blocks and blocks[-1]["kind"] == "subsection":
                 blocks[-1]["items"].append({"type": "text", "text": line})
             else:

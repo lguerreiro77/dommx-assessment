@@ -1,3 +1,17 @@
+analysis_templates:
+
+    - p1: "{tag_assessment_observation} {tag_overall_maturity} {maturity_label}. {tag_maturity_index}: {maturity_index}. {tag_domains_analysed}: {domain_count}."
+      p2: "{tag_structure_observation} {tag_balance_index}: {balance_index} ({balance_label}). {tag_governance_risk}: {risk_index} ({risk_label})."
+      p3: "{tag_operational_implication} {tag_domains_leading}: {leaders}. {tag_domains_critical}: {critical}."
+
+    - p1: "{tag_assessment_observation} {tag_overall_maturity} {maturity_label}. {tag_maturity_index}: {maturity_index}."
+      p2: "{tag_maturity_distribution} {tag_balance_index}: {balance_index}. {tag_governance_risk}: {risk_index}."
+      p3: "{tag_improvement_focus} {critical}. {tag_domains_leading}: {leaders}."
+
+    - p1: "{tag_assessment_observation} {tag_overall_maturity} {maturity_label}. {tag_domains_analysed}: {domain_count}."
+      p2: "{tag_structure_observation} {tag_balance_index}: {balance_index}. {tag_governance_risk}: {risk_index}."
+      p3: "{tag_structural_gap} {leaders} / {critical}. {tag_systemic_impact}."
+      
 report_text:
   us:
   
@@ -190,6 +204,46 @@ report_text:
     
     maturity_dispersion_title: "Maturity dispersion detected within this domain."
     maturity_dispersion_text: "Significant variance between question scores suggests structural inconsistency or uneven implementation maturity across components."
+    
+    
+    tag_analysis_radar: "Radar chart analysis"
+
+    tag_no_leader: "No domains significantly exceed the overall maturity level"
+    tag_no_critical: "No domains fall significantly below the overall maturity level"
+
+    tag_assessment_observation: "The assessment indicates that"
+    tag_structure_observation: "The structural distribution of maturity suggests"
+    tag_operational_implication: "From a governance perspective"
+    tag_improvement_focus: "Improvement efforts should prioritize"
+    tag_maturity_distribution: "The maturity distribution across domains"
+    tag_structural_gap: "The observed gap between domains"
+    tag_systemic_impact: "This imbalance may affect the overall reliability and consistency of data practices"
+
+    tag_overall_maturity: "the overall maturity level across the evaluated domains is"
+    tag_maturity_index: "Maturity index"
+    tag_domains_analysed: "Domains analysed"
+
+    tag_balance_index: "Balance index"
+    tag_governance_risk: "Governance risk index"
+
+    tag_domains_leading: "Domains with relatively higher maturity"
+    tag_domains_critical: "Domains requiring priority improvement"
+
+    tag_maturity_initial: "initial"
+    tag_maturity_emerging: "emerging"
+    tag_maturity_established: "established"
+    tag_maturity_managed: "managed"
+    tag_maturity_optimized: "optimized"
+
+    tag_balance_high: "highly balanced maturity"
+    tag_balance_moderate: "moderately balanced maturity"
+    tag_balance_low: "uneven maturity distribution"
+    tag_balance_fragmented: "fragmented maturity distribution"
+
+    tag_risk_low: "low governance risk"
+    tag_risk_moderate: "moderate governance risk"
+    tag_risk_high: "high governance risk"
+    tag_risk_critical: "critical governance risk"         
 
   pt:
   
@@ -383,6 +437,46 @@ report_text:
     maturity_dispersion_title: "Dispersão de maturidade detectada neste domínio."
     maturity_dispersion_text: "Variações significativas entre as pontuações indicam possível inconsistência estrutural ou implementação desigual entre os componentes."    
     
+    
+    tag_analysis_radar: "Análise do gráfico radar"
+
+    tag_no_leader: "Nenhum domínio apresenta maturidade significativamente acima do nível geral"
+    tag_no_critical: "Nenhum domínio apresenta maturidade significativamente abaixo do nível geral"
+
+    tag_assessment_observation: "A avaliação indica que"
+    tag_structure_observation: "A distribuição estrutural da maturidade sugere que"
+    tag_operational_implication: "Do ponto de vista da governança"
+    tag_improvement_focus: "Os esforços de evolução devem priorizar"
+    tag_maturity_distribution: "A distribuição de maturidade entre os domínios"
+    tag_structural_gap: "A diferença observada entre domínios"
+    tag_systemic_impact: "Esse desequilíbrio pode afetar a confiabilidade e consistência das práticas de dados"
+
+    tag_overall_maturity: "o nível geral de maturidade dos domínios avaliados é"
+    tag_maturity_index: "Índice de maturidade"
+    tag_domains_analysed: "Domínios analisados"
+
+    tag_balance_index: "Índice de equilíbrio"
+    tag_governance_risk: "Índice de risco de governança"
+
+    tag_domains_leading: "Domínios com maturidade relativamente mais elevada"
+    tag_domains_critical: "Domínios que requerem evolução prioritária"
+
+    tag_maturity_initial: "inicial"
+    tag_maturity_emerging: "emergente"
+    tag_maturity_established: "estabelecido"
+    tag_maturity_managed: "gerenciado"
+    tag_maturity_optimized: "otimizado"
+
+    tag_balance_high: "maturidade altamente equilibrada"
+    tag_balance_moderate: "maturidade moderadamente equilibrada"
+    tag_balance_low: "distribuição de maturidade desigual"
+    tag_balance_fragmented: "distribuição de maturidade fragmentada"
+
+    tag_risk_low: "baixo risco de governança"
+    tag_risk_moderate: "risco moderado de governança"
+    tag_risk_high: "alto risco de governança"
+    tag_risk_critical: "risco crítico de governança"    
+    
   es:
   
     cover_purpose_dommmx: |
@@ -575,6 +669,46 @@ report_text:
     maturity_dispersion_title: "Dispersión de madurez detectada en este dominio."
     maturity_dispersion_text: "La variación significativa entre las puntuaciones sugiere inconsistencia estructural o implementación desigual entre componentes."
     
+    
+    tag_analysis_radar: "Análisis del gráfico radar"
+
+    tag_no_leader: "Ningún dominio presenta una madurez significativamente superior al nivel general"
+    tag_no_critical: "Ningún dominio presenta una madurez significativamente inferior al nivel general"
+
+    tag_assessment_observation: "La evaluación indica que"
+    tag_structure_observation: "La distribución estructural de la madurez sugiere que"
+    tag_operational_implication: "Desde la perspectiva de gobernanza"
+    tag_improvement_focus: "Los esfuerzos de mejora deberían priorizar"
+    tag_maturity_distribution: "La distribución de madurez entre dominios"
+    tag_structural_gap: "La diferencia observada entre dominios"
+    tag_systemic_impact: "Este desequilibrio puede afectar la fiabilidad y consistencia de las prácticas de datos"
+
+    tag_overall_maturity: "el nivel general de madurez de los dominios evaluados es"
+    tag_maturity_index: "Índice de madurez"
+    tag_domains_analysed: "Dominios analizados"
+
+    tag_balance_index: "Índice de equilibrio"
+    tag_governance_risk: "Índice de riesgo de gobernanza"
+
+    tag_domains_leading: "Dominios con madurez relativamente más alta"
+    tag_domains_critical: "Dominios que requieren mejora prioritaria"
+
+    tag_maturity_initial: "inicial"
+    tag_maturity_emerging: "emergente"
+    tag_maturity_established: "establecido"
+    tag_maturity_managed: "gestionado"
+    tag_maturity_optimized: "optimizado"
+
+    tag_balance_high: "madurez altamente equilibrada"
+    tag_balance_moderate: "madurez moderadamente equilibrada"
+    tag_balance_low: "distribución de madurez desigual"
+    tag_balance_fragmented: "distribución de madurez fragmentada"
+
+    tag_risk_low: "bajo riesgo de gobernanza"
+    tag_risk_moderate: "riesgo moderado de gobernanza"
+    tag_risk_high: "alto riesgo de gobernanza"
+    tag_risk_critical: "riesgo crítico de gobernanza"
+    
   fr:
   
     cover_purpose_dommmx: |
@@ -762,6 +896,45 @@ report_text:
     maturity_dispersion_title: "Dispersion de maturité détectée dans ce domaine."
     maturity_dispersion_text: "Une variation significative entre les scores suggère une incohérence structurelle ou une mise en œuvre inégale des composants."
     
+    tag_analysis_radar: "Analyse du graphique radar"
+
+    tag_no_leader: "Aucun domaine ne présente une maturité significativement supérieure au niveau global"
+    tag_no_critical: "Aucun domaine ne présente une maturité significativement inférieure au niveau global"
+
+    tag_assessment_observation: "L’évaluation indique que"
+    tag_structure_observation: "La distribution structurelle de la maturité suggère que"
+    tag_operational_implication: "Du point de vue de la gouvernance"
+    tag_improvement_focus: "Les efforts d'amélioration devraient prioriser"
+    tag_maturity_distribution: "La distribution de maturité entre les domaines"
+    tag_structural_gap: "L'écart observé entre les domaines"
+    tag_systemic_impact: "Ce déséquilibre peut affecter la fiabilité et la cohérence des pratiques de données"
+
+    tag_overall_maturity: "le niveau global de maturité des domaines évalués est"
+    tag_maturity_index: "Indice de maturité"
+    tag_domains_analysed: "Domaines analysés"
+
+    tag_balance_index: "Indice d'équilibre"
+    tag_governance_risk: "Indice de risque de gouvernance"
+
+    tag_domains_leading: "Domaines présentant une maturité relativement plus élevée"
+    tag_domains_critical: "Domaines nécessitant une amélioration prioritaire"
+
+    tag_maturity_initial: "initial"
+    tag_maturity_emerging: "émergent"
+    tag_maturity_established: "établi"
+    tag_maturity_managed: "géré"
+    tag_maturity_optimized: "optimisé"
+
+    tag_balance_high: "maturité hautement équilibrée"
+    tag_balance_moderate: "maturité modérément équilibrée"
+    tag_balance_low: "répartition de maturité inégale"
+    tag_balance_fragmented: "répartition de maturité fragmentée"
+
+    tag_risk_low: "faible risque de gouvernance"
+    tag_risk_moderate: "risque de gouvernance modéré"
+    tag_risk_high: "risque de gouvernance élevé"
+    tag_risk_critical: "risque critique de gouvernance"
+    
   it:
   
     cover_purpose_dommmx: |
@@ -939,6 +1112,45 @@ report_text:
     
     maturity_dispersion_title: "Dispersione di maturità rilevata in questo dominio."
     maturity_dispersion_text: "Una variazione significativa tra i punteggi suggerisce incoerenza strutturale o implementazione non uniforme tra i componenti."
+    
+    tag_analysis_radar: "Analisi del grafico radar"
+
+    tag_no_leader: "Nessun dominio presenta una maturità significativamente superiore al livello complessivo"
+    tag_no_critical: "Nessun dominio presenta una maturità significativamente inferiore al livello complessivo"
+
+    tag_assessment_observation: "La valutazione indica che"
+    tag_structure_observation: "La distribuzione strutturale della maturità suggerisce che"
+    tag_operational_implication: "Dal punto di vista della governance"
+    tag_improvement_focus: "Gli sforzi di miglioramento dovrebbero dare priorità a"
+    tag_maturity_distribution: "La distribuzione della maturità tra i domini"
+    tag_structural_gap: "La differenza osservata tra i domini"
+    tag_systemic_impact: "Questo squilibrio può influenzare l'affidabilità e la coerenza delle pratiche di dati"
+
+    tag_overall_maturity: "il livello complessivo di maturità dei domini valutati è"
+    tag_maturity_index: "Indice di maturità"
+    tag_domains_analysed: "Domini analizzati"
+
+    tag_balance_index: "Indice di equilibrio"
+    tag_governance_risk: "Indice di rischio di governance"
+
+    tag_domains_leading: "Domini con maturità relativamente più elevata"
+    tag_domains_critical: "Domini che richiedono miglioramento prioritario"
+
+    tag_maturity_initial: "iniziale"
+    tag_maturity_emerging: "emergente"
+    tag_maturity_established: "stabilito"
+    tag_maturity_managed: "gestito"
+    tag_maturity_optimized: "ottimizzato"
+
+    tag_balance_high: "maturità altamente equilibrata"
+    tag_balance_moderate: "maturità moderatamente equilibrata"
+    tag_balance_low: "distribuzione della maturità disomogenea"
+    tag_balance_fragmented: "distribuzione della maturità frammentata"
+
+    tag_risk_low: "basso rischio di governance"
+    tag_risk_moderate: "rischio moderato di governance"
+    tag_risk_high: "alto rischio di governance"
+    tag_risk_critical: "rischio critico di governance"
 
   de:
   
@@ -1112,3 +1324,42 @@ report_text:
     
     maturity_dispersion_title: "Reifegradstreuung in diesem Bereich festgestellt."
     maturity_dispersion_text: "Erhebliche Unterschiede zwischen den Bewertungen deuten auf strukturelle Inkonsistenzen oder ungleichmäßige Implementierung hin."
+    
+    tag_analysis_radar: "Analyse des Radar-Diagramms"
+
+    tag_no_leader: "Keine Domäne weist eine deutlich höhere Reife als das Gesamtniveau auf"
+    tag_no_critical: "Keine Domäne weist eine deutlich niedrigere Reife als das Gesamtniveau auf"
+    
+    tag_assessment_observation: "Die Bewertung zeigt, dass"
+    tag_structure_observation: "Die strukturelle Verteilung der Reife deutet darauf hin, dass"
+    tag_operational_implication: "Aus Governance-Perspektive"
+    tag_improvement_focus: "Verbesserungsmaßnahmen sollten priorisieren"
+    tag_maturity_distribution: "Die Reifeverteilung über die Domänen hinweg"
+    tag_structural_gap: "Die beobachtete Differenz zwischen den Domänen"
+    tag_systemic_impact: "Dieses Ungleichgewicht kann die Zuverlässigkeit und Konsistenz der Datenpraktiken beeinträchtigen"
+
+    tag_overall_maturity: "der Gesamtreifegrad der bewerteten Domänen ist"
+    tag_maturity_index: "Reifeindex"
+    tag_domains_analysed: "Analysierte Domänen"
+
+    tag_balance_index: "Balanceindex"
+    tag_governance_risk: "Governance-Risikoindex"
+
+    tag_domains_leading: "Domänen mit relativ höherem Reifegrad"
+    tag_domains_critical: "Domänen mit prioritärem Verbesserungsbedarf"
+
+    tag_maturity_initial: "initial"
+    tag_maturity_emerging: "entstehend"
+    tag_maturity_established: "etabliert"
+    tag_maturity_managed: "gesteuert"
+    tag_maturity_optimized: "optimiert"
+
+    tag_balance_high: "hoch ausgewogene Reife"
+    tag_balance_moderate: "mäßig ausgewogene Reife"
+    tag_balance_low: "ungleiche Reifeverteilung"
+    tag_balance_fragmented: "fragmentierte Reifeverteilung"
+
+    tag_risk_low: "niedriges Governance-Risiko"
+    tag_risk_moderate: "moderates Governance-Risiko"
+    tag_risk_high: "hohes Governance-Risiko"
+    tag_risk_critical: "kritisches Governance-Risiko"

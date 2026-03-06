@@ -1,6 +1,8 @@
 import os
 import re
 import time
+import secrets
+import datetime
 import pycountry
 import shutil
 import streamlit as st
@@ -16,12 +18,354 @@ from storage.user_storage import load_user, save_user, verify_password, get_all_
 from core.ai_report_service import AIReportService
 from data.repository_factory import get_repository
 from core.config import BASE_DIR
-import os
 
-from data.repository_factory import get_repository
+from urllib.parse import quote, unquote
+
+import traceback
 
 repo = get_repository()
 
+
+
+
+# =========================================================
+# ENV
+# =========================================================
+def get_env(name: str):
+    try:
+        if name in st.secrets:
+            return st.secrets[name]
+    except Exception:
+        pass
+    return os.getenv(name)
+
+
+ADMINS_RAW = get_env("ADMINS") or ""
+
+if isinstance(ADMINS_RAW, list):
+    ADMINS = {x.strip().lower() for x in ADMINS_RAW if x.strip()}
+else:
+    ADMINS = {x.strip().lower() for x in str(ADMINS_RAW).split(",") if x.strip()}
+
+
+# =========================================================
+# reset password token
+# =========================================================
+
+
+def create_password_reset_token(email_hash):
+
+    expires = int(time.time()) + 1800  # 30 min
+
+    payload = f"{email_hash}|{expires}"
+    signature = hashlib.sha256(payload.encode()).hexdigest()
+
+    token = f"{payload}|{signature}"
+
+    return token
+    
+def parse_password_reset_token(token):
+
+    try:
+        token = unquote(str(token).strip())
+
+        email_hash, expires, signature = token.split("|")
+
+        payload = f"{email_hash}|{expires}"
+        expected_signature = hashlib.sha256(payload.encode()).hexdigest()
+
+        if signature != expected_signature:
+            return None
+
+        if int(time.time()) > int(expires):
+            return None
+
+        return {
+            "email_hash": email_hash,
+            "expires": int(expires)
+        }
+
+    except Exception:
+        return None  
+    
+    
+def render_forgot_password():
+
+    if "_sending_reset" not in st.session_state:
+        st.session_state["_sending_reset"] = False
+
+    left, center, right = st.columns([1, 5, 1])
+
+    with center:
+
+        st.markdown(
+            st._html_tr("<h3 style='text-align:center;'>Forgot Password</h3>"),
+            unsafe_allow_html=True
+        )
+
+        if "_forgot_status" not in st.session_state:
+            st.session_state["_forgot_status"] = None
+
+        status = st.session_state.get("_forgot_status")
+
+        if status:
+            level = status.get("level")
+            msg = status.get("msg", "")
+
+            if level == "success":
+                st.success(msg)
+            elif level == "error":
+                st.error(msg)
+            else:
+                st.info(msg)
+
+        success_ts = st.session_state.get("_forgot_success_ts")
+
+        if success_ts:
+            if time.time() - success_ts > 3:
+                st.session_state.pop("_forgot_success_ts", None)
+                st.session_state.pop("_forgot_status", None)
+                st.session_state["app_mode"] = "login"
+                st.rerun()
+
+        if "forgot_email_input" not in st.session_state:
+            st.session_state["forgot_email_input"] = st.session_state.get("recover_email", "")
+
+        email = st.text_input(
+            "Email",
+            key="forgot_email_input"
+        )
+
+        send_clicked = st.button(
+            "Send Reset Link",
+            use_container_width=True,
+            disabled=st.session_state["_sending_reset"]
+        )
+
+        if send_clicked:
+
+            st.session_state["_sending_reset"] = True
+            st.rerun()
+
+        if st.session_state["_sending_reset"]:
+
+            try:
+
+                if not email:
+                    st.error("Enter your email.")
+                    st.session_state["_sending_reset"] = False
+                    return
+
+                user = load_user(email)
+
+                if not user:
+                    st.success("If this email exists, a reset link was sent.")
+                    st.session_state["_sending_reset"] = False
+                    return
+
+                token = create_password_reset_token(user["email_hash"])
+
+                app_url = get_env("APP_URL_PROD") or get_env("APP_URL_LOCAL")
+
+                if not app_url:
+                    st.error("APP_URL not configured.")
+                    st.session_state["_sending_reset"] = False
+                    return
+
+                encoded_token = quote(token, safe="")
+                reset_link = f"{app_url}?reset_token={encoded_token}"
+
+                with st.spinner("Sending reset email..."):
+
+                    send_email(
+                        email,
+                        "Password Reset",
+                        f"Click the link to reset your password:\n\n{reset_link}"
+                    )
+
+                st.session_state["_forgot_success_ts"] = time.time()
+
+                st.session_state["_forgot_status"] = {
+                    "level": "success",
+                    "msg": "Reset link sent. Please check your email."
+                }
+
+                st.session_state["_sending_reset"] = False
+                st.rerun()
+
+            except Exception:
+                st.error("Error sending reset email.")
+                st.session_state["_sending_reset"] = False
+
+        if st.button(
+            "Back",
+            use_container_width=True,
+            disabled=st.session_state["_sending_reset"]
+        ):
+            st.session_state["_forgot_status"] = None
+            st.session_state["app_mode"] = "login"
+            st.rerun()
+    
+
+def render_reset_password():
+
+    if "_updating_password" not in st.session_state:
+        st.session_state["_updating_password"] = False
+
+    token = st.session_state.get("reset_token")
+
+    record = parse_password_reset_token(token)
+
+    if not record:
+        st.error("Invalid or expired reset link.")
+        if st.button(
+            "Login",
+            use_container_width=True,
+            key="btn_back_login_from_reset_invalid"
+        ):
+            st.session_state.pop("reset_token", None)
+
+            try:
+                st.query_params.clear()
+            except Exception:
+                pass
+
+            st.session_state["app_mode"] = "login"
+            st.rerun()
+        return
+
+    email_hash = str(record["email_hash"]).strip()
+
+    left, center, right = st.columns([1, 4, 1])
+
+    with center:
+
+        st.markdown(
+            st._html_tr("<h3 style='text-align:center;'>Reset Password</h3>"),
+            unsafe_allow_html=True
+        )
+
+        if st.session_state.get("_reset_done"):
+            st.success("Password updated successfully.")
+
+            if st.button(
+                "Login",
+                use_container_width=True,
+                key="btn_back_login_from_reset_success"
+            ):
+                st.session_state.pop("reset_token", None)
+                st.session_state.pop("_reset_done", None)
+
+                try:
+                    st.query_params.clear()
+                except Exception:
+                    pass
+
+                st.session_state["app_mode"] = "login"
+                st.rerun()
+
+            return
+
+        new_password = st.text_input(
+            "New Password",
+            type="password",
+            key="reset_new_password"
+        )
+
+        confirm = st.text_input(
+            "Confirm Password",
+            type="password",
+            key="reset_confirm_password"
+        )
+
+        update_clicked = st.button(
+            "Update Password",
+            use_container_width=True,
+            key="btn_update_password",
+            disabled=st.session_state["_updating_password"]
+        )
+
+        if update_clicked:
+            st.session_state["_updating_password"] = True
+            st.rerun()
+
+        if st.session_state["_updating_password"]:
+
+            if not new_password:
+                st.error("Enter a password.")
+                st.session_state["_updating_password"] = False
+                return
+
+            if new_password != confirm:
+                st.error("Passwords do not match.")
+                st.session_state["_updating_password"] = False
+                return
+
+            if len(new_password) < 8:
+                st.error("Password must be at least 8 characters.")
+                st.session_state["_updating_password"] = False
+                return
+
+            try:
+
+                with st.spinner("Updating password..."):
+
+                    user = load_user_by_hash(email_hash)
+
+                    if not user:
+                        st.error("User not found.")
+                        st.session_state["_updating_password"] = False
+                        return
+
+                    save_user(
+                        email=user["email"],
+                        password=new_password,
+                        full_name=user.get("full_name", ""),
+                        company=user.get("company", ""),
+                        department=user.get("department", ""),
+                        job_title=user.get("job_title", ""),
+                        phone=user.get("phone", ""),
+                        country=user.get("country", ""),
+                        state_province=user.get("state_province", ""),
+                        city=user.get("city", ""),
+                        consent=user.get("consent", False),
+                    )
+
+                try:
+                    load_user.clear()
+                    load_user_by_hash.clear()
+                    get_all_users.clear()
+                except Exception:
+                    pass
+
+            except Exception as e:
+                st.error(str(e))
+                st.session_state["_updating_password"] = False
+                return
+
+            st.session_state["_updating_password"] = False
+            st.session_state["_reset_done"] = True
+            st.rerun()
+
+        if st.button(
+            "Login",
+            use_container_width=True,
+            key="btn_back_login_from_reset",
+            disabled=st.session_state["_updating_password"]
+        ):
+
+            st.session_state.pop("reset_token", None)
+            st.session_state.pop("_reset_done", None)
+
+            try:
+                st.query_params.clear()
+            except Exception:
+                pass
+
+            st.session_state["app_mode"] = "login"
+
+            st.rerun()
+    
 # =========================================================
 # Finished project
 # =========================================================
@@ -99,25 +443,6 @@ def get_countries():
 
 
 # =========================================================
-# ENV
-# =========================================================
-def get_env(name: str):
-    try:
-        if name in st.secrets:
-            return st.secrets[name]
-    except Exception:
-        pass
-    return os.getenv(name)
-
-
-ADMINS_RAW = get_env("ADMINS") or ""
-
-if isinstance(ADMINS_RAW, list):
-    ADMINS = {x.strip().lower() for x in ADMINS_RAW if x.strip()}
-else:
-    ADMINS = {x.strip().lower() for x in str(ADMINS_RAW).split(",") if x.strip()}
-
-# =========================================================
 # FLASH
 # =========================================================
 def _flash_set(msg: str, level: str = "info"):
@@ -150,41 +475,104 @@ def _flash_render(ttl_seconds: int = 3):
 # CONTROLLER
 # =========================================================
 def render_auth():
+        
+    # -------------------------------------------------
+    # INIT MODE
+    # -------------------------------------------------
     if "app_mode" not in st.session_state:
-        st.session_state.app_mode = "login"
+        st.session_state["app_mode"] = "login"
+        
+    mode = st.session_state.get("app_mode")
 
-    if st.session_state.app_mode == "login":
-        render_login()
-    elif st.session_state.app_mode == "register":
-        render_register()
-    elif st.session_state.app_mode == "select_project":
-        render_project_selection()
+    # -------------------------------------------------
+    # PRIORIDADE PARA ESTADO INTERNO
+    # -------------------------------------------------
+    if mode == "forgot":
+        return render_forgot_password()
 
+    if mode == "reset_password":
+        return render_reset_password()
 
+    if mode == "register":
+        return render_register()
+
+    if mode == "select_project":
+        return render_project_selection()
+
+    # -------------------------------------------------
+    # QUERY PARAM RESET TOKEN
+    # -------------------------------------------------
+    token = None
+
+    try:
+        params = st.query_params
+
+        token_param = params.get("reset_token", None)
+
+        if isinstance(token_param, list):
+            token_param = token_param[0]
+
+        if token_param:
+            token = str(token_param).strip()
+
+    except Exception:
+        token = None
+
+    # primeiro acesso ao link de reset
+    if token:
+        st.session_state["reset_token"] = token
+        st.session_state["app_mode"] = "reset_password"
+        return render_reset_password()
+
+    # -------------------------------------------------
+    # DEFAULT
+    # -------------------------------------------------
+    return render_login()
+    
 # =========================================================
 # LOGIN
 # =========================================================
 def render_login():
+        
     left, center, right = st.columns([1, 3, 1]) 
-  
+
     with center:
+
         st.markdown(
             f"<h3 style='text-align:center;'>{APP_TITLE}</h3>",
             unsafe_allow_html=True,
-        )        
-        st.markdown(st._html_tr("<h3 style='text-align:center;'>Login</h3>"), unsafe_allow_html=True)
+        )
+
+        st.markdown(
+            st._html_tr("<h3 style='text-align:center;'>Login</h3>"),
+            unsafe_allow_html=True
+        )
 
         _flash_render()
 
         email = st.text_input("Email")
         password = st.text_input("Password", type="password")
 
-        if st.button("Login", use_container_width=True):
+        email_valid = bool(email and "@" in email)
+        login_enabled = email_valid and bool(password)
+        forgot_enabled = email_valid
+        create_enabled = email_valid
+
+        # -------------------------------------------------
+        # LOGIN
+        # -------------------------------------------------
+        if st.button(
+            "Login",
+            use_container_width=True,
+            disabled=not login_enabled,
+            key="btn_login_main"
+        ):
 
             from storage.project_storage import (
-                get_projects,                                   
+                get_projects,
                 create_project,
             )
+
             import os
             from core.config import BASE_DIR
 
@@ -192,32 +580,28 @@ def render_login():
                 user = load_user(email)
             except Exception as e:
                 st.error(f"Erro real: {e}")
-                raise  
+                raise
 
             if not user or not verify_password(password, user["password_hash"]):
-                _flash_set("User does not exist or password is incorrect.", "error")
-                st.rerun()
-            
-            # chave real do sistema
+                st.error("User does not exist or password is incorrect.")
+                return
+
             user_id = str(user.get("email_hash") or "").strip()
             st.session_state.user_id = user_id
 
-            # gera hash dos admins definidos no .env
             admin_hashes = {
                 hashlib.sha256(x.strip().lower().encode()).hexdigest()
                 for x in ADMINS
             }
-                 
 
             st.session_state.is_admin = user_id in admin_hashes
 
             projects = get_projects() or []
-            
 
             base_projects_dir = os.path.join(BASE_DIR, "data", "projects")
 
             # -------------------------------------------------
-            # CASE 1 — NO PROJECTS IN DB
+            # CASE 1 — NO PROJECTS
             # -------------------------------------------------
             if len(projects) == 0:
 
@@ -232,7 +616,7 @@ def render_login():
                 st.rerun()
 
             # -------------------------------------------------
-            # CASE 2 — PROJECTS EXIST BUT NO FOLDERS
+            # CASE 2 — PROJECTS WITHOUT STRUCTURE
             # -------------------------------------------------
             any_valid_structure = False
 
@@ -248,20 +632,25 @@ def render_login():
             if not any_valid_structure:
 
                 for p in projects:
+
                     pid = str(p.get("project_id")).strip()
                     project_root = os.path.join(base_projects_dir, pid)
                     general_dir = os.path.join(project_root, "General")
 
                     if not os.path.isdir(general_dir):
 
-                        # Rebuild folder structure only (without reinserting DB)
                         os.makedirs(project_root, exist_ok=True)
 
-                        # reutiliza create_project lógica de cópia
-                        # mas sem criar novo registro                        
                         locale = st.session_state.get("locale", "us")
-                        domains_src = os.path.join(BASE_DIR, "data", "domains", "language", locale)
-                        
+
+                        domains_src = os.path.join(
+                            BASE_DIR,
+                            "data",
+                            "domains",
+                            "language",
+                            locale
+                        )
+
                         general_src = os.path.join(BASE_DIR, "data", "general")
 
                         domains_dest = os.path.join(project_root, "Domains")
@@ -273,6 +662,7 @@ def render_login():
                         for item in os.listdir(domains_src):
                             s = os.path.join(domains_src, item)
                             d = os.path.join(domains_dest, item)
+
                             if os.path.isdir(s):
                                 shutil.copytree(s, d, dirs_exist_ok=True)
                             else:
@@ -281,6 +671,7 @@ def render_login():
                         for item in os.listdir(general_src):
                             s = os.path.join(general_src, item)
                             d = os.path.join(general_dest, item)
+
                             if os.path.isdir(s):
                                 shutil.copytree(s, d, dirs_exist_ok=True)
                             else:
@@ -289,10 +680,20 @@ def render_login():
                         fs_src = os.path.join(BASE_DIR, "filesystem_setup.yaml")
 
                         if os.path.isfile(fs_src):
-                            shutil.copy2(fs_src, os.path.join(project_root, "FileSystem_Setup.yaml"))
 
-                            general_fs_dest = os.path.join(project_root, "General", "FileSystem_Setup.yaml")
+                            shutil.copy2(
+                                fs_src,
+                                os.path.join(project_root, "FileSystem_Setup.yaml")
+                            )
+
+                            general_fs_dest = os.path.join(
+                                project_root,
+                                "General",
+                                "FileSystem_Setup.yaml"
+                            )
+
                             os.makedirs(os.path.dirname(general_fs_dest), exist_ok=True)
+
                             shutil.copy2(fs_src, general_fs_dest)
 
                 st.session_state._temp_user = user
@@ -306,11 +707,30 @@ def render_login():
             st.session_state.app_mode = "select_project"
             st.rerun()
 
-        if st.button("Create Account", use_container_width=True):
+        # -------------------------------------------------
+        # FORGOT PASSWORD
+        # -------------------------------------------------
+        if st.button(
+            "Forgot Password",
+            use_container_width=True,
+            disabled=not forgot_enabled,
+            key="btn_forgot_password_main"
+        ):
 
-            if not email or not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-                _flash_set("Enter a valid email first.", "error")
-                st.rerun()
+            st.session_state["recover_email"] = email.strip()
+            st.session_state["app_mode"] = "forgot"
+            #return render_forgot_password()
+            st.rerun()
+            
+        # -------------------------------------------------
+        # CREATE ACCOUNT
+        # -------------------------------------------------
+        if st.button(
+            "Create Account",
+            use_container_width=True,
+            disabled=not create_enabled,
+            key="btn_create_account_main"
+        ):
 
             try:
                 existing_user = load_user(email)
@@ -325,8 +745,8 @@ def render_login():
             st.session_state.register_prefill_email = email.strip()
             st.session_state.app_mode = "register"
             st.rerun()
-
-
+            
+            
 # =========================================================
 # REGISTER
 # =========================================================
@@ -734,14 +1154,19 @@ def render_project_selection():
                 repo=repo
             )
 
-            # Geração via cache interno
-            docx_path = report_service.generate_report_docx(
-                project_id=selected_project,
-                user_id=st.session_state.get("user_id"),
-                is_admin=st.session_state.get("is_admin", False),
-                language=current_locale,
-                force_regen=False
-            )
+            if "report_docx_path_finished" not in st.session_state:
+
+                with st.spinner(st._html_tr("Generating report...")):
+
+                    st.session_state.report_docx_path_finished = report_service.generate_report_docx(
+                        project_id=selected_project,
+                        user_id=st.session_state.get("user_id"),
+                        is_admin=st.session_state.get("is_admin", False),
+                        language=current_locale,
+                        force_regen=False
+                    )
+
+            docx_path = st.session_state.report_docx_path_finished
 
             with col_r1:
                 with open(docx_path, "rb") as f:
@@ -757,6 +1182,8 @@ def render_project_selection():
 
             with col_r2:
                 if st.button(st._html_tr("↩ Log off"), use_container_width=True, key="btn_back_to_login_finished"):
+                    # limpa cache do report
+                    st.session_state.pop("report_docx_path_finished", None)
                     st.session_state.app_mode = "login"
                     st.session_state.pop("_temp_user", None)
                     st.rerun()
@@ -982,3 +1409,5 @@ def render_project_selection():
                     st.session_state.app_mode = "login"
                     st.session_state.pop("_temp_user", None)
                     st.rerun()
+
+

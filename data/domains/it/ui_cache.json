@@ -113,5 +113,7 @@
   "🗑 Revoke permission": "🗑 Revoca autorizzazione",
   "🗑 Delete Account": "🗑 Elimina Account",
   "Revoke Consent and delete account": "Revoca il consenso e cancella l'account",
-  "Revoca il consenso e cancella l'account": "Revoca il consenso e cancella l'account"
+  "Revoca il consenso e cancella l'account": "Revoca il consenso e cancella l'account",
+  "AUTH MODE DEBUG:": "MODALITÀ DI AUTENTICAZIONE DEBUG:",
+  "Forgot Password": "Password dimenticata"
 }

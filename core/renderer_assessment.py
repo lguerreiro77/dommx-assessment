@@ -192,14 +192,19 @@ def render_assessment():
                 repo=repo
             )
 
-            # Gera caminhos (usa cache interno, não regenera se já existir)
-            docx_path = report_service.generate_report_docx(
-                project_id=st.session_state.active_project,
-                user_id=st.session_state.get("user_id"),
-                is_admin=st.session_state.get("is_admin", False),
-                language=current_locale,
-                force_regen=False
-            )            
+            if "report_docx_path" not in st.session_state:
+
+                with st.spinner(st._html_tr("Generating report...")):
+
+                    st.session_state.report_docx_path = report_service.generate_report_docx(
+                        project_id=st.session_state.active_project,
+                        user_id=st.session_state.get("user_id"),
+                        is_admin=st.session_state.get("is_admin", False),
+                        language=current_locale,
+                        force_regen=False
+                    )
+
+            docx_path = st.session_state.report_docx_path            
 
             # BOTÕES DOWNLOAD
             with col1:
@@ -217,6 +222,11 @@ def render_assessment():
             # BOTÃO EXIT
             with col2:
                 if st.button("🚪 Exit System", use_container_width=True):
+
+                    # limpa cache do report para próxima execução
+                    if "report_docx_path" in st.session_state:
+                        st.session_state.pop("report_docx_path")
+
                     logout()
                     st.rerun()
 

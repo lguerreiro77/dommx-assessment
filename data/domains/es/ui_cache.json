@@ -108,5 +108,10 @@
   "🗑 Revoke permission": "🗑 Revocar permiso",
   "🗑 Delete Account": "🗑 Eliminar cuenta",
   "Revoke Consent and delete account": "Revocar consentimiento y eliminar cuenta",
-  "Revocar consentimiento y eliminar cuenta": "Revocar consentimiento y eliminar cuenta"
+  "Revocar consentimiento y eliminar cuenta": "Revocar consentimiento y eliminar cuenta",
+  "Generating report...": "Generando informe...",
+  "Generando informe...": "Generando informe...",
+  "AUTH MODE DEBUG:": "MODO DE AUTENTICACIÓN DEBUG:",
+  "Forgot Password": "Olvidé mi contraseña",
+  "Send Reset Link": "Enviar enlace de restablecimiento"
 }

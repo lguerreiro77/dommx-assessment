@@ -521,7 +521,7 @@ if st.session_state.get("project_config_error"):
 # -------------------------
 # Routing
 # -------------------------
-if st.session_state.app_mode in ["login", "register", "select_project"]:
+if st.session_state.app_mode in ["login", "register", "forgot", "reset_password", "select_project"]:
     col_main, col_lang = st.columns([0.88, 0.12])
     with col_lang:
         render_locale_flag_combo()

@@ -394,7 +394,36 @@ def apply_translation(obj):
     return obj
     
 
+def process_dependencies_file():
 
+    INPUT_FILE = BASE_DIR / "utils" / "yaml-translator" / "input_en" / "Dependencies_inconsistencies_theory_cluster_output.json"
+
+    if not INPUT_FILE.exists():
+        print("Dependencies file not found")
+        return
+
+    print(f"Processing dependencies file: {INPUT_FILE.name}")
+
+    with open(INPUT_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    all_strings = set()
+    collect_json_strings(data, all_strings)
+
+    print(f"Unique strings: {len(all_strings)}")
+
+    batch_translate(all_strings)
+
+    translated = apply_json_translation(data)
+
+    OUTPUT_FILE = OUTPUT_FOLDER / INPUT_FILE.name
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(translated, f, ensure_ascii=False, indent=2)
+
+    print(f"Saved {OUTPUT_FILE}")
+    
+    
 
 def process_patch():
 
@@ -476,16 +505,21 @@ def process():
 if __name__ == "__main__":
 
     if len(sys.argv) < 2:
-        print("Usage: python translator.py <language> [--patch]")
+        print("Usage: python translator.py <language> [--patch] [--dependencies]")
         print("Example: python translator.py pt")
         print("Example: python translator.py pt --patch")
         print("Example: python translator.py all --patch")
+        print("Example: python translator.py pt --dependencies")
+        print("Example: python translator.py all --dependencies")
         sys.exit(1)
 
     arg = sys.argv[1].lower()
-
-    if "--patch" in sys.argv:
+        
+    if "--patch" in sys.argv:   
         PATCH_MODE = True
+
+    if "--dependencies" in sys.argv:
+        DEPENDENCIES_MODE = True        
 
     # =============================
     # ALL LANGUAGES MODE
@@ -510,8 +544,12 @@ if __name__ == "__main__":
             else:
                 CACHE = {}
 
-            if PATCH_MODE:
+            if DEPENDENCIES_MODE:
+                process_dependencies_file()
+
+            elif PATCH_MODE:
                 process_patch()
+
             else:
                 process()
 
@@ -540,7 +578,11 @@ if __name__ == "__main__":
     else:
         CACHE = {}
 
-    if PATCH_MODE:
+    if DEPENDENCIES_MODE:
+        process_dependencies_file()
+
+    elif PATCH_MODE:
         process_patch()
+    
     else:
         process()
