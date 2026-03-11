@@ -137,7 +137,7 @@ def export_all_to_excel():
     
     lang = str(st.session_state.get("locale") or "us").strip().lower()
     project_root = get_project_root()
-    domains_dir = os.path.join(project_root, "Domains") if project_root else ""
+    domains_dir = os.path.join(project_root, "domains") if project_root else ""
     
     # -----------------------------
     # COMMENTS LOOKUP

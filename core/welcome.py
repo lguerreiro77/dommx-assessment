@@ -25,7 +25,7 @@ def render_welcome():
     config = {}
 
     if project_root:
-        project_config = Path(project_root) / "General" / "app_config.yaml"
+        project_config = Path(project_root) / "general" / "app_config.yaml"
         if project_config.exists():
             with open(project_config, "r", encoding="utf-8") as f:
                 config = yaml.safe_load(f) or {}
@@ -74,7 +74,7 @@ def render_welcome():
     docs_config = config.get("docs", [])
     valid_docs = []
 
-    docs_path = Path(project_root) / "General" / "docs" 
+    docs_path = Path(project_root) / "general" / "docs" 
     
     if isinstance(docs_config, list):
         docs_config = sorted(docs_config, key=lambda x: x.get("id", 0))

@@ -40,8 +40,8 @@ def render_app():
 
         if active_project:
             project_root = os.path.join(BASE_DIR, "data", "projects", str(active_project))
-            project_general = os.path.join(project_root, "General")
-            project_domains = os.path.join(project_root, "Domains")
+            project_general = os.path.join(project_root, "general")
+            project_domains = os.path.join(project_root, "domains")
 
         # -------------------------------------------------
         # LOAD FILESYSTEM SETUP
@@ -71,7 +71,7 @@ def render_app():
         if project_general and os.path.isfile(os.path.join(project_general, "default_execution.yaml")):
             orch_path = os.path.join(project_general, "default_execution.yaml")
         else:
-            orch_path = os.path.join(BASE_DIR, orch_filename)
+            orch_path = os.path.join(BASE_DIR, "data", orch_filename)
 
         if not os.path.isfile(orch_path):
             st.error("Orchestration file not found.")
@@ -91,7 +91,7 @@ def render_app():
         if project_general and os.path.isfile(os.path.join(project_general, "flow.yaml")):
             flow_path = os.path.join(project_general, "flow.yaml")
         else:
-            flow_path = os.path.join(BASE_DIR, flow_filename)
+            flow_path = os.path.join(BASE_DIR, "data", flow_filename)
 
         if not os.path.isfile(flow_path):
             st.error("Flow file not found.")
@@ -103,7 +103,7 @@ def render_app():
         st.session_state._flow = flow
         
         # -------------------------------------------------
-        # DOMAINS ROOT
+        # domains ROOT
         # -------------------------------------------------
         if project_domains and os.path.isdir(project_domains):
             domain_root = project_domains

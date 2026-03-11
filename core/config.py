@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 app_config = {}
 
-APP_TITLE = "🛡️ DOMMx Technical Diagnostic"
+APP_TITLE = "🛡️ DOMMx Diagnostic Evaluation"
 SHOW_INTRO = True
 INTRO_HEADING = "Welcome"
 INTRO_MESSAGE = ""
@@ -69,7 +69,7 @@ def get_general_dir():
             "data",
             "projects",
             str(active_project),
-            "General"
+            "general"
         )
 
         if os.path.isdir(project_general):
@@ -92,7 +92,7 @@ def get_filesystem_setup_path():
             "data",
             "projects",
             str(active_project),
-            "General",
+            "general",
             "FileSystem_Setup.yaml"
         )
 

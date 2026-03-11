@@ -597,7 +597,7 @@ def render_login():
             for p in projects:
                 pid = str(p.get("project_id")).strip()
                 project_root = os.path.join(base_projects_dir, pid)
-                general_dir = os.path.join(project_root, "General")
+                general_dir = os.path.join(project_root, "general")
 
                 if os.path.isdir(general_dir):
                     any_valid_structure = True
@@ -609,7 +609,7 @@ def render_login():
 
                     pid = str(p.get("project_id")).strip()
                     project_root = os.path.join(base_projects_dir, pid)
-                    general_dir = os.path.join(project_root, "General")
+                    general_dir = os.path.join(project_root, "general")
 
                     if not os.path.isdir(general_dir):
 
@@ -627,8 +627,8 @@ def render_login():
 
                         general_src = os.path.join(BASE_DIR, "data", "general")
 
-                        domains_dest = os.path.join(project_root, "Domains")
-                        general_dest = os.path.join(project_root, "General")
+                        domains_dest = os.path.join(project_root, "domains")
+                        general_dest = os.path.join(project_root, "general")
 
                         os.makedirs(domains_dest, exist_ok=True)
                         os.makedirs(general_dest, exist_ok=True)
@@ -662,7 +662,7 @@ def render_login():
 
                             general_fs_dest = os.path.join(
                                 project_root,
-                                "General",
+                                "general",
                                 "FileSystem_Setup.yaml"
                             )
 
@@ -1338,7 +1338,7 @@ def render_project_selection():
                 # MULTI-TENANT PROJECT CONTEXT
                 # -------------------------------------------------
                 project_root = os.path.join(BASE_DIR, "data", "projects", str(selected_project).strip())
-                general_dir = os.path.join(project_root, "General")
+                general_dir = os.path.join(project_root, "general")
 
                 if not os.path.isdir(general_dir):
                     st.session_state.project_config_error = True

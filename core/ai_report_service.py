@@ -1160,8 +1160,8 @@ class AIReportService:
         }
 
     def _resolve_filesystem_setup(self, project_id: str) -> Path:
-        # Prefer project General/FileSystem_Setup.yaml, then project root, then BASE_DIR root
-        p1 = self.base_dir / "data" / "projects" / str(project_id) / "General" / "FileSystem_Setup.yaml"
+        # Prefer project general/FileSystem_Setup.yaml, then project root, then BASE_DIR root
+        p1 = self.base_dir / "data" / "projects" / str(project_id) / "general" / "FileSystem_Setup.yaml"
         if p1.exists():
             return p1
         p2 = self.base_dir / "data" / "projects" / str(project_id) / "FileSystem_Setup.yaml"
@@ -1176,7 +1176,7 @@ class AIReportService:
         """
         Resolves a yaml path referenced by filesystem/orchestrator.
         Tries:
-          - project General/<rel_path>
+          - project general/<rel_path>
           - project root/<rel_path>
           - BASE_DIR/<rel_path>
         """
@@ -1190,7 +1190,7 @@ class AIReportService:
             return rp
 
         candidates = [
-            self.base_dir / "data" / "projects" / str(project_id) / "General" / rel,
+            self.base_dir / "data" / "projects" / str(project_id) / "general" / rel,
             self.base_dir / "data" / "projects" / str(project_id) / rel,
             self.base_dir / rel,
         ]
@@ -1198,7 +1198,7 @@ class AIReportService:
             if c.exists():
                 return c
 
-        # last fallback: try lower/upper for "general/General"
+        # last fallback: try lower/upper for "general/general"
         candidates2 = [
             self.base_dir / "data" / "projects" / str(project_id) / "general" / rel,
         ]
@@ -1936,7 +1936,7 @@ class AIReportService:
         language: str
     ) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]]]:
         """
-        Resolve paths no padrão do projeto (data/projects/<id>/Domains/<lang>/...)
+        Resolve paths no padrão do projeto (data/projects/<id>/domains/<lang>/...)
         Usando flow.yaml Domain_flow -> files: decision_tree / action_catalog.
         """
         lang = (language or "us").strip().lower() or "us"
@@ -1948,7 +1948,7 @@ class AIReportService:
         decision_tree_rel = files.get("decision_tree")
         action_catalog_rel = files.get("action_catalog")
 
-        base = self.base_dir / "data" / "projects" / str(project_id) / "Domains"
+        base = self.base_dir / "data" / "projects" / str(project_id) / "domains"
 
         candidates_lang = [lang, "us"]
         tree_data = None
@@ -2825,7 +2825,7 @@ class AIReportService:
             "DAMA International. (n.d.). DAMA-DMBOK: Data Management Body of Knowledge (2nd ed.).",
             "EDM Council. (n.d.). DCAM: Data Management Capability Assessment Model.",
             "CMMI Institute. (n.d.). CMMI Model.",
-            "European Union. (2016). General Data Protection Regulation (GDPR) (EU) 2016/679.",
+            "European Union. (2016). general Data Protection Regulation (GDPR) (EU) 2016/679.",
             "DOMMx publication (Zenodo record: 18020434).",
             "SLR DOMMx publication (IEEE Xplore document: 11223201).",
         ]

@@ -56,8 +56,8 @@ def create_project(name, created_by, allow_open_access=False):
     # MULTI-TENANT FILESYSTEM SETUP
     # -----------------------------
     project_root = os.path.join(BASE_DIR, "data", "projects", project_id)
-    domains_dest = os.path.join(project_root, "Domains")
-    general_dest = os.path.join(project_root, "General")
+    domains_dest = os.path.join(project_root, "domains")
+    general_dest = os.path.join(project_root, "general")
 
     # fontes (baseline)
     domains_root = os.path.join(BASE_DIR, "data", "domains")

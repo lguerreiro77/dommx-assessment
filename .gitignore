@@ -10,8 +10,10 @@ git_tkn.txt
 /data/general/secret.key
 /data/BKP/
 
-data/projects/
+data/projects/*
 !data/projects/44ffed28-4a96-4571-aa72-8696ad446a39/
+!data/projects/44ffed28-4a96-4571-aa72-8696ad446a39/**
+data/projects/**/report_cache/
 
 # Service accounts
 !package.json

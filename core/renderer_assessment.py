@@ -273,14 +273,14 @@ def render_assessment():
             add_message("Project root not found.", "error")
             st.stop()
 
-        domains_dir = os.path.join(project_root, "Domains")   
+        domains_dir = os.path.join(project_root, "domains")   
             
         current_locale = st.session_state.get("locale")
 
         if not current_locale:
             st.stop()
 
-        domains_dir = os.path.join(project_root, "Domains")
+        domains_dir = os.path.join(project_root, "domains")
 
         tree_path = os.path.join(
             domains_dir,
