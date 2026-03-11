@@ -1,0 +1,232 @@
+domain:
+  id: 5
+  name: Seguridad de datos (DS)
+  description: "Este dominio evalúa la formalización de la gobernanza de seguridad
+    de datos, la existencia de estándares de protección gobernados y la integración
+    de controles de seguridad a lo largo del ciclo de vida de los datos. Seguridad
+    de Datos se enfoca en asegurar que los activos de datos estén protegidos contra
+    accesos no autorizados, pérdida o uso indebido, apoyado por stewardship formal,
+    autoridad clara y mecanismos rigurosos de supervisión (DAMA-DMBOK2, Capítulo 9).\n"
+maturity_scale:
+  0:
+    maturity_level: No existente
+    meaning: No existen prácticas de gobernanza ni responsabilidades o procesos 
+      definidos.
+    interpretation_for_assessment: Indica una ausencia completa de estructura y 
+      una necesidad inmediata de acción fundamental.
+  1:
+    maturity_level: Inicial.
+    meaning: Las actividades ocurren de forma informal y reactiva con poca o 
+      ninguna documentación.
+    interpretation_for_assessment: Refleja conciencia, pero también alta 
+      variabilidad y riesgo operativo.
+  2:
+    maturity_level: Emergente
+    meaning: Existen algunas prácticas pero permanecen inconsistentes, no 
+      documentadas o no adoptadas en todos los equipos.
+    interpretation_for_assessment: Muestra desarrollo temprano. La 
+      estandarización y documentación son necesarias para avanzar.
+  3:
+    maturity_level: Establecido
+    meaning: Procesos, roles y políticas están definidos, documentados y 
+      aplicados con estabilidad.
+    interpretation_for_assessment: Demuestra consistencia operativa y 
+      preparación para mejoras más estructuradas.
+  4:
+    maturity_level: Gestionado
+    meaning: La gobernanza está integrada en flujos de trabajo y apoyada por 
+      herramientas, monitoreo y supervisión.
+    interpretation_for_assessment: Representa adopción madura con ejecución 
+      confiable entre equipos.
+  5:
+    maturity_level: Optimizado
+    meaning: La gobernanza está completamente integrada, mejorada continuamente 
+      y alineada con expectativas de cumplimiento y ética.
+    interpretation_for_assessment: Representa madurez avanzada con gobernanza 
+      proactiva, optimización y mejora continua institucionalizada.
+questions:
+  Q1:
+    text: ¿Están definidas y aprobadas formalmente las políticas, principios y 
+      requisitos de protección de datos?
+    explanation: Evalúa la claridad de los fundamentos de gobernanza de 
+      seguridad.
+    objective: Establezca reglas de protección de datos seguras y conformes.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Data Security; DCAM, Security & Access
+      Control; IDGC, Protection Measures)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Definir políticas de seguridad, principios y requisitos de 
+          protección
+      1:
+        action_code: DS-02
+        description: Asignar responsabilidades para la gobernanza y protección 
+          de seguridad
+      2:
+        action_code: DS-03
+        description: Aprobar políticas de seguridad y estándares de protección
+      3:
+        action_code: DS-04
+        description: Incorpore requisitos de seguridad en rutinas 
+          organizacionales y de dominio
+      4:
+        action_code: DS-06
+        description: Automatice la validación de políticas de seguridad y 
+          monitoreo de protección
+      5:
+        action_code: DS-09
+        description: Mejore continuamente las políticas de seguridad utilizando 
+          evidencia y auditorías.
+  Q2:
+    text: ¿Las prácticas de identidad, autenticación y autorización están 
+      gobernadas bajo roles formales?
+    explanation: Evalúa la gobernanza de identidad y acceso basado en roles.
+    objective: Asegurar acceso controlado, responsable y auditable a los datos.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Access Roles & Privileges; DCAM, Access
+      Management; IDGC, Accountability)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Definir reglas de gobernanza para identidad, autenticación 
+          y autorización
+      1:
+        action_code: DS-02
+        description: Asignar roles formales para gestión de acceso e identidad
+      2:
+        action_code: DS-03
+        description: Aprobar procesos de gobernanza de identidad y acceso
+      3:
+        action_code: DS-04
+        description: Operar rutinas gobernadas de gestión de identidad y acceso
+      4:
+        action_code: DS-06
+        description: Automatizar validación de identidad y monitoreo de 
+          autorización
+      5:
+        action_code: DS-09
+        description: Refinar continuamente roles de acceso usando métricas de 
+          uso y riesgo
+  Q3:
+    text: ¿Se monitorean y revisan periódicamente controles de acceso, permisos 
+      y derechos?
+    explanation: Verifica procesos de supervisión, monitoreo y recertificación.
+    objective: Mantener gobernanza de acceso y seguridad consistente en todos 
+      los sistemas.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Security Controls; DCAM, Control Environment;
+      IDGC, Enforcement Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Definir requisitos de monitoreo y revisión de control de 
+          acceso
+      1:
+        action_code: DS-02
+        description: Asignar responsabilidades para monitoreo y revisión de 
+          acceso
+      2:
+        action_code: DS-03
+        description: Aprobar ciclos y reglas de revisión de control de acceso
+      3:
+        action_code: DS-04
+        description: Operar revisiones de acceso, monitoreo y rutinas de 
+          recertificación
+      4:
+        action_code: DS-06
+        description: Automatizar monitoreo y alertas de control de acceso
+      5:
+        action_code: DS-09
+        description: Mejorar continuamente la gobernanza de acceso usando 
+          métricas de desempeño
+  Q4:
+    text: ¿Están gobernados y aplicados los mecanismos de protección de datos 
+      (encriptación, minimización, enmascaramiento)?
+    explanation: Evalúa el uso consistente de mecanismos de protección.
+    objective: Fortalezca las salvaguardas de confidencialidad, minimización y 
+      ética.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Security Lifecycle; Chapter 12 – Data
+      Lifecycle; DCAM, Security Controls; IDGC, Secure Processes)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Definir reglas para mecanismos de protección y minimización
+          de datos
+      1:
+        action_code: DS-02
+        description: Asignar responsabilidades para gobernanza de protección
+      2:
+        action_code: DS-03
+        description: Aprobar reglas de protección y minimización
+      3:
+        action_code: DS-04
+        description: Incorporar mecanismos de protección en las rutinas de 
+          manejo de datos
+      4:
+        action_code: DS-06
+        description: Automatizar controles de protección y confidencialidad
+      5:
+        action_code: DS-09
+        description: Mejorar continuamente la gobernanza de protección mediante 
+          métricas
+  Q5:
+    text: ¿Se mide y analiza el desempeño de seguridad (incidentes, violaciones,
+      accesos anómalos)?
+    explanation: Examina si los controles son medibles y supervisados 
+      continuamente.
+    objective: Apoyar gobernanza de seguridad proactiva y basada en evidencia.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Security KPIs & Compliance; DCAM,
+      Measurement; IDGC, Monitoring & Assurance)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Definir indicadores de desempeño de seguridad y reglas de 
+          monitoreo
+      1:
+        action_code: DS-02
+        description: Asignar responsabilidades para la gobernanza del desempeño 
+          de seguridad
+      2:
+        action_code: DS-03
+        description: Aprobar KPIs de seguridad, umbrales y ciclos de revisión
+      3:
+        action_code: DS-04
+        description: Implementar paneles de seguridad e informes gobernados
+      4:
+        action_code: DS-06
+        description: Automatizar monitoreo de seguridad y detección de 
+          violaciones
+      5:
+        action_code: DS-09
+        description: Mejore continuamente el desempeño de seguridad utilizando 
+          evidencia.
+  Q6:
+    text: ¿Están integrados controles éticos, de privacidad y de uso responsable
+      en la gobernanza de seguridad?
+    explanation: Asegurar que las restricciones éticas y legales formen parte de
+      las reglas de seguridad.
+    objective: Apoyar prácticas responsables y conformes de manejo de datos.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Privacy & Ethical Use; DCAM, Responsible
+      Data Use; IDGC, Ethical Safeguards)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Definir requisitos de seguridad ética, privacidad y uso 
+          responsable
+      1:
+        action_code: DS-02
+        description: Asigne roles para supervisión ética y de seguridad de 
+          privacidad
+      2:
+        action_code: DS-03
+        description: Aprobar reglas de seguridad éticas y de privacidad por 
+          diseño
+      3:
+        action_code: DS-04
+        description: Incorpore controles éticos y de privacidad en rutinas de 
+          seguridad
+      4:
+        action_code: DS-06
+        description: Automatizar validación ética y de privacidad en seguridad
+      5:
+        action_code: DS-09
+        description: Mejorar continuamente la seguridad ética mediante 
+          revisiones

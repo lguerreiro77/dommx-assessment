@@ -1,0 +1,165 @@
+domain:
+  id: 11
+  name: Qualità dei dati (DQ)
+action_catalog:
+  DQ-01:
+    title: Definire principi fondamentali di qualità dei dati, ambito e regole 
+      di proprietà
+    procedures:
+    - number: 1
+      name: Definire principi di qualità dei dati e confini di ambito
+      prerequisite: Richiede l'identificazione degli asset dati core
+      deliverable: Documento dei principi di qualità dei dati
+      recommendations:
+      - Definire principi utilizzando le linee guida DAMA per dimensioni di 
+        qualità quali accuratezza, completezza, coerenza e integrità (Capitolo 
+        11, p. 308–311).
+      - Garantisci l'allineamento con le aspettative di governance di DAMA per 
+        la stewardship e la proprietà delle attività di qualità (Capitolo 3.2, 
+        p. 55–57).
+      - Validare la supervisione del ciclo di vita con checkpoint DAMA per 
+        creazione, trasformazione e dismissione (Capitolo 4.3, p. 92).
+      - Documentare i principi secondo la struttura degli artefatti DAMA per la 
+        tracciabilità (Capitolo 3 Appendice, p. 69–70).
+      notes:
+      - Utilizzare la definizione di capacità di qualità DCAM per allineare i 
+        principi con le esigenze critiche di dati aziendali
+  DQ-02:
+    title: Assegnare ruoli di stewardship per governance della qualità, 
+      convalida e rimedio
+    procedures:
+    - number: 1
+      name: Consolidare i requisiti di qualità dei dati
+      prerequisite: Richiede che DQ-01 sia completo
+      deliverable: Registro dei requisiti di qualità
+      recommendations:
+      - Consolidare i requisiti utilizzando linee guida di qualità e definizioni
+        di dimensione DAMA (Capitolo 11, p. 308–311).
+      - Validare i requisiti utilizzando i principi di chiarezza dei metadati 
+        (Capitolo 9, p. 236).
+      - Garantire l'allineamento del ciclo di vita con i checkpoint di qualità 
+        di DAMA (Capitolo 4.3, p. 92).
+      - Confermare la copertura di stewardship e ownership utilizzando le 
+        definizioni di ruolo DAMA (Capitolo 3.2, p. 55–57).
+      notes:
+      - Utilizzare la prioritizzazione dei requisiti DCAM per concentrarsi su 
+        controlli di qualità ad alto impatto.
+  DQ-03:
+    title: Approva dimensioni di qualità governate, politiche di misurazione e 
+      regole di validazione
+    procedures:
+    - number: 1
+      name: Stabilire il charter del Data Quality Council
+      prerequisite: Richiede deliverable DQ-02
+      deliverable: Statuto approvato
+      recommendations:
+      - Stabilire la carta utilizzando le linee guida DAMA per le strutture di 
+        autorità di governance (Capitolo 3.4, p. 60).
+      - Garantire che i ruoli siano allineati con le aspettative di stewardship 
+        della qualità DAMA (Capitolo 4, p. 86–89).
+      - Valida l'allineamento con i livelli funzionali di governance DAMA 
+        (Figura 3-2, p. 53).
+      - Documentare il charter seguendo la struttura degli artefatti DAMA 
+        (Capitolo 3 Appendice, p. 69).
+      notes:
+      - Utilizzare tecniche di allineamento dell'autorità DCAM per migliorare la
+        chiarezza della governance.
+  DQ-04:
+    title: Integrare routine di rimedio governate e controlli etici nelle 
+      operazioni
+    procedures:
+    - number: 5
+      name: Monitorare l'adesione alla qualità dei dati
+      prerequisite: Richiede routine di monitoraggio
+      deliverable: Registro di conformità alla qualità
+      recommendations:
+      - Tracciare l’aderenza utilizzando le linee guida di monitoraggio della 
+        governance DAMA (Capitolo 3.6, p. 64).
+      - Validare gli indicatori di qualità utilizzando le regole e le dimensioni
+        di DAMA (Capitolo 11, p. 308–311).
+      - Confermare l'allineamento del ciclo di vita e della stewardship 
+        utilizzando checkpoint e ruoli di governance DAMA (Capitoli 3 e 4).
+      - Documentare la conformità utilizzando i modelli di artefatti DAMA 
+        (Appendice Capitolo 3, p. 69).
+      notes:
+      - Applicare i criteri diagnostici DCAM per identificare lacune di qualità.
+    - number: 6
+      name: Rinforzo dell'istituzionalizzazione strutturale
+      prerequisite: Richiede meccanismo di governance approvato e baseline 
+        politica formalizzata
+      deliverable: Procedura di governance istituzionalizzata con Control Owner 
+        assegnato e evidenze documentate di esecuzione ripetibile
+      recommendations:
+      - Assegnare un Control Owner formalmente responsabile del mantenimento del
+        meccanismo di governance.
+      - Definire criteri oggettivi di accettazione che confermino esecuzione 
+        stabile e coerente.
+      - Produrre artefatti documentati che attestino l'applicazione operativa 
+        ripetibile.
+      - Garantire l'integrazione nelle routine organizzative consolidate.
+      - Mantenere la tracciabilità tra il meccanismo di governance e la politica
+        di governo.
+  DQ-06:
+    title: Automatizzare validazione, esecuzione, monitoraggio e tracciamento 
+      delle azioni correttive
+    procedures:
+    - number: 2
+      name: Stabilire regole automatizzate di validazione della qualità
+      prerequisite: Richiede criteri di validazione
+      deliverable: Set di regole di qualità automatizzate
+      recommendations:
+      - Stabilisce regole seguendo le definizioni di qualità e le tecniche di 
+        validazione DAMA (Capitolo 11, p. 308–311).
+      - Garantire che le regole includano requisiti di chiarezza dei metadata 
+        (Capitolo 9, p. 236).
+      - Validare l'allineamento del ciclo di vita utilizzando checkpoint DAMA 
+        (Capitolo 4.3, p. 92).
+      - Documentare la logica di automazione utilizzando le linee guida di 
+        artefatti DAMA (Capitolo 3 Appendice, p. 69).
+      notes:
+      - Applicare la prontezza all'automazione CMMI per garantire stabilità 
+        prima del deployment.
+    - number: 6
+      name: Rinforzo della misurazione strutturale e supervisione
+      prerequisite: Richiede un meccanismo di governance istituzionalizzato
+      deliverable: Ambiente di controllo di governance gestito e misurato
+      recommendations:
+      - Definire metriche di performance misurabili allineate agli obiettivi di 
+        governance.
+      - Implementare meccanismi strutturati di monitoraggio o dashboard.
+      - Stabilire cicli formali di validazione inclusi revisioni periodiche.
+      - Mantenere documentazione tracciabile dei risultati di performance.
+      - Definire percorsi di escalation per deviazioni non risolte.
+  DQ-09:
+    title: Migliorare continuamente la misurazione della qualità, la validazione
+      e la governance della rimedio
+    procedures:
+    - number: 2
+      name: Migliora gli standard di qualità usando insight
+      prerequisite: Richiede analisi delle tendenze
+      deliverable: Standard di qualità aggiornati
+      recommendations:
+      - Migliorare gli standard utilizzando la dimensione di qualità e le linee 
+        guida di misurazione DAMA (Capitolo 11, p. 308–311).
+      - Valida i miglioramenti utilizzando i requisiti di chiarezza dei metadati
+        DAMA (Capitolo 9, p. 236).
+      - Garantisci l'allineamento del ciclo di vita utilizzando i checkpoint di 
+        supervisione di DAMA (Capitolo 4.3, p. 92).
+      - Confermare l’approvazione di stewardship utilizzando i ruoli di 
+        governance DAMA (Capitolo 4, p. 86–87).
+      notes:
+      - Applica i metodi di miglioramento continuo CMMI per il raffinamento 
+        strutturale.
+    - number: 6
+      name: Ottimizzazione strutturale e rinforzo adattivo
+      prerequisite: Richiede meccanismo di governance gestito e misurato
+      deliverable: Processo di governance ottimizzato che dimostra automazione e
+        miglioramento adattivo
+      recommendations:
+      - Introdurre elementi di automazione a supporto dell'applicazione e del 
+        monitoraggio.
+      - Implementare cicli di miglioramento continuo basati sulle tendenze di 
+        performance.
+      - Condurre benchmarking rispetto a framework di governance riconosciuti.
+      - Documentare miglioramenti misurabili su più cicli.
+      - Garantire l'adattabilità ai cambiamenti normativi e organizzativi.

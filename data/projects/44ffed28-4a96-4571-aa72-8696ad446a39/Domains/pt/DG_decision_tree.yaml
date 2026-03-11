@@ -1,0 +1,246 @@
+domain:
+  id: 1
+  name: Governança de Dados (DG)
+  description: "As questões neste domínio avaliam a existência, formalização e execução
+    consistente dos mecanismos centrais de governança, incluindo políticas, princípios,
+    estruturas de stewardship, papéis de responsabilidade e órgãos de supervisão.
+    Avaliam como as responsabilidades são definidas, como as decisões são tomadas
+    e como a governança é incorporada nas rotinas organizacionais. Esses elementos
+    refletem os mecanismos estruturais, procedimentais e relacionais enfatizados na
+    literatura como fundamentais para uma governança eficaz (Abraham et al., 2019).
+    Além disso, fornecem a base para o desenvolvimento de capacidades em todos os
+    demais domínios.\n"
+maturity_scale:
+  0:
+    maturity_level: Inexistente
+    meaning: Sem práticas de governança e sem responsabilidades ou processos 
+      definidos.
+    interpretation_for_assessment: Indica ausência completa de estrutura e 
+      necessidade imediata de ação fundamental.
+  1:
+    maturity_level: Inicial
+    meaning: Atividades ocorrem de forma informal e reativa com pouca ou nenhuma
+      documentação.
+    interpretation_for_assessment: Reflete conscientização, mas também alta 
+      variabilidade e risco operacional.
+  2:
+    maturity_level: Emergente
+    meaning: Algumas práticas existem, mas permanecem inconsistentes, não 
+      documentadas ou não adotadas entre equipes.
+    interpretation_for_assessment: Mostra desenvolvimento inicial. Padronização 
+      e documentação são necessárias para avançar.
+  3:
+    maturity_level: Estabelecido
+    meaning: Processos, papéis e políticas são definidos, documentados e 
+      aplicados com estabilidade.
+    interpretation_for_assessment: Demonstra consistência operacional e 
+      prontidão para melhorias mais estruturadas.
+  4:
+    maturity_level: Gerenciado
+    meaning: A governança está integrada em fluxos de trabalho e suportada por 
+      ferramentas, monitoramento e supervisão.
+    interpretation_for_assessment: Representa adoção madura com execução 
+      confiável entre equipes.
+  5:
+    maturity_level: Otimizado
+    meaning: A governança está totalmente incorporada, continuamente aprimorada 
+      e alinhada com expectativas de conformidade e ética.
+    interpretation_for_assessment: Representa maturidade avançada com governança
+      proativa, otimização e melhoria contínua institucionalizada.
+questions:
+  Q1:
+    text: A organização possui políticas e princípios formais de Governança de 
+      Dados, incluindo ética e requisitos de proteção de dados?
+    explanation: Avalia se as bases da governança estão formalmente definidas, 
+      abrangendo princípios, responsabilidades, obrigações de privacidade, uso 
+      ético dos dados e alinhamento regulatório.
+    objective: Estabelecer direção fundamental de governança e garantir uso 
+      ético, conforme e responsável dos dados.
+    cross_reference: "(DAMA-DMBOK2, Chapter 3 – Data Governance; DCAM, Governance
+      & Organization; IDGC, Policy & Principles)"
+    score_action_mapping:
+      0:
+        action_code: DG-01
+        description: Governança Corporativa de Dados com princípios, ética e 
+          regras de proteção
+      1:
+        action_code: DG-02
+        description: Atribuir propriedade de política e responsabilidades de 
+          stewardship
+      2:
+        action_code: DG-03
+        description: Aprovar a política por meio da autoridade de governança
+      3:
+        action_code: DG-04
+        description: Incorporar uso de políticas em rotinas de stewardship e 
+          domínio
+      4:
+        action_code: DG-06
+        description: Automatizar aplicação de políticas e validação de 
+          conformidade
+      5:
+        action_code: DG-09
+        description: Melhorar continuamente a política usando evidências e 
+          auditorias
+  Q2:
+    text: Papéis, responsabilidades e funções de stewardship de governança são 
+      formalmente atribuídos e aplicados?
+    explanation: Avalia clareza de propriedade, responsabilidade, steward e 
+      autoridade delegada entre domínios e funções.
+    objective: Fortalecer estruturas de tomada de decisão, reforçar a 
+      responsabilidade e apoiar governança federada ou orientada a DII.
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Data Stewardship; DCAM, Ownership
+      & Roles; IDGC, Accountability Structures)"
+    score_action_mapping:
+      0:
+        action_code: DG-01
+        description: Definir papéis de governança e autoridade decisória
+      1:
+        action_code: DG-02
+        description: Atribua proprietários de dados, governadores e papéis de 
+          responsabilidade
+      2:
+        action_code: DG-03
+        description: Aprovar estrutura de papéis de governança
+      3:
+        action_code: DG-04
+        description: Operar o modelo de stewardship entre domínios
+      4:
+        action_code: DG-06
+        description: Monitorar desempenho de papéis usando indicadores
+      5:
+        action_code: DG-09
+        description: Melhorar estruturas de papéis de governança usando revisões
+          de maturidade
+  Q3:
+    text: Existe um Conselho formal de Governança de Dados ou autoridade de 
+      supervisão equivalente que opere com mecanismos regulares de tomada de 
+      decisão e escalonamento?
+    explanation: Determina se os órgãos de supervisão fornecem governança 
+      estruturada, supervisão ética, priorização, resolução de disputas e 
+      coordenação entre domínios.
+    objective: Permitir supervisão transparente e consistente e apoiar 
+      alinhamento organizacional sustentado.
+    cross_reference: "(DAMA-DMBOK2, Chapter 3 – Governance Bodies; DCAM, Governance
+      Oversight; IDGC, Councils & Committees)"
+    score_action_mapping:
+      0:
+        action_code: DG-01
+        description: Defina requisitos de supervisão de governança e mandato do 
+          conselho
+      1:
+        action_code: DG-02
+        description: Atribuir papéis de liderança para formação do conselho
+      2:
+        action_code: DG-03
+        description: Estabelecer formalmente o Conselho de Governança de Dados
+      3:
+        action_code: DG-04
+        description: Conduzir reuniões estruturadas de governança com decisões 
+          documentadas
+      4:
+        action_code: DG-06
+        description: Monitorar desempenho do conselho por meio de indicadores
+      5:
+        action_code: DG-09
+        description: Aprimorar continuamente processos de decisão de governança
+  Q4:
+    text: A Governança de Dados está incorporada nos processos de gestão do 
+      ciclo de vida dos dados, incluindo criação, aquisição, armazenamento, 
+      compartilhamento, uso, retenção e descarte?
+    explanation: Examinar se controles de governança, regras de qualidade, 
+      captura de metadados, restrições de acesso, políticas de retenção e 
+      salvaguardas éticas são aplicados consistentemente ao longo do ciclo de 
+      vida dos dados.
+    objective: Garantir aplicação do ciclo de vida de ponta a ponta, reduzir 
+      riscos sistêmicos, garantir conformidade e possibilitar integração 
+      mensurável da governança.
+    cross_reference: "(DAMA-DMBOK2, Chapter 12 – Data Lifecycle; DCAM, Data Management
+      Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DG-01
+        description: Defina regras de governança necessárias para integração do 
+          ciclo de vida
+      1:
+        action_code: DG-02
+        description: Atribuir proprietários para pontos de verificação de 
+          governança do ciclo de vida
+      2:
+        action_code: DG-03
+        description: Formalizar regras de governança do ciclo de vida
+      3:
+        action_code: DG-04
+        description: Incorporar atividades do ciclo de vida de controles de 
+          governança
+      4:
+        action_code: DG-06
+        description: Automatizar validação de governança do ciclo de vida
+      5:
+        action_code: DG-09
+        description: Melhorar continuamente a integração da governança do ciclo 
+          de vida
+  Q5:
+    text: Os processos de governança são monitorados, medidos e revisados usando
+      indicadores baseados em evidências, auditorias, controles e verificações 
+      de conformidade?
+    explanation: Avalia se as atividades de governança dependem de KPIs, 
+      auditorias, rotinas de conformidade e revisões periódicas para sustentar e
+      melhorar a maturidade.
+    objective: Manter sustentabilidade da governança, apoiar melhoria contínua e
+      garantir validação baseada em evidências.
+    cross_reference: "(DAMA-DMBOK2, Chapter 3 – Monitoring & Compliance; DCAM, Measurement
+      & Metrics; IDGC, Compliance & Auditability)"
+    score_action_mapping:
+      0:
+        action_code: DG-01
+        description: Definir requisitos e indicadores de monitoramento de 
+          governança
+      1:
+        action_code: DG-02
+        description: Atribuir responsabilidades de monitoramento de governança
+      2:
+        action_code: DG-03
+        description: Estabelecer KPIs de governança e ciclos de revisão
+      3:
+        action_code: DG-04
+        description: Implementar dashboards, auditorias e relatórios de 
+          governança
+      4:
+        action_code: DG-06
+        description: Automatizar monitoramento e validação de conformidade
+      5:
+        action_code: DG-09
+        description: Melhorar continuamente a supervisão da governança usando 
+          evidências
+  Q6:
+    text: Estão implementadas salvaguardas éticas, transparentes e responsáveis 
+      para uso de dados, incluindo governança AI/ML quando aplicável?
+    explanation: Verifica se justiça, transparência, explicabilidade, mitigação 
+      de viés, monitoramento e gestão de risco do ciclo de vida estão definidos 
+      e aplicados a todos os casos de uso de dados, incluindo algoritmos.
+    objective: Garantir práticas de dados responsáveis e responsáveis, 
+      fortalecer governança ética e alinhar com expectativas sociais e 
+      regulatórias.
+    cross_reference: "(DAMA-DMBOK2, Chapter 3 – Ethics & Responsible Use; DCAM, Risk
+      Management; IDGC, Ethical Use & Transparency)"
+    score_action_mapping:
+      0:
+        action_code: DG-01
+        description: Definir requisitos éticos, de privacidade e equidade
+      1:
+        action_code: DG-02
+        description: Atribuir papéis para supervisão ética e de uso responsável
+      2:
+        action_code: DG-03
+        description: Estabelecer uma autoridade ética ou de governança AI/ML
+      3:
+        action_code: DG-04
+        description: Integrar controles éticos no ciclo de vida de dados e 
+          modelos
+      4:
+        action_code: DG-06
+        description: Automatize controles de viés, deriva e transparência
+      5:
+        action_code: DG-09
+        description: Melhorar continuamente governança ética usando revisões

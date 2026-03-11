@@ -1,0 +1,117 @@
+domain:
+  id: 10
+  name: "Metadata (MD)"
+  description: >
+    This domain evaluates the governance of business and technical metadata, including definitions, lineage, cataloguing structures, and stewardship responsibilities. It examines how metadata enables transparency, interpretability, and controlled evolution of data assets across domains. Metadata management is a foundational mechanism for traceability, semantic consistency, and reliable data use (DAMA-DMBOK2, Chapter 12).
+
+maturity_scale:
+
+  0:
+    maturity_level: "Non-existent"
+    meaning: "No governance practices and no defined responsibilities or processes."
+    interpretation_for_assessment: "Indicates a complete absence of structure and an immediate need for foundational action."
+
+  1:
+    maturity_level: "Initial"
+    meaning: "Activities occur informally and reactively with little or no documentation."
+    interpretation_for_assessment: "Reflects awareness, but also high variability and operational risk."
+
+  2:
+    maturity_level: "Emerging"
+    meaning: "Some practices exist but remain inconsistent, undocumented, or not adopted across teams."
+    interpretation_for_assessment: "Shows early development. Standardization and documentation are necessary to progress."
+
+  3:
+    maturity_level: "Established"
+    meaning: "Processes, roles, and policies are defined, documented, and applied with stability."
+    interpretation_for_assessment: "Demonstrates operational consistency and readiness for more structured improvements."
+
+  4:
+    maturity_level: "Managed"
+    meaning: "Governance is integrated into workflows and supported by tools, monitoring, and oversight."
+    interpretation_for_assessment: "Represents mature adoption with reliable execution across teams."
+
+  5:
+    maturity_level: "Optimized"
+    meaning: "Governance is fully embedded, continuously improved, and aligned with compliance and ethical expectations."
+    interpretation_for_assessment: "Represents advanced maturity with proactive governance, optimization, and institutionalized continuous improvement."
+
+questions:
+
+  Q1:
+    text: "Are business and technical metadata standards formally defined and approved?"
+    explanation: "Evaluates the existence and clarity of governed metadata structures."
+    objective: "Ensure semantic consistency and interpretability."
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Management; DCAM, Metadata Capability; IDGC, Information Management)"
+    score_action_mapping:
+      0: { action_code: "MD-01", description: "Define business and technical metadata standards" }
+      1: { action_code: "MD-02", description: "Assign stewardship roles for metadata governance" }
+      2: { action_code: "MD-03", description: "Approve governed metadata structures" }
+      3: { action_code: "MD-04", description: "Embed metadata standards into domain and operational routines" }
+      4: { action_code: "MD-06", description: "Automate metadata validation and rule enforcement" }
+      5: { action_code: "MD-09", description: "Continuously improve metadata standards using evidence" }
+
+  Q2:
+    text: "Are metadata captured, catalogued, and maintained systematically?"
+    explanation: "Assesses cataloguing, stewardship, and update processes."
+    objective: "Maintain accurate, accessible, and governed metadata."
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Standards; DCAM, Metadata Structure; IDGC, Documentation Controls)"
+    score_action_mapping:
+      0: { action_code: "MD-01", description: "Define cataloguing and metadata maintenance requirements" }
+      1: { action_code: "MD-02", description: "Assign responsibilities for metadata capture and updates" }
+      2: { action_code: "MD-03", description: "Approve cataloguing structures and maintenance processes" }
+      3: { action_code: "MD-04", description: "Implement governed cataloguing and update routines" }
+      4: { action_code: "MD-06", description: "Automate metadata capture, cataloguing, and update controls" }
+      5: { action_code: "MD-09", description: "Continuously improve metadata cataloguing governance" }
+
+  Q3:
+    text: "Is lineage tracked, governed, and used to support transparency and impact analysis?"
+    explanation: "Examines lineage completeness and governance controls."
+    objective: "Enable traceability and controlled data evolution."
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Stewardship; DCAM, Ownership; IDGC, Accountability)"
+    score_action_mapping:
+      0: { action_code: "MD-01", description: "Define lineage capture and governance rules" }
+      1: { action_code: "MD-02", description: "Assign lineage stewardship responsibilities" }
+      2: { action_code: "MD-03", description: "Approve lineage governance standards" }
+      3: { action_code: "MD-04", description: "Embed lineage collection and maintenance processes" }
+      4: { action_code: "MD-06", description: "Automate lineage collection, validation, and drift detection" }
+      5: { action_code: "MD-09", description: "Continuously improve lineage governance using metrics" }
+
+  Q4:
+    text: "Are Metadata integrated across domains to support interoperability and shared meaning?"
+    explanation: "Evaluates cross-domain semantic alignment."
+    objective: "Ensure coherent interpretation across the organization."
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Lifecycle; Chapter 12 – Data Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0: { action_code: "MD-01", description: "Define cross-domain semantic and metadata alignment rules" }
+      1: { action_code: "MD-02", description: "Assign responsibilities for semantic alignment" }
+      2: { action_code: "MD-03", description: "Approve semantic and metadata integration standards" }
+      3: { action_code: "MD-04", description: "Embed cross-domain metadata alignment routines" }
+      4: { action_code: "MD-06", description: "Automate metadata harmonization and semantic matching" }
+      5: { action_code: "MD-09", description: "Continuously improve metadata interoperability governance" }
+
+  Q5:
+    text: "Are metadata quality indicators measured and reviewed?"
+    explanation: "Looks at metadata accuracy, completeness, and timeliness metrics."
+    objective: "Ensure reliable metadata as a foundation for governance."
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Metadata Quality; DCAM, Quality Controls; IDGC, Monitoring)"
+    score_action_mapping:
+      0: { action_code: "MD-01", description: "Define metadata quality indicators and monitoring rules" }
+      1: { action_code: "MD-02", description: "Assign responsibilities for metadata quality oversight" }
+      2: { action_code: "MD-03", description: "Approve metadata quality KPIs and review cycles" }
+      3: { action_code: "MD-04", description: "Implement dashboards and quality review routines" }
+      4: { action_code: "MD-06", description: "Automate metadata quality validation" }
+      5: { action_code: "MD-09", description: "Continuously improve metadata quality governance" }
+
+  Q6:
+    text: "Are ethical, privacy, and responsible-use safeguards applied to metadata structures?"
+    explanation: "Ensures metadata is not misused and adheres to minimization and fairness rules."
+    objective: "Govern responsible, lawful, and ethical metadata usage."
+    cross_reference: "(DAMA-DMBOK2, Chapter 11 – Ethical Metadata & Explainability; DCAM, Responsible Use; IDGC, Ethical Transparency)"
+    score_action_mapping:
+      0: { action_code: "MD-01", description: "Define ethical, privacy, and minimization rules for metadata" }
+      1: { action_code: "MD-02", description: "Assign stewardship for ethical and privacy compliance" }
+      2: { action_code: "MD-03", description: "Approve ethical and privacy safeguards" }
+      3: { action_code: "MD-04", description: "Embed ethical and privacy controls in metadata routines" }
+      4: { action_code: "MD-06", description: "Automate privacy, minimization, and fairness validation" }
+      5: { action_code: "MD-09", description: "Continuously improve ethical metadata governance" }

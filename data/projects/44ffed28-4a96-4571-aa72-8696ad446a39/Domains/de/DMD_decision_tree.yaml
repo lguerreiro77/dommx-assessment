@@ -1,0 +1,245 @@
+domain:
+  id: 3
+  name: Data Modelling and Design (DMD)
+  description: "Diese Domäne untersucht konzeptionelle, logische und physische Modellierungspraktiken,
+    die Standards, die deren Erstellung und Pflege regeln, sowie das Ausmaß, in dem
+    strukturelle Definitionen mit Geschäftsssemantik übereinstimmen. Modellierung
+    bildet die strukturelle Grundlage für Data Governance, indem sie gemeinsame Bedeutungen,
+    kohärente Datenstrukturen und nachvollziehbare Beziehungen in der Organisation
+    etabliert. Dies entspricht der Klassifizierung von Modellierung als Kernfunktion
+    der Struktur, die Konsistenz, Interoperabilität und zuverlässiges Datenlebenszyklusmanagement
+    ermöglicht (DAMA, International, 2017).\n"
+maturity_scale:
+  0:
+    maturity_level: Nicht existent
+    meaning: Keine Governance-Praktiken und keine definierten 
+      Verantwortlichkeiten oder Prozesse.
+    interpretation_for_assessment: Zeigt ein vollständiges Fehlen von Struktur 
+      und einen unmittelbaren Bedarf an grundlegenden Maßnahmen an.
+  1:
+    maturity_level: Initial
+    meaning: Aktivitäten erfolgen informell und reaktiv mit wenig oder keiner 
+      Dokumentation.
+    interpretation_for_assessment: Spiegelt Bewusstsein wider, aber auch hohe 
+      Variabilität und operationelles Risiko.
+  2:
+    maturity_level: Im Entstehen
+    meaning: Einige Praktiken existieren, sind jedoch inkonsistent, 
+      undokumentiert oder werden nicht teamübergreifend angewendet.
+    interpretation_for_assessment: Zeigt frühe Entwicklung. Standardisierung und
+      Dokumentation sind notwendig, um Fortschritte zu erzielen.
+  3:
+    maturity_level: Etabliert
+    meaning: Prozesse, Rollen und Richtlinien sind definiert, dokumentiert und 
+      stabil angewendet.
+    interpretation_for_assessment: Demonstriert operationale Konsistenz und 
+      Bereitschaft für strukturiertere Verbesserungen.
+  4:
+    maturity_level: Verwaltet
+    meaning: Governance ist in Arbeitsabläufe integriert und wird durch Tools, 
+      Überwachung und Aufsicht unterstützt.
+    interpretation_for_assessment: Repräsentiert reife Einführung mit 
+      zuverlässiger Ausführung über Teams hinweg.
+  5:
+    maturity_level: Optimiert
+    meaning: Governance ist vollständig eingebettet, wird kontinuierlich 
+      verbessert und entspricht Compliance- und ethischen Erwartungen.
+    interpretation_for_assessment: Repräsentiert fortgeschrittene Reife mit 
+      proaktiver Governance, Optimierung und institutionalisierter 
+      kontinuierlicher Verbesserung.
+questions:
+  Q1:
+    text: Sind Modellierungsstandards (konzeptionell, logisch, physisch) formell
+      definiert und genehmigt?
+    explanation: Bewertet das Vorhandensein gemeinsamer Modellierungsregeln und 
+      struktureller Prinzipien.
+    objective: Sicherstellung einer konsistenten und gesteuerten 
+      Modellerstellung.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Data Modelling & Design; DCAM, Data
+      Structure Design; IDGC, Structural Foundations)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Definieren Sie Modellierungsstandards für konzeptionelle, 
+          logische und physische Modelle
+      1:
+        action_code: DMD-02
+        description: Verantwortlichkeiten für Stewardship und 
+          Modellierungs-Governance zuweisen
+      2:
+        action_code: DMD-03
+        description: Genehmigen Sie Modellierungsstandards und Governance-Regeln
+      3:
+        action_code: DMD-04
+        description: Integrieren Sie Modellierungsstandards in Modellierungs- 
+          und Dokumentationsroutinen
+      4:
+        action_code: DMD-06
+        description: Automatisierung der Validierung von Modellierungsstandards 
+          und struktureller Konformität
+      5:
+        action_code: DMD-09
+        description: Verbessern Sie Modellierungsstandards kontinuierlich anhand
+          von Belegen und Audits
+  Q2:
+    text: Sind Geschäftsbedeutungen harmonisiert und durch ein gesteuertes 
+      Geschäftsglossar unterstützt?
+    explanation: Bewertet semantische Ausrichtung, geteilte Bedeutung und 
+      Terminologiekonsistenz.
+    objective: Reduzieren Sie Mehrdeutigkeiten und verbessern Sie das 
+      Datenverständnis.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Modelling Standards; DCAM, Design
+      Principles; IDGC, Process Standardization)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Definition von Regeln zur semantischen Ausrichtung und 
+          Glossar-Governance-Struktur
+      1:
+        action_code: DMD-02
+        description: Weisen Sie Daten-Stewards zu, die für semantische 
+          Governance verantwortlich sind
+      2:
+        action_code: DMD-03
+        description: Genehmigung der Glossarstruktur und Regeln zur semantischen
+          Harmonisierung
+      3:
+        action_code: DMD-04
+        description: Glossarnutzung in Modellierungs- und Domänenroutinen 
+          verankern
+      4:
+        action_code: DMD-06
+        description: Automatisieren Sie semantische Validierung und 
+          Konsistenzprüfungen von Begriffen
+      5:
+        action_code: DMD-09
+        description: Verfeinern Sie Semantik kontinuierlich mithilfe von 
+          Nutzungs- und Qualitätsmetriken
+  Q3:
+    text: Werden Datenmodelle unter der Autorität des Governance-Gremiums 
+      überprüft, versioniert und gepflegt?
+    explanation: Prüft, ob das Modelllebenszyklusmanagement kontrolliert und 
+      wiederholbar ist.
+    objective: Sicherstellen von Rückverfolgbarkeit und Modellzuverlässigkeit.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Modelling Stewardship; Chapter 11
+      – Stewardship; DCAM, Ownership; IDGC, Roles & Responsibilities)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Definieren Sie Regeln für Modellüberprüfung, Genehmigung 
+          und Versionierung
+      1:
+        action_code: DMD-02
+        description: Weisen Sie Modell-Review- und 
+          Genehmigungsverantwortlichkeiten zu
+      2:
+        action_code: DMD-03
+        description: Genehmigen Sie Modell-Lebenszyklus-Governance-Prozesse
+      3:
+        action_code: DMD-04
+        description: Betreiben Sie Versionskontrolle, Überprüfungszyklen und 
+          Wartungsroutinen
+      4:
+        action_code: DMD-06
+        description: Automatisieren Sie Herkunftserfassung, 
+          Metadatenaktualisierungen und Versionsverfolgung
+      5:
+        action_code: DMD-09
+        description: Den Modellierungs-Lifecycle kontinuierlich mit 
+          Leistungskennzahlen verbessern
+  Q4:
+    text: Sind konzeptionelle und logische Modelle mit Metadaten und 
+      Domänengrenzen integriert?
+    explanation: Überprüft die Übereinstimmung zwischen Modellen, Metadaten, 
+      Herkunft und Domänenabgrenzung.
+    objective: Fördern Sie Kohärenz über strukturelle Artefakte hinweg.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Model Lifecycle; Chapter 12 – Data
+      Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Integrationsregeln zwischen Modellen, Metadaten und 
+          Domänengrenzen
+      1:
+        action_code: DMD-02
+        description: Stewardship-Rollen für strukturelle Ausrichtung zuweisen
+      2:
+        action_code: DMD-03
+        description: Genehmigen Sie Metadaten–Modell-Ausrichtungs- und 
+          Integrationsregeln
+      3:
+        action_code: DMD-04
+        description: Integrieren Sie Modell–Metadaten–Domänen-Ausrichtung in 
+          Modellierungsroutinen
+      4:
+        action_code: DMD-06
+        description: Implementieren Sie geregelte Tagging- und 
+          Metadaten-Wartungsroutinen
+      5:
+        action_code: DMD-09
+        description: Optimieren Sie Integration anhand von Metriken und 
+          strukturellen Leistungsnachweisen
+  Q5:
+    text: Wird die Modellierungsqualität (Genauigkeit, Vollständigkeit, 
+      Konsistenz) gemessen und überwacht?
+    explanation: Bewertung, ob Modellierungsleistung und Zuverlässigkeit 
+      verfolgt werden.
+    objective: Modellqualität und nachhaltige Weiterentwicklung sicherstellen.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Model Documentation & Validation;
+      DCAM, Quality & Controls; IDGC, Information Quality Management)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Modellierungsqualitätsmetriken und 
+          Überwachungsanforderungen definieren
+      1:
+        action_code: DMD-02
+        description: Weisen Sie Verantwortlichkeiten für die Überwachung der 
+          Modellierungsqualität zu
+      2:
+        action_code: DMD-03
+        description: Qualitäts-KPIs und Überprüfungszyklen genehmigen
+      3:
+        action_code: DMD-04
+        description: Dashboards, Modellqualitätsprüfungen und gesteuerte 
+          Berichterstattung implementieren
+      4:
+        action_code: DMD-06
+        description: Automatisierung der Modellierungsqualitätsvalidierung
+      5:
+        action_code: DMD-09
+        description: Verbessern Sie kontinuierlich Modellierungsqualität anhand 
+          von Nachweisen
+  Q6:
+    text: Sind Datenschutz-by-Design und ethische Schutzmaßnahmen in 
+      Modellierungspraktiken eingebettet?
+    explanation: Bewertet die Integration von Datenschutz, Minimierung, Fairness
+      und ethischen Einschränkungen.
+    objective: Unterstützen Sie verantwortungsbewusste Strukturdefinition.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Ethical Modelling; DCAM, Responsible
+      Data Use; IDGC, Ethical Handling)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Definieren Sie Datenschutz-, Minimierungs- und ethische 
+          Anforderungen für Modellierung
+      1:
+        action_code: DMD-02
+        description: Verantwortlichkeiten für ethische und 
+          Datenschutz-Modellierungsbeschränkungen zuweisen
+      2:
+        action_code: DMD-03
+        description: Privacy-by-Design- und ethische Modellierungsregeln 
+          genehmigen
+      3:
+        action_code: DMD-04
+        description: Betten Sie ethische und Datenschutzkontrollen in 
+          Modellierungsroutinen ein
+      4:
+        action_code: DMD-06
+        description: Automatisierung von Datenschutz- und ethischer Validierung 
+          innerhalb von Modellierungsartefakten
+      5:
+        action_code: DMD-09
+        description: Verbessern Sie ethisches Modellieren kontinuierlich durch 
+          Überprüfungen und Nachweise

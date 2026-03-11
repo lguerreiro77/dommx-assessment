@@ -1,0 +1,248 @@
+domain:
+  id: 5
+  name: Sécurité des données (DS)
+  description: Ce domaine évalue la formalisation de la gouvernance de la 
+    sécurité des données, l'existence de normes de protection gouvernées et 
+    l'intégration des contrôles de sécurité tout au long du cycle de vie des 
+    données. La sécurité des données se concentre sur la garantie que les actifs
+    de données sont protégés contre l'accès non autorisé, la perte ou 
+    l'utilisation abusive, soutenue par une gestion formelle, une autorité 
+    claire et des mécanismes rigoureux de supervision (DAMA-DMBOK2, Chapitre 9).
+maturity_scale:
+  0:
+    maturity_level: Inexistant
+    meaning: Aucune pratique de gouvernance et aucune responsabilité ou 
+      processus défini.
+    interpretation_for_assessment: Indique une absence totale de structure et un
+      besoin immédiat d'action fondamentale.
+  1:
+    maturity_level: Initial
+    meaning: Les activités se déroulent de manière informelle et réactive avec 
+      peu ou pas de documentation.
+    interpretation_for_assessment: Reflète une prise de conscience, mais aussi 
+      une forte variabilité et un risque opérationnel élevé.
+  2:
+    maturity_level: Émergent
+    meaning: Certaines pratiques existent mais restent incohérentes, non 
+      documentées ou non adoptées à travers les équipes.
+    interpretation_for_assessment: Montre un développement précoce. La 
+      standardisation et la documentation sont nécessaires pour progresser.
+  3:
+    maturity_level: Établi
+    meaning: Les processus, rôles et politiques sont définis, documentés et 
+      appliqués avec stabilité.
+    interpretation_for_assessment: Démontre la cohérence opérationnelle et la 
+      préparation à des améliorations plus structurées.
+  4:
+    maturity_level: Géré
+    meaning: La gouvernance est intégrée dans les flux de travail et soutenue 
+      par des outils, la surveillance et la supervision.
+    interpretation_for_assessment: Représente une adoption mature avec une 
+      exécution fiable à travers les équipes.
+  5:
+    maturity_level: Optimisé
+    meaning: La gouvernance est pleinement intégrée, continuellement améliorée 
+      et alignée avec les attentes de conformité et d'éthique.
+    interpretation_for_assessment: Représente une maturité avancée avec une 
+      gouvernance proactive, une optimisation et une amélioration continue 
+      institutionnalisée.
+questions:
+  Q1:
+    text: Les politiques, principes et exigences de protection des données 
+      sont-ils formellement définis et approuvés ?
+    explanation: Évalue la clarté des fondations de gouvernance de la sécurité.
+    objective: Établissez des règles de protection des données sécurisées et 
+      conformes.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Data Security; DCAM, Security & Access
+      Control; IDGC, Protection Measures)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Définir les politiques de sécurité, les principes et les 
+          exigences de protection
+      1:
+        action_code: DS-02
+        description: Attribuer les responsabilités pour la gouvernance et la 
+          protection de la sécurité
+      2:
+        action_code: DS-03
+        description: Approuver les politiques de sécurité et les normes de 
+          protection
+      3:
+        action_code: DS-04
+        description: Intégrer les exigences de sécurité dans les routines 
+          organisationnelles et de domaine
+      4:
+        action_code: DS-06
+        description: Automatisez la validation des politiques de sécurité et la 
+          surveillance de la protection
+      5:
+        action_code: DS-09
+        description: Améliorer continuellement les politiques de sécurité en 
+          utilisant des preuves et audits
+  Q2:
+    text: Les pratiques d'identité, d'authentification et d'autorisation 
+      sont-elles gouvernées sous des rôles formels ?
+    explanation: Évalue la gouvernance de l'identité et de l'accès basé sur les 
+      rôles.
+    objective: Assurer un accès contrôlé, responsable et auditable aux données.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Access Roles & Privileges; DCAM, Access
+      Management; IDGC, Accountability)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Définissez les règles de gouvernance pour l'identité, 
+          l'authentification et l'autorisation
+      1:
+        action_code: DS-02
+        description: Attribuez des rôles formels pour la gestion des accès et 
+          des identités.
+      2:
+        action_code: DS-03
+        description: Approuver les processus de gouvernance d'identité et 
+          d'accès
+      3:
+        action_code: DS-04
+        description: Exécutez des routines gouvernées d'identité et de gestion 
+          des accès
+      4:
+        action_code: DS-06
+        description: Automatisez la validation d'identité et la surveillance des
+          autorisations.
+      5:
+        action_code: DS-09
+        description: Affiner continuellement les rôles d'accès en utilisant les 
+          métriques d'usage et de risque
+  Q3:
+    text: Les contrôles d'accès, permissions et droits sont-ils surveillés et 
+      revus périodiquement ?
+    explanation: Superviser les processus de contrôle, de surveillance et de 
+      recertification.
+    objective: Maintenir une gouvernance d'accès et une sécurité cohérentes sur 
+      tous les systèmes.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Security Controls; DCAM, Control Environment;
+      IDGC, Enforcement Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Définir les exigences de surveillance et de revue du 
+          contrôle d'accès
+      1:
+        action_code: DS-02
+        description: Attribuez les responsabilités pour la surveillance et la 
+          revue des accès.
+      2:
+        action_code: DS-03
+        description: Approuvez les cycles et règles de revue des contrôles 
+          d'accès
+      3:
+        action_code: DS-04
+        description: Opérer les revues d'accès, la surveillance et les routines 
+          de recertification
+      4:
+        action_code: DS-06
+        description: Automatisez la surveillance et l'alerte du contrôle d'accès
+      5:
+        action_code: DS-09
+        description: Améliorer en continu la gouvernance des accès en utilisant 
+          des indicateurs de performance
+  Q4:
+    text: Les mécanismes de protection des données (chiffrement, minimisation, 
+      masquage) sont-ils gouvernés et appliqués ?
+    explanation: Évalue l'utilisation cohérente des mécanismes de protection.
+    objective: Renforcez la confidentialité, la minimisation et les garanties 
+      éthiques.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Security Lifecycle; Chapter 12 – Data
+      Lifecycle; DCAM, Security Controls; IDGC, Secure Processes)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Définir les règles pour les mécanismes de protection et la 
+          minimisation des données
+      1:
+        action_code: DS-02
+        description: Attribuer les responsabilités pour la gouvernance de la 
+          protection
+      2:
+        action_code: DS-03
+        description: Approuver les règles de protection et de minimisation
+      3:
+        action_code: DS-04
+        description: Intégrer des mécanismes de protection dans les routines de 
+          gestion des données
+      4:
+        action_code: DS-06
+        description: Automatiser les contrôles de protection et de 
+          confidentialité
+      5:
+        action_code: DS-09
+        description: Améliorer continuellement la gouvernance de la protection 
+          par des indicateurs
+  Q5:
+    text: La performance de sécurité (incidents, violations, accès anormaux) 
+      est-elle mesurée et analysée ?
+    explanation: Examine si les contrôles sont mesurables et supervisés en 
+      continu.
+    objective: Soutenir une gouvernance proactive et fondée sur des preuves en 
+      matière de sécurité.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Security KPIs & Compliance; DCAM,
+      Measurement; IDGC, Monitoring & Assurance)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Définir les indicateurs de performance de sécurité et les 
+          règles de surveillance
+      1:
+        action_code: DS-02
+        description: Attribuer les responsabilités pour la gouvernance de la 
+          performance de sécurité
+      2:
+        action_code: DS-03
+        description: Approuver les KPI de sécurité, les seuils et les cycles de 
+          revue
+      3:
+        action_code: DS-04
+        description: Mettez en œuvre des tableaux de bord de sécurité et des 
+          rapports gouvernés
+      4:
+        action_code: DS-06
+        description: Automatiser la surveillance de la sécurité et la détection 
+          des violations
+      5:
+        action_code: DS-09
+        description: Améliorez continuellement la performance de la sécurité en 
+          utilisant des preuves.
+  Q6:
+    text: Les contrôles éthiques, de confidentialité et d'utilisation 
+      responsable sont-ils intégrés dans la gouvernance de la sécurité ?
+    explanation: Assurez-vous que les contraintes éthiques et légales font 
+      partie des règles de sécurité.
+    objective: Soutenir des pratiques responsables et conformes de gestion des 
+      données.
+    cross_reference: "(DAMA-DMBOK2, Chapter 9 – Privacy & Ethical Use; DCAM, Responsible
+      Data Use; IDGC, Ethical Safeguards)"
+    score_action_mapping:
+      0:
+        action_code: DS-01
+        description: Définissez les exigences de sécurité éthiques, de 
+          confidentialité et d'utilisation responsable
+      1:
+        action_code: DS-02
+        description: Attribuez des rôles pour la supervision éthique et la 
+          sécurité de la vie privée.
+      2:
+        action_code: DS-03
+        description: Approuver les règles de sécurité éthiques et de 
+          confidentialité dès la conception
+      3:
+        action_code: DS-04
+        description: Intégrer les contrôles éthiques et de confidentialité dans 
+          les routines de sécurité
+      4:
+        action_code: DS-06
+        description: Automatiser la validation éthique et de confidentialité en 
+          matière de sécurité
+      5:
+        action_code: DS-09
+        description: Améliorer continuellement la sécurité éthique par des 
+          revues

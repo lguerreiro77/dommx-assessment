@@ -1,0 +1,173 @@
+domain:
+  id: 9
+  name: Data Warehousing e Business Intelligence (DWBI)
+action_catalog:
+  DWBI-01:
+    title: Definire visione, ambito e regole di business intelligence e 
+      warehousing
+    procedures:
+    - number: 1
+      name: Definire la visione aziendale BI e analitica
+      prerequisite: Richiede una strategia dati aziendale
+      deliverable: Dichiarazione di visione BI e analytics
+      recommendations:
+      - Stabilire lo scopo e il ruolo di BI all’interno dell’impresa seguendo i 
+        principi di allineamento architetturale DAMA “Capitolo 8, p. 252–260”.
+      - Identificare risultati analitici di alto livello e necessità decisionali
+        tra i domini.
+      - Allineare gli obiettivi BI con la stewardship, la qualità e la 
+        governance dei metadati “Capitolo 3.2, p. 55–57”.
+      - Documentare la visione utilizzando la struttura degli artefatti DAMA 
+        “Capitolo 3 Appendice, p. 69–70”.
+      notes:
+      - Usa la mappatura del valore DCAM per esprimere la visione BI in termini 
+        di capacità misurabili.
+    - number: 2
+      name: Definire ambito aziendale BI e warehousing
+      prerequisite: Richiede visione BI
+      deliverable: Mappa dell'ambito aziendale BI
+      recommendations:
+      - Identificare soggetti analitici primari come vendite, finanza, 
+        operazioni e dati clienti.
+      - Mappare le domande di business ai domini master e di riferimento 
+        “Capitolo 6, p. 182–188”.
+      - Includere soglie di qualità necessarie per l'affidabilità analitica 
+        “Capitolo 11, p. 308–311”.
+      - Cattura l'ambito aziendale utilizzando le pratiche di documentazione di 
+        DAMA “Capitolo 3 Appendice, p. 69–70”.
+      notes:
+      - Usa le pratiche di definizione dell'ambito CMMI per garantire incrementi
+        di consegna fattibili.
+  DWBI-02:
+    title: Assegna ruoli di stewardship per la governance analitica e la 
+      supervisione
+    procedures:
+    - number: 1
+      name: Documentare i principi architetturali BI
+      prerequisite: Richiede ambito DW/BI
+      deliverable: Set di principi architetturali BI
+      recommendations:
+      - Allinearsi ai principi architetturali DAMA per integrazione, riuso e 
+        standardizzazione “Capitolo 8, p. 252–260”.
+      - Definire principi per sourcing, trasformazioni, consolidamento e livelli
+        di consumo.
+      - Affrontare stewardship e allineamento metadata “Capitolo 9, p. 236–239”.
+      - Documentare i principi utilizzando la formattazione degli artefatti DAMA
+        “Capitolo 3 Appendice, p. 69–70”.
+      notes:
+      - Utilizzare la mappatura delle capacità architetturali DCAM per 
+        identificare gap architetturali.
+  DWBI-03:
+    title: Approvare standard di governance analitica, semantica e metrica
+    procedures:
+    - number: 3
+      name: Approva i requisiti BI e definisci controlli analitici
+      prerequisite: Richiede revisione degli stakeholder
+      deliverable: Pacchetto di requisiti approvato
+      recommendations:
+      - Approvare i controlli di qualità e lineage allineati alle best practice 
+        DAMA “Capitolo 11, p. 308–311”.
+      - Validare regole di business e definizioni metriche.
+      - Definire l'allocazione delle responsabilità tra proprietari, steward e 
+        custodi “Capitolo 4, p. 86–89”.
+      - Documentare i risultati dell'approvazione utilizzando artefatti di 
+        governance DAMA “Capitolo 3 Appendice, p. 69–70”.
+      notes:
+      - Usa i criteri di efficacia del controllo di DCAM per classificare la 
+        forza del controllo.
+  DWBI-04:
+    title: Implementare catalogazione governata, versioning e monitoraggio del 
+      consumo
+    procedures:
+    - number: 5
+      name: Mantenere la governance operativa di BI
+      prerequisite: Richiede operatività BI in stato stabile
+      deliverable: Registro di governance operativa BI
+      recommendations:
+      - Monitorare l'utilizzo di BI, le problematiche di qualità e le lacune nei
+        metadata.
+      - Validare l'adesione ai processi di pubblicazione e certificazione.
+      - Monitorare i fallimenti ricorrenti nell'aggiornamento di standard o 
+        processi.
+      - Archiviare i log utilizzando la struttura di artefatti DAMA “Appendice 
+        Capitolo 3, p. 69–70”.
+      notes:
+      - Utilizzare diagnosi del modello operativo DCAM per identificare aree di 
+        governance deboli.
+    - number: 6
+      name: Rinforzo dell'istituzionalizzazione strutturale
+      prerequisite: Richiede meccanismo di governance approvato e baseline 
+        politica formalizzata
+      deliverable: Procedura di governance istituzionalizzata con Control Owner 
+        assegnato e evidenze documentate di esecuzione ripetibile
+      recommendations:
+      - Assegnare un Control Owner formalmente responsabile del mantenimento del
+        meccanismo di governance.
+      - Definire criteri oggettivi di accettazione che confermino esecuzione 
+        stabile e coerente.
+      - Produrre artefatti documentati che attestino l'applicazione operativa 
+        ripetibile.
+      - Garantire l'integrazione nelle routine organizzative consolidate.
+      - Mantenere la tracciabilità tra il meccanismo di governance e la politica
+        di governo.
+  DWBI-06:
+    title: Automatizzare la validazione semantica, il tracciamento del lineage e
+      il monitoraggio della qualità
+    procedures:
+    - number: 2
+      name: Stabilire regole di validazione automatizzate BI
+      prerequisite: Richiede un set KPI
+      deliverable: Set di regole automatizzate BI
+      recommendations:
+      - Implementare controlli automatizzati per la conformità a master data, 
+        liste di riferimento e strutture dimensionali “Capitolo 6, p. 182–188”.
+      - Validare le definizioni metriche rispetto alla logica governata.
+      - Include checkpoint di validazione della provenienza.
+      - Documentare le regole utilizzando le pratiche degli artefatti DAMA 
+        “Capitolo 3 Appendice, p. 69–70”.
+      notes:
+      - Utilizzare la valutazione di prontezza all'automazione CMMI prima del 
+        deployment.
+    - number: 6
+      name: Rinforzo della misurazione strutturale e supervisione
+      prerequisite: Richiede un meccanismo di governance istituzionalizzato
+      deliverable: Ambiente di controllo di governance gestito e misurato
+      recommendations:
+      - Definire metriche di performance misurabili allineate agli obiettivi di 
+        governance.
+      - Implementare meccanismi strutturati di monitoraggio o dashboard.
+      - Stabilire cicli formali di validazione inclusi revisioni periodiche.
+      - Mantenere documentazione tracciabile dei risultati di performance.
+      - Definire percorsi di escalation per deviazioni non risolte.
+  DWBI-09:
+    title: Migliorare continuamente la governance analitica e semantica 
+      utilizzando evidenze
+    procedures:
+    - number: 2
+      name: Migliorare standard e linee guida del ciclo di vita BI
+      prerequisite: Richiede approfondimenti di governance
+      deliverable: Standard BI aggiornati
+      recommendations:
+      - Aggiorna regole di modellazione, definizioni metriche e requisiti di 
+        metadati “Capitolo 10, p. 282–289”.
+      - Chiarire le aspettative di documentazione della fonte di verità e 
+        lineage “Capitolo 9, p. 236–239”.
+      - Assicura coerenza tra dimensioni e attributi conformati.
+      - Validare gli aggiornamenti attraverso forum di governance “Capitolo 3.4,
+        p. 60–61”.
+      notes:
+      - Utilizzare il miglioramento continuo CMMI per gestire aggiornamenti 
+        standard.
+    - number: 6
+      name: Ottimizzazione strutturale e rinforzo adattivo
+      prerequisite: Richiede meccanismo di governance gestito e misurato
+      deliverable: Processo di governance ottimizzato che dimostra automazione e
+        miglioramento adattivo
+      recommendations:
+      - Introdurre elementi di automazione a supporto dell'applicazione e del 
+        monitoraggio.
+      - Implementare cicli di miglioramento continuo basati sulle tendenze di 
+        performance.
+      - Condurre benchmarking rispetto a framework di governance riconosciuti.
+      - Documentare miglioramenti misurabili su più cicli.
+      - Garantire l'adattabilità ai cambiamenti normativi e organizzativi.

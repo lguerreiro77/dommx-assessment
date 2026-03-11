@@ -1,0 +1,236 @@
+domain:
+  id: 9
+  name: Data Warehousing und Business Intelligence (DWBI)
+  description: "Diese Domäne bewertet die Governance analytischer Assets, semantischer
+    Schichten, Konsumstandards und Entscheidungsunterstützungsstrukturen. Sie untersucht,
+    wie analytische Ergebnisse validiert, überwacht und an die organisatorische Bedeutung
+    angepasst werden, um sicherzustellen, dass Erkenntnisse konsistent, nachvollziehbar
+    und ethisch verwendet werden. Die Governance muss über Datenquellen hinaus bis
+    zur analytischen Interpretation reichen und Zuverlässigkeit, Verantwortlichkeit
+    und Transparenz stärken (DAMA-DMBOK2, Kapitel 11).\n"
+maturity_scale:
+  0:
+    maturity_level: Nicht existent
+    meaning: Keine Governance-Praktiken und keine definierten 
+      Verantwortlichkeiten oder Prozesse.
+    interpretation_for_assessment: Zeigt ein vollständiges Fehlen von Struktur 
+      und einen unmittelbaren Bedarf an grundlegenden Maßnahmen an.
+  1:
+    maturity_level: Initial
+    meaning: Aktivitäten erfolgen informell und reaktiv mit wenig oder keiner 
+      Dokumentation.
+    interpretation_for_assessment: Spiegelt Bewusstsein wider, aber auch hohe 
+      Variabilität und operationelles Risiko.
+  2:
+    maturity_level: Im Entstehen
+    meaning: Einige Praktiken existieren, sind jedoch inkonsistent, 
+      undokumentiert oder werden nicht teamübergreifend angewendet.
+    interpretation_for_assessment: Zeigt frühe Entwicklung. Standardisierung und
+      Dokumentation sind notwendig, um Fortschritte zu erzielen.
+  3:
+    maturity_level: Etabliert
+    meaning: Prozesse, Rollen und Richtlinien sind definiert, dokumentiert und 
+      stabil angewendet.
+    interpretation_for_assessment: Demonstriert operationale Konsistenz und 
+      Bereitschaft für strukturiertere Verbesserungen.
+  4:
+    maturity_level: Verwaltet
+    meaning: Governance ist in Arbeitsabläufe integriert und wird durch Tools, 
+      Überwachung und Aufsicht unterstützt.
+    interpretation_for_assessment: Repräsentiert reife Einführung mit 
+      zuverlässiger Ausführung über Teams hinweg.
+  5:
+    maturity_level: Optimiert
+    meaning: Governance ist vollständig eingebettet, wird kontinuierlich 
+      verbessert und entspricht Compliance- und ethischen Erwartungen.
+    interpretation_for_assessment: Repräsentiert fortgeschrittene Reife mit 
+      proaktiver Governance, Optimierung und institutionalisierter 
+      kontinuierlicher Verbesserung.
+questions:
+  Q1:
+    text: Sind analytische Governance-Regeln, semantische Definitionen und 
+      Konsumstandards formell definiert?
+    explanation: Bewertet geregelte Definitionen von analytischer Bedeutung und 
+      Nutzung.
+    objective: Stellen Sie Konsistenz und Nachvollziehbarkeit von Erkenntnissen 
+      sicher.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – DW & BI; DCAM, Analytical Architecture;
+      IDGC, Structural Mechanisms)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Definieren Sie analytische Governance-Regeln, semantische 
+          Standards und Nutzungsprinzipien
+      1:
+        action_code: DWBI-02
+        description: Weisen Sie Stewardship-Rollen für analytische Governance zu
+      2:
+        action_code: DWBI-03
+        description: Genehmigen Sie analytische und semantische 
+          Governance-Standards
+      3:
+        action_code: DWBI-04
+        description: Integrieren Sie analytische Governance-Regeln in BI 
+          Workflows
+      4:
+        action_code: DWBI-06
+        description: Automatisieren Sie semantische Validierung und gesteuerte 
+          Nutzungsprüfungen
+      5:
+        action_code: DWBI-09
+        description: Verfeinern Sie kontinuierlich die analytische Governance 
+          anhand von Evidenzen
+  Q2:
+    text: Werden analytische Assets (Dashboards, KPIs, Berichte) katalogisiert, 
+      versioniert und unter Governance gepflegt?
+    explanation: Bewertet das Management analytischer Artefakte.
+    objective: Zuverlässigkeit und Lebenszykluskonsistenz verbessern.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – ETL / ELT Processes; DCAM, Data Processing;
+      IDGC, Process Controls)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Definition von Katalogisierungs-, Versionierungs- und 
+          Lifecycle-Regeln für analytische Assets
+      1:
+        action_code: DWBI-02
+        description: Verantwortung für analytische Artefakte zuweisen
+      2:
+        action_code: DWBI-03
+        description: Genehmigung strukturierter Lebenszyklus-Governance für 
+          analytische Assets
+      3:
+        action_code: DWBI-04
+        description: Implementieren Sie geregelte Katalogisierungs- und 
+          Versionsroutinen
+      4:
+        action_code: DWBI-06
+        description: Automatisierte Katalogisierung, Versionierung und 
+          Herkunftsnachverfolgung
+      5:
+        action_code: DWBI-09
+        description: Kontinuierliche Verbesserung der Governance des 
+          Artefakt-Lebenszyklus
+  Q3:
+    text: Sind Datenumwandlungen, semantische Logik und Metrikberechnungen 
+      gesteuert und transparent?
+    explanation: Bewertet gesteuerte semantische Schichten und Metrik-Herkunft.
+    objective: Vertrauenswürdige und reproduzierbare Analysen sicherstellen.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – Metrics Governance; DCAM, Analytics
+      Quality; IDGC, Semantic Controls)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Definition von Regeln für Metrikstandardisierung und 
+          semantische Logik
+      1:
+        action_code: DWBI-02
+        description: Weisen Sie Verantwortlichkeiten für Metrik-Governance und 
+          Transparenz zu
+      2:
+        action_code: DWBI-03
+        description: Genehmigen Sie Metrikkataloge und semantische Definitionen
+      3:
+        action_code: DWBI-04
+        description: Integrieren Sie geregelte semantische Logik in BI Prozesse
+      4:
+        action_code: DWBI-06
+        description: Automatisieren Sie die Validierung von Metriken und die 
+          Überwachung semantischer Abweichungen
+      5:
+        action_code: DWBI-09
+        description: Kontinuierliche Verfeinerung von Metrik- und semantischer 
+          Governance
+  Q4:
+    text: Werden analytische Verbrauchsprozesse auf Genauigkeit, Konsistenz und 
+      verantwortungsvolle Nutzung überwacht?
+    explanation: Bewertet Governance von Konsumverhalten und 
+      Entscheidungsunterstützung.
+    objective: Verantwortlichkeit und Entscheidungsintegrität stärken.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – DW Lifecycle; Chapter 12 – Data Lifecycle;
+      DCAM, Lifecycle Execution; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Definieren Sie Regeln für verantwortungsbewussten 
+          analytischen Konsum
+      1:
+        action_code: DWBI-02
+        description: Weisen Sie Überwachungsrollen für Konsum-Governance zu
+      2:
+        action_code: DWBI-03
+        description: Genehmigen Sie geregelte Konsumprozesse
+      3:
+        action_code: DWBI-04
+        description: Implementieren Sie governance-gesteuerte 
+          Verbrauchsüberwachungsroutinen
+      4:
+        action_code: DWBI-06
+        description: Automatisieren Sie Verbrauchsüberwachung und 
+          Verhaltenswarnungen
+      5:
+        action_code: DWBI-09
+        description: Verbessern Sie kontinuierlich die Governance des Verbrauchs
+          anhand von Metriken
+  Q5:
+    text: Werden analytische Qualitätsindikatoren (Genauigkeit, Aktualität, 
+      Vollständigkeit) gemessen und überprüft?
+    explanation: Bewertet die Zuverlässigkeit analytischer Ergebnisse.
+    objective: Aufrechterhaltung vertrauenswürdiger analytischer Umgebungen.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – BI Monitoring & Quality; DCAM, Measurement;
+      IDGC, Monitoring & Validation)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Definition analytischer Qualitätsmetriken und 
+          Überwachungsregeln
+      1:
+        action_code: DWBI-02
+        description: Weisen Sie Verantwortlichkeiten für die Überwachung der 
+          analytischen Qualität zu
+      2:
+        action_code: DWBI-03
+        description: Qualitätsprüfzyklen und KPIs genehmigen
+      3:
+        action_code: DWBI-04
+        description: Implementieren Sie Dashboards und Qualitätsprüfroutinen
+      4:
+        action_code: DWBI-06
+        description: Automatisieren Sie analytische Qualitätsvalidierung
+      5:
+        action_code: DWBI-09
+        description: Verbessern Sie kontinuierlich die analytische Qualität 
+          anhand von Nachweisen
+  Q6:
+    text: Werden ethische, Datenschutz- und verantwortungsvolle 
+      Nutzungs-Sicherungen auf Analysen und Erkenntnisgenerierung angewendet?
+    explanation: Bestätigen Sie, dass Dokumentation mit __ACR0__ 
+      Artefaktstruktur übereinstimmt (Kapitel 3 Anhang, S. __ACR1__–__ACR2__).
+    objective: Fördern Sie verantwortungsbewusste und rechtmäßige analytische 
+      Nutzung.
+    cross_reference: "(DAMA-DMBOK2, Chapter 10 – Ethical Analytics; DCAM, Responsible
+      Use; IDGC, Ethical Reporting)"
+    score_action_mapping:
+      0:
+        action_code: DWBI-01
+        description: Ethische, Datenschutz- und verantwortungsvolle 
+          Nutzungsregeln für Analysen definieren
+      1:
+        action_code: DWBI-02
+        description: Weisen Sie Aufsicht für ethische und Datenschutzkontrollen 
+          zu
+      2:
+        action_code: DWBI-03
+        description: Ethik- und Datenschutzmaßnahmen für Analysen genehmigen
+      3:
+        action_code: DWBI-04
+        description: Ethische und Datenschutz-Schutzmaßnahmen in analytische 
+          Workflows einbetten
+      4:
+        action_code: DWBI-06
+        description: Automatisieren Sie Datenschutz-, Minimierungs- und 
+          Fairness-Validierung
+      5:
+        action_code: DWBI-09
+        description: Verbessern Sie kontinuierlich die ethische Governance 
+          anhand von Audits

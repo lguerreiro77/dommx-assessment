@@ -1,0 +1,241 @@
+domain:
+  id: 3
+  name: Modelado y diseño de datos (DMD)
+  description: "Este dominio examina prácticas de modelado conceptual, lógico y físico,
+    los estándares que rigen su creación y mantenimiento, y el grado en que las definiciones
+    estructurales se alinean con la semántica del negocio. El modelado proporciona
+    la base estructural para la Gobernanza de Datos al establecer significado compartido,
+    estructuras de datos coherentes y relaciones trazables en toda la organización.
+    Esto se alinea con la clasificación de DAMA del modelado como una función estructural
+    central que habilita consistencia, interoperabilidad y gestión confiable del ciclo
+    de vida de datos (DAMA International, 2017).\n"
+maturity_scale:
+  0:
+    maturity_level: No existente
+    meaning: No existen prácticas de gobernanza ni responsabilidades o procesos 
+      definidos.
+    interpretation_for_assessment: Indica una ausencia completa de estructura y 
+      una necesidad inmediata de acción fundamental.
+  1:
+    maturity_level: Inicial.
+    meaning: Las actividades ocurren de forma informal y reactiva con poca o 
+      ninguna documentación.
+    interpretation_for_assessment: Refleja conciencia, pero también alta 
+      variabilidad y riesgo operativo.
+  2:
+    maturity_level: Emergente
+    meaning: Existen algunas prácticas pero permanecen inconsistentes, no 
+      documentadas o no adoptadas en todos los equipos.
+    interpretation_for_assessment: Muestra desarrollo temprano. La 
+      estandarización y documentación son necesarias para avanzar.
+  3:
+    maturity_level: Establecido
+    meaning: Procesos, roles y políticas están definidos, documentados y 
+      aplicados con estabilidad.
+    interpretation_for_assessment: Demuestra consistencia operativa y 
+      preparación para mejoras más estructuradas.
+  4:
+    maturity_level: Gestionado
+    meaning: La gobernanza está integrada en flujos de trabajo y apoyada por 
+      herramientas, monitoreo y supervisión.
+    interpretation_for_assessment: Representa adopción madura con ejecución 
+      confiable entre equipos.
+  5:
+    maturity_level: Optimizado
+    meaning: La gobernanza está completamente integrada, mejorada continuamente 
+      y alineada con expectativas de cumplimiento y ética.
+    interpretation_for_assessment: Representa madurez avanzada con gobernanza 
+      proactiva, optimización y mejora continua institucionalizada.
+questions:
+  Q1:
+    text: ¿Se definen y aprueban formalmente estándares de modelado (conceptual,
+      lógico, físico)?
+    explanation: Evalúa la existencia de reglas compartidas de modelado y 
+      principios estructurales.
+    objective: Garantizar la creación de modelos consistente y gobernada.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Data Modelling & Design; DCAM, Data
+      Structure Design; IDGC, Structural Foundations)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Defina estándares de modelado para modelos conceptuales, 
+          lógicos y físicos
+      1:
+        action_code: DMD-02
+        description: Asignar responsabilidades de administración y gobernanza de
+          modelado
+      2:
+        action_code: DMD-03
+        description: Aprobar estándares de modelado y reglas de gobernanza
+      3:
+        action_code: DMD-04
+        description: Incorpore estándares de modelado en rutinas de modelado y 
+          documentación
+      4:
+        action_code: DMD-06
+        description: Automatizar la validación de estándares de modelado y 
+          conformidad estructural
+      5:
+        action_code: DMD-09
+        description: Mejorar continuamente estándares de modelado usando 
+          evidencia y auditorías
+  Q2:
+    text: ¿Están armonizados los semánticos de negocio y apoyados por un 
+      glosario de negocio gobernado?
+    explanation: Evalúa alineación semántica, significado compartido y 
+      consistencia terminológica.
+    objective: Reducir ambigüedad y mejorar la comprensión de datos.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Modelling Standards; DCAM, Design
+      Principles; IDGC, Process Standardization)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Definir reglas de alineación semántica y estructura de 
+          gobernanza de glosario
+      1:
+        action_code: DMD-02
+        description: Asignar administradores de datos responsables de gobernanza
+          semántica
+      2:
+        action_code: DMD-03
+        description: Aprobar estructura de glosario y reglas de armonización 
+          semántica
+      3:
+        action_code: DMD-04
+        description: Incorpore el uso del glosario en las rutinas de modelado y 
+          dominio
+      4:
+        action_code: DMD-06
+        description: Automatizar validación semántica y verificaciones de 
+          consistencia de términos
+      5:
+        action_code: DMD-09
+        description: Refinar continuamente la semántica usando métricas de uso y
+          calidad
+  Q3:
+    text: ¿Se revisan, versionan y mantienen los modelos de datos bajo la 
+      autoridad del órgano de gobernanza?
+    explanation: Verifica si la gestión del ciclo de vida del modelo está 
+      controlada y es repetible.
+    objective: Asegurar trazabilidad y confiabilidad del modelo.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Modelling Stewardship; Chapter 11
+      – Stewardship; DCAM, Ownership; IDGC, Roles & Responsibilities)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Definir reglas de revisión, aprobación y versionado de 
+          modelos
+      1:
+        action_code: DMD-02
+        description: Asignar responsabilidades de revisión y aprobación de 
+          modelado
+      2:
+        action_code: DMD-03
+        description: Aprobar procesos de gobernanza del ciclo de vida del modelo
+      3:
+        action_code: DMD-04
+        description: Operar control de versiones, ciclos de revisión y rutinas 
+          de mantenimiento
+      4:
+        action_code: DMD-06
+        description: Automatizar captura de linaje, actualizaciones de metadatos
+          y seguimiento de versiones
+      5:
+        action_code: DMD-09
+        description: Mejore continuamente el ciclo de vida del modelado usando 
+          métricas de desempeño
+  Q4:
+    text: ¿Están integrados los modelos conceptuales y lógicos con metadatos y 
+      límites de dominio?
+    explanation: Verifica la alineación entre modelos, metadatos, linaje y 
+      delimitación de dominio.
+    objective: Promover coherencia a través de artefactos estructurales.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Model Lifecycle; Chapter 12 – Data
+      Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Reglas de integración entre modelos, metadatos y límites de
+          dominio
+      1:
+        action_code: DMD-02
+        description: Asignar roles de administración para alineación estructural
+      2:
+        action_code: DMD-03
+        description: Apruebe reglas de alineación e integración de 
+          metadatos-modelo.
+      3:
+        action_code: DMD-04
+        description: Incorporar alineación modelo–metadatos–dominio en rutinas 
+          de modelado
+      4:
+        action_code: DMD-06
+        description: Automatizar alineación metadatos-modelo y validación 
+          estructural
+      5:
+        action_code: DMD-09
+        description: Optimizar la integración usando métricas y evidencia de 
+          desempeño estructural
+  Q5:
+    text: ¿Se mide y monitorea la calidad del modelado (precisión, completitud, 
+      consistencia)?
+    explanation: Evalúa si se rastrea el desempeño y confiabilidad del modelado.
+    objective: Asegurar calidad del modelo y evolución sostenible.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Model Documentation & Validation;
+      DCAM, Quality & Controls; IDGC, Information Quality Management)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Definir métricas de calidad de modelado y requisitos de 
+          monitoreo
+      1:
+        action_code: DMD-02
+        description: Asignar responsabilidades de monitoreo de calidad de 
+          modelado
+      2:
+        action_code: DMD-03
+        description: Aprobar KPIs de calidad y ciclos de revisión
+      3:
+        action_code: DMD-04
+        description: Implemente paneles de control, revisiones de calidad de 
+          modelos e informes gobernados.
+      4:
+        action_code: DMD-06
+        description: Automatizar validación de calidad de modelado
+      5:
+        action_code: DMD-09
+        description: Mejore continuamente la calidad del modelado usando 
+          evidencia
+  Q6:
+    text: ¿Están incorporadas salvaguardas de privacidad por diseño y éticas en 
+      prácticas de modelado?
+    explanation: Evalúa integración de privacidad, minimización, equidad y 
+      restricciones éticas.
+    objective: Apoyar la definición responsable de estructuras.
+    cross_reference: "(DAMA-DMBOK2, Chapter 5 – Ethical Modelling; DCAM, Responsible
+      Data Use; IDGC, Ethical Handling)"
+    score_action_mapping:
+      0:
+        action_code: DMD-01
+        description: Definir requisitos de privacidad, minimización y éticos 
+          para modelado
+      1:
+        action_code: DMD-02
+        description: Asignar responsabilidades para restricciones éticas y de 
+          privacidad en modelado
+      2:
+        action_code: DMD-03
+        description: Apruebe reglas de modelado de privacidad por diseño y 
+          éticas
+      3:
+        action_code: DMD-04
+        description: Incorporar controles éticos y de privacidad en rutinas de 
+          modelado
+      4:
+        action_code: DMD-06
+        description: Automatice la validación de privacidad y ética dentro de 
+          artefactos de modelado
+      5:
+        action_code: DMD-09
+        description: Mejorar continuamente modelado ético usando revisiones y 
+          evidencia

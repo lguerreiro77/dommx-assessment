@@ -1,0 +1,180 @@
+domain:
+  id: 9
+  name: Data Warehousing und Business Intelligence (DWBI)
+action_catalog:
+  DWBI-01:
+    title: Definition von Business Intelligence- und Data-Warehousing-Vision, 
+      Umfang und Regeln
+    procedures:
+    - number: 1
+      name: Definieren Sie Unternehmens-BI- und Analytics-Vision
+      prerequisite: Erfordert eine Unternehmensdatenstrategie
+      deliverable: BI und Analytics-Visionserklärung
+      recommendations:
+      - Etablieren Sie Zweck und Rolle von BI im Unternehmen gemäß den DAMA 
+        Architektur-Ausrichtungsprinzipien „Kapitel 8, S. 252–260“.
+      - Identifizieren Sie hochrangige Analyseergebnisse und 
+        Entscheidungsbedarfe über Domänen hinweg.
+      - Richten Sie BI Ziele mit Stewardship-, Qualitäts- und 
+        Metadaten-Governance aus „Kapitel 3.2, S. 55–57“.
+      - Dokumentation der Vision unter Verwendung der DAMA-Artefaktstruktur 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - DCAM Wertzuordnung verwenden, um BI Vision in messbare 
+        Fähigkeitsbegriffe auszudrücken.
+    - number: 2
+      name: Definition des Geschäftsbereichs von BI und Data Warehousing
+      prerequisite: Erfordert BI Vision
+      deliverable: BI Geschäftsbereichskarte
+      recommendations:
+      - Identifizieren Sie primäre analytische Themen wie Vertrieb, Finanzen, 
+        Betrieb und Kundendaten.
+      - Ordnen Sie Geschäftsfragen Master- und Referenzdomänen zu „Kapitel 6, S.
+        182–188“.
+      - Beziehen Sie Qualitätsgrenzwerte ein, die für analytische 
+        Zuverlässigkeit erforderlich sind „Kapitel 11, S. 308–311“.
+      - Erfassen Sie den Geschäftsumfang mit DAMA Dokumentationspraktiken 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwendung von CMMI-Scoping-Praktiken zur Sicherstellung machbarer 
+        Lieferinkremente.
+  DWBI-02:
+    title: Stewardship-Rollen für analytische Governance und Überwachung 
+      zuweisen
+    procedures:
+    - number: 1
+      name: Dokumentieren Sie BI-Architekturprinzipien
+      prerequisite: Erfordert DW/BI Umfang
+      deliverable: BI-Architekturprinzipien-Set
+      recommendations:
+      - Richten Sie sich nach den DAMA Architekturprinzipien für Integration, 
+        Wiederverwendung und Standardisierung „Kapitel 8, S. 252–260“.
+      - Definieren Sie Prinzipien für Beschaffungs-, Transformations-, 
+        Konsolidierungs- und Konsumschichten.
+      - Adressierung von Stewardship und Metadaten-Ausrichtung „Kapitel 9, S. 
+        236–239“.
+      - Dokumentieren Sie Prinzipien mit DAMA Artefaktformatierung „Kapitel 3 
+        Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM Architektur-Fähigkeitszuordnung, um architektonische 
+        Lücken zu identifizieren.
+  DWBI-03:
+    title: Genehmigen Sie analytische, semantische und metrische 
+      Governance-Standards
+    procedures:
+    - number: 3
+      name: Genehmigen Sie BI Anforderungen und definieren Sie analytische 
+        Kontrollen
+      prerequisite: Erfordert Stakeholder-Review
+      deliverable: Genehmigtes Anforderungspaket
+      recommendations:
+      - Genehmigen Sie Qualitäts- und Herkunftskontrollen, die mit den DAMA-Best
+        Practices übereinstimmen „Kapitel 11, S. 308–311“.
+      - Validierung von Geschäftsregeln und Metrikdefinitionen.
+      - Verantwortlichkeitszuweisung zwischen Eigentümern, Stewards und 
+        Custodians definieren „Kapitel 4, S. 86–89“.
+      - Dokumentieren Sie Genehmigungsergebnisse mit DAMA-Governance-Artefakten 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwenden Sie DCAM-Kriterien zur Wirksamkeit von Kontrollen zur 
+        Klassifizierung der Kontrollstärke.
+  DWBI-04:
+    title: Implementieren Sie gesteuerte Katalogisierung, Versionierung und 
+      Verbrauchsüberwachung
+    procedures:
+    - number: 5
+      name: Pflegen Sie die operative Governance von BI
+      prerequisite: Erfordert BI-Betrieb im stabilen Zustand
+      deliverable: BI-Betriebs-Governance-Protokoll
+      recommendations:
+      - Überwachen Sie BI-Nutzung, Qualitätsprobleme und Metadatenlücken.
+      - Validieren Sie die Einhaltung von Veröffentlichungs- und 
+        Zertifizierungsprozessen.
+      - Verfolgen Sie wiederkehrende Fehler bei der Aktualisierung von Standards
+        oder Prozessen.
+      - Speichern Sie Protokolle unter Verwendung der DAMA-Artefaktstruktur 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Nutzen Sie DCAM-Betriebsmodell-Diagnosen, um schwache 
+        Governance-Bereiche zu identifizieren.
+    - number: 6
+      name: Strukturelle Institutionalisierungsverstärkung
+      prerequisite: Erfordert genehmigten Governance-Mechanismus und 
+        formalisierte Richtlinienbasis
+      deliverable: Institutionalisierte Governance-Prozedur mit zugewiesenem 
+        Control Owner und dokumentiertem Nachweis wiederholbarer Ausführung
+      recommendations:
+      - Weisen Sie einen formal verantwortlichen Control Owner zu, der den 
+        Governance-Mechanismus aufrechterhält.
+      - Definieren Sie objektive Akzeptanzkriterien, die eine stabile und 
+        konsistente Ausführung bestätigen.
+      - Erstellen Sie dokumentierte Artefakte, die die wiederholbare operative 
+        Anwendung belegen.
+      - Stellen Sie die Integration in etablierte organisatorische Abläufe 
+        sicher.
+      - Pflegen Sie die Rückverfolgbarkeit zwischen Governance-Mechanismus und 
+        steuernder Richtlinie.
+  DWBI-06:
+    title: Automatisieren Sie semantische Validierung, Herkunftsverfolgung und 
+      Qualitätsüberwachung
+    procedures:
+    - number: 2
+      name: Automatisierte BI Validierungsregeln etablieren
+      prerequisite: Erfordert ein KPI Set
+      deliverable: Automatisiertes BI Regelwerk
+      recommendations:
+      - Automatisierte Prüfungen zur Konformität mit Stammdaten, Referenzlisten 
+        und Dimensionsstrukturen implementieren („Kapitel 6, S. 182–188“).
+      - Validieren Sie Metrikdefinitionen anhand gesteuerter Logik.
+      - Einbeziehung von Herkunftsvalidierungs-Checkpoints.
+      - Dokumentieren Sie Regeln unter Verwendung von DAMA Artefakt-Praktiken 
+        „Kapitel 3 Anhang, S. 69–70“.
+      notes:
+      - Verwendung der CMMI-Automatisierungsbereitschaftsbewertung vor der 
+        Bereitstellung.
+    - number: 6
+      name: Strukturelle Mess- und Überwachungsverstärkung
+      prerequisite: Erfordert einen institutionalisierten Governance-Mechanismus
+      deliverable: Gesteuerte und gemessene Governance-Kontrollumgebung
+      recommendations:
+      - Definieren Sie messbare Leistungskennzahlen, die mit den 
+        Governance-Zielen übereinstimmen.
+      - Implementieren Sie strukturierte Überwachungsmechanismen oder 
+        Dashboards.
+      - Etablieren Sie formale Validierungszyklen einschließlich periodischer 
+        Überprüfungen.
+      - Pflegen Sie eine nachvollziehbare Dokumentation der Leistungsergebnisse.
+      - Definieren Sie Eskalationswege für ungelöste Abweichungen.
+  DWBI-09:
+    title: Kontinuierliche Verbesserung der analytischen und semantischen 
+      Governance anhand von Evidenz.
+    procedures:
+    - number: 2
+      name: Verbesserung von BI-Standards und Lifecycle-Leitlinien
+      prerequisite: Erfordert Governance-Einblicke
+      deliverable: Aktualisierte BI Standards
+      recommendations:
+      - Aktualisieren Sie Modellierungsregeln, Metrikdefinitionen und 
+        Metadatenanforderungen „Kapitel 10, S. 282–289“.
+      - Klären Sie Erwartungen an Source-of-Truth- und Lineage-Dokumentation 
+        „Kapitel 9, S. 236–239“.
+      - Stellen Sie Konsistenz über Dimensionen und konforme Attribute sicher.
+      - Validieren Sie Aktualisierungen über Governance-Foren „Kapitel 3.4, S. 
+        60–61“.
+      notes:
+      - Verwenden Sie CMMI kontinuierliche Verbesserung zur Verwaltung von 
+        Standardaktualisierungen.
+    - number: 6
+      name: Strukturoptimierung und adaptive Verstärkung
+      prerequisite: Erfordert gesteuerten und gemessenen Governance-Mechanismus
+      deliverable: Optimierter Governance-Prozess mit nachgewiesener 
+        Automatisierung und adaptiver Verbesserung
+      recommendations:
+      - Führen Sie Automatisierungselemente zur Unterstützung von Durchsetzung 
+        und Überwachung ein.
+      - Implementieren Sie kontinuierliche Verbesserungszyklen basierend auf 
+        Leistungstrends.
+      - Führen Sie Benchmarking anhand anerkannter Governance-Rahmenwerke durch.
+      - Dokumentieren Sie messbare Verbesserungen über mehrere Zyklen.
+      - Stellen Sie Anpassungsfähigkeit an regulatorische und organisatorische 
+        Veränderungen sicher.

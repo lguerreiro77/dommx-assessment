@@ -1,0 +1,233 @@
+domain:
+  id: 8
+  name: Reference e Master Data (RMD)
+  description: "Questo dominio valuta come i domini di master data sono definiti,
+    governati e mantenuti attraverso strutture di stewardship, regole di golden-record,
+    controlli di matching e merging e meccanismi di allineamento cross-dominio. Esamina
+    la coerenza, tracciabilità e autorità dei master data in tutta l'organizzazione.
+    I master data sono identificati come una capacità fondamentale per garantire coerenza
+    a livello aziendale, ridurre duplicazioni e abilitare integrazione e analisi affidabili
+    (DAMA-DMBOK2, Capitolo 10).\n"
+maturity_scale:
+  0:
+    maturity_level: Non esistente
+    meaning: Nessuna pratica di governance e nessuna responsabilità o processo 
+      definito.
+    interpretation_for_assessment: Indica un'assenza completa di struttura e un 
+      bisogno immediato di azione fondamentale.
+  1:
+    maturity_level: Iniziale
+    meaning: Le attività avvengono in modo informale e reattivo con poca o 
+      nessuna documentazione.
+    interpretation_for_assessment: Riflette consapevolezza, ma anche alta 
+      variabilità e rischio operativo.
+  2:
+    maturity_level: Emergente
+    meaning: Alcune pratiche esistono ma rimangono incoerenti, non documentate o
+      non adottate tra i team.
+    interpretation_for_assessment: Mostra uno sviluppo iniziale. 
+      Standardizzazione e documentazione sono necessarie per progredire.
+  3:
+    maturity_level: Stabilito
+    meaning: Processi, ruoli e politiche sono definiti, documentati e applicati 
+      con stabilità.
+    interpretation_for_assessment: Dimostra coerenza operativa e prontezza per 
+      miglioramenti più strutturati.
+  4:
+    maturity_level: Gestito
+    meaning: La governance è integrata nei flussi di lavoro e supportata da 
+      strumenti, monitoraggio e supervisione.
+    interpretation_for_assessment: Rappresenta un'adozione matura con esecuzione
+      affidabile tra i team.
+  5:
+    maturity_level: Ottimizzato
+    meaning: La governance è completamente integrata, continuamente migliorata e
+      allineata con le aspettative di conformità ed etiche.
+    interpretation_for_assessment: Rappresenta una maturità avanzata con 
+      governance proattiva, ottimizzazione e miglioramento continuo 
+      istituzionalizzato.
+questions:
+  Q1:
+    text: I domini, i confini e l’ownership dei dati master sono formalmente 
+      definiti e approvati?
+    explanation: Valuta l’ambito del dominio, la proprietà e l’autorità 
+      decisionale.
+    objective: Stabilisci una governance responsabile per RMD.
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – Master & Reference Data; DCAM, Data
+      Domain Governance; IDGC, Structural Principles)"
+    score_action_mapping:
+      0:
+        action_code: RMD-01
+        description: Definire domini di dati master, ambito e regole di 
+          proprietà
+      1:
+        action_code: RMD-02
+        description: Assegnare proprietari di dominio, steward e ruoli di 
+          responsabilità
+      2:
+        action_code: RMD-03
+        description: Approvare definizioni di dominio e struttura di governance
+      3:
+        action_code: RMD-04
+        description: Integrare la governance di dominio nelle routine operative 
+          e di stewardship
+      4:
+        action_code: RMD-06
+        description: Automatizza l'applicazione delle regole del dominio master 
+          data
+      5:
+        action_code: RMD-09
+        description: Migliorare continuamente la governance del dominio 
+          utilizzando metriche
+  Q2:
+    text: Le regole di Golden Record, la logica di sopravvivenza e gli attributi
+      standard sono governati?
+    explanation: Valuta la governance delle definizioni core dei dati master.
+    objective: Garantire coerenza e tracciabilità tra i domini.
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – Standards & Definitions; DCAM, Data
+      Definition; IDGC, Rule Definition)"
+    score_action_mapping:
+      0:
+        action_code: RMD-01
+        description: Definire requisiti per record golden e standardizzazione 
+          degli attributi
+      1:
+        action_code: RMD-02
+        description: Assegnare la responsabilità per la governance degli 
+          attributi e della sopravvivenza
+      2:
+        action_code: RMD-03
+        description: Approvare regole per golden-record e attributi standard
+      3:
+        action_code: RMD-04
+        description: Incorporare regole di golden-record nelle routine governate
+          RMD
+      4:
+        action_code: RMD-06
+        description: Automatizzare la sopravvivenza, la validazione e la 
+          standardizzazione degli attributi
+      5:
+        action_code: RMD-09
+        description: Migliorare continuamente la governance del golden-record 
+          utilizzando evidenze
+  Q3:
+    text: Le regole di matching, merging e risoluzione dell'identità sono 
+      governate e applicate in modo coerente?
+    explanation: Valuta la governance di deduplicazione e risoluzione entità.
+    objective: Migliorare fiducia, unicità e precisione semantica.
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – Stewardship; Chapter 11 – Data Stewardship;
+      DCAM, Ownership Model; IDGC, Accountability)"
+    score_action_mapping:
+      0:
+        action_code: RMD-01
+        description: Definire regole di matching, merging e risoluzione 
+          dell’identità
+      1:
+        action_code: RMD-02
+        description: Assegnare responsabilità di stewardship per la risoluzione 
+          delle entità
+      2:
+        action_code: RMD-03
+        description: Approvare standard di governance per matching e merging
+      3:
+        action_code: RMD-04
+        description: Incorporare regole di risoluzione dell'identità nelle 
+          routine operative RMD
+      4:
+        action_code: RMD-06
+        description: Automatizza i processi di matching, merging e risoluzione 
+          dell'identità
+      5:
+        action_code: RMD-09
+        description: Migliorare continuamente la governance della risoluzione 
+          delle entità tramite metriche
+  Q4:
+    text: Il ciclo di vita dei dati master è governato attraverso le fasi di 
+      creazione, aggiornamento, distribuzione e archiviazione?
+    explanation: Esamina i controlli del ciclo di vita e i processi operativi 
+      governati.
+    objective: Mantenere dati master autorevoli e affidabili.
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – Master Data Lifecycle; Chapter 12
+      – Data Lifecycle; DCAM, Lifecycle Controls; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: RMD-01
+        description: Definire regole di ciclo di vita per la creazione e 
+          l’aggiornamento dei dati master
+      1:
+        action_code: RMD-02
+        description: Assegna la stewardship per le attività del ciclo di vita
+      2:
+        action_code: RMD-03
+        description: Approva le regole di governance del ciclo di vita
+      3:
+        action_code: RMD-04
+        description: Implementare routine governate del ciclo di vita nei domini
+          operativi
+      4:
+        action_code: RMD-06
+        description: Automatizzare i controlli di governance del ciclo di vita
+      5:
+        action_code: RMD-09
+        description: Migliorare continuamente la governance del ciclo di vita 
+          utilizzando evidenze
+  Q5:
+    text: Gli indicatori di qualità RMD sono misurati e revisionati 
+      sistematicamente?
+    explanation: Valuta metriche per accuratezza, completezza, unicità e 
+      coerenza.
+    objective: Mantenere dati master di alta qualità e convalidati.
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – KPIs & Controls; DCAM, Data Controls;
+      IDGC, Monitoring)"
+    score_action_mapping:
+      0:
+        action_code: RMD-01
+        description: Definire indicatori e requisiti di monitoraggio per la 
+          qualità RMD
+      1:
+        action_code: RMD-02
+        description: Assegna responsabilità per il monitoraggio della qualità 
+          RMD
+      2:
+        action_code: RMD-03
+        description: Approvare KPI di qualità e cicli di revisione
+      3:
+        action_code: RMD-04
+        description: Implementare dashboard e revisioni strutturate della 
+          qualità RMD
+      4:
+        action_code: RMD-06
+        description: Automatizza la validazione e il monitoraggio della qualità
+      5:
+        action_code: RMD-09
+        description: Migliorare continuamente la qualità RMD attraverso metriche
+  Q6:
+    text: Sono applicate salvaguardie etiche, di privacy e di uso responsabile 
+      ai processi e attributi RMD?
+    explanation: Garantisce la conformità a privacy, minimizzazione e equità.
+    objective: Governare l'uso responsabile e conforme alla legge dei dati 
+      master core.
+    cross_reference: "(DAMA-DMBOK2, Chapter 8 – Ethical Harmonization; DCAM, Responsible
+      Data Use; IDGC, Ethical Practices)"
+    score_action_mapping:
+      0:
+        action_code: RMD-01
+        description: Definire regole etiche, di privacy e di minimizzazione per 
+          i dati master
+      1:
+        action_code: RMD-02
+        description: Assegnare supervisione per governance etica e della privacy
+      2:
+        action_code: RMD-03
+        description: Approva i requisiti etici e di privacy per RMD
+      3:
+        action_code: RMD-04
+        description: Incorporare salvaguardie etiche e di privacy nelle routine 
+          RMD
+      4:
+        action_code: RMD-06
+        description: Automatizzare i controlli di privacy, minimizzazione e 
+          equità
+      5:
+        action_code: RMD-09
+        description: Migliorare continuamente la governance etica tramite audit

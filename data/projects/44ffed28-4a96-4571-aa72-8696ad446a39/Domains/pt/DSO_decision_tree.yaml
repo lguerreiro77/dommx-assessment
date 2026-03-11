@@ -1,0 +1,235 @@
+domain:
+  id: 4
+  name: Operações de Dados (DSO)
+  description: "Este domínio avalia a formalização do manuseio operacional de dados,
+    a estabilidade dos processos do ciclo de vida dos dados (criação, transformação
+    e uso) e a integração de controles de governança nas rotinas operacionais diárias.
+    Operações de Dados focam em garantir que princípios de gestão de dados sejam traduzidos
+    em atividades repetíveis, eficientes e governadas que suportem a continuidade
+    organizacional (DAMA-DMBOK2, Capítulo 6).\n"
+maturity_scale:
+  0:
+    maturity_level: Inexistente
+    meaning: Sem práticas de governança e sem responsabilidades ou processos 
+      definidos.
+    interpretation_for_assessment: Indica ausência completa de estrutura e 
+      necessidade imediata de ação fundamental.
+  1:
+    maturity_level: Inicial
+    meaning: Atividades ocorrem de forma informal e reativa com pouca ou nenhuma
+      documentação.
+    interpretation_for_assessment: Reflete conscientização, mas também alta 
+      variabilidade e risco operacional.
+  2:
+    maturity_level: Emergente
+    meaning: Algumas práticas existem, mas permanecem inconsistentes, não 
+      documentadas ou não adotadas entre equipes.
+    interpretation_for_assessment: Mostra desenvolvimento inicial. Padronização 
+      e documentação são necessárias para avançar.
+  3:
+    maturity_level: Estabelecido
+    meaning: Processos, papéis e políticas são definidos, documentados e 
+      aplicados com estabilidade.
+    interpretation_for_assessment: Demonstra consistência operacional e 
+      prontidão para melhorias mais estruturadas.
+  4:
+    maturity_level: Gerenciado
+    meaning: A governança está integrada em fluxos de trabalho e suportada por 
+      ferramentas, monitoramento e supervisão.
+    interpretation_for_assessment: Representa adoção madura com execução 
+      confiável entre equipes.
+  5:
+    maturity_level: Otimizado
+    meaning: A governança está totalmente incorporada, continuamente aprimorada 
+      e alinhada com expectativas de conformidade e ética.
+    interpretation_for_assessment: Representa maturidade avançada com governança
+      proativa, otimização e melhoria contínua institucionalizada.
+questions:
+  Q1:
+    text: As regras de armazenamento de dados, classificação e padrões de 
+      retenção estão formalmente definidos e aprovados?
+    explanation: Avalia regras estruturadas para armazenamento, retenção e 
+      classificação de dados.
+    objective: Garantir práticas de armazenamento controladas e em conformidade.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Data Storage & Operations; DCAM, Platform
+      & Operations; IDGC, Operational Processes)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Defina regras governadas para armazenamento, classificação 
+          e retenção de dados
+      1:
+        action_code: DSO-02
+        description: Atribuir responsabilidades para governança de armazenamento
+          e retenção
+      2:
+        action_code: DSO-03
+        description: Aprovar padrões de armazenamento e retenção
+      3:
+        action_code: DSO-04
+        description: Incorporar regras de armazenamento e retenção nas rotinas 
+          operacionais
+      4:
+        action_code: DSO-06
+        description: Automatizar execução de retenção e verificações de 
+          conformidade de armazenamento
+      5:
+        action_code: DSO-09
+        description: Melhorar continuamente a governança de armazenamento e 
+          retenção usando evidências
+  Q2:
+    text: Rotinas operacionais para manuseio de dados são governadas, 
+      documentadas e repetíveis?
+    explanation: Verifica se processos operacionais cumprem regras de governança
+      definidas.
+    objective: Aumentar consistência e rastreabilidade.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operational Roles; DCAM, Ownership
+      Structure; IDGC, Operational Responsibility)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Definir requisitos de governança para manipulação 
+          operacional de dados
+      1:
+        action_code: DSO-02
+        description: Atribuir responsabilidades de stewardship para rotinas 
+          operacionais
+      2:
+        action_code: DSO-03
+        description: Aprovar processos operacionais governados
+      3:
+        action_code: DSO-04
+        description: Implementar rotinas operacionais governadas e repetíveis
+      4:
+        action_code: DSO-06
+        description: Automatize verificações de conformidade e consistência 
+          operacional
+      5:
+        action_code: DSO-09
+        description: Otimizar continuamente a governança operacional com base em
+          métricas
+  Q3:
+    text: Os controles de acesso e proteção de dados são monitorados e mantidos 
+      sob autoridade de governança?
+    explanation: Avalia a supervisão de acesso, controles e mecanismos de 
+      proteção.
+    objective: Suportar uso seguro e responsável de dados.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Monitoring & Observability; DCAM,
+      Control Environment; IDGC, Monitoring & Auditability)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Definir requisitos governados para controles de acesso e 
+          proteção
+      1:
+        action_code: DSO-02
+        description: Atribuir responsabilidades de supervisão para acesso e 
+          proteção
+      2:
+        action_code: DSO-03
+        description: Aprovar estruturas governadas de controle de acesso
+      3:
+        action_code: DSO-04
+        description: Incorporar controles de acesso e proteção nas rotinas 
+          operacionais diárias
+      4:
+        action_code: DSO-06
+        description: Automatizar monitoramento de governança de acesso e 
+          proteção
+      5:
+        action_code: DSO-09
+        description: Melhorar continuamente a governança de acesso e proteção 
+          usando auditorias
+  Q4:
+    text: Práticas DataOps estão integradas na governança operacional?
+    explanation: Avalia transparência, observabilidade, monitoramento e 
+      confiabilidade operacional.
+    objective: Fortalecer qualidade operacional e gestão do ciclo de vida.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operations Lifecycle; Chapter 12 –
+      Data Lifecycle; DCAM, Lifecycle Execution; IDGC, Process Integration)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Definir requisitos de governança DataOps para 
+          confiabilidade e observabilidade
+      1:
+        action_code: DSO-02
+        description: Atribua papéis DataOps e de governança operacional
+      2:
+        action_code: DSO-03
+        description: Aprovar regras de integração DataOps
+      3:
+        action_code: DSO-04
+        description: Incorporar rotinas DataOps em fluxos de trabalho 
+          operacionais governados
+      4:
+        action_code: DSO-06
+        description: Automatizar observabilidade, monitoramento e validação 
+          operacional
+      5:
+        action_code: DSO-09
+        description: Melhorar continuamente a governança DataOps usando 
+          evidências de desempenho
+  Q5:
+    text: O desempenho operacional (disponibilidade, confiabilidade, 
+      observabilidade) é medido e revisado?
+    explanation: Avalia monitoramento de desempenho e indicadores de governança.
+    objective: Garantir excelência operacional e evolução controlada.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operations Metrics; DCAM, Measurement;
+      IDGC, Performance Controls)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Definir indicadores de desempenho operacional e regras de 
+          monitoramento
+      1:
+        action_code: DSO-02
+        description: Atribuir responsabilidades para governança de desempenho 
+          operacional
+      2:
+        action_code: DSO-03
+        description: Aprovar KPIs, limites e ciclos de revisão de governança
+      3:
+        action_code: DSO-04
+        description: Implementar dashboards, revisões de desempenho e relatórios
+          governados
+      4:
+        action_code: DSO-06
+        description: Automatizar monitoramento de desempenho e validação 
+          operacional
+      5:
+        action_code: DSO-09
+        description: Melhorar continuamente o desempenho operacional usando 
+          métricas
+  Q6:
+    text: Salvaguardas éticas, de privacidade e de uso responsável estão 
+      incorporadas em rotinas operacionais?
+    explanation: Avalia privacidade por design e salvaguardas éticas nas 
+      operações diárias.
+    objective: Garantir operações conformes e responsáveis.
+    cross_reference: "(DAMA-DMBOK2, Chapter 6 – Operational Risk & Security; Chapter
+      9 – Data Security; DCAM, Risk & Controls; IDGC, Risk Governance)"
+    score_action_mapping:
+      0:
+        action_code: DSO-01
+        description: Defina requisitos éticos, de privacidade e de uso 
+          responsável para operações
+      1:
+        action_code: DSO-02
+        description: Atribuir responsabilidades de supervisão de privacidade e 
+          ética
+      2:
+        action_code: DSO-03
+        description: Aprovar regras operacionais éticas e de privacidade
+      3:
+        action_code: DSO-04
+        description: Incorporar salvaguardas éticas e de privacidade nas rotinas
+          operacionais
+      4:
+        action_code: DSO-06
+        description: Automatizar validação ética, de privacidade e de uso 
+          responsável
+      5:
+        action_code: DSO-09
+        description: Melhorar continuamente a governança ética e de privacidade 
+          usando auditorias
