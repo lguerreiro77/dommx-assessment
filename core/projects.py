@@ -11,7 +11,8 @@ from storage.project_storage import (
 def render_projects_modal():
 
     # Reset confirmação sempre que o modal abrir
-    st.session_state["_delete_target_project"] = None
+    if "_delete_target_project" not in st.session_state:
+        st.session_state["_delete_target_project"] = None
 
     # -------------------------
     # FLASH

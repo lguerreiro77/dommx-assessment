@@ -1,7 +1,6 @@
 streamlit
 pandas
 openpyxl
-deep-translator
 python-dotenv
 PyYAML
 bcrypt
@@ -9,12 +8,7 @@ cryptography
 gspread
 google-auth
 pycountry
-phonenumbers
-ruamel.yaml
 openai
-reportlab
-pymupdf
-PyPDF2
 python-docx
 matplotlib
 numpy

@@ -75,7 +75,12 @@ def create_project(name, created_by, allow_open_access=False):
 
             if os.path.isdir(lang_src):
                 lang_dest = os.path.join(domains_dest, lang)
-                shutil.copytree(lang_src, lang_dest, dirs_exist_ok=True)
+                shutil.copytree(
+                    lang_src,
+                    lang_dest,
+                    dirs_exist_ok=True,
+                    ignore=shutil.ignore_patterns("report_cache", "__pycache__")
+                )
 
     # copiar general
     _copy_dir_contents(general_src, general_dest)

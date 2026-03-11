@@ -33,8 +33,6 @@ consent_pdf_path = os.path.join(
 
 
 
-
-
 def _get_env(name: str):
     try:
         if name in st.secrets:
@@ -42,13 +40,6 @@ def _get_env(name: str):
     except Exception:
         pass
     return os.getenv(name)
-
-
-def _get_admin_email():
-    try:
-        return st.secrets.get("ADMIN_EMAIL")
-    except Exception:
-        return None
 
 
 def render_account_page(session_state):

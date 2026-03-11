@@ -395,40 +395,6 @@ def has_finished_project(user_id, project_id):
     return False
 
 # =========================================================
-# remove consent and account
-# =========================================================
-
-def _delete_account_and_data(user_hash: str):
-    user_hash = str(user_hash).strip()
-
-    tables_with_user_id = [
-        "results",
-        "usersprojects",
-        "finished_assessments",
-        "logs",
-    ]
-
-    for table in tables_with_user_id:
-        try:
-            repo.delete(table, {"user_id": user_hash})
-        except Exception:
-            pass
-
-    try:
-        repo.delete("users", {"email_hash": user_hash})
-    except Exception:
-        pass
-
-    # best effort cache clear
-    try:
-        get_all_users.clear()
-        load_user.clear()
-        load_user_by_hash.clear()
-    except Exception:
-        pass
-
-
-# =========================================================
 # Countries
 # =========================================================
 def get_countries():
@@ -550,8 +516,8 @@ def render_login():
 
         _flash_render()
 
-        email = st.text_input("Email")
-        password = st.text_input("Password", type="password")
+        email = st.text_input("Email", key="login_email")
+        password = st.text_input("Password", type="password", key="login_password")
 
         email_valid = bool(email and "@" in email)
         login_enabled = email_valid and bool(password)
@@ -583,8 +549,16 @@ def render_login():
                 raise
 
             if not user or not verify_password(password, user["password_hash"]):
-                st.error("User does not exist or password is incorrect.")
-                return
+
+                st.session_state.pop("login_password", None)
+
+                st.session_state._flash = {
+                    "msg": "User does not exist or password is incorrect. You can create a new account.",
+                    "level": "error",
+                    "ts": time.time()
+                }
+
+                st.rerun()
 
             user_id = str(user.get("email_hash") or "").strip()
             st.session_state.user_id = user_id
@@ -1031,6 +1005,9 @@ def render_project_selection():
 
     user = st.session_state._temp_user
     user_id = user["email_hash"]
+    
+    if "generating_report" not in st.session_state:
+        st.session_state.generating_report = False
 
     all_projects = get_all_projects()
     user_projects = get_projects_for_user(user_id) or []
@@ -1153,32 +1130,46 @@ def render_project_selection():
                 base_dir=BASE_DIR,
                 repo=repo
             )
-
-            if "report_docx_path_finished" not in st.session_state:
-
-                with st.spinner(st._html_tr("Generating report...")):
-
-                    st.session_state.report_docx_path_finished = report_service.generate_report_docx(
-                        project_id=selected_project,
-                        user_id=st.session_state.get("user_id"),
-                        is_admin=st.session_state.get("is_admin", False),
-                        language=current_locale,
-                        force_regen=False
-                    )
-
-            docx_path = st.session_state.report_docx_path_finished
-
+           
             with col_r1:
-                with open(docx_path, "rb") as f:
-                    st.download_button(
-                        label=st._html_tr("📄 Download Report"),
-                        data=f,
-                        file_name=os.path.basename(docx_path),
-                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+
+                if "report_docx_path_finished" not in st.session_state:
+
+                    if st.button(
+                        st._html_tr("📄 Generate Report"),
                         use_container_width=True,
-                        key="btn_download_final_report_finished",
-                    )
-                #st.caption("Word")
+                        disabled=st.session_state.generating_report
+                    ):
+                        
+                        st.session_state.generating_report = True
+
+                        with st.spinner(st._html_tr("Generating report...")):
+
+                            st.session_state.report_docx_path_finished = report_service.generate_report_docx(
+                                project_id=selected_project,
+                                user_id=st.session_state.get("user_id"),
+                                is_admin=st.session_state.get("is_admin", False),
+                                language=current_locale,
+                                force_regen=False
+                            )
+                        
+                        st.session_state.generating_report = False
+                        st.rerun()
+
+                else:
+
+                    docx_path = st.session_state.report_docx_path_finished
+
+                    with open(docx_path, "rb") as f:
+                        st.download_button(
+                            label=st._html_tr("📄 Download Report"),
+                            data=f,
+                            file_name=os.path.basename(docx_path),
+                            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                            use_container_width=True,
+                            key="btn_download_final_report_finished",
+                        )
+                        st.success("✔ Report ready. Click the button again to download.")
 
             with col_r2:
                 if st.button(st._html_tr("↩ Log off"), use_container_width=True, key="btn_back_to_login_finished"):
@@ -1334,14 +1325,15 @@ def render_project_selection():
                 # 🔥 NORMAL FLOW (only if not finished)
                 st.session_state.user_id = user_id
                 st.session_state.active_project = selected_project
+                st.session_state.selected_project_id = selected_project
 
                 st.session_state.project_root = os.path.join(
                     BASE_DIR,
                     "data",
                     "projects",
                     str(selected_project)
-                )
-                
+                )                
+                                
                 # -------------------------------------------------
                 # MULTI-TENANT PROJECT CONTEXT
                 # -------------------------------------------------

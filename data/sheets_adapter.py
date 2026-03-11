@@ -110,50 +110,7 @@ class SheetsAdapter:
 
         _fetch_cached_table.clear(table)
         return True
-
-    # =========================
-    # UPSERT UNIQUE KEY SAFE
-    # =========================
-    def upsert_unique(self, table: str, unique_key: str, row: Dict[str, Any]) -> None:
-        """
-        Garante unicidade por chave.
-        Se existir, atualiza.
-        Se múltiplos existirem, consolida.
-        Se não existir, insere.
-        """
-
-        ws = get_table(table)
-        headers = ws.row_values(1)
-        rows = ws.get_all_records()
-
-        key_value = str(row.get(unique_key)).strip()
-        matched_indexes = []
-
-        for idx, r in enumerate(rows, start=2):
-            if str(r.get(unique_key, "")).strip() == key_value:
-                matched_indexes.append(idx)
-
-        if matched_indexes:
-
-            # Atualiza a primeira
-            first_idx = matched_indexes[0]
-
-            for col, val in row.items():
-                if col in headers:
-                    col_index = headers.index(col) + 1
-                    ws.update_cell(first_idx, col_index, val)
-
-            # Remove duplicatas se existirem
-            if len(matched_indexes) > 1:
-                for dup in sorted(matched_indexes[1:], reverse=True):
-                    ws.delete_rows(dup)
-
-        else:
-            ordered = [row.get(col, "") for col in headers]
-            ws.append_row(ordered)
-
-        _fetch_cached_table.clear(table)
-
+    
     # =========================
     # UPSERT genérico
     # =========================

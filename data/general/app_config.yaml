@@ -1,14 +1,57 @@
 app:
-  title: "🛡️ DOMMx Technical Diagnostic"
+  title: "🛡️ DOMMx Diagnostic Evaluation"
   show_intro: true
   language_default: us
-  language_posible: [us,es,pt,fr,it,de] 
+  language_posible: [us,es,pt,fr,it,de]
 
 intro:
   heading: "Welcome to DOMMx Assessment"
-  message: >
-    This diagnostic evaluates organizational maturity across selected data domains.
-    Please answer honestly based on current state.
+  message: >            
+    Welcome to the DOMMx Assessment
+    
+    This assessment is part of the evaluation process of DOMMx – Data Operating Model & Maturity, with the objective of analyzing the model’s 
+    ability to function as both an evaluative and prescriptive instrument for data governance. 
+    Through a structured set of questions, the assessment seeks to understand how data governance and data management practices are currently 
+    organized and executed within the organization. Based on the responses, the model interprets maturity signals and links these results to 
+    governance capabilities, expected deliverables, and potential improvement actions.
+    The exercise therefore has a dual purpose: to understand the current state of data governance and to evaluate whether DOMMx can consistently
+    translate diagnostic results into structured and actionable guidance.
+    Although the system is designed to be intuitive and includes mechanisms that help prevent inconsistencies, it is essential to read the user 
+    manual and the assessment completion guide before starting, as well as consult the supporting materials provided. Whenever possible, download these
+    materials and use them as a reference during the assessment.
+    Responses should reflect the current reality of the organization, rather than the desired or planned state. There are no right or wrong answers. 
+    The purpose is not to audit the organization, but to evaluate the DOMMx model itself and its ability to support diagnosis and decision-making in data
+    governance.
+    
+    Your participation is essential for this evaluation. Thank you for your collaboration.
+
+docs:
+
+  - id: 1
+    title: "Assessment User Guide"
+    file: "assessment_user_guide_{lang}.md"
+    caption: "General information about how to fill this assessment"
+
+
+  - id: 2
+    title: "Executive summary"
+    file: "Executive_summary_{lang}.pdf"
+    caption: "General information about the propose and the session"
+
+  - id: 3
+    title: "Focus Session Outline"
+    file: "Focus_Session_Outline_{lang}.pdf"
+    caption: "How the session will be conduct"
+
+  - id: 4
+    title: "DOMMx – Data Operating Model & Maturity"
+    link: "https://zenodo.org/records/18815384"
+    caption: "Full documentation of the DOMMX model for reference and analysis"
+
+  - id: 5
+    title: "A Systematic Literature Review of DOMMX model"
+    link: "https://ieeexplore.ieee.org/document/11223201"
+    caption: "Impact of a Master Data Management Framework to Trigger Data Governance Maturity: A Systematic Literature Review"
 
 auth:
   require_login: true

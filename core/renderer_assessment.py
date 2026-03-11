@@ -9,6 +9,7 @@ from datetime import datetime
 from core.config import BASE_DIR, resolve_path, APP_TITLE
 from core.config import get_filesystem_setup_path, get_general_dir, get_project_root
 
+
 from storage.result_storage import save_results
 from storage.export_service import export_all_to_excel
 from core.flow_engine import advance_flow, add_message, get_messages
@@ -18,10 +19,8 @@ from storage.log_storage import save_log_snapshot
 from core.i18n_markers import mark_yaml_strings
 
 from core.comments_manager import save_comment, load_comment, delete_comment
-from storage.export_comments_service import export_all_comments_to_excel
 
 from core.ai_report_service import AIReportService
-
 
 from data.repository_factory import get_repository
 repo = get_repository()
@@ -144,29 +143,6 @@ def safe_load(path):
         st.error(f"YAML load error: {path} | {e}")
         return None
         
-        
-def render_final_screen():
-
-
-    st.title(APP_TITLE)
-    st.success("Assessment completed successfully.")
-
-    logout_at = st.session_state.get("logout_at")
-
-    if logout_at:
-        remaining = int(logout_at - time.time())
-
-        if remaining > 0:
-            st.info(f"You will be logged out automatically in {remaining} seconds...")
-            time.sleep(1)
-            st.rerun()
-        else:
-            logout()
-            st.rerun()
-
-    st.stop()
-
-
 
 # =========================================================
 # MAIN ASSESSMENT RENDER
@@ -383,51 +359,63 @@ def render_assessment():
         # ===============================
         st.markdown("""
         <style>
-          .dmx-small { font-family: Arial; font-size: 8px; line-height: 1.25; }
+          .dmx-small { font-family: Arial; font-size: 12px; line-height: 1.4; }
           div[data-testid="stButton"] > button { border-radius: 8px; }
         </style>
         """, unsafe_allow_html=True)
         
         st.markdown("""
-            <style>
-            /* DownloadButton: o button geralmente NÃO é filho direto, então NÃO use '>' */
-            div[data-testid="stDownloadButton"] button {
-                width: 100% !important;
-                border-radius: 8px !important;
+        <style>
+        
+        /* título do expander */
+        div[data-testid="stExpander"] summary {
+            font-size: 11px !important;
+            white-space: nowrap !important;
+        }
 
-                /* aparência tipo secondary */
-                background: transparent !important;
-                border: 1px solid rgba(0,0,0,0.15) !important;
-                box-shadow: none !important;
+        /* ------------------------------------ */
+        /* DownloadButton                       */
+        /* ------------------------------------ */
+        /* o button geralmente NÃO é filho direto */
 
-                /* alinhamento igual aos outros botões */
-                padding: 0.75rem 1rem !important;
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                gap: 0.5rem !important;
+        div[data-testid="stDownloadButton"] button {
+            width: 100% !important;
+            border-radius: 8px !important;
 
-                color: inherit !important;
-                font-weight: 400 !important;
-            }
+            /* aparência tipo secondary */
+            background: transparent !important;
+            border: 1px solid rgba(0,0,0,0.15) !important;
+            box-shadow: none !important;
 
-            /* texto interno */
-            div[data-testid="stDownloadButton"] button * {
-                color: inherit !important;
-            }
+            /* alinhamento igual aos outros botões */
+            padding: 0.75rem 1rem !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
 
-            /* hover parecido */
-            div[data-testid="stDownloadButton"] button:hover:not(:disabled) {
-                background: rgba(0,0,0,0.04) !important;
-            }
+            color: inherit !important;
+            font-weight: 400 !important;
+        }
 
-            /* disabled consistente */
-            div[data-testid="stDownloadButton"] button:disabled {
-                opacity: 0.5 !important;
-                background: transparent !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
+        /* texto interno */
+        div[data-testid="stDownloadButton"] button * {
+            color: inherit !important;
+        }
+
+        /* hover parecido */
+        div[data-testid="stDownloadButton"] button:hover:not(:disabled) {
+            background: rgba(0,0,0,0.04) !important;
+        }
+
+        /* disabled consistente */
+        div[data-testid="stDownloadButton"] button:disabled {
+            opacity: 0.5 !important;
+            background: transparent !important;
+        }
+
+        </style>
+        """, unsafe_allow_html=True)
 
 
         col_left, col_main = st.columns([2, 6], gap="small")
@@ -597,38 +585,8 @@ def render_assessment():
                                     )
 
                             except Exception as e:
-                                st.write("EXPORT ERROR:", e)
-                                
-                        
-                        # ===============================
-                        # EXPORT COMMENTS
-                        # ===============================
-
-                        if st.button(
-                            "💬 Export All Comments",
-                            key="btn_export_comments",
-                            use_container_width=True,
-                            type="secondary"
-                        ):
-
-                            try:
-                                excel_data = export_all_comments_to_excel()
-
-                                if not excel_data:
-                                    st.warning("No comments available for export.")
-                                else:
-                                    st.download_button(
-                                        label="⬇ Download Comments",
-                                        data=excel_data,
-                                        file_name="DOMMx_Comments.xlsx",
-                                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                                        use_container_width=True,
-                                        key="btn_download_comments"
-                                    )
-
-                            except Exception as e:
-                                st.write("EXPORT COMMENTS ERROR:", e)
-                        
+                                st.write("EXPORT ERROR:", e)                                
+                                                                      
                         
             st.session_state["_yaml_rendering"] = True
                                 
@@ -924,7 +882,7 @@ def render_assessment():
                         "➡ Next",
                         use_container_width=True,
                         disabled=next_disabled
-                    ):
+                    ): 
 
                         if is_mandatory and current_answer is None:
                             add_message(
@@ -973,7 +931,7 @@ def render_assessment():
                         "✅ Submit All",
                         use_container_width=True,
                         type="primary",
-                        disabled=mandatory_missing
+                        disabled=mandatory_missing or changed
                     ):
                         if mandatory_missing:
                             add_message(
@@ -1000,23 +958,36 @@ def render_assessment():
 
                     with col1:
                         if st.button("Confirm", use_container_width=True):
-                            
+
+                            # 🔴 SALVAR TODAS AS RESPOSTAS ANTES DE FINALIZAR
+                            save_results(
+                                st.session_state.user_id,
+                                st.session_state.active_project,
+                                st.session_state.answers
+                            )
+
+                            st.session_state.last_saved_snapshot = json.loads(
+                                json.dumps(st.session_state.answers)
+                            )
+                            st.session_state.last_save_ts = time.time()
+
+                            # marcar assessment finalizado
                             mark_assessment_finished(
                                 st.session_state.user_id,
                                 st.session_state.active_project
-                            )                        
-                            
+                            )
+
                             save_log_snapshot(
                                 st.session_state.user_id,
                                 st.session_state.active_project,
                                 get_messages()
                             )
-                            
+
                             st.session_state.final_screen = True
                             st.session_state.final_start = time.time()
 
                             st.session_state.open_submit_dialog = False
-                            st.rerun()                      
+                            st.rerun()                     
                             
                     with col2:
                         if st.button("Cancel", use_container_width=True):
@@ -1079,7 +1050,7 @@ def render_assessment():
                 with col_btn1:
                     
                     if st.button(
-                        st._tr("Save", force=True),
+                        st._tr("Save and Close", force=True),
                         key="btn_comment_ok",
                         type="primary",
                         use_container_width=True

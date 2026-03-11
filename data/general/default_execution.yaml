@@ -18,7 +18,7 @@ execution_request:
       - id: "Q1"
         mandatory: "Yes"
         procedures: [1, 2, 3, 4, 5, 6]
-      - id: "Q2"
+      - id: "Q4"
         mandatory: "Yes"
         procedures: [1, 2, 3, 4, 5, 6]
 
@@ -29,7 +29,9 @@ execution_request:
       - id: "Q1"
         mandatory: "Yes"
         procedures: [1, 2, 3, 4, 5, 6]
-      - id: "Q2"
+      - id: "Q4"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
 
   - domain: 3
     acronym: "DMD"
@@ -38,8 +40,108 @@ execution_request:
       - id: "Q1"
         mandatory: "Yes"
         procedures: [1, 2, 3, 4, 5, 6]
-      - id: "Q2"
+      - id: "Q4"
         mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+
+  - domain: 4
+    acronym: "DQ"
+    name: "Data Quality"
+    selected_questions:
+      - id: "Q1"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+      - id: "Q5"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+
+  - domain: 5
+    acronym: "DCM"
+    name: "Data Catalog and Metadata"
+    selected_questions:
+      - id: "Q1"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+      - id: "Q4"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+
+  - domain: 6
+    acronym: "DSO"
+    name: "Data Storage and Operations"
+    selected_questions:
+      - id: "Q1"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+      - id: "Q5"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+
+  - domain: 7
+    acronym: "DS"
+    name: "Data Security"
+    selected_questions:
+      - id: "Q1"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+      - id: "Q4"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+
+  - domain: 8
+    acronym: "DWBI"
+    name: "Data Warehousing and Business Intelligence"
+    selected_questions:
+      - id: "Q1"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+      - id: "Q4"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+
+  - domain: 9
+    acronym: "DII"
+    name: "Data Integration and Interoperability"
+    selected_questions:
+      - id: "Q1"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+      - id: "Q4"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+
+  - domain: 10
+    acronym: "AIML"
+    name: "AI and Machine Learning Governance"
+    selected_questions:
+      - id: "Q1"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+      - id: "Q4"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+
+  - domain: 11
+    acronym: "RMD"
+    name: "Reference and Master Data"
+    selected_questions:
+      - id: "Q1"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+      - id: "Q4"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+
+  - domain: 12
+    acronym: "MD"
+    name: "Metadata Management"
+    selected_questions:
+      - id: "Q1"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
+      - id: "Q4"
+        mandatory: "Yes"
+        procedures: [1, 2, 3, 4, 5, 6]
  
  
 # Final Orchestration Rules:

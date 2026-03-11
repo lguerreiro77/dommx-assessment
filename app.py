@@ -141,31 +141,6 @@ def _set_query_param(name: str, value: str) -> None:
 # -------------------------
 # Translation
 # -------------------------
-@st.cache_data(show_spinner=False)
-def _translator_instance(target_base: str):
-    if GoogleTranslator is None:
-        return None
-    return GoogleTranslator(source="auto", target=target_base)
-
-
-def _get_cache_path(locale: str) -> Path:
-    return Path(f"data/domains/{locale}/ui_cache.json")
-
-
-def _load_cache(locale: str) -> dict:
-    path = _get_cache_path(locale)
-    if path.exists():
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return {}
-
-
-def _save_cache(locale: str, cache: dict):
-    path = _get_cache_path(locale)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(cache, f, ensure_ascii=False, indent=2)
-
 
 from openai import OpenAI
 import os
@@ -312,10 +287,6 @@ def tr(text: str, *, force=False) -> str:
         
 st._tr = tr
 
-def _stable_hash(obj) -> str:
-    s = json.dumps(obj, ensure_ascii=False, sort_keys=True, default=str)
-    return hashlib.md5(s.encode("utf-8")).hexdigest()
-
 
 # -------------------------
 # Locale selector (flag only)
@@ -355,19 +326,6 @@ def _translate_value(v):
     if isinstance(v, YAMLText):
         return v
     return tr(v) if isinstance(v, str) else v
-
-
-def _wrap_tabs(func):
-    if getattr(func, "_dommx_wrapped", False):
-        return func
-
-    def wrapper(tabs, *args, **kwargs):
-        if isinstance(tabs, list):
-            tabs = [tr(x) if isinstance(x, str) else x for x in tabs]
-        return func(tabs, *args, **kwargs)
-
-    wrapper._dommx_wrapped = True
-    return wrapper
 
 
 def patch_streamlit_i18n():

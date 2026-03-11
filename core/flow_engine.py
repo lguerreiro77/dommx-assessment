@@ -36,10 +36,6 @@ def get_messages():
     return sorted(msgs, key=lambda x: x.get("ts", 0), reverse=True)
 
 
-def clear_messages():
-    st.session_state.assessment_messages = []
-
-
 def ensure_started_message():
     # NÃO poluir painel com "started" (user pediu sem navegação/info)
     if st.session_state.get("_assessment_started_msg"):

@@ -272,101 +272,7 @@ class AIReportService:
                 self._add_paragraph(doc, fallback)
 
             doc.add_paragraph("")
-
-
-    def _add_dependencies_section(
-        self,
-        doc: Document,
-        domain_metas: Dict[str, DomainMeta],
-        scores: List[DomainScore],
-        issues: List[DependencyIssue],
-        language: str
-    ):
-
-        T = lambda k: self._t(k, language)
-
-        # Only evaluate dependencies for domains in scope
-        in_scope_acr = {s.acronym for s in scores}
-        score_by_acr = {s.acronym: s.avg_floor for s in scores}
-
-        # Build acronym -> name lookup from domain_metas
-        acr_to_name = {m.acronym: m.name for m in domain_metas.values()}
-
-        # =========================================================
-        # 2.1 Declared Dependencies (mantém o que já funcionava)
-        # =========================================================
-        self._add_heading(doc, T("declared_dependencies_heading"), level=2)
-
-        for m in domain_metas.values():
-
-            if m.acronym not in in_scope_acr:
-                continue
-
-            self._add_heading(doc, f"{m.acronym} · {m.name}", level=3)
-
-            dep = m.dependence or []
-            if not dep:
-                self._add_paragraph(doc, T("no_dependencies"))
-                continue
-
-            # regra do flow: último elemento é o próprio domínio
-            deps_only = dep[:-1] if len(dep) >= 2 else dep
-
-            # remover autorreferência
-            deps_only = [
-                x for x in deps_only
-                if not any(
-                    str(mm.domain_id) == str(x) and mm.acronym == m.acronym
-                    for mm in domain_metas.values()
-                )
-            ]
-
-            if not deps_only:
-                self._add_paragraph(doc, T("no_dependencies"))
-                continue
-
-            self._add_paragraph(doc, T("declared_dependencies_label"))
-
-            for x in deps_only:
-
-                dep_acr = None
-                dep_name = ""
-
-                for mm in domain_metas.values():
-                    if str(mm.domain_id) == str(x):
-                        dep_acr = mm.acronym
-                        dep_name = mm.name
-                        break
-
-                if not dep_acr:
-                    doc.add_paragraph(f"- {T('unknown_domain')} (domain_id={x})", style="List Bullet")
-                    continue
-
-                dep_grade = score_by_acr.get(dep_acr)
-
-                if dep_grade is None:
-                    doc.add_paragraph(f"- {dep_acr} · {dep_name} ({T('not_evaluated_scope')})", style="List Bullet")
-                else:
-                    doc.add_paragraph(
-                        f"- {dep_acr} · {dep_name} (grade {dep_grade} · {self._likert_label(dep_grade, language)})",
-                        style="List Bullet"
-                    )
-
-        # =========================================================
-        # 2.2 Detected Breaks (NOVA rota única, sem misturar issues)
-        # =========================================================
-        self._add_heading(doc, T("detected_breaks"), level=2)
-
-        theory_data = self._load_dependency_inconsistency_theory(language)
-        inconsistencies = self._detect_structural_dependency_inconsistencies(domain_metas, scores)
-
-        self._render_dependency_breaks(
-            doc=doc,
-            inconsistencies=inconsistencies,
-            theory_data=theory_data,
-            language=language,
-            acr_to_name=acr_to_name
-        )
+   
             
             
 ###----------------------------------------------------------------------------------------------------------------------------------------------------            
@@ -716,11 +622,10 @@ class AIReportService:
             if cache_key in self._ai_cache:
                 analysis_text = self._ai_cache[cache_key]
             else:
-                with st.spinner(st._html_tr("   ...")):
-                    analysis_text = self._polish_text_with_ai(
-                        analysis,
-                        language
-                    )
+                analysis_text = self._polish_text_with_ai(
+                    analysis,
+                    language
+                )
 
             if analysis_text:
 
@@ -858,8 +763,8 @@ class AIReportService:
         docx_path = out_dir / meta["docx_name"]
 
         if docx_path.exists() and not force_regen:
-            force_regen=True
-            #return str(docx_path)
+            #force_regen=True
+            return str(docx_path)
 
         # Build mappings like export_service (filesystem -> flow + orchestration -> decision_tree)
         mapping = self._load_project_mapping(project_id, language=language)
