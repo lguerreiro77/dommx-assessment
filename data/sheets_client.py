@@ -24,14 +24,19 @@ SCOPES = [
 
 @st.cache_resource
 def _get_client():
-    credentials = Credentials.from_service_account_file(
-        os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE"),
-        scopes=SCOPES
-    )
 
-    gc = gspread.authorize(credentials)
+    if "gcp_service_account" in st.secrets:
+        credentials = Credentials.from_service_account_info(
+            st.secrets["gcp_service_account"],
+            scopes=SCOPES
+        )
+    else:
+        credentials = Credentials.from_service_account_file(
+            os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE"),
+            scopes=SCOPES
+        )
 
-    return gc
+    return gspread.authorize(credentials)
 
    
 @st.cache_resource
