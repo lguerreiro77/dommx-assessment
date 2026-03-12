@@ -168,28 +168,42 @@ def render_assessment():
                 repo=repo
             )
 
-            if "report_docx_path" not in st.session_state:
-
-                with st.spinner(st._html_tr("Generating report...")):
-
-                    st.session_state.report_docx_path = report_service.generate_report_docx(
-                        project_id=st.session_state.active_project,
-                        user_id=st.session_state.get("user_id"),
-                        is_admin=st.session_state.get("is_admin", False),
-                        language=current_locale,
-                        force_regen=False
-                    )
-
-            docx_path = st.session_state.report_docx_path            
-
-            # BOTÕES DOWNLOAD
             with col1:
 
-                with open(docx_path, "rb") as f:
+                if st.session_state.generating_report:
+
+                    st.button(
+                        "📄 Generating Report...",
+                        use_container_width=True,
+                        disabled=True
+                    )
+
+                    with st.spinner("Generating report..."):
+
+                        st.session_state.report_docx_bytes = report_service.generate_report_docx(
+                            project_id=st.session_state.active_project,
+                            user_id=st.session_state.get("user_id"),
+                            is_admin=st.session_state.get("is_admin", False),
+                            language=current_locale,
+                            force_regen=False
+                        )
+
+                    st.session_state.generating_report = False
+                    st.rerun()
+
+                elif "report_docx_bytes" not in st.session_state:
+
+                    if st.button("📄 Generate Report", use_container_width=True):
+
+                        st.session_state.generating_report = True
+                        st.rerun()
+
+                else:
+
                     st.download_button(
                         label="📄 Download Word Report",
-                        data=f,
-                        file_name=os.path.basename(docx_path),
+                        data=st.session_state.report_docx_bytes,
+                        file_name="DOMMx_Report.docx",
                         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                         use_container_width=True
                     )

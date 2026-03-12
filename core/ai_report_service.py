@@ -760,11 +760,12 @@ class AIReportService:
         force_regen: bool = False
     ) -> str:
         out_dir, meta = self._prepare_cache(project_id, user_id, is_admin, language, force_regen)
-        docx_path = out_dir / meta["docx_name"]
+        
+        #docx_path = out_dir / meta["docx_name"]
 
-        if docx_path.exists() and not force_regen:
-            #force_regen=True
-            return str(docx_path)
+        #if docx_path.exists() and not force_regen:
+        #    #force_regen=True
+        #    return str(docx_path)
 
         # Build mappings like export_service (filesystem -> flow + orchestration -> decision_tree)
         mapping = self._load_project_mapping(project_id, language=language)
@@ -959,25 +960,15 @@ class AIReportService:
         self._add_heading(doc, T("section_4"), level=1)
         self._add_references_section(doc, resolved_lang)
 
-        doc.save(str(docx_path))
+        #doc.save(str(docx_path))
+        from io import BytesIO
 
-        # PDF
-        self._export_pdf(
-            pdf_path=str(out_dir / meta["pdf_name"]),
-            project_id=project_id,
-            project_name=project_name,
-            user_meta=user_meta,
-            is_admin=is_admin,
-            included_users=included_users,
-            language=resolved_lang,
-            scores=scores,
-            domain_metas=domain_metas,
-            deps_issues=deps_issues,
-        )
-
-        (out_dir / "report.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
-
-        return str(docx_path)
+        buffer = BytesIO()
+        doc.save(buffer)
+        buffer.seek(0)
+        docx_bytes = buffer.getvalue()        
+        
+        return docx_bytes
 
     def generate_report_pdf(
         self,

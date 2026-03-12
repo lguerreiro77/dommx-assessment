@@ -12,3 +12,4 @@ openai
 python-docx
 matplotlib
 numpy
+markdown

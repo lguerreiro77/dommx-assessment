@@ -1,10 +1,20 @@
 import streamlit as st
 import yaml
 import os
+import base64
+import streamlit.components.v1 as components
 
 from pathlib import Path
 from core.config import BASE_DIR, resolve_path, get_project_root
 
+
+@st.dialog("Document")
+def show_doc(md):
+
+    st.markdown(md)
+
+    if st.button("Close", use_container_width=True):
+        st.rerun()
 
 
 def safe_load(path):
@@ -121,6 +131,10 @@ def render_welcome():
                     "caption": caption
                 })
 
+    # estado do viewer de documentos
+    if "doc_viewer" not in st.session_state:
+        st.session_state.doc_viewer = None
+    
     # layout definido ANTES de renderizar conteúdo
     if valid_docs:
         col_main, col_docs = st.columns([6.5,3.5])
@@ -172,13 +186,81 @@ def render_welcome():
 
                     if d["type"] == "file":
 
-                        with open(d["path"], "rb") as f:
-                            st.download_button(
-                                label=st._tr(f"📄 {d['title']}", force=True),
-                                data=f,
-                                file_name=d["path"].name,
-                                use_container_width=True
-                            )
+                        
+
+                        file_path = d["path"]
+                        ext = Path(file_path).suffix.lower()
+
+                        # =========================
+                        # PDF
+                        # =========================
+                        if ext == ".pdf":
+
+                            with open(file_path, "rb") as f:
+                                pdf_bytes = f.read()
+
+                            if st.button(st._tr(f"📄 {d['title']}", force=True), use_container_width=True):
+
+                                b64 = base64.b64encode(pdf_bytes).decode("utf-8")
+
+                                components.html(
+                                    f"""
+                                    <script>
+                                    (function() {{
+                                        const b64 = "{b64}";
+                                        const byteChars = atob(b64);
+                                        const byteNumbers = new Array(byteChars.length);
+                                        for (let i = 0; i < byteChars.length; i++) {{
+                                            byteNumbers[i] = byteChars.charCodeAt(i);
+                                        }}
+                                        const byteArray = new Uint8Array(byteNumbers);
+                                        const blob = new Blob([byteArray], {{ type: "application/pdf" }});
+                                        const url = URL.createObjectURL(blob);
+                                        window.open(url, "_blank");
+                                        setTimeout(() => URL.revokeObjectURL(url), 60000);
+                                    }})();
+                                    </script>
+                                    """,
+                                    height=0,
+                                )
+
+                        # =========================
+                        # MARKDOWN
+                        # =========================
+                        elif ext == ".md":
+
+                            with open(file_path, "r", encoding="utf-8") as f:
+                                md = f.read()
+
+                            if st.button(st._tr(f"📄 {d['title']}", force=True), use_container_width=True):
+                                show_doc(md)
+
+                        # =========================
+                        # DOCX
+                        # =========================
+                        elif ext == ".docx":
+
+                            with open(file_path, "rb") as f:
+                                st.download_button(
+                                    label=st._tr(f"📄 {d['title']}", force=True),
+                                    data=f,
+                                    file_name=os.path.basename(file_path),
+                                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                    use_container_width=True
+                                )
+
+                        # =========================
+                        # DEFAULT
+                        # =========================
+                        else:
+
+                            with open(file_path, "rb") as f:
+                                st.download_button(
+                                    label=st._tr(f"📄 {d['title']}", force=True),
+                                    data=f,
+                                    file_name=os.path.basename(file_path),
+                                    use_container_width=True
+                                )
 
                     else:
 
@@ -190,3 +272,5 @@ def render_welcome():
 
                     if d.get("caption"):
                         st.caption(st._tr(d["caption"], force=True))
+                        
+    

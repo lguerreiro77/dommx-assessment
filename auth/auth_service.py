@@ -504,8 +504,8 @@ def render_login():
 
     with center:
 
-        st.markdown(
-            f"<h3 style='text-align:center;'>{APP_TITLE}</h3>",
+        st.markdown(st._html_tr(
+            f"<h3 style='text-align:center;'>{APP_TITLE}</h3>"),
             unsafe_allow_html=True,
         )
 
@@ -788,32 +788,21 @@ def render_register():
 
         with col_term_a:
             if st.button("📄 Open Consent Term", key="btn_open_consent_term", use_container_width=True):
-                if pdf_bytes:
-                    import base64
-                    b64 = base64.b64encode(pdf_bytes).decode("utf-8")
 
-                    components.html(
+                if pdf_bytes:
+                    b64 = base64.b64encode(pdf_bytes).decode()
+
+                    st.markdown(
                         f"""
-                        <script>
-                        (function() {{
-                            const b64 = "{b64}";
-                            const byteChars = atob(b64);
-                            const byteNumbers = new Array(byteChars.length);
-                            for (let i = 0; i < byteChars.length; i++) {{
-                                byteNumbers[i] = byteChars.charCodeAt(i);
-                            }}
-                            const byteArray = new Uint8Array(byteNumbers);
-                            const blob = new Blob([byteArray], {{ type: "application/pdf" }});
-                            const url = URL.createObjectURL(blob);
-                            window.open(url, "_blank");
-                            setTimeout(() => URL.revokeObjectURL(url), 60000);
-                        }})();
-                        </script>
+                        <a href="data:application/pdf;base64,{b64}" target="_blank">
+                            📄 Open Consent Term
+                        </a>
                         """,
-                        height=0,
+                        unsafe_allow_html=True
                     )
 
                     st.session_state.consent_term_opened = True
+
                 else:
                     st.error("Consent term file not found.")
 
@@ -1133,48 +1122,48 @@ def render_project_selection():
            
             with col_r1:
 
-                if "report_docx_path_finished" not in st.session_state:
+                if "report_docx_bytes" not in st.session_state:
 
                     if st.button(
                         st._html_tr("📄 Generate Report"),
                         use_container_width=True,
                         disabled=st.session_state.generating_report
                     ):
-                        
+
                         st.session_state.generating_report = True
 
                         with st.spinner(st._html_tr("Generating report...")):
 
-                            st.session_state.report_docx_path_finished = report_service.generate_report_docx(
+                            st.session_state.report_docx_bytes = report_service.generate_report_docx(
                                 project_id=selected_project,
                                 user_id=st.session_state.get("user_id"),
                                 is_admin=st.session_state.get("is_admin", False),
                                 language=current_locale,
                                 force_regen=False
                             )
-                        
+
                         st.session_state.generating_report = False
                         st.rerun()
 
                 else:
 
-                    docx_path = st.session_state.report_docx_path_finished
+                    docx_bytes = st.session_state.report_docx_bytes
 
-                    with open(docx_path, "rb") as f:
-                        st.download_button(
-                            label=st._html_tr("📄 Download Report"),
-                            data=f,
-                            file_name=os.path.basename(docx_path),
-                            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                            use_container_width=True,
-                            key="btn_download_final_report_finished",
-                        )
-                        st.success("✔ Report ready. Click the button again to download.")
+                    st.download_button(
+                        label=st._html_tr("📄 Download Report"),
+                        data=docx_bytes,
+                        file_name="DOMMx_Report.docx",
+                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        use_container_width=True,
+                        key="btn_download_final_report_finished",
+                    )
+
+                    st.success("✔ Report ready. Click the button again to download.")
 
             with col_r2:
                 if st.button(st._html_tr("↩ Log off"), use_container_width=True, key="btn_back_to_login_finished"):
                     # limpa cache do report
-                    st.session_state.pop("report_docx_path_finished", None)
+                    st.session_state.pop("report_docx_bytes", None)
                     st.session_state.app_mode = "login"
                     st.session_state.pop("_temp_user", None)
                     st.rerun()
