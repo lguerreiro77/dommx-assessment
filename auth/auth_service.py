@@ -8,6 +8,7 @@ import shutil
 import streamlit as st
 import streamlit.components.v1 as components
 import hashlib
+import base64
 
 from auth.email_service import send_email
 from core.config import APP_TITLE, refresh_runtime_config, BASE_DIR
