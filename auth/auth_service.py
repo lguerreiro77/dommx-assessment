@@ -791,15 +791,30 @@ def render_register():
             if st.button("📄 Open Consent Term", key="btn_open_consent_term", use_container_width=True):
 
                 if pdf_bytes:
-                    b64 = base64.b64encode(pdf_bytes).decode()
 
-                    st.markdown(
+                    b64 = base64.b64encode(pdf_bytes).decode("utf-8")
+
+                    components.html(
                         f"""
-                        <a href="data:application/pdf;base64,{b64}" target="_blank">
-                            📄 Open Consent Term
-                        </a>
+                        <script>
+                        const b64 = "{b64}";
+                        const byteChars = atob(b64);
+                        const byteNumbers = new Array(byteChars.length);
+
+                        for (let i = 0; i < byteChars.length; i++) {{
+                            byteNumbers[i] = byteChars.charCodeAt(i);
+                        }}
+
+                        const byteArray = new Uint8Array(byteNumbers);
+                        const blob = new Blob([byteArray], {{ type: "application/pdf" }});
+                        const url = URL.createObjectURL(blob);
+
+                        window.open(url, "_blank");
+
+                        setTimeout(() => URL.revokeObjectURL(url), 60000);
+                        </script>
                         """,
-                        unsafe_allow_html=True
+                        height=0,
                     )
 
                     st.session_state.consent_term_opened = True
