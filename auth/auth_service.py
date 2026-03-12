@@ -473,7 +473,6 @@ def render_auth():
 
     try:
         params = st.query_params
-
         token_param = params.get("reset_token", None)
 
         if isinstance(token_param, list):
@@ -485,17 +484,20 @@ def render_auth():
     except Exception:
         token = None
 
+
     # primeiro acesso ao link de reset
     if token:
+
         st.session_state["reset_token"] = token
         st.session_state["app_mode"] = "reset_password"
 
-    try:
-        st.query_params.clear()
-    except Exception:
-        pass
+        try:
+            st.query_params.clear()
+        except Exception:
+            pass
 
-    return render_reset_password()
+        return render_reset_password()
+
 
     # -------------------------------------------------
     # DEFAULT
