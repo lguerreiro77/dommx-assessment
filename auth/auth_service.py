@@ -92,9 +92,6 @@ def parse_password_reset_token(token):
     
 def render_forgot_password():
 
-    if "_sending_reset" not in st.session_state:
-        st.session_state["_sending_reset"] = False
-
     left, center, right = st.columns([1, 5, 1])
 
     with center:
@@ -104,6 +101,7 @@ def render_forgot_password():
             unsafe_allow_html=True
         )
 
+        # status message
         if "_forgot_status" not in st.session_state:
             st.session_state["_forgot_status"] = None
 
@@ -120,6 +118,7 @@ def render_forgot_password():
             else:
                 st.info(msg)
 
+        # auto return to login
         success_ts = st.session_state.get("_forgot_success_ts")
 
         if success_ts:
@@ -129,6 +128,7 @@ def render_forgot_password():
                 st.session_state["app_mode"] = "login"
                 st.rerun()
 
+        # email field
         if "forgot_email_input" not in st.session_state:
             st.session_state["forgot_email_input"] = st.session_state.get("recover_email", "")
 
@@ -137,32 +137,27 @@ def render_forgot_password():
             key="forgot_email_input"
         )
 
-        send_clicked = st.button(
-            "Send Reset Link",
-            use_container_width=True,
-            disabled=st.session_state["_sending_reset"]
-        )
-
-        if send_clicked:
-
-            st.session_state["_sending_reset"] = True
-            st.rerun()
-
-        if st.session_state["_sending_reset"]:
+        # -------------------------------------------------
+        # SEND RESET LINK
+        # -------------------------------------------------
+        if st.button("Send Reset Link", use_container_width=True):
 
             try:
 
                 if not email:
                     st.error("Enter your email.")
-                    st.session_state["_sending_reset"] = False
                     return
 
                 user = load_user(email)
 
+                # security pattern (não revelar existência do email)
                 if not user:
-                    st.success("If this email exists, a reset link was sent.")
-                    st.session_state["_sending_reset"] = False
-                    return
+                    st.session_state["_forgot_status"] = {
+                        "level": "success",
+                        "msg": "If this email exists, a reset link was sent."
+                    }
+                    st.session_state["_forgot_success_ts"] = time.time()
+                    st.rerun()
 
                 token = create_password_reset_token(user["email_hash"])
 
@@ -170,7 +165,6 @@ def render_forgot_password():
 
                 if not app_url:
                     st.error("APP_URL not configured.")
-                    st.session_state["_sending_reset"] = False
                     return
 
                 encoded_token = quote(token, safe="")
@@ -184,25 +178,23 @@ def render_forgot_password():
                         f"Click the link to reset your password:\n\n{reset_link}"
                     )
 
-                st.session_state["_forgot_success_ts"] = time.time()
-
                 st.session_state["_forgot_status"] = {
                     "level": "success",
                     "msg": "Reset link sent. Please check your email."
                 }
 
-                st.session_state["_sending_reset"] = False
+                st.session_state["_forgot_success_ts"] = time.time()
+
                 st.rerun()
 
-            except Exception:
-                st.error("Error sending reset email.")
-                st.session_state["_sending_reset"] = False
+            except Exception as e:
+                st.error(f"Error sending reset email: {e}")
 
-        if st.button(
-            "Back",
-            use_container_width=True,
-            disabled=st.session_state["_sending_reset"]
-        ):
+        # -------------------------------------------------
+        # BACK
+        # -------------------------------------------------
+        if st.button("Back", use_container_width=True):
+
             st.session_state["_forgot_status"] = None
             st.session_state["app_mode"] = "login"
             st.rerun()
