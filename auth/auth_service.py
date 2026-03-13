@@ -16,7 +16,6 @@ from storage.project_storage import get_all_projects, get_projects
 from storage.user_project_storage import get_projects_for_user
 from storage.user_storage import load_user, save_user, verify_password, get_all_users, load_user_by_hash
 
-from core.ai_report_service import AIReportService
 from data.repository_factory import get_repository
 from core.config import BASE_DIR
 
@@ -366,24 +365,27 @@ def has_finished_project(user_id, project_id):
 
     rows = repo.fetch_all("finished_assessments")
 
+    uid = str(user_id).strip()
+    pid = str(project_id).strip()
+
     for r in rows:
 
-        same_user = str(r.get("user_id", "")).strip() == str(user_id).strip()
-        same_project = str(r.get("project_id", "")).strip() == str(project_id).strip()
+        if str(r.get("user_id","")).strip() != uid:
+            continue
+
+        if str(r.get("project_id","")).strip() != pid:
+            continue
 
         finished_raw = r.get("is_finished")
 
         if isinstance(finished_raw, bool):
-            is_finished = finished_raw
-        elif isinstance(finished_raw, (int, float)):
-            is_finished = finished_raw == 1
-        elif isinstance(finished_raw, str):
-            is_finished = finished_raw.strip().lower() in ["true", "1", "yes"]
-        else:
-            is_finished = False
+            return finished_raw
 
-        if same_user and same_project and is_finished:
-            return True
+        if isinstance(finished_raw, (int, float)):
+            return finished_raw == 1
+
+        if isinstance(finished_raw, str):
+            return finished_raw.strip().lower() in ["true","1","yes"]
 
     return False
 
@@ -539,9 +541,7 @@ def render_login():
                 get_projects,
                 create_project,
             )
-
-            import os
-            from core.config import BASE_DIR
+           
 
             try:
                 user = load_user(email)
@@ -1091,6 +1091,8 @@ def render_project_selection():
         # FINISHED PROJECT -> SHOW REPORT + BACK, DO NOT ENTER
         # -------------------------------------------------
         if selected_project and has_finished_project(user_id, selected_project):
+            
+            from core.ai_report_service import AIReportService
 
             st.success(st._html_tr("You have already completed all actions for this project."))
 
@@ -1284,9 +1286,10 @@ def render_project_selection():
                             try:
                                 send_email(
                                     user_email,
-                                    st._html_tr(
-                                    "Consent Revoked - DOMMx Focus Group",
-                                    "Your consent was revoked and your account (and all associated data) was deleted.\n\nAttached: Consent Term."),
+                                    st._tr("Consent Revoked - DOMMx Focus Group"),
+                                    st._tr(
+                                        "Your consent was revoked and your account (and all associated data) was deleted.\n\nAttached: Consent Term."
+                                    ),
                                     attachments=attachments
                                 )
                             except Exception:
