@@ -13,3 +13,4 @@ python-docx
 matplotlib
 numpy
 markdown
+resend

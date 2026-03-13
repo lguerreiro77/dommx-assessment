@@ -1,86 +1,62 @@
 # EMAIL SERVICE
-# 100% local mode by default
-# To enable SMTP, configure below and uncomment send_email implementation
+# Production email via Resend API
 
 import streamlit as st
-
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email import encoders
-
 import os
+import resend
 from dotenv import load_dotenv
 
 load_dotenv()
 
-SMTP_ENABLED = True  # <- mudar para True quando configurar
+RESEND_API_KEY = os.getenv("RESEND_API_KEY")
 
-SMTP_CONFIG = {
-    "server": "smtp.gmail.com",
-    "port": 587,
-    "username": os.getenv("SMTP_USER"),
-    "password": os.getenv("SMTP_PASS")
-}
+resend.api_key = RESEND_API_KEY
+
 
 def send_email(to_email: str, subject: str, body: str, attachments=None):
     """
     Backward compatible:
-      send_email(to, subject, body) continua funcionando.
-    attachments: lista de dicts:
+      send_email(to, subject, body)
+
+    attachments:
       [{"filename": "...", "content": b"...", "mime": "application/pdf"}]
     """
-    
+
     try:
         subject = st._tr(subject)
         body = st._tr(body)
     except Exception:
         pass
-    
-    if not SMTP_ENABLED:
-        print("SMTP disabled. Email not sent.")
-        return True
+
+    if not RESEND_API_KEY:
+        print("RESEND_API_KEY not configured")
+        return False
 
     try:
+
+        email_payload = {
+            "from": "DOMMx <onboarding@resend.dev>",
+            "to": [to_email],
+            "subject": subject,
+            "text": body
+        }
+
         if attachments:
-            msg = MIMEMultipart()
-            msg.attach(MIMEText(body, "plain"))
+
+            resend_attachments = []
 
             for a in attachments:
-                filename = a.get("filename", "attachment.bin")
-                content = a.get("content", b"") or b""
-                mime = a.get("mime", "application/octet-stream")
 
-                if "/" in mime:
-                    main, sub = mime.split("/", 1)
-                else:
-                    main, sub = "application", "octet-stream"
+                resend_attachments.append({
+                    "filename": a.get("filename"),
+                    "content": a.get("content"),
+                })
 
-                part = MIMEBase(main, sub)
-                part.set_payload(content)
-                encoders.encode_base64(part)
-                part.add_header("Content-Disposition", f'attachment; filename="{filename}"')
-                msg.attach(part)
-        else:
-            msg = MIMEText(body)
+            email_payload["attachments"] = resend_attachments
 
-        msg["Subject"] = subject
-        msg["From"] = SMTP_CONFIG["username"]
-        msg["To"] = to_email
-        
-        print("SMTP_USER:", SMTP_CONFIG["username"])
-        print("SMTP_PASS:", bool(SMTP_CONFIG["password"]))
-        print("Sending to:", to_email)
-        
-        with smtplib.SMTP(SMTP_CONFIG["server"], SMTP_CONFIG["port"], timeout=10) as server:
-            server.starttls()
-            server.login(SMTP_CONFIG["username"], SMTP_CONFIG["password"])
-            server.sendmail(
-                SMTP_CONFIG["username"],
-                [to_email],
-                msg.as_string()
-            )
+        print("Sending email via Resend to:", to_email)
+
+        resend.Emails.send(email_payload)
 
         return True
 
