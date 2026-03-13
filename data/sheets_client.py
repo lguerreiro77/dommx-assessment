@@ -31,7 +31,7 @@ def _get_client():
 
     credentials = None
 
-    # tentativa Streamlit secrets (cloud)
+    # 1 - Streamlit Cloud
     try:
         secrets = st.secrets
         if "gcp_service_account" in secrets:
@@ -42,14 +42,25 @@ def _get_client():
     except Exception:
         pass
 
-    # fallback local .env / arquivo
+    # 2️ - Railway / Docker / qualquer cloud via ENV
+    if credentials is None:
+        service_json = os.getenv("SERVICE_ACCOUNT_JSON")
+
+        if service_json:
+            import json
+            credentials = Credentials.from_service_account_info(
+                json.loads(service_json),
+                scopes=SCOPES
+            )
+
+    # 3 - Local dev (arquivo)
     if credentials is None:
 
         service_file = os.getenv("GOOGLE_SERVICE_ACCOUNT_FILE")
 
         if not service_file:
             raise RuntimeError(
-                "Google credentials not configured. Use secrets.toml or GOOGLE_SERVICE_ACCOUNT_FILE."
+                "Google credentials not configured. Use secrets.toml, SERVICE_ACCOUNT_JSON or GOOGLE_SERVICE_ACCOUNT_FILE."
             )
 
         credentials = Credentials.from_service_account_file(
