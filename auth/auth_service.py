@@ -893,39 +893,40 @@ def render_register():
                             "mime": "application/pdf"
                         }]
                     else:
-                        attachments = None
-
-                    try:
-                        # user email
-                        send_email(
-                            payload["email"].strip(),
-                            "Consent Given - DOMMx Focus Group",
-                            "Your account was created and your consent was registered.\n\nAttached: Consent Term.",
-                            attachments=attachments
-                        )
-                    except Exception:
-                        pass
-
-                    if admin_email:
+                        attachments = None                   
+                    
+                    if created:
+                        
+                        st.session_state.pop("register_prefill_email", None)
+                        _flash_set("User created successfully. Please login.", "success")
+                        
                         try:
+                            # user email
                             send_email(
-                                admin_email,
+                                payload["email"].strip(),
                                 "Consent Given - DOMMx Focus Group",
-                                f"User gave consent: {payload['email']}\n\nAttached: Consent Term.",
+                                "Your account was created and your consent was registered.\n\nAttached: Consent Term.",
                                 attachments=attachments
                             )
                         except Exception:
                             pass
 
-                    try:
-                        get_all_users.clear()
-                        load_user.clear()
-                    except Exception:
-                        pass
-
-                    if created:
-                        st.session_state.pop("register_prefill_email", None)
-                        _flash_set("User created successfully. Please login.", "success")
+                        if admin_email:
+                            try:
+                                send_email(
+                                    admin_email,
+                                    "Consent Given - DOMMx Focus Group",
+                                    f"User gave consent: {payload['email']}\n\nAttached: Consent Term.",
+                                    attachments=attachments
+                                )
+                            except Exception:
+                                pass
+                                
+                        try:
+                            get_all_users.clear()
+                            load_user.clear()
+                        except Exception:
+                            pass
 
                         # primeiro user deve ser admin
                         if payload.get("is_first_user"):
