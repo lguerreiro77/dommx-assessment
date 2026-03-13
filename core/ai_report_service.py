@@ -91,11 +91,11 @@ class AIReportService:
         self._analysis_templates = self._load_analysis_templates()
     
     @st.cache_data
-    def _load_dependency_inconsistency_theory(_self, lang):
+    def _load_dependency_inconsistency_theory(self, lang):
 
         import json
 
-        lang = (resolved_lang or "us").lower()
+        lang = (lang or "us").lower()
 
         path = (
             self.base_dir

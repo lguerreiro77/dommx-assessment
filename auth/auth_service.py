@@ -171,11 +171,18 @@ def render_forgot_password():
 
                 with st.spinner("Sending reset email..."):
 
-                    send_email(
+                    sent = send_email(
                         email,
                         "Password Reset",
                         f"Click the link to reset your password:\n\n{reset_link}"
                     )
+
+                if not sent:
+                    st.session_state["_forgot_status"] = {
+                        "level": "error",
+                        "msg": "Email service unavailable. Please try again later."
+                    }
+                    st.rerun()
 
                 st.session_state["_forgot_status"] = {
                     "level": "success",
