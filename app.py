@@ -7,7 +7,6 @@ import hashlib
 import yaml
 from pathlib import Path
 
-
 # deep-translator pode não existir no ambiente: não pode derrubar o app
 try:
     from deep_translator import GoogleTranslator
@@ -22,52 +21,25 @@ from core.session_utils import logout
 from core.i18n_markers import YAMLText
 
 st.set_page_config(page_title=APP_TITLE, layout="centered")
-
-if "runtime_cache_cleared" not in st.session_state:
-    try:
-        st.runtime.legacy_caching.clear_cache()
-    except Exception:
-        pass
-    st.session_state.runtime_cache_cleared = True
-
 init_session()
 
 
-@st.cache_resource
-def load_ui_translation_cache(locale: str):
-   
-    cache_path = Path(f"data/domains/{locale}/ui_cache.json")
-
-    if not cache_path.exists():
-        return {}
-
-    try:
-        with open(cache_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-
-        if isinstance(data, dict):
-            return data
-        else:
-            return {}
-
-    except Exception:
-        return {}
-    
 # -------------------------
 # Idiomas possiveis e configurados
 # -------------------------
 
-@st.cache_data
 def load_app_config():
 
     project_id = st.session_state.get("active_project")
 
+    # 1️⃣ Tenta config do projeto
     if project_id:
         project_config = Path("data/projects") / str(project_id) / "General" / "app_config.yaml"
         if project_config.exists():
             with open(project_config, "r", encoding="utf-8") as f:
                 return yaml.safe_load(f) or {}
 
+    # 2️⃣ Tenta config global padrão correto
     global_paths = [
         Path("data/general/app_config.yaml"),
         Path("data/app_config.yaml"),
@@ -210,10 +182,18 @@ def _tr_cached(text: str, target_base: str) -> str:
         return ""
 
     loc = st.session_state.get("locale", DEFAULT_LOCALE)
+    cache_path = Path(f"data/domains/{loc}/ui_cache.json")
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
 
-    cache = load_ui_translation_cache(loc)
+    try:
+        if cache_path.exists():
+            cache = json.loads(cache_path.read_text(encoding="utf-8")) or {}
+        else:
+            cache = {}
+    except Exception:
+        cache = {}
 
-    cache_key = f"{target_base}:{text}"
+    cache_key = text  # cache por idioma já está no path
 
     if cache_key in cache:
         return cache[cache_key]
@@ -221,15 +201,8 @@ def _tr_cached(text: str, target_base: str) -> str:
     translated = _ui_translate_openai(text, target_base)
 
     cache[cache_key] = translated
-
-    # persistir no disco somente quando surgir nova tradução
-    cache_path = Path(f"data/domains/{loc}/ui_cache.json")
-
     try:
-        cache_path.write_text(
-            json.dumps(cache, ensure_ascii=False),
-            encoding="utf-8"
-        )
+        cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
     except Exception:
         pass
 
