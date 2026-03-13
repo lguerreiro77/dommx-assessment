@@ -49,7 +49,7 @@ def _get_client():
         if service_json:
             import json
             credentials = Credentials.from_service_account_info(
-                json.loads(service_json),
+                json.loads(service_json.strip()),
                 scopes=SCOPES
             )
 
