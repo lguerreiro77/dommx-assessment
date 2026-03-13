@@ -1,5 +1,3 @@
-# root/core/ai_report_service.py
-
 from __future__ import annotations
 
 import os
@@ -20,6 +18,11 @@ from docx.shared import Pt
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+
+@st.cache_data(show_spinner=False)
+def _load_yaml_cached(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
 
 
 @dataclass
@@ -77,6 +80,17 @@ class AIReportService:
     
 ###----------------------------------------------------------------------------------------------------------------------------------------------------            
     
+    def __init__(self, base_dir: str, repo: Any):
+
+        self.base_dir = Path(base_dir)
+        self.repo = repo
+
+        self.client = OpenAI()
+
+        self._report_texts = self._load_report_texts()
+        self._analysis_templates = self._load_analysis_templates()
+    
+    @st.cache_data(show_spinner=False)
     def _load_dependency_inconsistency_theory(self, language: str):
 
         import json
@@ -333,8 +347,7 @@ class AIReportService:
     # Radar Analysis Helpers (DOMMx)
     # =========================================================
 
-    client = OpenAI()
-
+    
     def _polish_text_with_ai(self, analysis: Dict[str, Any], language: str) -> str:
 
         key = hashlib.md5((json.dumps(analysis) + language).encode()).hexdigest()
@@ -669,7 +682,7 @@ class AIReportService:
             return {}
 
         try:
-            data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+            data = _load_yaml_cached(path)
             return data.get("report_text", {})
         except Exception:
             return {}
@@ -687,7 +700,7 @@ class AIReportService:
             return []
 
         try:
-            data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+            data = _load_yaml_cached(path)
             templates = data.get("analysis_templates", []) or []
             # garante formato esperado
             if isinstance(templates, list):
@@ -712,17 +725,8 @@ class AIReportService:
             return texts["us"][key]
 
         # fallback final
-        return key
-        
-    
-    def __init__(self, base_dir: str, repo: Any):
-        self.base_dir = Path(base_dir)
-        self.repo = repo        
-
-        # Load report texts from YAML
-        self._report_texts = self._load_report_texts()
-        self._analysis_templates = self._load_analysis_templates()
-                
+        return key       
+                   
         
     def _force_update_fields_on_open(self, doc: Document):
         settings = doc.settings._element
@@ -1201,7 +1205,7 @@ class AIReportService:
 
     def _safe_load_yaml(self, path: Path) -> Optional[Dict[str, Any]]:
         try:
-            return yaml.safe_load(path.read_text(encoding="utf-8"))
+            return _load_yaml_cached(path)
         except Exception:
             return None
 

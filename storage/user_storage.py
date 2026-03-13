@@ -2,10 +2,11 @@ import hashlib
 import bcrypt
 from datetime import datetime
 import streamlit as st
-from auth.crypto_service import encrypt_text, decrypt_text
 
-# Data source call
+from auth.crypto_service import encrypt_text, decrypt_text
 from data.repository_factory import get_repository
+from data.sheets_client import get_table
+
 repo = get_repository()
 
 
@@ -44,14 +45,6 @@ def save_user(
     Nunca cria duplicado mesmo com concorrência.
     """
 
-    import hashlib
-    from data.repository_factory import get_repository
-    from auth.crypto_service import encrypt_text
-    from storage.user_storage import hash_password
-    from data.sheets_client import get_table
-
-    repo = get_repository()
-
     email_norm = (email or "").strip().lower()
     if not email_norm:
         return False
@@ -73,10 +66,6 @@ def save_user(
         "consent_encrypted": encrypt_text(str(bool(consent)).lower()),
     }
 
-    # ---------------------------------------------------------
-    # UPsert seguro (sem confiar em cache)
-    # ---------------------------------------------------------
-
     ws = get_table("users")
     headers = ws.row_values(1)
     rows = ws.get_all_records()
@@ -88,7 +77,7 @@ def save_user(
             existing_row_indexes.append(idx)
 
     if existing_row_indexes:
-        # Atualiza a PRIMEIRA ocorrência
+
         row_index = existing_row_indexes[0]
 
         for col, val in user_payload.items():
@@ -96,36 +85,32 @@ def save_user(
                 col_index = headers.index(col) + 1
                 ws.update_cell(row_index, col_index, val)
 
-        # Remove duplicados defensivamente
         if len(existing_row_indexes) > 1:
             for dup_idx in sorted(existing_row_indexes[1:], reverse=True):
                 ws.delete_rows(dup_idx)
 
     else:
-        # Insert controlado
+
         ordered = [user_payload.get(col, "") for col in headers]
         ws.append_row(ordered)
 
-    # Limpa cache do adapter
     try:
         from data.sheets_adapter import _fetch_cached_table
         _fetch_cached_table.clear("users")
     except Exception:
         pass
-        
-    # Limpa caches Streamlit
+
     _read_users_records.clear()
     load_user.clear()
     load_user_by_hash.clear()
-    get_all_users.clear()    
-        
+    get_all_users.clear()
 
     return True
 
 
-
 @st.cache_data(ttl=60, show_spinner=False)
 def load_user(email: str):
+
     email_norm = (email or "").strip().lower()
     email_hash = hash_email(email_norm)
 
@@ -140,6 +125,7 @@ def load_user(email: str):
 
 @st.cache_data(ttl=60, show_spinner=False)
 def load_user_by_hash(email_hash: str):
+
     target = (email_hash or "").strip()
     rows = _read_users_records()
 
@@ -151,15 +137,12 @@ def load_user_by_hash(email_hash: str):
 
 
 def _decrypt_user_row(row: dict) -> dict:
+
     out = dict(row)
-    
+
     def d(key: str) -> str:
         val = out.get(key, "")
         return decrypt_text(val) if val not in (None, "") else ""
-        
-    ## 🔥 Garantir que email sempre exista
-    #if not out.get("email") and out.get("email_hash"):
-    #    out["email"] = row.get("email", "")
 
     if "email_encrypted" in out:
         out["email"] = d("email_encrypted")
@@ -187,16 +170,18 @@ def _decrypt_user_row(row: dict) -> dict:
     if "password_hash" in out:
         out["password_hash"] = out.get("password_hash") or ""
 
-
     return out
 
 
 @st.cache_data(ttl=60, show_spinner=False)
 def get_all_users():
+
     rows = _read_users_records()
 
     users = []
+
     for row in rows:
+
         user = _decrypt_user_row(row)
 
         users.append({

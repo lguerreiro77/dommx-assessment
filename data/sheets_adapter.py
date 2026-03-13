@@ -16,32 +16,40 @@ Nenhuma credencial ou lógica de conexão aqui.
 """
 
 import streamlit as st
+import time
+
 from typing import List, Dict, Any
 from data.sheets_client import get_table
 
-import time
 from gspread.exceptions import APIError
+
+from threading import Lock
+_table_locks = {}
 
 
 @st.cache_data(ttl=120, show_spinner=False)
 def _fetch_cached_table(table: str) -> List[Dict[str, Any]]:
 
-    retries = 3
-    delay = 1
+    lock = _table_locks.setdefault(table, Lock())
 
-    for attempt in range(retries):
-        try:
-            ws = get_table(table)
-            return ws.get_all_records()
+    with lock:
 
-        except APIError:
-            if attempt < retries - 1:
-                time.sleep(delay)
-                delay *= 2
-            else:
-                raise RuntimeError(
-                    f"Temporary Google Sheets failure while reading '{table}'."
-                )
+        retries = 3
+        delay = 1
+
+        for attempt in range(retries):
+            try:
+                ws = get_table(table)
+                return ws.get_all_records()
+
+            except APIError:
+                if attempt < retries - 1:
+                    time.sleep(delay)
+                    delay *= 2
+                else:
+                    raise RuntimeError(
+                        f"Temporary Google Sheets failure while reading '{table}'."
+                    )
 
 
 class SheetsAdapter:
@@ -60,7 +68,7 @@ class SheetsAdapter:
         headers = ws.row_values(1)
         ordered = [row.get(col, "") for col in headers]
         ws.append_row(ordered)
-        _fetch_cached_table.clear(table)
+        _fetch_cached_table.clear()
 
     # =========================
     # UPDATE
@@ -68,7 +76,7 @@ class SheetsAdapter:
     def update(self, table: str, filters: Dict[str, Any], values: Dict[str, Any]) -> bool:
 
         ws = get_table(table)
-        rows = ws.get_all_records()
+        rows = _fetch_cached_table(table)
         headers = ws.row_values(1)
 
         updated = False
@@ -84,7 +92,7 @@ class SheetsAdapter:
                 updated = True
 
         if updated:
-            _fetch_cached_table.clear(table)
+            _fetch_cached_table.clear()
 
         return updated
 
@@ -94,7 +102,7 @@ class SheetsAdapter:
     def delete(self, table: str, filters: Dict[str, Any]) -> bool:
 
         ws = get_table(table)
-        rows = ws.get_all_records()
+        rows = _fetch_cached_table(table)
 
         matched_indexes = []
 
@@ -108,7 +116,7 @@ class SheetsAdapter:
         for idx in sorted(matched_indexes, reverse=True):
             ws.delete_rows(idx)
 
-        _fetch_cached_table.clear(table)
+        _fetch_cached_table.clear()
         return True
     
     # =========================

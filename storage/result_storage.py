@@ -29,33 +29,16 @@ def save_results(user_id: str, project_id: str, answers_dict: dict):
     answers_json = json.dumps(payload, ensure_ascii=False)
     enc = encrypt_text(answers_json)
 
-    rows = repo.fetch_all("results")
-
-    exists = any(
-        str(r.get("user_id", "")).strip() == user_id and
-        str(r.get("project_id", "")).strip() == project_id
-        for r in rows
+    repo.upsert(
+        "results",
+        {"user_id": user_id, "project_id": project_id},
+        {
+            "user_id": user_id,
+            "project_id": project_id,
+            "answers_json_encrypted": enc,
+            "last_update_timestamp": ts
+        }
     )
-
-    if exists:
-        repo.update(
-            "results",
-            {"user_id": user_id, "project_id": project_id},
-            {
-                "answers_json_encrypted": enc,
-                "last_update_timestamp": ts
-            }
-        )
-    else:
-        repo.insert(
-            "results",
-            {
-                "user_id": user_id,
-                "project_id": project_id,
-                "answers_json_encrypted": enc,
-                "last_update_timestamp": ts
-            }
-        )
 
     return True
 

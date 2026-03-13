@@ -23,7 +23,13 @@ from core.comments_manager import save_comment, load_comment, delete_comment
 from core.ai_report_service import AIReportService
 
 from data.repository_factory import get_repository
-repo = get_repository()
+
+
+@st.cache_resource
+def get_repo():
+    return get_repository()
+
+repo = get_repo()
 
 
 # =====================================================
@@ -127,10 +133,10 @@ def mark_assessment_finished(user_id, project_id):
     )
 
 
+@st.cache_data(show_spinner=False)
 def safe_load(path):
 
     if not path:
-        st.error("YAML load error: path is None or empty.")
         return None
 
     try:
@@ -139,8 +145,7 @@ def safe_load(path):
 
         return data
 
-    except Exception as e:
-        st.error(f"YAML load error: {path} | {e}")
+    except Exception:
         return None
         
 
@@ -157,6 +162,8 @@ def render_assessment():
         if st.session_state.get("final_screen"):
 
             st.success("Assessment completed successfully.")
+            
+            
             st.markdown("### Final Report")
 
             col1, col2 = st.columns(2)
@@ -371,65 +378,63 @@ def render_assessment():
         # ===============================
         # LAYOUT
         # ===============================
-        st.markdown("""
-        <style>
-          .dmx-small { font-family: Arial; font-size: 12px; line-height: 1.4; }
-          div[data-testid="stButton"] > button { border-radius: 8px; }
-        </style>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("""
-        <style>
-        
-        /* título do expander */
-        div[data-testid="stExpander"] summary {
-            font-size: 11px !important;
-            white-space: nowrap !important;
-        }
+        if "css_loaded" not in st.session_state:
 
-        /* ------------------------------------ */
-        /* DownloadButton                       */
-        /* ------------------------------------ */
-        /* o button geralmente NÃO é filho direto */
+            st.markdown("""
+            <style>
+              .dmx-small { font-family: Arial; font-size: 12px; line-height: 1.4; }
+              div[data-testid="stButton"] > button { border-radius: 8px; }
+            </style>
+            """, unsafe_allow_html=True)
 
-        div[data-testid="stDownloadButton"] button {
-            width: 100% !important;
-            border-radius: 8px !important;
+            st.markdown("""
+            <style>
 
-            /* aparência tipo secondary */
-            background: transparent !important;
-            border: 1px solid rgba(0,0,0,0.15) !important;
-            box-shadow: none !important;
+            /* título do expander */
+            div[data-testid="stExpander"] summary {
+                font-size: 11px !important;
+                white-space: nowrap !important;
+            }
 
-            /* alinhamento igual aos outros botões */
-            padding: 0.75rem 1rem !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 0.5rem !important;
+            /* ------------------------------------ */
+            /* DownloadButton                       */
+            /* ------------------------------------ */
 
-            color: inherit !important;
-            font-weight: 400 !important;
-        }
+            div[data-testid="stDownloadButton"] button {
+                width: 100% !important;
+                border-radius: 8px !important;
 
-        /* texto interno */
-        div[data-testid="stDownloadButton"] button * {
-            color: inherit !important;
-        }
+                background: transparent !important;
+                border: 1px solid rgba(0,0,0,0.15) !important;
+                box-shadow: none !important;
 
-        /* hover parecido */
-        div[data-testid="stDownloadButton"] button:hover:not(:disabled) {
-            background: rgba(0,0,0,0.04) !important;
-        }
+                padding: 0.75rem 1rem !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
 
-        /* disabled consistente */
-        div[data-testid="stDownloadButton"] button:disabled {
-            opacity: 0.5 !important;
-            background: transparent !important;
-        }
+                color: inherit !important;
+                font-weight: 400 !important;
+            }
 
-        </style>
-        """, unsafe_allow_html=True)
+            div[data-testid="stDownloadButton"] button * {
+                color: inherit !important;
+            }
+
+            div[data-testid="stDownloadButton"] button:hover:not(:disabled) {
+                background: rgba(0,0,0,0.04) !important;
+            }
+
+            div[data-testid="stDownloadButton"] button:disabled {
+                opacity: 0.5 !important;
+                background: transparent !important;
+            }
+
+            </style>
+            """, unsafe_allow_html=True)
+
+            st.session_state.css_loaded = True
 
 
         col_left, col_main = st.columns([2, 6], gap="small")
@@ -441,12 +446,14 @@ def render_assessment():
         last_dom = 0
         last_q = -1
 
+        answers_state = st.session_state.answers
+
         for d_index, req in enumerate(req_list):
 
             domain_key_check = f"domain_{d_index}"
             sq = req.get("selected_questions", []) or []
 
-            domain_answers = st.session_state.answers.get(domain_key_check, {})
+            domain_answers = answers_state.get(domain_key_check, {})
 
             for q_index, q in enumerate(sq):
                 qid = q.get("id")
@@ -644,10 +651,11 @@ def render_assessment():
                 .get(q_id)
             )
 
-            st.markdown("""
+            if "css_likert_loaded" not in st.session_state:
+
+                st.markdown("""
                 <style>
 
-                /* Likert buttons */
                 div[data-testid="stButton"] > button {
                     height: 65px !important;
                     width: 100% !important;
@@ -657,10 +665,9 @@ def render_assessment():
                     justify-content: center !important;
                     align-items: center !important;
                     text-align: center !important;
-                    white-space: pre-line !important;  /* ESSENCIAL */
+                    white-space: pre-line !important;
                 }
 
-                /* Texto interno */
                 div[data-testid="stButton"] > button p {
                     margin: 0 !important;
                     line-height: 1.1 !important;
@@ -669,6 +676,8 @@ def render_assessment():
 
                 </style>
                 """, unsafe_allow_html=True)
+
+                st.session_state.css_likert_loaded = True
 
 
             cols = st.columns(len(maturity_scale), gap="small")
@@ -1043,7 +1052,9 @@ def render_assessment():
                     label_visibility="collapsed"
                 )
 
-                st.markdown(
+                if "css_comment_loaded" not in st.session_state:
+
+                    st.markdown(
                     """
                     <style>
                     div[data-testid="stButton"] > button[kind="primary"] {
@@ -1057,7 +1068,9 @@ def render_assessment():
                     </style>
                     """,
                     unsafe_allow_html=True
-                )
+                    )
+
+                    st.session_state.css_comment_loaded = True
 
                 col_btn1, col_btn2, col_btn3 = st.columns([3,3,4])
 

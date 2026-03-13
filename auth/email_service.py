@@ -69,15 +69,14 @@ def send_email(to_email: str, subject: str, body: str, attachments=None):
         msg["From"] = SMTP_CONFIG["username"]
         msg["To"] = to_email
 
-        server = smtplib.SMTP(SMTP_CONFIG["server"], SMTP_CONFIG["port"])
-        server.starttls()
-        server.login(SMTP_CONFIG["username"], SMTP_CONFIG["password"])
-        server.sendmail(
-            SMTP_CONFIG["username"],
-            [to_email],
-            msg.as_string()
-        )
-        server.quit()
+        with smtplib.SMTP(SMTP_CONFIG["server"], SMTP_CONFIG["port"]) as server:
+            server.starttls()
+            server.login(SMTP_CONFIG["username"], SMTP_CONFIG["password"])
+            server.sendmail(
+                SMTP_CONFIG["username"],
+                [to_email],
+                msg.as_string()
+            )
 
         return True
 

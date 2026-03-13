@@ -1,18 +1,18 @@
 import streamlit as st
 import yaml
+import os
 
 from core.renderer_init import initialize_renderer
 from core.renderer_controller import handle_page_and_dialogs
 from core.renderer_assessment import render_assessment
 from core.config import BASE_DIR, resolve_path, get_filesystem_setup_path, get_general_dir
 
-from core.config import (
-    resolve_path,
-    get_filesystem_setup_path,
-    get_general_dir
-)
-import os
 
+@st.cache_data(show_spinner=False)
+def load_yaml_file(path):
+    with open(path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f) or {}
+        
 
 def render_app():
     
@@ -57,8 +57,7 @@ def render_app():
             st.error("Filesystem setup file not found.")
             st.stop()
 
-        with open(fs_path, "r", encoding="utf-8") as f:
-            fs_setup = yaml.safe_load(f) or {}
+        fs_setup = load_yaml_file(fs_path)
 
         # -------------------------------------------------
         # ORCHESTRATION
@@ -77,8 +76,7 @@ def render_app():
             st.error("Orchestration file not found.")
             st.stop()
 
-        with open(orch_path, "r", encoding="utf-8") as f:
-            orch = yaml.safe_load(f) or {}
+        orch = load_yaml_file(orch_path)
 
         # -------------------------------------------------
         # FLOW
@@ -97,8 +95,7 @@ def render_app():
             st.error("Flow file not found.")
             st.stop()
 
-        with open(flow_path, "r", encoding="utf-8") as f:
-            flow = yaml.safe_load(f) or {}
+        flow = load_yaml_file(flow_path)
 
         st.session_state._flow = flow
         

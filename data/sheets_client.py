@@ -17,6 +17,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 SCOPES = [
@@ -32,9 +33,10 @@ def _get_client():
 
     # tentativa Streamlit secrets (cloud)
     try:
-        if "gcp_service_account" in st.secrets:
+        secrets = st.secrets
+        if "gcp_service_account" in secrets:
             credentials = Credentials.from_service_account_info(
-                st.secrets["gcp_service_account"],
+                secrets["gcp_service_account"],
                 scopes=SCOPES
             )
     except Exception:
@@ -71,6 +73,7 @@ def get_spreadsheet():
     return client.open_by_key(spreadsheet_id)
 
 
+@st.cache_resource
 def get_table(name: str):
     spreadsheet = get_spreadsheet()
     return spreadsheet.worksheet(name)

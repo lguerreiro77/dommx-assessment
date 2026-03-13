@@ -3,7 +3,7 @@ from cryptography.fernet import Fernet
 from dotenv import load_dotenv
 
 # Carrega .env no ambiente local
-load_dotenv()
+load_dotenv(override=False)
 
 try:
     import streamlit as st
@@ -51,8 +51,10 @@ def encrypt_text(data: str) -> str:
 def decrypt_text(token: str) -> str:
     if not token:
         return ""
-    return _cipher.decrypt(token.encode()).decode()
-
+    try:
+        return _cipher.decrypt(token.encode()).decode()
+    except Exception:
+        return ""
 
 # Backward compatibility alias
 decrypt_value = decrypt_text

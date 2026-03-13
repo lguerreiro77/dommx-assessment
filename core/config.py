@@ -1,7 +1,7 @@
 import os
 import yaml
 import streamlit as st
-
+ 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # -------------------------------------------------
@@ -29,7 +29,8 @@ def resolve_path(base_dir, relative_path):
 
     # 1) absoluto
     if os.path.isabs(p):
-        return p if os.path.exists(p) else None
+        exists = os.path.exists(p)
+        return p if exists else None
 
     # normaliza separadores
     p_norm = p.replace("\\", "/")
@@ -45,6 +46,7 @@ def resolve_path(base_dir, relative_path):
 
 
 
+@st.cache_data(show_spinner=False)
 def safe_load(path):
     try:
         with open(path, "r", encoding="utf-8") as f:
@@ -58,9 +60,7 @@ def get_project_root():
 
 
 def get_general_dir():
-    import os
-    import streamlit as st
-
+   
     active_project = st.session_state.get("active_project")
 
     if active_project:
@@ -81,9 +81,7 @@ def get_general_dir():
 
 
 def get_filesystem_setup_path():
-    import os
-    import streamlit as st
-
+    
     active_project = st.session_state.get("active_project")
 
     if active_project:
@@ -122,4 +120,5 @@ def refresh_runtime_config():
 
 
 # Inicializa config padrão
-refresh_runtime_config()
+if not app_config:
+    refresh_runtime_config()

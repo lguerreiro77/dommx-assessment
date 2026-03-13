@@ -1,5 +1,6 @@
 import datetime
 import xml.etree.ElementTree as ET
+
 from data.repository_factory import get_repository
 
 repo = get_repository()
@@ -15,7 +16,8 @@ def save_log_snapshot(user_id, project_id, messages):
     # -----------------------------
     root = ET.Element("Messages")
 
-    for msg in messages:
+    for msg in messages or []:
+
         msg_el = ET.SubElement(root, "Message")
 
         type_el = ET.SubElement(msg_el, "Type")
