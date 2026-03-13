@@ -68,8 +68,12 @@ def send_email(to_email: str, subject: str, body: str, attachments=None):
         msg["Subject"] = subject
         msg["From"] = SMTP_CONFIG["username"]
         msg["To"] = to_email
-
-        with smtplib.SMTP(SMTP_CONFIG["server"], SMTP_CONFIG["port"]) as server:
+        
+        print("SMTP_USER:", SMTP_CONFIG["username"])
+        print("SMTP_PASS:", bool(SMTP_CONFIG["password"]))
+        print("Sending to:", to_email)
+        
+        with smtplib.SMTP(SMTP_CONFIG["server"], SMTP_CONFIG["port"], timeout=10) as server:
             server.starttls()
             server.login(SMTP_CONFIG["username"], SMTP_CONFIG["password"])
             server.sendmail(

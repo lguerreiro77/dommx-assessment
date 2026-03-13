@@ -90,8 +90,8 @@ class AIReportService:
         self._report_texts = self._load_report_texts()
         self._analysis_templates = self._load_analysis_templates()
     
-    @st.cache_data(show_spinner=False)
-    def _load_dependency_inconsistency_theory(self, language: str):
+    @st.cache_data
+    def _load_dependency_inconsistency_theory(_self, lang):
 
         import json
 
