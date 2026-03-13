@@ -211,7 +211,7 @@ def _tr_cached(text: str, target_base: str) -> str:
 
     loc = st.session_state.get("locale", DEFAULT_LOCALE)
 
-    cache = dict(load_ui_translation_cache(loc))
+    cache = load_ui_translation_cache(loc)
 
     cache_key = f"{target_base}:{text}"
 
