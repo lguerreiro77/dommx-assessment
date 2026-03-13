@@ -95,7 +95,7 @@ class AIReportService:
 
         import json
 
-        lang = (language or "us").lower()
+        lang = (resolved_lang or "us").lower()
 
         path = (
             self.base_dir
