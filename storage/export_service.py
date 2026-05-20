@@ -274,8 +274,13 @@ def export_all_to_excel():
         # ✅ Apenas projetos existentes
         if project_id not in valid_project_ids:
             continue
+            
+        print("RESULT USER_ID =", repr(user_id))
 
         full_name = user_lookup.get(user_id, {}).get("full_name", "")
+        
+        print("FULL_NAME =", repr(full_name))
+        
         email = user_lookup.get(user_id, {}).get("email", "")
         country = user_lookup.get(user_id, {}).get("country", "")
         project_name = project_lookup.get(project_id, "")               
