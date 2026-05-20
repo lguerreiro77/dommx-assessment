@@ -480,7 +480,8 @@ def export_all_to_excel():
 
     # ordenação elegante
     df = df.sort_values(
-        by=["Project", "Full Name", "Domain Order", "Question ID"],
+        #--by=["Project", "Full Name", "Domain Order", "Question ID"],
+        by=["Project", "Domain Order", "Question ID"],
         kind="stable"
     )
 
