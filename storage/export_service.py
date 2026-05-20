@@ -64,8 +64,8 @@ def export_all_to_excel():
     user_lookup = {}
 
     for u in users:
-        
-        email_hash = (u.get("email_hash") or "").strip()
+                
+        email_hash = str(u.get("email_hash") or "").strip().lower()
         if not email_hash:
             continue
 
@@ -265,7 +265,7 @@ def export_all_to_excel():
 
     for r in results:
 
-        user_id = r.get("user_id")
+        user_id = str(r.get("user_id") or "").strip().lower()
         project_id = r.get("project_id")        
                    
         last_update_ts = r.get("last_update_timestamp", "")        
