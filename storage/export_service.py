@@ -273,14 +273,10 @@ def export_all_to_excel():
 
         # ✅ Apenas projetos existentes
         if project_id not in valid_project_ids:
-            continue
-            
-        print("RESULT USER_ID =", repr(user_id))
-
-        full_name = user_lookup.get(user_id, {}).get("full_name", "")
+            continue          
         
-        print("FULL_NAME =", repr(full_name))
-        
+        #--full_name = user_lookup.get(user_id, {}).get("full_name", "")        
+                
         email = user_lookup.get(user_id, {}).get("email", "")
         country = user_lookup.get(user_id, {}).get("country", "")
         project_name = project_lookup.get(project_id, "")               
@@ -324,14 +320,14 @@ def export_all_to_excel():
                     dom_meta = {}                       
 
             domain_acr = dom_meta.get("acronym") or domain_key
-            domain_name = dom_meta.get("name") or ""
+            #--domain_name = dom_meta.get("name") or ""
             qtext_map = dom_meta.get("qtext") or {}            
 
             for qid, score in qmap.items():
 
                 qid_str = str(qid).strip()
                 qid_norm = qid_str.upper()
-                qtext = qtext_map.get(qid_norm, "")
+                #--qtext = qtext_map.get(qid_norm, "")
                 maturity_label = LIKERT.get(score, "")   
 
                 # -----------------------------
@@ -383,15 +379,16 @@ def export_all_to_excel():
                 rows.append({
                     "_user_id": user_id,
                     "_project_id": project_id,
-                    "Full Name": full_name,
-                    "Email": email,
+                    #--"Full Name": full_name,
+                    #--"Email": email,
+                    "User_Hash": user_id,
                     "Country": country,
                     "Project": project_name,
                     "Domain Order": domain_order,   
                     "Domain": domain_acr,
-                    "Domain Name": domain_name,
+                    #--"Domain Name": domain_name,
                     "Question ID": qid_str,
-                    "Question": qtext,
+                    #--"Question": qtext,
                     "Answer (Score)": score,
                     "Maturity Level": maturity_label,
                     "Comment Text": comment_text,
@@ -453,15 +450,16 @@ def export_all_to_excel():
             rows.append({
                 "_user_id": user_id,
                 "_project_id": project_id,
-                "Full Name": full_name,
-                "Email": email,
+                #--"Full Name": full_name,
+                #--"Email": email,
+                "User_Hash": user_id,
                 "Country": country,
                 "Project": project_name,
                 "Domain Order": domain_order,
                 "Domain": domain_acr,
-                "Domain Name": domain_name,
+                #--"Domain Name": domain_name,
                 "Question ID": qid,
-                "Question": qtext,
+                #--"Question": qtext,
                 "Answer (Score)": "NA",
                 "Maturity Level": "NA",
                 "Comment Text": cdata.get("text", ""),
