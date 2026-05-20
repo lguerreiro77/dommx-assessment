@@ -18,6 +18,8 @@ from auth.crypto_service import decrypt_text
 from storage.log_storage import save_log_snapshot
 from core.i18n_markers import mark_yaml_strings
 
+from core.renderer_pva import render_pva_page,has_pva_response
+
 from core.comments_manager import save_comment, load_comment, delete_comment
 
 from core.ai_report_service import AIReportService
@@ -151,15 +153,34 @@ def safe_load(path):
 def render_assessment():                   
        
         # -------------------------------------------------
-        # FINAL SCREEN (fora do dialog)
+        # FINAL SCREEN
         # -------------------------------------------------
 
         if st.session_state.get("final_screen"):
 
-            st.success("Assessment completed successfully.")
-            st.markdown("### Final Report")
+            st.success(
+                st._tr(
+                    "Assessment completed successfully."
+                )
+            )
 
-            col1, col2 = st.columns(2)
+            st.info(
+                st._tr(
+                    """
+                    Download and review the report to see a real example
+                    of how DOMMx can be applied in practice.
+
+                    After that, please complete the model evaluation
+                    to finalize all assessment steps.
+                    """
+                )
+            )
+
+            st.markdown(
+                st._tr("### Final Report")
+            )
+
+            col1, col2, col3 = st.columns(3)
 
             current_locale = st.session_state.get("locale") or "us"
 
@@ -168,24 +189,31 @@ def render_assessment():
                 repo=repo
             )
 
+            # -------------------------------------------------
+            # REPORT
+            # -------------------------------------------------
             with col1:
 
                 if st.session_state.generating_report:
 
                     st.button(
-                        "📄 Generating Report...",
+                        st._tr("📄 Generating Report..."),
                         use_container_width=True,
                         disabled=True
                     )
 
-                    with st.spinner("Generating report..."):
+                    with st.spinner(
+                        st._tr("Generating report...")
+                    ):
 
-                        st.session_state.report_docx_bytes = report_service.generate_report_docx(
-                            project_id=st.session_state.active_project,
-                            user_id=st.session_state.get("user_id"),
-                            is_admin=st.session_state.get("is_admin", False),
-                            language=current_locale,
-                            force_regen=False
+                        st.session_state.report_docx_bytes = (
+                            report_service.generate_report_docx(
+                                project_id=st.session_state.active_project,
+                                user_id=st.session_state.get("user_id"),
+                                is_admin=st.session_state.get("is_admin", False),
+                                language=current_locale,
+                                force_regen=False
+                            )
                         )
 
                     st.session_state.generating_report = False
@@ -193,7 +221,10 @@ def render_assessment():
 
                 elif "report_docx_bytes" not in st.session_state:
 
-                    if st.button("📄 Generate Report", use_container_width=True):
+                    if st.button(
+                        st._tr("📄 Generate Report"),
+                        use_container_width=True
+                    ):
 
                         st.session_state.generating_report = True
                         st.rerun()
@@ -201,24 +232,53 @@ def render_assessment():
                 else:
 
                     st.download_button(
-                        label="📄 Download Word Report",
+                        label=st._tr("📄 Download Word Report"),
                         data=st.session_state.report_docx_bytes,
                         file_name="DOMMx_Report.docx",
                         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                         use_container_width=True
                     )
-             
 
-            # BOTÃO EXIT
+            # -------------------------------------------------
+            # PVA
+            # -------------------------------------------------
             with col2:
-                if st.button("🚪 Exit System", use_container_width=True):
 
-                    # limpa cache do report para próxima execução
+                if st.button(
+                    st._tr("🧪 Evaluate DOMMx"),
+                    use_container_width=True,
+                    type="primary"
+                ):
+
+                    st.session_state.open_pva = True
+                    st.rerun()
+
+            # -------------------------------------------------
+            # EXIT
+            # -------------------------------------------------
+            with col3:
+
+                if st.button(
+                    st._tr("🚪 Exit System"),
+                    use_container_width=True
+                ):
+
                     if "report_docx_path" in st.session_state:
                         st.session_state.pop("report_docx_path")
 
                     logout()
                     st.rerun()
+
+            # -------------------------------------------------
+            # OPEN PVA PAGE
+            # -------------------------------------------------
+            if st.session_state.get("open_pva"):
+
+                from core.renderer_pva import render_pva_page
+
+                st.divider()
+
+                render_pva_page()
 
             st.stop()
            

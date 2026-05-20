@@ -1111,16 +1111,21 @@ def render_project_selection():
                 div[data-testid="stButton"] > button,
                 div[data-testid="stDownloadButton"] > button {
 
-                    height: 72px !important;                           
-                    border-radius: 10px !important;
+                    min-height: 68px !important;
+                    height: auto !important;
 
-                    padding: 18px 24px !important;  /* mais largo */
-                    font-size: 10px !important;
+                    border-radius: 12px !important;
+
+                    padding: 10px 14px !important;
+
+                    font-size: 14px !important;
                     font-weight: 600 !important;
-                    line-height: 1.25 !important;
+                    line-height: 1.3 !important;
 
-                    white-space: normal !important; /* permite quebra */
-                    word-break: break-word !important;
+                    white-space: normal !important;
+                    overflow-wrap: break-word !important;
+                    word-break: normal !important;
+
                     text-align: center !important;
                 }
 
@@ -1135,7 +1140,7 @@ def render_project_selection():
             if "_confirm_revoke_consent" not in st.session_state:
                 st.session_state._confirm_revoke_consent = False
 
-            col_r1, col_r2, col_r3 = st.columns(3)
+            col_r1, col_r2, col_r3,col_r4  = st.columns(4)
 
             current_locale = st.session_state.get("locale") or "us"
 
@@ -1200,6 +1205,49 @@ def render_project_selection():
                     st.session_state._confirm_revoke_consent = True                    
                     st.rerun()
                 st.caption(st._tr("Revoke Consent and delete account"))
+            
+            with col_r4:
+
+                from core.renderer_pva import (
+                    render_pva_page,
+                    has_pva_response
+                )
+
+                pva_done = has_pva_response(
+                    st.session_state.user_id,
+                    selected_project
+                )
+
+                if st.button(
+                    st._html_tr("🧪 Evaluate DOMMx"),
+                    use_container_width=True,
+                    key="btn_open_pva"
+                ):
+
+                    st.session_state.active_project = selected_project
+                    st.session_state.open_pva = True
+                    
+                    st.rerun()
+
+                if pva_done:
+
+                    st.caption(
+                        st._tr(
+                            "DOMMx evaluation completed. "
+                            "You can reopen and update your answers."
+                        )
+                    )
+
+                else:
+
+                    st.caption(
+                        st._tr("Evaluate the DOMMx model")
+                    )
+
+                # OPEN PVA MODAL
+                if st.session_state.get("open_pva"):
+
+                    render_pva_page()
                     
 
             if st.session_state.get("_confirm_revoke_consent"):
